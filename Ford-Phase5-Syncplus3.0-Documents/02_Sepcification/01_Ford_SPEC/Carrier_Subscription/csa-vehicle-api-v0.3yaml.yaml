@@ -1,0 +1,477 @@
+swagger: "2.0"
+info:
+  title: China Subscription Adaptor - Vehicle Service
+  description: "**China Subscription Adaptor** provides a series of services to support subscription business in China market. Vehicle service is the service to provide clients for processing vehicle subscription
+  \n\n**Host**
+  \nStage: stgcn.api.mps.ford.com.cn
+  \nProd: cn.api.mps.ford.com.cn
+  \n\n\n**Business Status Codes**
+  \n100200: Success
+  \n100201: Create Success
+  \n100400: Request Error
+  \n100500: Server error
+  "
+  version: 1.0.0
+  contact:
+    name: ljin16
+    email: ljin16@ford.com
+host: cn.api.mps.ford.com.cn
+basePath: /api/csa/vehicle
+schemes:
+  - https
+paths:
+  /service/v1/accesscode:
+    post:
+      tags:
+        - 'Accesscode-for-vehicle-controller'
+      summary: Get the One time access code for IVI H5
+      description: "Get the One time access code for IVI H5"
+      operationId: 'getAccessCodeUsingPOST'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: accesscodeRequestJson
+          in: body
+          required: true
+          description: accesscodeRequestJson
+          schema:
+            $ref: '#/definitions/AccesscodeRequestJson'
+      responses:
+        '200':
+          description: one time access code
+          schema:
+             $ref: '#/definitions/AccesscodeResponse'
+        '201':
+          description: Created
+          schema:
+            $ref: '#/definitions/GenericResponse'
+        '400':
+          description: Bad Request, missing required fields.
+          schema:
+            $ref: '#/definitions/GenericResponse'
+        '401':
+          description: Unauthorized.
+          schema:
+            $ref: '#/definitions/APIMResponse'
+        '403':
+          description: Forbidden.
+          schema:
+            $ref: '#/definitions/GenericResponse'
+        '404':
+          description: No Found.
+          schema:
+            $ref: '#/definitions/GenericResponse'
+        '405':
+          description: Request method not supported.
+          schema:
+            $ref: '#/definitions/GenericResponse'
+        '415':
+          description: Unsupported Media Type
+          schema:
+            $ref: '#/definitions/GenericResponse'
+        '429':
+          description: Bad Request, missing required fields.
+          schema:
+            $ref: '#/definitions/GenericResponse'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/GenericResponse'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/GenericResponse'
+      security:
+        - Application-Id: []
+          Authorization: []
+  /service/v1/pushSubscriptionUsage:
+    post:
+      tags:
+        - 'Subscription-for-vehicle-controller'
+      summary: Sync subscription usage from IVI when power off
+      description: "Sync subscription usage from IVI when power off"
+      operationId: 'pushSubscriptionUsageUsingPOST'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: PushSubscriptionUsageRequestJson
+          in: body
+          required: true
+          description: PushSubscriptionUsageRequestJson
+          schema:
+            $ref: '#/definitions/PushSubscriptionUsageRequestJson'
+      responses:
+        '200':
+          description: push success
+          schema:
+             $ref: '#/definitions/GenericResponse'
+        '201':
+          description: Created
+          schema:
+            $ref: '#/definitions/GenericResponse'
+        '400':
+          description: Bad Request, missing required fields.
+          schema:
+            $ref: '#/definitions/GenericResponse'
+        '401':
+          description: Unauthorized.
+          schema:
+            $ref: '#/definitions/APIMResponse'
+        '403':
+          description: Forbidden.
+          schema:
+            $ref: '#/definitions/GenericResponse'
+        '404':
+          description: No Found.
+          schema:
+            $ref: '#/definitions/GenericResponse'
+        '405':
+          description: Request method not supported.
+          schema:
+            $ref: '#/definitions/GenericResponse'
+        '415':
+          description: Unsupported Media Type
+          schema:
+            $ref: '#/definitions/GenericResponse'
+        '429':
+          description: Bad Request, missing required fields.
+          schema:
+            $ref: '#/definitions/GenericResponse'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/GenericResponse'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/GenericResponse'
+      security:
+        - Application-Id: []
+          Authorization: []
+  /service/v1/retrieveSubscriptionUsage:
+    post:
+      tags:
+        - 'Subscription-for-vehicle-controller'
+      summary: Sync subscription usage from CSA when power on
+      description: "Sync subscription usage from CSA when power on"
+      operationId: 'retrieveSubscriptionUsageUsingPOST'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: retrieveSubscriptionUsageRequestJson
+          in: body
+          required: true
+          description: retrieveSubscriptionUsageRequestJson
+          schema:
+            $ref: '#/definitions/RetrieveSubscriptionUsageRequestJson'
+      responses:
+        '200':
+          description: Subscription usage
+          schema:
+             $ref: '#/definitions/RetrieveSubscriptionUsageResponse'
+        '201':
+          description: Created
+          schema:
+            $ref: '#/definitions/GenericResponse'
+        '400':
+          description: Bad Request, missing required fields.
+          schema:
+            $ref: '#/definitions/GenericResponse'
+        '401':
+          description: Unauthorized.
+          schema:
+            $ref: '#/definitions/APIMResponse'
+        '403':
+          description: Forbidden.
+          schema:
+            $ref: '#/definitions/GenericResponse'
+        '404':
+          description: No Found.
+          schema:
+            $ref: '#/definitions/GenericResponse'
+        '405':
+          description: Request method not supported.
+          schema:
+            $ref: '#/definitions/GenericResponse'
+        '415':
+          description: Unsupported Media Type
+          schema:
+            $ref: '#/definitions/GenericResponse'
+        '429':
+          description: Bad Request, missing required fields.
+          schema:
+            $ref: '#/definitions/GenericResponse'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/GenericResponse'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/GenericResponse'
+      security:
+        - Application-Id: []
+          Authorization: []
+securityDefinitions:
+  Application-Id:
+    type: apiKey
+    name: Application-Id
+    in: header
+  Authorization:
+    description: "Azure AD token with required permission to access this API. Need to request for role described in scopes before generating a valid Azure AD token.\n ##### CSA Azure Application Id (client id) \nChina Subscription Adaptor - Prod: ***c5be662a-44bb-42d5-a79e-2e8af51e3e26*** \nChina Subscription Adaptor - Preprod: ***34154b42-6387-4f8d-a7a7-f62c017b9ec1*** \n ##### Requested API Permission: ***csa.order.readwrite***"
+    type: oauth2
+    tokenUrl: >-
+      https://login.chinacloudapi.cn/3953396c-814c-4dbe-b543-ae4999978206/oauth2/token
+    flow: application
+    scopes:
+      csa.order.readwrite: access to order interfaces
+definitions:
+  AccesscodeRequestJson:
+    type: object
+    required:
+      - vin
+    properties: 
+      vin:
+        type: string
+        description: vin
+        example: WF0JXXGAHJJY80601
+        minLength: 0
+        maxLength: 17
+        pattern: '[0-9A-z-]{17}'
+      userGuid:
+        type: string
+        example: 218FB6BD-2869-488C-A64C-726601290AFA
+        description: Unique identifier of a user
+        minLength: 0
+        maxLength: 255
+        pattern: '[A-z0-9-]*'
+  AccesscodeResponse:
+    type: object
+    properties: 
+      statusCode:
+        type: string
+        description: reponse status code
+        example: 100200
+        minLength: 0
+        maxLength: 32
+        pattern: '[A-z0-9-]*'
+      statusDesc:
+        type: string
+        description: reponse status description
+        example: SUCCESS
+        minLength: 0
+        maxLength: 1024
+        pattern: '^([\s\S])*$'
+      value:
+          $ref: '#/definitions/AccesscodeItem'
+  AccesscodeItem:
+    type: object
+    properties: 
+      accesscode:
+        type: string
+        description: access code
+        example: O2021080512285835282354
+        minLength: 0
+        maxLength: 32
+        pattern: '[A-z0-9-]*'
+      expiresIn:
+        type: integer
+        format: int32
+        example: 300
+        description: expired rest time, unit is second.
+        minimum: 0
+        maximum: 7200
+        exclusiveMinimum: false
+        exclusiveMaximum: false
+  PushSubscriptionUsageRequestJson:
+    type: object
+    required:
+      - requestTimestamp
+      - vin
+    properties: 
+      requestTimestamp:
+        type: string
+        example: 1642573813250
+        description: request time in epoch ms format
+        minLength: 0
+        maxLength: 13
+        pattern: '[A-z0-9-]*'
+      vin:
+        type: string
+        description: vin
+        example: WF0JXXGAHJJY80601
+        minLength: 0
+        maxLength: 17
+        pattern: '[0-9A-z-]{17}'
+      userGuid:
+        type: string
+        example: 218FB6BD-2869-488C-A64C-726601290AFA
+        description: Unique identifier of a user
+        minLength: 0
+        maxLength: 255
+        pattern: '[A-z0-9-]*'
+      startTime:
+        type: string
+        example: 1642573813250
+        description: sync subscription cycle start time in epoch ms format
+        minLength: 13
+        maxLength: 13
+        pattern: '[0-9]*'
+      endTime:
+        type: string
+        example: 1642573813250
+        description: sync subscription cycle end time in epoch ms format
+        minLength: 13
+        maxLength: 13
+        pattern: '[0-9]*'
+      carrierUsage:
+        type: array
+        maxItems: 20
+        items: 
+          $ref: '#/definitions/CarrierUsageItem'
+  CarrierUsageItem:
+    type: object
+    properties: 
+      appId:
+        type: string
+        description: "Appliaction id mapping between IVI and CSA\nQQ Musci = QQMUSIC\nHimalaya = HIMALAYA\nQButterfly Online FM = ONLINEFM\nIQIYI = IQIYI\nDLNA = DLNA\nMAP = MAP\nKTV = KTV"
+        example: HIMALAYA
+        minLength: 0
+        maxLength: 32
+        pattern: '[A-z0-9-]*'
+      usedUsage:
+        type: integer
+        format: int64
+        example: 10485760
+        description: carrier used usage, unit is KB
+        minimum: 0
+        maximum: 1048576000000
+        exclusiveMinimum: false
+        exclusiveMaximum: false
+  RetrieveSubscriptionUsageRequestJson:
+    type: object
+    required:
+      - requestTimestamp
+      - vin
+    properties: 
+      vin:
+        type: string
+        description: vin
+        example: WF0JXXGAHJJY80601
+        minLength: 0
+        maxLength: 17
+        pattern: '[0-9A-z-]{17}'
+      userGuid:
+        type: string
+        example: 218FB6BD-2869-488C-A64C-726601290AFA
+        description: Unique identifier of a user
+        minLength: 0
+        maxLength: 255
+        pattern: '[A-z0-9-]*'
+      requestTimestamp:
+        type: string
+        example: 1642573813250
+        description: request time in epoch ms format
+        minLength: 0
+        maxLength: 13
+        pattern: '[A-z0-9-]*'
+  RetrieveSubscriptionUsageResponse:
+    type: object
+    properties: 
+      statusCode:
+        type: string
+        description: reponse status code
+        example: 100200
+        minLength: 0
+        maxLength: 32
+        pattern: '[A-z0-9-]*'
+      statusDesc:
+        type: string
+        description: reponse status description
+        example: SUCCESS
+        minLength: 0
+        maxLength: 1024
+        pattern: '^([\s\S])*$'
+      value:
+        type: array
+        maxItems: 20
+        items: 
+          $ref: '#/definitions/SubscriptionUsage'
+  SubscriptionUsage:
+    type: object
+    properties: 
+      appId:
+        type: string
+        description: "Appliaction id mapping between IVI and CSA\nQQ Musci = QQMUSIC\nHimalaya = HIMALAYA\nQButterfly Online FM = ONLINEFM\nIQIYI = IQIYI\nDLNA = DLNA\nMAP = MAP\nKTV = KTV"
+        example: IQIYI
+        minLength: 0
+        maxLength: 32
+        pattern: '[A-z0-9-]*'
+      status:
+        type: integer
+        format: int32
+        example: 0
+        description: active = 1, inactive = 0
+        minimum: 1
+        maximum: 1
+        exclusiveMinimum: false
+        exclusiveMaximum: false
+      totalUsage:
+        type: integer
+        format: int64
+        example: 10485760
+        description: carrier used usage, unit is KB. If the app is unlimited will be set as -1
+        minimum: 0
+        maximum: 1048576000000
+        exclusiveMinimum: false
+        exclusiveMaximum: false
+      remainUsage:
+        type: integer
+        format: int64
+        example: 10485760
+        description: carrier remian usage, unit is KB. If the app is unlimited will be set as -1
+        minimum: 0
+        maximum: 1048576000000
+        exclusiveMinimum: false
+        exclusiveMaximum: false
+  APIMResponse:
+    type: object
+    properties:
+      message:
+        type: string
+        description: message
+        minLength: 0
+        maxLength: 1000
+        pattern: ^([\s\S])*$
+      statusCode:
+        type: integer
+        format: int32
+        example: 401
+        description: statusCode
+        minimum: -2147483648
+        maximum: 2147483647
+        exclusiveMinimum: false
+        exclusiveMaximum: false
+    title: APIMResponse
+  GenericResponse:
+    type: object
+    properties:
+      statusCode:
+        type: string
+        description: statusCode
+        minLength: 0
+        maxLength: 32
+        pattern: '[A-z0-9-]*'
+      statusDesc:
+        type: string
+        description: statusDesc
+        minLength: 0
+        maxLength: 2000
+        pattern: ^([\s\S])*$
+    title: GenericResponse

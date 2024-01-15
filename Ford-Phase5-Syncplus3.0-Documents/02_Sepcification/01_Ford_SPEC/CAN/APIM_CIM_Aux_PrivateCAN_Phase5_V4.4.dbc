@@ -1,0 +1,321 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: APIM_CIM Aux
+VAL_TABLE_ VgSig_MFK_HVACPower_Btn_Rq 1 "Pressed" 0 "Not Pressed" ;
+
+
+BO_ 32 APIM_Sleep_Status_Set: 8 APIM_CIM
+ SG_ Aux_Sleep_Rq : 7|1@0+ (1,0) [0|1] "SED"  Aux
+
+BO_ 22 APIM_AmbL_Customize_Set: 8 APIM_CIM
+ SG_ AmbL_CustomizeType_Set : 55|2@0+ (1,0) [0|3] "SED"  Aux
+ SG_ AmbL_IP_Swtich : 40|1@0+ (1,0) [0|1] "SED"  Aux
+ SG_ AmbL_IP_Intensity_Value : 47|7@0+ (1,0) [0|127] "percent"  Aux
+ SG_ AmbL_IP_Color_Value : 39|8@0+ (1,0) [0|255] "Unitless"  Aux
+ SG_ AmbL_Foot_Swtich : 24|1@0+ (1,0) [0|1] "SED"  Aux
+ SG_ AmbL_Foot_Intensity_Value : 31|7@0+ (1,0) [0|127] "percent"  Aux
+ SG_ AmbL_Foot_Color_Value : 23|8@0+ (1,0) [0|255] "Unitless"  Aux
+ SG_ AmbL_Door_Swtich : 8|1@0+ (1,0) [0|1] "SED"  Aux
+ SG_ AmbL_Door_Intensity_Value : 15|7@0+ (1,0) [0|127] "percent"  Aux
+ SG_ AmbL_Door_Color_Value : 7|8@0+ (1,0) [0|255] "Unitless"  Aux
+
+BO_ 16 APIM_AmbientLight_Set: 8 APIM_CIM
+ SG_ ActvDrvMde_D2_Stat : 36|5@0+ (1,0) [0|31] "SED"  Aux
+ SG_ AmbL_DrvMde_D_Rq : 63|1@0+ (1,0) [0|1] "SED"  Aux
+ SG_ AmbL_Music_Range_Level : 19|3@0+ (1,0) [0|7] "SED"  Aux
+ SG_ AmbL_Dynamic_Color : 22|3@0+ (1,0) [0|7] "SED"  Aux
+ SG_ AmbL_Music_Frq_Level : 47|4@0+ (1,0) [0|15] "SED"  Aux
+ SG_ AmbL_Color_Mode : 39|3@0+ (1,0) [0|7] "SED"  Aux
+ SG_ AmbL_ALM_Set : 31|2@0+ (1,0) [0|3] "SED"  Aux
+ SG_ AmbL_Static_ColorValue_Set : 15|8@0+ (1,0) [0|255] "Unitless"  Aux
+ SG_ AmbL_Main_Intensity_Set : 7|7@0+ (1,0) [0|127] "percent"  Aux
+
+
+
+CM_ "Prvivate CAN between APIM and Aux";
+CM_ BU_ APIM_CIM "Cockpit Infotainment System Module";
+CM_ BU_ Aux "Aux";
+BA_DEF_  "BusType" STRING ;
+BA_DEF_ BO_  "FrameRouting" STRING ;
+BA_DEF_ BO_  "FrameGatewayNetwork" STRING ;
+BA_DEF_ BO_  "NetworkInitialization" ENUM  "No","Yes";
+BA_DEF_ BO_  "FrameGatewayId" HEX 0 1407;
+BA_DEF_ BO_  "EventRateOfChange" INT 10 10000;
+BA_DEF_ BO_  "ConfiguredTransmitter" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgStartDelayTime" INT 0 10000;
+BA_DEF_ BO_  "GenMsgNrOfRepetition" INT 0 100;
+BA_DEF_ BO_  "GenMsgDelayTime" INT 0 1000;
+BA_DEF_ BO_  "GenMsgCycleTimeFast" INT 0 100000;
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 100000;
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "FixedPeriodic","Event","EnabledPeriodic","NotUsed","NotUsed","EventPeriodic","NotUsed","NotUsed","NoMsgSendType";
+BA_DEF_ SG_  "U_CX430_MY2023_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CX483_MY2023_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_FNV2_IVI_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_U55X_MY2022_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD542_MY2021_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_S650_MY2022_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "ECGUsedTxSignal" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_T6_MCA_MY2020_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_P702_MY2021_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CX727_MY2021_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_Commodity_MYXX_Tx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CX430_MY2023_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CX483_MY2023_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_FNV2_IVI_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_U55X_MY2022_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CD542_MY2021_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_S650_MY2022_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "ECGUsedRxSignal" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_T6_MCA_MY2020_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_P702_MY2021_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_CX727_MY2021_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "U_Commodity_MYXX_Rx" ENUM  "No","Yes";
+BA_DEF_ SG_  "GenSigStartValue" HEX 0 268435455;
+BA_DEF_ SG_  "MetaData" ENUM  "No","Yes";
+BA_DEF_ SG_  "ApprovedOrphan" ENUM  "No","Yes";
+BA_DEF_ SG_  "ContentDependant" ENUM  "No","Yes";
+BA_DEF_ SG_  "GenSigStartValueInteger" INT 0 1000000000;
+BA_DEF_ SG_  "UsedOnPgmDBC" ENUM  "No","Yes";
+BA_DEF_ SG_  "WakeupSignal" ENUM  "No","Yes";
+BA_DEF_ SG_  "GenSigInactiveValue" INT 0 100000;
+BA_DEF_ SG_  "GenSigSendType" ENUM  "Cyclic","OnWrite","vector_leerstring","OnChange","vector_leerstring","IfActive","vector_leerstring","NoSigSendType";
+BA_DEF_ BO_  "OvtpPushApplication" ENUM  "FALSE","TRUE";
+BA_DEF_ BO_  "SCP_FreshnessValueLength" INT 0 512;
+BA_DEF_ BO_  "SCP_DataId" INT 0 65535;
+BA_DEF_ BO_  "SCP_FreshnessValueTxLength" INT 0 512;
+BA_DEF_ BO_  "SCP_AuthInfoTxLength" INT 0 512;
+BA_DEF_ BO_  "SC_Message" ENUM  "No","Yes";
+BA_DEF_ BO_  "ProgBWConditional" STRING ;
+BA_DEF_ BO_  "GenMsgRoutingTimeoutTime" INT 0 5000;
+BA_DEF_ BO_  "MessageGateway" ENUM  "No","Yes";
+BA_DEF_ BO_  "NmAsrMessage" ENUM  "No","Yes";
+BA_DEF_ BO_  "TpApplType" STRING ;
+BA_DEF_ BO_  "DiagState" ENUM  "No","Yes";
+BA_DEF_ BO_  "TpTxIndex" INT 0 536870911;
+BA_DEF_ BO_  "NetworkInitializationCommand" ENUM  "No","Yes";
+BA_DEF_ BO_  "DiagRequest" ENUM  "No","Yes";
+BA_DEF_ BO_  "DiagResponse" ENUM  "No","Yes";
+BA_DEF_ BO_  "NmMessage" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgILSupport" ENUM  "No","Yes";
+BA_DEF_ BU_  "OvtpOperationMode" ENUM  "SERVER","CLIENT";
+BA_DEF_ BU_  "OvtpEcuAddress" INT 0 1022;
+BA_DEF_ BU_  "ILUsed" ENUM  "No","Yes";
+BA_DEF_ BU_  "Terminator" ENUM  "No","Yes";
+BA_DEF_ BU_  "NodeWakeUpTime" INT 0 10000;
+BA_DEF_ BU_  "NodeStartUpTime" INT 0 10000;
+BA_DEF_ BU_  "NmAsrNodeIdentifier" HEX 128 255;
+BA_DEF_ BU_  "NmAsrNode" ENUM  "No","Yes";
+BA_DEF_ BU_  "PowerType" ENUM  "Switched","Latched","Sleep","vector_leerstring","vector_leerstring";
+BA_DEF_ BU_  "DiagNode" ENUM  "GGDS","GDS","NONE";
+BA_DEF_ BU_  "EOL_SB_Flash" ENUM  "GGDS","GDS","NONE","vector_leerstring";
+BA_DEF_ BU_  "NetworkInitializationUsed" ENUM  "No","Yes";
+BA_DEF_ BU_  "NmNode" ENUM  "No","Yes";
+BA_DEF_ BU_  "NmStationAddress" INT 0 255;
+BA_DEF_ BU_  "NosPackage" ENUM  "None","I3_1","I3_2","1.0.1","RP","EuCD","Volcano","I3_3","FNOS_Autosar";
+BA_DEF_ BU_  "LIN_Master" ENUM  "No","Yes";
+BA_DEF_ BU_  "PackageID" STRING ;
+BA_DEF_ BU_  "GatewayECU" ENUM  "No","Yes";
+BA_DEF_  "NetworkSpeed" ENUM  "500kBits/s","125kBit/s";
+BA_DEF_  "VersionNumber" INT 0 10000;
+BA_DEF_  "StarNetworkGwType" ENUM  "0=NotDefined","1=HS1","2=HS2","3=HS3","4=HS4","5=HS5","6=MS1","7=HS6","8=HS7","9=MS2","10=FD1","11=FD2","12=FD3","13=FD4","14=FD5","15=FD6","16=FD7","17=FD8";
+BA_DEF_  "CMDB_Version" STRING ;
+BA_DEF_  "NmType" STRING ;
+BA_DEF_  "NmAsrMessageCount" INT 128 128;
+BA_DEF_  "NmAsrBaseAddress" HEX 1408 1408;
+BA_DEF_  "DBName" STRING ;
+BA_DEF_  "VersionDay" INT 1 31;
+BA_DEF_  "Manufacturer" STRING ;
+BA_DEF_  "VersionMonth" INT 1 12;
+BA_DEF_  "VersionYear" INT 2000 3000;
+BA_DEF_  "NmBaseAddress" HEX 1280 1280;
+BA_DEF_  "NmMessageCount" INT 0 128;
+BA_DEF_DEF_  "BusType" "";
+BA_DEF_DEF_  "FrameRouting" "";
+BA_DEF_DEF_  "FrameGatewayNetwork" "NONE";
+BA_DEF_DEF_  "NetworkInitialization" "Yes";
+BA_DEF_DEF_  "FrameGatewayId" 0;
+BA_DEF_DEF_  "EventRateOfChange" 10000;
+BA_DEF_DEF_  "ConfiguredTransmitter" "No";
+BA_DEF_DEF_  "GenMsgStartDelayTime" 0;
+BA_DEF_DEF_  "GenMsgNrOfRepetition" 1;
+BA_DEF_DEF_  "GenMsgDelayTime" 20;
+BA_DEF_DEF_  "GenMsgCycleTimeFast" 0;
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
+BA_DEF_DEF_  "GenMsgSendType" "NoMsgSendType";
+BA_DEF_DEF_  "U_CX430_MY2023_Tx" "No";
+BA_DEF_DEF_  "U_CX483_MY2023_Tx" "No";
+BA_DEF_DEF_  "U_FNV2_IVI_Tx" "No";
+BA_DEF_DEF_  "U_U55X_MY2022_Tx" "No";
+BA_DEF_DEF_  "U_CD542_MY2021_Tx" "No";
+BA_DEF_DEF_  "U_S650_MY2022_Tx" "No";
+BA_DEF_DEF_  "ECGUsedTxSignal" "No";
+BA_DEF_DEF_  "U_T6_MCA_MY2020_Tx" "No";
+BA_DEF_DEF_  "U_P702_MY2021_Tx" "No";
+BA_DEF_DEF_  "U_CX727_MY2021_Tx" "No";
+BA_DEF_DEF_  "U_Commodity_MYXX_Tx" "No";
+BA_DEF_DEF_  "U_CX430_MY2023_Rx" "No";
+BA_DEF_DEF_  "U_CX483_MY2023_Rx" "No";
+BA_DEF_DEF_  "U_FNV2_IVI_Rx" "No";
+BA_DEF_DEF_  "U_U55X_MY2022_Rx" "No";
+BA_DEF_DEF_  "U_CD542_MY2021_Rx" "No";
+BA_DEF_DEF_  "U_S650_MY2022_Rx" "No";
+BA_DEF_DEF_  "ECGUsedRxSignal" "No";
+BA_DEF_DEF_  "U_T6_MCA_MY2020_Rx" "No";
+BA_DEF_DEF_  "U_P702_MY2021_Rx" "No";
+BA_DEF_DEF_  "U_CX727_MY2021_Rx" "No";
+BA_DEF_DEF_  "U_Commodity_MYXX_Rx" "No";
+BA_DEF_DEF_  "GenSigStartValue" 0;
+BA_DEF_DEF_  "MetaData" "No";
+BA_DEF_DEF_  "ApprovedOrphan" "No";
+BA_DEF_DEF_  "ContentDependant" "No";
+BA_DEF_DEF_  "GenSigStartValueInteger" 0;
+BA_DEF_DEF_  "UsedOnPgmDBC" "Yes";
+BA_DEF_DEF_  "WakeupSignal" "No";
+BA_DEF_DEF_  "GenSigInactiveValue" 0;
+BA_DEF_DEF_  "GenSigSendType" "NoSigSendType";
+BA_DEF_DEF_  "OvtpPushApplication" "FALSE";
+BA_DEF_DEF_  "SCP_FreshnessValueLength" 64;
+BA_DEF_DEF_  "SCP_DataId" 0;
+BA_DEF_DEF_  "SCP_FreshnessValueTxLength" 11;
+BA_DEF_DEF_  "SCP_AuthInfoTxLength" 53;
+BA_DEF_DEF_  "SC_Message" "No";
+BA_DEF_DEF_  "ProgBWConditional" "NONE";
+BA_DEF_DEF_  "GenMsgRoutingTimeoutTime" 0;
+BA_DEF_DEF_  "MessageGateway" "No";
+BA_DEF_DEF_  "NmAsrMessage" "No";
+BA_DEF_DEF_  "TpApplType" "";
+BA_DEF_DEF_  "DiagState" "No";
+BA_DEF_DEF_  "TpTxIndex" 0;
+BA_DEF_DEF_  "NetworkInitializationCommand" "No";
+BA_DEF_DEF_  "DiagRequest" "No";
+BA_DEF_DEF_  "DiagResponse" "No";
+BA_DEF_DEF_  "NmMessage" "No";
+BA_DEF_DEF_  "GenMsgILSupport" "Yes";
+BA_DEF_DEF_  "OvtpOperationMode" "SERVER";
+BA_DEF_DEF_  "OvtpEcuAddress" 0;
+BA_DEF_DEF_  "ILUsed" "Yes";
+BA_DEF_DEF_  "Terminator" "No";
+BA_DEF_DEF_  "NodeWakeUpTime" 100;
+BA_DEF_DEF_  "NodeStartUpTime" 250;
+BA_DEF_DEF_  "NmAsrNodeIdentifier" 128;
+BA_DEF_DEF_  "NmAsrNode" "No";
+BA_DEF_DEF_  "PowerType" "Switched";
+BA_DEF_DEF_  "DiagNode" "GGDS";
+BA_DEF_DEF_  "EOL_SB_Flash" "GGDS";
+BA_DEF_DEF_  "NetworkInitializationUsed" "No";
+BA_DEF_DEF_  "NmNode" "No";
+BA_DEF_DEF_  "NmStationAddress" 0;
+BA_DEF_DEF_  "NosPackage" "I3_3";
+BA_DEF_DEF_  "LIN_Master" "No";
+BA_DEF_DEF_  "PackageID" "08.05.00.00.71.xx.xx.rr.00.00";
+BA_DEF_DEF_  "GatewayECU" "No";
+BA_DEF_DEF_  "NetworkSpeed" "500kBits/s";
+BA_DEF_DEF_  "VersionNumber" 1;
+BA_DEF_DEF_  "StarNetworkGwType" "0=NotDefined";
+BA_DEF_DEF_  "CMDB_Version" "v11.01";
+BA_DEF_DEF_  "NmType" "Ford-OSEK";
+BA_DEF_DEF_  "NmAsrMessageCount" 128;
+BA_DEF_DEF_  "NmAsrBaseAddress" 1408;
+BA_DEF_DEF_  "DBName" "";
+BA_DEF_DEF_  "VersionDay" 1;
+BA_DEF_DEF_  "Manufacturer" "Ford";
+BA_DEF_DEF_  "VersionMonth" 1;
+BA_DEF_DEF_  "VersionYear" 2011;
+BA_DEF_DEF_  "NmBaseAddress" 1280;
+BA_DEF_DEF_  "NmMessageCount" 128;
+BA_ "BusType" "CAN";
+BA_ "VersionYear" 2020;
+BA_ "VersionMonth" 3;
+BA_ "Manufacturer" "Ford";
+BA_ "VersionDay" 20;
+BA_ "NmType" "Ford-OSEK";
+BA_ "CMDB_Version" "FNV2_v20.04";
+BA_ "VersionNumber" 4;
+BA_ "DBName" "PrivateCAN";
+BA_ "NmStationAddress" BU_ APIM_CIM 98;
+BA_ "PowerType" BU_ APIM_CIM 2;
+BA_ "NmAsrNode" BU_ APIM_CIM 1;
+BA_ "NmAsrNodeIdentifier" BU_ APIM_CIM 226;
+BA_ "NodeStartUpTime" BU_ APIM_CIM 1000;
+BA_ "NodeWakeUpTime" BU_ APIM_CIM 150;
+BA_ "OvtpEcuAddress" BU_ APIM_CIM 137;
+BA_ "NmStationAddress" BU_ Aux 17;
+BA_ "PowerType" BU_ Aux 2;
+BA_ "NmAsrNode" BU_ Aux 1;
+BA_ "NmAsrNodeIdentifier" BU_ Aux 145;
+BA_ "NodeStartUpTime" BU_ Aux 1000;
+BA_ "NodeWakeUpTime" BU_ Aux 100;
+BA_ "Terminator" BU_ Aux 1;
+BA_ "OvtpEcuAddress" BU_ Aux 96;
+BA_ "NosPackage" BU_ Aux 4;
+BA_ "GenMsgSendType" BO_ 32 5;
+BA_ "GenMsgCycleTime" BO_ 32 1000;
+BA_ "GenMsgCycleTime" BO_ 22 1000;
+BA_ "GenMsgSendType" BO_ 22 5;
+BA_ "GenMsgSendType" BO_ 16 5;
+BA_ "GenMsgCycleTime" BO_ 16 1000;
+BA_ "GenSigSendType" SG_ 32 Aux_Sleep_Rq 1;
+BA_ "GenSigSendType" SG_ 22 AmbL_CustomizeType_Set 3;
+BA_ "GenSigSendType" SG_ 22 AmbL_IP_Swtich 3;
+BA_ "GenSigSendType" SG_ 22 AmbL_IP_Intensity_Value 3;
+BA_ "GenSigSendType" SG_ 22 AmbL_IP_Color_Value 3;
+BA_ "GenSigSendType" SG_ 22 AmbL_Foot_Swtich 3;
+BA_ "GenSigSendType" SG_ 22 AmbL_Foot_Intensity_Value 3;
+BA_ "GenSigSendType" SG_ 22 AmbL_Foot_Color_Value 3;
+BA_ "GenSigSendType" SG_ 22 AmbL_Door_Swtich 3;
+BA_ "GenSigSendType" SG_ 22 AmbL_Door_Intensity_Value 3;
+BA_ "GenSigSendType" SG_ 22 AmbL_Door_Color_Value 3;
+BA_ "GenSigSendType" SG_ 16 AmbL_DrvMde_D_Rq 3;
+BA_ "GenSigSendType" SG_ 16 AmbL_Music_Range_Level 3;
+BA_ "GenSigSendType" SG_ 16 AmbL_Dynamic_Color 3;
+BA_ "GenSigSendType" SG_ 16 AmbL_Music_Frq_Level 3;
+BA_ "GenSigSendType" SG_ 16 AmbL_Color_Mode 3;
+BA_ "GenSigSendType" SG_ 16 AmbL_ALM_Set 3;
+BA_ "GenSigSendType" SG_ 16 AmbL_Static_ColorValue_Set 3;
+BA_ "GenSigSendType" SG_ 16 AmbL_Main_Intensity_Set 3;
+VAL_ 32 Aux_Sleep_Rq 1 "Sleep" 0 "Unsleep" ;
+VAL_ 22 AmbL_CustomizeType_Set 3 "Customize 3" 2 "Customize 2" 1 "Customize 1" 0 "Invalid" ;
+VAL_ 22 AmbL_IP_Swtich 1 "ON" 0 "OFF" ;
+VAL_ 22 AmbL_Foot_Swtich 1 "ON" 0 "OFF" ;
+VAL_ 22 AmbL_Door_Swtich 1 "ON" 0 "OFF" ;
+VAL_ 16 ActvDrvMde_D2_Stat 31 "Faulty" 30 "SelDrvMde31" 29 "SelDrvMde30" 28 "SelDrvMde29" 27 "SelDrvMde28" 26 "SelDrvMde27" 25 "SelDrvMde26" 24 "SelDrvMde25" 23 "SelDrvMde24" 22 "SelDrvMde23" 21 "SelDrvMde22" 20 "SelDrvMde21" 19 "SelDrvMde20" 18 "SelDrvMde19" 17 "SelDrvMde18" 16 "SelDrvMde17" 15 "SelDrvMde16" 14 "SelDrvMde15" 13 "SelDrvMde14" 12 "SelDrvMde13" 11 "SelDrvMde12" 10 "SelDrvMde11" 9 "SelDrvMde10" 8 "SelDrvMde09" 7 "SelDrvMde08" 6 "SelDrvMde07" 5 "SelDrvMde06" 4 "SelDrvMde05" 3 "SelDrvMde04" 2 "SelDrvMde03" 1 "SelDrvMde02" 0 "SelDrvMde01" ;
+VAL_ 16 AmbL_DrvMde_D_Rq 1 "Auto" 0 "Mannual" ;
+VAL_ 16 AmbL_Music_Range_Level 7 "112~127" 6 "96~111" 5 "80~95" 4 "64~79" 3 "48~63" 2 "32~47" 1 "16~31" 0 "0~15" ;
+VAL_ 16 AmbL_Dynamic_Color 7 "Reserved" 6 "Reserved" 5 "Warm Heart" 4 "Modern City" 3 "Deep Forest" 2 "Ocean Heart" 1 "Surprise Me" 0 "Invalid" ;
+VAL_ 16 AmbL_Music_Frq_Level 15 "Reserved" 14 "Reserved" 13 "Reserved" 12 "Reserved" 11 "Reserved" 10 "Reserved" 9 "Reserved" 8 "8192~16383Hz" 7 "4096~8191Hz" 6 "2048~4095Hz" 5 "1024~2047Hz" 4 "512~1023Hz" 3 "256~511Hz" 2 "128~255Hz" 1 "64~127Hz" 0 "0~63Hz" ;
+VAL_ 16 AmbL_Color_Mode 7 "Reserved" 6 "Reserved" 5 "Reserved" 4 "Music" 3 "Customize" 2 "Dynamic" 1 "Static" 0 "Invalid" ;
+VAL_ 16 AmbL_ALM_Set 3 "Reserved" 2 "Open" 1 "Close" 0 "Invalid" ;
+

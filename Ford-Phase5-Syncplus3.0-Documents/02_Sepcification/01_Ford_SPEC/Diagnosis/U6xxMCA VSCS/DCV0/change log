@@ -1,0 +1,8 @@
+DCV0 use AA014-manual change
+Change log as below
+Add DE0A byte 42 bit 2-0 and byte 43 bit 7 for V2V_CHN_CFG/ V2V_CHN_CFG_EEBL/ V2V_CHN_CFG_LTA/ V2V_CHN_CFG_IMA
+Add DE07 byte8 bit 5 Steering Navigation
+Add DE05 byte17 bit 2 Welcome farewell sound
+Add DE05 byte18 bit 7 Welcome farewell sound setVol
+Add DE0E byte4 bit 7 Memory Switch Type for memory seat status
+Add DE0E byte4 bit 6 Trailer Lighting Status

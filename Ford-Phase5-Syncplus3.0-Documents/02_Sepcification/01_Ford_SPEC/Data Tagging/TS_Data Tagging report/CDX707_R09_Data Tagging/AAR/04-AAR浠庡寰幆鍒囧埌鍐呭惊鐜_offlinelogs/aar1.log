@@ -1,0 +1,170 @@
+04-11 21:06:39.593   925   925 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-11 21:06:39.593   925   925 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-11 21:06:39.593   925   925 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: ivipower|on
+04-11 21:06:39.600   925   925 I AnalyticsEventBuilder: AddAttribute: resMileage|0
+04-11 21:06:39.603   925   925 I AnalyticsEventBuilder: AddAttribute: odometer|0
+04-11 21:06:39.604   925   925 I AnalyticsEventBuilder: AddLabel: 
+04-11 21:06:39.605   925   925 I AnalyticsEventBuilder: SetDescription: 
+04-11 21:06:39.607   925   925 I AnalyticsEventBuilder: Build
+04-11 21:06:42.465   925   925 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-11 21:06:42.465   925   925 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-11 21:06:42.465   925   925 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: audio|played
+04-11 21:06:42.473   925   925 I AnalyticsEventBuilder: AddAttribute: label|auto
+04-11 21:06:42.475   925   925 I AnalyticsEventBuilder: AddAttribute: property|qqmusic
+04-11 21:06:42.476   925   925 I AnalyticsEventBuilder: Build
+04-11 21:06:51.072   925   925 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-11 21:06:51.072   925   925 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-11 21:06:51.072   925   925 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: hvac|statuschanged
+04-11 21:06:51.074   925   925 I AnalyticsEventBuilder: AddAttribute: dri.temp|0.0
+04-11 21:06:51.077   925   925 I AnalyticsEventBuilder: AddAttribute: autolevel|off
+04-11 21:06:51.079   925   925 I AnalyticsEventBuilder: AddAttribute: recirc.|on
+04-11 21:06:51.080   925   925 I AnalyticsEventBuilder: AddAttribute: ac|disable
+04-11 21:06:51.081   925   925 I AnalyticsEventBuilder: AddAttribute: panelblowing|disable
+04-11 21:06:51.085   925   925 I AnalyticsEventBuilder: AddAttribute: maxdefrost|disable
+04-11 21:06:51.086   925   925 I AnalyticsEventBuilder: AddAttribute: autostatus|disable
+04-11 21:06:51.088   925   925 I AnalyticsEventBuilder: AddAttribute: dri.seatctl|0
+04-11 21:06:51.089   925   925 I AnalyticsEventBuilder: AddAttribute: floorblowing|disable
+04-11 21:06:51.089   925   925 I AnalyticsEventBuilder: AddAttribute: maxac|disable
+04-11 21:06:51.090   925   925 I AnalyticsEventBuilder: AddAttribute: dual|disable
+04-11 21:06:51.092   925   925 I AnalyticsEventBuilder: AddAttribute: autolabel|mode
+04-11 21:06:51.093   925   925 I AnalyticsEventBuilder: AddAttribute: defrost|disable
+04-11 21:06:51.094   925   925 I AnalyticsEventBuilder: AddAttribute: mainpower|on
+04-11 21:06:51.095   925   925 I AnalyticsEventBuilder: AddAttribute: pass.temp|0.0
+04-11 21:06:51.096   925   925 I AnalyticsEventBuilder: AddAttribute: pass.seatctl|0
+04-11 21:06:51.097   925   925 I AnalyticsEventBuilder: AddAttribute: airvolume|15
+04-11 21:06:51.099   925   925 I AnalyticsEventBuilder: AddAttribute: reardefrost|disable
+04-11 21:06:51.101   925   925 I AnalyticsEventBuilder: AddLabel: 
+04-11 21:06:51.103   925   925 I AnalyticsEventBuilder: SetDescription: 
+04-11 21:06:51.105   925   925 I AnalyticsEventBuilder: Build
+04-11 21:06:52.385   925   934 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-11 21:06:52.385   925   934 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-11 21:06:52.385   925   934 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: hvac|statuschanged
+04-11 21:06:52.387   925   934 I AnalyticsEventBuilder: AddAttribute: dri.temp|0.0
+04-11 21:06:52.388   925   934 I AnalyticsEventBuilder: AddAttribute: autolevel|off
+04-11 21:06:52.389   925   934 I AnalyticsEventBuilder: AddAttribute: recirc.|off
+04-11 21:06:52.390   925   934 I AnalyticsEventBuilder: AddAttribute: ac|disable
+04-11 21:06:52.392   925   934 I AnalyticsEventBuilder: AddAttribute: panelblowing|disable
+04-11 21:06:52.393   925   934 I AnalyticsEventBuilder: AddAttribute: maxdefrost|disable
+04-11 21:06:52.395   925   934 I AnalyticsEventBuilder: AddAttribute: autostatus|disable
+04-11 21:06:52.396   925   934 I AnalyticsEventBuilder: AddAttribute: dri.seatctl|0
+04-11 21:06:52.397   925   934 I AnalyticsEventBuilder: AddAttribute: floorblowing|disable
+04-11 21:06:52.398   925   934 I AnalyticsEventBuilder: AddAttribute: maxac|disable
+04-11 21:06:52.400   925   934 I AnalyticsEventBuilder: AddAttribute: dual|disable
+04-11 21:06:52.406   925   925 I AnalyticsEventBuilder: AddAttribute: autolabel|mode
+04-11 21:06:52.407   925   925 I AnalyticsEventBuilder: AddAttribute: defrost|disable
+04-11 21:06:52.409   925   925 I AnalyticsEventBuilder: AddAttribute: mainpower|on
+04-11 21:06:52.410   925   925 I AnalyticsEventBuilder: AddAttribute: pass.temp|0.0
+04-11 21:06:52.411   925   925 I AnalyticsEventBuilder: AddAttribute: pass.seatctl|0
+04-11 21:06:52.413   925   925 I AnalyticsEventBuilder: AddAttribute: airvolume|15
+04-11 21:06:52.414   925   925 I AnalyticsEventBuilder: AddAttribute: reardefrost|disable
+04-11 21:06:52.415   925   925 I AnalyticsEventBuilder: AddLabel: 
+04-11 21:06:52.418   925   925 I AnalyticsEventBuilder: SetDescription: 
+04-11 21:06:52.419   925   925 I AnalyticsEventBuilder: Build
+04-11 21:11:42.911   925   925 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-11 21:11:42.911   925   925 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-11 21:11:42.911   925   925 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: aar|value
+04-11 21:11:42.912   925   925 I AnalyticsEventBuilder: AddAttribute: external_value|510
+04-11 21:11:42.913   925   925 I AnalyticsEventBuilder: AddAttribute: internal_value|40
+04-11 21:11:42.914   925   925 I AnalyticsEventBuilder: AddLabel: 
+04-11 21:11:42.915   925   925 I AnalyticsEventBuilder: SetDescription: 
+04-11 21:11:42.916   925   925 I AnalyticsEventBuilder: Build
+04-11 21:18:29.350   919   919 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-11 21:18:29.350   919   919 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-11 21:18:29.350   919   919 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: ivipower|on
+04-11 21:18:29.356   919   919 I AnalyticsEventBuilder: AddAttribute: resMileage|0
+04-11 21:18:29.358   919   919 I AnalyticsEventBuilder: AddAttribute: odometer|0
+04-11 21:18:29.361   919   921 I AnalyticsEventBuilder: AddLabel: 
+04-11 21:18:29.363   919   921 I AnalyticsEventBuilder: SetDescription: 
+04-11 21:18:29.365   919   921 I AnalyticsEventBuilder: Build
+04-11 21:18:31.510   919   921 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-11 21:18:31.510   919   921 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-11 21:18:31.510   919   921 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: audio|played
+04-11 21:18:31.513   919   921 I AnalyticsEventBuilder: AddAttribute: label|auto
+04-11 21:18:31.514   919   921 I AnalyticsEventBuilder: AddAttribute: property|qqmusic
+04-11 21:18:31.515   919   921 I AnalyticsEventBuilder: Build
+04-11 21:23:32.821   919   921 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-11 21:23:32.821   919   921 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-11 21:23:32.821   919   921 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: aar|value
+04-11 21:23:32.822   919   921 I AnalyticsEventBuilder: AddAttribute: external_value|510
+04-11 21:23:32.823   919   921 I AnalyticsEventBuilder: AddAttribute: internal_value|40
+04-11 21:23:32.825   919   921 I AnalyticsEventBuilder: AddLabel: 
+04-11 21:23:32.826   919   921 I AnalyticsEventBuilder: SetDescription: 
+04-11 21:23:32.827   919   921 I AnalyticsEventBuilder: Build
+04-11 21:23:40.779  1378  6805 E QtxaHidps:   9905 root         20   0  12G 3.0M 2.4M R  6.4   0.0   0:08.37 grep -i AnalyticsEventBuilder
+04-11 21:23:40.780  1378  6805 E QtxaHidps:   9905 root         20   0  12G 3.0M 2.4M R  6.4   0.0   0:08.37 grep -i AnalyticsEventBuilder
+04-11 21:27:26.231   919   921 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-11 21:27:26.231   919   921 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-11 21:27:26.231   919   921 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: hvac|statuschanged
+04-11 21:27:26.232   919   921 I AnalyticsEventBuilder: AddAttribute: dri.temp|0.0
+04-11 21:27:26.234   919   921 I AnalyticsEventBuilder: AddAttribute: autolevel|off
+04-11 21:27:26.234   919   921 I AnalyticsEventBuilder: AddAttribute: recirc.|on
+04-11 21:27:26.235   919   921 I AnalyticsEventBuilder: AddAttribute: ac|disable
+04-11 21:27:26.236   919   921 I AnalyticsEventBuilder: AddAttribute: panelblowing|disable
+04-11 21:27:26.237   919   921 I AnalyticsEventBuilder: AddAttribute: maxdefrost|disable
+04-11 21:27:26.238   919   921 I AnalyticsEventBuilder: AddAttribute: autostatus|disable
+04-11 21:27:26.240   919   921 I AnalyticsEventBuilder: AddAttribute: dri.seatctl|0
+04-11 21:27:26.241   919   921 I AnalyticsEventBuilder: AddAttribute: floorblowing|disable
+04-11 21:27:26.244   919   921 I AnalyticsEventBuilder: AddAttribute: maxac|disable
+04-11 21:27:26.245   919   921 I AnalyticsEventBuilder: AddAttribute: dual|disable
+04-11 21:27:26.249   919   921 I AnalyticsEventBuilder: AddAttribute: autolabel|mode
+04-11 21:27:26.250   919   919 I AnalyticsEventBuilder: AddAttribute: defrost|disable
+04-11 21:27:26.251   919   919 I AnalyticsEventBuilder: AddAttribute: mainpower|on
+04-11 21:27:26.252   919   921 I AnalyticsEventBuilder: AddAttribute: pass.temp|0.0
+04-11 21:27:26.253   919   921 I AnalyticsEventBuilder: AddAttribute: pass.seatctl|0
+04-11 21:27:26.254   919   921 I AnalyticsEventBuilder: AddAttribute: airvolume|15
+04-11 21:27:26.255   919   921 I AnalyticsEventBuilder: AddAttribute: reardefrost|disable
+04-11 21:27:26.256   919   921 I AnalyticsEventBuilder: AddLabel: 
+04-11 21:27:26.257   919   921 I AnalyticsEventBuilder: SetDescription: 
+04-11 21:27:26.258   919   921 I AnalyticsEventBuilder: Build
+04-11 21:27:27.329   919   921 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-11 21:27:27.329   919   921 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-11 21:27:27.329   919   921 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: hvac|statuschanged
+04-11 21:27:27.331   919   921 I AnalyticsEventBuilder: AddAttribute: dri.temp|0.0
+04-11 21:27:27.332   919   921 I AnalyticsEventBuilder: AddAttribute: autolevel|off
+04-11 21:27:27.333   919   921 I AnalyticsEventBuilder: AddAttribute: recirc.|off
+04-11 21:27:27.333   919   921 I AnalyticsEventBuilder: AddAttribute: ac|disable
+04-11 21:27:27.334   919   921 I AnalyticsEventBuilder: AddAttribute: panelblowing|disable
+04-11 21:27:27.335   919   921 I AnalyticsEventBuilder: AddAttribute: maxdefrost|disable
+04-11 21:27:27.336   919   921 I AnalyticsEventBuilder: AddAttribute: autostatus|disable
+04-11 21:27:27.337   919   921 I AnalyticsEventBuilder: AddAttribute: dri.seatctl|0
+04-11 21:27:27.338   919   921 I AnalyticsEventBuilder: AddAttribute: floorblowing|disable
+04-11 21:27:27.339   919   921 I AnalyticsEventBuilder: AddAttribute: maxac|disable
+04-11 21:27:27.341   919   921 I AnalyticsEventBuilder: AddAttribute: dual|disable
+04-11 21:27:27.343   919   921 I AnalyticsEventBuilder: AddAttribute: autolabel|mode
+04-11 21:27:27.344   919   921 I AnalyticsEventBuilder: AddAttribute: defrost|disable
+04-11 21:27:27.345   919   921 I AnalyticsEventBuilder: AddAttribute: mainpower|on
+04-11 21:27:27.346   919   921 I AnalyticsEventBuilder: AddAttribute: pass.temp|0.0
+04-11 21:27:27.347   919   921 I AnalyticsEventBuilder: AddAttribute: pass.seatctl|0
+04-11 21:27:27.348   919   921 I AnalyticsEventBuilder: AddAttribute: airvolume|15
+04-11 21:27:27.349   919   921 I AnalyticsEventBuilder: AddAttribute: reardefrost|disable
+04-11 21:27:27.350   919   921 I AnalyticsEventBuilder: AddLabel: 
+04-11 21:27:27.351   919   921 I AnalyticsEventBuilder: SetDescription: 
+04-11 21:27:27.352   919   921 I AnalyticsEventBuilder: Build
+04-11 21:28:41.762  1378  6805 E QtxaHidps:   9905 root         20   0  12G 3.0M 2.4M S  3.3   0.0   0:17.14 grep -i AnalyticsEventBuilder
+04-11 21:28:41.763  1378  6805 E QtxaHidps:   9905 root         20   0  12G 3.0M 2.4M S  3.3   0.0   0:17.14 grep -i AnalyticsEventBuilder
+04-11 21:29:32.399   919   921 I AnalyticsEventBuilder: Build
+04-11 21:29:32.414   919   921 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-11 21:29:32.415   919   921 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-11 21:29:32.415   919   921 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: message|allocated
+04-11 21:29:32.416   919   921 I AnalyticsEventBuilder: AddAttribute: property|消息盒子
+04-11 21:29:32.417   919   921 I AnalyticsEventBuilder: SetDescription: 消息进入到消息盒子
+04-11 21:29:32.418   919   921 I AnalyticsEventBuilder: Build
+04-11 21:29:33.369   919   921 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-11 21:29:33.369   919   921 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-11 21:29:33.369   919   921 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: aar|msgpush
+04-11 21:29:33.370   919   921 I AnalyticsEventBuilder: AddAttribute: 切换循环模式|内循环
+04-11 21:29:33.372   919   921 I AnalyticsEventBuilder: AddLabel: 
+04-11 21:29:33.373   919   921 I AnalyticsEventBuilder: SetDescription: 
+04-11 21:29:33.375   919   921 I AnalyticsEventBuilder: Build
+04-11 21:29:36.285   919   921 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-11 21:29:36.285   919   921 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-11 21:29:36.285   919   921 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: voice|asrstarted
+04-11 21:29:36.289   919   921 I AnalyticsEventBuilder: AddAttribute: conversationId|
+04-11 21:29:36.292   919   921 I AnalyticsEventBuilder: SetDescription: 客户语音输入转文字开始
+04-11 21:29:36.294   919   921 I AnalyticsEventBuilder: Build
+04-11 21:29:37.509   919   921 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-11 21:29:37.509   919   921 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-11 21:29:37.509   919   921 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: message|clicked
+04-11 21:29:37.511   919   921 I AnalyticsEventBuilder: AddAttribute: property|取消,切换
+04-11 21:29:37.515   919   921 I AnalyticsEventBuilder: SetDescription: 消息中心点击事件
+04-11 21:29:37.516   919   921 I AnalyticsEventBuilder: Build

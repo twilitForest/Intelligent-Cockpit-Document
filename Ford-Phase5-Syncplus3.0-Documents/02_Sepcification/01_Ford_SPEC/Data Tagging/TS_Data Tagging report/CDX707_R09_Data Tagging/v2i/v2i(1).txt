@@ -1,0 +1,267 @@
+04-18 15:30:59.177   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:30:59.177   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:30:59.177   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: audio|played
+04-18 15:30:59.184   941   941 I AnalyticsEventBuilder: AddAttribute: label|auto
+04-18 15:30:59.195   941   941 I AnalyticsEventBuilder: AddAttribute: property|ximalaya
+04-18 15:30:59.203   941   941 I AnalyticsEventBuilder: Build
+04-18 15:30:59.770   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:30:59.771   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:30:59.771   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: ivipower|on
+04-18 15:30:59.788   941   941 I AnalyticsEventBuilder: AddAttribute: resMileage|6553
+04-18 15:30:59.791   941   941 I AnalyticsEventBuilder: AddAttribute: odometer|16777215
+04-18 15:30:59.793   941   941 I AnalyticsEventBuilder: AddLabel: 
+04-18 15:30:59.799   941   941 I AnalyticsEventBuilder: SetDescription: 
+04-18 15:30:59.800   941   941 I AnalyticsEventBuilder: Build
+04-18 15:31:01.902   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:31:01.902   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:31:01.902   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: phone|connected
+04-18 15:31:01.904   941   941 I AnalyticsEventBuilder: AddAttribute: connectedDevices|1 of connected devices
+04-18 15:31:01.906   941   941 I AnalyticsEventBuilder: AddAttribute: profileSupport|a2dp,hfp
+04-18 15:31:01.907   941   941 I AnalyticsEventBuilder: Build
+04-18 15:31:03.732   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:31:03.732   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:31:03.732   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: voice|wakeup
+04-18 15:31:03.753   941   941 I AnalyticsEventBuilder: AddAttribute: voice position|副驾
+04-18 15:31:03.757   941   941 I AnalyticsEventBuilder: AddAttribute: wakeup words|小度小度
+04-18 15:31:03.759   941   941 I AnalyticsEventBuilder: AddAttribute: conversationId|97bdbc88-27c6-43c9-a876-4fd472191f6f
+04-18 15:31:03.760   941   941 I AnalyticsEventBuilder: AddAttribute: label|默认唤醒词
+04-18 15:31:03.760   941   941 I AnalyticsEventBuilder: SetDescription: 语音被唤醒时触发
+04-18 15:31:03.763   941   941 I AnalyticsEventBuilder: Build
+04-18 15:31:04.007   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:31:04.007   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:31:04.007   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vpa|available
+04-18 15:31:04.011   941   941 I AnalyticsEventBuilder: AddAttribute: Property|月相形象
+04-18 15:31:04.013   941   941 I AnalyticsEventBuilder: AddLabel: onVpaAvailable
+04-18 15:31:04.028   941   941 I AnalyticsEventBuilder: SetDescription: vpa形象
+04-18 15:31:04.031   941   941 I AnalyticsEventBuilder: Build
+04-18 15:31:04.252   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:31:04.253   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:31:04.253   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: voice|asrstarted
+04-18 15:31:04.256   941   941 I AnalyticsEventBuilder: AddAttribute: conversationId|97bdbc88-27c6-43c9-a876-4fd472191f6f
+04-18 15:31:04.272   941   941 I AnalyticsEventBuilder: SetDescription: 客户语音输入转文字开始
+04-18 15:31:04.274   941   941 I AnalyticsEventBuilder: Build
+04-18 15:31:04.541   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:31:04.541   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:31:04.541   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vpa|available
+04-18 15:31:04.545   941   941 I AnalyticsEventBuilder: AddAttribute: Property|短播报形象
+04-18 15:31:04.546   941   941 I AnalyticsEventBuilder: AddLabel: onVpaAvailable
+04-18 15:31:04.548   941   941 I AnalyticsEventBuilder: SetDescription: vpa形象
+04-18 15:31:04.549   941   941 I AnalyticsEventBuilder: Build
+04-18 15:31:05.036   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:31:05.036   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:31:05.036   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: voice|asrfailed
+04-18 15:31:05.042   941   941 I AnalyticsEventBuilder: AddAttribute: conversationId|97bdbc88-27c6-43c9-a876-4fd472191f6f
+04-18 15:31:05.047   941   941 I AnalyticsEventBuilder: AddAttribute: failReason|[error:7001,desc:No recognition result match]
+04-18 15:31:05.049   941   941 I AnalyticsEventBuilder: SetDescription: 客户语音输入识别失败
+04-18 15:31:05.054   941   941 I AnalyticsEventBuilder: Build
+04-18 15:31:05.121   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:31:05.121   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:31:05.121   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: voice|asrfailed
+04-18 15:31:05.124   941   941 I AnalyticsEventBuilder: AddAttribute: conversationId|97bdbc88-27c6-43c9-a876-4fd472191f6f
+04-18 15:31:05.125   941   941 I AnalyticsEventBuilder: AddAttribute: failReason|[error:7001,desc:No recognition result match]
+04-18 15:31:05.127   941   941 I AnalyticsEventBuilder: SetDescription: 客户语音输入识别失败
+04-18 15:31:05.130   941   941 I AnalyticsEventBuilder: Build
+04-18 15:31:05.237   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:31:05.237   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:31:05.237   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vpa|available
+04-18 15:31:05.247   941   941 I AnalyticsEventBuilder: AddAttribute: Property|监听形象
+04-18 15:31:05.248   941   941 I AnalyticsEventBuilder: AddLabel: onVpaAvailable
+04-18 15:31:05.251   941   941 I AnalyticsEventBuilder: SetDescription: vpa形象
+04-18 15:31:05.252   941   941 I AnalyticsEventBuilder: Build
+04-18 15:31:13.260   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:31:13.261   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:31:13.261   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vpa|available
+04-18 15:31:13.262   941   941 I AnalyticsEventBuilder: AddAttribute: Property|短播报形象
+04-18 15:31:13.263   941   941 I AnalyticsEventBuilder: AddLabel: onVpaAvailable
+04-18 15:31:13.264   941   941 I AnalyticsEventBuilder: SetDescription: vpa形象
+04-18 15:31:13.265   941   941 I AnalyticsEventBuilder: Build
+04-18 15:31:14.239   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:31:14.239   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:31:14.239   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vpa|available
+04-18 15:31:14.240   941   941 I AnalyticsEventBuilder: AddAttribute: Property|监听形象
+04-18 15:31:14.242   941   941 I AnalyticsEventBuilder: AddLabel: onVpaAvailable
+04-18 15:31:14.244   941   941 I AnalyticsEventBuilder: SetDescription: vpa形象
+04-18 15:31:14.246   941   941 I AnalyticsEventBuilder: Build
+04-18 15:31:20.472   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:31:20.472   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:31:20.472   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vpa|available
+04-18 15:31:20.474   941   941 I AnalyticsEventBuilder: AddAttribute: Property|短播报形象
+04-18 15:31:20.476   941   941 I AnalyticsEventBuilder: AddLabel: onVpaAvailable
+04-18 15:31:20.478   941   941 I AnalyticsEventBuilder: SetDescription: vpa形象
+04-18 15:31:20.479   941   941 I AnalyticsEventBuilder: Build
+04-18 15:31:22.936   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:31:22.936   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:31:22.936   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vpa|available
+04-18 15:31:22.938   941   941 I AnalyticsEventBuilder: AddAttribute: Property|监听形象
+04-18 15:31:22.940   941   941 I AnalyticsEventBuilder: AddLabel: onVpaAvailable
+04-18 15:31:22.942   941   941 I AnalyticsEventBuilder: SetDescription: vpa形象
+04-18 15:31:22.944   941   941 I AnalyticsEventBuilder: Build
+04-18 15:31:22.954   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:31:22.954   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:31:22.954   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: voice|ended
+04-18 15:31:22.956   941   941 I AnalyticsEventBuilder: AddAttribute: conversationId|97bdbc88-27c6-43c9-a876-4fd472191f6f
+04-18 15:31:22.957   941   941 I AnalyticsEventBuilder: AddAttribute: coutinueCount|0
+04-18 15:31:22.960   941   941 I AnalyticsEventBuilder: AddAttribute: label|Timeout
+04-18 15:31:22.962   941   941 I AnalyticsEventBuilder: SetDescription: 语音退出时触发
+04-18 15:31:22.962   941   941 I AnalyticsEventBuilder: Build
+04-18 15:31:23.019   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:31:23.019   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:31:23.019   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vpa|available
+04-18 15:31:23.020   941   941 I AnalyticsEventBuilder: AddAttribute: Property|月相形象
+04-18 15:31:23.021   941   941 I AnalyticsEventBuilder: AddLabel: onVpaAvailable
+04-18 15:31:23.022   941   941 I AnalyticsEventBuilder: SetDescription: vpa形象
+04-18 15:31:23.024   941   941 I AnalyticsEventBuilder: Build
+04-18 15:31:23.542   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:31:23.542   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:31:23.542   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vpa|available
+04-18 15:31:23.545   941   941 I AnalyticsEventBuilder: AddAttribute: Property|月相形象
+04-18 15:31:23.547   941   941 I AnalyticsEventBuilder: AddLabel: onVpaAvailable
+04-18 15:31:23.548   941   941 I AnalyticsEventBuilder: SetDescription: vpa形象
+04-18 15:31:23.549   941   941 I AnalyticsEventBuilder: Build
+04-18 15:32:50.700   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:32:50.700   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:32:50.700   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vehicle|v2iset
+04-18 15:32:50.702   941   941 I AnalyticsEventBuilder: AddAttribute: 允许通知|off
+04-18 15:32:50.703   941   941 I AnalyticsEventBuilder: AddLabel: 
+04-18 15:32:50.705   941   941 I AnalyticsEventBuilder: SetDescription: 
+04-18 15:32:50.706   941   941 I AnalyticsEventBuilder: Build
+04-18 15:32:54.066   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:32:54.066   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:32:54.066   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vehicle|v2iset
+04-18 15:32:54.068   941   941 I AnalyticsEventBuilder: AddAttribute: 允许通知|on
+04-18 15:32:54.070   941   941 I AnalyticsEventBuilder: AddLabel: 
+04-18 15:32:54.071   941   941 I AnalyticsEventBuilder: SetDescription: 
+04-18 15:32:54.072   941   941 I AnalyticsEventBuilder: Build
+04-18 15:33:03.338   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:33:03.339   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:33:03.339   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vehicle|v2iset
+04-18 15:33:03.341   941   941 I AnalyticsEventBuilder: AddAttribute: 红绿灯信号推送|远
+04-18 15:33:03.342   941   941 I AnalyticsEventBuilder: AddLabel: 
+04-18 15:33:03.344   941   941 I AnalyticsEventBuilder: SetDescription: 
+04-18 15:33:03.346   941   941 I AnalyticsEventBuilder: Build
+04-18 15:33:06.954   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:33:06.954   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:33:06.954   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vehicle|v2iset
+04-18 15:33:06.956   941   941 I AnalyticsEventBuilder: AddAttribute: 红绿灯信号推送|近
+04-18 15:33:06.957   941   941 I AnalyticsEventBuilder: AddLabel: 
+04-18 15:33:06.958   941   941 I AnalyticsEventBuilder: SetDescription: 
+04-18 15:33:06.959   941   941 I AnalyticsEventBuilder: Build
+04-18 15:33:10.575   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:33:10.575   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:33:10.575   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vehicle|v2iset
+04-18 15:33:10.577   941   941 I AnalyticsEventBuilder: AddAttribute: 红绿灯信号推送|关闭
+04-18 15:33:10.578   941   941 I AnalyticsEventBuilder: AddLabel: 
+04-18 15:33:10.580   941   941 I AnalyticsEventBuilder: SetDescription: 
+04-18 15:33:10.581   941   941 I AnalyticsEventBuilder: Build
+04-18 15:33:14.064   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:33:14.064   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:33:14.064   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vehicle|v2iset
+04-18 15:33:14.066   941   941 I AnalyticsEventBuilder: AddAttribute: 绿波车速引导|off
+04-18 15:33:14.067   941   941 I AnalyticsEventBuilder: AddLabel: 
+04-18 15:33:14.069   941   941 I AnalyticsEventBuilder: SetDescription: 
+04-18 15:33:14.070   941   941 I AnalyticsEventBuilder: Build
+04-18 15:33:17.038   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:33:17.038   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:33:17.038   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vehicle|v2iset
+04-18 15:33:17.040   941   941 I AnalyticsEventBuilder: AddAttribute: 绿波车速引导|on
+04-18 15:33:17.041   941   941 I AnalyticsEventBuilder: AddLabel: 
+04-18 15:33:17.042   941   941 I AnalyticsEventBuilder: SetDescription: 
+04-18 15:33:17.043   941   941 I AnalyticsEventBuilder: Build
+04-18 15:33:20.559   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:33:20.559   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:33:20.559   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vehicle|v2iset
+04-18 15:33:20.561   941   941 I AnalyticsEventBuilder: AddAttribute: 红绿灯起步提醒|8s
+04-18 15:33:20.562   941   941 I AnalyticsEventBuilder: AddLabel: 
+04-18 15:33:20.564   941   941 I AnalyticsEventBuilder: SetDescription: 
+04-18 15:33:20.565   941   941 I AnalyticsEventBuilder: Build
+04-18 15:33:23.458   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:33:23.459   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:33:23.459   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vehicle|v2iset
+04-18 15:33:23.460   941   941 I AnalyticsEventBuilder: AddAttribute: 红绿灯起步提醒|5s
+04-18 15:33:23.462   941   941 I AnalyticsEventBuilder: AddLabel: 
+04-18 15:33:23.464   941   941 I AnalyticsEventBuilder: SetDescription: 
+04-18 15:33:23.465   941   941 I AnalyticsEventBuilder: Build
+04-18 15:33:26.687   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:33:26.687   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:33:26.687   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vehicle|v2iset
+04-18 15:33:26.689   941   941 I AnalyticsEventBuilder: AddAttribute: 红绿灯起步提醒|3s
+04-18 15:33:26.690   941   941 I AnalyticsEventBuilder: AddLabel: 
+04-18 15:33:26.691   941   941 I AnalyticsEventBuilder: SetDescription: 
+04-18 15:33:26.692   941   941 I AnalyticsEventBuilder: Build
+04-18 15:33:29.915   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:33:29.915   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:33:29.915   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vehicle|v2iset
+04-18 15:33:29.916   941   941 I AnalyticsEventBuilder: AddAttribute: 红绿灯起步提醒|关闭
+04-18 15:33:29.918   941   941 I AnalyticsEventBuilder: AddLabel: 
+04-18 15:33:29.920   941   941 I AnalyticsEventBuilder: SetDescription: 
+04-18 15:33:29.922   941   941 I AnalyticsEventBuilder: Build
+04-18 15:33:37.787   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:33:37.787   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:33:37.787   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vehicle|v2iset
+04-18 15:33:37.791   941   941 I AnalyticsEventBuilder: AddAttribute: 闯红灯预警|低
+04-18 15:33:37.792   941   941 I AnalyticsEventBuilder: AddLabel: 
+04-18 15:33:37.792   941   941 I AnalyticsEventBuilder: SetDescription: 
+04-18 15:33:37.794   941   941 I AnalyticsEventBuilder: Build
+04-18 15:33:41.769   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:33:41.769   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:33:41.769   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vehicle|v2iset
+04-18 15:33:41.770   941   941 I AnalyticsEventBuilder: AddAttribute: 闯红灯预警|关闭
+04-18 15:33:41.771   941   941 I AnalyticsEventBuilder: AddLabel: 
+04-18 15:33:41.772   941   941 I AnalyticsEventBuilder: SetDescription: 
+04-18 15:33:41.773   941   941 I AnalyticsEventBuilder: Build
+04-18 15:33:44.932   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:33:44.932   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:33:44.932   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vehicle|v2iset
+04-18 15:33:44.934   941   941 I AnalyticsEventBuilder: AddAttribute: 闯红灯预警|高
+04-18 15:33:44.935   941   941 I AnalyticsEventBuilder: AddLabel: 
+04-18 15:33:44.938   941   941 I AnalyticsEventBuilder: SetDescription: 
+04-18 15:33:44.939   941   941 I AnalyticsEventBuilder: Build
+04-18 15:33:49.804   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:33:49.804   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:33:49.805   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vehicle|v2iset
+04-18 15:33:49.810   941   941 I AnalyticsEventBuilder: AddAttribute: 道路信息广播|off
+04-18 15:33:49.812   941   941 I AnalyticsEventBuilder: AddLabel: 
+04-18 15:33:49.813   941   941 I AnalyticsEventBuilder: SetDescription: 
+04-18 15:33:49.814   941   941 I AnalyticsEventBuilder: Build
+04-18 15:33:52.799   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:33:52.799   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:33:52.799   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vehicle|v2iset
+04-18 15:33:52.800   941   941 I AnalyticsEventBuilder: AddAttribute: 道路信息广播|on
+04-18 15:33:52.801   941   941 I AnalyticsEventBuilder: AddLabel: 
+04-18 15:33:52.802   941   941 I AnalyticsEventBuilder: SetDescription: 
+04-18 15:33:52.803   941   941 I AnalyticsEventBuilder: Build
+04-18 15:33:56.852   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:33:56.852   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:33:56.852   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vehicle|v2iset
+04-18 15:33:56.855   941   941 I AnalyticsEventBuilder: AddAttribute: 声音设置|详细
+04-18 15:33:56.857   941   941 I AnalyticsEventBuilder: AddLabel: 
+04-18 15:33:56.859   941   941 I AnalyticsEventBuilder: SetDescription: 
+04-18 15:33:56.860   941   941 I AnalyticsEventBuilder: Build
+04-18 15:33:59.840   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:33:59.840   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:33:59.840   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vehicle|v2iset
+04-18 15:33:59.842   941   941 I AnalyticsEventBuilder: AddAttribute: 声音设置|简洁
+04-18 15:33:59.844   941   941 I AnalyticsEventBuilder: AddLabel: 
+04-18 15:33:59.846   941   941 I AnalyticsEventBuilder: SetDescription: 
+04-18 15:33:59.846   941   941 I AnalyticsEventBuilder: Build
+04-18 15:34:02.803   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:34:02.803   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:34:02.803   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vehicle|v2iset
+04-18 15:34:02.805   941   941 I AnalyticsEventBuilder: AddAttribute: 声音设置|关闭
+04-18 15:34:02.806   941   941 I AnalyticsEventBuilder: AddLabel: 
+04-18 15:34:02.808   941   941 I AnalyticsEventBuilder: SetDescription: 
+04-18 15:34:02.809   941   941 I AnalyticsEventBuilder: Build
+04-18 15:34:05.739   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:34:05.739   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:34:05.739   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vehicle|v2iset
+04-18 15:34:05.741   941   941 I AnalyticsEventBuilder: AddAttribute: 声音设置|详细
+04-18 15:34:05.743   941   941 I AnalyticsEventBuilder: AddLabel: 
+04-18 15:34:05.745   941   941 I AnalyticsEventBuilder: SetDescription: 
+04-18 15:34:05.747   941   941 I AnalyticsEventBuilder: Build
+04-18 15:34:12.883   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -S
+04-18 15:34:12.883   941   941 I Diagnostic_Service: GetAnalyticsEventBuilder -E
+04-18 15:34:12.883   941   941 I AnalyticsEventBuilder: Create AnalyticsEventBuilder: vehicle|v2iset
+04-18 15:34:12.884   941   941 I AnalyticsEventBuilder: AddAttribute: 恢复默认|clicked
+04-18 15:34:12.885   941   941 I AnalyticsEventBuilder: AddLabel: 
+04-18 15:34:12.886   941   941 I AnalyticsEventBuilder: SetDescription: 
+04-18 15:34:12.887   941   941 I AnalyticsEventBuilder: Build
