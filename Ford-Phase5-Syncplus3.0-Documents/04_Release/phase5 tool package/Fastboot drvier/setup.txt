@@ -1,0 +1,8 @@
+In order to manually update your driver, follow the steps below (the next steps):
+1. Extract the .cab file to a folder of your choice
+2. Go to Device Manager (right click on My Computer, choose Manage and then find Device Manager in the left panel), or right click on Start Menu for Windows 10 and select Device Manager
+3. Right click on the hardware device you wish to update and choose Update Driver Software
+4. Choose to select the location of the new driver manually and browse to the folder where you extracted the driver
+5. If you already have the driver installed and want to update to a newer version got to "Let me pick from a list of device drivers on my computer"
+6. Click "Have Disk"
+7. Browse to the folder where you extracted the driver and click Ok

@@ -1,0 +1,2 @@
+*.apk filter=lfs diff=lfs merge=lfs -text
+DuerOSAuto_service_debug_1.0.0.2021_1029_1426.apk filter=lfs diff=lfs merge=lfs -text

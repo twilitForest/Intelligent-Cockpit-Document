@@ -1,0 +1,24 @@
+1. adb root && adb remount
+
+2. 将系统中的包保存到XXX目录
+adb pull /system/priv-app/TSPService   XXXX      
+
+3. 替换TSPService apk到系统里
+adb push TSPService.apk /system/priv-app/TSPService/TSPService.apk
+
+4. 重启
+adb sync
+adb reboot
+
+5. 因为对初始版本T&C信息有更改，要求删掉tsp数据后进行测试
+adb shell
+rm -rf sdcard/tsp/tnc
+pm clear com.ford.sync.tspservice
+
+6. 测试完成后将XXX目录下的包推回系统
+adb push XXX/TSPService/TSPService.apk /system/priv-app/TSPService/TSPService.apk
+
+
+NOTE: 该包仅用于测试T&C online update的case，其他case请用ROM自带的apk进行测试；
+		为保证车机和云端能正常通信，建议台架/车机能正扫扫码登录后再测试该功能；
+		

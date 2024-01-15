@@ -1,0 +1,11 @@
+com.baidu.naviauto.lbs.annotation
+com.baidu.naviauto.lbs.api
+com.baidu.naviauto.lbs.bean
+com.baidu.naviauto.lbs.constant
+com.baidu.naviauto.lbs.data
+com.baidu.naviauto.lbs.data.parsers
+com.baidu.naviauto.lbs.inner
+com.baidu.naviauto.lbs.inner.bean
+com.baidu.naviauto.lbs.listener
+com.baidu.naviauto.lbs.system
+com.baidu.naviauto.lbs.util

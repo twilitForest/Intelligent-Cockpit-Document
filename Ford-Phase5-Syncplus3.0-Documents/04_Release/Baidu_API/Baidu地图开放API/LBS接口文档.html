@@ -1,0 +1,1035 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit inherit; background-repeat: inherit inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; background-repeat: initial initial; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; background-position: initial initial; background-repeat: initial initial; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-fences-math .MathJax_SVG_Display, .md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: visible; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; zoom: 90%; }
+#math-inline-preview-content { zoom: 1.1; }
+.MathJax_SVG * { transition: none; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); background-position: initial initial; background-repeat: initial initial; }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print { 
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-require-zoom-fix foreignObject { font-size: var(--mermaid-font-zoom); }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-math .MathJax_SVG_Display { margin-top: 8px; cursor: default; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) { 
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) { 
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571429rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ''; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ''; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ''; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: '−'; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; white-space: nowrap; background-position: inherit inherit; background-repeat: inherit inherit; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; border: none !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-width: 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; word-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; background-position: 0px 0px; background-repeat: initial initial; }
+.CodeMirror-wrap pre { word-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right-width: 30px; border-right-style: solid; border-right-color: transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right-style: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right-style: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background-color: rgba(255, 255, 0, 0.4); background-position: initial initial; background-repeat: initial initial; }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print { 
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+ :root {--mermaid-font-zoom:1em ;}  @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>LBS接口文档</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='lbs接口文档'><span>LBS接口文档</span></h1><h2 id='一概述'><span>一、概述</span></h2><p><span>LBS接口对外提供的类统一为一个，即</span><code>MapAutoService</code><span>，位于</span><code>com.baidu.naviauto.sdk.api</code><span>包下，整个接口主要包含两部分，一部分是外部获取地图数据，另一部分是外部向地图      </span></p><h2 id='二接口使用'><span>二、接口使用</span></h2><p><span>将SDK文件导入项目，在</span><code>build.gradle</code><span>文件中添加SDK的依赖即可，同时SDK依赖</span><code>gson</code><span>进行数据解析，所以还需添加</span><code>gson</code><span>的依赖，依赖添加示例如下：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">implementation "com.google.code.gson:gson:2.8.0"</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">implementation files('libs/lbs-service-sdk-1.0.x.aar')</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 44px;"></div><div class="CodeMirror-gutters" style="display: none; height: 44px;"></div></div></div></pre><h3 id='21-获取地图数据'><span>2.1 获取地图数据</span></h3><p><span>获取地图数据之前，需要初始化SDK，相关代码如下：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="java"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="java"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">MapAutoService</span>.<span class="cm-variable">getInstance</span>().<span class="cm-variable">init</span>(<span class="cm-variable">context</span>, <span class="cm-variable">packageName</span>, <span class="cm-variable">initParam</span>, <span class="cm-keyword">new</span>  <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>  <span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">OnInitStateChangeListener</span>() {</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-meta">@Override</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">public</span> <span class="cm-variable-3">void</span> <span class="cm-variable">onSuccess</span>() {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">// 初始化成功</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-meta">@Override</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">public</span> <span class="cm-variable-3">void</span> <span class="cm-variable">onFailure</span>(<span class="cm-variable-3">int</span> <span class="cm-variable">errorCode</span>, <span class="cm-variable-3">String</span> <span class="cm-variable">errorMessage</span>) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">// 初始化失败</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">});</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 242px;"></div><div class="CodeMirror-gutters" style="display: none; height: 242px;"></div></div></div></pre><p><span>此外，外部还可自行实现数据传输的通道，实现接口</span><code>IChannel</code><span>即可，然后在初始化时使用下面带通道参数的初始化方法即可，如下：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="java"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="java"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">MapAutoService</span>.<span class="cm-variable">getInstance</span>().<span class="cm-variable">init</span>(<span class="cm-keyword">this</span>,<span class="cm-variable">channelImpl</span>, <span class="cm-variable">getPackageName</span>(), <span class="cm-atom">null</span>, <span class="cm-keyword">new</span> <span class="cm-variable">OnInitStateChangeListener</span>() {</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-meta">@Override</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">public</span> <span class="cm-variable-3">void</span> <span class="cm-variable">onSuccess</span>() {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">// 初始化成功</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-meta">@Override</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">public</span> <span class="cm-variable-3">void</span> <span class="cm-variable">onFailure</span>(<span class="cm-variable-3">int</span> <span class="cm-variable">errorCode</span>, <span class="cm-variable-3">String</span> <span class="cm-variable">errorMessage</span>) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-comment">// 初始化失败</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">});</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 242px;"></div><div class="CodeMirror-gutters" style="display: none; height: 242px;"></div></div></div></pre><p><span>由于初始化是异步操作，后续所有接口的执行，都需要在初始化成功之后再执行，否则所有接口将无法执行，建议将初始化时机放在</span><code>Application</code><span>的</span><code>onCreate</code><span>方法里。</span></p><h3 id='22-向地图提供数据'><span>2.2 向地图提供数据</span></h3><p><span>若需要向地图提供所依赖的数据，例如车速、汽车档位信息等，则使用</span><code>providerSystemData</code><span>方法，传入</span><code>ISystemDataAPI</code><span>接口的实现类即可，示例如下：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="java"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="java"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">MapAutoService</span>.<span class="cm-variable">getInstance</span>().<span class="cm-variable">providerSystemData</span>(<span class="cm-keyword">new</span> <span class="cm-variable">ISystemDataAPI</span>() {</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-comment">// 具体的接口实现</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">});</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 66px;"></div><div class="CodeMirror-gutters" style="display: none; height: 66px;"></div></div></div></pre><h2 id='三接口功能对应清单'><span>三、接口功能对应清单</span></h2><p><span>下面分模块介绍各接口和功能的对应关系，具体的接口参数、返回值等接口细节请参考详细的JavaDoc文档。</span></p><h3 id='31-底图控制模块'><span>3.1 底图控制模块</span></h3><figure><table><thead><tr><th><span>功能</span></th><th><span>方法名</span></th></tr></thead><tbody><tr><td><span>打开地图</span></td><td><span>openMap</span></td></tr><tr><td><span>地图退到后台</span></td><td><span>backToBackground</span></td></tr><tr><td><span>退出地图，杀掉地图进程</span></td><td><span>exitMap</span></td></tr><tr><td><span>更新路线偏好</span></td><td><span>updateRoutePlanPreference</span></td></tr><tr><td><span>纠正路线（eg：在桥上、在辅路等）</span></td><td><span>correctNaviRoute</span></td></tr><tr><td><span>个性化路线（eg：不走xxx路）</span></td><td><span>customNaviRoute</span></td></tr><tr><td><span>刷新当前路线</span></td><td><span>refreshRoute</span></td></tr><tr><td><span>是否开启全览模式</span></td><td><span>setFullRouteView</span></td></tr><tr><td><span>打开关闭路况</span></td><td><span>setRoadCondition</span></td></tr><tr><td><span>设置白天/黑夜模式</span></td><td><span>setDayNightMode</span></td></tr><tr><td><span>放大/缩小地图</span></td><td><span>zoomMap</span></td></tr><tr><td><span>最大、最小地图</span></td><td><span>zoomMapMax</span></td></tr><tr><td><span>移动地图</span></td><td><span>moveMap</span></td></tr><tr><td><span>设置地图显示模式，正北/跟随切换</span></td><td><span>setMapShowMode</span></td></tr><tr><td><span>设置播报模式，详细/简洁/静音</span></td><td><span>setNaviTTSMode</span></td></tr><tr><td><span>获取播报模式，详细/简洁/静音</span></td><td><span>getNaviTTSMode</span></td></tr><tr><td><span>打开关闭导航声音</span></td><td><span>setTTSOpen</span></td></tr><tr><td><span>设置TTS播放音量</span></td><td><span>setTTSVolume</span></td></tr><tr><td><span>获取TTS播放音量</span></td><td><span>getTTSVolume</span></td></tr><tr><td><span>底图添加覆盖物</span></td><td><span>addMarker</span></td></tr><tr><td><span>回到当前位置</span></td><td><span>showCurrentLocation</span></td></tr><tr><td><span>跟进GPS点在底图上画线</span></td><td><span>setMapLineData</span></td></tr></tbody></table></figure><h3 id='32-导航模块'><span>3.2 导航模块</span></h3><figure><table><thead><tr><th><span>功能</span></th><th><span>方法名</span></th></tr></thead><tbody><tr><td><span>路线选择</span></td><td><span>selectRoute</span></td></tr><tr><td><span>路径规划</span></td><td><span>routePlan</span></td></tr><tr><td><span>开始导航</span></td><td><span>startNavi</span></td></tr><tr><td><span>结束导航</span></td><td><span>stopNavi</span></td></tr><tr><td><span>是否在导航模式</span></td><td><span>isInNavi</span></td></tr><tr><td><span>获取导航类型</span></td><td><span>getNaviType</span></td></tr><tr><td><span>切换导航类型</span></td><td><span>switchNaviType</span></td></tr><tr><td><span>设置导航探测的隧道信息长度</span></td><td><span>setDetectTunnelDistance</span></td></tr><tr><td><span>获取导航目的地</span></td><td><span>getNaviDestination</span></td></tr><tr><td><span>添加途经点</span></td><td><span>addViaPoint</span></td></tr><tr><td><span>获取下一步TBT引导信息</span></td><td><span>getTBTInfo</span></td></tr><tr><td><span>获取前方拥堵描述信息</span></td><td><span>getAheadRoadConditionText</span></td></tr><tr><td><span>获取前方限速</span></td><td><span>getSpeedLimit</span></td></tr><tr><td><span>获取前方红绿灯描述信息</span></td><td><span>getAheadTrafficLightText</span></td></tr><tr><td><span>获取剩余信息，剩余时间、距离</span></td><td><span>getRemainInfo</span></td></tr><tr><td><span>是否路过xxx路</span></td><td><span>isPassRoad</span></td></tr><tr><td><span>进入巡航模式</span></td><td><span>startCruise</span></td></tr><tr><td><span>退出巡航模式</span></td><td><span>stopCruise</span></td></tr><tr><td><span>是否在巡航模式</span></td><td><span>isInCruise</span></td></tr><tr><td><span>获取MapMatch数据</span></td><td><span>getMapMatchInfo</span></td></tr><tr><td><span>设置疲劳驾驶时间</span></td><td><span>setFatigueDrivingTime</span></td></tr><tr><td><span>交换途经点</span></td><td><span>changeRoutePlanVia</span></td></tr><tr><td><span>删除途经点</span></td><td><span>deleteRoutePlanVia</span></td></tr></tbody></table></figure><h3 id='33-检索模块'><span>3.3 检索模块</span></h3><figure><table><thead><tr><th><span>功能</span></th><th><span>方法名</span></th></tr></thead><tbody><tr><td><span>关键字检索</span></td><td><span>requestKeywordSearch</span></td></tr><tr><td><span>周边检索</span></td><td><span>requestNearBySearch</span></td></tr><tr><td><span>Sug(推荐/联想)检索</span></td><td><span>requestSugSearch</span></td></tr><tr><td><span>沿途检索</span></td><td><span>requestAlongRouteSearch</span></td></tr><tr><td><span>反Geo检索（逆地址查询）</span></td><td><span>requestReverseGeoSearch</span></td></tr><tr><td><span>取消指定检索请求</span></td><td><span>cancelSearchRequest</span></td></tr><tr><td><span>取消全部检索请求</span></td><td><span>cancelAllSearchRequest</span></td></tr><tr><td><span>搜索结果排序</span></td><td><span>searchResultSortByType</span></td></tr></tbody></table></figure><h3 id='34-地图数据监听模块'><span>3.4 地图数据监听模块</span></h3><figure><table><thead><tr><th><span>功能</span></th><th><span>方法名</span></th></tr></thead><tbody><tr><td><span>添加GPS定位结果监听</span></td><td><span>addOnLocationChangeListener</span></td></tr><tr><td><span>移除GPS定位结果监听</span></td><td><span>removeOnLocationChangeListener</span></td></tr><tr><td><span>添加GPS状态信息监听</span></td><td><span>addOnGpsStatusChangeListener</span></td></tr><tr><td><span>移除GPS状态信息监听</span></td><td><span>removeOnGpsStatusChangeListener</span></td></tr><tr><td><span>添加电子眼信息监听</span></td><td><span>addOnCameraInfoChangeListener</span></td></tr><tr><td><span>移除电子眼信息监听</span></td><td><span>removeOnCameraInfoChangeListener</span></td></tr><tr><td><span>添加行政区域变化监听</span></td><td><span>addOnDistrictInfoChangeListener</span></td></tr><tr><td><span>移除行政区域变化监听</span></td><td><span>removeOnDistrictInfoChangeListener</span></td></tr><tr><td><span>添加限速信息变化监听</span></td><td><span>addOnSpeedLimitChangeListener</span></td></tr><tr><td><span>移除限速信息变化监听</span></td><td><span>removeOnSpeedLimitChangeListener</span></td></tr><tr><td><span>添加组队出行状态变化监听</span></td><td><span>addOnTeamTripChangeListener</span></td></tr><tr><td><span>移除组队出行状态变化监听</span></td><td><span>removeOnTeamTripChangeListener</span></td></tr><tr><td><span>添加安全信息变化监听</span></td><td><span>addOnSafetyInfoChangeListener</span></td></tr><tr><td><span>移除安全信息变化监听</span></td><td><span>removeOnSafetyInfoChangeListener</span></td></tr><tr><td><span>添加导航状态变化监听</span></td><td><span>addOnNaviStatusChangeListener</span></td></tr><tr><td><span>移除导航状态变化监听</span></td><td><span>removeOnNaviStatusChangeListener</span></td></tr><tr><td><span>添加主动推荐数据监听</span></td><td><span>addRecommendChangeListener</span></td></tr><tr><td><span>移除主动推荐数据监听</span></td><td><span>removeRecommendChangeListener</span></td></tr><tr><td><span>添加地图推送POI事件</span></td><td><span>addPushEventListener</span></td></tr><tr><td><span>移除地图推送POI事件</span></td><td><span>removePushEventListener</span></td></tr><tr><td><span>添加疲劳驾驶事件监听</span></td><td><span>addFatigueDrivingListener</span></td></tr><tr><td><span>移除疲劳驾驶事件监听</span></td><td><span>removeFatigueDrivingListener</span></td></tr><tr><td><span>添加推荐停车场监听</span></td><td><span>addOnParkingLotListener</span></td></tr><tr><td><span>移除推荐停车场监听</span></td><td><span>removeOnParkingLotListener</span></td></tr><tr><td><span>添加开始导航到某个停车场的监听</span></td><td><span>addOnStartNaviToParkingLotListener</span></td></tr><tr><td><span>移除开始导航到某个停车场的监听</span></td><td><span>removeOnStartNaviToParkingLotListener</span></td></tr><tr><td><span>添加车道线信息变化监听</span></td><td><span>addOnLaneInfoChangeListener</span></td></tr><tr><td><span>移除车道线信息变化监听</span></td><td><span>removeOnLaneInfoChangeListener</span></td></tr><tr><td><span>添加高速服务区信息变化监听</span></td><td><span>addOnHighWaySubscribeInfoChangeListener</span></td></tr><tr><td><span>移除高速服务区信息变化监听</span></td><td><span>removeOnHighWaySubscribeInfoChangeListener</span></td></tr><tr><td><span>添加放大图信息变化监听</span></td><td><span>addOnEnlargeInfoChangeListener</span></td></tr><tr><td><span>移除放大图信息变化监听</span></td><td><span>removeOnEnlargeInfoChangeListener</span></td></tr><tr><td><span>添加TBT信息（下一步引导信息）监听</span></td><td><span>addOnTurnInfoChangeListener</span></td></tr><tr><td><span>移除TBT信息（下一步引导信息）监听</span></td><td><span>removeOnTurnInfoChangeListener</span></td></tr><tr><td><span>添加剩余信息监听</span></td><td><span>addOnRemainInfoChangeListener</span></td></tr><tr><td><span>移除剩余信息监听</span></td><td><span>removeOnRemainInfoChangeListener</span></td></tr><tr><td><span>添加MapMatch信息变化监听</span></td><td><span>addOnMapMatchInfoChangeListener</span></td></tr><tr><td><span>移除MapMatch信息变化监听</span></td><td><span>removeOnMapMatchInfoChangeListener</span></td></tr><tr><td><span>添加续航里程信息变化监听</span></td><td><span>addOnEvRangeOnRouteInfoListener</span></td></tr><tr><td><span>移除续航里程信息变化监听</span></td><td><span>removeOnEvRangeOnRouteInfoListener</span></td></tr><tr><td><span>添加导航中前方摄像头信息变化监听</span></td><td><span>addOnForwardCameraInfoChangeListener</span></td></tr><tr><td><span>移除导航中前方摄像头信息变化监听</span></td><td><span>removeOnForwardCameraInfoChangeListener</span></td></tr><tr><td><span>添加导航中区间限速变化监听</span></td><td><span>addOnIntervalSpeedLimitChangeListener</span></td></tr><tr><td><span>移除导航中区间限速变化监听</span></td><td><span>removeOnIntervalSpeedLimitChangeListener</span></td></tr><tr><td><span>添加家/公司的行程预测</span></td><td><span>addOnHomeAndCompanyForecastListener</span></td></tr><tr><td><span>移除家/公司的行程预测</span></td><td><span>removeOnHomeAndCompanyForecastListener</span></td></tr><tr><td><span>添加偏航状态变化监听</span></td><td><span>addOnYawStatusChangeListener</span></td></tr><tr><td><span>移除偏航状态变化监听</span></td><td><span>removeOnYawStatusChangeListener</span></td></tr><tr><td><span>添加巡航状态变化监听</span></td><td><span>addOnCruiseStatusChangeListener</span></td></tr><tr><td><span>移除巡航状态变化监听</span></td><td><span>removeOnCruiseStatusChangeListener</span></td></tr><tr><td><span>添加多屏地图显示的状态监听</span></td><td><span>addOnMutiScreenMapShowListener</span></td></tr><tr><td><span>移除多屏地图显示的状态监听</span></td><td><span>removeOnMutiScreenMapShowListener</span></td></tr><tr><td><span>添加地图底图绘制第一帧的回调</span></td><td><span>addOnMapInitCompleteListener</span></td></tr><tr><td><span>移除地图底图绘制第一帧的回调</span></td><td><span>removeOnMapInitCompleteListener</span></td></tr><tr><td><span>添加家/公司 变化监听</span></td><td><span>addHomeAndCompanyUpdateListener</span></td></tr><tr><td><span>移除家/公司 变化监听</span></td><td><span>removeHomeAndCompanyUpdateListener</span></td></tr></tbody></table></figure><p>&nbsp;</p><h3 id='35-页面跳转模块'><span>3.5 页面跳转模块</span></h3><figure><table><thead><tr><th><span>功能</span></th><th><span>方法名</span></th></tr></thead><tbody><tr><td><span>跳转到POI详情页</span></td><td><span>openPoiDetailPage</span></td></tr><tr><td><span>跳转到检索页</span></td><td><span>openSearchPage</span></td></tr><tr><td><span>跳转到检索历史页</span></td><td><span>openSearchHistoryPage</span></td></tr><tr><td><span>跳转到收藏夹页</span></td><td><span>openFavoritePage</span></td></tr><tr><td><span>跳转到家、公司的设置页</span></td><td><span>openHCSettingPage</span></td></tr><tr><td><span>跳转到导航设置页</span></td><td><span>openNaviSettingPage</span></td></tr><tr><td><span>打开导航中沿途搜页面，不需要返回沿途搜结果数据</span></td><td><span>openAlongRouteNaviPage</span></td></tr><tr><td><span>跳转到检索结果页</span></td><td><span>openSearchResultPage</span></td></tr></tbody></table></figure><h3 id='36-组队出行模块'><span>3.6 组队出行模块</span></h3><figure><table><thead><tr><th><span>功能</span></th><th><span>方法名</span></th></tr></thead><tbody><tr><td><span>获取是否处于队伍中</span></td><td><span>isInTeamTrip</span></td></tr><tr><td><span>创建队伍</span></td><td><span>createTeamTrip</span></td></tr><tr><td><span>加入队伍</span></td><td><span>joinTeamTrip</span></td></tr><tr><td><span>设置队伍目的地</span></td><td><span>setTeamTripDestination</span></td></tr><tr><td><span>发起组队导航</span></td><td><span>startTeamTripNavi</span></td></tr><tr><td><span>显示组队全览图</span></td><td><span>showTeamTripFullView</span></td></tr><tr><td><span>退出所在队伍</span></td><td><span>quitTeamTrip</span></td></tr></tbody></table></figure><h3 id='37-收藏夹模块'><span>3.7 收藏夹模块</span></h3><figure><table><thead><tr><th><span>功能</span></th><th><span>方法名</span></th></tr></thead><tbody><tr><td><span>添加poi到收藏夹</span></td><td><span>addFavoritePoi</span></td></tr><tr><td><span>获取家/公司信息</span></td><td><span>getHCInfo</span></td></tr><tr><td><span>设置家/公司信息</span></td><td><span>setHCInfo</span></td></tr><tr><td><span>获取家/公司的设置状态</span></td><td><span>isHCSet</span></td></tr></tbody></table></figure><h3 id='38-工具类模块'><span>3.8 工具类模块</span></h3><figure><table><thead><tr><th><span>功能</span></th><th><span>方法名</span></th></tr></thead><tbody><tr><td><span>设置为调试模式</span></td><td><span>setDebug</span></td></tr><tr><td><del><span>~坐标转换，百度经纬度转墨卡托</span></del><span>~</span></td><td><del><span>coordinateLL2MC</span></del></td></tr><tr><td><del><span>~坐标转换，墨卡托转百度经纬度</span></del><span>~</span></td><td><del><span>coordinateMC2LL</span></del></td></tr><tr><td><span>坐标转换，WGS转国测局</span></td><td><span>coordinateWGS2GCJ</span></td></tr><tr><td><span>坐标转换，国测局转WGS</span></td><td><span>coordinateGCJ2WGS</span></td></tr><tr><td><del><span>坐标转换，百度经纬度转国测局</span></del></td><td><del><span>coordinateBD2GCJ</span></del></td></tr><tr><td><del><span>坐标转换，国测局转百度经纬度</span></del></td><td><del><span>coordinateGCJ2BD</span></del></td></tr></tbody></table></figure><h3 id='39-其它模块'><span>3.9 其它模块</span></h3><figure><table><thead><tr><th><span>功能</span></th><th><span>方法名</span></th></tr></thead><tbody><tr><td><span>当前位置查询</span></td><td><span>getCurrentLocation</span></td></tr><tr><td><span>地图是否在前台</span></td><td><span>isMapFront</span></td></tr><tr><td><span>行政区域查询</span></td><td><span>getDistrictDetailInfo</span></td></tr><tr><td><span>获取速度</span></td><td><span>getSpeed</span></td></tr><tr><td><span>获取车牌信息</span></td><td><span>getUserCarPlate</span></td></tr><tr><td><span>目的地预测查询</span></td><td><span>requestRouteForecastInfo</span></td></tr><tr><td><span>发起获取主动推荐数据请求</span></td><td><span>requestRecommendData</span></td></tr><tr><td><span>获取地图版本信息</span></td><td><span>getMapVersion</span></td></tr><tr><td><span>在多屏底图展示POI列表对应的水滴</span></td><td><span>showPoiOnMutiScreenMap</span></td></tr><tr><td><span>清除多屏底图展示的POI列表水滴</span></td><td><span>clearPoiOnMutiScreenMap</span></td></tr></tbody></table></figure><h3 id='310-限定aidl传输的模块'><span>3.10 限定AIDL传输的模块</span></h3><figure><table><thead><tr><th><span>功能</span></th><th><span>方法名</span></th></tr></thead><tbody><tr><td><span>绘制多屏地图</span></td><td><span>drawMutiScreenMap</span></td></tr><tr><td><span>销毁多屏地图</span></td><td><span>destroyMutiScreenMap</span></td></tr><tr><td><span>多屏地图反控</span></td><td><span>dispatchTouchEvent</span></td></tr></tbody></table></figure><h3 id='311-依赖系统数据的模块'><span>3.11 依赖系统数据的模块</span></h3><p><span>依赖系统的接口使用</span><code>MapAutoService</code><span>的</span><code>provideSystemData</code><span>方法，传递一个</span><code>`ISystemDataAPI</code><span>接口的实现类即可，在实现类中，各回调接口的方法名和功能对应如下：</span></p><figure><table><thead><tr><th><span>功能</span></th><th><span>方法名</span></th></tr></thead><tbody><tr><td><span>获取系统当前网络类型</span></td><td><span>getNetworkType</span></td></tr><tr><td><span>打开系统设置页面</span></td><td><span>openSystemSettingPage</span></td></tr><tr><td><span>拨打电话</span></td><td><span>startCall</span></td></tr><tr><td><span>获取剩余油量</span></td><td><span>getRemainOil</span></td></tr><tr><td><span>获取剩余电量</span></td><td><span>getRemainCharge</span></td></tr><tr><td><span>获取行驶里程</span></td><td><span>getDriveDistance</span></td></tr><tr><td><span>获取续航里程</span></td><td><span>getRechargeDistance</span></td></tr><tr><td><span>获取车辆光感信号</span></td><td><span>getLightStatus</span></td></tr><tr><td><span>获取熄火信号</span></td><td><span>isShutdown</span></td></tr><tr><td><span>获取IMU数据</span></td><td><span>getIMUData</span></td></tr><tr><td><span>获取车速</span></td><td><span>getSpeed</span></td></tr><tr><td><span>获取当前车辆档位</span></td><td><span>getCarLevel</span></td></tr><tr><td><span>获取当前车辆转向</span></td><td><span>getCarGear</span></td></tr><tr><td><span>获取摄像头图像</span></td><td><span>getCameraImage</span></td></tr><tr><td><span>设置系统数据变化监听</span></td><td><span>onSystemDataChange</span></td></tr></tbody></table></figure><p><span>系统数据变化监听器</span></p><figure><table><thead><tr><th><span>功能</span></th><th><span>方法名</span></th></tr></thead><tbody><tr><td><span>熄火状态更新</span></td><td><span>onShutdownStatusUpdate</span></td></tr><tr><td><span>车速更新</span></td><td><span>onSpeedUpdate</span></td></tr><tr><td><span>剩余油量更新</span></td><td><span>onRemainOilUpdate</span></td></tr><tr><td><span>剩余电量更新</span></td><td><span>onRemainChargeUpdate</span></td></tr><tr><td><span>行驶里程更新</span></td><td><span>onDriveDistanceUpdate</span></td></tr><tr><td><span>续航里程更新</span></td><td><span>onRechargeDistanceUpdate</span></td></tr><tr><td><span>车辆光感信号更新</span></td><td><span>onLightStatusUpdate</span></td></tr><tr><td><span>IMU数据更新</span></td><td><span>onIMUDataUpdate</span></td></tr></tbody></table></figure><h2 id='四其它说明'><span>四、其它说明</span></h2><h3 id='41-车道线接口使用说明'><span>4.1 车道线接口使用说明</span></h3><p><span>车道线接口目前返回两个关键参数，</span><code>status</code><span>和</span><code>LaneInfo</code><span>，其中</span><code>status</code><span>的含义参考JavaDoc即可，</span><code>LaneInfo</code><span>代表整个车道线View，</span><code>LaneInfo</code><span>包含多个</span><code>LaneItem</code><span>，每个</span><code>LaneItem</code><span>就代表了其中一个显示的车道线，这里重点描述如何将</span><code>LaneItem</code><span>转换为一个车道线图像。</span></p><p><code>LaneItem</code><span>包含三个关键字段</span><code>laneTypeInfo</code><span>、</span><code>laneVariationType</code><span>、</span><code>directionList</code><span>，</span><code>laneTypeInfo</code><span>的</span><code>laneType</code><span>字段代表车道线类型，</span></p><ul><li><span>当</span><code>laneType</code><span>为非法值时不做后续处理</span></li><li><span>当</span><code>laneType</code><span>为普通类型（</span><code>LANE_TYPE_NORMAL</code><span>）、公交车道(</span><code>LANE_TYPE_BUS</code><span>)时，根据</span><code>directionList</code><span>的具体值做图像转换处理，</span><code>directionList</code><span>的单项为</span><code>LaneDirection</code><span>，</span><code>LaneDirection</code><span>包含两个关键字段，一个为</span><code>direction</code><span>，另一个为</span><code>validType</code><span>，</span><code>direction</code><span>代表四种基础车道线方向，分别为：左转、直行、右转、掉头，</span><code>validType</code><span>含义为车道方向是否可通行，车道方向可通行和不可通行将直接影响对应的</span><code>direction</code><span>是否需要高亮显示（高亮代表可通行）</span></li><li><span>当</span><code>laneType</code><span>既不是普通类型，也不是公交车道时，则直接使用指定类型的车道线资源</span></li></ul><p><span>下面举例说明一下：</span></p><p><img src="laneInfo/laneInfoExample.png" alt="laneInfoExample" style="zoom:50%;" /></p><p><span>如上图，根据上面的规则，该车道线View整体为一个</span><code>LaneInfo</code><span>，</span><code>LaneInfo</code><span>包含两个子元素，一个</span><code>LaneItem</code><span>代表左侧（左转+直行）车道，一个</span><code>LaneItem</code><span>代表右侧（右转+直行）车道，对于左侧</span><code>LaneItem</code><span>，又包含两个</span><code>LaneDirection</code><span>，一个</span><code>LaneDirection</code><span>为左转，并且其</span><code>validType</code><span>字段为不可通行，所以左转方向未高亮显示，另一个</span><code>LaneDirection</code><span>为直行，并且其</span><code>validType</code><span>字段为可通行，所以直行方向高亮显示，同理右侧</span><code>LaneItem</code><span>代表的车道就不做过多赘述了。</span></p><p><span>所以车道线基本类型包含两大类</span></p><ul><li><span>四种基本转向（左转、直行、右转、掉头）和公交车道，加起来一共五种类型的组合</span></li><li><span>特殊车道，有单独的资源对应</span></li></ul><p><span>其中单方向车道一共包含8种（蓝色高亮代表可通行，灰色代表不可通行，下同），具体如下：</span></p><p><img src="laneInfo/lane_single.png" referrerpolicy="no-referrer" alt="lane_single"></p><p><span>双方向车道一共包含24种，具体如下：</span></p><p><img src="laneInfo/lane_2cross.png" referrerpolicy="no-referrer" alt="lane_2cross"></p><p><span>三方向车道，一共包含20种，具体如下：</span></p><p><img src="laneInfo/lane_3cross.png" referrerpolicy="no-referrer" alt="lane_3cross"></p><p><span>四方向车道，一共包含6种，具体如下：</span></p><p><img src="laneInfo/lane_4cross.png" referrerpolicy="no-referrer" alt="lane_4cross"></p><p><span>公交车道，一共包含10种，具体如下：</span></p><p><img src="laneInfo/lane_bus.png" referrerpolicy="no-referrer" alt="lane_bus"></p><p><span>特殊车道，一共包含9种，具体如下，分别对应（叉号潮汐车道不可行、叉号潮汐车道可行、前行箭头潮汐车道不可行、前行箭头潮汐车道可行、文字潮汐车道不可行、文字潮汐车道可行、可变车道、多成员车道不可行、多成员车道可行、文字公交车道）：</span></p><p><img src="laneInfo/lane_other1.png" referrerpolicy="no-referrer" alt="lane_other1"></p><p><img src="laneInfo/lane_other2.png" referrerpolicy="no-referrer" alt="lane_other2"></p><p><img src=laneInfo/lane_other3.png height=50></p><p><span>以上是关于车道线的全部资源示例，外部集成可参考该资源示例进行开发。</span></p><h3 id='42-转向信息示例'><span>4.2 转向信息示例</span></h3><table>
+  <tbody><tr>
+    <th>功能</th>
+    <th align="center">图标</th>
+  </tr>
+    <tr>
+    <td>直行</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_front.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>右前方转弯</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_right_front.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>右转</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_right.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>右后方转弯</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_right_back.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>掉头</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_back.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>左后方转弯</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_left_back.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>左转</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_left.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>左前方转弯</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_left_front.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>环岛</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_ring.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>环岛出口</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_ring_out.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>普通/JCT/SAPA二分歧 靠左</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_left_side.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>普通/JCT/SAPA二分歧 靠右</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_right_side.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>左侧走本线</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_left_side_main.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>靠最左走本线</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_branch_left_straight.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>右侧走本线</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_right_side_main.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>靠最右走本线</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_branch_right_straight.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>中间走本线</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_branch_center.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>IC二分歧左侧走IC</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_left_side_ic.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>IC二分歧右侧走IC</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_right_side_ic.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>普通三分歧/JCT/SAPA 靠最左</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_branch_left.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>普通三分歧/JCT/SAPA 靠最右</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_branch_right.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>普通三分歧/JCT/SAPA 靠中间</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_branch_center.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>起始地</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_start.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>目的地</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_dest.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>途经点1</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_via_1.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>途经点2</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_via_1.png" height="100"> </td>
+  </tr>
+  <tr>
+    <td>途经点3</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_via_1.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>途经点4</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_via_1.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>进入渡口</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_inferry.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>脱出渡口</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_inferry.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>收费站</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_tollgate.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>IC二分歧左侧直行走IC</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_left_side_main.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>IC二分歧右侧直行走IC</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_right_side_main.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>普通/JCT/SAPA二分歧左侧 直行</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_left_side_main.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>普通/JCT/SAPA二分歧右侧 直行</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_right_side_main.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>普通/JCT/SAPA三分歧左侧 直行</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_branch_left_straight.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>普通/JCT/SAPA三分歧中央 直行</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_branch_center.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>普通/JCT/SAPA三分歧右侧 直行</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_branch_right_straight.png" height="100"> </td>
+  </tr>
+    <tr>
+    <td>IC三分歧左侧走IC</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_branch_left.png" height="100"> </td>
+  </tr>
+  
+    <tr>
+    <td>IC三分歧中央走IC</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_branch_center.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>IC三分歧右侧走IC</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_branch_right.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>IC三分歧左侧直行</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_branch_left_straight.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>IC三分歧中间直行</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_branch_center.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>IC三分歧右侧直行</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_branch_right_straight.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>八方向靠左直行</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_left_side_main.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>八方向靠右直行</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_right_side_main.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>八方向靠最左侧直行</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_branch_left_straight.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>八方向沿中间直行</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_branch_center.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>八方向靠最右侧直行</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_branch_right_straight.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>八方向左转+随后靠左</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_left_2branch_left.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>八方向左转+随后靠右</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_left_2branch_right.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>八方向左转+随后靠最左</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_left_3branch_left.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>八方向左转+随后沿中间</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_left_3branch_middle.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>八方向左转+随后靠最右</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_left_3branch_right.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>八方向右转+随后靠左</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_right_2branch_left.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>八方向右转+随后靠右</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_right_2branch_right.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>八方向右转+随后靠最左</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_right_3branch_left.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>八方向右转+随后沿中间</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_right_3branch_middle.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>八方向右转+随后靠最右</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_right_3branch_right.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>八方向左前方靠左侧</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_lf_2branch_left.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>八方向左前方靠右侧</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_lf_2branch_right.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>八方向右前方靠左侧</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_rf_2branch_left.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>八方向右前方靠右侧</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_rf_2branch_right.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>八方向掉头+随后靠左</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_front_2branch_left.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>八方向掉头+随后靠右</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_front_2branch_right.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>八方向掉头+随后靠最左</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_front_3branch_left.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>八方向掉头+随后沿中间</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_front_3branch_middle.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>八方向掉头+随后靠最右</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_front_3branch_right.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>环岛向前</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_ring_front.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>环岛向左</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_ring_left.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>环岛向左后</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_ring_leftback.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>环岛向左前</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_ring_leftfront.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>环岛向右</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_ring_right.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>环岛向右后</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_ring_rightback.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>环岛向右前</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_ring_rightfront.png" height="100"> </td>
+  </tr>
+
+    <tr>
+    <td>环岛向后</td>
+    <td bgcolor="gray" width="120"> <img src="turninfo/nsdk_drawable_rg_ic_turn_ring_turnback.png" height="100"> </td>
+  </tr>
+</tbody></table><p>&nbsp;</p><p>&nbsp;</p><h1 id='五混淆说明'><span>五、混淆说明</span></h1><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">-keep class com.baidu.naviauto.lbs.**{*;}</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">-keep interface com.baidu.naviauto.lbs.**{*;}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">-dontwarn com.baidu.naviauto.lbs.**</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 66px;"></div><div class="CodeMirror-gutters" style="display: none; height: 66px;"></div></div></div></pre><p>&nbsp;</p><h4 id='update-log'><span>Update Log</span></h4><figure><table><thead><tr><th><span>author</span></th><th><span>content</span></th></tr></thead><tbody><tr><td><a href='mailto:huangqing02@baidu.com' target='_blank' class='url'>huangqing02@baidu.com</a></td><td><span>first version</span></td></tr><tr><td><a href='mailto:huangqing02@baidu.com' target='_blank' class='url'>huangqing02@baidu.com</a></td><td><span>add aidl module and system module</span></td></tr><tr><td><a href='mailto:huangqing02@baidu.com' target='_blank' class='url'>huangqing02@baidu.com</a></td><td><span>add some listener interface</span></td></tr><tr><td><a href='mailto:huangqing02@baidu.com' target='_blank' class='url'>huangqing02@baidu.com</a></td><td><span>add turninfo icon examples</span></td></tr><tr><td><a href='mailto:huangqing02@baidu.com' target='_blank' class='url'>huangqing02@baidu.com</a></td><td><span>add detail description for laneInfo interface</span></td></tr><tr><td><a href='mailto:zengyahui@baidu.com' target='_blank' class='url'>zengyahui@baidu.com</a></td><td><span>新增和删减部分接口</span></td></tr><tr><td><a href='mailto:zengyahui@baidu.com' target='_blank' class='url'>zengyahui@baidu.com</a></td><td><span>更新系统接口，增加混淆规则</span></td></tr></tbody></table></figure><p>&nbsp;</p></div></div>
+</body>
+</html>
