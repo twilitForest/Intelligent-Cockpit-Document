@@ -1,0 +1,3 @@
+Clock               State      Freq (Hz)    EN  RST Flags              VDD_CX/MMCX     Sources
+---------------------------------------------------------------------------------------
+gpu_cc_gx_gfx3d_clk n/a (0)    700000000    n/a n/a 0x20000000         OFF

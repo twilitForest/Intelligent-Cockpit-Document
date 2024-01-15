@@ -1,0 +1,88 @@
+800%cpu 120%user   1%nice  79%sys 559%idle  21%iow  13%irq   7%sirq   0%host
+   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS
+  2672 u0_a150      10 -10  17G 326M 212M S 53.6   2.9   1:30.76 com.baidu.car.radio
+   468 system       -3  -8  12G  61M  40M S 50.0   0.5   3:09.45 surfaceflinger
+  2334 system       10 -10 2.0G 305M 186M S 26.0   2.7   1:59.54 com.yfve.settings
+  1035 system       18  -2  18G 391M 286M S 20.6   3.5   2:11.33 system_server
+  2481 u0_a153      10 -10  16G 619M 262M S 18.6   5.5   1:26.91 com.ford.sync.vpa
+   415 system       20   0  12G 4.9M 4.0M S 18.3   0.0   1:15.56 android.hardware.sensors@1.0-service
+   409 system       -3   0  12G  19M  15M S 12.3   0.1   0:56.17 android.hardware.graphics.composer@2.4-service
+  1329 system       20   0 1.8G 134M  83M S 11.0   1.2   0:44.42 com.android.car
+  4140 u0_a168      20   0  17G 502M 192M S  7.0   4.5   0:41.29 com.baidu.che.codriver
+  1556 system       20   0 2.1G 367M 295M S  4.6   3.3   0:29.59 com.ford.sync.controllerlauncher
+   735 mediacodec   20   0  12G  20M  16M S  4.0   0.1   0:02.01 media.swcodec oid.media.swcodec/bin/mediaswcodec
+   254 logd         30  10  12G  24M 2.6M S  4.0   0.2   0:15.56 logd
+  1374 system       20   0 1.9G 192M 130M S  2.6   1.7   0:03.44 com.android.systemui
+  1158 system       20   0  12G 2.3M 1.8M S  2.6   0.0   0:09.22 logcat -b all *:v
+  1149 system       20   0  12G 6.0M 4.9M S  2.6   0.0   0:08.42 vendor.yfve.hardware.logcollector@1.0-service
+   698 root         20   0  12G  19M 7.3M S  2.6   0.1   0:11.80 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/+
+   400 audioserver  20   0  64M  20M 9.4M S  2.6   0.1   0:05.64 android.hardware.audio.service
+   447 audioserver  20   0  12G  28M  23M S  2.3   0.2   0:03.96 audioserver
+  2922 u0_a175      20   0 1.8G 201M 117M S  2.0   1.8   0:11.60 com.baidu.naviauto
+  1837 system       20   0 1.8G 105M  75M S  2.0   0.9   0:10.09 com.ford.xiaoduos.v2x
+   335 system       20   0  12G 9.1M 6.2M S  2.0   0.0   0:08.06 vendor.yfve.hardware.YFVECoreVehicle@1.0-service
+  7068 root         20   0    0    0    0 I  1.3   0.0   0:01.71 [kworker/0:0-mm_percpu_wq]
+   419 vehicle_net+ 20   0  12G  12M 6.2M S  1.3   0.1   0:06.69 vendor.ford.hardware.automotive.vehicle@2.0-service
+   365 root         20   0    0    0    0 I  1.3   0.0   0:06.20 [kworker/0:3-events]
+    10 root         20   0    0    0    0 I  1.3   0.0   0:04.78 [rcu_preempt]
+
+
+
+800%cpu 109%user   1%nice  77%sys 578%idle  17%iow  13%irq   6%sirq   0%host
+   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS
+   468 system       -3  -8  12G  61M  40M R 50.6   0.5   3:35.81 surfaceflinger
+  2672 u0_a150      10 -10  17G 327M 214M S 50.0   2.9   1:59.52 com.baidu.car.radio
+  2334 system       10 -10 2.0G 315M 186M S 24.0   2.8   2:13.42 com.yfve.settings
+   415 system       20   0  12G 4.9M 4.0M S 18.3   0.0   1:25.06 android.hardware.sensors@1.0-service
+  2481 u0_a153      10 -10  16G 619M 262M S 18.0   5.5   1:36.99 com.ford.sync.vpa
+   409 system       -3   0  12G  19M  15M S 15.0   0.1   1:03.41 android.hardware.graphics.composer@2.4-service
+  1035 system       18  -2  18G 389M 286M S 14.0   3.5   2:19.73 system_server
+  1329 system       20   0 1.8G 137M  83M S  8.0   1.2   0:48.49 com.android.car
+  4140 u0_a168      20   0  17G 505M 192M S  7.0   4.5   0:46.09 com.baidu.che.codriver
+  1556 system       20   0 2.1G 368M 295M S  4.0   3.3   0:32.15 com.ford.sync.controllerlauncher
+   735 mediacodec   20   0  12G  20M  17M S  3.6   0.1   0:04.17 media.swcodec oid.media.swcodec/bin/mediaswcodec
+   254 logd         30  10  12G  25M 2.6M S  3.3   0.2   0:17.32 logd
+   400 audioserver  20   0  64M  20M 9.4M S  2.6   0.1   0:07.00 android.hardware.audio.service
+   698 root         20   0  12G  19M 7.3M S  2.3   0.1   0:13.16 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/+
+  2922 u0_a175      20   0 1.8G 202M 117M S  2.0   1.8   0:12.66 com.baidu.naviauto
+  1837 system       20   0 1.8G 106M  75M S  2.0   0.9   0:11.12 com.ford.xiaoduos.v2x
+  1158 system       20   0  12G 2.3M 1.8M S  2.0   0.0   0:10.34 logcat -b all *:v
+  1149 system       20   0  12G 6.0M 4.9M S  2.0   0.0   0:09.45 vendor.yfve.hardware.logcollector@1.0-service
+   447 audioserver  20   0  12G  28M  23M S  2.0   0.2   0:05.20 audioserver
+  7068 root         20   0    0    0    0 I  1.6   0.0   0:02.35 [kworker/0:0-events]
+   694 system       20   0  12G 4.6M 3.7M S  1.3   0.0   0:02.90 qtxa-idps-server
+   419 vehicle_net+ 20   0  12G  12M 6.2M S  1.3   0.1   0:07.40 vendor.ford.hardware.automotive.vehicle@2.0-service
+   335 system       20   0  12G 9.1M 6.2M S  1.3   0.0   0:08.96 vendor.yfve.hardware.YFVECoreVehicle@1.0-service
+  7875 root         20   0  12G 4.6M 3.4M R  1.0   0.0   0:00.64 top
+   365 root         20   0    0    0    0 I  1.0   0.0   0:06.94 [kworker/0:3-events]
+
+
+
+800%cpu 108%user   1%nice  77%sys 580%idle  14%iow  13%irq   8%sirq   0%host
+   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS
+   468 system       -3  -8  12G  61M  40M S 45.6   0.5   4:06.66 surfaceflinger
+  2672 u0_a150      10 -10  17G 339M 216M S 41.0   3.0   2:32.05 com.baidu.car.radio
+  2334 system       10 -10 2.0G 295M 186M S 25.0   2.6   2:29.69 com.yfve.settings
+  2481 u0_a153      10 -10  16G 619M 262M S 19.0   5.5   1:49.03 com.ford.sync.vpa
+   415 system       RT   0  12G 4.9M 4.0M S 16.6   0.0   1:36.21 android.hardware.sensors@1.0-service
+  1035 system       18  -2  18G 392M 286M S 15.0   3.5   2:29.36 system_server
+   409 system       -3   0  12G  19M  15M S 11.3   0.1   1:11.53 android.hardware.graphics.composer@2.4-service
+  1329 system       20   0 1.8G 133M  83M S  9.3   1.1   0:53.45 com.android.car
+  4140 u0_a168      20   0  17G 507M 193M S  8.0   4.5   0:52.00 com.baidu.che.codriver
+   735 mediacodec   20   0  12G  21M  17M S  5.3   0.1   0:06.87 media.swcodec oid.media.swcodec/bin/mediaswcodec
+  1556 system       20   0 2.1G 368M 295M S  3.6   3.3   0:35.26 com.ford.sync.controllerlauncher
+   254 logd         30  10  12G  25M 2.6M S  3.6   0.2   0:19.46 logd
+   698 root         20   0  12G  19M 7.3M S  2.6   0.1   0:14.76 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/+
+   400 audioserver  20   0  64M  20M 9.4M S  2.6   0.1   0:08.61 android.hardware.audio.service
+  1837 system       20   0 1.8G 105M  75M S  2.3   0.9   0:12.37 com.ford.xiaoduos.v2x
+  1158 system       20   0  12G 2.3M 1.8M S  2.3   0.0   0:11.69 logcat -b all *:v
+   447 audioserver  20   0  12G  28M  23M S  2.3   0.2   0:06.68 audioserver
+  2922 u0_a175      20   0 1.8G 204M 117M S  2.0   1.8   0:13.88 com.baidu.naviauto
+  1374 system       20   0 1.9G 180M 115M S  2.0   1.6   0:04.29 com.android.systemui
+  1149 system       20   0  12G 6.0M 4.9M S  2.0   0.0   0:10.67 vendor.yfve.hardware.logcollector@1.0-service
+   335 system       20   0  12G 9.1M 6.2M S  2.0   0.0   0:10.04 vendor.yfve.hardware.YFVECoreVehicle@1.0-service
+  7068 root         20   0    0    0    0 I  1.3   0.0   0:03.10 [kworker/0:0-events]
+  1232 system       20   0 1.8G 100M  69M S  1.3   0.8   0:01.76 com.qtxa.hidps
+   694 system       20   0  12G 4.6M 3.7M S  1.3   0.0   0:03.25 qtxa-idps-server
+   365 root         20   0    0    0    0 I  1.3   0.0   0:07.21 [kworker/0:3-events]
+

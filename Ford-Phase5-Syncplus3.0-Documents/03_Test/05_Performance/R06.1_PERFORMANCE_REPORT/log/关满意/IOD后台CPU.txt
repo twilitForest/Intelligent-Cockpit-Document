@@ -1,0 +1,121 @@
+PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS
+  3370 u0_a176      20   0  17G 479M 128M S 54.6   4.3  13:07.94 com.baidu.che.codriver
+   461 system       -3  -8  12G  62M  40M S 23.3   0.5   6:09.19 surfaceflinger
+  1104 system       18  -2  18G 381M 253M S 22.3   3.4   5:44.93 system_server
+   253 logd         30  10  12G  59M 2.8M S 21.0   0.5   2:17.89 logd
+  3073 u0_a148      10 -10  20G 517M 152M S 20.0   4.6   4:13.70 com.ford.sync.vpa
+   423 system       RT   0  12G 4.8M 3.9M S 11.6   0.0   2:36.90 android.hardware.sensors@1.0-service
+   417 system       -3   0  12G  19M  15M S  9.3   0.1   2:12.21 android.hardware.graphics.composer@2.4+
+   368 root         20   0  15G 184M 141M S  5.3   1.6   1:24.45 zygote64
+  1490 system       20   0  16G 149M  90M S  5.0   1.3   1:12.99 com.android.car
+   738 system       20   0  12G 4.6M 3.6M S  3.6   0.0   0:52.86 socrule --conf_path=/system/baidu/socr+
+  2918 system       10 -10  16G 554M 214M S  3.0   4.9   2:47.98 com.yfve.settings
+  1202 system       20   0  12G 3.1M 2.4M S  3.0   0.0   0:48.96 logcat -b all *:v
+  1192 system       20   0  12G 5.9M 4.8M S  3.0   0.0   0:45.21 vendor.yfve.hardware.logcollector@1.0-+
+   405 audioserver  20   0  65M  20M  10M S  2.6   0.1   0:37.65 android.hardware.audio.service
+   714 root         20   0  12G 6.0M 3.9M S  2.0   0.0   0:02.93 installd
+  3343 u0_a174      20   0 1.9G 195M 112M S  1.6   1.7   0:26.48 com.baidu.naviauto
+  1866 system       20   0  15G 121M  81M S  1.6   1.0   0:22.66 com.ford.xiaoduos.v2x
+  1684 system       20   0 2.1G 337M 270M S  1.6   3.0   0:25.26 com.ford.sync.controllerlauncher
+   454 audioserver  20   0  12G  29M  24M S  1.6   0.2   0:24.54 audioserver
+   427 vehicle_net+ 20   0  12G  12M 6.4M S  1.3   0.1   0:16.49 vendor.ford.hardware.automotive.vehicl+
+   339 system       20   0  12G 9.2M 6.4M S  1.3   0.0   0:19.71 vendor.yfve.hardware.YFVECoreVehicle@1+
+ 16692 root         20   0  12G 3.2M 2.6M S  1.0   0.0   0:00.09 top -n 10 -b -p 731
+ 10276 root         20   0  12G 4.8M 3.6M R  1.0   0.0   0:02.56 top
+ 10652 root         20   0    0    0    0 D  1.0   0.0   0:02.63 [kworker/0:4+events]
+  1583 system       20   0  15G 135M  77M S  1.0   1.2   0:08.50 com.ford.sync.fnvservice
+  1336 system       20   0  15G 124M  82M S  1.0   1.1   0:26.18 com.baidu.privacy
+   909 root         20   0  12G 6.6M 5.1M S  0.6   0.0   0:10.54 amqserver
+   735 root         20   0  12G  15M 7.5M S  0.6   0.1   0:12.93 qtxa-nidps-engine -c /etc/qtxa/rule/qt+
+   703 root         20   0  12G 3.4M 2.8M S  0.6   0.0   0:00.77 bdsystemcleaner
+   249 root         -2   0    0    0    0 S  0.6   0.0   0:08.56 [apr_vm_cb_threa]
+    18 root         20   0    0    0    0 I  0.6   0.0   0:06.80 [kworker/0:1-events]
+    10 root         20   0    0    0    0 I  0.6   0.0   0:08.68 [rcu_preempt]
+     1 root         20   0  12G  11M 5.3M S  0.6   0.0   0:07.65 init second_stage
+ 19321 root         20   0    0    0    0 I  0.3   0.0   0:00.12 [kworker/5:0-events]
+ 16086 root         20   0    0    0    0 I  0.3   0.0   0:00.13 [kworker/7:0-events]
+ 25340 root         20   0    0    0    0 I  0.3   0.0   0:00.73 [kworker/3:1-events]
+  3892 root         20   0  12G 5.1M 4.2M S  0.3   0.0   0:03.57 qtxa-metrics
+  3641 system       20   0  15G 123M  78M S  0.3   1.1   0:04.44 com.baidu.xiaoduos.syncservice
+
+
+ PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS
+  3370 u0_a176      20   0  17G 480M 128M S 58.3   4.3  13:27.74 com.baidu.che.codriver
+   461 system       -3  -8  12G  62M  40M S 23.6   0.5   6:17.73 surfaceflinger
+   253 logd         30  10  12G  60M 2.8M S 23.3   0.5   2:24.05 logd
+  1104 system       18  -2  18G 371M 253M S 20.3   3.3   5:52.31 system_server
+  3073 u0_a148      10 -10  20G 517M 152M S 18.0   4.6   4:20.20 com.ford.sync.vpa
+   423 system       RT   0  12G 4.8M 3.9M S 12.0   0.0   2:40.99 android.hardware.sensors@1.0-service
+   417 system       -3   0  12G  19M  15M S  9.0   0.1   2:15.57 android.hardware.graphics.composer@2.4+
+   368 root         20   0  15G 181M 141M S  5.6   1.6   1:26.51 zygote64
+  1490 system       20   0  16G 151M  90M S  4.3   1.3   1:14.66 com.android.car
+   738 system       20   0  12G 4.6M 3.6M S  3.6   0.0   0:54.15 socrule --conf_path=/system/baidu/socr+
+  1202 system       20   0  12G 3.1M 2.4M S  3.0   0.0   0:50.05 logcat -b all *:v
+  2918 system       10 -10  16G 556M 214M S  2.6   5.0   2:49.14 com.yfve.settings
+  1192 system       20   0  12G 5.9M 4.8M S  2.6   0.0   0:46.24 vendor.yfve.hardware.logcollector@1.0-+
+   405 audioserver  20   0  65M  20M  10M S  2.3   0.1   0:38.59 android.hardware.audio.service
+  3343 u0_a174      20   0 1.9G 196M 112M S  1.6   1.7   0:27.08 com.baidu.naviauto
+  1866 system       20   0  15G 120M  81M S  1.3   1.0   0:23.25 com.ford.xiaoduos.v2x
+   454 audioserver  20   0  12G  29M  24M S  1.3   0.2   0:25.16 audioserver
+   339 system       20   0  12G 9.2M 6.4M S  1.3   0.0   0:20.19 vendor.yfve.hardware.YFVECoreVehicle@1+
+ 10276 root         20   0  12G 4.8M 3.6M R  1.0   0.0   0:02.93 top
+  1684 system       20   0 2.1G 336M 270M S  1.0   3.0   0:25.70 com.ford.sync.controllerlauncher
+   731 system       20   0  12G 7.7M 6.4M S  1.0   0.0   0:07.45 qtxa-idps-server
+   427 vehicle_net+ 20   0  12G  12M 6.4M S  1.0   0.1   0:16.89 vendor.ford.hardware.automotive.vehicl+
+     5 root         20   0    0    0    0 I  1.0   0.0   0:08.21 [kworker/0:0-events]
+ 23301 root         20   0  12G 3.1M 2.5M S  0.6   0.0   0:00.10 top -n 10 -b -p 728
+ 10652 root         20   0    0    0    0 D  0.6   0.0   0:02.84 [kworker/0:4+events]
+  1583 system       20   0  15G 136M  77M S  0.6   1.2   0:08.69 com.ford.sync.fnvservice
+   909 root         20   0  12G 6.3M 5.1M S  0.6   0.0   0:10.79 amqserver
+   893 ccs          20   0  12G  20M  14M S  0.6   0.1   0:09.09 vendor.ford.ccs@1.0-service
+   735 root         20   0  12G  15M 7.5M S  0.6   0.1   0:13.25 qtxa-nidps-engine -c /etc/qtxa/rule/qt+
+   366 statsd       20   0  12G 4.8M 3.8M S  0.6   0.0   0:08.89 statsd
+   249 root         -2   0    0    0    0 S  0.6   0.0   0:08.78 [apr_vm_cb_threa]
+    10 root         20   0    0    0    0 I  0.6   0.0   0:08.90 [rcu_preempt]
+     1 root         20   0  12G  11M 5.3M S  0.6   0.0   0:07.80 init second_stage
+ 16086 root         20   0    0    0    0 I  0.3   0.0   0:00.16 [kworker/7:0-events]
+ 15576 u0_a164      20   0  15G 171M 118M S  0.3   1.5   0:01.42 com.baidu.bodyguard
+  6513 system       20   0  15G 115M  75M S  0.3   1.0   0:01.31 com.ford.sync.surprisemessage
+  3892 root         20   0  12G 5.1M 4.2M S  0.3   0.0   0:03.67 qtxa-metrics
+  3641 system       20   0  15G 124M  78M S  0.3   1.1   0:04.54 com.baidu.xiaoduos.syncservice
+
+
+ PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS
+  3370 u0_a176      20   0  17G 479M 128M S 53.6   4.3  14:01.15 com.baidu.che.codriver
+   461 system       -3  -8  12G  62M  40M S 22.0   0.5   6:32.05 surfaceflinger
+  1104 system       18  -2  18G 368M 253M S 21.3   3.3   6:04.54 system_server
+  3073 u0_a148      10 -10  20G 517M 152M S 17.6   4.6   4:31.00 com.ford.sync.vpa
+   423 system       20   0  12G 4.8M 3.9M S 11.0   0.0   2:47.46 android.hardware.sensors@1.0-service
+   417 system       -3   0  12G  19M  15M S  9.3   0.1   2:21.16 android.hardware.graphics.composer@2.4+
+   253 logd         30  10  12G  60M 2.8M S  9.0   0.5   2:33.37 logd
+   368 root         20   0  15G 182M 141M S  5.6   1.6   1:29.97 zygote64
+  1490 system       20   0  16G 151M  90M S  4.6   1.3   1:17.44 com.android.car
+  1202 system       20   0  12G 3.1M 2.4M S  3.6   0.0   0:51.89 logcat -b all *:v
+   738 system       20   0  12G 4.6M 3.6M S  3.3   0.0   0:56.28 socrule --conf_path=/system/baidu/socr+
+  1192 system       20   0  12G 5.9M 4.8M S  3.0   0.0   0:47.98 vendor.yfve.hardware.logcollector@1.0-+
+   405 audioserver  20   0  65M  20M  10M S  2.6   0.1   0:40.10 android.hardware.audio.service
+  2918 system       10 -10  16G 483M 197M S  2.3   4.3   2:51.84 com.yfve.settings
+  3343 u0_a174      20   0 1.9G 197M 112M S  1.6   1.7   0:28.08 com.baidu.naviauto
+   454 audioserver  20   0  12G  29M  24M S  1.6   0.2   0:26.16 audioserver
+  1866 system       20   0  15G 121M  81M S  1.3   1.0   0:24.22 com.ford.xiaoduos.v2x
+ 10276 root         20   0  12G 4.8M 3.6M R  1.0   0.0   0:03.63 top
+  1684 system       20   0 2.1G 337M 270M S  1.0   3.0   0:26.41 com.ford.sync.controllerlauncher
+   735 root         20   0  12G  15M 7.5M S  1.0   0.1   0:13.77 qtxa-nidps-engine -c /etc/qtxa/rule/qt+
+   366 statsd       20   0  12G 4.8M 3.8M S  1.0   0.0   0:09.25 statsd
+   339 system       20   0  12G 9.2M 6.4M S  1.0   0.0   0:20.96 vendor.yfve.hardware.YFVECoreVehicle@1+
+ 10652 root         20   0    0    0    0 I  0.6   0.0   0:03.24 [kworker/0:4-events]
+   893 ccs          20   0  12G  20M  14M S  0.6   0.1   0:09.48 vendor.ford.ccs@1.0-service
+   427 vehicle_net+ 20   0  12G  12M 6.4M S  0.6   0.1   0:17.56 vendor.ford.hardware.automotive.vehicl+
+   249 root         -2   0    0    0    0 S  0.6   0.0   0:09.14 [apr_vm_cb_threa]
+    18 root         20   0    0    0    0 I  0.6   0.0   0:07.60 [kworker/0:1-cgroup_destroy]
+    10 root         20   0    0    0    0 I  0.6   0.0   0:09.25 [rcu_preempt]
+     1 root         20   0  12G  11M 5.3M S  0.6   0.0   0:08.05 init second_stage
+  1629 root         20   0  12G 3.1M 2.5M S  0.3   0.0   0:00.13 top -n 10 -b -p 735
+ 27526 root         20   0    0    0    0 I  0.3   0.0   0:00.16 [kworker/6:1-events]
+ 17043 root         20   0    0    0    0 I  0.3   0.0   0:00.19 [kworker/4:2-events]
+ 16086 root         20   0    0    0    0 I  0.3   0.0   0:00.21 [kworker/7:0-events]
+ 15849 root         20   0    0    0    0 I  0.3   0.0   0:00.28 [kworker/2:2-events]
+  3892 root         20   0  12G 5.1M 4.2M S  0.3   0.0   0:03.83 qtxa-metrics
+  3708 system       20   0  15G 203M 132M S  0.3   1.8   0:02.60 com.ford.sync.demomode
+  3641 system       20   0  15G 124M  78M S  0.3   1.1   0:04.70 com.baidu.xiaoduos.syncservice
+  1619 network_sta+ 20   0  15G 120M  80M S  0.3   1.0   0:02.76 com.android.networkstack.process

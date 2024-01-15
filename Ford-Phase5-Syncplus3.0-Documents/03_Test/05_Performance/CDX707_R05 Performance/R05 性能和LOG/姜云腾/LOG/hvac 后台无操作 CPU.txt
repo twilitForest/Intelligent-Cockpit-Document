@@ -1,0 +1,265 @@
+[H[J[?25l[H[JTasks: 395 total,   1 running, 392 sleeping,   0 stopped,   2 zombie
+  Mem: 11353160K total,  7419300K used,  3933860K free,  22863872 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1991192K cached
+800%cpu 123%user   3%nice 129%sys 523%idle   6%iow  10%irq   6%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  4125 u0_a169      20   0  17G 512M 152M S 64.5   4.6   0:24.29 com.baidu.che.codriver
+   466 system       -3 -20  12G  61M  40M S 29.0   0.5   0:09.65 surfaceflinger
+  1774 system       10 -10 2.1G 465M 363M S 25.8   4.1   0:12.37 com.ford.sync.controllerlauncher
+[1m  7671 root         20   0  12G 4.0M 3.2M R 16.1   0.0   0:00.05 top[m
+  3054 u0_a148      10 -10  20G 519M 160M S  9.6   4.6   0:06.29 com.ford.sync.vpa
+  1730 system       20   0  15G 121M  82M S  9.6   1.0   0:01.60 com.ford.sync.fordvehicleservice
+   400 system       RT   0  12G 5.1M 4.3M S  9.6   0.0   0:03.70 android.hardware.sensors@1.0-service
+  4163 u0_a142      20   0  17G 208M 112M S  6.4   1.8   0:05.60 com.baidu.iov.dueros.videos
+  1900 system       20   0  15G 115M  78M S  6.4   1.0   0:00.35 com.ford.sync.fcs
+  1023 system       18  -2  18G 345M 263M S  6.4   3.1   0:26.03 system_server
+   418 mediacodec   20   0  12G  20M  16M S  6.4   0.1   0:02.09 media.hwcodec /vendor.qti.media.c2@1.0-service
+   393 system       -3  -4  12G  20M  16M S  6.4   0.1   0:02.74 android.hardware.graphics.composer@2.4-service
+   248 logd         30  10  12G  16M 2.7M S  6.4   0.1   0:03.95 logd
+  6238 root         20   0  14G 105M  76M S  3.2   0.9   0:00.89 app_process / com.genymobile.scrcpy.Server 0 8000000 false - true true
+  3939 root         20   0  12G 7.3M 4.8M S  3.2   0.0   0:00.41 adbd --root_seclabel=u:r:su:s0
+  1989 system       20   0  15G 125M  79M S  3.2   1.1   0:01.07 com.ford.xiaoduos.v2x
+  1523 system       20   0  16G 146M  93M S  3.2   1.3   0:10.55 com.android.car
+  1213 system       20   0  12G 6.1M 5.0M S  3.2   0.0   0:01.92 vendor.yfve.hardware.logcollector@1.0-service
+  1020 wir          20   0  12G  15M  14M S  3.2   0.1   0:00.43 vendor.ford.wir@1.0-service
+   796 mediacodec   20   0  42M  13M  10M S  3.2   0.1   0:00.37 media.codec hw/android.hardware.media.omx@1.0-service[H[JTasks: 393 total,   3 running, 390 sleeping,   0 stopped,   0 zombie
+  Mem: 11353160K total,  7427156K used,  3926004K free,  23879680 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1991316K cached
+800%cpu 131%user   1%nice 137%sys 506%idle   8%iow  11%irq   7%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  4125 u0_a169      20   0  17G 512M 152M S 65.3   4.6   0:24.49 com.baidu.che.codriver
+   466 system       -3 -20  12G  61M  40M S 26.0   0.5   0:09.74 surfaceflinger
+  1774 system       10 -10 2.1G 465M 363M S 24.0   4.1   0:12.45 com.ford.sync.controllerlauncher
+   400 system       RT   0  12G 5.1M 4.3M S 10.6   0.0   0:03.73 android.hardware.sensors@1.0-service
+[1m  1730 system       20   0  15G 121M  82M R  8.6   1.0   0:01.63 com.ford.sync.fordvehicleservice[m
+  3054 u0_a148      10 -10  20G 519M 160M S  8.3   4.6   0:06.32 com.ford.sync.vpa
+   418 mediacodec   20   0  12G  20M  16M S  7.6   0.1   0:02.11 media.hwcodec /vendor.qti.media.c2@1.0-service
+[1m   393 system       -3  -4  12G  20M  16M R  6.6   0.1   0:02.76 android.hardware.graphics.composer@2.4-service[m
+  2641 system       20   0  12G 4.5M 3.6M S  6.3   0.0   0:01.28 bdnetdproxy
+  1023 system       18  -2  18G 345M 263M S  5.0   3.1   0:26.05 system_server
+   248 logd         30  10  12G  16M 2.7M S  4.3   0.1   0:03.97 logd
+  1523 system       20   0  16G 146M  93M S  3.6   1.3   0:10.56 com.android.car
+  4163 u0_a142      20   0  17G 208M 112M S  3.0   1.8   0:05.62 com.baidu.iov.dueros.videos
+  6238 root         20   0  14G 105M  76M S  2.6   0.9   0:00.90 app_process / com.genymobile.scrcpy.Server 0 8000000 false - true true
+  1224 system       20   0  12G 3.1M 2.5M S  2.6   0.0   0:02.02 logcat -b all *:v
+  1213 system       20   0  12G 6.1M 5.0M S  2.6   0.0   0:01.93 vendor.yfve.hardware.logcollector@1.0-service
+  3570 u0_a165      20   0  15G 152M 109M S  2.3   1.3   0:01.30 com.baidu.xiaoduos.weather
+   382 audioserver  20   0  65M  21M  10M S  2.3   0.1   0:07.49 android.hardware.audio.service
+[1m  7671 root         20   0  12G 4.2M 3.2M R  2.0   0.0   0:00.10 top[m
+   762 root         20   0  12G  19M 7.2M S  2.0   0.1   0:01.26 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0[H[JTasks: 396 total,   2 running, 392 sleeping,   0 stopped,   2 zombie
+  Mem: 11353160K total,  7434684K used,  3918476K free,  24944640 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1991476K cached
+800%cpu 141%user   1%nice 135%sys 498%idle   7%iow  11%irq   7%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  4125 u0_a169      20   0  17G 514M 152M S 63.6   4.6   0:26.45 com.baidu.che.codriver
+   466 system       -3 -20  12G  61M  40M S 25.6   0.5   0:10.52 surfaceflinger
+  1774 system       10 -10 2.1G 465M 363M S 25.0   4.1   0:13.17 com.ford.sync.controllerlauncher
+   400 system       RT   0  12G 5.1M 4.3M S 11.3   0.0   0:04.05 android.hardware.sensors@1.0-service
+  3054 u0_a148      10 -10  20G 519M 160M S  8.0   4.6   0:06.57 com.ford.sync.vpa
+   418 mediacodec   20   0  12G  20M  16M S  8.0   0.1   0:02.34 media.hwcodec /vendor.qti.media.c2@1.0-service
+  1730 system       20   0  15G 121M  82M S  7.6   1.0   0:01.89 com.ford.sync.fordvehicleservice
+   393 system       -3  -4  12G  20M  16M S  7.0   0.1   0:02.96 android.hardware.graphics.composer@2.4-service
+  2641 system       20   0  12G 4.5M 3.6M S  6.0   0.0   0:01.47 bdnetdproxy
+  1023 system       18  -2  18G 346M 263M S  5.3   3.1   0:26.20 system_server
+   248 logd         30  10  12G  16M 2.7M S  4.3   0.1   0:04.10 logd
+  1523 system       20   0  16G 147M  93M S  4.0   1.3   0:10.67 com.android.car
+  4163 u0_a142      20   0  17G 208M 112M S  3.3   1.8   0:05.71 com.baidu.iov.dueros.videos
+  6238 root         20   0  14G 105M  76M S  3.0   0.9   0:00.98 app_process / com.genymobile.scrcpy.Server 0 8000000 false - true true
+  1224 system       20   0  12G 3.1M 2.5M S  2.6   0.0   0:02.10 logcat -b all *:v
+   382 audioserver  20   0  65M  21M  10M S  2.6   0.1   0:07.56 android.hardware.audio.service
+[1m  3939 root         20   0  12G 7.3M 4.8M R  2.3   0.0   0:00.47 adbd --root_seclabel=u:r:su:s0[m
+  3570 u0_a165      20   0  15G 152M 109M S  2.3   1.3   0:01.37 com.baidu.xiaoduos.weather
+  1213 system       20   0  12G 6.1M 5.0M S  2.3   0.0   0:02.01 vendor.yfve.hardware.logcollector@1.0-service
+[1m  7671 root         20   0  12G 4.5M 3.3M R  2.0   0.0   0:00.16 top[m[H[JTasks: 395 total,   1 running, 394 sleeping,   0 stopped,   0 zombie
+  Mem: 11353160K total,  7443332K used,  3909828K free,  25358336 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1991640K cached
+800%cpu 125%user   2%nice  95%sys 560%idle   3%iow   9%irq   6%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  4125 u0_a169      20   0  17G 515M 152M S 59.6   4.6   0:28.36 com.baidu.che.codriver
+   466 system       -3 -20  12G  61M  40M S 24.3   0.5   0:11.29 surfaceflinger
+  1774 system       10 -10 2.1G 465M 363M S 24.0   4.1   0:13.92 com.ford.sync.controllerlauncher
+   400 system       20   0  12G 5.1M 4.3M S  9.3   0.0   0:04.39 android.hardware.sensors@1.0-service
+  3054 u0_a148      10 -10  20G 519M 160M S  7.6   4.6   0:06.81 com.ford.sync.vpa
+  1730 system       20   0  15G 121M  82M S  7.0   1.0   0:02.12 com.ford.sync.fordvehicleservice
+   418 mediacodec   20   0  12G  20M  16M S  7.0   0.1   0:02.58 media.hwcodec /vendor.qti.media.c2@1.0-service
+   393 system       -3  -4  12G  20M  16M S  5.6   0.1   0:03.17 android.hardware.graphics.composer@2.4-service
+  1023 system       18  -2  18G 346M 263M S  5.0   3.1   0:26.36 system_server
+   248 logd         30  10  12G  16M 2.7M S  4.3   0.1   0:04.23 logd
+   233 system       20   0  12G 6.1M 3.1M S  4.3   0.0   0:01.12 carwatchdogd
+  4163 u0_a142      20   0  17G 208M 112M S  3.3   1.8   0:05.81 com.baidu.iov.dueros.videos
+  2641 system       20   0  12G 4.5M 3.6M S  3.3   0.0   0:01.65 bdnetdproxy
+  1523 system       20   0  16G 147M  93M S  3.3   1.3   0:10.79 com.android.car
+  6238 root         20   0  14G 105M  76M S  3.0   0.9   0:01.07 app_process / com.genymobile.scrcpy.Server 0 8000000 false - true true
+  3570 u0_a165      20   0  15G 152M 109M S  2.6   1.3   0:01.44 com.baidu.xiaoduos.weather
+  1224 system       20   0  12G 3.1M 2.5M S  2.3   0.0   0:02.18 logcat -b all *:v
+  1213 system       20   0  12G 6.1M 5.0M S  2.3   0.0   0:02.08 vendor.yfve.hardware.logcollector@1.0-service
+   382 audioserver  20   0  65M  21M  10M S  2.3   0.1   0:07.64 android.hardware.audio.service
+  8272 root         20   0  12G 4.3M 3.3M S  2.0   0.0   0:00.10 top[H[JTasks: 396 total,   2 running, 394 sleeping,   0 stopped,   0 zombie
+  Mem: 11353160K total,  7447624K used,  3905536K free,  25366528 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1991748K cached
+800%cpu 117%user   1%nice  59%sys 610%idle   1%iow   8%irq   4%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  4125 u0_a169      20   0  17G 518M 152M S 58.3   4.6   0:30.15 com.baidu.che.codriver
+  1774 system       10 -10 2.1G 466M 364M S 23.6   4.2   0:14.64 com.ford.sync.controllerlauncher
+   466 system       -3 -20  12G  61M  40M S 23.6   0.5   0:12.02 surfaceflinger
+[1m   400 system       20   0  12G 5.1M 4.3M R  9.3   0.0   0:04.67 android.hardware.sensors@1.0-service[m
+  3054 u0_a148      10 -10  20G 519M 160M S  7.6   4.6   0:07.04 com.ford.sync.vpa
+   418 mediacodec   20   0  12G  20M  16M S  7.0   0.1   0:02.79 media.hwcodec /vendor.qti.media.c2@1.0-service
+  1730 system       20   0  15G 121M  82M S  6.0   1.0   0:02.33 com.ford.sync.fordvehicleservice
+   393 system       -3  -4  12G  20M  16M S  5.6   0.1   0:03.34 android.hardware.graphics.composer@2.4-service
+  1023 system       18  -2  18G 347M 263M S  4.3   3.1   0:26.51 system_server
+   248 logd         30  10  12G  16M 2.7M S  3.6   0.1   0:04.36 logd
+  1523 system       20   0  16G 147M  93M S  3.3   1.3   0:10.89 com.android.car
+  6238 root         20   0  14G 105M  76M S  3.0   0.9   0:01.16 app_process / com.genymobile.scrcpy.Server 0 8000000 false - true true
+  4163 u0_a142      20   0  17G 208M 112M S  3.0   1.8   0:05.91 com.baidu.iov.dueros.videos
+  1224 system       20   0  12G 3.1M 2.5M S  2.3   0.0   0:02.25 logcat -b all *:v
+  1213 system       20   0  12G 6.1M 5.0M S  2.0   0.0   0:02.15 vendor.yfve.hardware.logcollector@1.0-service
+   382 audioserver  20   0  65M  21M  10M S  2.0   0.1   0:07.71 android.hardware.audio.service
+  8272 root         20   0  12G 4.5M 3.3M S  1.6   0.0   0:00.16 top
+[1m  7671 root         20   0  12G 4.5M 3.3M R  1.6   0.0   0:00.27 top[m
+  3939 root         20   0  12G 7.6M 4.8M S  1.6   0.0   0:00.58 adbd --root_seclabel=u:r:su:s0
+  3570 u0_a165      20   0  15G 152M 109M S  1.6   1.3   0:01.52 com.baidu.xiaoduos.weather[H[JTasks: 397 total,   1 running, 394 sleeping,   0 stopped,   2 zombie
+  Mem: 11353160K total,  7451996K used,  3901164K free,  25415680 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1991880K cached
+800%cpu 116%user   2%nice  71%sys 598%idle   0%iow   8%irq   5%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  4125 u0_a169      20   0  17G 519M 152M S 58.6   4.6   0:31.90 com.baidu.che.codriver
+   466 system       -3 -20  12G  61M  40M S 24.3   0.5   0:12.73 surfaceflinger
+  1774 system       10 -10 2.1G 466M 364M S 22.0   4.2   0:15.35 com.ford.sync.controllerlauncher
+   400 system       RT   0  12G 5.1M 4.3M S 10.0   0.0   0:04.95 android.hardware.sensors@1.0-service
+  3054 u0_a148      10 -10  20G 519M 160M S  8.3   4.6   0:07.27 com.ford.sync.vpa
+   418 mediacodec   20   0  12G  20M  16M S  7.3   0.1   0:03.00 media.hwcodec /vendor.qti.media.c2@1.0-service
+  1730 system       20   0  15G 121M  82M S  6.6   1.0   0:02.51 com.ford.sync.fordvehicleservice
+   393 system       -3  -4  12G  20M  16M S  5.3   0.1   0:03.51 android.hardware.graphics.composer@2.4-service
+  1023 system       18  -2  18G 347M 263M S  4.6   3.1   0:26.64 system_server
+   248 logd         30  10  12G  17M 2.7M S  4.0   0.1   0:04.47 logd
+  1523 system       20   0  16G 147M  93M S  3.3   1.3   0:10.99 com.android.car
+  6238 root         20   0  14G 105M  76M S  2.6   0.9   0:01.25 app_process / com.genymobile.scrcpy.Server 0 8000000 false - true true
+  4163 u0_a142      20   0  17G 208M 112M S  2.6   1.8   0:06.00 com.baidu.iov.dueros.videos
+  3570 u0_a165      20   0  15G 152M 109M S  2.6   1.3   0:01.57 com.baidu.xiaoduos.weather
+   382 audioserver  20   0  65M  21M  10M S  2.3   0.1   0:07.77 android.hardware.audio.service
+  1989 system       20   0  15G 130M  79M S  2.0   1.1   0:01.29 com.ford.xiaoduos.v2x
+  1224 system       20   0  12G 3.1M 2.5M S  2.0   0.0   0:02.32 logcat -b all *:v
+  1213 system       20   0  12G 6.1M 5.0M S  2.0   0.0   0:02.21 vendor.yfve.hardware.logcollector@1.0-service
+  8272 root         20   0  12G 4.5M 3.3M S  1.6   0.0   0:00.21 top
+[1m  7671 root         20   0  12G 4.5M 3.3M R  1.6   0.0   0:00.32 top[m[H[JTasks: 396 total,   2 running, 394 sleeping,   0 stopped,   0 zombie
+  Mem: 11353160K total,  7445776K used,  3907384K free,  25423872 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1992056K cached
+800%cpu 117%user   2%nice  70%sys 597%idle   1%iow   8%irq   5%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  4125 u0_a169      20   0  17G 520M 153M S 60.6   4.6   0:33.66 com.baidu.che.codriver
+   466 system       -3 -20  12G  61M  40M S 24.3   0.5   0:13.46 surfaceflinger
+  1774 system       10 -10 2.1G 466M 364M S 21.6   4.2   0:16.01 com.ford.sync.controllerlauncher
+   400 system       20   0  12G 5.1M 4.3M S  8.6   0.0   0:05.25 android.hardware.sensors@1.0-service
+  3054 u0_a148      10 -10  20G 519M 160M S  7.6   4.6   0:07.52 com.ford.sync.vpa
+   418 mediacodec   20   0  12G  20M  16M S  7.3   0.1   0:03.22 media.hwcodec /vendor.qti.media.c2@1.0-service
+   393 system       -3  -4  12G  20M  16M S  6.3   0.1   0:03.67 android.hardware.graphics.composer@2.4-service
+  1730 system       20   0  15G 121M  82M S  6.0   1.0   0:02.71 com.ford.sync.fordvehicleservice
+  1023 system       18  -2  18G 347M 263M S  4.3   3.1   0:26.78 system_server
+   233 system       20   0  12G 6.2M 3.1M S  4.3   0.0   0:01.25 carwatchdogd
+  4163 u0_a142      20   0  17G 208M 112M S  3.6   1.8   0:06.08 com.baidu.iov.dueros.videos
+   248 logd         30  10  12G  17M 2.7M S  3.3   0.1   0:04.59 logd
+  1523 system       20   0  16G 148M  93M S  3.0   1.3   0:11.09 com.android.car
+  6238 root         20   0  14G 105M  76M S  2.6   0.9   0:01.33 app_process / com.genymobile.scrcpy.Server 0 8000000 false - true true
+  3570 u0_a165      20   0  15G 153M 109M S  2.3   1.3   0:01.65 com.baidu.xiaoduos.weather
+   382 audioserver  20   0  65M  21M  10M S  2.3   0.1   0:07.84 android.hardware.audio.service
+  8272 root         20   0  12G 4.5M 3.3M S  2.0   0.0   0:00.26 top
+   323 system       20   0  12G 9.4M 6.5M S  2.0   0.0   0:01.02 vendor.yfve.hardware.YFVECoreVehicle@1.0-service
+[1m  7671 root         20   0  12G 4.5M 3.3M R  1.6   0.0   0:00.37 top[m
+  3939 root         20   0  12G 7.6M 4.8M S  1.6   0.0   0:00.68 adbd --root_seclabel=u:r:su:s0[H[JTasks: 398 total,   3 running, 393 sleeping,   0 stopped,   2 zombie
+  Mem: 11353160K total,  7449788K used,  3903372K free,  25477120 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1992160K cached
+800%cpu 116%user   1%nice  59%sys 611%idle   0%iow   8%irq   4%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  4125 u0_a169      20   0  17G 513M 153M S 58.6   4.6   0:35.48 com.baidu.che.codriver
+[1m   466 system       -3 -20  12G  61M  40M R 24.3   0.5   0:14.19 surfaceflinger[m
+  1774 system       10 -10 2.1G 466M 364M S 21.6   4.2   0:16.66 com.ford.sync.controllerlauncher
+   400 system       RT   0  12G 5.1M 4.3M S  8.6   0.0   0:05.51 android.hardware.sensors@1.0-service
+  3054 u0_a148      10 -10  20G 519M 160M S  8.0   4.6   0:07.75 com.ford.sync.vpa
+   418 mediacodec   20   0  12G  20M  16M S  6.6   0.1   0:03.44 media.hwcodec /vendor.qti.media.c2@1.0-service
+  1730 system       20   0  15G 121M  82M S  6.0   1.0   0:02.89 com.ford.sync.fordvehicleservice
+   393 system       -3  -4  12G  20M  16M S  5.6   0.1   0:03.86 android.hardware.graphics.composer@2.4-service
+  1023 system       18  -2  18G 347M 263M S  5.0   3.1   0:26.91 system_server
+   248 logd         30  10  12G  17M 2.7M S  4.0   0.1   0:04.69 logd
+  1523 system       20   0  16G 148M  93M S  3.3   1.3   0:11.18 com.android.car
+  6238 root         20   0  14G 105M  76M S  2.6   0.9   0:01.41 app_process / com.genymobile.scrcpy.Server 0 8000000 false - true true
+  1224 system       20   0  12G 3.1M 2.5M S  2.6   0.0   0:02.43 logcat -b all *:v
+  4163 u0_a142      20   0  16G 207M 112M S  2.0   1.8   0:06.19 com.baidu.iov.dueros.videos
+  1213 system       20   0  12G 6.1M 5.0M S  2.0   0.0   0:02.32 vendor.yfve.hardware.logcollector@1.0-service
+   382 audioserver  20   0  65M  21M  10M S  2.0   0.1   0:07.91 android.hardware.audio.service
+  8272 root         20   0  12G 4.5M 3.3M S  1.6   0.0   0:00.32 top
+[1m  7671 root         20   0  12G 4.5M 3.3M R  1.6   0.0   0:00.42 top[m
+  3939 root         20   0  12G 7.6M 4.8M S  1.6   0.0   0:00.73 adbd --root_seclabel=u:r:su:s0
+  3570 u0_a165      20   0  15G 153M 109M S  1.6   1.3   0:01.72 com.baidu.xiaoduos.weather[H[JTasks: 395 total,   1 running, 394 sleeping,   0 stopped,   0 zombie
+  Mem: 11353160K total,  7461500K used,  3891660K free,  25559040 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1992328K cached
+800%cpu 135%user   2%nice  79%sys 570%idle   1%iow   8%irq   5%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  4125 u0_a169      20   0  17G 515M 153M S 58.6   4.6   0:37.24 com.baidu.che.codriver
+   466 system       -3 -20  12G  61M  40M D 26.3   0.5   0:14.92 surfaceflinger
+  1774 system       10 -10 2.1G 466M 364M S 22.6   4.2   0:17.31 com.ford.sync.controllerlauncher
+  1023 system       18  -2  18G 348M 263M S 17.6   3.1   0:27.06 system_server
+   400 system       20   0  12G 5.1M 4.3M S 10.0   0.0   0:05.77 android.hardware.sensors@1.0-service
+  3054 u0_a148      10 -10  20G 519M 160M S  7.6   4.6   0:07.99 com.ford.sync.vpa
+   418 mediacodec   20   0  12G  20M  16M S  7.3   0.1   0:03.64 media.hwcodec /vendor.qti.media.c2@1.0-service
+  5691 u0_a180      20   0  15G  98M  62M S  7.0   0.8   0:00.07 com.android.permissioncontroller
+   393 system       -3  -4  12G  20M  16M S  5.6   0.1   0:04.03 android.hardware.graphics.composer@2.4-service
+  1730 system       20   0  15G 121M  82M S  4.6   1.0   0:03.07 com.ford.sync.fordvehicleservice
+   248 logd         30  10  12G  17M 2.7M S  4.3   0.1   0:04.81 logd
+  1523 system       20   0  16G 148M  93M S  3.6   1.3   0:11.28 com.android.car
+  4163 u0_a142      20   0  16G 207M 112M S  3.0   1.8   0:06.25 com.baidu.iov.dueros.videos
+  1213 system       20   0  12G 6.1M 5.0M S  3.0   0.0   0:02.38 vendor.yfve.hardware.logcollector@1.0-service
+  6238 root         20   0  14G 105M  76M S  2.6   0.9   0:01.49 app_process / com.genymobile.scrcpy.Server 0 8000000 false - true true
+  1224 system       20   0  12G 3.1M 2.5M S  2.6   0.0   0:02.51 logcat -b all *:v
+   382 audioserver  20   0  65M  21M  10M S  2.6   0.1   0:07.97 android.hardware.audio.service
+  3570 u0_a165      20   0  15G 153M 109M S  2.3   1.3   0:01.77 com.baidu.xiaoduos.weather
+  8272 root         20   0  12G 4.5M 3.3M S  2.0   0.0   0:00.37 top
+  3939 root         20   0  12G 7.6M 4.8M S  1.6   0.0   0:00.78 adbd --root_seclabel=u:r:su:s0[H[JTasks: 396 total,   1 running, 395 sleeping,   0 stopped,   0 zombie
+  Mem: 11353160K total,  7465028K used,  3888132K free,  25567232 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1992444K cached
+800%cpu 104%user   1%nice  71%sys 611%idle   0%iow   7%irq   5%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  4125 u0_a169      20   0  17G 516M 153M S 55.0   4.6   0:39.00 com.baidu.che.codriver
+   466 system       -3 -20  12G  61M  40M S 24.3   0.5   0:15.71 surfaceflinger
+  1774 system       10 -10 2.1G 466M 364M S 22.6   4.2   0:17.99 com.ford.sync.controllerlauncher
+  1023 system       18  -2  18G 350M 263M S 11.0   3.1   0:27.59 system_server
+   400 system       RT   0  12G 5.1M 4.3M S 10.6   0.0   0:06.07 android.hardware.sensors@1.0-service
+  3054 u0_a148      10 -10  20G 519M 160M S  7.6   4.6   0:08.22 com.ford.sync.vpa
+   418 mediacodec   20   0  12G  20M  16M S  7.3   0.1   0:03.86 media.hwcodec /vendor.qti.media.c2@1.0-service
+   393 system       -3  -4  12G  20M  16M S  6.0   0.1   0:04.20 android.hardware.graphics.composer@2.4-service
+   248 logd         30  10  12G  17M 2.7M S  4.0   0.1   0:04.94 logd
+  1523 system       20   0  16G 148M  93M S  3.3   1.3   0:11.39 com.android.car
+  6238 root         20   0  14G 105M  76M S  2.6   0.9   0:01.57 app_process / com.genymobile.scrcpy.Server 0 8000000 false - true true
+  4163 u0_a142      20   0  16G 207M 112M S  2.3   1.8   0:06.34 com.baidu.iov.dueros.videos
+  1224 system       20   0  12G 3.1M 2.5M S  2.3   0.0   0:02.59 logcat -b all *:v
+  3570 u0_a165      20   0  15G 153M 109M S  2.0   1.3   0:01.84 com.baidu.xiaoduos.weather
+  1213 system       20   0  12G 6.1M 5.0M S  2.0   0.0   0:02.47 vendor.yfve.hardware.logcollector@1.0-service
+   382 audioserver  20   0  65M  21M  10M S  2.0   0.1   0:08.05 android.hardware.audio.service
+   323 system       20   0  12G 9.4M 6.5M S  2.0   0.0   0:01.16 vendor.yfve.hardware.YFVECoreVehicle@1.0-service
+  8272 root         20   0  12G 4.5M 3.3M S  1.6   0.0   0:00.43 top
+[1m  7671 root         20   0  12G 4.5M 3.3M R  1.6   0.0   0:00.51 top[m
+  3939 root         20   0  12G 7.6M 4.8M S  1.6   0.0   0:00.83 adbd --root_seclabel=u:r:su:s0[H[JTasks: 397 total,   2 running, 393 sleeping,   0 stopped,   2 zombie
+  Mem: 11353160K total,  7582088K used,  3771072K free,  25743360 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1997828K cached
+800%cpu 141%user   3%nice 100%sys 538%idle   2%iow  10%irq   6%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  4125 u0_a169      20   0  17G 518M 153M S 60.0   4.6   0:40.65 com.baidu.che.codriver
+   466 system       -3 -20  12G  61M  40M S 34.0   0.5   0:16.44 surfaceflinger
+  1774 system       10 -10 2.1G 466M 364M S 28.3   4.2   0:18.67 com.ford.sync.controllerlauncher
+  1023 system       18  -2  18G 350M 263M S 16.0   3.1   0:27.92 system_server
+   418 mediacodec   20   0  12G  20M  16M S 16.0   0.1   0:04.08 media.hwcodec /vendor.qti.media.c2@1.0-service
+  3054 u0_a148      10 -10  20G 519M 160M S 11.0   4.6   0:08.45 com.ford.sync.vpa
+   400 system       RT   0  12G 5.1M 4.3M S 10.6   0.0   0:06.39 android.hardware.sensors@1.0-service
+  6238 root         20   0  14G 105M  76M S  6.3   0.9   0:01.65 app_process / com.genymobile.scrcpy.Server 0 8000000 false - true true
+   393 system       -3  -4  12G  20M  16M S  6.0   0.1   0:04.38 android.hardware.graphics.composer@2.4-service
+   248 logd         30  10  12G  17M 2.7M S  4.6   0.1   0:05.06 logd
+   233 system       20   0  12G 6.2M 3.1M S  4.6   0.0   0:01.38 carwatchdogd
+  3939 root         20   0  12G 7.6M 4.8M S  4.0   0.0   0:00.88 adbd --root_seclabel=u:r:su:s0
+  1523 system       20   0  16G 148M  93M S  3.3   1.3   0:11.49 com.android.car
+  4163 u0_a142      20   0  16G 207M 112M S  3.0   1.8   0:06.41 com.baidu.iov.dueros.videos
+  1224 system       20   0  12G 3.1M 2.5M S  2.6   0.0   0:02.66 logcat -b all *:v
+  1213 system       20   0  12G 6.1M 5.0M S  2.6   0.0   0:02.53 vendor.yfve.hardware.logcollector@1.0-service
+   382 audioserver  20   0  65M  21M  10M S  2.6   0.1   0:08.11 android.hardware.audio.service
+  8272 root         20   0  12G 4.5M 3.3M S  2.0   0.0   0:00.48 top
+  3570 u0_a165      20   0  15G 153M 109M S  2.0   1.3   0:01.90 com.baidu.xiaoduos.weather
+   796 mediacodec   20   0  42M  13M  10M S  2.0   0.1   0:00.70 media.codec hw/android.hardware.media.omx@1.0-service

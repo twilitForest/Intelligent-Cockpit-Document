@@ -1,0 +1,33 @@
+Tasks: 389 total,   2 running, 387 sleeping,   0 stopped,   0 zombie
+  Mem: 11353160K total,  8070040K used,  3283120K free,  80134144 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  2093476K cached
+Tasks: 393 total,   3 running, 390 sleeping,   0 stopped,   0 zombie
+  Mem: 11353160K total,  7818876K used,  3534284K free,  42123264 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1974000K cached
+800%cpu 202%user  30%nice 174%sys 368%idle   3%iow  13%irq  10%sirq   0%host
+   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS
+  4255 u0_a170      20   0  18G 546M 161M S  128   4.9   2:41.05 com.baidu.che.codriver
+  3279 u0_a138      10 -10  29G 0.9G 310M S 40.3   9.0   0:53.10 com.ford.sync.vpa
+   488 system       -3  -8  12G  61M  41M D 34.6   0.5   0:44.89 surfaceflinger
+   250 logd         30  10  12G  30M 2.7M S 33.0   0.2   0:38.31 logd
+  3109 u0_a180      20   0  15G 139M  88M S 32.6   1.2   0:47.81 com.android.providers.media.module
+   956 system       18  -2  17G 305M 234M S 23.0   2.7   0:59.71 system_server
+   675 shell        20   0  12G 5.3M 4.2M S 19.0   0.0   0:29.12 adbd --root_seclabel=u:r:su:s0
+  3699 system       10 -10 1.9G 287M 191M S 16.6   2.5   0:27.21 com.yfve.settings
+   401 system       -3   0  12G  20M  16M S 11.6   0.1   0:14.79 android.hardware.graphics.composer@2.4-service
+   413 system       20   0  12G 5.0M 4.1M S  9.0   0.0   0:14.44 android.hardware.sensors@1.0-service
+  1227 system       20   0  12G 3.0M 2.4M R  8.0   0.0   0:10.89 logcat -b all *:v
+  1118 shell        20   0  12G 2.3M 1.8M S  8.0   0.0   0:10.78 logcat -v long -v epoch
+  1212 system       20   0  12G 6.0M 4.9M S  7.0   0.0   0:10.17 vendor.yfve.hardware.logcollector@1.0-service
+   204 root         20   0    0    0    0 I  4.3   0.0   0:04.82 [kworker/u16:4-adb]
+   720 soagateway   20   0  12G  21M  18M S  4.0   0.1   0:05.13 vendor bin soagateway --config /vendor/etc/soa/gateway+
+  3365 system       20   0 1.7G  99M  71M S  3.6   0.8   0:04.47 com.yfve.eol
+  2940 system       20   0  12G  10M 4.5M S  3.6   0.0   0:04.71 qtxa-nidps-manage
+   790 root          0 -20    0    0    0 I  3.6   0.0   0:06.11 [kworker/u17:2-dwc_wq]
+   750 root          0 -20    0    0    0 I  3.6   0.0   0:06.25 [kworker/u17:1-dwc_wq]
+     7 root         20   0    0    0    0 I  3.6   0.0   0:03.52 [kworker/u16:0-events_unbound]
+  1536 system       10 -10 1.7G 124M  84M S  3.3   1.1   0:05.26 com.yfve.core
+  1515 system       20   0 1.7G 139M  83M S  3.3   1.2   0:16.57 com.android.car
+   785 root         20   0  12G  21M 7.8M S  3.3   0.1   0:04.72 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/+
+  3939 system       20   0  15G 127M  86M S  2.6   1.1   0:01.67 com.baidu.xiaoduos.syncservice
+   915 fnv          20   0  12G  24M  21M S  2.6   0.2   0:03.95 vendor.ford.soa@1.0-service

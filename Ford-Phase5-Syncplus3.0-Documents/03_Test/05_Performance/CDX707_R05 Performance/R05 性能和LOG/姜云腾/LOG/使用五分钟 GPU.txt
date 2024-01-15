@@ -1,0 +1,293 @@
+slog2info -b KGSL -w
+Aug 03 10:41:57.239                     KGSL.45094                           0  -----ONLINE-----
+Aug 03 10:52:12.427                     KGSL.45094            OS-Buffer*     0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 602: elapsed time = 1001.000000ms, clock rate = 183650.546454kHz, percentage busy = 72.051869%
+Aug 03 10:52:13.427                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 603: elapsed time = 1001.000000ms, clock rate = 205740.767233kHz, percentage busy = 66.947804%
+Aug 03 10:52:14.435                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 604: elapsed time = 1001.000000ms, clock rate = 192515.785215kHz, percentage busy = 70.297052%
+Aug 03 10:52:15.340                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 605: elapsed time = 1001.000000ms, clock rate = 188092.792208kHz, percentage busy = 76.132180%
+Aug 03 10:52:16.343                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 606: elapsed time = 1001.000000ms, clock rate = 214146.850150kHz, percentage busy = 64.751654%
+Aug 03 10:52:17.335                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 607: elapsed time = 1001.000000ms, clock rate = 231035.594406kHz, percentage busy = 66.028957%
+Aug 03 10:52:18.343                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 608: elapsed time = 1001.000000ms, clock rate = 216582.389610kHz, percentage busy = 67.607246%
+Aug 03 10:52:19.346                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 609: elapsed time = 1001.000000ms, clock rate = 220592.658342kHz, percentage busy = 70.131922%
+Aug 03 10:52:20.342                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 610: elapsed time = 1001.000000ms, clock rate = 204243.813187kHz, percentage busy = 71.784204%
+Aug 03 10:52:22.339                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 611: elapsed time = 1001.000000ms, clock rate = 220883.213786kHz, percentage busy = 66.545033%
+Aug 03 10:52:23.349                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 612: elapsed time = 1001.000000ms, clock rate = 228567.843157kHz, percentage busy = 68.832812%
+Aug 03 10:52:24.345                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 613: elapsed time = 1001.000000ms, clock rate = 180730.669331kHz, percentage busy = 75.583457%
+Aug 03 10:52:25.345                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 614: elapsed time = 1001.000000ms, clock rate = 220073.658342kHz, percentage busy = 71.709053%
+Aug 03 10:52:26.345                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 615: elapsed time = 1001.000000ms, clock rate = 200438.867133kHz, percentage busy = 69.010380%
+Aug 03 10:52:27.344                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 616: elapsed time = 1001.000000ms, clock rate = 198770.033966kHz, percentage busy = 65.862825%
+Aug 03 10:52:28.349                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 617: elapsed time = 1001.000000ms, clock rate = 227770.235764kHz, percentage busy = 66.981919%
+Aug 03 10:52:29.350                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 618: elapsed time = 1001.000000ms, clock rate = 204271.312687kHz, percentage busy = 69.764213%
+Aug 03 10:52:30.342                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 619: elapsed time = 1001.000000ms, clock rate = 222268.688312kHz, percentage busy = 67.348602%
+Aug 03 10:52:31.357                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 620: elapsed time = 1001.000000ms, clock rate = 195157.369630kHz, percentage busy = 67.121678%
+Aug 03 10:52:32.352                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 621: elapsed time = 1001.000000ms, clock rate = 231902.126873kHz, percentage busy = 66.427126%
+Aug 03 10:52:33.350                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 622: elapsed time = 1001.000000ms, clock rate = 225673.936064kHz, percentage busy = 68.047260%
+Aug 03 10:52:34.351                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 623: elapsed time = 1001.000000ms, clock rate = 192494.525475kHz, percentage busy = 72.657208%
+Aug 03 10:52:35.354                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 624: elapsed time = 1001.000000ms, clock rate = 194845.587413kHz, percentage busy = 66.555342%
+Aug 03 10:52:36.346                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 625: elapsed time = 1001.000000ms, clock rate = 204229.446553kHz, percentage busy = 66.963377%
+Aug 03 10:52:37.250                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 626: elapsed time = 1001.000000ms, clock rate = 234001.485514kHz, percentage busy = 65.575439%
+Aug 03 10:52:38.260                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 627: elapsed time = 1001.000000ms, clock rate = 204830.308691kHz, percentage busy = 70.095134%
+Aug 03 10:52:39.265                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 628: elapsed time = 1001.000000ms, clock rate = 182184.687313kHz, percentage busy = 67.264241%
+Aug 03 10:52:40.253                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 629: elapsed time = 1001.000000ms, clock rate = 166092.407592kHz, percentage busy = 74.106177%
+Aug 03 10:52:41.267                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 630: elapsed time = 1001.000000ms, clock rate = 171070.711289kHz, percentage busy = 65.583522%
+Aug 03 10:52:42.267                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 631: elapsed time = 1001.000000ms, clock rate = 219997.376623kHz, percentage busy = 66.067594%
+Aug 03 10:52:43.256                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 632: elapsed time = 1001.000000ms, clock rate = 230929.291708kHz, percentage busy = 65.300104%
+Aug 03 10:52:44.270                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 633: elapsed time = 1001.000000ms, clock rate = 229542.999001kHz, percentage busy = 64.206431%
+Aug 03 10:52:45.265                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 634: elapsed time = 1001.000000ms, clock rate = 213629.868132kHz, percentage busy = 66.048575%
+Aug 03 10:52:46.259                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 635: elapsed time = 1001.000000ms, clock rate = 187131.228771kHz, percentage busy = 63.996984%
+Aug 03 10:52:47.272                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 636: elapsed time = 1001.000000ms, clock rate = 203720.140859kHz, percentage busy = 61.876781%
+Aug 03 10:52:48.273                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 637: elapsed time = 1001.000000ms, clock rate = 207850.521479kHz, percentage busy = 64.845038%
+Aug 03 10:52:49.261                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 638: elapsed time = 1001.000000ms, clock rate = 222034.177822kHz, percentage busy = 65.327518%
+Aug 03 10:52:50.274                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 639: elapsed time = 1001.000000ms, clock rate = 237262.047952kHz, percentage busy = 66.064189%
+Aug 03 10:52:51.277                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 640: elapsed time = 1001.000000ms, clock rate = 228775.986014kHz, percentage busy = 64.249758%
+Aug 03 10:52:52.264                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 641: elapsed time = 1001.000000ms, clock rate = 202458.521479kHz, percentage busy = 66.330136%
+Aug 03 10:52:53.275                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 642: elapsed time = 1001.000000ms, clock rate = 202371.163836kHz, percentage busy = 66.658882%
+Aug 03 10:52:54.272                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 643: elapsed time = 1001.000000ms, clock rate = 208888.566434kHz, percentage busy = 68.732349%
+Aug 03 10:52:55.279                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 644: elapsed time = 1001.000000ms, clock rate = 226532.467532kHz, percentage busy = 67.245607%
+Aug 03 10:52:56.278                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 645: elapsed time = 1001.000000ms, clock rate = 240447.460539kHz, percentage busy = 66.256852%
+Aug 03 10:52:57.180                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 646: elapsed time = 1001.000000ms, clock rate = 222283.430569kHz, percentage busy = 66.813467%
+Aug 03 10:52:58.182                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 647: elapsed time = 1001.000000ms, clock rate = 208109.823177kHz, percentage busy = 74.224383%
+Aug 03 10:52:59.183                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 648: elapsed time = 1001.000000ms, clock rate = 185654.771229kHz, percentage busy = 73.862624%
+Aug 03 10:53:00.184                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 649: elapsed time = 1001.000000ms, clock rate = 207281.676324kHz, percentage busy = 70.830189%
+Aug 03 10:53:01.179                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 650: elapsed time = 1001.000000ms, clock rate = 202785.904096kHz, percentage busy = 76.883833%
+Aug 03 10:53:02.186                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 651: elapsed time = 1001.000000ms, clock rate = 220805.168831kHz, percentage busy = 67.878488%
+Aug 03 10:53:03.185                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 652: elapsed time = 1001.000000ms, clock rate = 203609.273726kHz, percentage busy = 72.837340%
+Aug 03 10:53:04.189                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 653: elapsed time = 1001.000000ms, clock rate = 203361.330669kHz, percentage busy = 68.116194%
+Aug 03 10:53:05.189                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 654: elapsed time = 1001.000000ms, clock rate = 188993.317682kHz, percentage busy = 66.238451%
+Aug 03 10:53:06.189                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 655: elapsed time = 1001.000000ms, clock rate = 171461.972028kHz, percentage busy = 70.644146%
+Aug 03 10:53:07.189                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 656: elapsed time = 1001.000000ms, clock rate = 161045.749251kHz, percentage busy = 75.802847%
+Aug 03 10:53:08.184                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 657: elapsed time = 1001.000000ms, clock rate = 196970.885115kHz, percentage busy = 71.123071%
+Aug 03 10:53:09.194                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 658: elapsed time = 1001.000000ms, clock rate = 214042.763237kHz, percentage busy = 64.511826%
+Aug 03 10:53:10.188                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 659: elapsed time = 1001.000000ms, clock rate = 217341.401598kHz, percentage busy = 64.070727%
+Aug 03 10:53:11.188                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 660: elapsed time = 1001.000000ms, clock rate = 215160.670330kHz, percentage busy = 66.042786%
+Aug 03 10:53:12.195                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 661: elapsed time = 1001.000000ms, clock rate = 215191.457542kHz, percentage busy = 62.465582%
+Aug 03 10:53:13.192                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 662: elapsed time = 1001.000000ms, clock rate = 247138.849151kHz, percentage busy = 70.899410%
+Aug 03 10:53:14.193                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 663: elapsed time = 1001.000000ms, clock rate = 301999.972028kHz, percentage busy = 61.987824%
+Aug 03 10:53:15.192                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 664: elapsed time = 1001.000000ms, clock rate = 245397.569431kHz, percentage busy = 64.989771%
+Aug 03 10:53:16.188                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 665: elapsed time = 1001.000000ms, clock rate = 198758.175824kHz, percentage busy = 64.428367%
+Aug 03 10:53:17.195                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 666: elapsed time = 1001.000000ms, clock rate = 213670.782218kHz, percentage busy = 68.600599%
+Aug 03 10:53:18.090                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 667: elapsed time = 1001.000000ms, clock rate = 212695.603397kHz, percentage busy = 69.497948%
+Aug 03 10:53:19.103                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 668: elapsed time = 1001.000000ms, clock rate = 206297.674326kHz, percentage busy = 74.086855%
+Aug 03 10:53:20.085                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 669: elapsed time = 1001.000000ms, clock rate = 215250.967033kHz, percentage busy = 70.504684%
+Aug 03 10:53:21.105                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 670: elapsed time = 1001.000000ms, clock rate = 189743.572428kHz, percentage busy = 65.075000%
+Aug 03 10:53:22.106                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 671: elapsed time = 1001.000000ms, clock rate = 194531.843157kHz, percentage busy = 62.812001%
+Aug 03 10:53:23.086                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 672: elapsed time = 1001.000000ms, clock rate = 230254.609391kHz, percentage busy = 67.326087%
+Aug 03 10:53:24.095                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 673: elapsed time = 1001.000000ms, clock rate = 232630.876124kHz, percentage busy = 65.314392%
+Aug 03 10:53:25.109                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 674: elapsed time = 1001.000000ms, clock rate = 197579.163836kHz, percentage busy = 74.798928%
+Aug 03 10:53:26.109                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 675: elapsed time = 1001.000000ms, clock rate = 197998.794206kHz, percentage busy = 75.224233%
+Aug 03 10:53:27.109                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 676: elapsed time = 1001.000000ms, clock rate = 203312.503497kHz, percentage busy = 68.602801%
+Aug 03 10:53:28.100                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 677: elapsed time = 1001.000000ms, clock rate = 222085.966034kHz, percentage busy = 65.600590%
+Aug 03 10:53:29.113                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 678: elapsed time = 1001.000000ms, clock rate = 192417.439560kHz, percentage busy = 61.102660%
+Aug 03 10:53:30.113                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 679: elapsed time = 1001.000000ms, clock rate = 191924.753247kHz, percentage busy = 62.856631%
+Aug 03 10:53:31.115                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 680: elapsed time = 1001.000000ms, clock rate = 210652.477522kHz, percentage busy = 71.297904%
+Aug 03 10:53:32.115                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 681: elapsed time = 1001.000000ms, clock rate = 214928.480519kHz, percentage busy = 69.263847%
+Aug 03 10:53:33.106                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 682: elapsed time = 1001.000000ms, clock rate = 220227.691309kHz, percentage busy = 71.646183%
+Aug 03 10:53:34.117                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 683: elapsed time = 1001.000000ms, clock rate = 239407.177822kHz, percentage busy = 67.134381%
+Aug 03 10:53:35.118                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 684: elapsed time = 1001.000000ms, clock rate = 235016.941059kHz, percentage busy = 66.053082%
+Aug 03 10:53:36.119                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 685: elapsed time = 1001.000000ms, clock rate = 203568.289710kHz, percentage busy = 66.663190%
+Aug 03 10:53:37.118                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 686: elapsed time = 1001.000000ms, clock rate = 178457.273726kHz, percentage busy = 70.051429%
+Aug 03 10:53:38.119                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 687: elapsed time = 1001.000000ms, clock rate = 206026.242757kHz, percentage busy = 70.727107%
+Aug 03 10:53:39.021                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 688: elapsed time = 1001.000000ms, clock rate = 225264.643357kHz, percentage busy = 67.105045%
+Aug 03 10:53:40.023                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 689: elapsed time = 1001.000000ms, clock rate = 203086.785215kHz, percentage busy = 64.469728%
+Aug 03 10:53:41.023                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 690: elapsed time = 1001.000000ms, clock rate = 215401.901099kHz, percentage busy = 65.833814%
+Aug 03 10:53:42.025                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 691: elapsed time = 1001.000000ms, clock rate = 232617.574426kHz, percentage busy = 63.841847%
+Aug 03 10:53:43.016                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 692: elapsed time = 1001.000000ms, clock rate = 234801.213786kHz, percentage busy = 66.235144%
+Aug 03 10:53:44.026                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 693: elapsed time = 1001.000000ms, clock rate = 202762.688312kHz, percentage busy = 68.873548%
+Aug 03 10:53:45.026                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 694: elapsed time = 1001.000000ms, clock rate = 202407.176823kHz, percentage busy = 72.224840%
+Aug 03 10:53:46.029                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 695: elapsed time = 1001.000000ms, clock rate = 187496.386613kHz, percentage busy = 63.913611%
+Aug 03 10:53:47.027                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 696: elapsed time = 1001.000000ms, clock rate = 223063.962038kHz, percentage busy = 64.775879%
+Aug 03 10:53:48.030                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 697: elapsed time = 1001.000000ms, clock rate = 222973.537463kHz, percentage busy = 70.856592%
+Aug 03 10:53:49.032                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 698: elapsed time = 1001.000000ms, clock rate = 193738.670330kHz, percentage busy = 76.031093%
+Aug 03 10:53:50.032                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 699: elapsed time = 1001.000000ms, clock rate = 199612.681319kHz, percentage busy = 70.632146%
+Aug 03 10:53:51.033                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 700: elapsed time = 1001.000000ms, clock rate = 193821.900100kHz, percentage busy = 63.747767%
+Aug 03 10:53:52.027                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 701: elapsed time = 1001.000000ms, clock rate = 215126.614386kHz, percentage busy = 62.400959%
+Aug 03 10:53:53.035                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 702: elapsed time = 1001.000000ms, clock rate = 219441.406593kHz, percentage busy = 69.993314%
+Aug 03 10:53:54.032                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 703: elapsed time = 1001.000000ms, clock rate = 194395.851149kHz, percentage busy = 71.969146%
+Aug 03 10:53:55.033                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 704: elapsed time = 1001.000000ms, clock rate = 218945.894106kHz, percentage busy = 66.666036%
+Aug 03 10:53:56.038                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 705: elapsed time = 1001.000000ms, clock rate = 242061.246753kHz, percentage busy = 66.614715%
+Aug 03 10:53:57.040                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 706: elapsed time = 1001.000000ms, clock rate = 242053.155844kHz, percentage busy = 65.770830%
+Aug 03 10:53:58.035                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 707: elapsed time = 1001.000000ms, clock rate = 230345.355644kHz, percentage busy = 65.148940%
+Aug 03 10:53:58.515                     KGSL.45094            OS-Buffer      0  KGSL:(tid:13):(caller_pid:1331312) INFO io_open[438]: pid = 1331312, tid = 1, coid = 3, scoid = 65563
+Aug 03 10:53:58.515                     KGSL.45094            OS-Buffer      0  KGSL:(tid:13):(caller_pid:1331312) INFO dup_io_open[2419]: ctrlchannel, pid = 1331312
+Aug 03 10:53:58.515                     KGSL.45094            OS-Buffer      0  KGSL:(tid:13):(caller_pid:1331312) INFO dup_io_cleanup[469]: Driver: dup_io_cleanup is called for  pid = 1331312, tid = 1, coid = 3, scoid = 65563
+Aug 03 10:53:58.515                     KGSL.45094            OS-Buffer      0  KGSL:(tid:13):(caller_pid:1331312) INFO dup_io_cleanup[469]: Driver: dup_io_cleanup is called for  pid = 1331312, tid = 1, coid = 1, scoid = 65563
+Aug 03 10:53:58.515                     KGSL.45094            OS-Buffer      0  KGSL:(tid:13):(caller_pid:1331312) INFO io_cleanup[456]: Driver: io_cleanup is called for  pid = 1331312, tid = 1, coid = 1, scoid = 65563
+Aug 03 10:53:58.515                     KGSL.45094            OS-Buffer      0  KGSL:(tid:13):(caller_pid:1331312) INFO kgsl_driver_cleanup[293]: No process 1331312:1 found in the list
+Aug 03 10:53:59.036                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 708: elapsed time = 1001.000000ms, clock rate = 226529.975025kHz, percentage busy = 64.478722%
+Aug 03 10:53:59.932                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 709: elapsed time = 1001.000000ms, clock rate = 202181.997003kHz, percentage busy = 60.568051%
+Aug 03 10:54:00.933                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 710: elapsed time = 1001.000000ms, clock rate = 165291.506494kHz, percentage busy = 64.503974%
+Aug 03 10:54:01.941                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 711: elapsed time = 1001.000000ms, clock rate = 170450.671329kHz, percentage busy = 72.535355%
+Aug 03 10:54:02.941                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 712: elapsed time = 1001.000000ms, clock rate = 164107.155844kHz, percentage busy = 75.806954%
+Aug 03 10:54:03.946                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 713: elapsed time = 1001.000000ms, clock rate = 216840.223776kHz, percentage busy = 65.572571%
+Aug 03 10:54:04.073                     KGSL.45094            OS-Buffer      0  KGSL:(tid:35):(caller_pid:1331312) INFO io_open[438]: pid = 1331312, tid = 1, coid = 3, scoid = 65563
+Aug 03 10:54:04.073                     KGSL.45094            OS-Buffer      0  KGSL:(tid:35):(caller_pid:1331312) INFO dup_io_open[2419]: ctrlchannel, pid = 1331312
+Aug 03 10:54:04.073                     KGSL.45094            OS-Buffer      0  KGSL:(tid:35):(caller_pid:1331312) INFO dup_io_cleanup[469]: Driver: dup_io_cleanup is called for  pid = 1331312, tid = 1, coid = 3, scoid = 65563
+Aug 03 10:54:04.073                     KGSL.45094            OS-Buffer      0  KGSL:(tid:35):(caller_pid:1331312) INFO dup_io_cleanup[469]: Driver: dup_io_cleanup is called for  pid = 1331312, tid = 1, coid = 1, scoid = 65563
+Aug 03 10:54:04.073                     KGSL.45094            OS-Buffer      0  KGSL:(tid:35):(caller_pid:1331312) INFO io_cleanup[456]: Driver: io_cleanup is called for  pid = 1331312, tid = 1, coid = 1, scoid = 65563
+Aug 03 10:54:04.073                     KGSL.45094            OS-Buffer      0  KGSL:(tid:35):(caller_pid:1331312) INFO kgsl_driver_cleanup[293]: No process 1331312:1 found in the list
+Aug 03 10:54:04.936                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 714: elapsed time = 1001.000000ms, clock rate = 240076.510490kHz, percentage busy = 68.761255%
+Aug 03 10:55:19.612                     KGSL.45094            OS-Buffer      0  KGSL:(tid:33):(caller_pid:1327202) INFO kgsl_get_process_name_from_pid[2439]: process name 'Binder:1034_3' for pid=1327202
+Aug 03 10:55:19.612                     KGSL.45094            OS-Buffer      0  KGSL:(tid:33):(caller_pid:1327202) INFO rgs_context_create_common[614]: Context 59 priority 1: Using A4x style preemption
+Aug 03 10:55:19.614                     KGSL.45094            OS-Buffer      0  KGSL:(tid:33):(caller_pid:1327202) INFO io_msg[1717]: IOCTL_KGSL_DEVICE_GETPROPERTY type=2
+Aug 03 10:55:19.616                     KGSL.45094            OS-Buffer      0  KGSL:(tid:30):(caller_pid:1327202) INFO kgsl_get_process_name_from_pid[2439]: process name 'Binder:1034_3' for pid=1327202
+Aug 03 10:55:19.616                     KGSL.45094            OS-Buffer      0  KGSL:(tid:30):(caller_pid:1327202) INFO rgs_context_create_doorbell_queue[1571]: rgs_context_create_doorbell_queue enter   process name Binder:1034_3
+Aug 03 10:55:19.617                     KGSL.45094            OS-Buffer      0  KGSL:(tid:30):(caller_pid:1327202) INFO rgs_context_create_doorbell_queue[1591]: DoorbellQ is not enabled for the process Binder:1034_3
+Aug 03 10:55:29.544                     KGSL.45094            OS-Buffer      0  KGSL:(tid:13):(caller_pid:1327202) INFO rgs_context_destroy_with_waitforts[1287]: Destroying single context ID 59
+Aug 03 10:55:55.357                     KGSL.45094            OS-Buffer      0  KGSL:(tid:38):(caller_pid:1327202) INFO kgsl_get_process_name_from_pid[2439]: process name 'Binder:1034_3' for pid=1327202
+Aug 03 10:55:55.357                     KGSL.45094            OS-Buffer      0  KGSL:(tid:38):(caller_pid:1327202) INFO rgs_context_create_common[614]: Context 60 priority 1: Using A4x style preemption
+Aug 03 10:55:55.361                     KGSL.45094            OS-Buffer      0  KGSL:(tid:38):(caller_pid:1327202) INFO io_msg[1717]: IOCTL_KGSL_DEVICE_GETPROPERTY type=2
+Aug 03 10:55:55.366                     KGSL.45094            OS-Buffer      0  KGSL:(tid:29):(caller_pid:1327202) INFO kgsl_get_process_name_from_pid[2439]: process name 'Binder:1034_3' for pid=1327202
+Aug 03 10:55:55.366                     KGSL.45094            OS-Buffer      0  KGSL:(tid:29):(caller_pid:1327202) INFO rgs_context_create_doorbell_queue[1571]: rgs_context_create_doorbell_queue enter   process name Binder:1034_3
+Aug 03 10:55:55.368                     KGSL.45094            OS-Buffer      0  KGSL:(tid:29):(caller_pid:1327202) INFO rgs_context_create_doorbell_queue[1591]: DoorbellQ is not enabled for the process Binder:1034_3
+Aug 03 10:56:00.422                     KGSL.45094            OS-Buffer      0  KGSL:(tid:31):(caller_pid:1327202) INFO rgs_context_destroy_with_waitforts[1287]: Destroying single context ID 60
+Aug 03 11:00:34.657                     KGSL.45094            OS-Buffer      0  KGSL:(tid:30):(caller_pid:1372272) INFO io_open[438]: pid = 1372272, tid = 1, coid = 3, scoid = 65563
+Aug 03 11:00:34.657                     KGSL.45094            OS-Buffer      0  KGSL:(tid:30):(caller_pid:1372272) INFO dup_io_open[2419]: ctrlchannel, pid = 1372272
+Aug 03 11:00:34.658                     KGSL.45094            OS-Buffer      0  KGSL:(tid:36):(caller_pid:1372272) INFO dup_io_cleanup[469]: Driver: dup_io_cleanup is called for  pid = 1372272, tid = 1, coid = 3, scoid = 65563
+Aug 03 11:00:34.658                     KGSL.45094            OS-Buffer      0  KGSL:(tid:36):(caller_pid:1372272) INFO dup_io_cleanup[469]: Driver: dup_io_cleanup is called for  pid = 1372272, tid = 1, coid = 1, scoid = 65563
+Aug 03 11:00:34.658                     KGSL.45094            OS-Buffer      0  KGSL:(tid:36):(caller_pid:1372272) INFO io_cleanup[456]: Driver: io_cleanup is called for  pid = 1372272, tid = 1, coid = 1, scoid = 65563
+Aug 03 11:00:34.658                     KGSL.45094            OS-Buffer      0  KGSL:(tid:36):(caller_pid:1372272) INFO kgsl_driver_cleanup[293]: No process 1372272:1 found in the list
+Aug 03 11:00:40.180                     KGSL.45094            OS-Buffer      0  KGSL:(tid:30):(caller_pid:1372272) INFO io_open[438]: pid = 1372272, tid = 1, coid = 3, scoid = 65563
+Aug 03 11:00:40.180                     KGSL.45094            OS-Buffer      0  KGSL:(tid:30):(caller_pid:1372272) INFO dup_io_open[2419]: ctrlchannel, pid = 1372272
+Aug 03 11:00:40.180                     KGSL.45094            OS-Buffer      0  KGSL:(tid:30):(caller_pid:1372272) INFO dup_io_cleanup[469]: Driver: dup_io_cleanup is called for  pid = 1372272, tid = 1, coid = 3, scoid = 65563
+Aug 03 11:00:40.180                     KGSL.45094            OS-Buffer      0  KGSL:(tid:30):(caller_pid:1372272) INFO dup_io_cleanup[469]: Driver: dup_io_cleanup is called for  pid = 1372272, tid = 1, coid = 1, scoid = 65563
+Aug 03 11:00:40.180                     KGSL.45094            OS-Buffer      0  KGSL:(tid:30):(caller_pid:1372272) INFO io_cleanup[456]: Driver: io_cleanup is called for  pid = 1372272, tid = 1, coid = 1, scoid = 65563
+Aug 03 11:00:40.180                     KGSL.45094            OS-Buffer      0  KGSL:(tid:30):(caller_pid:1372272) INFO kgsl_driver_cleanup[293]: No process 1372272:1 found in the list
+Aug 03 11:00:42.188                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 1: elapsed time = 1001.000000ms, clock rate = 225001.149850kHz, percentage busy = 59.689485%
+Aug 03 11:00:43.179                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 2: elapsed time = 1001.000000ms, clock rate = 206015.932068kHz, percentage busy = 56.049363%
+Aug 03 11:00:44.190                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 3: elapsed time = 1001.000000ms, clock rate = 208083.784216kHz, percentage busy = 55.599718%
+Aug 03 11:00:45.180                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 4: elapsed time = 1001.000000ms, clock rate = 195022.665335kHz, percentage busy = 53.529781%
+Aug 03 11:00:46.186                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 5: elapsed time = 1001.000000ms, clock rate = 191718.953047kHz, percentage busy = 52.669096%
+Aug 03 11:00:47.193                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 6: elapsed time = 1001.000000ms, clock rate = 191515.424575kHz, percentage busy = 52.727815%
+Aug 03 11:00:48.194                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 7: elapsed time = 1001.000000ms, clock rate = 210771.237762kHz, percentage busy = 56.427367%
+
+
+
+Aug 03 11:00:49.195                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 8: elapsed time = 1001.000000ms, clock rate = 212489.412587kHz, percentage busy = 56.327106%
+Aug 03 11:00:50.196                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 9: elapsed time = 1001.000000ms, clock rate = 221800.871129kHz, percentage busy = 57.903841%
+
+
+
+
+Aug 03 11:00:51.187                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 10: elapsed time = 1001.000000ms, clock rate = 229049.078921kHz, percentage busy = 60.242793%
+
+Aug 03 11:00:52.198                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 11: elapsed time = 1001.000000ms, clock rate = 205275.186813kHz, percentage busy = 55.854531%
+
+
+Aug 03 11:00:53.189                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 12: elapsed time = 1001.000000ms, clock rate = 212022.446553kHz, percentage busy = 56.951912%
+
+
+
+
+
+Aug 03 11:00:54.089                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 13: elapsed time = 1001.000000ms, clock rate = 205151.890110kHz, percentage busy = 55.562898%
+
+
+
+
+
+
+Aug 03 11:00:55.101                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 14: elapsed time = 1001.000000ms, clock rate = 214495.472527kHz, percentage busy = 56.909644%
+Aug 03 11:00:56.102                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 15: elapsed time = 1001.000000ms, clock rate = 199574.108891kHz, percentage busy = 54.744629%
+Aug 03 11:00:57.091                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 16: elapsed time = 1001.000000ms, clock rate = 199525.724276kHz, percentage busy = 54.491280%
+Aug 03 11:00:58.091                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 17: elapsed time = 1001.000000ms, clock rate = 215136.530470kHz, percentage busy = 57.286272%
+Aug 03 11:00:59.092                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 18: elapsed time = 1001.000000ms, clock rate = 213252.497502kHz, percentage busy = 55.792132%
+Aug 03 11:01:00.095                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 19: elapsed time = 1001.000000ms, clock rate = 200582.259740kHz, percentage busy = 55.251668%
+Aug 03 11:01:01.105                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 20: elapsed time = 1001.000000ms, clock rate = 204751.138861kHz, percentage busy = 65.484516%
+Aug 03 11:01:02.107                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 21: elapsed time = 1001.000000ms, clock rate = 228851.432567kHz, percentage busy = 60.309136%
+Aug 03 11:01:03.097                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 22: elapsed time = 1001.000000ms, clock rate = 225216.478521kHz, percentage busy = 59.705274%
+Aug 03 11:01:04.109                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 23: elapsed time = 1001.000000ms, clock rate = 211679.741259kHz, percentage busy = 57.590518%
+Aug 03 11:01:05.098                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 24: elapsed time = 1001.000000ms, clock rate = 177981.014985kHz, percentage busy = 60.397538%
+Aug 03 11:01:06.101                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 25: elapsed time = 1001.000000ms, clock rate = 195304.193806kHz, percentage busy = 63.480010%
+Aug 03 11:01:07.102                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 26: elapsed time = 1001.000000ms, clock rate = 204183.370629kHz, percentage busy = 56.336218%
+Aug 03 11:01:08.097                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 27: elapsed time = 1001.000000ms, clock rate = 195218.707293kHz, percentage busy = 61.100899%
+Aug 03 11:01:09.114                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 28: elapsed time = 1001.000000ms, clock rate = 217945.118881kHz, percentage busy = 57.546256%
+
+
+
+
+Aug 03 11:01:10.102                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 29: elapsed time = 1001.000000ms, clock rate = 184549.225774kHz, percentage busy = 61.928199%
+
+Aug 03 11:01:11.113                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 30: elapsed time = 1001.000000ms, clock rate = 185736.446553kHz, percentage busy = 61.487072%
+
+
+
+
+
+
+Aug 03 11:01:12.117                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 31: elapsed time = 1001.000000ms, clock rate = 211154.557443kHz, percentage busy = 64.525240%
+
+
+
+Aug 03 11:01:13.104                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 32: elapsed time = 1001.000000ms, clock rate = 203388.370629kHz, percentage busy = 63.002025%
+Aug 03 11:01:14.019                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 33: elapsed time = 1001.000000ms, clock rate = 191308.837163kHz, percentage busy = 62.322762%
+^C
+C:\Users\ts>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

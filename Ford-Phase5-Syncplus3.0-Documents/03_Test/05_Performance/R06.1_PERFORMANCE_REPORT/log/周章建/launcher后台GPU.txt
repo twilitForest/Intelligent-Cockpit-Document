@@ -1,0 +1,14 @@
+login: root
+No home directory.
+Logging in with home = "/".
+# echo gpu_set_log_level 4 > /dev/kgsl-control
+# echo gpubusystats 1000 > /dev/kgsl-control
+# slog2info -b KGSL -w | grep measurement
+Oct 25 14:05:07.443                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 1: elapsed time = 1001.000000ms, clock rate = 675421.876124kHz, percentage busy = 36.730567%
+Oct 25 14:05:08.445                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 2: elapsed time = 1001.000000ms, clock rate = 681892.783217kHz, percentage busy = 37.290993%
+Oct 25 14:05:09.440                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 3: elapsed time = 1001.000000ms, clock rate = 667866.584416kHz, percentage busy = 35.863206%
+Oct 25 14:05:10.446                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 4: elapsed time = 1001.000000ms, clock rate = 668100.588412kHz, percentage busy = 36.761660%
+Oct 25 14:05:11.441                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 5: elapsed time = 1001.000000ms, clock rate = 668520.473526kHz, percentage busy = 37.190920%
+Oct 25 14:05:12.448                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 6: elapsed time = 1001.000000ms, clock rate = 678011.111888kHz, percentage busy = 37.493317%
+Oct 25 14:05:13.449                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 7: elapsed time = 1001.000000ms, clock rate = 641281.108891kHz, percentage busy = 33.643015%
+Oct 25 14:05:14.450                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 8: elapsed time = 1001.000000ms, clock rate = 599284.211788kHz, percentage busy = 29.573104%

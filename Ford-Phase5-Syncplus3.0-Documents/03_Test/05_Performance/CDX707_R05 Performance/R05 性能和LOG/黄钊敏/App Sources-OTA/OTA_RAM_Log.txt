@@ -1,0 +1,1300 @@
+Microsoft Windows [版本 10.0.19044.1826]
+(c) Microsoft Corporation。保留所有权利。
+
+C:\Users\ts>adb shell
+msmnile_gvmq:/ # dumpsys meminfo
+Applications Memory Usage (in Kilobytes):
+Uptime: 855033 Realtime: 855033
+
+
+Total RSS by process:
+    664,504K: com.ford.sync.vpa (pid 3067 / activities)
+    549,204K: com.baidu.che.codriver (pid 4122)
+    445,052K: com.ford.sync.controllerlauncher (pid 1735 / activities)
+    392,760K: com.yfve.settings (pid 3482 / activities)
+    374,248K: system (pid 1051)
+    219,012K: com.baidu.naviauto (pid 3601 / activities)
+    217,428K: com.baidu.iov.aiapps:swan0 (pid 4655)
+    215,284K: com.android.systemui (pid 1578)
+    211,792K: com.ford.sync.swuservice (pid 3097)
+    201,744K: com.baidu.car.radio (pid 3444 / activities)
+    201,536K: com.ford.sync.lidget (pid 2041 / activities)
+    198,084K: com.ford.sync.account (pid 2928 / activities)
+    192,132K: com.baidu.iov.aiapps (pid 3727)
+    179,880K: com.baidu.xiaoduos.messageserver (pid 3540)
+    172,552K: zygote64 (pid 364)
+    169,808K: com.ford.xiaoduos.v2x (pid 1977)
+    168,096K: com.baidu.bodyguard (pid 8567)
+    161,516K: com.ford.sync.fnvservice (pid 1643)
+    158,276K: com.baidu.car.radio2 (pid 3709)
+    157,456K: com.android.car (pid 1530)
+    157,020K: com.baidu.car.input (pid 3412)
+    153,492K: com.baidu.xiaoduos.syncservice (pid 3679)
+    151,332K: zygote (pid 365)
+    150,552K: com.android.providers.media.module (pid 3350)
+    148,448K: com.baidu.iov.faceos (pid 3650)
+    148,416K: android.ext.services (pid 2085)
+    147,284K: com.yfve.core (pid 1555 / activities)
+    147,228K: com.ford.hmi.appstore (pid 2953)
+    145,060K: com.android.networkstack.process (pid 1691)
+    143,836K: com.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:1 (pid 5029)
+    136,928K: com.android.phone (pid 2012)
+    136,444K: com.android.bluetooth2 (pid 1395)
+    135,968K: com.android.bluetooth (pid 1388)
+    133,632K: com.ford.sync.fordvehicleservice (pid 1727)
+    131,424K: com.baidu.iov.vision (pid 3381)
+    131,172K: com.baidu.privacy (pid 1360)
+    130,092K: com.baidu.xiaoduos.recommend (pid 3185)
+    129,236K: com.ford.sync.fcs (pid 1873)
+    128,372K: com.baidu.pki (pid 3213)
+    127,880K: com.ford.sync.carrier (pid 3136)
+    126,564K: com.ford.sync.accountservice (pid 1941)
+    124,304K: com.ford.sync.electronicmanual (pid 1785)
+    123,316K: com.yfve.dialer (pid 3512)
+    121,956K: com.yfve.dlna (pid 3244)
+    121,936K: com.ford.sync.guestmode (pid 6499)
+    121,340K: com.android.settings (pid 6362)
+    121,296K: com.ford.sync.tspservice (pid 3319)
+    119,604K: com.yfve.eol (pid 3151)
+    119,480K: com.yfve.upnpservice (pid 3272)
+    119,032K: com.ford.sync.demomode (pid 6459)
+    118,856K: com.qtxa.hidps (pid 1339)
+    118,228K: com.ford.sync.surprisemessage (pid 6605)
+    118,208K: com.ford.sync.vha (pid 3047)
+    118,140K: com.ford.sync.relaxmode (pid 3567)
+    117,560K: android.process.acore (pid 6072)
+    117,216K: com.yfve.engineeringmode (pid 6092)
+    116,600K: com.ford.sync.apa (pid 3031)
+    116,300K: com.ford.sync.voicecontrolservice (pid 2986)
+    114,776K: com.baidu.xiaoduos.recommend:IovLoc (pid 4093)
+    114,680K: com.yfve.roadsideassitance (pid 3576)
+    114,384K: com.ford.sync.smartscene (pid 6573)
+    110,388K: com.android.permissioncontroller (pid 6291)
+    110,336K: com.yfve.report (pid 3011)
+    109,652K: com.ford.sync.persontime (pid 6536)
+    109,448K: com.qti.diagservices (pid 6032)
+    108,916K: com.ford.sync.marketplace (pid 1907)
+    106,852K: com.qtxa.hidps:remote (pid 2296)
+    104,692K: com.android.providers.calendar (pid 6325)
+    104,560K: com.android.localtransport (pid 3993)
+    103,648K: com.android.dynsystem (pid 6161)
+    103,460K: com.android.keychain (pid 6133)
+    102,924K: android.process.media (pid 6012)
+    101,708K: com.android.traceur (pid 6418)
+    100,684K: com.android.managedprovisioning (pid 6209)
+     99,536K: com.android.se (pid 1846)
+     98,896K: .qtidataservices (pid 1743)
+     97,216K: com.android.packageinstaller (pid 6267)
+     96,644K: com.android.shell (pid 6390)
+     91,300K: com.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0 (pid 4559)
+     65,404K: webview_zygote (pid 1662)
+     62,964K: surfaceflinger (pid 477)
+     34,388K: RCN_DiagnosticsAgent (pid 917)
+     32,824K: /vendor (pid 910)
+     32,620K: /vendor (pid 1045)
+     31,736K: audioserver (pid 462)
+     30,360K: vendor.ford.swu@1.0-service (pid 915)
+     28,620K: logd (pid 249)
+     27,628K: media.extractor (pid 781)
+     25,284K: vendor.ford.soa@1.0-service (pid 911)
+     23,572K: qtxa-nidps-engine (pid 786)
+     22,608K: /vendor (pid 700)
+     21,744K: android.hardware.audio.service (pid 393)
+     21,516K: cameraserver (pid 750)
+     21,120K: vendor.ford.ippt@1.0-service (pid 912)
+     20,852K: android.hardware.graphics.composer@2.4-service (pid 401)
+     20,712K: vendor.ford.ccs@1.0-service (pid 959)
+     20,364K: mediaserver (pid 783)
+     19,536K: media.swcodec (pid 838)
+     18,012K: media.hwcodec (pid 429)
+     17,588K: bdnetdproxy (pid 2569)
+     16,332K: vendor.ford.wir@1.0-service (pid 1046)
+     15,544K: vendor.ford.diagnostics@1.0-service (pid 908)
+     15,248K: wlan_service (pid 999)
+     14,988K: android.hardware.automotive.evs@1.1-ais (pid 271)
+     14,784K: RCN_ReconnService (pid 918)
+     13,172K: media.codec (pid 796)
+     13,044K: vendor.ford.hardware.automotive.vehicle@2.0-service (pid 415)
+     12,436K: ais_v4l2_proxy (pid 321)
+     11,984K: android.hardware.camera.provider@2.4-service (pid 398)
+     11,164K: init (pid 1)
+     10,816K: vold (pid 272)
+     10,796K: qtxa-nidps-manage (pid 2623)
+     10,508K: netd (pid 363)
+     10,008K: vendor.yfve.hardware.YFVECoreVehicle@1.0-service (pid 337)
+      9,028K: android.frameworks.automotive.display@1.0-service (pid 270)
+      8,748K: xtra-daemon (pid 868)
+      8,652K: slim_daemon (pid 867)
+      8,636K: hyp_dvr_hidl_client (pid 703)
+      8,196K: keystore (pid 770)
+      7,932K: android.hardware.drm@1.3-service.clearkey (pid 400)
+      7,864K: vendor.qti.hardware.display.allocator-service (pid 424)
+      7,852K: android.hardware.wifi@1.0-service (pid 412)
+      7,540K: /vendor (pid 998)
+      7,524K: wificond (pid 789)
+      7,288K: adbd (pid 18667)
+      7,252K: ueventd (pid 216)
+      7,224K: installd (pid 764)
+      7,140K: carwatchdogd (pid 231)
+      7,112K: ipacm (pid 332)
+      7,040K: credstore (pid 464)
+      6,984K: gatekeeperd (pid 854)
+      6,932K: vendor.yfve.hardware.logcollector@1.0-service (pid 1207)
+      6,844K: vendor.yfve.hardware.bluetooth@1.0-service (pid 449)
+      6,812K: init (pid 214)
+      6,776K: media.metrics (pid 782)
+      6,744K: amqserver (pid 991)
+      6,692K: perfservice (pid 790)
+      6,656K: gpuservice (pid 473)
+      6,588K: bdseclogservice (pid 742)
+      6,556K: vendor.ford.coresec@1.0-service (pid 414)
+      6,412K: drmserver (pid 751)
+      6,396K: diag-router (pid 621)
+      6,384K: android.hardware.keymaster@4.1-service-qti (pid 266)
+      6,304K: vendor.qti.hardware.iop@2.0-service (pid 426)
+      6,252K: cnss_diag (pid 715)
+      6,192K: hwservicemanager (pid 252)
+      6,176K: vendor.ford.gnss@1.0-service (pid 916)
+      6,152K: android.hardware.power-service (pid 407)
+      5,976K: qseecomd (pid 267)
+      5,912K: cnss-daemon (pid 845)
+      5,772K: qtxa-metrics (pid 785)
+      5,712K: android.hardware.gatekeeper@1.0-service-qti (pid 336)
+      5,664K: thermal-engine (pid 800)
+      5,656K: storaged (pid 788)
+      5,636K: thermal-engine (pid 707)
+      5,612K: vendor.yfve.hardware.audiocontrol@1.0-service (pid 430)
+      5,580K: statsd (pid 362)
+      5,580K: vendor.qti.automotive.qcarcam@1.0-service (pid 419)
+      5,564K: android.hardware.bdseckeystore@1.0-service (pid 397)
+      5,448K: qtxa-idps-server (pid 784)
+      5,444K: android.hardware.bluetooth@1.0-service-yfve (pid 441)
+      5,404K: lowi-server (pid 866)
+      5,352K: android.hardware.sensors@1.0-service (pid 408)
+      5,336K: android.hardware.boot@1.1-service (pid 335)
+      5,328K: incidentd (pid 762)
+      5,288K: android.hardware.usb@1.2-service-qti (pid 410)
+      5,280K: servicemanager (pid 251)
+      5,276K: vendor.qti.hardware.qseecom@1.0-service (pid 268)
+      5,208K: android.hardware.health@2.1-service (pid 405)
+      5,192K: vendor.qti.hardware.qteeconnector@1.0-service (pid 427)
+      5,028K: android.system.suspend@1.0-service (pid 333)
+      5,024K: vendor.qti.dvr@1.0-service (pid 421)
+      5,020K: android.hardware.automotive.audiocontrol@2.0-service (pid 396)
+      5,012K: android.hardware.atrace@1.0-service (pid 334)
+      4,992K: android.hardware.cas@1.2-service (pid 399)
+      4,980K: car_power_daemon (pid 2562)
+      4,936K: vendor.qti.hardware.capabilityconfigstore@1.0-service (pid 423)
+      4,928K: vendor.yfve.hardware.configstore@1.0-service (pid 269)
+      4,924K: android.hardware.health@2.0-service (pid 403)
+      4,864K: android.hardware.automotive.audiocontrol@1.0-service (pid 395)
+      4,784K: android.hardware.memtrack@1.0-service (pid 406)
+      4,704K: vendor.qti.hardware.automotive.audiocontrol@1.0-service (pid 422)
+      4,688K: faultcode (pid 719)
+      4,680K: vndservicemanager (pid 254)
+      4,664K: top (pid 21445)
+      4,548K: pm-service (pid 457)
+      4,468K: hyp_dvr_mux_be (pid 264)
+      4,296K: mlid (pid 848)
+      4,208K: loc_launcher (pid 849)
+      4,132K: pd-mapper (pid 459)
+      3,992K: android.hidl.allocator@1.0-service (pid 394)
+      3,984K: ipacm-diag (pid 801)
+      3,948K: bdsystemcleaner (pid 746)
+      3,788K: amfsservice (pid 710)
+      3,752K: ip6tables-restore (pid 373)
+      3,688K: traced (pid 674)
+      3,664K: com.android.car.procfsinspector (pid 3922)
+      3,632K: iptables-restore (pid 372)
+      3,584K: dumpsys (pid 21740)
+      3,512K: tftp_server (pid 483)
+      3,412K: traced_probes (pid 671)
+      3,300K: logcat (pid 1220)
+      3,236K: telnetd (pid 832)
+      3,168K: qrtr-ns (pid 451)
+      3,160K: lmkd (pid 250)
+      3,136K: sh (pid 21443)
+      3,060K: sh (pid 1216)
+      3,040K: sh (pid 20738)
+      2,972K: sh (pid 21635)
+      2,836K: tombstoned (pid 357)
+      2,344K: ssgqmigd (pid 846)
+      1,156K: mdnsd (pid 666)
+        688K: busybox (pid 844)
+
+Total RSS by OOM adjustment:
+  1,636,192K: Native
+        172,552K: zygote64 (pid 364)
+        151,332K: zygote (pid 365)
+         65,404K: webview_zygote (pid 1662)
+         62,964K: surfaceflinger (pid 477)
+         34,388K: RCN_DiagnosticsAgent (pid 917)
+         32,824K: /vendor (pid 910)
+         32,620K: /vendor (pid 1045)
+         31,736K: audioserver (pid 462)
+         30,360K: vendor.ford.swu@1.0-service (pid 915)
+         28,620K: logd (pid 249)
+         27,628K: media.extractor (pid 781)
+         25,284K: vendor.ford.soa@1.0-service (pid 911)
+         23,572K: qtxa-nidps-engine (pid 786)
+         22,608K: /vendor (pid 700)
+         21,744K: android.hardware.audio.service (pid 393)
+         21,516K: cameraserver (pid 750)
+         21,120K: vendor.ford.ippt@1.0-service (pid 912)
+         20,852K: android.hardware.graphics.composer@2.4-service (pid 401)
+         20,712K: vendor.ford.ccs@1.0-service (pid 959)
+         20,364K: mediaserver (pid 783)
+         19,536K: media.swcodec (pid 838)
+         18,012K: media.hwcodec (pid 429)
+         17,588K: bdnetdproxy (pid 2569)
+         16,332K: vendor.ford.wir@1.0-service (pid 1046)
+         15,544K: vendor.ford.diagnostics@1.0-service (pid 908)
+         15,248K: wlan_service (pid 999)
+         14,988K: android.hardware.automotive.evs@1.1-ais (pid 271)
+         14,784K: RCN_ReconnService (pid 918)
+         13,172K: media.codec (pid 796)
+         13,044K: vendor.ford.hardware.automotive.vehicle@2.0-service (pid 415)
+         12,436K: ais_v4l2_proxy (pid 321)
+         11,984K: android.hardware.camera.provider@2.4-service (pid 398)
+         11,164K: init (pid 1)
+         10,816K: vold (pid 272)
+         10,796K: qtxa-nidps-manage (pid 2623)
+         10,508K: netd (pid 363)
+         10,008K: vendor.yfve.hardware.YFVECoreVehicle@1.0-service (pid 337)
+          9,028K: android.frameworks.automotive.display@1.0-service (pid 270)
+          8,748K: xtra-daemon (pid 868)
+          8,652K: slim_daemon (pid 867)
+          8,636K: hyp_dvr_hidl_client (pid 703)
+          8,196K: keystore (pid 770)
+          7,932K: android.hardware.drm@1.3-service.clearkey (pid 400)
+          7,864K: vendor.qti.hardware.display.allocator-service (pid 424)
+          7,852K: android.hardware.wifi@1.0-service (pid 412)
+          7,540K: /vendor (pid 998)
+          7,524K: wificond (pid 789)
+          7,288K: adbd (pid 18667)
+          7,252K: ueventd (pid 216)
+          7,224K: installd (pid 764)
+          7,140K: carwatchdogd (pid 231)
+          7,112K: ipacm (pid 332)
+          7,040K: credstore (pid 464)
+          6,984K: gatekeeperd (pid 854)
+          6,932K: vendor.yfve.hardware.logcollector@1.0-service (pid 1207)
+          6,844K: vendor.yfve.hardware.bluetooth@1.0-service (pid 449)
+          6,812K: init (pid 214)
+          6,776K: media.metrics (pid 782)
+          6,744K: amqserver (pid 991)
+          6,692K: perfservice (pid 790)
+          6,656K: gpuservice (pid 473)
+          6,588K: bdseclogservice (pid 742)
+          6,556K: vendor.ford.coresec@1.0-service (pid 414)
+          6,412K: drmserver (pid 751)
+          6,396K: diag-router (pid 621)
+          6,384K: android.hardware.keymaster@4.1-service-qti (pid 266)
+          6,304K: vendor.qti.hardware.iop@2.0-service (pid 426)
+          6,252K: cnss_diag (pid 715)
+          6,192K: hwservicemanager (pid 252)
+          6,176K: vendor.ford.gnss@1.0-service (pid 916)
+          6,152K: android.hardware.power-service (pid 407)
+          5,976K: qseecomd (pid 267)
+          5,912K: cnss-daemon (pid 845)
+          5,772K: qtxa-metrics (pid 785)
+          5,712K: android.hardware.gatekeeper@1.0-service-qti (pid 336)
+          5,664K: thermal-engine (pid 800)
+          5,656K: storaged (pid 788)
+          5,636K: thermal-engine (pid 707)
+          5,612K: vendor.yfve.hardware.audiocontrol@1.0-service (pid 430)
+          5,580K: statsd (pid 362)
+          5,580K: vendor.qti.automotive.qcarcam@1.0-service (pid 419)
+          5,564K: android.hardware.bdseckeystore@1.0-service (pid 397)
+          5,448K: qtxa-idps-server (pid 784)
+          5,444K: android.hardware.bluetooth@1.0-service-yfve (pid 441)
+          5,404K: lowi-server (pid 866)
+          5,352K: android.hardware.sensors@1.0-service (pid 408)
+          5,336K: android.hardware.boot@1.1-service (pid 335)
+          5,328K: incidentd (pid 762)
+          5,288K: android.hardware.usb@1.2-service-qti (pid 410)
+          5,280K: servicemanager (pid 251)
+          5,276K: vendor.qti.hardware.qseecom@1.0-service (pid 268)
+          5,208K: android.hardware.health@2.1-service (pid 405)
+          5,192K: vendor.qti.hardware.qteeconnector@1.0-service (pid 427)
+          5,028K: android.system.suspend@1.0-service (pid 333)
+          5,024K: vendor.qti.dvr@1.0-service (pid 421)
+          5,020K: android.hardware.automotive.audiocontrol@2.0-service (pid 396)
+          5,012K: android.hardware.atrace@1.0-service (pid 334)
+          4,992K: android.hardware.cas@1.2-service (pid 399)
+          4,980K: car_power_daemon (pid 2562)
+          4,936K: vendor.qti.hardware.capabilityconfigstore@1.0-service (pid 423)
+          4,928K: vendor.yfve.hardware.configstore@1.0-service (pid 269)
+          4,924K: android.hardware.health@2.0-service (pid 403)
+          4,864K: android.hardware.automotive.audiocontrol@1.0-service (pid 395)
+          4,784K: android.hardware.memtrack@1.0-service (pid 406)
+          4,704K: vendor.qti.hardware.automotive.audiocontrol@1.0-service (pid 422)
+          4,688K: faultcode (pid 719)
+          4,680K: vndservicemanager (pid 254)
+          4,664K: top (pid 21445)
+          4,548K: pm-service (pid 457)
+          4,468K: hyp_dvr_mux_be (pid 264)
+          4,296K: mlid (pid 848)
+          4,208K: loc_launcher (pid 849)
+          4,132K: pd-mapper (pid 459)
+          3,992K: android.hidl.allocator@1.0-service (pid 394)
+          3,984K: ipacm-diag (pid 801)
+          3,948K: bdsystemcleaner (pid 746)
+          3,788K: amfsservice (pid 710)
+          3,752K: ip6tables-restore (pid 373)
+          3,688K: traced (pid 674)
+          3,664K: com.android.car.procfsinspector (pid 3922)
+          3,632K: iptables-restore (pid 372)
+          3,584K: dumpsys (pid 21740)
+          3,512K: tftp_server (pid 483)
+          3,412K: traced_probes (pid 671)
+          3,300K: logcat (pid 1220)
+          3,236K: telnetd (pid 832)
+          3,168K: qrtr-ns (pid 451)
+          3,160K: lmkd (pid 250)
+          3,136K: sh (pid 21443)
+          3,060K: sh (pid 1216)
+          3,040K: sh (pid 20738)
+          2,972K: sh (pid 21635)
+          2,836K: tombstoned (pid 357)
+          2,344K: ssgqmigd (pid 846)
+          1,156K: mdnsd (pid 666)
+            688K: busybox (pid 844)
+    374,248K: System
+        374,248K: system (pid 1051)
+  5,281,472K: Persistent
+        664,504K: com.ford.sync.vpa (pid 3067 / activities)
+        445,052K: com.ford.sync.controllerlauncher (pid 1735 / activities)
+        215,284K: com.android.systemui (pid 1578)
+        211,792K: com.ford.sync.swuservice (pid 3097)
+        201,536K: com.ford.sync.lidget (pid 2041 / activities)
+        198,084K: com.ford.sync.account (pid 2928 / activities)
+        169,808K: com.ford.xiaoduos.v2x (pid 1977)
+        161,516K: com.ford.sync.fnvservice (pid 1643)
+        157,456K: com.android.car (pid 1530)
+        147,284K: com.yfve.core (pid 1555 / activities)
+        147,228K: com.ford.hmi.appstore (pid 2953)
+        145,060K: com.android.networkstack.process (pid 1691)
+        136,928K: com.android.phone (pid 2012)
+        133,632K: com.ford.sync.fordvehicleservice (pid 1727)
+        131,172K: com.baidu.privacy (pid 1360)
+        130,092K: com.baidu.xiaoduos.recommend (pid 3185)
+        129,236K: com.ford.sync.fcs (pid 1873)
+        128,372K: com.baidu.pki (pid 3213)
+        127,880K: com.ford.sync.carrier (pid 3136)
+        126,564K: com.ford.sync.accountservice (pid 1941)
+        124,304K: com.ford.sync.electronicmanual (pid 1785)
+        121,956K: com.yfve.dlna (pid 3244)
+        119,604K: com.yfve.eol (pid 3151)
+        119,480K: com.yfve.upnpservice (pid 3272)
+        118,856K: com.qtxa.hidps (pid 1339)
+        118,208K: com.ford.sync.vha (pid 3047)
+        116,600K: com.ford.sync.apa (pid 3031)
+        116,300K: com.ford.sync.voicecontrolservice (pid 2986)
+        110,336K: com.yfve.report (pid 3011)
+        108,916K: com.ford.sync.marketplace (pid 1907)
+         99,536K: com.android.se (pid 1846)
+         98,896K: .qtidataservices (pid 1743)
+    422,964K: Persistent Service
+        150,552K: com.android.providers.media.module (pid 3350)
+        136,444K: com.android.bluetooth2 (pid 1395)
+        135,968K: com.android.bluetooth (pid 1388)
+    594,504K: Foreground
+        392,760K: com.yfve.settings (pid 3482 / activities)
+        201,744K: com.baidu.car.radio (pid 3444 / activities)
+  2,873,632K: Visible
+        549,204K: com.baidu.che.codriver (pid 4122)
+        219,012K: com.baidu.naviauto (pid 3601 / activities)
+        217,428K: com.baidu.iov.aiapps:swan0 (pid 4655)
+        192,132K: com.baidu.iov.aiapps (pid 3727)
+        179,880K: com.baidu.xiaoduos.messageserver (pid 3540)
+        153,492K: com.baidu.xiaoduos.syncservice (pid 3679)
+        148,448K: com.baidu.iov.faceos (pid 3650)
+        148,416K: android.ext.services (pid 2085)
+        143,836K: com.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:1 (pid 5029)
+        131,424K: com.baidu.iov.vision (pid 3381)
+        123,316K: com.yfve.dialer (pid 3512)
+        121,296K: com.ford.sync.tspservice (pid 3319)
+        118,140K: com.ford.sync.relaxmode (pid 3567)
+        114,776K: com.baidu.xiaoduos.recommend:IovLoc (pid 4093)
+        114,680K: com.yfve.roadsideassitance (pid 3576)
+        106,852K: com.qtxa.hidps:remote (pid 2296)
+         91,300K: com.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0 (pid 4559)
+    669,844K: Perceptible
+        158,276K: com.baidu.car.radio2 (pid 3709)
+        157,020K: com.baidu.car.input (pid 3412)
+        121,936K: com.ford.sync.guestmode (pid 6499)
+        118,228K: com.ford.sync.surprisemessage (pid 6605)
+        114,384K: com.ford.sync.smartscene (pid 6573)
+    228,684K: A Services
+        119,032K: com.ford.sync.demomode (pid 6459)
+        109,652K: com.ford.sync.persontime (pid 6536)
+    109,448K: B Services
+        109,448K: com.qti.diagservices (pid 6032)
+  1,550,136K: Cached
+        168,096K: com.baidu.bodyguard (pid 8567)
+        121,340K: com.android.settings (pid 6362)
+        117,560K: android.process.acore (pid 6072)
+        117,216K: com.yfve.engineeringmode (pid 6092)
+        110,388K: com.android.permissioncontroller (pid 6291)
+        104,692K: com.android.providers.calendar (pid 6325)
+        104,560K: com.android.localtransport (pid 3993)
+        103,648K: com.android.dynsystem (pid 6161)
+        103,460K: com.android.keychain (pid 6133)
+        102,924K: android.process.media (pid 6012)
+        101,708K: com.android.traceur (pid 6418)
+        100,684K: com.android.managedprovisioning (pid 6209)
+         97,216K: com.android.packageinstaller (pid 6267)
+         96,644K: com.android.shell (pid 6390)
+
+Total RSS by category:
+  3,412,516K: .so mmap
+  2,301,768K: .apk mmap
+  1,792,120K: .jar mmap
+  1,567,556K: .art mmap
+  1,565,724K: Native
+    979,140K: Other mmap
+    789,320K: .oat mmap
+    654,624K: Dalvik
+    276,220K: Dalvik Other
+    174,208K: Unknown
+     94,544K: .dex mmap
+     58,580K: Stack
+     52,264K: Other dev
+     20,684K: .ttf mmap
+      1,844K: Ashmem
+         12K: Cursor
+          0K: Gfx dev
+          0K: EGL mtrack
+          0K: GL mtrack
+          0K: Other mtrack
+
+Total PSS by process:
+    525,144K: com.ford.sync.vpa (pid 3067 / activities)
+    412,476K: com.baidu.che.codriver (pid 4122)
+    339,227K: com.ford.sync.controllerlauncher (pid 1735 / activities)
+    252,455K: com.yfve.settings (pid 3482 / activities)
+    184,408K: system (pid 1051)
+    114,217K: com.baidu.naviauto (pid 3601 / activities)
+     88,278K: com.baidu.iov.aiapps:swan0 (pid 4655)
+     81,117K: com.android.systemui (pid 1578)
+     75,709K: com.ford.sync.account (pid 2928 / activities)
+     68,821K: com.baidu.iov.aiapps (pid 3727)
+     68,328K: com.ford.sync.swuservice (pid 3097)
+     64,278K: com.ford.sync.lidget (pid 2041 / activities)
+     61,869K: com.baidu.car.radio (pid 3444 / activities)
+     47,092K: com.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:1 (pid 5029)
+     40,479K: com.baidu.xiaoduos.messageserver (pid 3540)
+     40,326K: com.android.car (pid 1530)
+     39,902K: com.baidu.iov.faceos (pid 3650)
+     39,808K: surfaceflinger (pid 477)
+     39,070K: com.baidu.bodyguard (pid 8567)
+     38,673K: com.ford.xiaoduos.v2x (pid 1977)
+     36,616K: com.baidu.car.input (pid 3412)
+     36,193K: com.baidu.xiaoduos.syncservice (pid 3679)
+     35,388K: com.baidu.car.radio2 (pid 3709)
+     34,839K: com.ford.hmi.appstore (pid 2953)
+     33,540K: com.ford.sync.fnvservice (pid 1643)
+     33,293K: com.android.providers.media.module (pid 3350)
+     29,508K: com.android.networkstack.process (pid 1691)
+     28,231K: com.ford.sync.fordvehicleservice (pid 1727)
+     27,265K: zygote (pid 365)
+     25,947K: logd (pid 249)
+     24,795K: com.ford.sync.fcs (pid 1873)
+     24,624K: com.ford.sync.accountservice (pid 1941)
+     23,589K: com.yfve.core (pid 1555 / activities)
+     22,525K: com.baidu.iov.vision (pid 3381)
+     20,408K: com.android.settings (pid 6362)
+     19,849K: qtxa-nidps-engine (pid 786)
+     19,725K: com.ford.sync.demomode (pid 6459)
+     19,590K: com.android.bluetooth (pid 1388)
+     18,712K: com.ford.sync.tspservice (pid 3319)
+     18,667K: com.baidu.pki (pid 3213)
+     18,592K: com.android.bluetooth2 (pid 1395)
+     18,407K: zygote64 (pid 364)
+     18,389K: com.ford.sync.relaxmode (pid 3567)
+     18,221K: com.ford.sync.vha (pid 3047)
+     17,866K: android.hardware.audio.service (pid 393)
+     17,766K: com.baidu.privacy (pid 1360)
+     17,028K: com.ford.sync.voicecontrolservice (pid 2986)
+     16,794K: com.baidu.xiaoduos.recommend (pid 3185)
+     16,729K: com.ford.sync.carrier (pid 3136)
+     16,660K: com.android.phone (pid 2012)
+     15,779K: com.ford.sync.surprisemessage (pid 6605)
+     15,132K: com.ford.sync.apa (pid 3031)
+     14,640K: audioserver (pid 462)
+     14,239K: com.ford.sync.guestmode (pid 6499)
+     13,991K: bdnetdproxy (pid 2569)
+     13,974K: /vendor (pid 1045)
+     13,870K: media.swcodec (pid 838)
+     13,738K: com.yfve.dialer (pid 3512)
+     12,972K: /vendor (pid 910)
+     12,471K: com.ford.sync.electronicmanual (pid 1785)
+     12,458K: RCN_DiagnosticsAgent (pid 917)
+     12,393K: com.yfve.upnpservice (pid 3272)
+     12,333K: com.yfve.roadsideassitance (pid 3576)
+     12,073K: com.yfve.dlna (pid 3244)
+     11,795K: android.ext.services (pid 2085)
+     11,737K: android.process.acore (pid 6072)
+     11,681K: com.yfve.eol (pid 3151)
+     10,973K: com.android.permissioncontroller (pid 6291)
+     10,909K: android.hardware.graphics.composer@2.4-service (pid 401)
+     10,849K: vendor.ford.swu@1.0-service (pid 915)
+     10,543K: com.yfve.engineeringmode (pid 6092)
+      9,271K: media.extractor (pid 781)
+      9,202K: media.hwcodec (pid 429)
+      8,896K: com.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0 (pid 4559)
+      8,838K: cameraserver (pid 750)
+      8,661K: vendor.ford.hardware.automotive.vehicle@2.0-service (pid 415)
+      8,658K: vendor.ford.ccs@1.0-service (pid 959)
+      8,279K: com.qtxa.hidps (pid 1339)
+      8,275K: com.ford.sync.smartscene (pid 6573)
+      8,248K: webview_zygote (pid 1662)
+      7,837K: com.android.managedprovisioning (pid 6209)
+      7,771K: vendor.ford.soa@1.0-service (pid 911)
+      7,608K: com.android.traceur (pid 6418)
+      7,585K: com.ford.sync.persontime (pid 6536)
+      7,229K: com.baidu.xiaoduos.recommend:IovLoc (pid 4093)
+      7,223K: init (pid 1)
+      7,153K: qtxa-nidps-manage (pid 2623)
+      6,972K: media.codec (pid 796)
+      6,941K: /vendor (pid 700)
+      6,820K: android.hardware.camera.provider@2.4-service (pid 398)
+      6,519K: mediaserver (pid 783)
+      6,451K: com.ford.sync.marketplace (pid 1907)
+      6,175K: android.hardware.automotive.evs@1.1-ais (pid 271)
+      6,090K: com.android.providers.calendar (pid 6325)
+      5,967K: com.yfve.report (pid 3011)
+      5,938K: com.android.packageinstaller (pid 6267)
+      5,675K: android.process.media (pid 6012)
+      5,124K: com.qti.diagservices (pid 6032)
+      4,993K: netd (pid 363)
+      4,957K: com.qtxa.hidps:remote (pid 2296)
+      4,939K: wlan_service (pid 999)
+      4,837K: vendor.ford.wir@1.0-service (pid 1046)
+      4,792K: vendor.ford.ippt@1.0-service (pid 912)
+      4,738K: com.android.se (pid 1846)
+      4,699K: com.android.shell (pid 6390)
+      4,689K: .qtidataservices (pid 1743)
+      4,551K: com.android.keychain (pid 6133)
+      4,406K: com.android.localtransport (pid 3993)
+      4,384K: vendor.yfve.hardware.YFVECoreVehicle@1.0-service (pid 337)
+      4,346K: com.android.dynsystem (pid 6161)
+      4,024K: vold (pid 272)
+      3,931K: android.hardware.wifi@1.0-service (pid 412)
+      3,834K: carwatchdogd (pid 231)
+      3,728K: ueventd (pid 216)
+      3,629K: ais_v4l2_proxy (pid 321)
+      3,292K: init (pid 214)
+      3,269K: adbd (pid 18667)
+      3,062K: vendor.ford.diagnostics@1.0-service (pid 908)
+      2,873K: xtra-daemon (pid 868)
+      2,783K: installd (pid 764)
+      2,745K: android.hardware.drm@1.3-service.clearkey (pid 400)
+      2,646K: slim_daemon (pid 867)
+      2,550K: vendor.yfve.hardware.bluetooth@1.0-service (pid 449)
+      2,531K: RCN_ReconnService (pid 918)
+      2,303K: keystore (pid 770)
+      2,287K: diag-router (pid 621)
+      2,287K: android.hardware.bdseckeystore@1.0-service (pid 397)
+      2,276K: ipacm (pid 332)
+      2,226K: statsd (pid 362)
+      2,142K: vendor.ford.gnss@1.0-service (pid 916)
+      2,108K: amqserver (pid 991)
+      1,947K: vendor.yfve.hardware.logcollector@1.0-service (pid 1207)
+      1,946K: /vendor (pid 998)
+      1,942K: credstore (pid 464)
+      1,935K: lowi-server (pid 866)
+      1,864K: media.metrics (pid 782)
+      1,858K: hyp_dvr_hidl_client (pid 703)
+      1,853K: perfservice (pid 790)
+      1,820K: vendor.qti.hardware.display.allocator-service (pid 424)
+      1,811K: wificond (pid 789)
+      1,806K: android.frameworks.automotive.display@1.0-service (pid 270)
+      1,805K: vendor.ford.coresec@1.0-service (pid 414)
+      1,791K: cnss_diag (pid 715)
+      1,749K: hwservicemanager (pid 252)
+      1,692K: android.hardware.keymaster@4.1-service-qti (pid 266)
+      1,665K: qtxa-idps-server (pid 784)
+      1,660K: bdseclogservice (pid 742)
+      1,655K: drmserver (pid 751)
+      1,634K: android.hardware.cas@1.2-service (pid 399)
+      1,524K: servicemanager (pid 251)
+      1,511K: qseecomd (pid 267)
+      1,488K: android.hardware.bluetooth@1.0-service-yfve (pid 441)
+      1,473K: qtxa-metrics (pid 785)
+      1,467K: storaged (pid 788)
+      1,438K: android.hardware.usb@1.2-service-qti (pid 410)
+      1,434K: gpuservice (pid 473)
+      1,434K: vendor.qti.hardware.iop@2.0-service (pid 426)
+      1,426K: top (pid 21445)
+      1,425K: cnss-daemon (pid 845)
+      1,405K: thermal-engine (pid 800)
+      1,385K: iptables-restore (pid 372)
+      1,357K: ip6tables-restore (pid 373)
+      1,356K: gatekeeperd (pid 854)
+      1,348K: thermal-engine (pid 707)
+      1,319K: vendor.yfve.hardware.audiocontrol@1.0-service (pid 430)
+      1,304K: android.hardware.boot@1.1-service (pid 335)
+      1,280K: incidentd (pid 762)
+      1,245K: android.hardware.health@2.1-service (pid 405)
+      1,244K: traced (pid 674)
+      1,234K: vendor.qti.hardware.qteeconnector@1.0-service (pid 427)
+      1,214K: vendor.qti.automotive.qcarcam@1.0-service (pid 419)
+      1,184K: vendor.qti.hardware.qseecom@1.0-service (pid 268)
+      1,171K: android.hardware.sensors@1.0-service (pid 408)
+      1,157K: android.hardware.power-service (pid 407)
+      1,155K: android.hardware.gatekeeper@1.0-service-qti (pid 336)
+      1,146K: mlid (pid 848)
+      1,111K: android.system.suspend@1.0-service (pid 333)
+      1,076K: mdnsd (pid 666)
+      1,059K: logcat (pid 1220)
+      1,048K: faultcode (pid 719)
+      1,029K: android.hardware.automotive.audiocontrol@2.0-service (pid 396)
+      1,020K: pm-service (pid 457)
+      1,009K: vendor.qti.dvr@1.0-service (pid 421)
+      1,003K: android.hardware.health@2.0-service (pid 403)
+        991K: bdsystemcleaner (pid 746)
+        987K: vendor.qti.hardware.capabilityconfigstore@1.0-service (pid 423)
+        968K: car_power_daemon (pid 2562)
+        955K: traced_probes (pid 671)
+        953K: loc_launcher (pid 849)
+        952K: vndservicemanager (pid 254)
+        943K: vendor.yfve.hardware.configstore@1.0-service (pid 269)
+        936K: ipacm-diag (pid 801)
+        931K: sh (pid 1216)
+        921K: hyp_dvr_mux_be (pid 264)
+        916K: android.hardware.memtrack@1.0-service (pid 406)
+        902K: android.hardware.atrace@1.0-service (pid 334)
+        872K: pd-mapper (pid 459)
+        819K: vendor.qti.hardware.automotive.audiocontrol@1.0-service (pid 422)
+        814K: android.hardware.automotive.audiocontrol@1.0-service (pid 395)
+        763K: dumpsys (pid 21740)
+        752K: sh (pid 20738)
+        741K: com.android.car.procfsinspector (pid 3922)
+        738K: sh (pid 21635)
+        735K: android.hidl.allocator@1.0-service (pid 394)
+        730K: tftp_server (pid 483)
+        700K: sh (pid 21443)
+        691K: amfsservice (pid 710)
+        688K: busybox (pid 844)
+        656K: lmkd (pid 250)
+        613K: tombstoned (pid 357)
+        579K: ssgqmigd (pid 846)
+        566K: qrtr-ns (pid 451)
+        554K: telnetd (pid 832)
+
+Total PSS by OOM adjustment:
+    546,006K: Native
+         39,808K: surfaceflinger (pid 477)
+         27,265K: zygote (pid 365)
+         25,947K: logd (pid 249)
+         19,849K: qtxa-nidps-engine (pid 786)
+         18,407K: zygote64 (pid 364)
+         17,866K: android.hardware.audio.service (pid 393)
+         14,640K: audioserver (pid 462)
+         13,991K: bdnetdproxy (pid 2569)
+         13,974K: /vendor (pid 1045)
+         13,870K: media.swcodec (pid 838)
+         12,972K: /vendor (pid 910)
+         12,458K: RCN_DiagnosticsAgent (pid 917)
+         10,909K: android.hardware.graphics.composer@2.4-service (pid 401)
+         10,849K: vendor.ford.swu@1.0-service (pid 915)
+          9,271K: media.extractor (pid 781)
+          9,202K: media.hwcodec (pid 429)
+          8,838K: cameraserver (pid 750)
+          8,661K: vendor.ford.hardware.automotive.vehicle@2.0-service (pid 415)
+          8,658K: vendor.ford.ccs@1.0-service (pid 959)
+          8,248K: webview_zygote (pid 1662)
+          7,771K: vendor.ford.soa@1.0-service (pid 911)
+          7,223K: init (pid 1)
+          7,153K: qtxa-nidps-manage (pid 2623)
+          6,972K: media.codec (pid 796)
+          6,941K: /vendor (pid 700)
+          6,820K: android.hardware.camera.provider@2.4-service (pid 398)
+          6,519K: mediaserver (pid 783)
+          6,175K: android.hardware.automotive.evs@1.1-ais (pid 271)
+          4,993K: netd (pid 363)
+          4,939K: wlan_service (pid 999)
+          4,837K: vendor.ford.wir@1.0-service (pid 1046)
+          4,792K: vendor.ford.ippt@1.0-service (pid 912)
+          4,384K: vendor.yfve.hardware.YFVECoreVehicle@1.0-service (pid 337)
+          4,024K: vold (pid 272)
+          3,931K: android.hardware.wifi@1.0-service (pid 412)
+          3,834K: carwatchdogd (pid 231)
+          3,728K: ueventd (pid 216)
+          3,629K: ais_v4l2_proxy (pid 321)
+          3,292K: init (pid 214)
+          3,269K: adbd (pid 18667)
+          3,062K: vendor.ford.diagnostics@1.0-service (pid 908)
+          2,873K: xtra-daemon (pid 868)
+          2,783K: installd (pid 764)
+          2,745K: android.hardware.drm@1.3-service.clearkey (pid 400)
+          2,646K: slim_daemon (pid 867)
+          2,550K: vendor.yfve.hardware.bluetooth@1.0-service (pid 449)
+          2,531K: RCN_ReconnService (pid 918)
+          2,303K: keystore (pid 770)
+          2,287K: diag-router (pid 621)
+          2,287K: android.hardware.bdseckeystore@1.0-service (pid 397)
+          2,276K: ipacm (pid 332)
+          2,226K: statsd (pid 362)
+          2,142K: vendor.ford.gnss@1.0-service (pid 916)
+          2,108K: amqserver (pid 991)
+          1,947K: vendor.yfve.hardware.logcollector@1.0-service (pid 1207)
+          1,946K: /vendor (pid 998)
+          1,942K: credstore (pid 464)
+          1,935K: lowi-server (pid 866)
+          1,864K: media.metrics (pid 782)
+          1,858K: hyp_dvr_hidl_client (pid 703)
+          1,853K: perfservice (pid 790)
+          1,820K: vendor.qti.hardware.display.allocator-service (pid 424)
+          1,811K: wificond (pid 789)
+          1,806K: android.frameworks.automotive.display@1.0-service (pid 270)
+          1,805K: vendor.ford.coresec@1.0-service (pid 414)
+          1,791K: cnss_diag (pid 715)
+          1,749K: hwservicemanager (pid 252)
+          1,692K: android.hardware.keymaster@4.1-service-qti (pid 266)
+          1,665K: qtxa-idps-server (pid 784)
+          1,660K: bdseclogservice (pid 742)
+          1,655K: drmserver (pid 751)
+          1,634K: android.hardware.cas@1.2-service (pid 399)
+          1,524K: servicemanager (pid 251)
+          1,511K: qseecomd (pid 267)
+          1,488K: android.hardware.bluetooth@1.0-service-yfve (pid 441)
+          1,473K: qtxa-metrics (pid 785)
+          1,467K: storaged (pid 788)
+          1,438K: android.hardware.usb@1.2-service-qti (pid 410)
+          1,434K: gpuservice (pid 473)
+          1,434K: vendor.qti.hardware.iop@2.0-service (pid 426)
+          1,426K: top (pid 21445)
+          1,425K: cnss-daemon (pid 845)
+          1,405K: thermal-engine (pid 800)
+          1,385K: iptables-restore (pid 372)
+          1,357K: ip6tables-restore (pid 373)
+          1,356K: gatekeeperd (pid 854)
+          1,348K: thermal-engine (pid 707)
+          1,319K: vendor.yfve.hardware.audiocontrol@1.0-service (pid 430)
+          1,304K: android.hardware.boot@1.1-service (pid 335)
+          1,280K: incidentd (pid 762)
+          1,245K: android.hardware.health@2.1-service (pid 405)
+          1,244K: traced (pid 674)
+          1,234K: vendor.qti.hardware.qteeconnector@1.0-service (pid 427)
+          1,214K: vendor.qti.automotive.qcarcam@1.0-service (pid 419)
+          1,184K: vendor.qti.hardware.qseecom@1.0-service (pid 268)
+          1,171K: android.hardware.sensors@1.0-service (pid 408)
+          1,157K: android.hardware.power-service (pid 407)
+          1,155K: android.hardware.gatekeeper@1.0-service-qti (pid 336)
+          1,146K: mlid (pid 848)
+          1,111K: android.system.suspend@1.0-service (pid 333)
+          1,076K: mdnsd (pid 666)
+          1,059K: logcat (pid 1220)
+          1,048K: faultcode (pid 719)
+          1,029K: android.hardware.automotive.audiocontrol@2.0-service (pid 396)
+          1,020K: pm-service (pid 457)
+          1,009K: vendor.qti.dvr@1.0-service (pid 421)
+          1,003K: android.hardware.health@2.0-service (pid 403)
+            991K: bdsystemcleaner (pid 746)
+            987K: vendor.qti.hardware.capabilityconfigstore@1.0-service (pid 423)
+            968K: car_power_daemon (pid 2562)
+            955K: traced_probes (pid 671)
+            953K: loc_launcher (pid 849)
+            952K: vndservicemanager (pid 254)
+            943K: vendor.yfve.hardware.configstore@1.0-service (pid 269)
+            936K: ipacm-diag (pid 801)
+            931K: sh (pid 1216)
+            921K: hyp_dvr_mux_be (pid 264)
+            916K: android.hardware.memtrack@1.0-service (pid 406)
+            902K: android.hardware.atrace@1.0-service (pid 334)
+            872K: pd-mapper (pid 459)
+            819K: vendor.qti.hardware.automotive.audiocontrol@1.0-service (pid 422)
+            814K: android.hardware.automotive.audiocontrol@1.0-service (pid 395)
+            763K: dumpsys (pid 21740)
+            752K: sh (pid 20738)
+            741K: com.android.car.procfsinspector (pid 3922)
+            738K: sh (pid 21635)
+            735K: android.hidl.allocator@1.0-service (pid 394)
+            730K: tftp_server (pid 483)
+            700K: sh (pid 21443)
+            691K: amfsservice (pid 710)
+            688K: busybox (pid 844)
+            656K: lmkd (pid 250)
+            613K: tombstoned (pid 357)
+            579K: ssgqmigd (pid 846)
+            566K: qrtr-ns (pid 451)
+            554K: telnetd (pid 832)
+    184,408K: System
+        184,408K: system (pid 1051)
+  1,647,667K: Persistent
+        525,144K: com.ford.sync.vpa (pid 3067 / activities)
+        339,227K: com.ford.sync.controllerlauncher (pid 1735 / activities)
+         81,117K: com.android.systemui (pid 1578)
+         75,709K: com.ford.sync.account (pid 2928 / activities)
+         68,328K: com.ford.sync.swuservice (pid 3097)
+         64,278K: com.ford.sync.lidget (pid 2041 / activities)
+         40,326K: com.android.car (pid 1530)
+         38,673K: com.ford.xiaoduos.v2x (pid 1977)
+         34,839K: com.ford.hmi.appstore (pid 2953)
+         33,540K: com.ford.sync.fnvservice (pid 1643)
+         29,508K: com.android.networkstack.process (pid 1691)
+         28,231K: com.ford.sync.fordvehicleservice (pid 1727)
+         24,795K: com.ford.sync.fcs (pid 1873)
+         24,624K: com.ford.sync.accountservice (pid 1941)
+         23,589K: com.yfve.core (pid 1555 / activities)
+         18,667K: com.baidu.pki (pid 3213)
+         18,221K: com.ford.sync.vha (pid 3047)
+         17,766K: com.baidu.privacy (pid 1360)
+         17,028K: com.ford.sync.voicecontrolservice (pid 2986)
+         16,794K: com.baidu.xiaoduos.recommend (pid 3185)
+         16,729K: com.ford.sync.carrier (pid 3136)
+         16,660K: com.android.phone (pid 2012)
+         15,132K: com.ford.sync.apa (pid 3031)
+         12,471K: com.ford.sync.electronicmanual (pid 1785)
+         12,393K: com.yfve.upnpservice (pid 3272)
+         12,073K: com.yfve.dlna (pid 3244)
+         11,681K: com.yfve.eol (pid 3151)
+          8,279K: com.qtxa.hidps (pid 1339)
+          6,451K: com.ford.sync.marketplace (pid 1907)
+          5,967K: com.yfve.report (pid 3011)
+          4,738K: com.android.se (pid 1846)
+          4,689K: .qtidataservices (pid 1743)
+     71,475K: Persistent Service
+         33,293K: com.android.providers.media.module (pid 3350)
+         19,590K: com.android.bluetooth (pid 1388)
+         18,592K: com.android.bluetooth2 (pid 1395)
+    314,324K: Foreground
+        252,455K: com.yfve.settings (pid 3482 / activities)
+         61,869K: com.baidu.car.radio (pid 3444 / activities)
+    966,032K: Visible
+        412,476K: com.baidu.che.codriver (pid 4122)
+        114,217K: com.baidu.naviauto (pid 3601 / activities)
+         88,278K: com.baidu.iov.aiapps:swan0 (pid 4655)
+         68,821K: com.baidu.iov.aiapps (pid 3727)
+         47,092K: com.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:1 (pid 5029)
+         40,479K: com.baidu.xiaoduos.messageserver (pid 3540)
+         39,902K: com.baidu.iov.faceos (pid 3650)
+         36,193K: com.baidu.xiaoduos.syncservice (pid 3679)
+         22,525K: com.baidu.iov.vision (pid 3381)
+         18,712K: com.ford.sync.tspservice (pid 3319)
+         18,389K: com.ford.sync.relaxmode (pid 3567)
+         13,738K: com.yfve.dialer (pid 3512)
+         12,333K: com.yfve.roadsideassitance (pid 3576)
+         11,795K: android.ext.services (pid 2085)
+          8,896K: com.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0 (pid 4559)
+          7,229K: com.baidu.xiaoduos.recommend:IovLoc (pid 4093)
+          4,957K: com.qtxa.hidps:remote (pid 2296)
+    110,297K: Perceptible
+         36,616K: com.baidu.car.input (pid 3412)
+         35,388K: com.baidu.car.radio2 (pid 3709)
+         15,779K: com.ford.sync.surprisemessage (pid 6605)
+         14,239K: com.ford.sync.guestmode (pid 6499)
+          8,275K: com.ford.sync.smartscene (pid 6573)
+     27,310K: A Services
+         19,725K: com.ford.sync.demomode (pid 6459)
+          7,585K: com.ford.sync.persontime (pid 6536)
+      5,124K: B Services
+          5,124K: com.qti.diagservices (pid 6032)
+    143,881K: Cached
+         39,070K: com.baidu.bodyguard (pid 8567)
+         20,408K: com.android.settings (pid 6362)
+         11,737K: android.process.acore (pid 6072)
+         10,973K: com.android.permissioncontroller (pid 6291)
+         10,543K: com.yfve.engineeringmode (pid 6092)
+          7,837K: com.android.managedprovisioning (pid 6209)
+          7,608K: com.android.traceur (pid 6418)
+          6,090K: com.android.providers.calendar (pid 6325)
+          5,938K: com.android.packageinstaller (pid 6267)
+          5,675K: android.process.media (pid 6012)
+          4,699K: com.android.shell (pid 6390)
+          4,551K: com.android.keychain (pid 6133)
+          4,406K: com.android.localtransport (pid 3993)
+          4,346K: com.android.dynsystem (pid 6161)
+
+Total PSS by category:
+  1,333,698K: Native
+    753,528K: Other mmap
+    506,785K: .apk mmap
+    364,819K: .so mmap
+    319,354K: Dalvik
+    192,813K: Dalvik Other
+    181,321K: .art mmap
+    121,638K: Unknown
+     83,493K: .dex mmap
+     65,771K: .jar mmap
+     57,590K: Stack
+     28,573K: .oat mmap
+      4,219K: Other dev
+      2,198K: .ttf mmap
+        712K: Ashmem
+         12K: Cursor
+          0K: Gfx dev
+          0K: EGL mtrack
+          0K: GL mtrack
+          0K: Other mtrack
+
+Total RAM: 11,353,224K (status normal)
+ Free RAM: 4,568,205K (  143,881K cached pss + 1,012,684K cached kernel + 3,411,640K free)
+      ION:   628,920K (  699,984K mapped +  -154,120K unmapped +    83,056K pools)
+ Used RAM: 5,371,043K (3,872,643K used pss + 1,498,400K kernel)
+ Lost RAM: 1,413,964K
+     ZRAM:        12K physical used for         0K in swap (4,194,300K total swap)
+   Tuning: 512 (large 512), oom   322,560K, restore limit   107,520K (high-end-gfx)
+msmnile_gvmq:/ #
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

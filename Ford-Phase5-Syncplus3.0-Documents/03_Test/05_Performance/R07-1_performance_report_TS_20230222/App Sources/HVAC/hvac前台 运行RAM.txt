@@ -1,0 +1,5 @@
+3090  17416008K  355056K  221098K  216436K       0K       0K       0K       0K  com.ford.sync.hvac
+msmnile_gvmq:/ # procrank|grep com.ford.sync.hvac
+ 3090  17416008K  355060K  221102K  216440K       0K       0K       0K       0K  com.ford.sync.hvac
+msmnile_gvmq:/ # procrank|grep com.ford.sync.hvac
+ 3090  17398516K  355048K  221090K  216428K       0K       0K       0K       0K  com.ford.sync.hvac

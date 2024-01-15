@@ -1,0 +1,16 @@
+msmnile_gvmq:/ # top | grep "launcher"
+  1744 system       10 -10 2.0G 352M 276M S 22.2   3.1   0:26.89 com.ford.sync.controllerlauncher
+ 30271 root         20   0  12G 3.2M 2.6M S  0.0   0.0   0:00.00 grep launcher
+  1744 system       10 -10 2.0G 352M 276M S 24.0   3.1   0:26.95 com.ford.sync.controllerlauncher
+ 30271 root         20   0  12G 3.2M 2.6M S  0.0   0.0   0:00.00 grep launcher
+  1744 system       10 -10 2.0G 352M 276M S 23.0   3.1   0:27.67 com.ford.sync.controllerlauncher
+ 30271 root         20   0  12G 3.2M 2.6M S  0.0   0.0   0:00.00 grep launcher
+  1744 system       10 -10 2.0G 352M 276M S 24.0   3.1   0:28.36 com.ford.sync.controllerlauncher
+ 30271 root         20   0  12G 3.2M 2.6M S  0.0   0.0   0:00.00 grep launcher
+  1744 system       10 -10 2.0G 352M 276M S 23.3   3.1   0:29.08 com.ford.sync.controllerlauncher
+ 30271 root         20   0  12G 3.2M 2.6M S  0.0   0.0   0:00.00 grep launcher
+  1744 system       10 -10 2.0G 352M 276M S 23.6   3.1   0:29.78 com.ford.sync.controllerlauncher
+ 30271 root         20   0  12G 3.2M 2.6M S  0.0   0.0   0:00.00 grep launcher
+  1744 system       10 -10 2.0G 353M 276M S 30.6   3.1   0:30.49 com.ford.sync.controllerlauncher
+ 30271 root         20   0  12G 3.2M 2.6M S  0.0   0.0   0:00.00 grep launcher
+msmnile_gvmq:/ # ^C

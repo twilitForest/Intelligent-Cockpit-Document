@@ -1,0 +1,16 @@
+C:\Users\ts>adb shell
+msmnile_gvmq:/ # procrank |grep com.android.car
+ 1329  1950416K  135572K   34256K   31292K       0K       0K       0K       0K  com.android.car
+ 2114  12363868K    3640K     747K     720K       0K       0K       0K       0K  /system/bin/com.android.car.procfsinspector
+msmnile_gvmq:/ # procrank |grep com.android.car
+Failed to open oom_score_adj file: /proc/11913/oom_score_adj
+Failed to open oom_score_adj file: /proc/11914/oom_score_adj
+ 1329  1951040K  132796K   31484K   28516K       0K       0K       0K       0K  com.android.car
+ 2114  12363868K    3640K     748K     720K       0K       0K       0K       0K  /system/bin/com.android.car.procfsinspector
+msmnile_gvmq:/ # procrank |grep com.android.car
+Failed to open oom_score_adj file: /proc/12010/oom_score_adj
+Failed to open oom_score_adj file: /proc/12017/oom_score_adj
+Failed to open oom_score_adj file: /proc/12018/oom_score_adj
+ 1329  1950416K  130720K   29408K   26440K       0K       0K       0K       0K  com.android.car
+ 2114  12363868K    3640K     747K     720K       0K       0K       0K       0K  /system/bin/com.android.car.procfsinspector
+msmnile_gvmq:/ #

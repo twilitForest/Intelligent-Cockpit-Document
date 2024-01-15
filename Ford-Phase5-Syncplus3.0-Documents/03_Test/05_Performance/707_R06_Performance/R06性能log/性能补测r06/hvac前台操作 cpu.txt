@@ -1,0 +1,769 @@
+[H[J[?25l[H[JTasks: 382 total,   1 running, 379 sleeping,   0 stopped,   2 zombie
+  Mem: 11353224K total,  7551396K used,  3801828K free,  86257664 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1836540K cached
+800%cpu 133%user   0%nice 110%sys 540%idle   0%iow  13%irq   3%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 492M 127M S 50.0   4.4  13:17.91 com.baidu.che.codriver
+   495 system       -3 -20  12G  61M  41M S 30.0   0.5   5:40.40 surfaceflinger
+[1m  9235 root         20   0  12G 4.2M 3.4M R 16.6   0.0   0:00.05 top[m
+  2589 u0_a169      10 -10  16G 397M 281M S 13.3   3.5   0:45.16 com.ford.sync.hvac
+  2475 u0_a142      10 -10  20G 526M 164M S 13.3   4.7   4:17.43 com.ford.sync.vpa
+   453 mediacodec   20   0  12G  22M  18M S 13.3   0.2   1:28.38 media.hwcodec /vendor.qti.media.c2@1.0-service
+  9232 root         20   0  12G 3.2M 2.6M S 10.0   0.0   0:00.04 top -n 3 -b -p 1241
+  2237 system       20   0  12G  10M 4.2M S 10.0   0.0   1:10.41 qtxa-nidps-manage
+   716 system       18  -2  18G 352M 266M S 10.0   3.1   3:20.66 system_server
+   420 system       20   0  12G 5.0M 4.1M S 10.0   0.0   2:48.51 android.hardware.sensors@1.0-service
+   410 system       -3   0  12G  20M  16M S 10.0   0.1   2:08.70 android.hardware.graphics.composer@2.4-service
+  6850 root         20   0  14G 137M 103M S  6.6   1.2   0:39.27 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+  1652 system       10 -10 2.1G 365M 299M S  6.6   3.2   0:32.38 com.ford.sync.controllerlauncher
+  1436 system       20   0  16G 151M  91M S  6.6   1.3   1:28.41 com.android.car
+  1241 system       20   0  16G 116M  76M S  6.6   1.0   0:59.74 com.qtxa.hidps
+   950 system       20   0  12G  18M 4.4M S  6.6   0.1   1:33.34 bdnetdproxy
+   792 root         20   0  12G  19M 7.0M S  6.6   0.1   1:18.46 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+  6792 root         20   0  12G 7.6M 5.0M S  3.3   0.0   0:18.65 adbd --root_seclabel=u:r:su:s0
+  2097 system       20   0  15G 103M  65M S  3.3   0.9   0:57.56 com.qtxa.hidps:remote
+  1875 system       20   0  15G 122M  81M S  3.3   1.0   0:27.61 com.ford.xiaoduos.v2x[H[JTasks: 380 total,   2 running, 378 sleeping,   0 stopped,   0 zombie
+  Mem: 11353224K total,  7554956K used,  3798268K free,  86265856 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1836612K cached
+800%cpu 122%user   1%nice  93%sys 568%idle   2%iow  10%irq   5%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 492M 127M S 45.0   4.4  13:18.06 com.baidu.che.codriver
+[1m   495 system       -3 -20  12G  61M  41M R 26.6   0.5   5:40.49 surfaceflinger[m
+  2475 u0_a142      10 -10  20G 526M 164M S 15.6   4.7   4:17.47 com.ford.sync.vpa
+   453 mediacodec   20   0  12G  22M  18M S 15.6   0.2   1:28.42 media.hwcodec /vendor.qti.media.c2@1.0-service
+  2589 u0_a169      10 -10  16G 397M 281M S 13.0   3.5   0:45.20 com.ford.sync.hvac
+   420 system       20   0  12G 5.0M 4.1M S 10.6   0.0   2:48.54 android.hardware.sensors@1.0-service
+   716 system       18  -2  18G 352M 266M S  9.0   3.1   3:20.69 system_server
+   410 system       -3   0  12G  20M  16M S  8.6   0.1   2:08.73 android.hardware.graphics.composer@2.4-service
+   792 root         20   0  12G  19M 7.0M S  8.0   0.1   1:18.48 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+  2237 system       20   0  12G  10M 4.2M S  7.0   0.0   1:10.44 qtxa-nidps-manage
+  6850 root         20   0  14G 137M 103M S  6.6   1.2   0:39.29 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+   790 root         20   0  12G 4.8M 4.0M S  6.6   0.0   0:59.61 qtxa-metrics
+  2097 system       20   0  15G 103M  65M S  6.3   0.9   0:57.57 com.qtxa.hidps:remote
+  1241 system       20   0  16G 116M  76M S  6.0   1.0   0:59.76 com.qtxa.hidps
+   950 system       20   0  12G  18M 4.4M S  5.6   0.1   1:33.36 bdnetdproxy
+  1436 system       20   0  16G 151M  91M S  4.3   1.3   1:28.43 com.android.car
+  6792 root         20   0  12G 7.6M 5.0M S  3.0   0.0   0:18.66 adbd --root_seclabel=u:r:su:s0
+   402 audioserver  20   0  68M  20M  10M S  2.0   0.1   0:45.09 android.hardware.audio.service
+   249 logd         30  10  12G  31M 2.7M S  2.0   0.2   0:28.93 logd
+[1m  9235 root         20   0  12G 4.4M 3.4M R  1.6   0.0   0:00.10 top[m[H[JTasks: 379 total,   2 running, 377 sleeping,   0 stopped,   0 zombie
+  Mem: 11353224K total,  7556360K used,  3796864K free,  86282240 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1836688K cached
+800%cpu 121%user   1%nice  99%sys 563%idle   1%iow  11%irq   5%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 493M 127M S 46.0   4.4  13:19.41 com.baidu.che.codriver
+[1m   495 system       -3 -20  12G  61M  41M R 27.3   0.5   5:41.29 surfaceflinger[m
+   453 mediacodec   20   0  12G  22M  18M S 16.0   0.2   1:28.89 media.hwcodec /vendor.qti.media.c2@1.0-service
+  2475 u0_a142      10 -10  20G 526M 164M S 15.3   4.7   4:17.94 com.ford.sync.vpa
+  2589 u0_a169      10 -10  16G 397M 281M S 12.3   3.5   0:45.59 com.ford.sync.hvac
+   420 system       RT   0  12G 5.0M 4.1M S 10.3   0.0   2:48.86 android.hardware.sensors@1.0-service
+   410 system       -3   0  12G  20M  16M S  9.0   0.1   2:08.99 android.hardware.graphics.composer@2.4-service
+   716 system       18  -2  18G 352M 266M S  8.6   3.1   3:20.96 system_server
+   792 root         20   0  12G  19M 7.0M S  7.6   0.1   1:18.72 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+  2237 system       20   0  12G  10M 4.2M S  7.3   0.0   1:10.65 qtxa-nidps-manage
+  6850 root         20   0  14G 137M 103M S  6.3   1.2   0:39.49 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+   790 root         20   0  12G 4.8M 4.0M S  6.3   0.0   0:59.81 qtxa-metrics
+  2097 system       20   0  15G 103M  65M S  6.0   0.9   0:57.76 com.qtxa.hidps:remote
+  1241 system       20   0  16G 116M  76M S  6.0   1.0   0:59.94 com.qtxa.hidps
+   950 system       20   0  12G  18M 4.4M S  5.0   0.1   1:33.53 bdnetdproxy
+  1436 system       20   0  16G 151M  91M S  4.6   1.3   1:28.56 com.android.car
+   235 system       20   0  12G 6.6M 3.1M S  4.3   0.0   0:22.18 carwatchdogd
+  6792 root         20   0  12G 7.6M 5.0M S  3.6   0.0   0:18.75 adbd --root_seclabel=u:r:su:s0
+   829 mediacodec   20   0  41M  14M  11M S  2.3   0.1   0:10.97 media.codec hw/android.hardware.media.omx@1.0-service
+   402 audioserver  20   0  68M  20M  10M S  2.3   0.1   0:45.15 android.hardware.audio.service[H[JTasks: 381 total,   2 running, 377 sleeping,   0 stopped,   2 zombie
+  Mem: 11353224K total,  7554768K used,  3798456K free,  86294528 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1836792K cached
+800%cpu 111%user   1%nice 109%sys 562%idle   1%iow  10%irq   5%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 493M 127M S 45.0   4.4  13:20.79 com.baidu.che.codriver
+[1m   495 system       -3 -20  12G  61M  41M R 27.0   0.5   5:42.11 surfaceflinger[m
+   453 mediacodec   20   0  12G  22M  18M S 15.6   0.2   1:29.37 media.hwcodec /vendor.qti.media.c2@1.0-service
+  2475 u0_a142      10 -10  20G 526M 164M S 14.6   4.7   4:18.40 com.ford.sync.vpa
+  2589 u0_a169      10 -10  16G 397M 281M S 12.3   3.5   0:45.96 com.ford.sync.hvac
+   420 system       RT   0  12G 5.0M 4.1M S 10.3   0.0   2:49.17 android.hardware.sensors@1.0-service
+   716 system       18  -2  18G 353M 266M S  9.0   3.1   3:21.22 system_server
+   410 system       -3   0  12G  20M  16M S  8.6   0.1   2:09.26 android.hardware.graphics.composer@2.4-service
+  2237 system       20   0  12G  10M 4.2M S  7.3   0.0   1:10.87 qtxa-nidps-manage
+   792 root         20   0  12G  19M 7.0M S  7.0   0.1   1:18.95 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+  6850 root         20   0  14G 137M 103M S  6.6   1.2   0:39.68 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+  1241 system       20   0  16G 116M  76M S  6.6   1.0   1:00.12 com.qtxa.hidps
+  2097 system       20   0  15G 103M  65M S  6.3   0.9   0:57.94 com.qtxa.hidps:remote
+   790 root         20   0  12G 4.8M 4.0M S  6.3   0.0   1:00.00 qtxa-metrics
+  1436 system       20   0  16G 151M  91M S  5.6   1.3   1:28.70 com.android.car
+   950 system       20   0  12G  18M 4.4M S  5.0   0.1   1:33.68 bdnetdproxy
+  6792 root         20   0  12G 7.6M 5.0M S  3.0   0.0   0:18.86 adbd --root_seclabel=u:r:su:s0
+  1875 system       20   0  15G 121M  81M S  2.0   1.0   0:27.71 com.ford.xiaoduos.v2x
+   402 audioserver  20   0  68M  20M  10M S  2.0   0.1   0:45.22 android.hardware.audio.service
+   249 logd         30  10  12G  31M 2.7M S  2.0   0.2   0:29.05 logd[H[JTasks: 380 total,   2 running, 378 sleeping,   0 stopped,   0 zombie
+  Mem: 11353224K total,  7565764K used,  3787460K free,  86298624 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1837000K cached
+800%cpu 134%user   1%nice 136%sys 509%idle   2%iow  12%irq   6%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 494M 127M S 48.6   4.4  13:22.14 com.baidu.che.codriver
+[1m   495 system       -3 -20  12G  61M  41M R 30.3   0.5   5:42.92 surfaceflinger[m
+  2589 u0_a169      10 -10  16G 397M 281M S 24.6   3.5   0:46.33 com.ford.sync.hvac
+   453 mediacodec   20   0  12G  22M  18M S 18.0   0.2   1:29.84 media.hwcodec /vendor.qti.media.c2@1.0-service
+   716 system       18  -2  18G 354M 266M S 17.6   3.1   3:21.49 system_server
+  2475 u0_a142      10 -10  20G 526M 164M S 16.0   4.7   4:18.84 com.ford.sync.vpa
+   420 system       RT   0  12G 5.0M 4.1M S 10.0   0.0   2:49.48 android.hardware.sensors@1.0-service
+   950 system       20   0  12G  18M 4.4M S  8.6   0.1   1:33.83 bdnetdproxy
+   410 system       -3   0  12G  20M  16M S  8.6   0.1   2:09.52 android.hardware.graphics.composer@2.4-service
+  1436 system       20   0  16G 147M  91M S  8.3   1.3   1:28.87 com.android.car
+  6850 root         20   0  14G 137M 103M S  8.0   1.2   0:39.88 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+   792 root         20   0  12G  19M 7.0M S  8.0   0.1   1:19.16 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+  2237 system       20   0  12G  10M 4.2M S  7.6   0.0   1:11.09 qtxa-nidps-manage
+  2097 system       20   0  15G 103M  65M S  6.3   0.9   0:58.13 com.qtxa.hidps:remote
+  1241 system       20   0  16G 116M  76M S  6.3   1.0   1:00.32 com.qtxa.hidps
+   790 root         20   0  12G 4.8M 4.0M S  6.3   0.0   1:00.19 qtxa-metrics
+   772 root         20   0  12G 6.1M 4.0M S  5.3   0.0   0:07.82 installd
+  6792 root         20   0  12G 7.6M 5.0M S  4.3   0.0   0:18.95 adbd --root_seclabel=u:r:su:s0
+   249 logd         30  10  12G  31M 2.7M S  3.3   0.2   0:29.11 logd
+   829 mediacodec   20   0  41M  14M  11M S  2.3   0.1   0:11.09 media.codec hw/android.hardware.media.omx@1.0-service[H[JTasks: 381 total,   1 running, 378 sleeping,   0 stopped,   2 zombie
+  Mem: 11353224K total,  7570540K used,  3782684K free,  86339584 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1837248K cached
+800%cpu 122%user   1%nice 131%sys 525%idle   2%iow  12%irq   7%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 494M 127M S 46.3   4.4  13:23.60 com.baidu.che.codriver
+   495 system       -3 -20  12G  61M  41M D 30.6   0.5   5:43.83 surfaceflinger
+  2589 u0_a169      10 -10  16G 397M 282M S 25.6   3.5   0:47.07 com.ford.sync.hvac
+   453 mediacodec   20   0  12G  22M  18M S 17.3   0.2   1:30.38 media.hwcodec /vendor.qti.media.c2@1.0-service
+  2475 u0_a142      10 -10  20G 526M 164M S 16.0   4.7   4:19.32 com.ford.sync.vpa
+   716 system       18  -2  18G 355M 266M S 15.0   3.2   3:22.02 system_server
+   420 system       20   0  12G 5.0M 4.1M S 11.3   0.0   2:49.78 android.hardware.sensors@1.0-service
+   410 system       -3   0  12G  20M  16M S  9.6   0.1   2:09.78 android.hardware.graphics.composer@2.4-service
+  1436 system       20   0  16G 148M  91M S  8.0   1.3   1:29.12 com.android.car
+   950 system       20   0  12G  18M 4.4M S  8.0   0.1   1:34.09 bdnetdproxy
+  6850 root         20   0  14G 137M 103M S  7.6   1.2   0:40.12 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+   792 root         20   0  12G  19M 7.0M S  7.6   0.1   1:19.40 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+  2237 system       20   0  12G  10M 4.2M S  7.3   0.0   1:11.32 qtxa-nidps-manage
+   790 root         20   0  12G 4.8M 4.0M S  7.3   0.0   1:00.38 qtxa-metrics
+  2097 system       20   0  15G 103M  65M S  6.6   0.9   0:58.32 com.qtxa.hidps:remote
+  1241 system       20   0  16G 116M  76M S  6.6   1.0   1:00.51 com.qtxa.hidps
+  6792 root         20   0  12G 7.8M 5.0M S  4.3   0.0   0:19.08 adbd --root_seclabel=u:r:su:s0
+   249 logd         30  10  12G  31M 2.7M S  3.0   0.2   0:29.21 logd
+   829 mediacodec   20   0  41M  14M  11M S  2.3   0.1   0:11.16 media.codec hw/android.hardware.media.omx@1.0-service
+   402 audioserver  20   0  68M  20M  10M S  2.3   0.1   0:45.35 android.hardware.audio.service[H[JTasks: 380 total,   2 running, 378 sleeping,   0 stopped,   0 zombie
+  Mem: 11353224K total,  7591260K used,  3761964K free,  86339584 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1837520K cached
+800%cpu 132%user   1%nice 123%sys 522%idle   2%iow  12%irq   8%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 495M 127M S 46.6   4.4  13:24.99 com.baidu.che.codriver
+  2589 u0_a169      10 -10  16G 400M 283M S 37.0   3.6   0:47.84 com.ford.sync.hvac
+   495 system       -3 -20  12G  61M  41M D 36.6   0.5   5:44.75 surfaceflinger
+   453 mediacodec   20   0  12G  22M  18M S 22.6   0.2   1:30.90 media.hwcodec /vendor.qti.media.c2@1.0-service
+  2475 u0_a142      10 -10  20G 526M 164M S 16.6   4.7   4:19.80 com.ford.sync.vpa
+   716 system       18  -2  18G 355M 266M S 13.6   3.2   3:22.47 system_server
+   420 system       RT   0  12G 5.0M 4.1M S 11.0   0.0   2:50.12 android.hardware.sensors@1.0-service
+   410 system       -3   0  12G  20M  16M S 10.0   0.1   2:10.07 android.hardware.graphics.composer@2.4-service
+[1m   792 root         20   0  12G  19M 7.0M R  8.6   0.1   1:19.63 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0[m
+  6850 root         20   0  14G 137M 103M S  8.0   1.2   0:40.35 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+  2237 system       20   0  12G  10M 4.2M S  7.0   0.0   1:11.54 qtxa-nidps-manage
+  1241 system       20   0  16G 116M  76M S  7.0   1.0   1:00.71 com.qtxa.hidps
+  2097 system       20   0  15G 103M  65M S  6.6   0.9   0:58.52 com.qtxa.hidps:remote
+   790 root         20   0  12G 4.8M 4.0M S  6.6   0.0   1:00.60 qtxa-metrics
+  1436 system       20   0  16G 148M  91M S  5.0   1.3   1:29.36 com.android.car
+   235 system       20   0  12G 6.6M 3.1M S  4.3   0.0   0:22.31 carwatchdogd
+   950 system       20   0  12G  18M 4.4M S  4.0   0.1   1:34.33 bdnetdproxy
+  6792 root         20   0  12G 7.8M 5.0M S  3.3   0.0   0:19.21 adbd --root_seclabel=u:r:su:s0
+   829 mediacodec   20   0  41M  14M  11M S  3.3   0.1   0:11.23 media.codec hw/android.hardware.media.omx@1.0-service
+   139 root         20   0    0    0    0 S  3.0   0.0   0:11.44 [system][H[JTasks: 379 total,   2 running, 377 sleeping,   0 stopped,   0 zombie
+  Mem: 11353224K total,  7598376K used,  3754848K free,  86364160 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1837644K cached
+800%cpu 140%user   2%nice 108%sys 530%idle   1%iow  12%irq   6%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 486M 127M S 47.6   4.3  13:26.39 com.baidu.che.codriver
+  2589 u0_a169      10 -10  16G 429M 301M S 37.3   3.8   0:48.95 com.ford.sync.hvac
+   495 system       -3 -20  12G  61M  41M S 34.6   0.5   5:45.85 surfaceflinger
+   453 mediacodec   20   0  12G  22M  18M S 21.6   0.2   1:31.58 media.hwcodec /vendor.qti.media.c2@1.0-service
+  2475 u0_a142      10 -10  20G 526M 164M S 16.6   4.7   4:20.30 com.ford.sync.vpa
+   716 system       18  -2  18G 357M 266M S 10.6   3.2   3:22.88 system_server
+   420 system       RT   0  12G 5.0M 4.1M S 10.3   0.0   2:50.45 android.hardware.sensors@1.0-service
+   410 system       -3   0  12G  20M  16M S 10.3   0.1   2:10.37 android.hardware.graphics.composer@2.4-service
+  6850 root         20   0  14G 137M 103M S  8.3   1.2   0:40.59 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+   792 root         20   0  12G  19M 7.0M S  8.3   0.1   1:19.89 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+  2237 system       20   0  12G  10M 4.2M S  7.3   0.0   1:11.75 qtxa-nidps-manage
+  2097 system       20   0  15G 103M  65M S  6.6   0.9   0:58.72 com.qtxa.hidps:remote
+  1241 system       20   0  16G 116M  76M S  6.6   1.0   1:00.92 com.qtxa.hidps
+   790 root         20   0  12G 4.8M 4.0M S  6.6   0.0   1:00.80 qtxa-metrics
+  1436 system       20   0  16G 148M  91M S  5.3   1.3   1:29.51 com.android.car
+   950 system       20   0  12G  18M 4.4M S  5.0   0.1   1:34.45 bdnetdproxy
+  6792 root         20   0  12G 7.8M 5.0M S  4.6   0.0   0:19.31 adbd --root_seclabel=u:r:su:s0
+   829 mediacodec   20   0  41M  14M  11M S  3.0   0.1   0:11.33 media.codec hw/android.hardware.media.omx@1.0-service
+   249 logd         30  10  12G  31M 2.7M S  2.6   0.2   0:29.36 logd
+   402 audioserver  20   0  68M  20M  10M S  2.3   0.1   0:45.49 android.hardware.audio.service[H[JTasks: 381 total,   3 running, 376 sleeping,   0 stopped,   2 zombie
+  Mem: 11353224K total,  7594164K used,  3759060K free,  86376448 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1837712K cached
+800%cpu 150%user   2%nice 119%sys 506%idle   3%iow  13%irq   8%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 486M 127M S 45.3   4.3  13:27.82 com.baidu.che.codriver
+[1m   495 system       -3 -20  12G  61M  41M R 39.0   0.5   5:46.89 surfaceflinger[m
+  2589 u0_a169      10 -10  16G 430M 313M S 35.3   3.8   0:50.07 com.ford.sync.hvac
+   453 mediacodec   20   0  12G  22M  18M S 26.0   0.2   1:32.23 media.hwcodec /vendor.qti.media.c2@1.0-service
+  2475 u0_a142      10 -10  20G 526M 164M S 16.0   4.7   4:20.80 com.ford.sync.vpa
+   716 system       18  -2  18G 357M 266M S 12.0   3.2   3:23.20 system_server
+   410 system       -3   0  12G  20M  16M S 10.3   0.1   2:10.68 android.hardware.graphics.composer@2.4-service
+   420 system       RT   0  12G 5.0M 4.1M S 10.0   0.0   2:50.76 android.hardware.sensors@1.0-service
+  6850 root         20   0  14G 137M 103M S  9.0   1.2   0:40.84 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+  2237 system       20   0  12G  10M 4.2M S  8.0   0.0   1:11.97 qtxa-nidps-manage
+   792 root         20   0  12G  19M 7.0M S  8.0   0.1   1:20.14 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+  1241 system       20   0  16G 116M  76M S  7.3   1.0   1:01.12 com.qtxa.hidps
+   790 root         20   0  12G 4.8M 4.0M S  7.0   0.0   1:01.00 qtxa-metrics
+  2097 system       20   0  15G 103M  65M S  6.3   0.9   0:58.92 com.qtxa.hidps:remote
+   950 system       20   0  12G  18M 4.4M S  6.3   0.1   1:34.60 bdnetdproxy
+  1436 system       20   0  16G 148M  91M S  5.0   1.3   1:29.67 com.android.car
+  6792 root         20   0  12G 7.8M 5.0M S  4.0   0.0   0:19.45 adbd --root_seclabel=u:r:su:s0
+   829 mediacodec   20   0  41M  14M  11M S  3.6   0.1   0:11.42 media.codec hw/android.hardware.media.omx@1.0-service
+   139 root         20   0    0    0    0 S  3.3   0.0   0:11.60 [system]
+   440 system       20   0  12G 7.5M 6.1M S  2.3   0.0   0:07.30 vendor.qti.hardware.display.allocator-service[H[JTasks: 379 total,   5 running, 374 sleeping,   0 stopped,   0 zombie
+  Mem: 11353224K total,  7596220K used,  3757004K free,  86396928 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1837788K cached
+800%cpu 142%user   1%nice 122%sys 516%idle   2%iow  12%irq   6%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 487M 127M S 45.6   4.3  13:29.18 com.baidu.che.codriver
+   495 system       -3 -20  12G  61M  41M S 36.6   0.5   5:48.06 surfaceflinger
+  2589 u0_a169      10 -10  16G 437M 319M S 28.6   3.9   0:51.13 com.ford.sync.hvac
+   453 mediacodec   20   0  12G  22M  18M S 23.6   0.2   1:33.01 media.hwcodec /vendor.qti.media.c2@1.0-service
+  2475 u0_a142      10 -10  20G 526M 164M S 15.6   4.7   4:21.28 com.ford.sync.vpa
+   716 system       18  -2  18G 349M 266M S 12.0   3.1   3:23.56 system_server
+   420 system       20   0  12G 5.0M 4.1M S 10.6   0.0   2:51.06 android.hardware.sensors@1.0-service
+   410 system       -3   0  12G  20M  16M S 10.0   0.1   2:10.99 android.hardware.graphics.composer@2.4-service
+  6850 root         20   0  14G 137M 103M S  8.3   1.2   0:41.11 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+   792 root         20   0  12G  19M 7.0M S  8.0   0.1   1:20.38 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+  2237 system       20   0  12G  10M 4.2M S  7.6   0.0   1:12.21 qtxa-nidps-manage
+  1241 system       20   0  16G 116M  76M S  7.0   1.0   1:01.34 com.qtxa.hidps
+  2097 system       20   0  15G 103M  65M S  6.6   0.9   0:59.11 com.qtxa.hidps:remote
+   790 root         20   0  12G 4.8M 4.0M S  6.6   0.0   1:01.21 qtxa-metrics
+  1436 system       20   0  16G 148M  91M S  5.6   1.3   1:29.82 com.android.car
+   950 system       20   0  12G  18M 4.4M S  5.6   0.1   1:34.79 bdnetdproxy
+   235 system       20   0  12G 6.6M 3.1M S  4.6   0.0   0:22.45 carwatchdogd
+  6792 root         20   0  12G 7.8M 5.0M S  3.6   0.0   0:19.57 adbd --root_seclabel=u:r:su:s0
+   829 mediacodec   20   0  41M  14M  11M S  3.0   0.1   0:11.53 media.codec hw/android.hardware.media.omx@1.0-service
+   139 root         20   0    0    0    0 S  3.0   0.0   0:11.70 [system][H[JTasks: 380 total,   1 running, 377 sleeping,   0 stopped,   2 zombie
+  Mem: 11353224K total,  7597052K used,  3756172K free,  86417408 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1837888K cached
+800%cpu 138%user   2%nice 114%sys 528%idle   1%iow  12%irq   6%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 487M 127M S 47.6   4.3  13:30.55 com.baidu.che.codriver
+   495 system       -3 -20  12G  61M  41M S 34.6   0.5   5:49.16 surfaceflinger
+  2589 u0_a169      10 -10  16G 437M 319M S 25.0   3.9   0:51.99 com.ford.sync.hvac
+   453 mediacodec   20   0  12G  22M  18M S 22.0   0.2   1:33.72 media.hwcodec /vendor.qti.media.c2@1.0-service
+  2475 u0_a142      10 -10  20G 526M 164M S 16.0   4.7   4:21.75 com.ford.sync.vpa
+   716 system       18  -2  18G 350M 266M S 11.3   3.1   3:23.92 system_server
+   420 system       20   0  12G 5.0M 4.1M S 10.3   0.0   2:51.38 android.hardware.sensors@1.0-service
+   410 system       -3   0  12G  20M  16M S  9.6   0.1   2:11.29 android.hardware.graphics.composer@2.4-service
+  6850 root         20   0  14G 137M 103M S  7.6   1.2   0:41.36 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+   792 root         20   0  12G  19M 7.0M S  7.6   0.1   1:20.62 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+  2237 system       20   0  12G  10M 4.2M S  7.3   0.0   1:12.44 qtxa-nidps-manage
+   790 root         20   0  12G 4.8M 4.0M S  7.0   0.0   1:01.41 qtxa-metrics
+  2097 system       20   0  15G 103M  65M S  6.6   0.9   0:59.31 com.qtxa.hidps:remote
+  1241 system       20   0  16G 116M  76M S  6.0   1.0   1:01.55 com.qtxa.hidps
+  1436 system       20   0  16G 148M  91M S  5.0   1.3   1:29.99 com.android.car
+   950 system       20   0  12G  18M 4.4M S  4.0   0.1   1:34.96 bdnetdproxy
+  6792 root         20   0  12G 7.8M 5.0M S  3.3   0.0   0:19.68 adbd --root_seclabel=u:r:su:s0
+   249 logd         30  10  12G  31M 2.7M S  3.3   0.2   0:29.58 logd
+   829 mediacodec   20   0  41M  14M  11M S  2.6   0.1   0:11.62 media.codec hw/android.hardware.media.omx@1.0-service
+   139 root         20   0    0    0    0 S  2.6   0.0   0:11.79 [system][H[JTasks: 379 total,   2 running, 377 sleeping,   0 stopped,   0 zombie
+  Mem: 11353224K total,  7602240K used,  3750984K free,  86437888 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1838024K cached
+800%cpu 130%user   1%nice 115%sys 534%idle   2%iow  12%irq   6%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 488M 127M S 45.0   4.4  13:31.98 com.baidu.che.codriver
+   495 system       -3 -20  12G  61M  41M S 33.3   0.5   5:50.20 surfaceflinger
+  2589 u0_a169      10 -10  16G 441M 321M S 27.3   3.9   0:52.74 com.ford.sync.hvac
+   453 mediacodec   20   0  12G  22M  18M S 21.3   0.2   1:34.38 media.hwcodec /vendor.qti.media.c2@1.0-service
+  2475 u0_a142      10 -10  20G 526M 164M S 14.6   4.7   4:22.23 com.ford.sync.vpa
+   716 system       18  -2  18G 351M 266M S 11.0   3.1   3:24.26 system_server
+   420 system       20   0  12G 5.0M 4.1M S 10.3   0.0   2:51.69 android.hardware.sensors@1.0-service
+   410 system       -3   0  12G  20M  16M S  9.3   0.1   2:11.58 android.hardware.graphics.composer@2.4-service
+   792 root         20   0  12G  19M 7.0M S  8.0   0.1   1:20.85 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+  6850 root         20   0  14G 137M 103M S  7.6   1.2   0:41.59 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+  2097 system       20   0  15G 103M  65M S  7.0   0.9   0:59.51 com.qtxa.hidps:remote
+  2237 system       20   0  12G  10M 4.2M S  6.6   0.0   1:12.66 qtxa-nidps-manage
+  1241 system       20   0  16G 116M  76M S  6.6   1.0   1:01.73 com.qtxa.hidps
+   790 root         20   0  12G 4.8M 4.0M S  6.3   0.0   1:01.62 qtxa-metrics
+   950 system       20   0  12G  18M 4.4M S  5.6   0.1   1:35.08 bdnetdproxy
+  1436 system       20   0  16G 149M  91M S  5.0   1.3   1:30.14 com.android.car
+  6792 root         20   0  12G 7.8M 5.0M S  3.3   0.0   0:19.78 adbd --root_seclabel=u:r:su:s0
+   829 mediacodec   20   0  41M  14M  11M S  3.0   0.1   0:11.70 media.codec hw/android.hardware.media.omx@1.0-service
+   139 root         20   0    0    0    0 S  2.6   0.0   0:11.87 [system]
+   402 audioserver  20   0  68M  20M  10M S  2.3   0.1   0:45.77 android.hardware.audio.service[H[JTasks: 379 total,   2 running, 377 sleeping,   0 stopped,   0 zombie
+  Mem: 11353224K total,  7607460K used,  3745764K free,  86450176 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1838128K cached
+800%cpu 132%user   1%nice 133%sys 515%idle   2%iow  12%irq   6%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 489M 127M S 46.0   4.4  13:33.33 com.baidu.che.codriver
+   495 system       -3 -20  12G  61M  41M S 32.0   0.5   5:51.20 surfaceflinger
+  2589 u0_a169      10 -10  16G 443M 322M S 24.6   3.9   0:53.56 com.ford.sync.hvac
+   453 mediacodec   20   0  12G  22M  18M S 18.3   0.2   1:35.02 media.hwcodec /vendor.qti.media.c2@1.0-service
+  2475 u0_a142      10 -10  20G 526M 164M S 16.3   4.7   4:22.67 com.ford.sync.vpa
+   716 system       18  -2  18G 351M 266M S 14.6   3.1   3:24.59 system_server
+[1m   420 system       RT   0  12G 5.0M 4.1M R 10.6   0.0   2:52.00 android.hardware.sensors@1.0-service[m
+   410 system       -3   0  12G  20M  16M S  9.6   0.1   2:11.86 android.hardware.graphics.composer@2.4-service
+   792 root         20   0  12G  19M 7.0M S  8.3   0.1   1:21.09 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+  2237 system       20   0  12G  10M 4.2M S  8.0   0.0   1:12.86 qtxa-nidps-manage
+  6850 root         20   0  14G 137M 103M S  7.6   1.2   0:41.82 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+  1436 system       20   0  16G 149M  91M S  7.6   1.3   1:30.29 com.android.car
+   950 system       20   0  12G  18M 4.4M S  7.6   0.1   1:35.25 bdnetdproxy
+  1241 system       20   0  16G 116M  76M S  6.6   1.0   1:01.93 com.qtxa.hidps
+  2097 system       20   0  15G 103M  65M S  6.3   0.9   0:59.72 com.qtxa.hidps:remote
+   790 root         20   0  12G 4.8M 4.0M S  6.3   0.0   1:01.81 qtxa-metrics
+  6792 root         20   0  12G 7.8M 5.0M S  4.3   0.0   0:19.88 adbd --root_seclabel=u:r:su:s0
+   235 system       20   0  12G 6.6M 3.1M S  4.0   0.0   0:22.59 carwatchdogd
+   249 logd         30  10  12G  31M 2.7M S  3.3   0.2   0:29.75 logd
+   829 mediacodec   20   0  41M  14M  11M S  2.6   0.1   0:11.79 media.codec hw/android.hardware.media.omx@1.0-service[H[JTasks: 382 total,   2 running, 378 sleeping,   0 stopped,   2 zombie
+  Mem: 11353224K total,  7610724K used,  3742500K free,  86462464 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1838360K cached
+800%cpu 151%user   2%nice 157%sys 466%idle   3%iow  13%irq   8%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 489M 127M S 48.3   4.4  13:34.71 com.baidu.che.codriver
+  2589 u0_a169      10 -10  16G 445M 323M S 33.3   4.0   0:54.30 com.ford.sync.hvac
+   495 system       -3 -20  12G  61M  41M S 33.3   0.5   5:52.16 surfaceflinger
+   716 system       18  -2  18G 351M 266M S 26.0   3.1   3:25.03 system_server
+   453 mediacodec   20   0  12G  22M  18M S 20.0   0.2   1:35.57 media.hwcodec /vendor.qti.media.c2@1.0-service
+   950 system       20   0  12G  18M 4.4M S 17.3   0.1   1:35.48 bdnetdproxy
+  1436 system       20   0  16G 149M  91M S 16.0   1.3   1:30.52 com.android.car
+  2475 u0_a142      10 -10  20G 526M 164M S 15.3   4.7   4:23.16 com.ford.sync.vpa
+   420 system       RT   0  12G 5.0M 4.1M S 11.3   0.0   2:52.32 android.hardware.sensors@1.0-service
+  6850 root         20   0  14G 137M 103M S 10.3   1.2   0:42.05 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+   410 system       -3   0  12G  20M  16M S 10.0   0.1   2:12.15 android.hardware.graphics.composer@2.4-service
+  2237 system       20   0  12G  10M 4.2M S  8.3   0.0   1:13.10 qtxa-nidps-manage
+   792 root         20   0  12G  19M 7.0M S  7.6   0.1   1:21.34 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+  6792 root         20   0  12G 7.8M 5.0M S  7.0   0.0   0:20.01 adbd --root_seclabel=u:r:su:s0
+  1241 system       20   0  16G 116M  76M S  7.0   1.0   1:02.13 com.qtxa.hidps
+   790 root         20   0  12G 4.8M 4.0M S  6.6   0.0   1:02.00 qtxa-metrics
+  2097 system       20   0  15G 103M  65M S  6.3   0.9   0:59.91 com.qtxa.hidps:remote
+   249 logd         30  10  12G  31M 2.7M S  6.3   0.2   0:29.85 logd
+   428 vehicle_net+ 20   0  12G  12M 6.3M S  4.3   0.1   0:24.47 vendor.ford.hardware.automotive.vehicle@2.0-service
+   335 system       20   0  12G 9.0M 6.1M S  4.0   0.0   0:23.88 vendor.yfve.hardware.YFVECoreVehicle@1.0-service[H[JTasks: 379 total,   2 running, 377 sleeping,   0 stopped,   0 zombie
+  Mem: 11353224K total,  7615608K used,  3737616K free,  86466560 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1838648K cached
+800%cpu 170%user   3%nice 184%sys 418%idle   1%iow  14%irq   9%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 490M 127M S 49.3   4.4  13:36.16 com.baidu.che.codriver
+  2589 u0_a169      10 -10  16G 445M 323M S 42.6   4.0   0:55.30 com.ford.sync.hvac
+   716 system       18  -2  18G 352M 266M S 38.3   3.1   3:25.81 system_server
+[1m   495 system       -3 -20  12G  61M  41M R 36.6   0.5   5:53.16 surfaceflinger[m
+   453 mediacodec   20   0  12G  22M  18M S 23.3   0.2   1:36.17 media.hwcodec /vendor.qti.media.c2@1.0-service
+  1436 system       20   0  16G 149M  91M S 23.0   1.3   1:31.00 com.android.car
+   950 system       20   0  12G  18M 4.4M S 19.6   0.1   1:36.00 bdnetdproxy
+  2475 u0_a142      10 -10  20G 526M 164M S 18.0   4.7   4:23.62 com.ford.sync.vpa
+  6850 root         20   0  14G 138M 103M S 12.6   1.2   0:42.36 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+   420 system       20   0  12G 5.0M 4.1M S 11.6   0.0   2:52.66 android.hardware.sensors@1.0-service
+   410 system       -3   0  12G  20M  16M S 10.6   0.1   2:12.45 android.hardware.graphics.composer@2.4-service
+  6792 root         20   0  12G 7.8M 5.0M S  9.3   0.0   0:20.22 adbd --root_seclabel=u:r:su:s0
+  2237 system       20   0  12G  10M 4.2M S  9.3   0.0   1:13.35 qtxa-nidps-manage
+   792 root         20   0  12G  19M 7.0M S  8.6   0.1   1:21.57 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+   249 logd         30  10  12G  31M 2.7M S  8.6   0.2   0:30.04 logd
+   790 root         20   0  12G 4.8M 4.0M S  7.6   0.0   1:02.20 qtxa-metrics
+  1241 system       20   0  16G 116M  76M S  7.0   1.0   1:02.34 com.qtxa.hidps
+  2097 system       20   0  15G 103M  65M S  6.6   0.9   1:00.10 com.qtxa.hidps:remote
+   428 vehicle_net+ 20   0  12G  12M 6.3M S  6.3   0.1   0:24.60 vendor.ford.hardware.automotive.vehicle@2.0-service
+   335 system       20   0  12G 9.0M 6.1M S  6.0   0.0   0:24.00 vendor.yfve.hardware.YFVECoreVehicle@1.0-service[H[JTasks: 382 total,   1 running, 379 sleeping,   0 stopped,   2 zombie
+  Mem: 11353224K total,  7617760K used,  3735464K free,  86487040 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1838980K cached
+800%cpu 159%user   3%nice 175%sys 436%idle   3%iow  15%irq   9%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 491M 127M S 47.0   4.4  13:37.64 com.baidu.che.codriver
+  2589 u0_a169      10 -10  16G 445M 324M S 39.3   4.0   0:56.58 com.ford.sync.hvac
+   716 system       18  -2  18G 353M 267M S 39.3   3.1   3:26.96 system_server
+   495 system       -3 -20  12G  61M  41M D 37.0   0.5   5:54.26 surfaceflinger
+  1436 system       20   0  16G 150M  91M S 24.3   1.3   1:31.69 com.android.car
+   453 mediacodec   20   0  12G  22M  18M S 24.3   0.2   1:36.87 media.hwcodec /vendor.qti.media.c2@1.0-service
+   950 system       20   0  12G  18M 4.4M S 20.6   0.1   1:36.59 bdnetdproxy
+  2475 u0_a142      10 -10  20G 526M 164M S 16.3   4.7   4:24.16 com.ford.sync.vpa
+  6850 root         20   0  14G 138M 103M S 12.6   1.2   0:42.74 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+   420 system       RT   0  12G 5.0M 4.1M S 10.6   0.0   2:53.01 android.hardware.sensors@1.0-service
+   410 system       -3   0  12G  20M  16M S 10.6   0.1   2:12.77 android.hardware.graphics.composer@2.4-service
+  2237 system       20   0  12G  10M 4.2M S 10.3   0.0   1:13.63 qtxa-nidps-manage
+  6792 root         20   0  12G 7.8M 5.0M S  8.6   0.0   0:20.50 adbd --root_seclabel=u:r:su:s0
+   249 logd         30  10  12G  31M 2.7M S  8.3   0.2   0:30.30 logd
+   792 root         20   0  12G  19M 7.0M S  8.0   0.1   1:21.83 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+   790 root         20   0  12G 4.8M 4.0M S  7.0   0.0   1:02.43 qtxa-metrics
+   335 system       20   0  12G 9.0M 6.1M S  7.0   0.0   0:24.18 vendor.yfve.hardware.YFVECoreVehicle@1.0-service
+  2097 system       20   0  15G 103M  65M S  6.6   0.9   1:00.30 com.qtxa.hidps:remote
+   428 vehicle_net+ 20   0  12G  12M 6.3M S  6.6   0.1   0:24.79 vendor.ford.hardware.automotive.vehicle@2.0-service
+  1241 system       20   0  16G 116M  76M S  6.3   1.0   1:02.55 com.qtxa.hidps[H[JTasks: 376 total,   2 running, 374 sleeping,   0 stopped,   0 zombie
+  Mem: 11353224K total,  7598748K used,  3754476K free,  86499328 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1839124K cached
+800%cpu 175%user   4%nice 180%sys 415%idle   2%iow  14%irq   9%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 491M 127M S 49.0   4.4  13:39.05 com.baidu.che.codriver
+  2589 u0_a169      10 -10  16G 445M 324M S 39.3   4.0   0:57.76 com.ford.sync.hvac
+   716 system       18  -2  18G 354M 267M S 39.0   3.1   3:28.14 system_server
+   495 system       -3 -20  12G  61M  41M S 37.0   0.5   5:55.37 surfaceflinger
+  1436 system       20   0  16G 151M  91M S 24.6   1.3   1:32.42 com.android.car
+   950 system       20   0  12G  18M 4.4M S 23.0   0.1   1:37.21 bdnetdproxy
+   453 mediacodec   20   0  12G  22M  18M S 22.6   0.2   1:37.60 media.hwcodec /vendor.qti.media.c2@1.0-service
+  2475 u0_a142      10 -10  20G 526M 164M S 17.3   4.7   4:24.65 com.ford.sync.vpa
+  6850 root         20   0  14G 138M 103M S 11.3   1.2   0:43.12 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+   410 system       -3   0  12G  20M  16M S 10.6   0.1   2:13.09 android.hardware.graphics.composer@2.4-service
+   420 system       RT   0  12G 5.0M 4.1M S  9.6   0.0   2:53.33 android.hardware.sensors@1.0-service
+  2237 system       20   0  12G  10M 4.2M S  9.3   0.0   1:13.94 qtxa-nidps-manage
+  6792 root         20   0  12G 7.7M 5.0M S  9.0   0.0   0:20.76 adbd --root_seclabel=u:r:su:s0
+   792 root         20   0  12G  19M 7.0M S  9.0   0.1   1:22.07 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+   249 logd         30  10  12G  31M 2.7M S  8.3   0.2   0:30.55 logd
+  1241 system       20   0  16G 116M  76M S  7.3   1.0   1:02.74 com.qtxa.hidps
+   790 root         20   0  12G 4.8M 4.0M S  7.3   0.0   1:02.64 qtxa-metrics
+  2097 system       20   0  15G 103M  65M S  7.0   0.9   1:00.50 com.qtxa.hidps:remote
+   428 vehicle_net+ 20   0  12G  12M 6.3M S  6.3   0.1   0:24.99 vendor.ford.hardware.automotive.vehicle@2.0-service
+   335 system       20   0  12G 9.0M 6.1M S  6.3   0.0   0:24.39 vendor.yfve.hardware.YFVECoreVehicle@1.0-service[H[JTasks: 377 total,   4 running, 373 sleeping,   0 stopped,   0 zombie
+  Mem: 11353224K total,  7601408K used,  3751816K free,  86523904 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1839348K cached
+800%cpu 149%user   3%nice 142%sys 483%idle   1%iow  13%irq   9%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 492M 127M S 47.6   4.4  13:40.52 com.baidu.che.codriver
+   495 system       -3 -20  12G  61M  41M D 33.0   0.5   5:56.48 surfaceflinger
+  2589 u0_a169      10 -10  16G 447M 324M S 29.3   4.0   0:58.94 com.ford.sync.hvac
+   716 system       18  -2  18G 355M 267M S 24.3   3.1   3:29.31 system_server
+   453 mediacodec   20   0  12G  22M  18M S 20.0   0.2   1:38.28 media.hwcodec /vendor.qti.media.c2@1.0-service
+  2475 u0_a142      10 -10  20G 526M 164M S 17.0   4.7   4:25.17 com.ford.sync.vpa
+  1436 system       20   0  16G 149M  91M S 12.6   1.3   1:33.16 com.android.car
+   950 system       20   0  12G  18M 4.4M S 12.3   0.1   1:37.90 bdnetdproxy
+   420 system       RT   0  12G 5.0M 4.1M S 10.0   0.0   2:53.62 android.hardware.sensors@1.0-service
+   410 system       -3   0  12G  20M  16M S 10.0   0.1   2:13.41 android.hardware.graphics.composer@2.4-service
+  6850 root         20   0  14G 139M 103M S  9.6   1.2   0:43.46 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+  2237 system       20   0  12G  10M 4.2M S  8.6   0.0   1:14.22 qtxa-nidps-manage
+   792 root         20   0  12G  19M 7.0M S  8.3   0.1   1:22.34 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+  6792 root         20   0  12G 7.7M 5.0M S  7.0   0.0   0:21.03 adbd --root_seclabel=u:r:su:s0
+  2097 system       20   0  15G 103M  65M S  6.6   0.9   1:00.71 com.qtxa.hidps:remote
+  1241 system       20   0  16G 116M  76M S  6.6   1.0   1:02.96 com.qtxa.hidps
+   790 root         20   0  12G 4.8M 4.0M S  6.6   0.0   1:02.86 qtxa-metrics
+   249 logd         30  10  12G  31M 2.7M S  5.0   0.2   0:30.80 logd
+   335 system       20   0  12G 9.0M 6.1M S  4.0   0.0   0:24.58 vendor.yfve.hardware.YFVECoreVehicle@1.0-service
+   428 vehicle_net+ 12  -8  12G  12M 6.3M S  3.6   0.1   0:25.18 vendor.ford.hardware.automotive.vehicle@2.0-service[H[JTasks: 380 total,   1 running, 377 sleeping,   0 stopped,   2 zombie
+  Mem: 11353224K total,  7597472K used,  3755752K free,  86568960 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1839668K cached
+800%cpu 166%user   3%nice 160%sys 446%idle   3%iow  14%irq   8%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 493M 127M S 47.6   4.4  13:41.95 com.baidu.che.codriver
+   716 system       18  -2  18G 355M 267M S 38.0   3.2   3:30.04 system_server
+   495 system       -3 -20  12G  61M  41M S 34.6   0.5   5:57.47 surfaceflinger
+  2589 u0_a169      10 -10  16G 447M 324M S 32.0   4.0   0:59.82 com.ford.sync.hvac
+   453 mediacodec   20   0  12G  22M  18M S 21.3   0.2   1:38.88 media.hwcodec /vendor.qti.media.c2@1.0-service
+  1436 system       20   0  16G 149M  91M S 21.0   1.3   1:33.54 com.android.car
+   950 system       20   0  12G  18M 4.4M S 18.0   0.1   1:38.27 bdnetdproxy
+  2475 u0_a142      10 -10  20G 526M 164M S 16.6   4.7   4:25.68 com.ford.sync.vpa
+   420 system       20   0  12G 5.0M 4.1M S 10.6   0.0   2:53.92 android.hardware.sensors@1.0-service
+  6850 root         20   0  14G 139M 103M S 10.3   1.2   0:43.75 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+   410 system       -3   0  12G  20M  16M S 10.3   0.1   2:13.71 android.hardware.graphics.composer@2.4-service
+  2237 system       20   0  12G  10M 4.2M S  9.3   0.0   1:14.48 qtxa-nidps-manage
+  6792 root         20   0  12G 7.8M 5.0M S  8.6   0.0   0:21.24 adbd --root_seclabel=u:r:su:s0
+   792 root         20   0  12G  19M 7.0M S  8.0   0.1   1:22.59 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+   249 logd         30  10  12G  31M 2.7M S  7.6   0.2   0:30.95 logd
+  1241 system       20   0  16G 116M  76M S  7.3   1.0   1:03.16 com.qtxa.hidps
+  2097 system       20   0  15G 103M  65M S  6.6   0.9   1:00.91 com.qtxa.hidps:remote
+   790 root         20   0  12G 4.8M 4.0M S  6.6   0.0   1:03.06 qtxa-metrics
+   428 vehicle_net+ 20   0  12G  12M 6.3M S  5.6   0.1   0:25.29 vendor.ford.hardware.automotive.vehicle@2.0-service
+   335 system       20   0  12G 9.0M 6.1M S  5.6   0.0   0:24.70 vendor.yfve.hardware.YFVECoreVehicle@1.0-service[H[JTasks: 377 total,   2 running, 375 sleeping,   0 stopped,   0 zombie
+  Mem: 11353224K total,  7602568K used,  3750656K free,  86568960 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1839940K cached
+800%cpu 182%user   5%nice 203%sys 384%idle   2%iow  15%irq  10%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 493M 127M S 48.3   4.4  13:43.38 com.baidu.che.codriver
+   716 system       18  -2  18G 349M 267M S 44.0   3.1   3:31.18 system_server
+  2589 u0_a169      10 -10  16G 448M 324M S 39.3   4.0   1:00.78 com.ford.sync.hvac
+[1m   495 system       -3 -20  12G  61M  41M R 37.0   0.5   5:58.51 surfaceflinger[m
+  1436 system       20   0  16G 150M  91M S 26.6   1.3   1:34.17 com.android.car
+   453 mediacodec   20   0  12G  22M  18M S 24.3   0.2   1:39.52 media.hwcodec /vendor.qti.media.c2@1.0-service
+   950 system       20   0  12G  18M 4.4M S 23.3   0.1   1:38.81 bdnetdproxy
+  2475 u0_a142      10 -10  20G 526M 164M S 17.0   4.7   4:26.18 com.ford.sync.vpa
+  6850 root         20   0  14G 139M 103M S 12.6   1.2   0:44.06 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+  2237 system       20   0  12G  10M 4.2M S 10.6   0.0   1:14.76 qtxa-nidps-manage
+   420 system       20   0  12G 5.0M 4.1M S 10.6   0.0   2:54.24 android.hardware.sensors@1.0-service
+   410 system       -3   0  12G  20M  16M S 10.6   0.1   2:14.02 android.hardware.graphics.composer@2.4-service
+  6792 root         20   0  12G 7.8M 5.0M S 10.3   0.0   0:21.50 adbd --root_seclabel=u:r:su:s0
+   249 logd         30  10  12G  31M 2.7M S 10.3   0.2   0:31.18 logd
+   792 root         20   0  12G  19M 7.0M S  8.3   0.1   1:22.83 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+   790 root         20   0  12G 4.8M 4.0M S  8.0   0.0   1:03.26 qtxa-metrics
+   335 system       20   0  12G 9.0M 6.1M S  8.0   0.0   0:24.87 vendor.yfve.hardware.YFVECoreVehicle@1.0-service
+  1241 system       20   0  16G 116M  76M S  7.6   1.0   1:03.38 com.qtxa.hidps
+   428 vehicle_net+ 20   0  12G  12M 6.3M S  7.6   0.1   0:25.46 vendor.ford.hardware.automotive.vehicle@2.0-service
+  2097 system       20   0  15G 103M  65M S  7.3   0.9   1:01.11 com.qtxa.hidps:remote[H[JTasks: 380 total,   2 running, 376 sleeping,   0 stopped,   2 zombie
+  Mem: 11353224K total,  7603988K used,  3749236K free,  86585344 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1840108K cached
+800%cpu 146%user   3%nice 121%sys 510%idle   1%iow  12%irq   7%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 494M 127M S 48.3   4.4  13:44.83 com.baidu.che.codriver
+[1m   495 system       -3 -20  12G  61M  41M R 32.0   0.5   5:59.62 surfaceflinger[m
+  2589 u0_a169      10 -10  16G 448M 324M S 23.0   4.0   1:01.96 com.ford.sync.hvac
+   716 system       18  -2  18G 351M 267M S 19.6   3.1   3:32.50 system_server
+   453 mediacodec   20   0  12G  22M  18M S 19.6   0.2   1:40.25 media.hwcodec /vendor.qti.media.c2@1.0-service
+  2475 u0_a142      10 -10  20G 526M 164M S 16.3   4.7   4:26.69 com.ford.sync.vpa
+  1436 system       20   0  16G 151M  91M S 11.6   1.3   1:34.97 com.android.car
+   420 system       20   0  12G 5.0M 4.1M S 11.0   0.0   2:54.56 android.hardware.sensors@1.0-service
+   950 system       20   0  12G  18M 4.4M S 10.6   0.1   1:39.51 bdnetdproxy
+   410 system       -3   0  12G  20M  16M S 10.0   0.1   2:14.34 android.hardware.graphics.composer@2.4-service
+  6850 root         20   0  14G 140M 103M S  8.6   1.2   0:44.44 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+   792 root         20   0  12G  19M 7.0M S  8.0   0.1   1:23.08 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+  2237 system       20   0  12G  10M 4.2M S  7.3   0.0   1:15.08 qtxa-nidps-manage
+  2097 system       20   0  15G 103M  65M S  6.6   0.9   1:01.33 com.qtxa.hidps:remote
+   790 root         20   0  12G 4.8M 4.0M S  6.6   0.0   1:03.50 qtxa-metrics
+  6792 root         20   0  12G 7.8M 5.0M S  6.3   0.0   0:21.81 adbd --root_seclabel=u:r:su:s0
+  1241 system       20   0  16G 116M  76M S  6.3   1.0   1:03.61 com.qtxa.hidps
+   249 logd         30  10  12G  31M 2.7M S  6.0   0.2   0:31.49 logd
+   428 vehicle_net+ 20   0  12G  12M 6.3M S  3.0   0.1   0:25.69 vendor.ford.hardware.automotive.vehicle@2.0-service
+   335 system       20   0  12G 9.0M 6.1M S  3.0   0.0   0:25.11 vendor.yfve.hardware.YFVECoreVehicle@1.0-service[H[JTasks: 377 total,   1 running, 376 sleeping,   0 stopped,   0 zombie
+  Mem: 11353224K total,  7604284K used,  3748940K free,  86618112 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1840352K cached
+800%cpu 165%user   8%nice 179%sys 423%idle   2%iow  15%irq   9%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 495M 127M S 48.6   4.4  13:46.28 com.baidu.che.codriver
+   716 system       18  -2  18G 352M 267M S 39.6   3.1   3:33.09 system_server
+  2589 u0_a169      10 -10  16G 448M 324M S 35.0   4.0   1:02.65 com.ford.sync.hvac
+   495 system       -3 -20  12G  61M  41M S 35.0   0.5   6:00.58 surfaceflinger
+  1436 system       20   0  16G 151M  91M S 24.6   1.3   1:35.32 com.android.car
+   453 mediacodec   20   0  12G  22M  18M S 22.6   0.2   1:40.84 media.hwcodec /vendor.qti.media.c2@1.0-service
+   950 system       20   0  12G  18M 4.4M S 21.0   0.1   1:39.83 bdnetdproxy
+  2475 u0_a142      10 -10  20G 526M 164M S 16.0   4.7   4:27.18 com.ford.sync.vpa
+   249 logd         30  10  12G  31M 2.7M S 12.0   0.2   0:31.67 logd
+  6850 root         20   0  14G 140M 103M S 11.6   1.2   0:44.70 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+   420 system       20   0  12G 5.0M 4.1M S 11.6   0.0   2:54.89 android.hardware.sensors@1.0-service
+  2237 system       20   0  12G  10M 4.2M S 10.3   0.0   1:15.30 qtxa-nidps-manage
+   410 system       -3   0  12G  20M  16M S 10.0   0.1   2:14.64 android.hardware.graphics.composer@2.4-service
+  6792 root         20   0  12G 7.8M 5.0M S  9.3   0.0   0:22.00 adbd --root_seclabel=u:r:su:s0
+   792 root         20   0  12G  19M 7.0M S  8.6   0.1   1:23.32 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+  2097 system       20   0  15G 103M  65M S  7.3   0.9   1:01.53 com.qtxa.hidps:remote
+  1241 system       20   0  16G 116M  76M S  7.0   1.0   1:03.80 com.qtxa.hidps
+   790 root         20   0  12G 4.8M 4.0M S  7.0   0.0   1:03.70 qtxa-metrics
+   335 system       20   0  12G 9.0M 6.1M S  6.6   0.0   0:25.20 vendor.yfve.hardware.YFVECoreVehicle@1.0-service
+   428 vehicle_net+ 20   0  12G  12M 6.3M S  6.0   0.1   0:25.78 vendor.ford.hardware.automotive.vehicle@2.0-service[H[JTasks: 377 total,   4 running, 373 sleeping,   0 stopped,   0 zombie
+  Mem: 11353224K total,  7598412K used,  3754812K free,  86659072 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1840636K cached
+800%cpu 180%user   5%nice 181%sys 407%idle   3%iow  15%irq  10%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 495M 127M S 50.0   4.4  13:47.74 com.baidu.che.codriver
+   716 system       18  -2  18G 353M 267M S 42.3   3.1   3:34.28 system_server
+   495 system       -3 -20  12G  61M  41M S 34.0   0.5   6:01.63 surfaceflinger
+  2589 u0_a169      10 -10  16G 448M 324M S 33.0   4.0   1:03.70 com.ford.sync.hvac
+  1436 system       20   0  16G 148M  91M S 26.6   1.3   1:36.06 com.android.car
+   950 system       20   0  12G  18M 4.4M S 24.3   0.1   1:40.46 bdnetdproxy
+   453 mediacodec   20   0  12G  22M  18M S 21.6   0.2   1:41.52 media.hwcodec /vendor.qti.media.c2@1.0-service
+  2475 u0_a142      10 -10  20G 526M 164M S 17.3   4.7   4:27.66 com.ford.sync.vpa
+  6850 root         20   0  14G 140M 103M S 11.3   1.2   0:45.05 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+   410 system       -3   0  12G  20M  16M S 10.6   0.1   2:14.94 android.hardware.graphics.composer@2.4-service
+  2237 system       20   0  12G  10M 4.2M S 10.3   0.0   1:15.61 qtxa-nidps-manage
+   420 system       20   0  12G 5.0M 4.1M S 10.3   0.0   2:55.24 android.hardware.sensors@1.0-service
+   249 logd         30  10  12G  31M 2.7M S 10.3   0.2   0:32.03 logd
+  6792 root         20   0  12G 7.8M 5.0M S  9.3   0.0   0:22.28 adbd --root_seclabel=u:r:su:s0
+   792 root         20   0  12G  19M 7.0M S  8.3   0.1   1:23.58 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+   428 vehicle_net+ 20   0  12G  12M 6.3M S  7.6   0.1   0:25.96 vendor.ford.hardware.automotive.vehicle@2.0-service
+   335 system       20   0  12G 9.0M 6.1M S  7.0   0.0   0:25.40 vendor.yfve.hardware.YFVECoreVehicle@1.0-service
+  2097 system       20   0  15G 103M  65M S  6.6   0.9   1:01.75 com.qtxa.hidps:remote
+  1241 system       20   0  16G 116M  76M S  6.6   1.0   1:04.01 com.qtxa.hidps
+   790 root         20   0  12G 4.8M 4.0M S  6.6   0.0   1:03.91 qtxa-metrics[H[JTasks: 378 total,   2 running, 374 sleeping,   0 stopped,   2 zombie
+  Mem: 11353224K total,  7598396K used,  3754828K free,  86683648 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1840816K cached
+800%cpu 135%user   3%nice 146%sys 495%idle   2%iow  13%irq   7%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 486M 127M S 42.6   4.3  13:49.24 com.baidu.che.codriver
+[1m   495 system       -3 -20  12G  61M  41M R 32.6   0.5   6:02.65 surfaceflinger[m
+  2589 u0_a169      10 -10  16G 448M 324M S 25.3   4.0   1:04.69 com.ford.sync.hvac
+   716 system       18  -2  18G 354M 267M S 24.0   3.1   3:35.55 system_server
+   453 mediacodec   20   0  12G  22M  18M S 21.0   0.2   1:42.17 media.hwcodec /vendor.qti.media.c2@1.0-service
+  2475 u0_a142      10 -10  20G 526M 164M S 16.6   4.7   4:28.18 com.ford.sync.vpa
+  1436 system       20   0  16G 148M  91M S 15.6   1.3   1:36.86 com.android.car
+   950 system       20   0  12G  18M 4.4M S 15.3   0.1   1:41.19 bdnetdproxy
+   420 system       RT   0  12G 5.0M 4.1M S 10.0   0.0   2:55.55 android.hardware.sensors@1.0-service
+   410 system       -3   0  12G  20M  16M S 10.0   0.1   2:15.26 android.hardware.graphics.composer@2.4-service
+  6850 root         20   0  14G 140M 103M S  8.6   1.2   0:45.39 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+  2237 system       20   0  12G  10M 4.2M S  8.3   0.0   1:15.92 qtxa-nidps-manage
+   792 root         20   0  12G  19M 7.0M S  8.3   0.1   1:23.83 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+   790 root         20   0  12G 4.8M 4.0M S  7.0   0.0   1:04.11 qtxa-metrics
+  2097 system       20   0  15G 103M  65M S  6.6   0.9   1:01.95 com.qtxa.hidps:remote
+  1241 system       20   0  16G 116M  76M S  6.6   1.0   1:04.21 com.qtxa.hidps
+   249 logd         30  10  12G  31M 2.7M S  6.0   0.2   0:32.34 logd
+  6792 root         20   0  12G 7.8M 5.0M S  5.3   0.0   0:22.56 adbd --root_seclabel=u:r:su:s0
+   428 vehicle_net+ 20   0  12G  12M 6.3M S  4.3   0.1   0:26.19 vendor.ford.hardware.automotive.vehicle@2.0-service
+   335 system       20   0  12G 9.0M 6.1M S  4.0   0.0   0:25.61 vendor.yfve.hardware.YFVECoreVehicle@1.0-service[H[JTasks: 377 total,   4 running, 373 sleeping,   0 stopped,   0 zombie
+  Mem: 11353224K total,  7602352K used,  3750872K free,  86712320 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1841028K cached
+800%cpu 149%user   3%nice 140%sys 486%idle   2%iow  13%irq   8%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 486M 127M S 48.6   4.3  13:50.52 com.baidu.che.codriver
+   495 system       -3 -20  12G  61M  41M S 34.0   0.5   6:03.63 surfaceflinger
+   716 system       18  -2  18G 355M 267M S 28.3   3.1   3:36.27 system_server
+  2589 u0_a169      10 -10  16G 449M 324M S 26.6   4.0   1:05.45 com.ford.sync.hvac
+   453 mediacodec   20   0  12G  22M  18M S 19.6   0.2   1:42.80 media.hwcodec /vendor.qti.media.c2@1.0-service
+  1436 system       20   0  16G 149M  91M S 17.6   1.3   1:37.33 com.android.car
+  2475 u0_a142      10 -10  20G 526M 164M S 16.0   4.7   4:28.68 com.ford.sync.vpa
+   950 system       20   0  12G  18M 4.4M S 16.0   0.1   1:41.65 bdnetdproxy
+   420 system       20   0  12G 5.0M 4.1M S 11.0   0.0   2:55.85 android.hardware.sensors@1.0-service
+   410 system       -3   0  12G  20M  16M S 10.6   0.1   2:15.56 android.hardware.graphics.composer@2.4-service
+  6850 root         20   0  14G 140M 103M S 10.0   1.2   0:45.65 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+  2237 system       20   0  12G  10M 4.2M S  9.3   0.0   1:16.17 qtxa-nidps-manage
+   792 root         20   0  12G  19M 7.0M S  8.3   0.1   1:24.08 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+  1241 system       20   0  16G 116M  76M S  7.3   1.0   1:04.41 com.qtxa.hidps
+[1m  6792 root         20   0  12G 7.8M 5.0M R  7.0   0.0   0:22.72 adbd --root_seclabel=u:r:su:s0[m
+  2097 system       20   0  15G 103M  65M S  7.0   0.9   1:02.15 com.qtxa.hidps:remote
+   249 logd         30  10  12G  31M 2.7M S  7.0   0.2   0:32.52 logd
+   790 root         20   0  12G 4.8M 4.0M S  6.3   0.0   1:04.32 qtxa-metrics
+   335 system       20   0  12G 9.0M 6.1M S  5.3   0.0   0:25.73 vendor.yfve.hardware.YFVECoreVehicle@1.0-service
+   428 vehicle_net+ 20   0  12G  12M 6.3M S  4.6   0.1   0:26.32 vendor.ford.hardware.automotive.vehicle@2.0-service[H[JTasks: 380 total,   2 running, 376 sleeping,   0 stopped,   2 zombie
+  Mem: 11353224K total,  7604692K used,  3748532K free,  86720512 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1841292K cached
+800%cpu 179%user   5%nice 171%sys 418%idle   2%iow  15%irq  10%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 487M 127M S 48.6   4.3  13:51.98 com.baidu.che.codriver
+   716 system       18  -2  18G 356M 267M S 43.0   3.2   3:37.12 system_server
+   495 system       -3 -20  12G  61M  41M S 36.6   0.5   6:04.65 surfaceflinger
+  2589 u0_a169      10 -10  16G 449M 324M S 35.6   4.0   1:06.25 com.ford.sync.hvac
+  1436 system       20   0  16G 149M  91M S 28.0   1.3   1:37.86 com.android.car
+   950 system       20   0  12G  18M 4.4M S 25.3   0.1   1:42.13 bdnetdproxy
+   453 mediacodec   20   0  12G  22M  18M S 24.0   0.2   1:43.39 media.hwcodec /vendor.qti.media.c2@1.0-service
+  2475 u0_a142      10 -10  20G 526M 164M S 16.6   4.7   4:29.16 com.ford.sync.vpa
+  6850 root         20   0  14G 141M 103M S 12.3   1.2   0:45.95 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+   410 system       -3   0  12G  20M  16M S 10.3   0.1   2:15.88 android.hardware.graphics.composer@2.4-service
+   249 logd         30  10  12G  31M 2.7M S 10.3   0.2   0:32.73 logd
+  6792 root         20   0  12G 7.8M 5.0M S 10.0   0.0   0:22.93 adbd --root_seclabel=u:r:su:s0
+  2237 system       20   0  12G  10M 4.2M S 10.0   0.0   1:16.45 qtxa-nidps-manage
+   420 system       RT   0  12G 5.0M 4.1M S 10.0   0.0   2:56.18 android.hardware.sensors@1.0-service
+   792 root         20   0  12G  19M 7.0M S  8.0   0.1   1:24.33 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+  2097 system       20   0  15G 103M  65M S  7.3   0.9   1:02.36 com.qtxa.hidps:remote
+   428 vehicle_net+ 20   0  12G  12M 6.3M S  7.3   0.1   0:26.46 vendor.ford.hardware.automotive.vehicle@2.0-service
+   335 system       20   0  12G 9.0M 6.1M S  7.3   0.0   0:25.89 vendor.yfve.hardware.YFVECoreVehicle@1.0-service
+  1241 system       20   0  16G 116M  76M S  7.0   1.0   1:04.63 com.qtxa.hidps
+   790 root         20   0  12G 4.8M 4.0M S  7.0   0.0   1:04.51 qtxa-metrics[H[JTasks: 377 total,   3 running, 374 sleeping,   0 stopped,   0 zombie
+  Mem: 11353224K total,  7606964K used,  3746260K free,  86745088 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1841532K cached
+800%cpu 155%user   3%nice 161%sys 456%idle   2%iow  14%irq   9%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 487M 127M S 47.0   4.3  13:53.44 com.baidu.che.codriver
+[1m   495 system       -3 -20  12G  61M  41M R 35.3   0.5   6:05.75 surfaceflinger[m
+   716 system       18  -2  18G 356M 267M S 34.3   3.2   3:38.41 system_server
+  2589 u0_a169      10 -10  16G 450M 324M S 32.6   4.0   1:07.32 com.ford.sync.hvac
+   453 mediacodec   20   0  12G  22M  18M S 23.3   0.2   1:44.11 media.hwcodec /vendor.qti.media.c2@1.0-service
+  1436 system       20   0  16G 148M  91M S 19.6   1.3   1:38.70 com.android.car
+  2475 u0_a142      10 -10  20G 526M 164M S 16.6   4.7   4:29.66 com.ford.sync.vpa
+   950 system       20   0  12G  18M 4.4M S 16.6   0.1   1:42.89 bdnetdproxy
+  6850 root         20   0  14G 141M 103M S 10.6   1.2   0:46.32 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+   410 system       -3   0  12G  20M  16M S 10.6   0.1   2:16.19 android.hardware.graphics.composer@2.4-service
+  2237 system       20   0  12G  10M 4.2M S 10.0   0.0   1:16.75 qtxa-nidps-manage
+   420 system       20   0  12G 5.0M 4.1M S 10.0   0.0   2:56.48 android.hardware.sensors@1.0-service
+   249 logd         30  10  12G  31M 2.7M S  9.3   0.2   0:33.04 logd
+   792 root         20   0  12G  19M 7.0M S  9.0   0.1   1:24.57 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+  6792 root         20   0  12G 7.8M 5.0M S  8.0   0.0   0:23.23 adbd --root_seclabel=u:r:su:s0
+   790 root         20   0  12G 4.8M 4.0M S  7.3   0.0   1:04.72 qtxa-metrics
+  2097 system       20   0  15G 103M  65M S  7.0   0.9   1:02.58 com.qtxa.hidps:remote
+  1241 system       20   0  16G 116M  76M S  7.0   1.0   1:04.84 com.qtxa.hidps
+   428 vehicle_net+ 20   0  12G  12M 6.3M S  6.0   0.1   0:26.68 vendor.ford.hardware.automotive.vehicle@2.0-service
+   335 system       20   0  12G 9.0M 6.1M S  4.6   0.0   0:26.11 vendor.yfve.hardware.YFVECoreVehicle@1.0-service[H[JTasks: 378 total,   1 running, 377 sleeping,   0 stopped,   0 zombie
+  Mem: 11353224K total,  7604284K used,  3748940K free,  86765568 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1841776K cached
+800%cpu 167%user   7%nice 155%sys 447%idle   1%iow  14%irq   9%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 488M 127M S 45.6   4.4  13:54.85 com.baidu.che.codriver
+   716 system       18  -2  18G 358M 267M S 38.0   3.2   3:39.44 system_server
+   495 system       -3 -20  12G  61M  41M D 35.3   0.5   6:06.81 surfaceflinger
+  2589 u0_a169      10 -10  16G 451M 325M S 33.6   4.0   1:08.30 com.ford.sync.hvac
+  1436 system       20   0  16G 148M  91M S 22.6   1.3   1:39.29 com.android.car
+   453 mediacodec   20   0  12G  22M  18M S 22.3   0.2   1:44.81 media.hwcodec /vendor.qti.media.c2@1.0-service
+   950 system       20   0  12G  18M 4.4M S 19.6   0.1   1:43.39 bdnetdproxy
+  2475 u0_a142      10 -10  20G 526M 164M S 17.0   4.7   4:30.16 com.ford.sync.vpa
+  6850 root         20   0  14G 141M 103M S 11.0   1.2   0:46.64 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+   249 logd         30  10  12G  32M 2.7M S 11.0   0.2   0:33.32 logd
+   420 system       20   0  12G 5.0M 4.1M S 10.6   0.0   2:56.78 android.hardware.sensors@1.0-service
+  2237 system       20   0  12G  10M 4.2M S 10.0   0.0   1:17.05 qtxa-nidps-manage
+   410 system       -3   0  12G  20M  16M S  9.6   0.1   2:16.51 android.hardware.graphics.composer@2.4-service
+  6792 root         20   0  12G 7.8M 5.0M S  8.6   0.0   0:23.47 adbd --root_seclabel=u:r:su:s0
+   792 root         20   0  12G  19M 7.0M S  8.3   0.1   1:24.84 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+  2097 system       20   0  15G 103M  65M S  7.3   0.9   1:02.79 com.qtxa.hidps:remote
+  1241 system       20   0  16G 116M  76M S  6.6   1.0   1:05.05 com.qtxa.hidps
+   790 root         20   0  12G 4.8M 4.0M S  6.3   0.0   1:04.94 qtxa-metrics
+   428 vehicle_net+ 20   0  12G  12M 6.3M S  6.3   0.1   0:26.86 vendor.ford.hardware.automotive.vehicle@2.0-service
+   335 system       20   0  12G 9.0M 6.1M S  6.3   0.0   0:26.25 vendor.yfve.hardware.YFVECoreVehicle@1.0-service[H[JTasks: 379 total,   1 running, 376 sleeping,   0 stopped,   2 zombie
+  Mem: 11353224K total,  7607244K used,  3745980K free,  86798336 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1842020K cached
+800%cpu 159%user   7%nice 140%sys 467%idle   4%iow  14%irq   9%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 489M 127M S 46.6   4.4  13:56.22 com.baidu.che.codriver
+   495 system       -3 -20  12G  61M  41M S 34.0   0.5   6:07.87 surfaceflinger
+  2589 u0_a169      10 -10  16G 451M 325M S 26.6   4.0   1:09.31 com.ford.sync.hvac
+   716 system       18  -2  18G 350M 267M S 25.3   3.1   3:40.58 system_server
+   453 mediacodec   20   0  12G  22M  18M S 21.0   0.2   1:45.48 media.hwcodec /vendor.qti.media.c2@1.0-service
+   950 system       20   0  12G  18M 4.4M S 17.3   0.1   1:43.98 bdnetdproxy
+  2475 u0_a142      10 -10  20G 526M 164M S 16.3   4.7   4:30.67 com.ford.sync.vpa
+  1436 system       20   0  16G 149M  91M S 15.0   1.3   1:39.97 com.android.car
+   410 system       -3   0  12G  20M  16M S 10.3   0.1   2:16.80 android.hardware.graphics.composer@2.4-service
+  2237 system       20   0  12G  10M 4.2M S 10.0   0.0   1:17.35 qtxa-nidps-manage
+   249 logd         30  10  12G  32M 2.7M S 10.0   0.2   0:33.65 logd
+  6850 root         20   0  14G 141M 103M S  9.6   1.2   0:46.97 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+   420 system       20   0  12G 5.0M 4.1M S  9.6   0.0   2:57.10 android.hardware.sensors@1.0-service
+   792 root         20   0  12G  19M 7.0M S  8.6   0.1   1:25.09 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+  1241 system       20   0  16G 116M  76M S  7.3   1.0   1:05.25 com.qtxa.hidps
+  2097 system       20   0  15G 103M  65M S  7.0   0.9   1:03.01 com.qtxa.hidps:remote
+  6792 root         20   0  12G 7.7M 5.0M S  6.6   0.0   0:23.73 adbd --root_seclabel=u:r:su:s0
+   790 root         20   0  12G 4.8M 4.0M S  6.6   0.0   1:05.13 qtxa-metrics
+   428 vehicle_net+ 20   0  12G  12M 6.3M S  4.3   0.1   0:27.05 vendor.ford.hardware.automotive.vehicle@2.0-service
+   335 system       20   0  12G 9.0M 6.1M S  4.3   0.0   0:26.44 vendor.yfve.hardware.YFVECoreVehicle@1.0-service[H[JTasks: 378 total,   2 running, 376 sleeping,   0 stopped,   0 zombie
+  Mem: 11353224K total,  7612632K used,  3740592K free,  86827008 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1842128K cached
+800%cpu 130%user   2%nice 113%sys 534%idle   3%iow  12%irq   6%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 490M 127M S 47.6   4.4  13:57.62 com.baidu.che.codriver
+   495 system       -3 -20  12G  61M  41M S 32.0   0.5   6:08.89 surfaceflinger
+  2589 u0_a169      10 -10  16G 451M 325M S 19.6   4.0   1:10.11 com.ford.sync.hvac
+   453 mediacodec   20   0  12G  22M  18M S 18.3   0.2   1:46.11 media.hwcodec /vendor.qti.media.c2@1.0-service
+  2475 u0_a142      10 -10  20G 526M 164M S 16.0   4.7   4:31.16 com.ford.sync.vpa
+   716 system       18  -2  18G 351M 267M S 12.3   3.1   3:41.34 system_server
+   410 system       -3   0  12G  20M  16M S 10.3   0.1   2:17.11 android.hardware.graphics.composer@2.4-service
+   420 system       RT   0  12G 5.0M 4.1M S  9.6   0.0   2:57.39 android.hardware.sensors@1.0-service
+   792 root         20   0  12G  19M 7.0M S  7.6   0.1   1:25.35 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+  6850 root         20   0  14G 142M 103M S  7.3   1.2   0:47.26 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+  2237 system       20   0  12G  10M 4.2M S  7.3   0.0   1:17.65 qtxa-nidps-manage
+   790 root         20   0  12G 4.8M 4.0M S  7.3   0.0   1:05.33 qtxa-metrics
+  1241 system       20   0  16G 116M  76M S  7.0   1.0   1:05.47 com.qtxa.hidps
+  2097 system       20   0  15G 103M  65M S  6.6   0.9   1:03.22 com.qtxa.hidps:remote
+   950 system       20   0  12G  18M 4.4M S  6.3   0.1   1:44.50 bdnetdproxy
+  1436 system       20   0  16G 150M  91M S  4.6   1.3   1:40.42 com.android.car
+  6792 root         20   0  12G 7.8M 5.0M S  4.3   0.0   0:23.93 adbd --root_seclabel=u:r:su:s0
+   249 logd         30  10  12G  32M 2.7M S  4.0   0.2   0:33.95 logd
+   235 system       20   0  12G 6.6M 3.1M S  4.0   0.0   0:23.28 carwatchdogd
+  1652 system       10 -10 2.1G 364M 299M S  2.3   3.2   0:33.87 com.ford.sync.controllerlauncher[H[JTasks: 380 total,   2 running, 376 sleeping,   0 stopped,   2 zombie
+  Mem: 11353224K total,  7618084K used,  3735140K free,  86855680 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1842252K cached
+800%cpu 136%user   1%nice 115%sys 527%idle   2%iow  13%irq   6%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 490M 127M S 45.6   4.4  13:59.05 com.baidu.che.codriver
+   495 system       -3 -20  12G  61M  41M S 35.3   0.5   6:09.85 surfaceflinger
+  2589 u0_a169      10 -10  16G 451M 325M S 26.0   4.0   1:10.70 com.ford.sync.hvac
+   453 mediacodec   20   0  12G  22M  18M S 23.6   0.2   1:46.66 media.hwcodec /vendor.qti.media.c2@1.0-service
+  2475 u0_a142      10 -10  20G 526M 164M S 14.6   4.7   4:31.64 com.ford.sync.vpa
+   716 system       18  -2  18G 353M 267M S 11.3   3.1   3:41.71 system_server
+   420 system       RT   0  12G 5.0M 4.1M S 10.3   0.0   2:57.68 android.hardware.sensors@1.0-service
+   410 system       -3   0  12G  20M  16M S  9.6   0.1   2:17.42 android.hardware.graphics.composer@2.4-service
+  6850 root         20   0  14G 142M 103M S  8.3   1.2   0:47.48 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+   792 root         20   0  12G  19M 7.0M S  8.0   0.1   1:25.58 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+  2237 system       20   0  12G  10M 4.2M S  7.6   0.0   1:17.87 qtxa-nidps-manage
+   790 root         20   0  12G 4.8M 4.0M S  7.3   0.0   1:05.55 qtxa-metrics
+  2097 system       20   0  15G 103M  65M S  7.0   0.9   1:03.42 com.qtxa.hidps:remote
+  1241 system       20   0  16G 116M  76M S  6.6   1.0   1:05.68 com.qtxa.hidps
+  1436 system       20   0  16G 150M  91M S  6.3   1.3   1:40.56 com.android.car
+   950 system       20   0  12G  18M 4.4M S  5.6   0.1   1:44.69 bdnetdproxy
+  6792 root         20   0  12G 7.8M 5.0M S  3.3   0.0   0:24.06 adbd --root_seclabel=u:r:su:s0
+   829 mediacodec   20   0  41M  14M  11M S  3.0   0.1   0:13.33 media.codec hw/android.hardware.media.omx@1.0-service
+   249 logd         30  10  12G  32M 2.7M S  3.0   0.2   0:34.07 logd
+   139 root         20   0    0    0    0 S  3.0   0.0   0:13.24 [system][H[JTasks: 377 total,   2 running, 375 sleeping,   0 stopped,   0 zombie
+  Mem: 11353224K total,  7622072K used,  3731152K free,  86855680 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  1842388K cached
+800%cpu 126%user   1%nice 123%sys 531%idle   1%iow  11%irq   6%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3220 u0_a173      20   0  17G 491M 127M S 47.3   4.4  14:00.42 com.baidu.che.codriver
+[1m   495 system       -3 -20  12G  61M  41M R 29.0   0.5   6:10.91 surfaceflinger[m
+  2589 u0_a169      10 -10  16G 454M 327M S 19.0   4.0   1:11.48 com.ford.sync.hvac
+   453 mediacodec   20   0  12G  22M  18M S 18.6   0.2   1:47.37 media.hwcodec /vendor.qti.media.c2@1.0-service
+  2475 u0_a142      10 -10  20G 526M 164M S 15.3   4.7   4:32.08 com.ford.sync.vpa
+   716 system       18  -2  18G 354M 267M S 10.3   3.1   3:42.05 system_server
+   420 system       20   0  12G 5.0M 4.1M S 10.0   0.0   2:57.99 android.hardware.sensors@1.0-service
+   410 system       -3   0  12G  20M  16M S  9.0   0.1   2:17.71 android.hardware.graphics.composer@2.4-service
+   792 root         20   0  12G  19M 7.0M S  8.3   0.1   1:25.82 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+  2237 system       20   0  12G  10M 4.2M S  7.0   0.0   1:18.10 qtxa-nidps-manage
+  2097 system       20   0  15G 103M  65M S  7.0   0.9   1:03.63 com.qtxa.hidps:remote
+  6850 root         20   0  14G 142M 103M S  6.6   1.2   0:47.73 app_process / com.genymobile.scrcpy.Server 1.12.1 0 8000000 0 false - true true
+   790 root         20   0  12G 4.8M 4.0M S  6.6   0.0   1:05.77 qtxa-metrics
+  1241 system       20   0  16G 116M  76M S  6.3   1.0   1:05.88 com.qtxa.hidps
+  1436 system       20   0  16G 150M  91M S  5.0   1.3   1:40.75 com.android.car
+   950 system       20   0  12G  18M 4.4M S  5.0   0.1   1:44.86 bdnetdproxy
+  6792 root         20   0  12G 7.8M 5.0M S  3.0   0.0   0:24.16 adbd --root_seclabel=u:r:su:s0
+   249 logd         30  10  12G  32M 2.7M S  2.6   0.2   0:34.16 logd
+   829 mediacodec   20   0  41M  14M  11M S  2.3   0.1   0:13.42 media.codec hw/android.hardware.media.omx@1.0-service
+   402 audioserver  20   0  68M  20M  10M S  2.3   0.1   0:47.23 android.hardware.audio.service

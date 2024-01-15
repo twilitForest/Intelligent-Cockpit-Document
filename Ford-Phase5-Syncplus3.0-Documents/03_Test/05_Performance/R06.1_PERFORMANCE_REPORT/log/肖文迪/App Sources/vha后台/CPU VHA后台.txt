@@ -1,0 +1,313 @@
+[H[J[?25l[H[JTasks: 375 total,   3 running, 372 sleeping,   0 stopped,   0 zombie
+  Mem: 11364320K total,  6495060K used,  4869260K free,  27877376 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  2023024K cached
+800%cpu 189%user   0%nice  93%sys 504%idle   0%iow  11%irq   4%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3352 u0_a175      20   0  17G 480M 127M S 48.1   4.3  28:38.07 com.baidu.che.codriver
+   484 system       -3  -8  12G  60M  40M S 29.6   0.5  10:38.93 surfaceflinger
+  1100 system       18  -2  18G 444M 264M S 22.2   4.0  12:08.96 system_server
+  1725 system       10 -10 2.1G 410M 276M S 18.5   3.6   2:05.29 com.ford.sync.controllerlauncher
+  3088 u0_a147      10 -10  20G 520M 157M S 14.8   4.6   9:09.10 com.ford.sync.vpa
+   397 system       -3   0  12G  19M  15M S 11.1   0.1   4:10.61 android.hardware.graphics.composer@2.4-service
+[1m 22577 root         20   0  12G 4.3M 3.6M R  7.4   0.0   0:00.03 top[m
+   403 system       20   0  12G 4.7M 3.8M S  7.4   0.0   5:37.35 android.hardware.sensors@1.0-service
+   389 audioserver  20   0  65M  20M  10M S  7.4   0.1   1:24.44 android.hardware.audio.service
+   360 root         20   0  15G 184M 142M S  7.4   1.6   3:15.65 zygote64
+  3333 u0_a173      20   0 1.9G 192M 111M S  3.7   1.7   0:50.67 com.baidu.naviauto
+  1775 system       20   0  15G 124M  76M S  3.7   1.1   0:05.38 com.ford.sync.fnvservice
+  1529 system       20   0  16G 149M  90M S  3.7   1.3   2:26.06 com.android.car
+[1m  1252 system       20   0  12G 2.3M 1.8M R  3.7   0.0   1:13.10 logcat -b all *:v[m
+   877 ccs          20   0  12G  19M  13M S  3.7   0.1   0:00.45 vendor.ford.ccs@1.0-service
+   747 system       20   0  12G 4.8M 3.8M S  3.7   0.0   1:43.89 socrule --conf_path=/system/baidu/socrule/config.properties
+   407 vehicle_net+ 20   0  12G  12M 6.3M S  3.7   0.1   0:31.07 vendor.ford.hardware.automotive.vehicle@2.0-service
+   358 statsd       20   0  12G 4.6M 3.7M S  3.7   0.0   0:21.81 statsd
+   255 logd         30  10  12G  74M 2.6M S  3.7   0.6   3:29.82 logd
+ 22572 root         20   0  12G 2.6M 2.2M S  0.0   0.0   0:00.00 sh -c COLUMNS=800 top[H[JTasks: 375 total,   1 running, 374 sleeping,   0 stopped,   0 zombie
+  Mem: 11364320K total,  6472152K used,  4892168K free,  27893760 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  2023124K cached
+800%cpu 189%user   4%nice  97%sys 499%idle   0%iow   9%irq   3%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3352 u0_a175      20   0  17G 480M 127M S 51.6   4.3  28:38.20 com.baidu.che.codriver
+   484 system       -3  -8  12G  60M  40M S 26.3   0.5  10:39.01 surfaceflinger
+  1100 system       18  -2  18G 444M 264M S 21.3   4.0  12:09.02 system_server
+  1725 system       10 -10 2.1G 410M 276M S 17.3   3.6   2:05.34 com.ford.sync.controllerlauncher
+  3088 u0_a147      10 -10  20G 520M 157M S 16.6   4.6   9:09.14 com.ford.sync.vpa
+   403 system       20   0  12G 4.7M 3.8M S  9.6   0.0   5:37.37 android.hardware.sensors@1.0-service
+   397 system       -3   0  12G  19M  15M S  9.6   0.1   4:10.64 android.hardware.graphics.composer@2.4-service
+   360 root         20   0  15G 184M 142M S  5.3   1.6   3:15.67 zygote64
+  1529 system       20   0  16G 149M  90M S  4.3   1.3   2:26.07 com.android.car
+   255 logd         30  10  12G  74M 2.6M S  4.0   0.6   3:29.83 logd
+   747 system       20   0  12G 4.8M 3.8M S  3.3   0.0   1:43.90 socrule --conf_path=/system/baidu/socrule/config.properties
+  1921 system       20   0  16G 182M 114M S  2.3   1.6   0:56.88 com.ford.xiaoduos.v2x
+  1252 system       20   0  12G 2.3M 1.8M S  2.3   0.0   1:13.11 logcat -b all *:v
+  1230 system       20   0  12G 6.1M 5.0M S  2.3   0.0   1:08.72 vendor.yfve.hardware.logcollector@1.0-service
+   389 audioserver  20   0  65M  20M  10M S  2.3   0.1   1:24.46 android.hardware.audio.service
+  6069 system       20   0  16G 273M 192M S  1.6   2.4   0:10.76 com.ford.sync.vha
+   457 audioserver  20   0  12G  28M  23M S  1.6   0.2   0:54.95 audioserver
+  3333 u0_a173      20   0 1.9G 192M 111M S  1.3   1.7   0:50.68 com.baidu.naviauto
+   321 system       20   0  12G 9.2M 6.2M S  1.3   0.0   0:38.83 vendor.yfve.hardware.YFVECoreVehicle@1.0-service
+[1m 22577 root         20   0  12G 4.6M 3.6M R  1.0   0.0   0:00.05 top[m[H[JTasks: 375 total,   2 running, 373 sleeping,   0 stopped,   0 zombie
+  Mem: 11364320K total,  6477052K used,  4887268K free,  27893760 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  2023232K cached
+800%cpu 186%user   4%nice 109%sys 489%idle   0%iow   9%irq   3%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3352 u0_a175      20   0  17G 475M 127M S 53.0   4.2  28:39.75 com.baidu.che.codriver
+[1m   484 system       -3  -8  12G  60M  40M R 26.3   0.5  10:39.80 surfaceflinger[m
+  1100 system       18  -2  18G 447M 264M S 22.3   4.0  12:09.66 system_server
+  3088 u0_a147      10 -10  20G 520M 157M S 18.0   4.6   9:09.64 com.ford.sync.vpa
+  1725 system       10 -10 2.1G 410M 276M S 16.6   3.6   2:05.86 com.ford.sync.controllerlauncher
+   397 system       -3   0  12G  19M  15M S 10.0   0.1   4:10.93 android.hardware.graphics.composer@2.4-service
+   403 system       20   0  12G 4.7M 3.8M S  9.6   0.0   5:37.66 android.hardware.sensors@1.0-service
+   255 logd         30  10  12G  74M 2.6M S  6.3   0.6   3:29.95 logd
+   360 root         20   0  15G 184M 142M S  5.0   1.6   3:15.83 zygote64
+  1529 system       20   0  16G 150M  90M S  4.3   1.3   2:26.20 com.android.car
+   747 system       20   0  12G 4.8M 3.8M S  3.3   0.0   1:44.00 socrule --conf_path=/system/baidu/socrule/config.properties
+   389 audioserver  20   0  65M  20M  10M S  2.3   0.1   1:24.53 android.hardware.audio.service
+  1252 system       20   0  12G 2.3M 1.8M S  2.0   0.0   1:13.18 logcat -b all *:v
+   239 system       20   0  12G 6.0M 3.2M S  2.0   0.0   0:03.57 carwatchdogd
+  1230 system       20   0  12G 6.1M 5.0M S  1.6   0.0   1:08.79 vendor.yfve.hardware.logcollector@1.0-service
+   457 audioserver  20   0  12G  28M  23M S  1.6   0.2   0:55.00 audioserver
+  3333 u0_a173      20   0 1.9G 192M 111M S  1.3   1.7   0:50.72 com.baidu.naviauto
+  1921 system       20   0  16G 171M 114M S  1.3   1.5   0:56.95 com.ford.xiaoduos.v2x
+   321 system       20   0  12G 9.2M 6.2M S  1.3   0.0   0:38.87 vendor.yfve.hardware.YFVECoreVehicle@1.0-service
+ 18165 root         20   0    0    0    0 I  1.0   0.0   0:02.13 [kworker/0:1-events][H[JTasks: 375 total,   2 running, 373 sleeping,   0 stopped,   0 zombie
+  Mem: 11364320K total,  6481880K used,  4882440K free,  27910144 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  2023336K cached
+800%cpu 190%user   4%nice 105%sys 489%idle   0%iow   9%irq   3%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3352 u0_a175      20   0  17G 476M 127M S 49.0   4.2  28:41.34 com.baidu.che.codriver
+   484 system       -3  -8  12G  60M  40M S 26.6   0.5  10:40.59 surfaceflinger
+  1100 system       18  -2  18G 450M 264M S 22.3   4.0  12:10.33 system_server
+  1725 system       10 -10 2.1G 410M 276M S 16.6   3.6   2:06.36 com.ford.sync.controllerlauncher
+  3088 u0_a147      10 -10  20G 520M 157M S 15.6   4.6   9:10.18 com.ford.sync.vpa
+   403 system       20   0  12G 4.7M 3.8M S 10.6   0.0   5:37.95 android.hardware.sensors@1.0-service
+[1m   397 system       -3   0  12G  19M  15M R 10.0   0.1   4:11.23 android.hardware.graphics.composer@2.4-service[m
+   255 logd         30  10  12G  74M 2.6M S  5.6   0.6   3:30.14 logd
+   360 root         20   0  15G 185M 142M S  5.3   1.6   3:15.98 zygote64
+  1529 system       20   0  16G 150M  90M S  4.3   1.3   2:26.33 com.android.car
+   747 system       20   0  12G 4.8M 3.8M S  3.3   0.0   1:44.10 socrule --conf_path=/system/baidu/socrule/config.properties
+  1252 system       20   0  12G 2.3M 1.8M S  2.6   0.0   1:13.24 logcat -b all *:v
+  1230 system       20   0  12G 6.1M 5.0M S  2.3   0.0   1:08.84 vendor.yfve.hardware.logcollector@1.0-service
+   389 audioserver  20   0  65M  20M  10M S  2.3   0.1   1:24.60 android.hardware.audio.service
+  3333 u0_a173      20   0 1.9G 192M 111M S  1.6   1.7   0:50.76 com.baidu.naviauto
+  1921 system       20   0  16G 172M 114M S  1.6   1.5   0:56.99 com.ford.xiaoduos.v2x
+   704 root         20   0  12G 5.5M 3.7M S  1.6   0.0   0:05.01 installd
+[1m 22577 root         20   0  12G 4.8M 3.6M R  1.3   0.0   0:00.10 top[m
+   457 audioserver  20   0  12G  28M  23M S  1.3   0.2   0:55.05 audioserver
+   407 vehicle_net+ 20   0  12G  12M 6.3M S  1.3   0.1   0:31.13 vendor.ford.hardware.automotive.vehicle@2.0-service[H[JTasks: 375 total,   3 running, 372 sleeping,   0 stopped,   0 zombie
+  Mem: 11364320K total,  6490568K used,  4873752K free,  27918336 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  2023436K cached
+800%cpu 180%user   4%nice 103%sys 501%idle   0%iow   9%irq   3%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3352 u0_a175      20   0  17G 477M 127M S 46.3   4.2  28:42.81 com.baidu.che.codriver
+[1m   484 system       -3  -8  12G  60M  40M R 27.0   0.5  10:41.39 surfaceflinger[m
+  1100 system       18  -2  18G 453M 264M S 23.0   4.0  12:11.00 system_server
+  1725 system       10 -10 2.1G 411M 276M S 17.3   3.7   2:06.86 com.ford.sync.controllerlauncher
+  3088 u0_a147      10 -10  20G 520M 157M S 16.0   4.6   9:10.65 com.ford.sync.vpa
+   403 system       20   0  12G 4.7M 3.8M S 10.6   0.0   5:38.27 android.hardware.sensors@1.0-service
+   397 system       -3   0  12G  19M  15M S  9.6   0.1   4:11.53 android.hardware.graphics.composer@2.4-service
+[1m   360 root         20   0  15G 185M 142M R  5.6   1.6   3:16.14 zygote64[m
+  1529 system       20   0  16G 150M  90M S  4.0   1.3   2:26.46 com.android.car
+   255 logd         30  10  12G  74M 2.6M S  4.0   0.6   3:30.31 logd
+   747 system       20   0  12G 4.8M 3.8M S  3.3   0.0   1:44.20 socrule --conf_path=/system/baidu/socrule/config.properties
+   389 audioserver  20   0  65M  20M  10M S  2.3   0.1   1:24.67 android.hardware.audio.service
+  1252 system       20   0  12G 2.3M 1.8M S  2.0   0.0   1:13.32 logcat -b all *:v
+  1230 system       20   0  12G 6.1M 5.0M S  2.0   0.0   1:08.91 vendor.yfve.hardware.logcollector@1.0-service
+[1m 22577 root         20   0  12G 4.8M 3.6M R  1.6   0.0   0:00.14 top[m
+  1921 system       20   0  16G 173M 114M S  1.6   1.5   0:57.04 com.ford.xiaoduos.v2x
+   457 audioserver  20   0  12G  28M  23M S  1.6   0.2   0:55.09 audioserver
+  3333 u0_a173      20   0 1.9G 192M 111M S  1.3   1.7   0:50.81 com.baidu.naviauto
+ 18165 root         20   0    0    0    0 I  1.0   0.0   0:02.18 [kworker/0:1-events]
+ 20752 root         20   0    0    0    0 I  1.0   0.0   0:08.65 [kworker/0:3-events][H[JTasks: 375 total,   2 running, 373 sleeping,   0 stopped,   0 zombie
+  Mem: 11364320K total,  6480572K used,  4883748K free,  27926528 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  2023548K cached
+800%cpu 182%user   4%nice 108%sys 494%idle   0%iow   9%irq   3%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3352 u0_a175      20   0  17G 478M 127M S 51.0   4.3  28:44.20 com.baidu.che.codriver
+   484 system       -3  -8  12G  60M  40M D 25.0   0.5  10:42.20 surfaceflinger
+  1100 system       18  -2  18G 455M 264M S 22.6   4.1  12:11.69 system_server
+  1725 system       10 -10 2.1G 411M 276M S 15.6   3.7   2:07.38 com.ford.sync.controllerlauncher
+  3088 u0_a147      10 -10  20G 520M 157M S 15.0   4.6   9:11.13 com.ford.sync.vpa
+   403 system       RT   0  12G 4.7M 3.8M S 10.3   0.0   5:38.59 android.hardware.sensors@1.0-service
+[1m   397 system       -3   0  12G  19M  15M R  9.6   0.1   4:11.82 android.hardware.graphics.composer@2.4-service[m
+   360 root         20   0  15G 186M 142M S  5.0   1.6   3:16.31 zygote64
+  1529 system       20   0  16G 150M  90M S  4.6   1.3   2:26.58 com.android.car
+   255 logd         30  10  12G  74M 2.6M S  4.3   0.6   3:30.43 logd
+   747 system       20   0  12G 4.8M 3.8M S  3.3   0.0   1:44.30 socrule --conf_path=/system/baidu/socrule/config.properties
+   389 audioserver  20   0  65M  20M  10M S  3.0   0.1   1:24.74 android.hardware.audio.service
+  1252 system       20   0  12G 2.3M 1.8M S  2.3   0.0   1:13.38 logcat -b all *:v
+  1230 system       20   0  12G 6.1M 5.0M S  2.0   0.0   1:08.97 vendor.yfve.hardware.logcollector@1.0-service
+  3333 u0_a173      20   0 1.9G 192M 111M S  1.6   1.7   0:50.85 com.baidu.naviauto
+   457 audioserver  20   0  12G  28M  23M S  1.6   0.2   0:55.14 audioserver
+  1921 system       20   0  16G 174M 114M S  1.3   1.5   0:57.09 com.ford.xiaoduos.v2x
+   321 system       20   0  12G 9.2M 6.2M S  1.3   0.0   0:38.98 vendor.yfve.hardware.YFVECoreVehicle@1.0-service
+[1m 22577 root         20   0  12G 4.8M 3.6M R  1.0   0.0   0:00.19 top[m
+ 17937 root         20   0    0    0    0 I  1.0   0.0   0:03.74 [kworker/0:0-events][H[JTasks: 373 total,   2 running, 371 sleeping,   0 stopped,   0 zombie
+  Mem: 11364320K total,  6487080K used,  4877240K free,  27942912 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  2023636K cached
+800%cpu 184%user   2%nice 104%sys 498%idle   0%iow   9%irq   3%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3352 u0_a175      20   0  17G 479M 127M S 52.6   4.3  28:45.73 com.baidu.che.codriver
+   484 system       -3  -8  12G  60M  40M S 24.6   0.5  10:42.95 surfaceflinger
+  1100 system       18  -2  18G 443M 264M S 22.3   3.9  12:12.37 system_server
+  3088 u0_a147      10 -10  20G 520M 157M S 17.0   4.6   9:11.58 com.ford.sync.vpa
+  1725 system       10 -10 2.1G 411M 276M S 16.6   3.7   2:07.85 com.ford.sync.controllerlauncher
+   403 system       20   0  12G 4.7M 3.8M S  9.0   0.0   5:38.90 android.hardware.sensors@1.0-service
+   397 system       -3   0  12G  19M  15M S  9.0   0.1   4:12.11 android.hardware.graphics.composer@2.4-service
+   360 root         20   0  15G 186M 142M S  6.3   1.6   3:16.46 zygote64
+   255 logd         30  10  12G  74M 2.6M S  5.3   0.6   3:30.56 logd
+  1529 system       20   0  16G 150M  90M S  4.3   1.3   2:26.72 com.android.car
+   747 system       20   0  12G 4.8M 3.8M S  3.3   0.0   1:44.40 socrule --conf_path=/system/baidu/socrule/config.properties
+  1252 system       20   0  12G 2.3M 1.8M S  2.3   0.0   1:13.45 logcat -b all *:v
+  1230 system       20   0  12G 6.1M 5.0M S  2.3   0.0   1:09.03 vendor.yfve.hardware.logcollector@1.0-service
+   389 audioserver  20   0  65M  20M  10M S  2.0   0.1   1:24.83 android.hardware.audio.service
+  3333 u0_a173      20   0 1.9G 192M 111M S  1.6   1.7   0:50.90 com.baidu.naviauto
+  1921 system       20   0  16G 175M 114M S  1.6   1.5   0:57.13 com.ford.xiaoduos.v2x
+   457 audioserver  20   0  12G  28M  23M S  1.6   0.2   0:55.19 audioserver
+[1m 22577 root         20   0  12G 4.8M 3.6M R  1.0   0.0   0:00.22 top[m
+ 17937 root         20   0    0    0    0 I  1.0   0.0   0:03.77 [kworker/0:0-events]
+   407 vehicle_net+ 20   0  12G  12M 6.3M S  1.0   0.1   0:31.23 vendor.ford.hardware.automotive.vehicle@2.0-service[H[JTasks: 374 total,   2 running, 372 sleeping,   0 stopped,   0 zombie
+  Mem: 11364320K total,  6485216K used,  4879104K free,  27942912 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  2023752K cached
+800%cpu 176%user  38%nice 110%sys 464%idle   0%iow   9%irq   4%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3352 u0_a175      20   0  17G 480M 127M S 53.0   4.3  28:47.31 com.baidu.che.codriver
+   255 logd         30  10  12G  74M 2.6M S 39.6   0.6   3:30.72 logd
+   484 system       -3  -8  12G  60M  40M S 26.3   0.5  10:43.69 surfaceflinger
+  1100 system       18  -2  18G 446M 264M S 21.6   4.0  12:13.04 system_server
+  3088 u0_a147      10 -10  20G 520M 157M S 17.0   4.6   9:12.09 com.ford.sync.vpa
+  1725 system       10 -10 2.1G 411M 276M S 16.6   3.7   2:08.35 com.ford.sync.controllerlauncher
+   397 system       -3   0  12G  19M  15M S 10.0   0.1   4:12.38 android.hardware.graphics.composer@2.4-service
+   403 system       20   0  12G 4.7M 3.8M S  9.6   0.0   5:39.17 android.hardware.sensors@1.0-service
+  1529 system       20   0  16G 150M  90M S  4.6   1.3   2:26.85 com.android.car
+   360 root         20   0  15G 186M 142M S  4.3   1.6   3:16.65 zygote64
+   747 system       20   0  12G 4.8M 3.8M S  3.3   0.0   1:44.50 socrule --conf_path=/system/baidu/socrule/config.properties
+   389 audioserver  20   0  65M  20M  10M S  3.0   0.1   1:24.89 android.hardware.audio.service
+   457 audioserver  20   0  12G  28M  23M S  2.0   0.2   0:55.24 audioserver
+  3333 u0_a173      20   0 1.9G 192M 111M S  1.6   1.7   0:50.95 com.baidu.naviauto
+  1252 system       20   0  12G 2.3M 1.8M S  1.6   0.0   1:13.52 logcat -b all *:v
+  1921 system       20   0  16G 177M 114M S  1.3   1.5   0:57.18 com.ford.xiaoduos.v2x
+  1230 system       20   0  12G 6.1M 5.0M S  1.3   0.0   1:09.10 vendor.yfve.hardware.logcollector@1.0-service
+   407 vehicle_net+ 20   0  12G  12M 6.3M S  1.3   0.1   0:31.26 vendor.ford.hardware.automotive.vehicle@2.0-service
+   321 system       20   0  12G 9.2M 6.2M S  1.3   0.0   0:39.05 vendor.yfve.hardware.YFVECoreVehicle@1.0-service
+ 20752 root         20   0    0    0    0 I  1.0   0.0   0:08.72 [kworker/0:3-events][H[JTasks: 374 total,   1 running, 373 sleeping,   0 stopped,   0 zombie
+  Mem: 11364320K total,  6491044K used,  4873276K free,  27959296 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  2023812K cached
+800%cpu 185%user   9%nice  95%sys 499%idle   0%iow   9%irq   3%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3352 u0_a175      20   0  17G 476M 127M S 53.3   4.2  28:48.90 com.baidu.che.codriver
+   484 system       -3  -8  12G  60M  40M S 27.0   0.5  10:44.48 surfaceflinger
+  1100 system       18  -2  18G 448M 264M S 21.0   4.0  12:13.69 system_server
+  3088 u0_a147      10 -10  20G 520M 157M S 17.3   4.6   9:12.60 com.ford.sync.vpa
+  1725 system       10 -10 2.1G 411M 276M S 17.3   3.7   2:08.85 com.ford.sync.controllerlauncher
+   397 system       -3   0  12G  19M  15M S 10.3   0.1   4:12.68 android.hardware.graphics.composer@2.4-service
+   403 system       20   0  12G 4.7M 3.8M S  9.3   0.0   5:39.46 android.hardware.sensors@1.0-service
+   255 logd         30  10  12G  74M 2.6M S  9.3   0.6   3:31.91 logd
+   360 root         20   0  15G 187M 142M S  6.0   1.6   3:16.78 zygote64
+  1529 system       20   0  16G 150M  90M S  4.3   1.3   2:26.99 com.android.car
+   747 system       20   0  12G 4.8M 3.8M S  3.6   0.0   1:44.60 socrule --conf_path=/system/baidu/socrule/config.properties
+   389 audioserver  20   0  65M  20M  10M S  2.6   0.1   1:24.98 android.hardware.audio.service
+  1252 system       20   0  12G 2.3M 1.8M S  2.0   0.0   1:13.57 logcat -b all *:v
+  1230 system       20   0  12G 6.1M 5.0M S  2.0   0.0   1:09.14 vendor.yfve.hardware.logcollector@1.0-service
+  1921 system       20   0  16G 178M 114M S  1.6   1.6   0:57.22 com.ford.xiaoduos.v2x
+   457 audioserver  20   0  12G  28M  23M S  1.6   0.2   0:55.30 audioserver
+  3333 u0_a173      20   0 1.9G 192M 111M S  1.3   1.7   0:51.00 com.baidu.naviauto
+   321 system       20   0  12G 9.2M 6.2M S  1.3   0.0   0:39.09 vendor.yfve.hardware.YFVECoreVehicle@1.0-service
+[1m 22577 root         20   0  12G 4.8M 3.6M R  1.0   0.0   0:00.27 top[m
+ 17937 root         20   0    0    0    0 I  1.0   0.0   0:03.82 [kworker/0:0-events][H[JTasks: 374 total,   3 running, 371 sleeping,   0 stopped,   0 zombie
+  Mem: 11364320K total,  6500020K used,  4864300K free,  27959296 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  2023932K cached
+800%cpu 184%user   4%nice  98%sys 501%idle   0%iow   9%irq   3%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3352 u0_a175      20   0  17G 476M 127M S 49.3   4.2  28:50.50 com.baidu.che.codriver
+   484 system       -3  -8  12G  60M  40M S 27.3   0.5  10:45.29 surfaceflinger
+  1100 system       18  -2  18G 450M 264M S 22.3   4.0  12:14.32 system_server
+  3088 u0_a147      10 -10  20G 520M 157M S 16.6   4.6   9:13.12 com.ford.sync.vpa
+  1725 system       10 -10 2.1G 412M 276M S 16.3   3.7   2:09.37 com.ford.sync.controllerlauncher
+   403 system       20   0  12G 4.7M 3.8M S 10.6   0.0   5:39.74 android.hardware.sensors@1.0-service
+   397 system       -3   0  12G  19M  15M S 10.3   0.1   4:12.99 android.hardware.graphics.composer@2.4-service
+   255 logd         30  10  12G  74M 2.6M S  6.3   0.6   3:32.19 logd
+   360 root         20   0  15G 187M 142M S  6.0   1.6   3:16.96 zygote64
+  1529 system       20   0  16G 151M  90M S  4.0   1.3   2:27.12 com.android.car
+   747 system       20   0  12G 4.8M 3.8M S  3.3   0.0   1:44.71 socrule --conf_path=/system/baidu/socrule/config.properties
+  1252 system       20   0  12G 2.3M 1.8M S  2.3   0.0   1:13.63 logcat -b all *:v
+   389 audioserver  20   0  65M  20M  10M S  2.3   0.1   1:25.06 android.hardware.audio.service
+  1230 system       20   0  12G 6.1M 5.0M S  2.0   0.0   1:09.20 vendor.yfve.hardware.logcollector@1.0-service
+  3333 u0_a173      20   0 1.9G 192M 111M S  1.6   1.7   0:51.04 com.baidu.naviauto
+  1921 system       20   0  16G 180M 114M S  1.6   1.6   0:57.27 com.ford.xiaoduos.v2x
+   457 audioserver  20   0  12G  28M  23M S  1.3   0.2   0:55.35 audioserver
+[1m 22577 root         20   0  12G 4.8M 3.6M R  1.0   0.0   0:00.30 top[m
+ 20752 root         20   0    0    0    0 I  1.0   0.0   0:08.78 [kworker/0:3-events]
+   407 vehicle_net+ 20   0  12G  12M 6.3M S  1.0   0.1   0:31.32 vendor.ford.hardware.automotive.vehicle@2.0-service[H[JTasks: 374 total,   1 running, 373 sleeping,   0 stopped,   0 zombie
+  Mem: 11364320K total,  6505744K used,  4858576K free,  27975680 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  2024020K cached
+800%cpu 182%user  16%nice 103%sys 487%idle   0%iow   9%irq   3%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3352 u0_a175      20   0  17G 477M 127M S 50.0   4.2  28:51.98 com.baidu.che.codriver
+   484 system       -3  -8  12G  60M  40M S 27.0   0.5  10:46.11 surfaceflinger
+  1100 system       18  -2  18G 453M 264M S 22.0   4.0  12:14.99 system_server
+   255 logd         30  10  12G  74M 2.6M S 18.6   0.6   3:32.38 logd
+  3088 u0_a147      10 -10  20G 520M 157M S 18.0   4.6   9:13.62 com.ford.sync.vpa
+  1725 system       10 -10 2.1G 412M 276M S 16.6   3.7   2:09.86 com.ford.sync.controllerlauncher
+   403 system       RT   0  12G 4.7M 3.8M S 10.6   0.0   5:40.06 android.hardware.sensors@1.0-service
+   397 system       -3   0  12G  19M  15M S 10.3   0.1   4:13.30 android.hardware.graphics.composer@2.4-service
+   360 root         20   0  15G 188M 142M S  6.3   1.6   3:17.14 zygote64
+  1529 system       20   0  16G 151M  90M S  4.3   1.3   2:27.24 com.android.car
+   747 system       20   0  12G 4.8M 3.8M S  3.6   0.0   1:44.81 socrule --conf_path=/system/baidu/socrule/config.properties
+   389 audioserver  20   0  65M  20M  10M S  2.6   0.1   1:25.13 android.hardware.audio.service
+  1230 system       20   0  12G 6.1M 5.0M S  2.0   0.0   1:09.26 vendor.yfve.hardware.logcollector@1.0-service
+  1252 system       20   0  12G 2.3M 1.8M S  1.6   0.0   1:13.70 logcat -b all *:v
+   457 audioserver  20   0  12G  28M  23M S  1.6   0.2   0:55.39 audioserver
+ 17937 root         20   0    0    0    0 I  1.3   0.0   0:03.87 [kworker/0:0-events]
+  3333 u0_a173      20   0 1.9G 192M 111M S  1.3   1.7   0:51.09 com.baidu.naviauto
+  1921 system       20   0  16G 181M 114M S  1.3   1.6   0:57.32 com.ford.xiaoduos.v2x
+   407 vehicle_net+ 20   0  12G  12M 6.3M S  1.3   0.1   0:31.35 vendor.ford.hardware.automotive.vehicle@2.0-service
+ 25811 root         20   0  12G 3.2M 2.5M S  1.0   0.0   0:00.08 top -n 10 -b -p 741[H[JTasks: 372 total,   2 running, 370 sleeping,   0 stopped,   0 zombie
+  Mem: 11364320K total,  6481068K used,  4883252K free,  27992064 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  2024112K cached
+800%cpu 181%user  17%nice 101%sys 488%idle   0%iow   9%irq   3%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3352 u0_a175      20   0  17G 478M 127M S 52.0   4.3  28:53.48 com.baidu.che.codriver
+  1100 system       18  -2  18G 456M 264M S 30.6   4.1  12:15.65 system_server
+[1m   484 system       -3  -8  12G  60M  40M R 26.6   0.5  10:46.92 surfaceflinger[m
+  3088 u0_a147      10 -10  20G 520M 157M S 17.6   4.6   9:14.16 com.ford.sync.vpa
+  1725 system       10 -10 2.1G 412M 276M S 17.0   3.7   2:10.36 com.ford.sync.controllerlauncher
+   397 system       -3   0  12G  19M  15M S 10.6   0.1   4:13.61 android.hardware.graphics.composer@2.4-service
+   403 system       RT   0  12G 4.7M 3.8M S 10.3   0.0   5:40.38 android.hardware.sensors@1.0-service
+   255 logd         30  10  12G  74M 2.6M S  9.6   0.6   3:32.94 logd
+   360 root         20   0  15G 188M 142M S  5.0   1.6   3:17.33 zygote64
+  1529 system       20   0  16G 151M  90M S  4.3   1.3   2:27.37 com.android.car
+   747 system       20   0  12G 4.8M 3.8M S  3.3   0.0   1:44.92 socrule --conf_path=/system/baidu/socrule/config.properties
+   389 audioserver  20   0  65M  20M  10M S  2.6   0.1   1:25.21 android.hardware.audio.service
+  1921 system       20   0  16G 183M 114M S  2.3   1.6   0:57.36 com.ford.xiaoduos.v2x
+  1252 system       20   0  12G 2.3M 1.8M S  2.3   0.0   1:13.75 logcat -b all *:v
+  1230 system       20   0  12G 6.1M 5.0M S  2.0   0.0   1:09.32 vendor.yfve.hardware.logcollector@1.0-service
+   457 audioserver  20   0  12G  28M  23M S  1.6   0.2   0:55.44 audioserver
+ 20752 root         20   0    0    0    0 I  1.3   0.0   0:08.83 [kworker/0:3-events]
+  3333 u0_a173      20   0 1.9G 192M 111M S  1.3   1.7   0:51.13 com.baidu.naviauto
+   407 vehicle_net+ 20   0  12G  12M 6.3M S  1.0   0.1   0:31.39 vendor.ford.hardware.automotive.vehicle@2.0-service
+   321 system       20   0  12G 9.2M 6.2M S  1.0   0.0   0:39.19 vendor.yfve.hardware.YFVECoreVehicle@1.0-service[H[JTasks: 372 total,   2 running, 370 sleeping,   0 stopped,   0 zombie
+  Mem: 11364320K total,  6479148K used,  4885172K free,  27992064 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  2024216K cached
+800%cpu 187%user   3%nice 102%sys 496%idle   0%iow   9%irq   3%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3352 u0_a175      20   0  17G 479M 127M S 49.6   4.3  28:55.04 com.baidu.che.codriver
+   484 system       -3  -8  12G  60M  40M S 27.0   0.5  10:47.72 surfaceflinger
+  1100 system       18  -2  18G 440M 264M S 22.6   3.9  12:16.57 system_server
+  3088 u0_a147      10 -10  20G 520M 157M S 15.3   4.6   9:14.69 com.ford.sync.vpa
+  1725 system       10 -10 2.1G 412M 276M S 14.6   3.7   2:10.87 com.ford.sync.controllerlauncher
+   403 system       RT   0  12G 4.7M 3.8M S 11.3   0.0   5:40.69 android.hardware.sensors@1.0-service
+[1m   397 system       -3   0  12G  19M  15M R  9.6   0.1   4:13.93 android.hardware.graphics.composer@2.4-service[m
+   360 root         20   0  15G 188M 142M S  6.3   1.6   3:17.48 zygote64
+   255 logd         30  10  12G  74M 2.6M S  5.3   0.6   3:33.23 logd
+  1529 system       20   0  16G 151M  90M S  4.3   1.3   2:27.50 com.android.car
+   747 system       20   0  12G 4.8M 3.8M S  3.3   0.0   1:45.02 socrule --conf_path=/system/baidu/socrule/config.properties
+  1252 system       20   0  12G 2.3M 1.8M S  2.3   0.0   1:13.82 logcat -b all *:v
+   389 audioserver  20   0  65M  20M  10M S  2.3   0.1   1:25.29 android.hardware.audio.service
+  1230 system       20   0  12G 6.1M 5.0M S  2.0   0.0   1:09.38 vendor.yfve.hardware.logcollector@1.0-service
+  3333 u0_a173      20   0 1.9G 192M 111M S  1.6   1.7   0:51.17 com.baidu.naviauto
+   457 audioserver  20   0  12G  28M  23M S  1.6   0.2   0:55.49 audioserver
+  1921 system       20   0  16G 170M 114M S  1.3   1.5   0:57.43 com.ford.xiaoduos.v2x
+[1m 22577 root         20   0  12G 4.8M 3.6M R  1.0   0.0   0:00.37 top[m
+ 17937 root         20   0    0    0    0 I  1.0   0.0   0:03.92 [kworker/0:0-events]
+ 20752 root         20   0    0    0    0 I  1.0   0.0   0:08.87 [kworker/0:3-events]

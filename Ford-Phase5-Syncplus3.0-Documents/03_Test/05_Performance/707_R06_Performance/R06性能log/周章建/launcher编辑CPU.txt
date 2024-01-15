@@ -1,0 +1,10 @@
+  1759 system       10 -10 2.3G 490M 352M S 40.0   4.4   4:23.06 com.ford.sync.controllerlauncher
+ 20562 root         20   0  12G 3.1M 2.5M S  0.0   0.0   0:00.00 grep controllerlauncher
+  1759 system       10 -10 2.3G 490M 352M R 29.6   4.4   4:23.18 com.ford.sync.controllerlauncher
+ 20562 root         20   0  12G 3.1M 2.5M S  0.0   0.0   0:00.00 grep controllerlauncher
+  1759 system       10 -10 2.3G 491M 352M S 32.3   4.4   4:24.07 com.ford.sync.controllerlauncher
+ 20562 root         20   0  12G 3.1M 2.5M S  0.0   0.0   0:00.00 grep controllerlauncher
+  1759 system       10 -10 2.3G 478M 347M S 30.3   4.3   4:25.04 com.ford.sync.controllerlauncher
+ 20562 root         20   0  12G 3.1M 2.5M S  0.0   0.0   0:00.00 grep controllerlauncher
+  1759 system       10 -10 2.3G 479M 347M S 30.6   4.3   4:25.95 com.ford.sync.controllerlauncher
+ 20562 root         20   0  12G 3.1M 2.5M S  0.0   0.0   0:00.00 grep controllerlauncher

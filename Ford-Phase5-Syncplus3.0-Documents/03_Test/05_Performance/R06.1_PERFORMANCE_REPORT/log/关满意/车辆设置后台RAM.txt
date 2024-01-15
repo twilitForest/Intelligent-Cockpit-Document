@@ -1,0 +1,19 @@
+基础RAM：
+msmnile_gvmq:/ # procrank |grep com.yfve.settings
+Failed to open oom_score_adj file: /proc/30703/oom_score_adj
+ 2586  16730520K  504816K  345529K  330164K       0K       0K       0K       0K  com.yfve.settings
+
+
+后台RAM：
+msmnile_gvmq:/ # procrank |grep com.yfve.settings
+Failed to open oom_score_adj file: /proc/31253/oom_score_adj
+Failed to open oom_score_adj file: /proc/31283/oom_score_adj
+ 2586  16681524K  491908K  329377K  311912K       0K       0K       0K       0K  com.yfve.settings
+
+130|msmnile_gvmq:/ # procrank |grep com.yfve.settings
+Failed to open oom_score_adj file: /proc/6691/oom_score_adj
+ 2586  16681524K  491948K  329428K  311952K       0K       0K       0K       0K  com.yfve.settings
+
+msmnile_gvmq:/ # procrank |grep com.yfve.settings
+Failed to open oom_score_adj file: /proc/15925/oom_score_adj
+ 2586  16725696K  468276K  309838K  295196K       0K       0K       0K       0K  com.yfve.settings

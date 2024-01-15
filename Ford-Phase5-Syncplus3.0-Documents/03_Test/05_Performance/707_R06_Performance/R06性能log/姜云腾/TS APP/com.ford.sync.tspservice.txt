@@ -1,0 +1,4 @@
+msmnile_gvmq:/system/priv-app/TSPService # ls -ll
+total 12068
+-rw-r--r-- 1 root root 12349974 2022-09-01 12:10:45.000000000 +0800 TSPService.apk
+drwxr-xr-x 3 root root     4096 2022-09-01 12:10:45.000000000 +0800 oat

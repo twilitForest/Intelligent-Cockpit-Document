@@ -1,0 +1,4 @@
+msmnile_gvmq:/system/priv-app/Account # ls -ll
+total 19828
+-rw-r--r-- 1 root root 20299712 2022-09-01 12:10:43.000000000 +0800 Account.apk
+drwxr-xr-x 3 root root     4096 2022-09-01 12:10:43.000000000 +0800 oat

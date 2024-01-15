@@ -1,0 +1,9 @@
+ 2972  16428608K  219348K   90188K   83060K       0K       0K       0K       0K  com.ford.sync.account
+ 1926  17212416K  128712K   26245K   24012K       0K       0K       0K       0K  com.ford.sync.accountservice
+msmnile_gvmq:/ # procrank |grep com.ford.sync.account
+ 2972  16411116K  220228K   91028K   83860K       0K       0K       0K       0K  com.ford.sync.account
+ 1926  17194924K  128708K   26241K   24008K       0K       0K       0K       0K  com.ford.sync.accountservice
+msmnile_gvmq:/ # procrank |grep com.ford.sync.account
+ 2972  16411116K  220292K   91091K   83924K       0K       0K       0K       0K  com.ford.sync.account
+ 1926  17194924K  128712K   26244K   24012K       0K       0K       0K       0K  com.ford.sync.accountservice
+msmnile_gvmq:/ #

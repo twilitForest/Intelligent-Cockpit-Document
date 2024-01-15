@@ -1,0 +1,19 @@
+package:/system/priv-app/ControllerLauncher/ControllerLauncher.apk
+msmnile_gvmq:/system/priv-app # du -k /system/priv-app/ControllerLauncher/ControllerLauncher.apk
+174960  /system/priv-app/ControllerLauncher/ControllerLauncher.apk
+msmnile_gvmq:/system/priv-app # pm path com.android.car
+package:/system/priv-app/CarService/CarService.apk
+msmnile_gvmq:/system/priv-app # du -k /system/priv-app/CarService/CarService.apk
+16040   /system/priv-app/CarService/CarService.apk
+
+
+
+
+
+
+1|msmnile_gvmq:/system/priv-app # pwd
+/system/priv-app
+msmnile_gvmq:/system/priv-app # pm path com.ford.sync.fnvservice
+package:/system/priv-app/FnvService/FnvService.apk
+msmnile_gvmq:/system/priv-app # du -k /system/priv-app/FnvService/FnvService.apk
+5120    /system/priv-app/FnvService/FnvService.apk

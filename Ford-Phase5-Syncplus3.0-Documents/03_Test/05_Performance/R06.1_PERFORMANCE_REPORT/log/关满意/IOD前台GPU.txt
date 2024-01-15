@@ -1,0 +1,16 @@
+GPU频率：
+Logging in with home = "/".
+# clock.sh info gfx3d
+Clock               State      Freq (Hz)    EN  RST Flags              VDD_CX/MMCX     Sources
+---------------------------------------------------------------------------------------
+gpu_cc_gx_gfx3d_clk n/a (0)    700000000    n/a n/a 0x20000000         OFF
+
+
+
+IOD基础GPU：
+Dec 31 00:13:34.966                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 125: elapsed time = 1001.000000ms, clock rate = 657782.303696kHz, percentage busy = 49.701053%
+
+IOD前台GPU：
+Dec 31 00:13:54.986                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 145: elapsed time = 1001.000000ms, clock rate = 646603.090909kHz, percentage busy = 58.444870%
+Dec 31 00:13:55.987                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 146: elapsed time = 1001.000000ms, clock rate = 649578.041958kHz, percentage busy = 57.689987%
+Dec 31 00:13:56.988                     KGSL.45094            OS-Buffer      0  KGSL:(tid:3):(caller_pid:45094) INFO rgs_perfcounter_gpubusystats_process[983]: measurement frame 147: elapsed time = 1001.000000ms, clock rate = 659421.166833kHz, percentage busy = 56.610803%

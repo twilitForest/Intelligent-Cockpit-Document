@@ -1,0 +1,13 @@
+E:\Feishu\scrcpy-win64-v1.10>
+
+E:\Feishu\scrcpy-win64-v1.10>adb shell
+msmnile_gvmq:/ # procrank|grep com.ford.sync.controllerlauncher
+Failed to open oom_score_adj file: /proc/2636/oom_score_adj
+ 1617  2316540K  437336K  319104K  304036K       0K       0K       0K       0K  com.ford.sync.controllerlauncher
+msmnile_gvmq:/ # procrank|grep com.ford.sync.controllerlauncher
+Failed to open oom_score_adj file: /proc/8104/oom_score_adj
+ 1617  2335188K  461756K  343521K  328456K       0K       0K       0K       0K  com.ford.sync.controllerlauncher
+msmnile_gvmq:/ # procrank|grep com.ford.sync.controllerlauncher
+Failed to open oom_score_adj file: /proc/15052/oom_score_adj
+ 1617  2329832K  448068K  329833K  314768K       0K       0K       0K       0K  com.ford.sync.controllerlauncher
+msmnile_gvmq:/ #

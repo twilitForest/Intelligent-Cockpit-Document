@@ -1,0 +1,15 @@
+msmnile_gvmq:/ # procrank |grep com.yfve.settings
+Failed to open oom_score_adj file: /proc/8126/oom_score_adj
+Failed to open oom_score_adj file: /proc/8140/oom_score_adj
+Failed to open oom_score_adj file: /proc/8141/oom_score_adj
+ 2302  2268880K  478584K  350788K  342620K       0K       0K       0K       0K  com.yfve.settings
+msmnile_gvmq:/ # procrank |grep com.yfve.settings
+Failed to open oom_score_adj file: /proc/8296/oom_score_adj
+Failed to open oom_score_adj file: /proc/8297/oom_score_adj
+Failed to open oom_score_adj file: /proc/8305/oom_score_adj
+ 2302  2327792K  544368K  412588K  401748K       0K       0K       0K       0K  com.yfve.settings
+msmnile_gvmq:/ # procrank |grep com.yfve.settings
+Failed to open oom_score_adj file: /proc/8457/oom_score_adj
+Failed to open oom_score_adj file: /proc/8469/oom_score_adj
+Failed to open oom_score_adj file: /proc/8470/oom_score_adj
+ 2302  2332944K  541728K  409923K  399084K       0K       0K       0K       0K  com.yfve.settings

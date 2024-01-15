@@ -1,0 +1,7 @@
+msmnile_gvmq:/ # procrank|grep com.ford.sync.controllerlauncher
+ 1821  2334412K  470424K  364641K  341076K       0K       0K       0K       0K  com.ford.sync.controllerlauncher
+msmnile_gvmq:/ # procrank|grep com.ford.sync.controllerlauncher
+ 1821  2343424K  485100K  379313K  355744K       0K       0K       0K       0K  com.ford.sync.controllerlauncher
+msmnile_gvmq:/ # procrank|grep com.ford.sync.controllerlauncher
+ 1821  2356000K  481368K  375577K  352004K       0K       0K       0K       0K  com.ford.sync.controllerlauncher
+msmnile_gvmq:/ #

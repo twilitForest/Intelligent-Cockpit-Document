@@ -1,0 +1,8 @@
+
+
+
+msmnile_gvmq:/system/priv-app/FordCloudService # ls -ll
+total 15520
+-rw-r--r-- 1 root root 15884292 2022-09-01 12:10:44.000000000 +0800 FordCloudService.apk
+drwxr-xr-x 3 root root     4096 2022-09-01 12:10:44.000000000 +0800 oat
+msmnile_gvmq:/system/priv-app/FordCloudService #

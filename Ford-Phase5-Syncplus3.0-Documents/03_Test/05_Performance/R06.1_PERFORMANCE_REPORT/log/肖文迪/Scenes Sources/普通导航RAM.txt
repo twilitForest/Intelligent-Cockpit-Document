@@ -1,0 +1,15 @@
+C:\Users\ts>adb shell
+msmnile_gvmq:/ # procrank|grep com.ford.sync.controllerlauncher
+Failed to open oom_score_adj file: /proc/25837/oom_score_adj
+ 1570  2343820K  476328K  359226K  345176K       0K       0K       0K       0K  com.ford.sync.controllerlauncher
+msmnile_gvmq:/ # procrank|grep com.ford.sync.controllerlauncher
+Failed to open oom_score_adj file: /proc/25182/oom_score_adj
+Failed to open oom_score_adj file: /proc/29195/oom_score_adj
+ 1570  2349016K  484796K  367645K  353552K       0K       0K       0K       0K  com.ford.sync.controllerlauncher
+msmnile_gvmq:/ # procrank|grep com.ford.sync.controllerlauncher
+Failed to open oom_score_adj file: /proc/32038/oom_score_adj
+Failed to open oom_score_adj file: /proc/32039/oom_score_adj
+Failed to open oom_score_adj file: /proc/32040/oom_score_adj
+Failed to open oom_score_adj file: /proc/32041/oom_score_adj
+ 1570  2364804K  509844K  392684K  378584K       0K       0K       0K       0K  com.ford.sync.controllerlauncher
+msmnile_gvmq:/ #

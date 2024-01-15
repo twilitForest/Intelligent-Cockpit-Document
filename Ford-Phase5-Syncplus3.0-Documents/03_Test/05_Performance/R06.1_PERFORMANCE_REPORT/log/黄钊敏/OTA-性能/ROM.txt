@@ -1,0 +1,6 @@
+msmnile_gvmq:/system/priv-app/SwuApp # ls
+SwuApp.apk  oat
+msmnile_gvmq:/system/priv-app/SwuApp # ls -ll
+total 25024
+-rw-r--r-- 1 root root 25619522 2022-10-20 11:27:12.000000000 +0800 SwuApp.apk
+drwxr-xr-x 3 root root     4096 2022-10-20 11:27:12.000000000 +0800 oat

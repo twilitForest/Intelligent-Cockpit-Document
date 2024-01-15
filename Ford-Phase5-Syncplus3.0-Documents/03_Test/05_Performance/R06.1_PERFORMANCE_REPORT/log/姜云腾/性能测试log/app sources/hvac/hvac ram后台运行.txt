@@ -1,0 +1,9 @@
+msmnile_gvmq:/ # procrank|grep com.ford.sync.hvac
+Failed to open oom_score_adj file: /proc/10580/oom_score_adj
+ 2619  18895852K  471028K  329040K  321800K       0K       0K       0K       0K  com.ford.sync.hvac
+msmnile_gvmq:/ # procrank|grep com.ford.sync.hvac
+Failed to open oom_score_adj file: /proc/12323/oom_score_adj
+ 2619  18895852K  471036K  329078K  321808K       0K       0K       0K       0K  com.ford.sync.hvac
+msmnile_gvmq:/ # procrank|grep com.ford.sync.hvac
+Failed to open oom_score_adj file: /proc/13874/oom_score_adj
+ 2619  18895852K  471040K  329077K  321812K       0K       0K       0K       0K  com.ford.sync.hvac

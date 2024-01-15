@@ -1,0 +1,13 @@
+130|msmnile_gvmq:/ #  procrank | grep "launcher"
+Failed to open oom_score_adj file: /proc/20908/oom_score_adj
+ 1744  2240832K  406428K  290637K  273000K       0K       0K       0K       0K  com.ford.sync.controllerlauncher
+  802  12381152K    4356K     960K     880K       0K       0K       0K       0K  /system/vendor/bin/loc_launcher
+msmnile_gvmq:/ #  procrank | grep "launcher"
+Failed to open oom_score_adj file: /proc/23028/oom_score_adj
+ 1744  2240832K  407168K  291384K  273740K       0K       0K       0K       0K  com.ford.sync.controllerlauncher
+  802  12381152K    4356K     960K     880K       0K       0K       0K       0K  /system/vendor/bin/loc_launcher
+msmnile_gvmq:/ #  procrank | grep "launcher"
+Failed to open oom_score_adj file: /proc/24599/oom_score_adj
+ 1744  2240832K  407708K  291917K  274280K       0K       0K       0K       0K  com.ford.sync.controllerlauncher
+  802  12381152K    4356K     960K     880K       0K       0K       0K       0K  /system/vendor/bin/loc_launcher
+msmnile_gvmq:/ #

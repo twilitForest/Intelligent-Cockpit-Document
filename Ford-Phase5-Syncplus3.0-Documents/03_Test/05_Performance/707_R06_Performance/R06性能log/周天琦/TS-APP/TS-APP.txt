@@ -1,0 +1,235 @@
+Microsoft Windows [版本 10.0.19043.1889]
+(c) Microsoft Corporation。保留所有权利。
+
+C:\Users\ts>adb root
+
+C:\Users\ts>adb shell
+msmnile_gvmq:/ # cd /system/priv-app/VoiceControlService
+msmnile_gvmq:/system/priv-app/VoiceControlService # ls
+VoiceControlService.apk  oat
+msmnile_gvmq:/system/priv-app/VoiceControlService # pm path com.ford.sync.voicecontrolservice
+cmd: Failure calling service package: Failed transaction (2147483646)
+2|msmnile_gvmq:/system/priv-app/VoiceControlService # pm path VoiceControlService
+cmd: Failure calling service package: Failed transaction (2147483646)
+2|msmnile_gvmq:/system/priv-app/VoiceControlService # cd /
+msmnile_gvmq:/ # cd /system/priv-app/Controllerlauncher
+/system/bin/sh: cd: /system/priv-app/Controllerlauncher: No such file or directory
+2|msmnile_gvmq:/ # exit
+
+C:\Users\ts>adb shell
+msmnile_gvmq:/ # cd /system/priv-app
+msmnile_gvmq:/system/priv-app # ls
+Account                           EngineeringMode          MessageServer            SurpriseMessage
+AccountService                    Eol                      NetworkPermissionConfig  SwuApp
+BdPrivacy                         ExceptionReport          NetworkStack             TSPService
+CalendarProvider                  ExternalStorageProvider  PackageInstaller         TeleService
+CarActivityResolver               FnvService               PersonTime               Telecom
+CarService                        FordCarSettings          ProxyHandler             TelephonyProvider
+CarrierManager                    FordCloudService         PushService              UpnpService
+ContactsProvider                  FordVPA                  QtxaHidps                V2ILite
+ControllerLauncher                FordVehicleService       RelaxMode                VoiceControlService
+DemoMode                          FusedLocation            SettingsProvider         YFAudioPlayer
+DocumentsUI                       GuestMode                SharedStorageBackup      YFAudioPlayer2
+DownloadProvider                  InputDevices             Shell                    YFDlna
+DownloadProviderUi                LocalTransport           SmartScene               YFSystemUI
+DynamicSystemInstallationService  ManagedProvisioning      SoundPicker              YFVECoreService
+EManual                           MediaProviderLegacy      StatementService
+msmnile_gvmq:/system/priv-app # cd ControllerLauncher
+msmnile_gvmq:/system/priv-app/ControllerLauncher # ls
+ControllerLauncher.apk  oat
+msmnile_gvmq:/system/priv-app/ControllerLauncher # pm path com.ford.sync.controllerlauncher
+cmd: Failure calling service package: Failed transaction (2147483646)
+2|msmnile_gvmq:/system/priv-app/ControllerLauncher # cd .
+msmnile_gvmq:/system/priv-app/ControllerLauncher # cd ..
+msmnile_gvmq:/system/priv-app # pm path ControllerLauncher
+cmd: Failure calling service package: Failed transaction (2147483646)
+2|msmnile_gvmq:/system/priv-app # exit
+
+C:\Users\ts>adb shell
+msmnile_gvmq:/ # cd /system/priv-app
+msmnile_gvmq:/system/priv-app # cd /
+msmnile_gvmq:/ # cd /vendor/app
+msmnile_gvmq:/vendor/app # cd FordHvac
+msmnile_gvmq:/vendor/app/FordHvac # pm path com.ford.sync.hvac
+cmd: Failure calling service package: Failed transaction (2147483646)
+2|msmnile_gvmq:/vendor/app/FordHvac # exit
+
+C:\Users\ts>adb remount
+Skipping /system for remount
+Skipping /vendor for remount
+No partitions to remount
+remount failed
+
+C:\Users\ts>adb root
+
+C:\Users\ts>adb shell
+msmnile_gvmq:/ # cd vendor/app/Fo
+FordApa/                FordAppStoreService/    FordHvac/               FordVha/
+msmnile_gvmq:/ # cd vendor/app/FordHvac/
+msmnile_gvmq:/vendor/app/FordHvac # ls
+FordHvac.apk  oat
+msmnile_gvmq:/vendor/app/FordHvac # ls -l *
+-rw-r--r-- 1 root root  63670705 2022-09-01 12:10 FordHvac.apk
+
+oat:
+total 4
+drwxr-xr-x 2 root shell 4096 2022-09-01 12:10 arm64
+msmnile_gvmq:/vendor/app/FordHvac # du -sh *
+61M     FordHvac.apk
+304K    oat
+msmnile_gvmq:/vendor/app/FordHvac # cd ..
+msmnile_gvmq:/vendor/app # du -sh Fo
+FordApa/                FordAppStoreService/    FordHvac/               FordVha/
+msmnile_gvmq:/vendor/app # du -sh FordHvac/
+61M     FordHvac/
+msmnile_gvmq:/vendor/app # cd /system/priv-app/VoiceControlService
+msmnile_gvmq:/system/priv-app/VoiceControlService # ls
+VoiceControlService.apk  oat
+msmnile_gvmq:/system/priv-app/VoiceControlService # du sh *
+du: sh: No such file or directory
+7276    VoiceControlService.apk
+136     oat/arm64
+140     oat
+u -sh VoiceControlService.apk                                                                                         <
+7.1M    VoiceControlService.apk
+msmnile_gvmq:/system/priv-app/VoiceControlService # ^C
+130|msmnile_gvmq:/system/priv-app/VoiceControlService # cd /system/priv-app/Controllerlauncher
+/system/bin/sh: cd: /system/priv-app/Controllerlauncher: No such file or directory
+2|msmnile_gvmq:/system/priv-app/VoiceControlService # cd /
+msmnile_gvmq:/ # cd /system/priv-app/Controllerlauncher
+/system/bin/sh: cd: /system/priv-app/Controllerlauncher: No such file or directory
+2|msmnile_gvmq:/ # cd /sys
+sys/         system/      system_ext/
+2|msmnile_gvmq:/ # cd /syst
+system/      system_ext/
+2|msmnile_gvmq:/ # cd /system
+msmnile_gvmq:/system # cd priv-app/
+msmnile_gvmq:/system/priv-app # ls
+Account                           EngineeringMode          MessageServer            SurpriseMessage
+AccountService                    Eol                      NetworkPermissionConfig  SwuApp
+BdPrivacy                         ExceptionReport          NetworkStack             TSPService
+CalendarProvider                  ExternalStorageProvider  PackageInstaller         TeleService
+CarActivityResolver               FnvService               PersonTime               Telecom
+CarService                        FordCarSettings          ProxyHandler             TelephonyProvider
+CarrierManager                    FordCloudService         PushService              UpnpService
+ContactsProvider                  FordVPA                  QtxaHidps                V2ILite
+ControllerLauncher                FordVehicleService       RelaxMode                VoiceControlService
+DemoMode                          FusedLocation            SettingsProvider         YFAudioPlayer
+DocumentsUI                       GuestMode                SharedStorageBackup      YFAudioPlayer2
+DownloadProvider                  InputDevices             Shell                    YFDlna
+DownloadProviderUi                LocalTransport           SmartScene               YFSystemUI
+DynamicSystemInstallationService  ManagedProvisioning      SoundPicker              YFVECoreService
+EManual                           MediaProviderLegacy      StatementService
+msmnile_gvmq:/system/priv-app # cd Con
+ContactsProvider/       ControllerLauncher/
+msmnile_gvmq:/system/priv-app # cd ControllerLauncher/
+msmnile_gvmq:/system/priv-app/ControllerLauncher # ls
+ControllerLauncher.apk  oat
+msmnile_gvmq:/system/priv-app/ControllerLauncher # du -k com.ford.sync.controllerlauncher
+du: com.ford.sync.controllerlauncher: No such file or directory
+1|msmnile_gvmq:/system/priv-app/ControllerLauncher # du -sh com.ford.sync.controllerlauncher
+du: com.ford.sync.controllerlauncher: No such file or directory
+1|msmnile_gvmq:/system/priv-app/ControllerLauncher # du -sh Controllerlauncher
+du: Controllerlauncher: No such file or directory
+1|msmnile_gvmq:/system/priv-app/ControllerLauncher # ls
+ControllerLauncher.apk  oat
+msmnile_gvmq:/system/priv-app/ControllerLauncher # ls- l
+/system/bin/sh: ls-: inaccessible or not found
+127|msmnile_gvmq:/system/priv-app/ControllerLauncher # ls -l *
+-rw-r--r-- 1 root root 120256886 2022-09-01 12:10 ControllerLauncher.apk
+
+oat:
+total 4
+drwxr-xr-x 2 root root 4096 2022-09-01 12:10 arm64
+msmnile_gvmq:/system/priv-app/ControllerLauncher # du -sh *
+115M    ControllerLauncher.apk
+288K    oat
+msmnile_gvmq:/system/priv-app/ControllerLauncher # cd /
+msmnile_gvmq:/ # cd /system/priv-app/FordVehicleService
+msmnile_gvmq:/system/priv-app/FordVehicleService # ls
+FordVehicleService.apk  oat
+msmnile_gvmq:/system/priv-app/FordVehicleService # ls -l *
+-rw-r--r-- 1 root root 57921448 2022-09-01 12:10 FordVehicleService.apk
+
+oat:
+total 4
+drwxr-xr-x 2 root root 4096 2022-09-01 12:10 arm64
+msmnile_gvmq:/system/priv-app/FordVehicleService # du -sh *
+55M     FordVehicleService.apk
+360K    oat
+msmnile_gvmq:/system/priv-app/FordVehicleService # cd /
+msmnile_gvmq:/ # cd /vendor/app/FordHvac
+msmnile_gvmq:/vendor/app/FordHvac # ls
+FordHvac.apk  oat
+msmnile_gvmq:/vendor/app/FordHvac # ls -l *
+-rw-r--r-- 1 root root  63670705 2022-09-01 12:10 FordHvac.apk
+
+oat:
+total 4
+drwxr-xr-x 2 root shell 4096 2022-09-01 12:10 arm64
+msmnile_gvmq:/vendor/app/FordHvac # du -sh *
+61M     FordHvac.apk
+304K    oat
+msmnile_gvmq:/vendor/app/FordHvac # cd /
+msmnile_gvmq:/ # cd /system/priv-app/CarService
+msmnile_gvmq:/system/priv-app/CarService # ls
+CarService.apk  oat
+msmnile_gvmq:/system/priv-app/CarService # du -sh CarService
+du: CarService: No such file or directory
+1|msmnile_gvmq:/system/priv-app/CarService # du -sh *
+16M     CarService.apk
+216K    oat
+msmnile_gvmq:/system/priv-app/CarService # cd /
+msmnile_gvmq:/ # cd /system/priv-app/FordApa
+/system/bin/sh: cd: /system/priv-app/FordApa: No such file or directory
+2|msmnile_gvmq:/ # ls
+acct        cache      data           dev   init.environ.rc  map      oem          res       sys
+apex        config     data_mirror    etc   linkerconfig     mnt      postinstall  resource  system
+bin         configure  debug_ramdisk  fota  log              nfs_log  proc         sdcard    system_ext
+bugreports  d          default.prop   init  lost+found       odm      product      storage   vendor
+msmnile_gvmq:/ # cd /system/priv-app/FordApa
+/system/bin/sh: cd: /system/priv-app/FordApa: No such file or directory
+2|msmnile_gvmq:/ # cd /sys
+sys/         system/      system_ext/
+2|msmnile_gvmq:/ # cd /syst
+system/      system_ext/
+2|msmnile_gvmq:/ # cd /system
+msmnile_gvmq:/system # cd priv-app/
+msmnile_gvmq:/system/priv-app # ls
+Account                           EngineeringMode          MessageServer            SurpriseMessage
+AccountService                    Eol                      NetworkPermissionConfig  SwuApp
+BdPrivacy                         ExceptionReport          NetworkStack             TSPService
+CalendarProvider                  ExternalStorageProvider  PackageInstaller         TeleService
+CarActivityResolver               FnvService               PersonTime               Telecom
+CarService                        FordCarSettings          ProxyHandler             TelephonyProvider
+CarrierManager                    FordCloudService         PushService              UpnpService
+ContactsProvider                  FordVPA                  QtxaHidps                V2ILite
+ControllerLauncher                FordVehicleService       RelaxMode                VoiceControlService
+DemoMode                          FusedLocation            SettingsProvider         YFAudioPlayer
+DocumentsUI                       GuestMode                SharedStorageBackup      YFAudioPlayer2
+DownloadProvider                  InputDevices             Shell                    YFDlna
+DownloadProviderUi                LocalTransport           SmartScene               YFSystemUI
+DynamicSystemInstallationService  ManagedProvisioning      SoundPicker              YFVECoreService
+EManual                           MediaProviderLegacy      StatementService
+msmnile_gvmq:/system/priv-app # cd Fo
+FordCarSettings/        FordCloudService/       FordVPA/                FordVehicleService/
+msmnile_gvmq:/system/priv-app # exit
+
+C:\Users\ts>adb root
+
+C:\Users\ts>adb shell
+msmnile_gvmq:/ # i pm path FordApa
+/system/bin/sh: i: inaccessible or not found
+127|msmnile_gvmq:/ # pm path FordApa
+cmd: Failure calling service package: Failed transaction (2147483646)
+2|msmnile_gvmq:/ #
+2|msmnile_gvmq:/ #
+2|msmnile_gvmq:/ #
+2|msmnile_gvmq:/ #
+2|msmnile_gvmq:/ # cd /vendor/app/FordApa
+msmnile_gvmq:/vendor/app/FordApa # ls
+FordApa.apk  oat
+msmnile_gvmq:/vendor/app/FordApa # du -sh *
+36M     FordApa.apk
+132K    oat
+msmnile_gvmq:/vendor/app/FordApa #

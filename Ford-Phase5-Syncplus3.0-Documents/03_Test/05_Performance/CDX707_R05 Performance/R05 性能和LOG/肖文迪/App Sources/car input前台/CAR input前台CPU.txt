@@ -1,0 +1,145 @@
+[H[J[?25l[H[JTasks: 379 total,   1 running, 376 sleeping,   0 stopped,   2 zombie
+  Mem: 11353160K total,  8758360K used,  2594800K free,    99784K buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  2389000K cached
+800%cpu 128%user   0%nice  55%sys 600%idle   0%iow  10%irq   7%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3429 u0_a170      20   0  17G 533M 163M S 55.1   4.8  87:46.91 com.baidu.che.codriver
+  1615 system       10 -10 2.3G 554M 396M S 34.4   4.9  29:46.54 com.ford.sync.controllerlauncher
+   469 system       -3 -20  12G  61M  41M S 31.0   0.5  34:19.63 surfaceflinger
+  2485 u0_a138      10 -10  21G 946M 289M S 17.2   8.5  18:41.36 com.ford.sync.vpa
+[1m 16457 root         20   0  12G 4.3M 3.5M R 13.7   0.0   0:00.04 top[m
+ 15231 system       10 -10  17G 318M 191M S 13.7   2.8   0:11.60 com.baidu.car.radio
+   407 system       RT   0  12G 5.1M 4.2M S 10.3   0.0  14:16.41 android.hardware.sensors@1.0-service
+   400 system       -3  -4  12G  20M  16M S 10.3   0.1  11:41.79 android.hardware.graphics.composer@2.4-service
+ 14332 root         20   0    0    0    0 I  3.4   0.0   0:10.02 [kworker/0:3-events]
+  2328 system       20   0  12G 3.3M 2.7M S  3.4   0.0   2:51.16 logcat -b all *:v
+  1443 system       20   0  16G 149M  90M S  3.4   1.3   4:18.44 com.android.car
+   996 system       18  -2  17G 346M 265M S  3.4   3.1   8:21.66 system_server
+   461 audioserver  20   0  12G  30M  25M S  3.4   0.2   2:14.12 audioserver
+   413 vehicle_net+ 20   0  12G  12M 6.0M S  3.4   0.1   1:48.77 vendor.ford.hardware.automotive.vehicle@2.0-service
+   392 audioserver  20   0  67M  20M  10M S  3.4   0.1   3:19.73 android.hardware.audio.service
+   337 system       20   0  12G 9.3M 6.4M S  3.4   0.0   1:54.93 vendor.yfve.hardware.YFVECoreVehicle@1.0-service
+   249 logd         30  10  12G  41M 2.7M S  3.4   0.3   8:10.52 logd
+   242 root         -2   0    0    0    0 S  3.4   0.0   0:54.80 [apr_vm_cb_threa]
+     9 root         20   0    0    0    0 S  3.4   0.0   0:48.64 [ksoftirqd/0]
+ 16455 root         20   0  12G 2.5M 2.1M S  0.0   0.0   0:00.00 sh -c COLUMNS=800 top[H[JTasks: 379 total,   2 running, 375 sleeping,   0 stopped,   2 zombie
+  Mem: 11353160K total,  8764836K used,  2588324K free,    99792K buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  2389228K cached
+800%cpu 137%user   8%nice  71%sys 566%idle   2%iow  11%irq   5%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3429 u0_a170      20   0  17G 533M 163M S 63.0   4.8  87:47.07 com.baidu.che.codriver
+  1615 system       10 -10 2.3G 554M 396M S 34.6   4.9  29:46.64 com.ford.sync.controllerlauncher
+[1m   469 system       -3 -20  12G  61M  41M R 34.3   0.5  34:19.72 surfaceflinger[m
+ 15231 system       10 -10  17G 318M 191M S 21.0   2.8   0:11.64 com.baidu.car.radio
+  2485 u0_a138      10 -10  21G 946M 289M S 15.3   8.5  18:41.41 com.ford.sync.vpa
+   400 system       -3  -4  12G  20M  16M S 11.0   0.1  11:41.82 android.hardware.graphics.composer@2.4-service
+   249 logd         30  10  12G  41M 2.7M S 11.0   0.3   8:10.53 logd
+   407 system       RT   0  12G 5.1M 4.2M S  9.3   0.0  14:16.44 android.hardware.sensors@1.0-service
+   996 system       18  -2  17G 346M 265M S  5.6   3.1   8:21.67 system_server
+   233 system       20   0  12G 7.1M 3.6M S  3.6   0.0   1:48.16 carwatchdogd
+   392 audioserver  20   0  67M  20M  10M S  3.0   0.1   3:19.74 android.hardware.audio.service
+  2718 u0_a180      20   0  15G 137M  87M S  2.6   1.2   2:27.40 com.android.providers.media.module
+  1443 system       20   0  16G 149M  90M S  2.6   1.3   4:18.45 com.android.car
+  3528 u0_a144      20   0  17G 211M 114M S  2.3   1.9   3:31.64 com.baidu.iov.dueros.videos
+[1m 16457 root         20   0  12G 4.5M 3.5M R  2.0   0.0   0:00.08 top[m
+  2328 system       20   0  12G 3.3M 2.7M S  2.0   0.0   2:51.17 logcat -b all *:v
+  2311 system       20   0  12G 6.3M 5.2M S  2.0   0.0   2:40.13 vendor.yfve.hardware.logcollector@1.0-service
+  2234 system       20   0  12G  10M 4.4M S  1.6   0.0   2:05.13 qtxa-nidps-manage
+   781 root         20   0  12G  19M 7.1M S  1.6   0.1   1:56.87 qtxa-nidps-engine -c /etc/qtxa/rule/qtxa-nidps-engine/conf/qtxa-idps.yaml -i eth0
+   461 audioserver  20   0  12G  30M  25M S  1.6   0.2   2:14.13 audioserver[H[JTasks: 376 total,   1 running, 375 sleeping,   0 stopped,   0 zombie
+  Mem: 11353160K total,  8753196K used,  2599964K free,    99800K buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  2389616K cached
+800%cpu 174%user  12%nice 105%sys 483%idle   3%iow  13%irq   9%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3429 u0_a170      20   0  17G 537M 163M S 64.3   4.8  87:48.96 com.baidu.che.codriver
+ 15231 system       10 -10  17G 320M 191M S 47.0   2.8   0:12.27 com.baidu.car.radio
+   469 system       -3 -20  12G  61M  41M S 40.0   0.5  34:20.75 surfaceflinger
+  1615 system       10 -10 2.3G 554M 396M S 36.6   4.9  29:47.68 com.ford.sync.controllerlauncher
+  2485 u0_a138      10 -10  21G 946M 289M S 17.3   8.5  18:41.87 com.ford.sync.vpa
+   249 logd         30  10  12G  41M 2.7M S 16.6   0.3   8:10.86 logd
+  1443 system       20   0  16G 149M  90M S 14.3   1.3   4:18.53 com.android.car
+   996 system       18  -2  17G 347M 265M S 12.0   3.1   8:21.84 system_server
+   400 system       -3  -4  12G  20M  16M S 12.0   0.1  11:42.15 android.hardware.graphics.composer@2.4-service
+   407 system       RT   0  12G 5.1M 4.2M S  9.6   0.0  14:16.72 android.hardware.sensors@1.0-service
+   834 mediacodec   20   0  12G  20M  16M S  4.6   0.1   0:00.78 media.swcodec oid.media.swcodec/bin/mediaswcodec
+   337 system       20   0  12G 9.3M 6.4M S  4.6   0.0   1:54.96 vendor.yfve.hardware.YFVECoreVehicle@1.0-service
+  2328 system       20   0  12G 3.3M 2.7M S  4.3   0.0   2:51.23 logcat -b all *:v
+  2311 system       20   0  12G 6.3M 5.2M S  4.3   0.0   2:40.19 vendor.yfve.hardware.logcollector@1.0-service
+   413 vehicle_net+ 20   0  12G  12M 6.0M S  4.3   0.1   1:48.81 vendor.ford.hardware.automotive.vehicle@2.0-service
+  2234 system       20   0  12G  10M 4.4M S  3.3   0.0   2:05.18 qtxa-nidps-manage
+  1503 system       20   0  16G 193M 125M S  3.3   1.7   0:15.01 com.android.systemui
+  3528 u0_a144      20   0  17G 211M 114M S  3.0   1.9   3:31.71 com.baidu.iov.dueros.videos
+   461 audioserver  20   0  12G  30M  25M S  3.0   0.2   2:14.18 audioserver
+   392 audioserver  20   0  67M  20M  10M S  3.0   0.1   3:19.83 android.hardware.audio.service[H[JTasks: 377 total,   2 running, 375 sleeping,   0 stopped,   0 zombie
+  Mem: 11353160K total,  8760408K used,  2592752K free,    99800K buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  2389936K cached
+800%cpu 168%user   6%nice  90%sys 515%idle   2%iow  12%irq   6%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3429 u0_a170      20   0  17G 527M 163M S 61.3   4.7  87:50.89 com.baidu.che.codriver
+[1m   469 system       -3 -20  12G  61M  41M R 41.6   0.5  34:21.95 surfaceflinger[m
+ 15231 system       10 -10  17G 320M 191M S 40.3   2.8   0:13.68 com.baidu.car.radio
+  1615 system       10 -10 2.3G 554M 396M S 37.3   4.9  29:48.78 com.ford.sync.controllerlauncher
+  2485 u0_a138      10 -10  21G 946M 289M S 16.0   8.5  18:42.39 com.ford.sync.vpa
+   996 system       18  -2  17G 347M 265M S 13.3   3.1   8:22.20 system_server
+   400 system       -3  -4  12G  20M  16M S 12.0   0.1  11:42.51 android.hardware.graphics.composer@2.4-service
+   249 logd         30  10  12G  41M 2.7M S 10.0   0.3   8:11.36 logd
+   407 system       RT   0  12G 5.1M 4.2M S  9.0   0.0  14:17.01 android.hardware.sensors@1.0-service
+  1443 system       20   0  16G 144M  90M S  7.6   1.3   4:18.96 com.android.car
+   759 root         20   0  12G 6.9M 4.7M S  5.6   0.0   0:34.05 installd
+   834 mediacodec   20   0  12G  20M  16M S  4.6   0.1   0:00.92 media.swcodec oid.media.swcodec/bin/mediaswcodec
+  2328 system       20   0  12G 3.3M 2.7M S  3.3   0.0   2:51.36 logcat -b all *:v
+   461 audioserver  20   0  12G  30M  25M S  3.0   0.2   2:14.27 audioserver
+   392 audioserver  20   0  67M  20M  10M S  3.0   0.1   3:19.92 android.hardware.audio.service
+  2311 system       20   0  12G 6.3M 5.2M S  2.6   0.0   2:40.32 vendor.yfve.hardware.logcollector@1.0-service
+   337 system       20   0  12G 9.3M 6.4M S  2.6   0.0   1:55.10 vendor.yfve.hardware.YFVECoreVehicle@1.0-service
+  3528 u0_a144      20   0  17G 211M 114M S  2.3   1.9   3:31.80 com.baidu.iov.dueros.videos
+   413 vehicle_net+ 20   0  12G  12M 6.0M S  2.3   0.1   1:48.94 vendor.ford.hardware.automotive.vehicle@2.0-service
+  2234 system       20   0  12G  10M 4.4M S  2.0   0.0   2:05.28 qtxa-nidps-manage[H[JTasks: 378 total,   1 running, 375 sleeping,   0 stopped,   2 zombie
+  Mem: 11353160K total,  8762048K used,  2591112K free,    99808K buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  2390196K cached
+800%cpu 163%user   6%nice  80%sys 531%idle   2%iow  12%irq   7%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3429 u0_a170      20   0  17G 528M 163M S 61.0   4.7  87:52.73 com.baidu.che.codriver
+ 15231 system       10 -10  17G 321M 191M S 41.6   2.8   0:14.89 com.baidu.car.radio
+   469 system       -3 -20  12G  61M  41M S 37.6   0.5  34:23.20 surfaceflinger
+  1615 system       10 -10 2.3G 554M 396M S 36.0   4.9  29:49.90 com.ford.sync.controllerlauncher
+  2485 u0_a138      10 -10  21G 946M 289M S 16.0   8.5  18:42.87 com.ford.sync.vpa
+   400 system       -3  -4  12G  20M  16M S 11.3   0.1  11:42.87 android.hardware.graphics.composer@2.4-service
+   407 system       RT   0  12G 5.1M 4.2M S 10.0   0.0  14:17.28 android.hardware.sensors@1.0-service
+   249 logd         30  10  12G  41M 2.7M S  8.6   0.3   8:11.66 logd
+   996 system       18  -2  17G 350M 265M S  6.3   3.1   8:22.60 system_server
+  1443 system       20   0  16G 145M  90M S  6.0   1.3   4:19.19 com.android.car
+   834 mediacodec   20   0  12G  20M  16M S  4.3   0.1   0:01.06 media.swcodec oid.media.swcodec/bin/mediaswcodec
+   233 system       20   0  12G 7.1M 3.6M S  4.0   0.0   1:48.27 carwatchdogd
+   461 audioserver  20   0  12G  30M  25M S  3.0   0.2   2:14.36 audioserver
+   392 audioserver  20   0  67M  20M  10M S  3.0   0.1   3:20.01 android.hardware.audio.service
+  3528 u0_a144      20   0  17G 211M 114M S  2.6   1.9   3:31.87 com.baidu.iov.dueros.videos
+  2328 system       20   0  12G 3.3M 2.7M S  2.6   0.0   2:51.46 logcat -b all *:v
+  2311 system       20   0  12G 6.3M 5.2M S  2.3   0.0   2:40.40 vendor.yfve.hardware.logcollector@1.0-service
+  2234 system       20   0  12G  10M 4.4M S  2.0   0.0   2:05.34 qtxa-nidps-manage
+  2222 system       20   0  12G  17M 4.3M S  2.0   0.1   1:21.62 bdnetdproxy
+  1921 system       20   0  15G 119M  81M S  2.0   1.0   2:17.96 com.ford.xiaoduos.v2x[H[JTasks: 376 total,   1 running, 375 sleeping,   0 stopped,   0 zombie
+  Mem: 11353160K total,  8771152K used,  2582008K free,    99808K buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  2390592K cached
+800%cpu 166%user  22%nice  94%sys 497%idle   2%iow  12%irq   7%sirq   0%host
+[7m   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m
+  3429 u0_a170      20   0  17G 529M 163M S 69.0   4.7  87:54.56 com.baidu.che.codriver
+ 15231 system       10 -10  17G 322M 191M S 40.3   2.9   0:16.14 com.baidu.car.radio
+   469 system       -3 -20  12G  61M  41M S 37.6   0.5  34:24.33 surfaceflinger
+  1615 system       10 -10 2.3G 554M 396M S 36.3   5.0  29:50.98 com.ford.sync.controllerlauncher
+   249 logd         30  10  12G  41M 2.7M S 24.6   0.3   8:11.92 logd
+  2485 u0_a138      10 -10  21G 946M 289M S 16.3   8.5  18:43.35 com.ford.sync.vpa
+   400 system       -3  -4  12G  20M  16M S 11.6   0.1  11:43.21 android.hardware.graphics.composer@2.4-service
+   407 system       20   0  12G 5.1M 4.2M S  9.3   0.0  14:17.58 android.hardware.sensors@1.0-service
+   996 system       18  -2  17G 350M 265M S  8.3   3.1   8:22.79 system_server
+  1443 system       20   0  16G 145M  90M S  7.0   1.3   4:19.37 com.android.car
+   834 mediacodec   20   0  12G  20M  16M S  4.6   0.1   0:01.19 media.swcodec oid.media.swcodec/bin/mediaswcodec
+  2328 system       20   0  12G 3.3M 2.7M S  3.3   0.0   2:51.54 logcat -b all *:v
+   392 audioserver  20   0  67M  20M  10M S  3.3   0.1   3:20.10 android.hardware.audio.service
+  2311 system       20   0  12G 6.3M 5.2M S  3.0   0.0   2:40.47 vendor.yfve.hardware.logcollector@1.0-service
+   461 audioserver  20   0  12G  30M  25M S  3.0   0.2   2:14.45 audioserver
+  2718 u0_a180      20   0  15G 137M  87M S  2.6   1.2   2:27.48 com.android.providers.media.module
+  2234 system       20   0  12G  10M 4.4M S  2.6   0.0   2:05.40 qtxa-nidps-manage
+   413 vehicle_net+ 20   0  12G  12M 6.0M S  2.6   0.1   1:49.07 vendor.ford.hardware.automotive.vehicle@2.0-service
+  3528 u0_a144      20   0  17G 211M 114M S  2.3   1.9   3:31.95 com.baidu.iov.dueros.videos
+   337 system       20   0  12G 9.3M 6.4M S  2.3   0.0   1:55.24 vendor.yfve.hardware.YFVECoreVehicle@1.0-service

@@ -1,0 +1,26 @@
+Tasks: 1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+  Mem: 11353224K total,  8801568K used,  2551656K free,  65511424 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  2264260K cached
+800%cpu 111%user   1%nice  59%sys 615%idle   1%iow   9%irq   5%sirq   0%host
+   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS
+  8332 system       20   0  16G 272M 130M S  0.3   2.4   0:02.52 com.ford.sync.apa
+
+
+
+Tasks: 401 total,   1 running, 398 sleeping,   0 stopped,   2 zombie
+  Mem: 11353224K total,  8711564K used,  2641660K free,  46747648 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  2234828K cached
+Tasks: 1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+  Mem: 11353224K total,  8759576K used,  2593648K free,  56188928 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  2243688K cached
+800%cpu 105%user   0%nice  62%sys 619%idle   1%iow   8%irq   4%sirq   0%host
+   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS
+  7345 system       10 -10  16G 273M 133M S  0.3   2.4   0:07.86 com.ford.sync.apa
+
+Tasks: 1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+  Mem: 11353224K total,  8771364K used,  2581860K free,  56508416 buffers
+ Swap:  4194300K total,         0 used,  4194300K free,  2244136K cached
+800%cpu 106%user   1%nice  63%sys 616%idle   1%iow   9%irq   5%sirq   0%host
+   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS
+  7345 system       20   0  16G 273M 133M S  0.6   2.4   0:07.92 com.ford.sync.apa
+

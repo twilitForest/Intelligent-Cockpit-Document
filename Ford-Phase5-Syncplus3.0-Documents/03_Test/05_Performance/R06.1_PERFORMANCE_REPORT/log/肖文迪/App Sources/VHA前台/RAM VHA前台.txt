@@ -1,0 +1,26 @@
+EFeishuscrcpy-win64-v1.10adb shell
+msmnile_gvmq #  procrankgrep com.ford.sync.vha
+
+
+Failed to open oom_score_adj file proc19296oom_score_adj
+14640  16398412K  306464K  169818K  165128K       0K       0K       0K       0K  com.ford.sync.vha
+
+
+
+
+127|msmnile_gvmq:/ #  procrank|grep com.ford.sync.vha
+Failed to open oom_score_adj file: /proc/27098/oom_score_adj
+Failed to open oom_score_adj file: /proc/27119/oom_score_adj
+Failed to open oom_score_adj file: /proc/27124/oom_score_adj
+14640  16399088K  292504K  155358K  150440K       0K       0K       0K       0K  com.ford.sync.vha
+msmnile_gvmq:/ #
+     
+
+
+
+127|msmnile_gvmq:/ #  procrank|grep com.ford.sync.vha
+
+
+Failed to open oom_score_adj file: /proc/19575/oom_score_adj
+Failed to open oom_score_adj file: /proc/19591/oom_score_adj
+14640  16373464K  244692K  107131K  102056K       0K       0K       0K       0K  com.ford.sync.vha

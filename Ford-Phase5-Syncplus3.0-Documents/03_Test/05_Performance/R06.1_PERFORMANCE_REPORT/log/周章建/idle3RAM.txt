@@ -1,0 +1,16 @@
+D:\01zrm\feishu\scrcpy1.12.1>adb shell
+msmnile_gvmq:/ # procrank | grep "launcher"
+Failed to open oom_score_adj file: /proc/12211/oom_score_adj
+Failed to open oom_score_adj file: /proc/12241/oom_score_adj
+Failed to open oom_score_adj file: /proc/12242/oom_score_adj
+ 1745  2185252K  367204K  254549K  239240K       0K       0K       0K       0K  com.ford.sync.controllerlauncher
+  813  12381152K    4124K     956K     884K       0K       0K       0K       0K  /system/vendor/bin/loc_launcher
+msmnile_gvmq:/ # procrank | grep "launcher"
+Failed to open oom_score_adj file: /proc/14765/oom_score_adj
+ 1745  2185252K  368048K  255390K  240084K       0K       0K       0K       0K  com.ford.sync.controllerlauncher
+  813  12381152K    4124K     956K     884K       0K       0K       0K       0K  /system/vendor/bin/loc_launcher
+msmnile_gvmq:/ # procrank | grep "launcher"
+Failed to open oom_score_adj file: /proc/16408/oom_score_adj
+ 1745  2185252K  368584K  255933K  240620K       0K       0K       0K       0K  com.ford.sync.controllerlauncher
+  813  12381152K    4124K     956K     884K       0K       0K       0K       0K  /system/vendor/bin/loc_launcher
+msmnile_gvmq:/ #

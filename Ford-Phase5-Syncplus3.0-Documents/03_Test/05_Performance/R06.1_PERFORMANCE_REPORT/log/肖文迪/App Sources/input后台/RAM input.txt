@@ -1,0 +1,15 @@
+msmnile_gvmq:/ # procrank|grep com.android.car
+Failed to open oom_score_adj file: /proc/5077/oom_score_adj
+ 1401  16285488K  162928K   46104K   43556K       0K       0K       0K       0K  com.android.car
+ 2056  12363868K    3836K     748K     724K       0K       0K       0K       0K  /system/bin/com.android.car.procfsinspector
+msmnile_gvmq:/ # procrank|grep com.android.car
+Failed to open oom_score_adj file: /proc/7661/oom_score_adj
+Failed to open oom_score_adj file: /proc/7690/oom_score_adj
+Failed to open oom_score_adj file: /proc/7691/oom_score_adj
+ 1401  16285488K  164088K   47264K   44716K       0K       0K       0K       0K  com.android.car
+ 2056  12363868K    3836K     749K     724K       0K       0K       0K       0K  /system/bin/com.android.car.procfsinspector
+msmnile_gvmq:/ # procrank|grep com.android.car
+Failed to open oom_score_adj file: /proc/12075/oom_score_adj
+ 1401  16285488K  166616K   49811K   47244K       0K       0K       0K       0K  com.android.car
+ 2056  12363868K    3836K     749K     724K       0K       0K       0K       0K  /system/bin/com.android.car.procfsinspector
+msmnile_gvmq:/ #

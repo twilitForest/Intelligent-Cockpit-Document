@@ -1,0 +1,19 @@
+msmnile_gvmq:/ # procrank |grep com.ford.sync.vha
+Failed to open oom_score_adj file: /proc/14952/oom_score_adj
+ 3147  2004248K  203232K   95883K   91132K       0K       0K       0K       0K  com.ford.sync.vha
+msmnile_gvmq:/ # procrank |grep com.ford.sync.vha
+Failed to open oom_score_adj file: /proc/15464/oom_score_adj
+Failed to open oom_score_adj file: /proc/15503/oom_score_adj
+Failed to open oom_score_adj file: /proc/15504/oom_score_adj
+Failed to open oom_score_adj file: /proc/15539/oom_score_adj
+Failed to open oom_score_adj file: /proc/15540/oom_score_adj
+Failed to open oom_score_adj file: /proc/15541/oom_score_adj
+Failed to open oom_score_adj file: /proc/15542/oom_score_adj
+Failed to open oom_score_adj file: /proc/15543/oom_score_adj
+Failed to open oom_score_adj file: /proc/15544/oom_score_adj
+ 3147  2004248K  203420K   96050K   91276K       0K       0K       0K       0K  com.ford.sync.vha
+msmnile_gvmq:/ # procrank |grep com.ford.sync.vha
+Failed to open oom_score_adj file: /proc/15803/oom_score_adj
+Failed to open oom_score_adj file: /proc/15804/oom_score_adj
+ 3147  2004248K  203588K   96198K   91392K       0K       0K       0K       0K  com.ford.sync.vha
+msmnile_gvmq:/ #

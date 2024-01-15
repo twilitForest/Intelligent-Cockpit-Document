@@ -1,0 +1,15 @@
+Failed to open oom_score_adj file: /proc/6103/oom_score_adj
+ 2972  16481420K  214992K   85298K   77780K       0K       0K       0K       0K  com.ford.sync.account
+ 1926  17212416K  129092K   26605K   24392K       0K       0K       0K       0K  com.ford.sync.accountservice
+msmnile_gvmq:/ # procrank |grep com.ford.sync.account
+Failed to open oom_score_adj file: /proc/6405/oom_score_adj
+Failed to open oom_score_adj file: /proc/6406/oom_score_adj
+ 2972  16490168K  233592K  103845K   96240K       0K       0K       0K       0K  com.ford.sync.account
+ 1926  17212416K  129116K   26649K   24416K       0K       0K       0K       0K  com.ford.sync.accountservice
+msmnile_gvmq:/ # procrank |grep com.ford.sync.account
+Failed to open oom_score_adj file: /proc/6611/oom_score_adj
+Failed to open oom_score_adj file: /proc/6612/oom_score_adj
+Failed to open oom_score_adj file: /proc/6619/oom_score_adj
+ 2972  16457712K  224448K   94696K   87084K       0K       0K       0K       0K  com.ford.sync.account
+ 1926  17212416K  129436K   26968K   24736K       0K       0K       0K       0K  com.ford.sync.accountservice
+msmnile_gvmq:/ #

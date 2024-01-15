@@ -1,0 +1,18 @@
+msmnile_gvmq:/ # procrank|grep com.ford.sync.controllerlauncher
+Failed to open oom_score_adj file: /proc/31148/oom_score_adj
+ 1725  2295244K  441676K  323930K  305436K       0K       0K       0K       0K  com.ford.sync.controllerlauncher
+msmnile_gvmq:/ #
+
+
+msmnile_gvmq:/ # procrank|grep com.ford.sync.controllerlauncher
+Failed to open oom_score_adj file: /proc/22449/oom_score_adj
+Failed to open oom_score_adj file: /proc/22481/oom_score_adj
+ 1725  2285144K  427440K  309684K  291200K       0K       0K       0K       0K  com.ford.sync.controllerlauncher
+msmnile_gvmq:/ #
+
+
+
+
+127|msmnile_gvmq:/ # procrank|grep com.ford.sync.controllerlauncher
+ 1725  2285144K  423636K  305880K  287396K       0K       0K       0K       0K  com.ford.sync.controllerlauncher
+msmnile_gvmq:/ #

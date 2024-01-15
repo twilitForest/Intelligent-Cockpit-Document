@@ -1,0 +1,11 @@
+C:\Users\ts>adb shell
+msmnile_gvmq:/ # procrank |grep com.ford.sync.controllerlauncher
+
+ 1676  2386640K  461512K  346802K  338672K       0K       0K       0K       0K  com.ford.sync.controllerlauncher
+msmnile_gvmq:/ # procrank |grep com.ford.sync.controllerlauncher
+
+ 1676  2381916K  470692K  355179K  346544K       0K       0K       0K       0K  com.ford.sync.controllerlauncher
+msmnile_gvmq:/ # procrank |grep com.ford.sync.controllerlauncher
+
+ 1676  2377564K  477120K  361531K  352820K       0K       0K       0K       0K  com.ford.sync.controllerlauncher
+msmnile_gvmq:/ #

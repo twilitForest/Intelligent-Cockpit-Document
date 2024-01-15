@@ -1,0 +1,10 @@
+C:\Users\ts>adb shell
+msmnile_gvmq:/ # procrank |grep com.ford.sync.vha
+ 3169  2001568K  206852K   95916K   88096K       0K       0K       0K       0K  com.ford.sync.vha
+msmnile_gvmq:/ # procrank |grep com.ford.sync.vha
+Failed to open oom_score_adj file: /proc/4124/oom_score_adj
+Failed to open oom_score_adj file: /proc/4125/oom_score_adj
+ 3169  2007072K  212540K  101580K   93736K       0K       0K       0K       0K  com.ford.sync.vha
+msmnile_gvmq:/ # procrank |grep com.ford.sync.vha
+ 3169  2006304K  211964K  100976K   93100K       0K       0K       0K       0K  com.ford.sync.vha
+msmnile_gvmq:/ #

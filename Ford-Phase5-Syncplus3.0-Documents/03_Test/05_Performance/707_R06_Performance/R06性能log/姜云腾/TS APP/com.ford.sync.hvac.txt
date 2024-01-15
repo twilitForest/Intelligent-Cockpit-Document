@@ -1,0 +1,4 @@
+msmnile_gvmq:/vendor/app/FordHvac # ls -ll
+total 62172
+-rw-r--r-- 1 root root  63670705 2022-09-01 12:10:48.000000000 +0800 FordHvac.apk
+drwxr-xr-x 3 root shell     4096 2022-09-01 12:10:48.000000000 +0800 oat

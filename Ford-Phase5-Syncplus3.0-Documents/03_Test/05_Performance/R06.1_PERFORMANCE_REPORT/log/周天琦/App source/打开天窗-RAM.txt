@@ -1,0 +1,13 @@
+130|msmnile_gvmq:/ # procrank|grep com.ford.sync.voicecontrolservice
+Failed to open oom_score_adj file: /proc/4303/oom_score_adj
+ 2416  15905820K  116584K   10091K    8100K       0K       0K       0K       0K  com.ford.sync.voicecontrolservice
+msmnile_gvmq:/ # procrank|grep com.ford.sync.voicecontrolservice
+Failed to open oom_score_adj file: /proc/7243/oom_score_adj
+ 2416  15905820K  116664K   10169K    8180K       0K       0K       0K       0K  com.ford.sync.voicecontrolservice
+msmnile_gvmq:/ # procrank|grep com.ford.sync.voicecontrolservice
+Failed to open oom_score_adj file: /proc/9803/oom_score_adj
+ 2416  15905820K  116728K   10244K    8244K       0K       0K       0K       0K  com.ford.sync.voicecontrolservice
+msmnile_gvmq:/ # procrank|grep com.ford.sync.voicecontrolservice
+Failed to open oom_score_adj file: /proc/9776/oom_score_adj
+Failed to open oom_score_adj file: /proc/13684/oom_score_adj
+ 2416  15907484K  116964K   10393K    8368K       0K       0K       0K       0K  com.ford.sync.voicecontrolservice
