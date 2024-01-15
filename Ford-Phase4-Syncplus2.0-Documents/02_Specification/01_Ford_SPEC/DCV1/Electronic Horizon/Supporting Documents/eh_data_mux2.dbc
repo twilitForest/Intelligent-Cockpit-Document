@@ -1,0 +1,1937 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: GWM_EH APIM
+VAL_TABLE_ Werte_pShort_TurnLaneRoute 1 "onRoute" 0 "notOnRoute" ;
+VAL_TABLE_ Werte_pShort_TurnLaneDirection 4 "noTurnLane" 3 " Restricted (no turns allowed)" 2 "Right" 1 "Left" 0 "Bi-directional" ;
+VAL_TABLE_ Werte_TurnLaneRoute 1 "OnRoute" 0 "NotOnRoute" ;
+VAL_TABLE_ Werte_pShort_SpeedCategory 1023 "NA" 8 "<11 KPH" 7 "11- 30 KPH" 6 "31- 50 KPH" 5 "51- 70 KPH" 4 "71- 90 KPH" 3 "91-100 KPH" 2 "101-130 KPH" 1 ">130 KPH" 0 "Unkown" ;
+VAL_TABLE_ Werte_pShort_CondiSpdLi_Act 2 "Inactive" 1 "Active" 0 "Unkown" ;
+VAL_TABLE_ Werte_adas_ImplicitLimitType 7 "Unkown" 4 "Implicit - On Map" 3 "Implicit - Urban" 2 "Implicit - Urban Highway" 1 "Implicit - Rural" 0 "Implicit - Highway" ;
+VAL_TABLE_ Werte_adas_variableSpeeedLimit 256 "above 5th lane" 128 "above 4th lane" 64 "above 3rdl lane" 32 "above 2nd lane" 16 "above 1st lane" 8 "above Emergency lane" 4 "right of road" 2 "left of road" 1 "not defined position" 0 "unkown" ;
+VAL_TABLE_ Werte_adas_pshort_Heading 255 "NA" 254 "Unkown" ;
+VAL_TABLE_ Werte_adas_pshort_RoadCon 255 "Unkown" 254 "good/gravel" 253 "good" 252 "good/flexible" 251 "good" 250 "good/blocks" 249 "good/dirt" 248 "good/rigid" 247 "poor" 246 "poor/gravel" 245 "poor" 244 "poor/flexible" 243 "poor" 0 "invalid raod condition" 242 "poor/blocks" 241 "poor/dirt" 240 "poor/rigid" ;
+VAL_TABLE_ Werte_adas_pshort_RoutNum 64 "Route Number Type 6" 32 "Route Number Type 5" 16 "Route Number Type 4" 15 "invalid RNT" 14 "Route Number Type 3 + 2 + 1" 13 "invalid RNT" 12 "Route Number Type 3 + 2" 11 "invalid RNT" 10 "Route Number Typ 3 + 1" 9 "invalid RNT" 8 "Route Number Type 3" 7 "invalid RNT" 6 "Route Number Type 2 + 1" 5 "invalid RNT" 4 "RouteNumberType 2" 3 "invalid RNT" 2 "RouteNumberType 1" 1 "No RouteNumberType" 0 "NA" ;
+VAL_TABLE_ Coding_adas_pLong_Lane_Mark 7 "N/A" 6 "Shaped Mark" 5 "Dashed Blocks" 4 "Dashed/Solid" 3 "Solid/Dashed" 2 "Dashed" 1 "Solid" 0 "No Marking" ;
+VAL_TABLE_ Coding_adas_pLong_Lane_LastPre 0 "No Predecessor" 255 "NA" ;
+VAL_TABLE_ Coding_adas_pLong_Lane_FirstPre 0 "No Predecessor" 255 "NA" ;
+VAL_TABLE_ WWI 0 "This Way leads Wrong-Way" ;
+VAL_TABLE_ WWA 1 "WRONG-WAY!" 0 "Right-Way" ;
+VAL_TABLE_ ADAS_Value_L -1 "Unknown" ;
+VAL_TABLE_ ADAS_Speed_units 1 "mph" 0 "km/h" ;
+VAL_TABLE_ ADAS_Drv_Side 1 "right side driving" 0 "left side driving" ;
+VAL_TABLE_ ADAS_MAP_Y 63 "2063" 62 "2062" 61 "2061" 60 "2060" 59 "2059" 58 "2058" 57 "2057" 56 "2056" 55 "2055" 54 "2054" 53 "2053" 52 "2052" 51 "2051" 50 "2050" 49 "2049" 48 "2048" 47 "2047" 46 "2046" 45 "2045" 44 "2044" 43 "2043" 42 "2042" 41 "2041" 40 "2040" 39 "2309" 38 "2038" 37 "2037" 36 "2036" 35 "2035" 34 "2034" 33 "2033" 32 "2032" 31 "2031" 30 "2030" 29 "2029" 28 "2028" 27 "2027" 26 "2026" 25 "2025" 24 "2024" 23 "2023" 22 "2022" 21 "2021" 20 "2020" 19 "2019" 18 "2018" 17 "2017" 16 "2016" 15 "2015" 14 "2014" 13 "2013" 12 "2012" 11 "2011" 10 "2010" 9 "2009" 8 "2008" 7 "2007" 6 "2006" 5 "2005" 4 "2004" 3 "2003" 2 "2002" 1 "2001" 0 "2000" ;
+VAL_TABLE_ ADAS_MapProvider 7 "N/A" 6 "Other" 5 "NavInfo" 4 "IPC" 3 "Zenrin" 2 "TomTom" 1 "NAVTEQ" 0 "Unknown" ;
+VAL_TABLE_ ADAS_ProfileLong_Type 31 "Reserved system specific types" 30 "Reserved system specific types" 29 "Reserved system specific types" 28 "Reserved system specific types" 27 "Reserved system specific types" 26 "Reserved system specific types" 25 "Reserved system specific types" 24 "Reserved system specific types" 23 "Reserved system specific types" 22 "Reserved system specific types" 21 "Reserved system specific types" 20 "Reserved system specific types" 19 "Reserved system specific types" 18 "Reserved system specific types" 17 "Reserved system specific types" 16 "Reserved system specific types" 15 "Reserved for standard types" 14 "Reserved for standard types" 13 "Reserved for standard types" 12 "Reserved for standard types" 11 "Reserved for standard types" 10 "Reserved for standard types" 9 "Truck Speed Limits" 8 "Traffic Sign" 7 "Link Identifier" 6 "(BÈzier) Control Point Altitude" 5 "(BÈzier) Control Point Latitude" 4 "(BÈzier) Control Point Longitude" 3 "Altitude" 2 "Latitude" 1 "Longitude" 0 "N/A" ;
+VAL_TABLE_ ADAS_Profile_Type 31 "Reserved system specific types" 30 "Reserved system specific types" 29 "Reserved system specific types" 28 "Reserved system specific types" 27 "Reserved system specific types" 26 "Reserved system specific types" 25 "Reserved system specific types" 24 "Reserved system specific types" 23 "Reserved system specific types" 22 "Reserved system specific types" 21 "Reserved system specific types" 20 "Reserved system specific types" 19 "Reserved system specific types" 18 "Reserved system specific types" 17 "Reserved system specific types" 16 "Reserved system specific types" 15 "Reserved for standard types" 14 "Reserved for standard types" 13 "Reserved for standard types" 12 "Reserved for standard types" 11 "Reserved for standard types" 10 "Reserved for standard types" 9 "Reserved for standard types" 8 "Heading Change" 7 "Variable Speed Sign Position" 6 "Road Condition" 5 "Road Accessability" 4 "Slope (linear interpolation)" 3 "Slope (steps interpolation)" 2 "Route Number Types" 1 "Curvature" 0 "N/A" ;
+VAL_TABLE_ ADAS_Distance 1023 "invalid" ;
+VAL_TABLE_ ADAS_Value 1023 "Unknown | N/A" ;
+VAL_TABLE_ ADAS_Accuracy 2 "Unknown" 1 "Lowest Accuracy" 0 "Highest Accuracy" ;
+VAL_TABLE_ ADAS_RightOfWay 3 "N/A" 2 "Unknown" 1 "Sub-path right-of-way over path" 0 "Right-of-way over sub-path" ;
+VAL_TABLE_ ADAS_Part_Route 3 "N/A" 2 "Unknown" 1 "Part of Calculated Route" 0 "Not Part of Calculated Route" ;
+VAL_TABLE_ ADAS_CplxIsec 3 "N/A" 2 "Unknown" 1 "Part of Complex Intersection" 0 "Not Part of Complex Intersection" ;
+VAL_TABLE_ ADAS_BuitupArea 3 "N/A" 2 "Unknown" 1 "Part of Built-up area" 0 "Not Part of Built-up area" ;
+VAL_TABLE_ ADAS_DivRoad 3 "N/A" 2 "Unknown" 1 "Part of divided Road" 0 "Not Part of divided Road" ;
+VAL_TABLE_ ADAS_Bridge 3 "N/A" 2 "Unknown" 1 "Part of Bridge" 0 "Not Part of Bridge" ;
+VAL_TABLE_ CountryCodeIso 840 "USA" 826 "UK" 804 "Ukraine" 764 "Thailand" 756 "Schweiz" 752 "Sweden" 724 "Espania" 705 "Slowenien" 703 "Slowakei" 702 "Singapore" 688 "Serbien" 674 "San Marino" 643 "Ruﬂland" 642 "Romania" 620 "Portugal" 616 "Polska" 578 "Norway" 554 "New Zealand" 528 "Niederlande" 500 "Montserrat" 499 "Montenegro" 492 "Monaco" 484 "Mexico" 446 "Macao" 442 "Luxemburg" 440 "Litauen" 438 "Liechtenstein" 428 "Lettland" 392 "Japan" 380 "Italy" 376 "Israel" 372 "Ireland" 352 "Iceland" 348 "Ungarn" 344 "Hong Kong" 336 "Vatican" 300 "Greece" 276 "Deutschland" 250 "Frankreich" 248 "Aland Islands" 246 "Finland" 233 "Estland" 231 "Ethiopia" 208 "Denmark" 203 "Czech" 196 "Cyprus" 192 "Cuba" 191 "Croatia" 158 "Taiwan" 156 "China" 152 "Chile" 124 "Canada" 112 "Belarus" 100 "Bulgaria" 70 "Bosina Herzigovina" 56 "Belgium" 51 "Armenia" 40 "Austria" 36 "Australia" 32 "Argentina" 20 "Andorra" 12 "Algeria" 8 "Albania" 0 "NA" ;
+VAL_TABLE_ ADAS_lanes_Opp 3 "N/A" 2 "multiple lanes" 1 "single lane" 0 "one-direction road" ;
+VAL_TABLE_ ADAS_lanes_Drv 7 "N/A" 6 "6 or more lanes" 5 "5 lanes" 4 "4 lanes" 3 "3 lanes" 2 "2 lanes" 1 "single lane" 0 "One-direction !WRONG-WAY!" ;
+VAL_TABLE_ ADAS_SpeedLimType 7 "Unknown" 6 "Explicit - snow" 5 "Explicit - rain" 4 "Explicit - time of day" 3 "Explicit - by day" 2 "Explicit - by night" 1 "Explicit - on traffic sign" 0 "Implicit (default speed limit)" ;
+VAL_TABLE_ ADAS_Eff_Speedlim 31 "Invalid" 30 "Unlimited" 29 "160" 28 "150" 27 "140" 26 "130" 25 "120" 24 "115" 23 "110" 22 "105" 21 "100" 20 "95" 19 "90" 18 "85" 17 "80" 16 "75" 15 "70" 14 "65" 13 "60" 12 "55" 11 "50" 10 "45" 9 "40" 8 "35" 7 "30" 6 "25" 5 "20" 4 "15" 3 "10" 2 "7" 1 "<= 5" 0 "Unknown" ;
+VAL_TABLE_ ADAS_FormOfWay 15 "N/A" 14 "Pedestrian Zone" 13 "Entrance / Exit to Service" 12 "Entrance / Exit of Car Park" 11 "Service / Frontage Road" 10 "Slip Road / Ramp off Freeway" 9 "Slip Road / Ramp on Freeway" 8 "Parallel Road" 7 "Reserved" 6 "Reserved" 5 "Traffic Square / Special Figure" 4 "Roundabout Circle" 3 "Single Carriageway" 2 "Multiple Carriageway" 1 "Freeway / Controlled Access Road" 0 "Unknown" ;
+VAL_TABLE_ ADAS_Func_Roadclass 7 "N/A" 0 "Unknown" ;
+VAL_TABLE_ ADAS_BOOL 1 "true" 0 "false" ;
+VAL_TABLE_ ADAS_Rel_Heading 255 "N/A" 254 "Unknown" 253 "1.417∞ left" 252 "2.835∞ left" 251 "4.252∞ left" 250 "5.669∞ left" 249 "7.087∞ left" 248 "8.504∞ left" 247 "9.921∞ left" 246 "11.339∞ left" 245 "12.756∞ left" 244 "14.173∞ left" 243 "15.591∞ left" 242 "17.008∞ left" 241 "18.425∞ left" 240 "19.843∞ left" 239 "21.260∞ left" 238 "22.677∞ left" 237 "24.094∞ left" 236 "25.512∞ left" 235 "26.929∞ left" 234 "28.346∞ left" 233 "29.764∞ left" 232 "31.181∞ left" 231 "32.598∞ left" 230 "34.016∞ left" 229 "35.433∞ left" 228 "36.850∞ left" 227 "38.268∞ left" 226 "39.685∞ left" 225 "41.102∞ left" 224 "42.520∞ left" 223 "43.937∞ left" 222 "45.354∞ left" 221 "46.772∞ left" 220 "48.189∞ left" 219 "49.606∞ left" 218 "51.024∞ left" 217 "52.441∞ left" 216 "53.858∞ left" 215 "55.276∞ left" 214 "56.693∞ left" 213 "58.110∞ left" 212 "59.528∞ left" 211 "60.945∞ left" 210 "62.362∞ left" 209 "63.780∞ left" 208 "65.197∞ left" 207 "66.614∞ left" 206 "68.031∞ left" 205 "69.449∞ left" 204 "70.866∞ left" 203 "72.283∞ left" 202 "73.701∞ left" 201 "75.118∞ left" 200 "76.535∞ left" 199 "77.953∞ left" 198 "79.370∞ left" 197 "80.787∞ left" 196 "82.205∞ left" 195 "83.622∞ left" 194 "85.039∞ left" 193 "86.457∞ left" 192 "87.874∞ left" 191 "89.291∞ left" 190 "90.709∞ left" 189 "92.126∞ left" 188 "93.543∞ left" 187 "94.961∞ left" 186 "96.378∞ left" 185 "97.795∞ left" 184 "99.213∞ left" 183 "100.630∞ left" 182 "102.047∞ left" 181 "103.465∞ left" 180 "104.882∞ left" 179 "106.299∞ left" 178 "107.717∞ left" 177 "109.134∞ left" 176 "110.551∞ left" 175 "111.969∞ left" 174 "113.386∞ left" 173 "114.803∞ left" 172 "116.220∞ left" 171 "117.638∞ left" 170 "119.055∞ left" 169 "120.472∞ left" 168 "121.890∞ left" 167 "123.307∞ left" 166 "124.724∞ left" 165 "126.142∞ left" 164 "127.559∞ left" 163 "128.976∞ left" 162 "130.394∞ left" 161 "131.811∞ left" 160 "133.228∞ left" 159 "134.646∞ left" 158 "136.063∞ left" 157 "137.480∞ left" 156 "138.898∞ left" 155 "140.315∞ left" 154 "141.732∞ left" 153 "143.150∞ left" 152 "144.567∞ left" 151 "145.984∞ left" 150 "147.402∞ left" 149 "148.819∞ left" 148 "150.236∞ left" 147 "151.654∞ left" 146 "153.071∞ left" 145 "154.488∞ left" 144 "155.906∞ left" 143 "157.323∞ left" 142 "158.740∞ left" 141 "160.157∞ left" 140 "161.575∞ left" 139 "162.992∞ left" 138 "164.409∞ left" 137 "165.827∞ left" 136 "167.244∞ left" 135 "168.661∞ left" 134 "170.079∞ left" 133 "171.496∞ left" 132 "172.913∞ left" 131 "174.331∞ left" 130 "175.748∞ left" 129 "177.165∞ left" 128 "178.583∞ left" 127 "Opposite direction" 126 "178.583∞ right" 125 "177.165∞ right" 124 "175.748∞ right" 123 "174.331∞ right" 122 "172.913∞ right" 121 "171.496∞ right" 120 "170.079∞ right" 119 "168.661∞ right" 118 "167.244∞ right" 117 "165.827∞ right" 116 "164.409∞ right" 115 "162.992∞ right" 114 "161.575∞ right" 113 "160.157∞ right" 112 "158.740∞ right" 111 "157.323∞ right" 110 "155.906∞ right" 109 "154.488∞ right" 108 "153.071∞ right" 107 "151.654∞ right" 106 "150.236∞ right" 105 "148.819∞ right" 104 "147.402∞ right" 103 "145.984∞ right" 102 "144.567∞ right" 101 "143.150∞ right" 100 "141.732∞ right" 99 "140.315∞ right" 98 "138.898∞ right" 97 "137.480∞ right" 96 "136.063∞ right" 95 "134.646∞ right" 94 "133.228∞ right" 93 "131.811∞ right" 92 "130.394∞ right" 91 "128.976∞ right" 90 "127.559∞ right" 89 "126.142∞ right" 88 "124.724∞ right" 87 "123.307∞ right" 86 "121.890∞ right" 85 "120.472∞ right" 84 "119.055∞ right" 83 "117.638∞ right" 82 "116.220∞ right" 81 "114.803∞ right" 80 "113.386∞ right" 79 "111.969∞ right" 78 "110.551∞ right" 77 "109.134∞ right" 76 "107.717∞ right" 75 "106.299∞ right" 74 "104.882∞ right" 73 "103.464∞ right" 72 "102.047∞ right" 71 "100.630∞ right" 70 "99.213∞ right" 69 "97.795∞ right" 68 "96.378∞ right" 67 "94.961∞ right" 66 "93.543∞ right" 65 "92.126∞ right" 64 "90.709∞ right" 63 "89.291∞ right" 62 "87.874∞ right" 61 "86.457∞ right" 60 "85.039∞ right" 59 "83.622∞ right" 58 "82.205∞ right" 57 "80.787∞ right" 56 "79.370∞ right" 55 "77.953∞ right" 54 "76.535∞ right" 53 "75.118∞ right" 52 "73.701∞ right" 51 "72.283∞ right" 50 "70.866∞ right" 49 "69.449∞ right" 48 "68.031∞ right" 47 "66.614∞ right" 46 "65.197∞ right" 45 "63.779∞ right" 44 "62.362∞ right" 43 "60.945∞ right" 42 "59.528∞ right" 41 "58.110∞ right" 40 "56.693∞ right" 39 "55.276∞ right" 38 "53.858∞ right" 37 "52.441∞ right" 36 "51.024∞ right" 35 "49.606∞ right" 34 "48.189∞ right" 33 "46.772∞ right" 32 "45.354∞ right" 31 "43.937∞ right" 30 "42.520∞ right" 29 "41.102∞ right" 28 "39.685∞ right" 27 "38.267∞ right" 26 "36.850∞ right" 25 "35.433∞ right" 24 "34.016∞ right" 23 "32.598∞ right" 22 "31.181∞ right" 21 "29.764∞ right" 20 "28.346∞ right" 19 "26.929∞ right" 18 "25.512∞ right" 17 "24.094∞ right" 16 "22.677∞ right" 15 "21.260∞ right" 14 "19.842∞ right" 13 "18.425∞ right" 12 "17.008∞ right" 11 "15.591∞ right" 10 "14.173∞ right" 9 "12.756∞ right" 8 "11.338∞ right" 7 "9.921∞ right" 6 "8.504∞ right" 5 "7.087∞ right" 4 "5.669∞ right" 3 "4.252∞ right" 2 "2.834∞ right" 1 "1.417∞ right" 0 "In Direction" ;
+VAL_TABLE_ ADAS_Pos_Conf 7 "N/A" 6 "Lowest Confidence" 5 "2. lowest Confidence" 4 "Lower medium Confdence" 3 "Medium Confidence" 2 "Higher medium Confidence" 1 "2. highest Confidence" 0 "Highest Confidence" ;
+VAL_TABLE_ ADAS_Curr_Lane 7 "N/A" 6 "Reserved" 5 "One of middle lanes (>=3 lanes)" 4 "Right-most lane" 3 "Left-most lane" 2 "Single-lane road" 1 "Emergency Lane" 0 "Unknown" ;
+VAL_TABLE_ ADAS_Pos_Probb 31 "N/A" 30 "100.00%" 29 "96.67%" 28 "93.33%" 27 "90.00%" 26 "86.67%" 25 "83.33%" 24 "80.00%" 23 "76.67%" 22 "73.33%" 21 "70.00%" 20 "66.67%" 19 "63.33%" 18 "60.00%" 17 "56.67%" 16 "53.33%" 15 "50.00%" 14 "46.67%" 13 "43.44%" 12 "40.00%" 11 "33.67%" 10 "33.33%" 9 "30.00%" 8 "26.67%" 7 "23.33%" 6 "20.00%" 5 "16.67%" 4 "13.33%" 3 "10.00%" 2 "6.67%" 1 "3.33%" 0 "Unknown" ;
+VAL_TABLE_ ADAS_Speed 511 "N/A" 510 ">=89.2 m/s" 509 "89.0 m/s" 508 "88.8 m/s" 507 "88.6 m/s" 506 "88.4 m/s" 505 "88.2 m/s" 504 "88.0 m/s" 503 "87.8 m/s" 502 "87.6 m/s" 501 "87.4 m/s" 500 "87.2 m/s" 499 "87.0 m/s" 498 "86.8 m/s" 497 "86.6 m/s" 496 "86.4 m/s" 495 "86.2 m/s" 494 "86.0 m/s" 493 "85.8 m/s" 492 "85.6 m/s" 491 "85.4 m/s" 490 "85.2 m/s" 489 "85.0 m/s" 488 "84.8 m/s" 487 "84.6 m/s" 486 "84.4 m/s" 485 "84.2 m/s" 484 "84.0 m/s" 483 "83.8 m/s" 482 "83.6 m/s" 481 "83.4 m/s" 480 "83.2 m/s" 479 "83.0 m/s" 478 "82.8 m/s" 477 "82.6 m/s" 476 "82.4 m/s" 475 "82.2 m/s" 474 "82.0 m/s" 473 "81.8 m/s" 472 "81.6 m/s" 471 "81.4 m/s" 470 "81.2 m/s" 469 "81.0 m/s" 468 "80.8 m/s" 467 "80.6 m/s" 466 "80.4 m/s" 465 "80.2 m/s" 464 "80.0 m/s" 463 "79.8 m/s" 462 "79.6 m/s" 461 "79.4 m/s" 460 "79.2 m/s" 459 "79.0 m/s" 458 "78.8 m/s" 457 "78.6 m/s" 456 "78.4 m/s" 455 "78.2 m/s" 454 "78.0 m/s" 453 "77.8 m/s" 452 "77.6 m/s" 451 "77.4 m/s" 450 "77.2 m/s" 449 "77.0 m/s" 448 "76.8 m/s" 447 "76.6 m/s" 446 "76.4 m/s" 445 "76.2 m/s" 444 "76.0 m/s" 443 "75.8 m/s" 442 "75.6 m/s" 441 "75.4 m/s" 440 "75.2 m/s" 439 "75.0 m/s" 438 "74.8 m/s" 437 "74.6 m/s" 436 "74.4 m/s" 435 "74.2 m/s" 434 "74.0 m/s" 433 "73.8 m/s" 432 "73.6 m/s" 431 "73.4 m/s" 430 "73.2 m/s" 429 "73.0 m/s" 428 "72.8 m/s" 427 "72.6 m/s" 426 "72.4 m/s" 425 "72.2 m/s" 424 "72.0 m/s" 423 "71.8 m/s" 422 "71.6 m/s" 421 "71.4 m/s" 420 "71.2 m/s" 419 "71.0 m/s" 418 "70.8 m/s" 417 "70.6 m/s" 416 "70.4 m/s" 415 "70.2 m/s" 414 "70.0 m/s" 413 "69.8 m/s" 412 "69.6 m/s" 411 "69.4 m/s" 410 "69.2 m/s" 409 "69.0 m/s" 408 "68.8 m/s" 407 "68.6 m/s" 406 "68.4 m/s" 405 "68.2 m/s" 404 "68.0 m/s" 403 "67.8 m/s" 402 "67.6 m/s" 401 "67.4 m/s" 400 "67.2 m/s" 399 "67.0 m/s" 398 "66.8 m/s" 397 "66.6 m/s" 396 "66.4 m/s" 395 "66.2 m/s" 394 "66.0 m/s" 393 "65.8 m/s" 392 "65.6 m/s" 391 "65.4 m/s" 390 "65.2 m/s" 389 "65.0 m/s" 388 "64.8 m/s" 387 "64.6 m/s" 386 "64.4 m/s" 385 "64.2 m/s" 384 "64.0 m/s" 383 "63.8 m/s" 382 "63.6 m/s" 381 "63.4 m/s" 380 "63.2 m/s" 379 "63.0 m/s" 378 "62.8 m/s" 377 "62.6 m/s" 376 "62.4 m/s" 375 "62.2 m/s" 374 "62.0 m/s" 373 "61.8 m/s" 372 "61.6 m/s" 371 "61.4 m/s" 370 "61.2 m/s" 369 "61.0 m/s" 368 "60.8 m/s" 367 "60.6 m/s" 366 "60.4 m/s" 365 "60.2 m/s" 364 "60.0 m/s" 363 "59.8 m/s" 362 "59.6 m/s" 361 "59.4 m/s" 360 "59.2 m/s" 359 "59.0 m/s" 358 "58.8 m/s" 357 "58.6 m/s" 356 "58.4 m/s" 355 "58.2 m/s" 354 "58.0 m/s" 353 "57.8 m/s" 352 "57.6 m/s" 351 "57.4 m/s" 350 "57.2 m/s" 349 "57.0 m/s" 348 "56.8 m/s" 347 "56.6 m/s" 346 "56.4 m/s" 345 "56.2 m/s" 344 "56.0 m/s" 343 "55.8 m/s" 342 "55.6 m/s" 341 "55.4 m/s" 340 "55.2 m/s" 339 "55.0 m/s" 338 "54.8 m/s" 337 "54.6 m/s" 336 "54.4 m/s" 335 "54.2 m/s" 334 "54.0 m/s" 333 "53.8 m/s" 332 "53.6 m/s" 331 "53.4 m/s" 330 "53.2 m/s" 329 "53.0 m/s" 328 "52.8 m/s" 327 "52.6 m/s" 326 "52.4 m/s" 325 "52.2 m/s" 324 "52.0 m/s" 323 "51.8 m/s" 322 "51.6 m/s" 321 "51.4 m/s" 320 "51.2 m/s" 319 "51.0 m/s" 318 "50.8 m/s" 317 "50.6 m/s" 316 "50,4 m/s" 315 "50.2 m/s" 314 "50.0 m/s" 313 "49.8 m/s" 312 "49.6 m/s" 311 "49.4 m/s" 310 "49.2 m/s" 309 "49.0 m/s" 308 "48.8 m/s" 307 "48.6 m/s" 306 "48.4 m/s" 305 "48.2 m/s" 304 "48.0 m/s" 303 "47.8 m/s" 302 "47.6 m/s" 301 "47.4 m/s" 300 "47.2 m/s" 299 "47.0 m/s" 298 "46.8 m/s" 297 "46.6 m/s" 296 "46.4 m/s" 295 "46.2 m/s" 294 "46.0 m/s" 293 "45.8 m/s" 292 "45.6 m/s" 291 "45.4 m/s" 290 "45.2 m/s" 289 "45.0 m/s" 288 "44.8 m/s" 287 "44.6 m/s" 286 "44.4 m/s" 285 "44.2 m/s" 284 "44.0 m/s" 283 "43.8 m/s" 282 "43.6 m/s" 281 "43.4 m/s" 280 "43.2 m/s" 279 "43.0 m/s" 278 "42.8 m/s" 277 "42.6 m/s" 276 "42.4 m/s" 275 "42.2 m/s" 274 "42.0 m/s" 273 "41.8 m/s" 272 "41.6 m/s" 271 "41.4 m/s" 270 "41.2 m/s" 269 "41.0 m/s" 268 "40.8 m/s" 267 "40.6 m/s" 266 "40.4 m/s" 265 "40.2 m/s" 264 "40.0 m/s" 263 "39.8 m/s" 262 "39.6 m/s" 261 "39.4 m/s" 260 "39.2 m/s" 259 "39.0 m/s" 258 "38.8 m/s" 257 "38.6 m/s" 256 "38.4 m/s" 255 "38.2 m/s" 254 "38.0 m/s" 253 "37.8 m/s" 252 "37.6 m/s" 251 "37.4 m/s" 250 "37.2 m/s" 249 "37.0 m/s" 248 "36.8 m/s" 247 "36.6 m/s" 246 "36.4 m/s" 245 "36.2 m/s" 244 "36.0 m/s" 243 "35.8 m/s" 242 "35.6 m/s" 241 "35.4 m/s" 240 "35.2 m/s" 239 "35.0 m/s" 238 "34.8 m/s" 237 "34.6 m/s" 236 "34.4 m/s" 235 "34.2 m/s" 234 "34.0 m/s" 233 "33.8 m/s" 232 "33.6 m/s" 231 "33.4 m/s" 230 "33.2 m/s" 229 "33.0 m/s" 228 "32.8 m/s" 227 "32.6 m/s" 226 "32.4 m/s" 225 "32.2 m/s" 224 "32.0 m/s" 223 "31.8 m/s" 222 "31.6 m/s" 221 "31.4 m/s" 220 "31.2 m/s" 219 "31.0 m/s" 218 "30.8 m/s" 217 "30.6 m/s" 216 "30.4 m/s" 215 "30.2 m/s" 214 "30.0 m/s" 213 "29.8 m/s" 212 "29.6 m/s" 211 "29.4 m/s" 210 "29.2 m/s" 209 "29.0 m/s" 208 "28.8 m/s" 207 "28.6 m/s" 206 "28.4 m/s" 205 "28.2 m/s" 204 "28.0 m/s" 203 "27.8 m/s" 202 "27.6 m/s" 201 "27.4 m/s" 200 "27.2 m/s" 199 "27.0 m/s" 198 "26.8 m/s" 197 "26.6 m/s" 196 "26.4 m/s" 195 "26.2 m/s" 194 "26.0 m/s" 193 "25.8 m/s" 192 "25.6 m/s" 191 "25.4 m/s" 190 "25.2 m/s" 189 "25.0 m/s" 188 "24.8 m/s" 187 "24.6 m/s" 186 "24.4 m/s" 185 "24.2 m/s" 184 "24.0 m/s" 183 "23.8 m/s" 182 "23.6 m/s" 181 "23.4 m/s" 180 "23.2 m/s" 179 "23.0 m/s" 178 "22.8 m/s" 177 "22.6 m/s" 176 "22.4 m/s" 175 "22.2 m/s" 174 "22.0 m/s" 173 "21.8 m/s" 172 "21.6 m/s" 171 "21.4 m/s" 170 "21.2 m/s" 169 "21.0 m/s" 168 "20.8 m/s" 167 "20.6 m/s" 166 "20.4 m/s" 165 "20.2 m/s" 164 "20.0 m/s" 163 "19.8 m/s" 162 "19.6 m/s" 161 "19.4 m/s" 160 "19.2 m/s" 159 "19.0 m/s" 158 "18.8 m/s" 157 "18.6 m/s" 156 "18.4 m/s" 155 "18.2 m/s" 154 "18.0 m/s" 153 "17.8 m/s" 152 "17.6 m/s" 151 "17.4 m/s" 150 "17.2 m/s" 149 "17.0 m/s" 148 "16.8 m/s" 147 "16.6 m/s" 146 "16.4 m/s" 145 "16.2 m/s" 144 "16.0 m/s" 143 "15.8 m/s" 142 "15.6 m/s" 141 "15.4 m/s" 140 "15.2 m/s" 139 "15.0 m/s" 138 "14.8 m/s" 137 "14.6 m/s" 136 "14.4 m/s" 135 "14.2 m/s" 134 "14.0 m/s" 133 "13.8 m/s" 132 "13.6 m/s" 131 "13.4 m/s" 130 "13.2 m/s" 129 "13.0 m/s" 128 "12.8 m/s" 127 "12.6 m/s" 126 "12.4 m/s" 125 "12.2 m/s" 124 "12.0 m/s" 123 "11.8 m/s" 122 "11.6 m/s" 121 "11.4 m/s" 120 "11.2 m/s" 119 "11.0 m/s" 118 "10.8 m/s" 117 "10.6 m/s" 116 "10.4 m/s" 115 "10.2 m/s" 114 "10.0 m/s" 113 "9.8 m/s" 112 "9.6 m/s" 111 "9.4 m/s" 110 "9.2 m/s" 109 "9.0 m/s" 108 "8.8 m/s" 107 "8.6 m/s" 106 "8.4 m/s" 105 "8.2 m/s" 104 "8.0 m/s" 103 "7.8 m/s" 102 "7.6 m/s" 101 "7.4 m/s" 100 "7.2 m/s" 99 "7.0 m/s" 98 "6.8 m/s" 97 "6.6 m/s" 96 "6.4 m/s" 95 "6.2 m/s" 94 "6.0 m/s" 93 "5.8 m/s" 92 "5.6 m/s" 91 "5.4 m/s" 90 "5.2 m/s" 89 "5.0 m/s" 88 "4.8 m/s" 87 "4.6 m/s" 86 "4.4 m/s" 85 "4.2 m/s" 84 "4.0 m/s" 83 "3.8 m/s" 82 "3.6 m/s" 81 "3.4 m/s" 80 "3.2 m/s" 79 "3.0 m/s" 78 "2.8 m/s" 77 "2.6 m/s" 76 "2.4 m/s" 75 "2.2 m/s" 74 "2.0 m/s" 73 "1.8 m/s" 72 "1.6 m/s" 71 "1.4 m/s" 70 "1.2 m/s" 69 "1.0 m/s" 68 "0.8 m/s" 67 "0.6 m/s" 66 "0.4 m/s" 65 "0.2 m/s" 64 "Standing still" 63 "-0.2 m/s" 62 "-0.4 m/s" 61 "-0.6 m/s" 60 "-0.8 m/s" 59 "-1.0 m/s" 58 "-1.2 m/s" 57 "-1.4 m/s" 56 "-1.6 m/s" 55 "-1.8 m/s" 54 "-2.0 m/s" 53 "-2.2 m/s" 52 "-2.4 m/s" 51 "-2.6 m/s" 50 "-2.8 m/s" 49 "-3.0 m/s" 48 "-3.2 m/s" 47 "-3.4 m/s" 46 "-3.6 m/s" 45 "-3.8 m/s" 44 "-4.0 m/s" 43 "-4.2 m/s" 42 "-4.4 m/s" 41 "-4.6 m/s" 40 "-4.8 m/s" 39 "-5.0 m/s" 38 "-5.2 m/s" 37 "-5.4 m/s" 36 "-5.6 m/s" 35 "-5.8 m/s" 34 "-6.0 m/s" 33 "-6-2 m/s" 32 "-6.4 m/s" 31 "-6.6 m/s" 30 "-6.8 m/s" 29 "-7.0 m/s" 28 "-7.2 m/s" 27 "-7.4 m/s" 26 "-7.6 m/s" 25 "-7.8 m/s" 24 "-8.0 m/s" 23 "-8.2 m/s" 22 "-8.4 m/s" 21 "-8.6 m/s" 20 "-8.8 m/s" 19 "-9.0 m/s" 18 "-9.2 m/s" 17 "-9.4 m/s" 16 "-9.6 m/s" 15 "-9.8 m/s" 14 "-10.0 m/s" 13 "-10.2 m/s" 12 "-10.4 m/s" 11 "-10.6 m/s" 10 "-10.8 m/s" 9 "-11.0 m/s" 8 "-11.2 m/s" 7 "-11.4 m/s" 6 "-11.6 m/s" 5 "-11.8 m/s" 4 "-12.0 m/s" 3 "-12.2 m/s" 2 "-12.4 m/s" 1 "-12.6 m/s" 0 "<= -12.8 m/s" ;
+VAL_TABLE_ ADAS_Offset 8191 "Invalid" ;
+VAL_TABLE_ ADAS_Path_ID 7 "Reserved" 6 "STUB for HEADING CHANGE & PROBB" 5 "No Data for Stub Path appended" 4 "ADASIS Mini" 3 "Av2HP Positioning not calibrated" 2 "Position not on-road" 1 "Position not in Digitized Area" 0 "Unknnown" ;
+VAL_TABLE_ ADAS_Position_Age 511 "N/A" 510 ">2545 ms" 509 "2545 ms" 508 "2540 ms" 507 "2535 ms" 506 "2530 ms" 505 "2525 ms" 504 "2520 ms" 503 "2515 ms" 502 "2510 ms" 501 "2505 ms" 500 "2500 ms" 499 "2495 ms" 498 "2490 ms" 497 "2485 ms" 496 "2480 ms" 495 "2475 ms" 494 "2470 ms" 493 "2465 ms" 492 "2460 ms" 491 "2455 ms" 490 "2450 ms" 489 "2445 ms" 488 "2440 ms" 487 "2435 ms" 486 "2430 ms" 485 "2425 ms" 484 "2420 ms" 483 "2415 ms" 482 "2410 ms" 481 "2405 ms" 480 "2400 ms" 479 "2395 ms" 478 "2390 ms" 477 "2385 ms" 476 "2380 ms" 475 "2375 ms" 474 "2370 ms" 473 "2365 ms" 472 "2360 ms" 471 "2355 ms" 470 "2350 ms" 469 "2345 ms" 468 "2340 ms" 467 "2335 ms" 466 "2330 ms" 465 "2325 ms" 464 "2320 ms" 463 "2315 ms" 462 "2310 ms" 461 "2305 ms" 460 "2300 ms" 459 "2295 ms" 458 "2290 ms" 457 "2285 ms" 456 "2280 ms" 455 "2275 ms" 454 "2270 ms" 453 "2265 ms" 452 "2260 ms" 451 "2255 ms" 450 "2250 ms" 449 "2245 ms" 448 "2240 ms" 447 "2235 ms" 446 "2230 ms" 445 "2225 ms" 444 "2220 ms" 443 "2215 ms" 442 "2210 ms" 441 "2205 ms" 440 "2200 ms" 439 "2195 ms" 438 "2190 ms" 437 "2185 ms" 436 "2180 ms" 435 "2175 ms" 434 "2170 ms" 433 "2165 ms" 432 "2160 ms" 431 "2155 ms" 430 "2150 ms" 429 "2145 ms" 428 "2140 ms" 427 "2135 ms" 426 "2130 ms" 425 "2125 ms" 424 "2120 ms" 423 "2115 ms" 422 "2110 ms" 421 "2105 ms" 420 "2100 ms" 419 "2095 ms" 418 "2090 ms" 417 "2085 ms" 416 "2080 ms" 415 "2075 ms" 414 "2070 ms" 413 "2065 ms" 412 "2060 ms" 411 "2055 ms" 410 "2050 ms" 409 "2045 ms" 408 "2040 ms" 407 "2035 ms" 406 "2030 ms" 405 "2025 ms" 404 "2020 ms" 403 "2015 ms" 402 "2010 ms" 401 "2005 ms" 400 "2000ms" 399 "1995 ms" 398 "1990 ms" 397 "1985 ms" 396 "1980 ms" 395 "1975 ms" 394 "1970 ms" 393 "1965 ms" 392 "1960 ms" 391 "1955 ms" 390 "1950 ms" 389 "1945 ms" 388 "1940 ms" 387 "1935 ms" 386 "1960 ms" 385 "1925 ms" 384 "1920 ms" 383 "1915 ms" 382 "1910 ms" 381 "1905 ms" 380 "1900 ms" 379 "1895 ms" 378 "1890 ms" 377 "1885 ms" 376 "1880 ms" 375 "1875 ms" 374 "1870 ms" 373 "1865 ms" 372 "1860 ms" 371 "1855 ms" 370 "1850 ms" 369 "1845 ms" 368 "1840 ms" 367 "1835 ms" 366 "1830 ms" 365 "1825 ms" 364 "1820 ms" 363 "1815 ms" 362 "1810 ms" 361 "1805 ms" 360 "1800 ms" 359 "1795 ms" 358 "1790 ms" 357 "1785 ms" 356 "1780 ms" 355 "1775 ms" 354 "1770 ms" 353 "1765 ms" 352 "1760 ms" 351 "1755 ms" 350 "1750 ms" 349 "1745 ms" 348 "1740 ms" 347 "1735 ms" 346 "1730 ms" 345 "1725 ms" 344 "1720 ms" 343 "1715 ms" 342 "1710 ms" 341 "1705 ms" 340 "1700 ms" 339 "1695 ms" 338 "1690 ms" 337 "1685 ms" 336 "1680 ms" 335 "1675 ms" 334 "1670 ms" 333 "1665 ms" 332 "1660 ms" 331 "1655 ms" 330 "1650 ms" 329 "1645 ms" 328 "1640 ms" 327 "1635 ms" 326 "1630 ms" 325 "1625 ms" 324 "1620 ms" 323 "1615 ms" 322 "1610 ms" 321 "1605 ms" 320 "1600 ms" 319 "1595 ms" 318 "1590 ms" 317 "1585 ms" 316 "1580 ms" 315 "1575 ms" 314 "1570 ms" 313 "1565 ms" 312 "1560 ms" 311 "1555 ms" 310 "1550 ms" 309 "1545 ms" 308 "1540 ms" 307 "1535 ms" 306 "1530 ms" 305 "1525 ms" 304 "1520 ms" 303 "1515 ms" 302 "1510 ms" 301 "1505 ms" 300 "1500 ms" 299 "1495 ms" 298 "1490 ms" 297 "1485 ms" 296 "1480 ms" 295 "1475 ms" 294 "1470 ms" 293 "1465 ms" 292 "1460 ms" 291 "1455 ms" 290 "1450 ms" 289 "1445 ms" 288 "1440 ms" 287 "1435 ms" 286 "1430 ms" 285 "1425 ms" 284 "1420 ms" 283 "1415 ms" 282 "1410 ms" 281 "1405 ms" 280 "1400 ms" 279 "1395 ms" 278 "1390 ms" 277 "1385 ms" 276 "1380 ms" 275 "1375 ms" 274 "1370 ms" 273 "1365 ms" 272 "1360 ms" 271 "1355 ms" 270 "1350 ms" 269 "1345 ms" 268 "1340 ms" 267 "1335 ms" 266 "1330 ms" 265 "1325 ms" 264 "1320 ms" 263 "1315 ms" 262 "1310 ms" 261 "1305 ms" 260 "1300 ms" 259 "1295 ms" 258 "1290 ms" 257 "1285 ms" 256 "1280 ms" 255 "1275 ms" 254 "1270 ms" 253 "1265 ms" 252 "1260 ms" 251 "1255 ms" 250 "1250 ms" 249 "1245 ms" 248 "1240 ms" 247 "1235 ms" 246 "1230 ms" 245 "1225 ms" 244 "1220 ms" 243 "1215 ms" 242 "1210 ms" 241 "1205 ms" 240 "1200 ms" 239 "1195 ms" 238 "1190 ms" 237 "1185 ms" 236 "1180 ms" 235 "1175 ms" 234 "1170 ms" 233 "1165 ms" 232 "1160 ms" 231 "1155 ms" 230 "1150 ms" 229 "1145 ms" 228 "1140 ms" 227 "1135 ms" 226 "1130 ms" 225 "1125 ms" 224 "1120 ms" 223 "1115 ms" 222 "1110 ms" 221 "1105 ms " 220 "1100 ms" 219 "1095 ms" 218 "1090 ms" 217 "1085 ms" 216 "1080 ms" 215 "1075 ms" 214 "1070 ms" 213 "1065 ms" 212 "1060 ms" 211 "1055 ms" 210 "1050 ms" 209 "1045 ms" 208 "1040 ms" 207 "1035 ms" 206 "1030 ms" 205 "1025 ms" 204 "1020 ms" 203 "1015 ms" 202 "1010 ms" 201 "1005 ms" 200 "1000 ms" 199 "995 ms" 198 "990 ms" 197 "985 ms" 196 "980 ms" 195 "975 ms" 194 "970 ms" 193 "965 ms" 192 "960 ms" 191 "955 ms" 190 "950 ms" 189 "945 ms" 188 "940 ms" 187 "935 ms" 186 "930 ms" 185 "925 ms" 184 "920 ms" 183 "915 ms" 182 "910 ms" 181 "905 ms" 180 "900 ms" 179 "895 ms" 178 "890 ms" 177 "885 ms" 176 "880 ms" 175 "875 ms" 174 "870 ms" 173 "865 ms" 172 "860 ms" 171 "855 ms" 170 "850 ms" 169 "845 ms" 168 "840 ms" 167 "835 ms" 166 "830 ms" 165 "825 ms" 164 "820 ms" 163 "815 ms" 162 "810 ms" 161 "805 ms" 160 "800 ms" 159 "795 ms" 158 "790 ms" 157 "785 ms" 156 "780 ms" 155 "775 ms" 154 "770 ms" 153 "765 ms" 152 "760 ms" 151 "755 ms" 150 "750 ms" 149 "745 ms" 148 "740 ms" 147 "735 ms" 146 "730 ms" 145 "725 ms" 144 "720 ms" 143 "715 ms" 142 "710 ms" 141 "705 ms" 140 "700 ms" 139 "695 ms" 138 "690 ms" 137 "685 ms" 136 "680 ms" 135 "675 ms" 134 "670 ms" 133 "665 ms" 132 "660 ms" 131 "655 ms" 130 "650 ms" 129 "645 ms" 128 "640 ms" 127 "635 ms" 126 "630 ms" 125 "625 ms" 124 "620 ms" 123 "615 ms" 122 "610 ms" 121 "605 ms" 120 "600 ms" 119 "595 ms" 118 "590 ms" 117 "585 ms" 116 "580 ms" 115 "575 ms" 114 "570 ms" 113 "565 ms" 112 "560 ms" 111 "555 ms" 110 "550 ms" 109 "545 ms" 108 "540 ms" 107 "535 ms" 106 "530 ms" 105 "525 ms" 104 "520 ms" 103 "515 ms" 102 "510 ms" 101 "505 ms" 100 "500 ms" 99 "495 ms" 98 "490 ms" 97 "485 ms" 96 "480 ms" 95 "475 ms" 94 "470 ms" 93 "465 ms" 92 "460 ms" 91 "455 ms" 90 "450 ms" 89 "445 ms" 88 "440 ms" 87 "435 ms" 86 "430 ms" 85 "425 ms" 84 "420 ms" 83 "415 ms" 82 "410 ms" 81 "405 ms" 80 "400 ms" 79 "395 ms" 78 "390 ms" 77 "385 ms" 76 "380 ms" 75 "375 ms" 74 "370 ms" 73 "365 ms" 72 "360 ms" 71 "355 ms" 70 "350 ms" 69 "345 ms" 68 "340 ms" 67 "335 ms" 66 "330 ms" 65 "325 ms" 64 "320 ms" 63 "315 ms" 62 "310 ms" 61 "305 ms" 60 "300 ms" 59 "295 ms" 58 "290 ms" 57 "285 ms" 56 "280 ms" 55 "275 ms" 54 "270 ms" 53 "265 ms" 52 "260 ms" 51 "255 ms" 50 "250 ms" 49 "245 ms" 48 "240 ms" 47 "235 ms" 46 "230 ms" 45 "225 ms" 44 "220 ms" 43 "215 ms" 42 "210 ms" 41 "205 ms" 40 "200 ms" 39 "195 ms" 38 "190 ms" 37 "185 ms" 36 "180 ms" 35 "175 ms" 34 "170 ms" 33 "165 ms" 32 "160 ms" 31 "155 ms" 30 "150 ms" 29 "145 ms" 28 "140 ms" 27 "135 ms" 26 "130 ms" 25 "125 ms" 24 "120 ms" 23 "115 ms" 22 "110 ms" 21 "105 ms" 20 "100 ms" 19 "95 ms" 18 "90 ms" 17 "85 ms" 16 "80 ms" 15 "75 ms" 14 "70 ms" 13 "65 ms" 12 "60 ms" 11 "55 ms" 10 "50 ms" 9 "45 ms" 8 "40 ms" 7 "35 ms" 6 "30 ms" 5 "25 ms" 4 "20 ms" 3 "15 ms" 2 "10 ms" 1 "5 ms" 0 "0 ms" ;
+VAL_TABLE_ ADAS_MsgType 7 "Reserved" 6 "META-DATA" 5 "PROFILE LONG" 4 "PROFILE SHORT" 3 "STUB" 2 "SEGMENT" 1 "POSITION" 0 "System Specific" ;
+
+
+BO_ 559 ElecHorizon_Data2: 8 APIM
+ SG_ adas_pShort_TurnLaneRoute1 m23 : 63|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_TurnLaneNum1 m23 : 59|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_TurnLaneDire1 m23 : 62|3@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_SpeedCategory1 m22 : 49|10@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_PostedSpeedLimit1 m17 : 49|10@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_NumLaneOpposite1 m24 : 49|10@0+ (0.1,-51.1) [0|0] "%" Vector__XXX
+ SG_ adas_pShort_ImpliSpdLimitType1 m16 : 58|3@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_ImplicitSpeedLimit1 m16 : 63|5@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_CondiSpdLimType3_1 m20 : 58|3@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_CondiSpdLimType2_1 m19 : 58|3@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_CondiSpdLimType1_1 m18 : 58|3@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_CondiSpdLimit3_1 m20 : 49|5@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_CondiSpdLimit2_1 m19 : 49|5@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_CondiSpdLimit1_1 m18 : 49|5@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_CondiSpdActive3_1 m20 : 60|2@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_CondiSpdActive2_1 m19 : 60|2@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_CondiSpdActive1_1 m18 : 60|2@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_VariableSpeedLimit1 m7 : 49|10@0+ (1,0) [0|0] "m" Vector__XXX
+ SG_ adas_pShort_SlopeStep1 m3 : 49|10@0+ (0.1,-51.1) [0|0] "%" Vector__XXX
+ SG_ adas_pShort_SlopeLinear1 m4 : 49|10@0+ (0.1,-51.1) [0|0] "%" Vector__XXX
+ SG_ adas_pShort_RoadCond1 m6 : 49|10@0+ (0.1,-51.1) [0|0] "%" Vector__XXX
+ SG_ adas_pShort_RoadAccess1 m5 : 49|10@0+ (0.1,-51.1) [0|0] "%" Vector__XXX
+ SG_ adas_pShort_HeadingChange1 m8 : 49|10@0+ (1.41732283464567,0) [0|358.583] "∞ right" Vector__XXX
+ SG_ adas_pShort_VariableSpeedLimit0 m7 : 43|10@0+ (1,0) [0|0] "m" Vector__XXX
+ SG_ adas_pShort_TurnLaneRoute m23 : 41|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_TurnLaneNum m23 : 53|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_TurnLaneDire m23 : 40|3@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_SpeedCategory m22 : 43|10@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_SlopeStep0 m3 : 43|10@0+ (0.1,-51.1) [0|0] "%" Vector__XXX
+ SG_ adas_pShort_SlopeLinear0 m4 : 43|10@0+ (0.1,-51.1) [0|0] "%" Vector__XXX
+ SG_ adas_pShort_RoutNrTyp1 m2 : 49|10@0+ (1,0) [0|0] "m" Vector__XXX
+ SG_ adas_pShort_RoutNrTyp0 m2 : 43|10@0+ (1,0) [0|0] "m" Vector__XXX
+ SG_ adas_pShort_RoadCondi0 m6 : 43|10@0+ (0.1,-51.1) [0|0] "%" Vector__XXX
+ SG_ adas_pShort_RoadAccess0 m5 : 43|10@0+ (0.1,-51.1) [0|0] "%" Vector__XXX
+ SG_ adas_pShort_PostedSpeedLimit m17 : 43|10@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_NumLaneOpposite m24 : 43|10@0+ (0.1,-51.1) [0|0] "%" Vector__XXX
+ SG_ adas_pShort_ImpliSpdLimitType m16 : 52|3@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_ImplicitSpeedLimit m16 : 41|5@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_HeadingChange0 m8 : 43|10@0+ (1.41732283464567,0) [0|358.583] "∞ right" Vector__XXX
+ SG_ adas_pShort_Curvature1 m1 : 49|10@0+ (1,0) [0|0] "m" Vector__XXX
+ SG_ adas_pShort_Curvature0 m1 : 43|10@0+ (1,0) [0|0] "m" Vector__XXX
+ SG_ adas_pShort_CondiSpdLimit3 m20 : 43|5@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_CondiSpdLimit2 m19 : 43|5@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_CondiSpdLimit1 m18 : 43|5@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_CondiSpdLimType3 m20 : 52|3@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_CondiSpdLimType2 m19 : 52|3@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_CondiSpdLimType1 m18 : 52|3@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_CondiSpdActive3 m20 : 54|2@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_CondiSpdActive2 m19 : 54|2@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pShort_CondiSpdActive1 m18 : 54|2@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pLong_TS_Veh m8 : 53|2@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pLong_TS_Value m8 : 47|8@0+ (1,0) [0|254] "" Vector__XXX
+ SG_ adas_pLong_TS_Type m8 : 39|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pLong_TS_Time m8 : 55|2@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pLong_TS_Loca m8 : 62|3@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pLong_TS_Lane m8 : 51|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pLong_TS_Cond m8 : 59|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pLong_Veh_Long m16 : 39|32@0+ (1E-007,-180) [0|0] "∞" Vector__XXX
+ SG_ adas_pLong_Veh_Lat m17 : 39|32@0+ (1E-007,-90) [0|0] "" Vector__XXX
+ SG_ adas_pLong_Veh_Alti m18 : 39|32@0+ (0.01,-1000) [-1000|10000] "" Vector__XXX
+ SG_ adas_pLong_LinkID m7 : 39|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pLong_Lane_YFlag m10 : 63|1@1- (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pLong_Lane_PrioPre m10 : 47|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pLong_Lane_Num m10 : 35|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pLong_Lane_Mark m10 : 62|3@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pLong_Lane_LastPre m10 : 43|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pLong_Lane_FirstPre m10 : 39|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pLong_Lane_Arrow m10 : 51|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pLong_Hrzn_Long m1 : 39|32@0+ (1E-007,-180) [0|0] "∞" Vector__XXX
+ SG_ adas_pLong_Hrzn_Lat m2 : 39|32@0+ (1E-007,-90) [0|0] "" Vector__XXX
+ SG_ adas_pLong_Hrzn_Alti m3 : 39|32@0+ (0.01,-1000) [-1000|10000] "" Vector__XXX
+ SG_ adas_pLong_Lane_Type m10 : 59|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adas_pLong_Bezier_Long m4 : 39|32@0+ (1E-007,-180) [0|0] "∞" Vector__XXX
+ SG_ adas_pLong_Bezier_Lat m5 : 39|32@0+ (1E-007,-90) [0|0] "" Vector__XXX
+ SG_ adas_pLong_Bezier_Alti m6 : 39|32@0+ (0.01,-1000) [-1000|10000] "" Vector__XXX
+ SG_ EhData2_No_Actl m0 : 4|61@0+ (1,0) [0|2.30584300921369E+018] "unitless" Vector__XXX
+ SG_ adas_stub_Update m3 : 24|1@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_stub_TurnAngle m3 : 55|8@0+ (1.41732283464567,0) [0|0] "∞"  GWM_EH
+ SG_ adas_stub_SubPathIdx m3 : 31|6@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_stub_RtOfWay m3 : 62|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_stub_Retr m3 : 25|1@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_stub_RelProbb m3 : 39|5@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_stub_PathIdx m3 : 21|6@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_stub_PartOfCalcRoute m3 : 47|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_stub_Offset m3 : 4|13@0+ (1,0) [0|0] "m"  GWM_EH
+ SG_ adas_stub_NumLaneOpp m3 : 60|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_stub_NumLaneDrv m3 : 58|3@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_stub_LastStub m3 : 63|1@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_stub_FuncRoadClass m3 : 34|3@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_stub_FormOfWay m3 : 43|4@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_stub_CycCnt m3 : 23|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_stub_CplxInsc m3 : 45|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_seg_Update m2 : 24|1@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_seg_Tunnel m2 : 31|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_seg_Retr m2 : 25|1@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_seg_res m2 : 63|1@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_seg_RelProbb m2 : 39|5@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_seg_PathIdx m2 : 21|6@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_seg_PartOfCalcRoute m2 : 47|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_seg_Offset m2 : 4|13@0+ (1,0) [0|0] "m"  GWM_EH
+ SG_ adas_seg_NumLaneOpp m2 : 60|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_seg_NumLaneDrv m2 : 58|3@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_seg_FuncRoadClass m2 : 34|3@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_seg_FormOfWay m2 : 43|4@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_seg_EffSpdLimType m2 : 50|3@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_seg_EffSpdLim m2 : 55|5@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_seg_DivRoad m2 : 62|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_seg_CyclCnt m2 : 23|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_seg_CmplxInsct m2 : 45|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_seg_BuildUpArea m2 : 27|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_seg_Bridge m2 : 29|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_pShort_Value1 m9 : 49|10@0+ (1,0) [0|0] "m"  GWM_EH
+ SG_ adas_pShort_Value0 m9 : 43|10@0+ (1,0) [0|0] "m"  GWM_EH
+ SG_ adas_pShort_Update m4 : 24|1@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_pShort_Retr m4 : 25|1@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_pShort_ProfType m4M : 31|5@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_pShort_PathIdx m4 : 21|6@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_pShort_Offset m4 : 4|13@0+ (1,0) [0|0] "m"  GWM_EH
+ SG_ adas_pShort_Dist1 m4 : 37|10@0+ (1,0) [0|0] "m"  GWM_EH
+ SG_ adas_pShort_CycCnt m4 : 23|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_pShort_CtrlPoint m4 : 26|1@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_pShort_AccurClass m4 : 39|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_pLong_noValue m0 : 39|32@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_pLong_Update m5 : 24|1@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_pLong_Retr m5 : 25|1@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_pLong_ProfType m5M : 31|5@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_pLong_PathIdx m5 : 21|6@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_pLong_Offset m5 : 4|13@0+ (1,0) [0|0] "m"  GWM_EH
+ SG_ adas_pLong_CycCnt m5 : 23|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_pLong_CtrlPoint m5 : 26|1@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_meta_SpdUnits m6 : 60|1@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_meta_res m6 : 63|3@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_meta_RegionCode m6 : 38|15@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_meta_ProtVerMinor m6 : 59|4@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_meta_ProtVerMajor m6 : 21|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_meta_ProtVer_MinorSub m6 : 19|3@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_meta_MapVerYear m6 : 53|6@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_meta_MapVerQtr m6 : 55|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_meta_MapProvider m6 : 4|3@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_meta_HwVer m6 : 16|9@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_meta_DrvSide m6 : 39|1@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_meta_CycCont m6 : 23|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_meta_CountryCode m6 : 1|10@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ eH_MsgTyp_2 M : 7|3@0+ (1,0) [0|6] ""  GWM_EH
+
+BO_ 558 ElecHorizon_Data1: 8 APIM
+ SG_ EhData1_No_Actl m0 : 4|61@0+ (1,0) [0|2.30584300921369E+018] "unitless" Vector__XXX
+ SG_ adas_mini_Update m2 : 24|1@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_mini_Tunnel m2 : 31|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_mini_Retr m2 : 25|1@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_mini_res m2 : 63|1@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_mini_RelProbb m2 : 39|5@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_mini_PathIdx m2 : 21|6@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_mini_PartOfCalcRoute m2 : 47|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_mini_Offset m2 : 4|13@0+ (1,0) [0|0] "m"  GWM_EH
+ SG_ adas_mini_NumLaneOpp m2 : 60|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_mini_NumLaneDrv m2 : 58|3@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_mini_FuncRoadClass m2 : 34|3@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_mini_FormOfWay m2 : 43|4@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_mini_EffSpdLimType m2 : 50|3@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_mini_EffSpdLim m2 : 55|5@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_mini_DivRoad m2 : 62|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_mini_CyclCnt m2 : 23|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_mini_CmplxInsct m2 : 45|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_mini_BuildUpArea m2 : 27|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ adas_mini_Bridge m2 : 29|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ ADAS_Posn_Spd m1 : 40|9@0+ (0.2,0) [0|0] "m/s"  GWM_EH
+ SG_ ADAS_Posn_res m1 : 47|1@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ ADAS_Posn_RelHead m1 : 63|8@0+ (1.41732283464567,0) [0|0] "∞"  GWM_EH
+ SG_ ADAS_Posn_PosProbb m1 : 29|5@0+ (3.333,0) [0|0] "%"  GWM_EH
+ SG_ ADAS_Posn_PosConf m1 : 46|3@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ ADAS_Posn_PathIdx m1 : 21|6@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ ADAS_Posn_Offset m1 : 4|13@0+ (1,0) [0|0] "m"  GWM_EH
+ SG_ ADAS_Posn_PosIdx m1 : 31|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ ADAS_Posn_CycCnt m1 : 23|2@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ ADAS_Posn_CurLane m1 : 43|3@0+ (1,0) [0|0] ""  GWM_EH
+ SG_ ADAS_Posn_PosAge m1 : 24|9@0+ (5,0) [0|0] " ms"  GWM_EH
+ SG_ eH_MsgTyp_1 M : 7|3@0+ (1,0) [0|6] ""  GWM_EH
+
+
+
+CM_ BU_ GWM_EH "Gateway Module CGEA1.3(Star Architecture)";
+CM_ BU_ APIM "Accessory Protocol Interface Module, also known as MGM (Multimedia Gateway Module)
+Note: Using CPM node id, Must be updated to GMRDB id's in 2007' (5/1/07)";
+BA_DEF_ BO_  "VFrameFormat" ENUM  "StandardCAN","ExtendedCAN","reserved","J1939PG";
+BA_DEF_ SG_  "GenSigEVName" STRING ;
+BA_DEF_ SG_  "NWM-WakeupAllowed" ENUM  "No","Yes";
+BA_DEF_ SG_  "InvalidHex" STRING ;
+BA_DEF_ SG_  "VNASignalName" STRING ;
+BA_DEF_ SG_  "FMC_SIG_Issue" STRING ;
+BA_DEF_ SG_  "GenSigMissingSourceMeaning" STRING ;
+BA_DEF_ SG_  "GenSigStartMeaning" STRING ;
+BA_DEF_ SG_  "_NotOn3rdGen" INT 0 1;
+BA_DEF_ SG_  "LegacySignalName" STRING ;
+BA_DEF_ SG_  "GenSigEnvVarType" ENUM  "int","float","undef";
+BA_DEF_ SG_  "GlobalSignal" ENUM  "No","Yes";
+BA_DEF_ SG_  "eTracker_Num" STRING ;
+BA_DEF_ SG_  "CGEA_Signal_ID" INT 0 3000;
+BA_DEF_ SG_  "GenSigTimeoutTime_FCIM" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_Tester" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_TCU" INT 0 100000;
+BA_DEF_ BO_  "VNATransmissionType" ENUM  "periodic","sporadic","immediate";
+BA_DEF_ BO_  "CGEA_Message" ENUM  "No","Yes";
+BA_DEF_ BO_  "FMC_MSG_Issue" STRING ;
+BA_DEF_ BO_  "GenMsgFastOnStart" INT 0 65535;
+BA_DEF_ BO_  "NetworkWakeUp" ENUM  "No","Yes";
+BA_DEF_ BO_  "FrameGateway_nonCGEA" HEX 0 1407;
+BA_DEF_ BU_  "Lin_Master" ENUM  "No","Yes";
+BA_DEF_ BU_  "NodeLayerModules" STRING ;
+BA_DEF_ BU_  "NmCAN" INT 1 3;
+BA_DEF_ BU_  "GenNodSleepTime" INT 0 1000000;
+BA_DEF_ BU_  "BootloaderEnabled" ENUM  "Yes","No";
+BA_DEF_ BU_  "NOSPackage" ENUM  "None","I3_1","I3_2","1.0.1","RP","EuCD","Volcano";
+BA_DEF_ BU_  "FMC_Supplier" STRING ;
+BA_DEF_ BU_  "FMC_FNOS_License_Number" STRING ;
+BA_DEF_ BU_  "Version_Diag_CANdesc" STRING ;
+BA_DEF_ BU_  "Version_Ccl" STRING ;
+BA_DEF_ BU_  "TransceiverType" ENUM  "Unknown","TJA1050","TJA1040","TJA1041","82C250","TLE6250","MC33989","CS251 ";
+BA_DEF_ BU_  "Version_DrvCan" STRING ;
+BA_DEF_ BU_  "Version_IL_Vector" STRING ;
+BA_DEF_ BU_  "Version_Tp_Iso15765" STRING ;
+BA_DEF_ BU_  "Version_NM_DirOsek" STRING ;
+BA_DEF_ BU_  "Version_IL_NI_Ford" STRING ;
+BA_DEF_ BU_  "Version_NM_Junior" STRING ;
+BA_DEF_ BU_  "Version_GW_ILGateway" STRING ;
+BA_DEF_ BU_  "NetworkType" ENUM  "Powertrain","BodyBus","Infotainment";
+BA_DEF_ BU_  "CGEANode" ENUM  "No","Yes";
+BA_DEF_  "GenEnvVarPrefix" STRING ;
+BA_DEF_  "ReleaseVersionString" STRING ;
+BA_DEF_  "BusType" STRING ;
+BA_DEF_  "UseLegacyNames" ENUM  "No","Yes";
+BA_DEF_  "GenEnvVarEndingDsp" STRING ;
+BA_DEF_  "GenEnvVarEndingSnd" STRING ;
+BA_DEF_ SG_  "GenSigTimeoutTime_RACM" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_GFM" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_DACMC" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_FCDIM" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime__delete" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_DSP" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_ACM" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_TSTR" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_GWM" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_IPC" INT 0 100000;
+BA_DEF_ SG_  "GenSigTimeoutTime_APIM" INT 0 100000;
+BA_DEF_ BO_  "FrameGatewayMS1" HEX 0 1407;
+BA_DEF_ BO_  "FrameGatewayHS3" HEX 0 1407;
+BA_DEF_ BO_  "FrameGatewayHS2" HEX 0 1407;
+BA_DEF_ BO_  "FrameGatewayHS1" HEX 0 1407;
+BA_DEF_ BO_  "NetworkInitialization" ENUM  "No","Yes";
+BA_DEF_ BO_  "FrameGateway" HEX 0 1407;
+BA_DEF_ BO_  "EventRateOfChange" INT 10 10000;
+BA_DEF_ BO_  "ConfiguredTransmitter" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgStartDelayTime" INT 0 10000;
+BA_DEF_ BO_  "GenMsgNrOfRepetition" INT 0 100;
+BA_DEF_ BO_  "GenMsgDelayTime" INT 0 1000;
+BA_DEF_ BO_  "GenMsgCycleTimeFast" INT 0 100000;
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 100000;
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "FixedPeriodic","Event","EnabledPeriodic","NotUsed","NotUsed","EventPeriodic","NotUsed","NotUsed","NoMsgSendType";
+BA_DEF_  "SignalGateway" ENUM  "No","Yes";
+BA_DEF_ SG_  "UsedOnCD42Gas_MY14" ENUM  "No","Yes";
+BA_DEF_ SG_  "UsedOnCD42Diesel_MY14" ENUM  "No","Yes";
+BA_DEF_ SG_  "UsedOnB562Diesel_MY14" ENUM  "No","Yes";
+BA_DEF_ SG_  "UsedOnB562Gas_MY14" ENUM  "No","Yes";
+BA_DEF_ SG_  "UsedOnCD4Diesel_MY13" ENUM  "No","Yes";
+BA_DEF_ SG_  "ContentDependantSig" ENUM  "No","Yes";
+BA_DEF_ SG_  "CrossOver_LIN" ENUM  "No","Yes";
+BA_DEF_ SG_  "UsedOnCD4Hev_MY13" ENUM  "No","Yes";
+BA_DEF_ SG_  "UsedOnCD4Gas_MY13" ENUM  "No","Yes";
+BA_DEF_ SG_  "CrossOver_InfoCAN" ENUM  "No","Yes";
+BA_DEF_ SG_  "WakeupSignal" ENUM  "No","Yes";
+BA_DEF_ SG_  "FMC_SIG_SSPEC" STRING ;
+BA_DEF_ SG_  "GenSigMissingSourceValue" INT 0 1000000000;
+BA_DEF_ SG_  "GenSigStartValue" FLOAT 0 100000000000;
+BA_DEF_ SG_  "GenSigInactiveValue" INT 0 100000;
+BA_DEF_ SG_  "GenSigSendType" ENUM  "Cyclic","OnWrite","OnWriteWithRepetition","OnChange","OnChangeWithRepetition","IfActive","IfActiveWithRepetition","NoSigSendType";
+BA_DEF_ BO_  "ContentDependantMsg" ENUM  "No","Yes";
+BA_DEF_ BO_  "Mulitplexer" ENUM  "No","Yes";
+BA_DEF_ BO_  "NmAsrMessage" ENUM  "No","Yes";
+BA_DEF_ BO_  "TpApplType" STRING ;
+BA_DEF_ BO_  "DiagState" ENUM  "No","Yes";
+BA_DEF_ BO_  "TpTxIndex" INT 0 255;
+BA_DEF_ BO_  "NetworkInitializationCommand" ENUM  "No","Yes";
+BA_DEF_ BO_  "DiagRequest" ENUM  "No","Yes";
+BA_DEF_ BO_  "DiagResponse" ENUM  "No","Yes";
+BA_DEF_ BO_  "NmMessage" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgILSupport" ENUM  "No","Yes";
+BA_DEF_ BU_  "Terminator" ENUM  "No","Yes";
+BA_DEF_ BU_  "NodeWakeUpTime" INT 0 1000;
+BA_DEF_ BU_  "NodeStartUpTime" INT 0 1000;
+BA_DEF_ BU_  "NmAsrNodeIdentifier" HEX 128 255;
+BA_DEF_ BU_  "NmAsrNode" ENUM  "No","Yes";
+BA_DEF_ BU_  "NetworkWakeupTime_msec" INT 0 1000;
+BA_DEF_ BU_  "PowerType" ENUM  "Switched","Latched","Sleep","vector_leerstring","vector_leerstring";
+BA_DEF_ BU_  "DiagNode" ENUM  "GGDS","GDS","NONE";
+BA_DEF_ BU_  "EOL_SB_Flash" ENUM  "GGDS","GDS","NONE","vector_leerstring";
+BA_DEF_ BU_  "NetworkInitializationUsed" ENUM  "No","Yes";
+BA_DEF_ BU_  "NmNode" ENUM  "No","Yes";
+BA_DEF_ BU_  "NmStationAddress" INT 0 255;
+BA_DEF_ BU_  "ILUsed" ENUM  "No","Yes";
+BA_DEF_ BU_  "NosPackage" ENUM  "None","I3_1","I3_2","1.0.1","RP","EuCD","Volcano";
+BA_DEF_ BU_  "LIN_Master" ENUM  "No","Yes";
+BA_DEF_ BU_  "PackageID" STRING ;
+BA_DEF_ BU_  "GatewayECU" ENUM  "No","Yes";
+BA_DEF_  "CMDB_Version" STRING ;
+BA_DEF_  "NmType" STRING ;
+BA_DEF_  "NetworkSpeed" ENUM  "500kBits/s","125kBit/s";
+BA_DEF_  "NmAsrMessageCount" INT 128 128;
+BA_DEF_  "NmAsrBaseAddress" HEX 1408 1408;
+BA_DEF_  "DBName" STRING ;
+BA_DEF_  "VersionDay" INT 1 31;
+BA_DEF_  "Manufacturer" STRING ;
+BA_DEF_  "VersionNumber" INT 0 10000;
+BA_DEF_  "VersionMonth" INT 1 12;
+BA_DEF_  "VersionYear" INT 2000 3000;
+BA_DEF_  "NmBaseAddress" HEX 1280 1280;
+BA_DEF_  "NmMessageCount" INT 0 128;
+BA_DEF_DEF_  "VFrameFormat" "J1939PG";
+BA_DEF_DEF_  "GenSigEVName" "";
+BA_DEF_DEF_  "NWM-WakeupAllowed" "No";
+BA_DEF_DEF_  "InvalidHex" "";
+BA_DEF_DEF_  "VNASignalName" "";
+BA_DEF_DEF_  "FMC_SIG_Issue" "Unknown";
+BA_DEF_DEF_  "GenSigMissingSourceMeaning" "Unknown";
+BA_DEF_DEF_  "GenSigStartMeaning" "Unknown";
+BA_DEF_DEF_  "_NotOn3rdGen" 0;
+BA_DEF_DEF_  "LegacySignalName" "";
+BA_DEF_DEF_  "GenSigEnvVarType" "undef";
+BA_DEF_DEF_  "GlobalSignal" "No";
+BA_DEF_DEF_  "eTracker_Num" "";
+BA_DEF_DEF_  "CGEA_Signal_ID" 0;
+BA_DEF_DEF_  "GenSigTimeoutTime_FCIM" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_Tester" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_TCU" 5000;
+BA_DEF_DEF_  "VNATransmissionType" "periodic";
+BA_DEF_DEF_  "CGEA_Message" "No";
+BA_DEF_DEF_  "FMC_MSG_Issue" "Unknown";
+BA_DEF_DEF_  "GenMsgFastOnStart" 0;
+BA_DEF_DEF_  "NetworkWakeUp" "No";
+BA_DEF_DEF_  "FrameGateway_nonCGEA" 1407;
+BA_DEF_DEF_  "Lin_Master" "No";
+BA_DEF_DEF_  "NodeLayerModules" "";
+BA_DEF_DEF_  "NmCAN" 3;
+BA_DEF_DEF_  "GenNodSleepTime" 0;
+BA_DEF_DEF_  "BootloaderEnabled" "No";
+BA_DEF_DEF_  "NOSPackage" "I3_1";
+BA_DEF_DEF_  "FMC_Supplier" "";
+BA_DEF_DEF_  "FMC_FNOS_License_Number" "";
+BA_DEF_DEF_  "Version_Diag_CANdesc" "00.00.00";
+BA_DEF_DEF_  "Version_Ccl" "00.00.00";
+BA_DEF_DEF_  "TransceiverType" "Unknown";
+BA_DEF_DEF_  "Version_DrvCan" "00.00.00";
+BA_DEF_DEF_  "Version_IL_Vector" "00.00.00";
+BA_DEF_DEF_  "Version_Tp_Iso15765" "00.00.00";
+BA_DEF_DEF_  "Version_NM_DirOsek" "00.00.00";
+BA_DEF_DEF_  "Version_IL_NI_Ford" "00.00.00";
+BA_DEF_DEF_  "Version_NM_Junior" "00.00.00";
+BA_DEF_DEF_  "Version_GW_ILGateway" "00.00.00";
+BA_DEF_DEF_  "NetworkType" "Powertrain";
+BA_DEF_DEF_  "CGEANode" "No";
+BA_DEF_DEF_  "GenEnvVarPrefix" "IMS";
+BA_DEF_DEF_  "ReleaseVersionString" "_draft";
+BA_DEF_DEF_  "BusType" "CAN";
+BA_DEF_DEF_  "UseLegacyNames" "No";
+BA_DEF_DEF_  "GenEnvVarEndingDsp" "Dsp_";
+BA_DEF_DEF_  "GenEnvVarEndingSnd" "_";
+BA_DEF_DEF_  "GenSigTimeoutTime_RACM" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_GFM" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_DACMC" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_FCDIM" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime__delete" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_DSP" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_ACM" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_TSTR" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_GWM" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_IPC" 5000;
+BA_DEF_DEF_  "GenSigTimeoutTime_APIM" 5000;
+BA_DEF_DEF_  "FrameGatewayMS1" 0;
+BA_DEF_DEF_  "FrameGatewayHS3" 0;
+BA_DEF_DEF_  "FrameGatewayHS2" 0;
+BA_DEF_DEF_  "FrameGatewayHS1" 0;
+BA_DEF_DEF_  "NetworkInitialization" "No";
+BA_DEF_DEF_  "FrameGateway" 0;
+BA_DEF_DEF_  "EventRateOfChange" 10000;
+BA_DEF_DEF_  "ConfiguredTransmitter" "No";
+BA_DEF_DEF_  "GenMsgStartDelayTime" 0;
+BA_DEF_DEF_  "GenMsgNrOfRepetition" 1;
+BA_DEF_DEF_  "GenMsgDelayTime" 20;
+BA_DEF_DEF_  "GenMsgCycleTimeFast" 0;
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
+BA_DEF_DEF_  "GenMsgSendType" "NoMsgSendType";
+BA_DEF_DEF_  "SignalGateway" "No";
+BA_DEF_DEF_  "UsedOnCD42Gas_MY14" "No";
+BA_DEF_DEF_  "UsedOnCD42Diesel_MY14" "No";
+BA_DEF_DEF_  "UsedOnB562Diesel_MY14" "No";
+BA_DEF_DEF_  "UsedOnB562Gas_MY14" "No";
+BA_DEF_DEF_  "UsedOnCD4Diesel_MY13" "No";
+BA_DEF_DEF_  "ContentDependantSig" "No";
+BA_DEF_DEF_  "CrossOver_LIN" "No";
+BA_DEF_DEF_  "UsedOnCD4Hev_MY13" "No";
+BA_DEF_DEF_  "UsedOnCD4Gas_MY13" "No";
+BA_DEF_DEF_  "CrossOver_InfoCAN" "No";
+BA_DEF_DEF_  "WakeupSignal" "No";
+BA_DEF_DEF_  "FMC_SIG_SSPEC" "Unknown";
+BA_DEF_DEF_  "GenSigMissingSourceValue" 0;
+BA_DEF_DEF_  "GenSigStartValue" 0;
+BA_DEF_DEF_  "GenSigInactiveValue" 0;
+BA_DEF_DEF_  "GenSigSendType" "NoSigSendType";
+BA_DEF_DEF_  "ContentDependantMsg" "No";
+BA_DEF_DEF_  "Mulitplexer" "No";
+BA_DEF_DEF_  "NmAsrMessage" "No";
+BA_DEF_DEF_  "TpApplType" "";
+BA_DEF_DEF_  "DiagState" "No";
+BA_DEF_DEF_  "TpTxIndex" 0;
+BA_DEF_DEF_  "NetworkInitializationCommand" "No";
+BA_DEF_DEF_  "DiagRequest" "No";
+BA_DEF_DEF_  "DiagResponse" "No";
+BA_DEF_DEF_  "NmMessage" "No";
+BA_DEF_DEF_  "GenMsgILSupport" "Yes";
+BA_DEF_DEF_  "Terminator" "No";
+BA_DEF_DEF_  "NodeWakeUpTime" 10;
+BA_DEF_DEF_  "NodeStartUpTime" 250;
+BA_DEF_DEF_  "NmAsrNodeIdentifier" 128;
+BA_DEF_DEF_  "NmAsrNode" "No";
+BA_DEF_DEF_  "NetworkWakeupTime_msec" 0;
+BA_DEF_DEF_  "PowerType" "Switched";
+BA_DEF_DEF_  "DiagNode" "GGDS";
+BA_DEF_DEF_  "EOL_SB_Flash" "GGDS";
+BA_DEF_DEF_  "NetworkInitializationUsed" "No";
+BA_DEF_DEF_  "NmNode" "No";
+BA_DEF_DEF_  "NmStationAddress" 0;
+BA_DEF_DEF_  "ILUsed" "Yes";
+BA_DEF_DEF_  "NosPackage" "I3_1";
+BA_DEF_DEF_  "LIN_Master" "No";
+BA_DEF_DEF_  "PackageID" "08.05.00.00.71.xx.xx.rr.00.00";
+BA_DEF_DEF_  "GatewayECU" "No";
+BA_DEF_DEF_  "CMDB_Version" "v10.10";
+BA_DEF_DEF_  "NmType" "Ford-OSEK";
+BA_DEF_DEF_  "NetworkSpeed" "500kBits/s";
+BA_DEF_DEF_  "NmAsrMessageCount" 128;
+BA_DEF_DEF_  "NmAsrBaseAddress" 1408;
+BA_DEF_DEF_  "DBName" "";
+BA_DEF_DEF_  "VersionDay" 1;
+BA_DEF_DEF_  "Manufacturer" "Ford";
+BA_DEF_DEF_  "VersionNumber" 1;
+BA_DEF_DEF_  "VersionMonth" 1;
+BA_DEF_DEF_  "VersionYear" 2010;
+BA_DEF_DEF_  "NmBaseAddress" 1280;
+BA_DEF_DEF_  "NmMessageCount" 128;
+BA_ "BusType" "CAN";
+BA_ "CMDB_Version" "v11.02";
+BA_ "NmType" "Ford-OSEK";
+BA_ "VersionDay" 1;
+BA_ "VersionNumber" 3;
+BA_ "VersionMonth" 3;
+BA_ "VersionYear" 2011;
+BA_ "DBName" "ADASIS2_0_iCAN_HS3";
+BA_ "NosPackage" BU_ GWM_EH 4;
+BA_ "GatewayECU" BU_ GWM_EH 1;
+BA_ "NodeStartUpTime" BU_ GWM_EH 100;
+BA_ "NmAsrNodeIdentifier" BU_ GWM_EH 158;
+BA_ "NmAsrNode" BU_ GWM_EH 1;
+BA_ "PowerType" BU_ GWM_EH 2;
+BA_ "NmNode" BU_ GWM_EH 1;
+BA_ "NmStationAddress" BU_ GWM_EH 30;
+BA_ "NosPackage" BU_ APIM 4;
+BA_ "NodeWakeUpTime" BU_ APIM 200;
+BA_ "NodeStartUpTime" BU_ APIM 1000;
+BA_ "NmAsrNodeIdentifier" BU_ APIM 226;
+BA_ "NmAsrNode" BU_ APIM 1;
+BA_ "PowerType" BU_ APIM 2;
+BA_ "NmStationAddress" BU_ APIM 98;
+BA_ "GenMsgCycleTime" BO_ 559 1000;
+BA_ "GenMsgSendType" BO_ 559 5;
+BA_ "VFrameFormat" BO_ 559 0;
+BA_ "GenMsgCycleTime" BO_ 558 1000;
+BA_ "GenMsgSendType" BO_ 558 5;
+BA_ "VFrameFormat" BO_ 558 0;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_TurnLaneRoute1 3;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_TurnLaneRoute1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_TurnLaneRoute1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_TurnLaneRoute1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_TurnLaneRoute1 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_TurnLaneRoute1 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_TurnLaneNum1 3;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_TurnLaneNum1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_TurnLaneNum1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_TurnLaneNum1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_TurnLaneNum1 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_TurnLaneNum1 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_TurnLaneDire1 3;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_TurnLaneDire1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_TurnLaneDire1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_TurnLaneDire1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_TurnLaneDire1 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_TurnLaneDire1 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_SpeedCategory1 3;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_SpeedCategory1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_SpeedCategory1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_SpeedCategory1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_SpeedCategory1 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_SpeedCategory1 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_PostedSpeedLimit1 3;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_PostedSpeedLimit1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_PostedSpeedLimit1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_PostedSpeedLimit1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_PostedSpeedLimit1 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_PostedSpeedLimit1 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_NumLaneOpposite1 3;
+BA_ "GenSigStartValue" SG_ 559 adas_pShort_NumLaneOpposite1 511;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_NumLaneOpposite1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_NumLaneOpposite1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_NumLaneOpposite1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_NumLaneOpposite1 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_NumLaneOpposite1 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_ImpliSpdLimitType1 3;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_ImpliSpdLimitType1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_ImpliSpdLimitType1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_ImpliSpdLimitType1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_ImpliSpdLimitType1 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_ImpliSpdLimitType1 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_ImplicitSpeedLimit1 3;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_ImplicitSpeedLimit1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_ImplicitSpeedLimit1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_ImplicitSpeedLimit1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_ImplicitSpeedLimit1 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_ImplicitSpeedLimit1 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_CondiSpdLimType3_1 3;
+BA_ "GenSigStartValue" SG_ 559 adas_pShort_CondiSpdLimType3_1 7;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_CondiSpdLimType3_1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_CondiSpdLimType3_1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_CondiSpdLimType3_1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_CondiSpdLimType3_1 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_CondiSpdLimType3_1 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_CondiSpdLimType2_1 3;
+BA_ "GenSigStartValue" SG_ 559 adas_pShort_CondiSpdLimType2_1 7;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_CondiSpdLimType2_1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_CondiSpdLimType2_1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_CondiSpdLimType2_1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_CondiSpdLimType2_1 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_CondiSpdLimType2_1 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_CondiSpdLimType1_1 3;
+BA_ "GenSigStartValue" SG_ 559 adas_pShort_CondiSpdLimType1_1 7;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_CondiSpdLimType1_1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_CondiSpdLimType1_1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_CondiSpdLimType1_1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_CondiSpdLimType1_1 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_CondiSpdLimType1_1 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_CondiSpdLimit3_1 3;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_CondiSpdLimit3_1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_CondiSpdLimit3_1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_CondiSpdLimit3_1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_CondiSpdLimit3_1 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_CondiSpdLimit3_1 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_CondiSpdLimit2_1 3;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_CondiSpdLimit2_1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_CondiSpdLimit2_1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_CondiSpdLimit2_1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_CondiSpdLimit2_1 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_CondiSpdLimit2_1 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_CondiSpdLimit1_1 3;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_CondiSpdLimit1_1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_CondiSpdLimit1_1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_CondiSpdLimit1_1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_CondiSpdLimit1_1 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_CondiSpdLimit1_1 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_CondiSpdActive3_1 3;
+BA_ "GenSigStartValue" SG_ 559 adas_pShort_CondiSpdActive3_1 0;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_CondiSpdActive3_1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_CondiSpdActive3_1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_CondiSpdActive3_1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_CondiSpdActive3_1 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_CondiSpdActive3_1 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_CondiSpdActive2_1 3;
+BA_ "GenSigStartValue" SG_ 559 adas_pShort_CondiSpdActive2_1 0;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_CondiSpdActive2_1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_CondiSpdActive2_1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_CondiSpdActive2_1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_CondiSpdActive2_1 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_CondiSpdActive2_1 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_CondiSpdActive1_1 3;
+BA_ "GenSigStartValue" SG_ 559 adas_pShort_CondiSpdActive1_1 0;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_CondiSpdActive1_1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_CondiSpdActive1_1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_CondiSpdActive1_1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_CondiSpdActive1_1 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_CondiSpdActive1_1 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_VariableSpeedLimit1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_VariableSpeedLimit1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_VariableSpeedLimit1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_VariableSpeedLimit1 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_VariableSpeedLimit1 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_VariableSpeedLimit1 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_SlopeStep1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_SlopeStep1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_SlopeStep1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_SlopeStep1 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_SlopeStep1 1;
+BA_ "GenSigStartValue" SG_ 559 adas_pShort_SlopeStep1 511;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_SlopeStep1 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_SlopeLinear1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_SlopeLinear1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_SlopeLinear1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_SlopeLinear1 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_SlopeLinear1 1;
+BA_ "GenSigStartValue" SG_ 559 adas_pShort_SlopeLinear1 511;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_SlopeLinear1 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_RoadCond1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_RoadCond1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_RoadCond1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_RoadCond1 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_RoadCond1 1;
+BA_ "GenSigStartValue" SG_ 559 adas_pShort_RoadCond1 511;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_RoadCond1 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_RoadAccess1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_RoadAccess1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_RoadAccess1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_RoadAccess1 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_RoadAccess1 1;
+BA_ "GenSigStartValue" SG_ 559 adas_pShort_RoadAccess1 511;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_RoadAccess1 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_HeadingChange1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_HeadingChange1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_HeadingChange1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_HeadingChange1 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_HeadingChange1 1;
+BA_ "GenSigStartValue" SG_ 559 adas_pShort_HeadingChange1 0;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_HeadingChange1 3;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_VariableSpeedLimit0 3;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_VariableSpeedLimit0 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_VariableSpeedLimit0 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_VariableSpeedLimit0 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_VariableSpeedLimit0 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_VariableSpeedLimit0 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_TurnLaneRoute 3;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_TurnLaneRoute 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_TurnLaneRoute 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_TurnLaneRoute 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_TurnLaneRoute 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_TurnLaneRoute 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_TurnLaneNum 3;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_TurnLaneNum 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_TurnLaneNum 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_TurnLaneNum 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_TurnLaneNum 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_TurnLaneNum 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_TurnLaneDire 3;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_TurnLaneDire 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_TurnLaneDire 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_TurnLaneDire 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_TurnLaneDire 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_TurnLaneDire 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_SpeedCategory 3;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_SpeedCategory 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_SpeedCategory 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_SpeedCategory 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_SpeedCategory 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_SpeedCategory 1;
+BA_ "GenSigStartValue" SG_ 559 adas_pShort_SlopeStep0 511;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_SlopeStep0 3;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_SlopeStep0 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_SlopeStep0 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_SlopeStep0 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_SlopeStep0 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_SlopeStep0 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_SlopeLinear0 3;
+BA_ "GenSigStartValue" SG_ 559 adas_pShort_SlopeLinear0 511;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_SlopeLinear0 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_SlopeLinear0 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_SlopeLinear0 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_SlopeLinear0 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_SlopeLinear0 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_RoutNrTyp1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_RoutNrTyp1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_RoutNrTyp1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_RoutNrTyp1 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_RoutNrTyp1 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_RoutNrTyp1 3;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_RoutNrTyp0 3;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_RoutNrTyp0 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_RoutNrTyp0 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_RoutNrTyp0 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_RoutNrTyp0 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_RoutNrTyp0 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_RoadCondi0 3;
+BA_ "GenSigStartValue" SG_ 559 adas_pShort_RoadCondi0 511;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_RoadCondi0 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_RoadCondi0 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_RoadCondi0 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_RoadCondi0 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_RoadCondi0 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_RoadAccess0 3;
+BA_ "GenSigStartValue" SG_ 559 adas_pShort_RoadAccess0 511;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_RoadAccess0 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_RoadAccess0 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_RoadAccess0 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_RoadAccess0 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_RoadAccess0 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_PostedSpeedLimit 3;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_PostedSpeedLimit 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_PostedSpeedLimit 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_PostedSpeedLimit 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_PostedSpeedLimit 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_PostedSpeedLimit 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_NumLaneOpposite 3;
+BA_ "GenSigStartValue" SG_ 559 adas_pShort_NumLaneOpposite 511;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_NumLaneOpposite 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_NumLaneOpposite 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_NumLaneOpposite 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_NumLaneOpposite 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_NumLaneOpposite 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_ImpliSpdLimitType 3;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_ImpliSpdLimitType 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_ImpliSpdLimitType 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_ImpliSpdLimitType 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_ImpliSpdLimitType 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_ImpliSpdLimitType 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_ImplicitSpeedLimit 3;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_ImplicitSpeedLimit 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_ImplicitSpeedLimit 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_ImplicitSpeedLimit 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_ImplicitSpeedLimit 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_ImplicitSpeedLimit 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_HeadingChange0 3;
+BA_ "GenSigStartValue" SG_ 559 adas_pShort_HeadingChange0 0;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_HeadingChange0 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_HeadingChange0 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_HeadingChange0 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_HeadingChange0 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_HeadingChange0 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_Curvature1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_Curvature1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_Curvature1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_Curvature1 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_Curvature1 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_Curvature1 3;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_Curvature0 3;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_Curvature0 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_Curvature0 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_Curvature0 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_Curvature0 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_Curvature0 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_CondiSpdLimit3 3;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_CondiSpdLimit3 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_CondiSpdLimit3 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_CondiSpdLimit3 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_CondiSpdLimit3 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_CondiSpdLimit3 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_CondiSpdLimit2 3;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_CondiSpdLimit2 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_CondiSpdLimit2 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_CondiSpdLimit2 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_CondiSpdLimit2 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_CondiSpdLimit2 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_CondiSpdLimit1 3;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_CondiSpdLimit1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_CondiSpdLimit1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_CondiSpdLimit1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_CondiSpdLimit1 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_CondiSpdLimit1 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_CondiSpdLimType3 3;
+BA_ "GenSigStartValue" SG_ 559 adas_pShort_CondiSpdLimType3 7;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_CondiSpdLimType3 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_CondiSpdLimType3 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_CondiSpdLimType3 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_CondiSpdLimType3 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_CondiSpdLimType3 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_CondiSpdLimType2 3;
+BA_ "GenSigStartValue" SG_ 559 adas_pShort_CondiSpdLimType2 7;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_CondiSpdLimType2 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_CondiSpdLimType2 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_CondiSpdLimType2 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_CondiSpdLimType2 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_CondiSpdLimType2 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_CondiSpdLimType1 3;
+BA_ "GenSigStartValue" SG_ 559 adas_pShort_CondiSpdLimType1 7;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_CondiSpdLimType1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_CondiSpdLimType1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_CondiSpdLimType1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_CondiSpdLimType1 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_CondiSpdLimType1 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_CondiSpdActive3 3;
+BA_ "GenSigStartValue" SG_ 559 adas_pShort_CondiSpdActive3 0;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_CondiSpdActive3 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_CondiSpdActive3 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_CondiSpdActive3 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_CondiSpdActive3 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_CondiSpdActive3 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_CondiSpdActive2 3;
+BA_ "GenSigStartValue" SG_ 559 adas_pShort_CondiSpdActive2 0;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_CondiSpdActive2 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_CondiSpdActive2 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_CondiSpdActive2 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_CondiSpdActive2 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_CondiSpdActive2 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_CondiSpdActive1 3;
+BA_ "GenSigStartValue" SG_ 559 adas_pShort_CondiSpdActive1 0;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_CondiSpdActive1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_CondiSpdActive1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_CondiSpdActive1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_CondiSpdActive1 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_CondiSpdActive1 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_TS_Veh 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_TS_Veh 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_TS_Veh 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_TS_Veh 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_TS_Veh 1;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_TS_Veh 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_TS_Value 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_TS_Value 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_TS_Value 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_TS_Value 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_TS_Value 1;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_TS_Value 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_TS_Type 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_TS_Type 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_TS_Type 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_TS_Type 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_TS_Type 1;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_TS_Type 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_TS_Time 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_TS_Time 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_TS_Time 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_TS_Time 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_TS_Time 1;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_TS_Time 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_TS_Loca 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_TS_Loca 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_TS_Loca 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_TS_Loca 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_TS_Loca 1;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_TS_Loca 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_TS_Lane 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_TS_Lane 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_TS_Lane 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_TS_Lane 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_TS_Lane 1;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_TS_Lane 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_TS_Cond 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_TS_Cond 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_TS_Cond 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_TS_Cond 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_TS_Cond 1;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_TS_Cond 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_Veh_Long 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_Veh_Long 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_Veh_Long 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_Veh_Long 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_Veh_Long 1;
+BA_ "GenSigStartValue" SG_ 559 adas_pLong_Veh_Long 1800000000;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_Veh_Long 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_Veh_Lat 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_Veh_Lat 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_Veh_Lat 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_Veh_Lat 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_Veh_Lat 1;
+BA_ "GenSigStartValue" SG_ 559 adas_pLong_Veh_Lat 900000000;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_Veh_Lat 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_Veh_Alti 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_Veh_Alti 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_Veh_Alti 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_Veh_Alti 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_Veh_Alti 1;
+BA_ "GenSigStartValue" SG_ 559 adas_pLong_Veh_Alti 100000;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_Veh_Alti 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_LinkID 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_LinkID 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_LinkID 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_LinkID 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_LinkID 1;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_LinkID 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_Lane_PrioPre 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_Lane_PrioPre 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_Lane_PrioPre 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_Lane_PrioPre 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_Lane_PrioPre 1;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_Lane_PrioPre 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_Lane_Num 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_Lane_Num 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_Lane_Num 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_Lane_Num 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_Lane_Num 1;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_Lane_Num 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_Lane_Mark 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_Lane_Mark 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_Lane_Mark 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_Lane_Mark 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_Lane_Mark 1;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_Lane_Mark 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_Lane_LastPre 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_Lane_LastPre 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_Lane_LastPre 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_Lane_LastPre 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_Lane_LastPre 1;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_Lane_LastPre 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_Lane_FirstPre 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_Lane_FirstPre 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_Lane_FirstPre 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_Lane_FirstPre 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_Lane_FirstPre 1;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_Lane_FirstPre 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_Lane_Arrow 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_Lane_Arrow 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_Lane_Arrow 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_Lane_Arrow 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_Lane_Arrow 1;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_Lane_Arrow 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_Hrzn_Long 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_Hrzn_Long 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_Hrzn_Long 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_Hrzn_Long 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_Hrzn_Long 1;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_Hrzn_Long 3;
+BA_ "GenSigStartValue" SG_ 559 adas_pLong_Hrzn_Long 1800000000;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_Hrzn_Lat 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_Hrzn_Lat 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_Hrzn_Lat 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_Hrzn_Lat 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_Hrzn_Lat 1;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_Hrzn_Lat 3;
+BA_ "GenSigStartValue" SG_ 559 adas_pLong_Hrzn_Lat 900000000;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_Hrzn_Alti 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_Hrzn_Alti 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_Hrzn_Alti 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_Hrzn_Alti 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_Hrzn_Alti 1;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_Hrzn_Alti 3;
+BA_ "GenSigStartValue" SG_ 559 adas_pLong_Hrzn_Alti 100000;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_Lane_Type 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_Lane_Type 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_Lane_Type 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_Lane_Type 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_Lane_Type 1;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_Lane_Type 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_Bezier_Long 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_Bezier_Long 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_Bezier_Long 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_Bezier_Long 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_Bezier_Long 1;
+BA_ "GenSigStartValue" SG_ 559 adas_pLong_Bezier_Long 1800000000;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_Bezier_Long 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_Bezier_Lat 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_Bezier_Lat 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_Bezier_Lat 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_Bezier_Lat 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_Bezier_Lat 1;
+BA_ "GenSigStartValue" SG_ 559 adas_pLong_Bezier_Lat 900000000;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_Bezier_Lat 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_Bezier_Alti 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_Bezier_Alti 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_Bezier_Alti 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_Bezier_Alti 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_Bezier_Alti 1;
+BA_ "GenSigStartValue" SG_ 559 adas_pLong_Bezier_Alti 100000;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_Bezier_Alti 3;
+BA_ "GenSigSendType" SG_ 559 EhData2_No_Actl 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 EhData2_No_Actl 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 EhData2_No_Actl 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 EhData2_No_Actl 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 EhData2_No_Actl 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 EhData2_No_Actl 1;
+BA_ "GenSigStartValue" SG_ 559 EhData2_No_Actl 0;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_stub_Update 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_stub_Update 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_stub_Update 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_stub_Update 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_stub_Update 1;
+BA_ "GenSigSendType" SG_ 559 adas_stub_Update 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_stub_TurnAngle 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_stub_TurnAngle 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_stub_TurnAngle 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_stub_TurnAngle 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_stub_TurnAngle 1;
+BA_ "GenSigSendType" SG_ 559 adas_stub_TurnAngle 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_stub_SubPathIdx 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_stub_SubPathIdx 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_stub_SubPathIdx 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_stub_SubPathIdx 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_stub_SubPathIdx 1;
+BA_ "GenSigSendType" SG_ 559 adas_stub_SubPathIdx 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_stub_RtOfWay 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_stub_RtOfWay 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_stub_RtOfWay 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_stub_RtOfWay 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_stub_RtOfWay 1;
+BA_ "GenSigSendType" SG_ 559 adas_stub_RtOfWay 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_stub_Retr 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_stub_Retr 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_stub_Retr 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_stub_Retr 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_stub_Retr 1;
+BA_ "GenSigSendType" SG_ 559 adas_stub_Retr 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_stub_RelProbb 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_stub_RelProbb 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_stub_RelProbb 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_stub_RelProbb 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_stub_RelProbb 1;
+BA_ "GenSigSendType" SG_ 559 adas_stub_RelProbb 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_stub_PathIdx 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_stub_PathIdx 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_stub_PathIdx 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_stub_PathIdx 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_stub_PathIdx 1;
+BA_ "GenSigSendType" SG_ 559 adas_stub_PathIdx 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_stub_PartOfCalcRoute 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_stub_PartOfCalcRoute 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_stub_PartOfCalcRoute 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_stub_PartOfCalcRoute 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_stub_PartOfCalcRoute 1;
+BA_ "GenSigSendType" SG_ 559 adas_stub_PartOfCalcRoute 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_stub_Offset 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_stub_Offset 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_stub_Offset 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_stub_Offset 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_stub_Offset 1;
+BA_ "GenSigSendType" SG_ 559 adas_stub_Offset 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_stub_NumLaneOpp 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_stub_NumLaneOpp 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_stub_NumLaneOpp 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_stub_NumLaneOpp 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_stub_NumLaneOpp 1;
+BA_ "GenSigSendType" SG_ 559 adas_stub_NumLaneOpp 3;
+BA_ "GenSigStartValue" SG_ 559 adas_stub_NumLaneDrv 7;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_stub_NumLaneDrv 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_stub_NumLaneDrv 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_stub_NumLaneDrv 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_stub_NumLaneDrv 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_stub_NumLaneDrv 1;
+BA_ "GenSigSendType" SG_ 559 adas_stub_NumLaneDrv 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_stub_LastStub 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_stub_LastStub 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_stub_LastStub 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_stub_LastStub 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_stub_LastStub 1;
+BA_ "GenSigSendType" SG_ 559 adas_stub_LastStub 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_stub_FuncRoadClass 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_stub_FuncRoadClass 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_stub_FuncRoadClass 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_stub_FuncRoadClass 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_stub_FuncRoadClass 1;
+BA_ "GenSigSendType" SG_ 559 adas_stub_FuncRoadClass 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_stub_FormOfWay 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_stub_FormOfWay 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_stub_FormOfWay 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_stub_FormOfWay 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_stub_FormOfWay 1;
+BA_ "GenSigSendType" SG_ 559 adas_stub_FormOfWay 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_stub_CycCnt 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_stub_CycCnt 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_stub_CycCnt 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_stub_CycCnt 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_stub_CycCnt 1;
+BA_ "GenSigSendType" SG_ 559 adas_stub_CycCnt 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_stub_CplxInsc 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_stub_CplxInsc 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_stub_CplxInsc 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_stub_CplxInsc 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_stub_CplxInsc 1;
+BA_ "GenSigSendType" SG_ 559 adas_stub_CplxInsc 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_seg_Update 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_seg_Update 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_seg_Update 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_seg_Update 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_seg_Update 1;
+BA_ "GenSigSendType" SG_ 559 adas_seg_Update 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_seg_Tunnel 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_seg_Tunnel 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_seg_Tunnel 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_seg_Tunnel 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_seg_Tunnel 1;
+BA_ "GenSigSendType" SG_ 559 adas_seg_Tunnel 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_seg_Retr 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_seg_Retr 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_seg_Retr 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_seg_Retr 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_seg_Retr 1;
+BA_ "GenSigSendType" SG_ 559 adas_seg_Retr 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_seg_res 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_seg_res 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_seg_res 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_seg_res 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_seg_res 1;
+BA_ "GenSigSendType" SG_ 559 adas_seg_res 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_seg_RelProbb 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_seg_RelProbb 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_seg_RelProbb 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_seg_RelProbb 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_seg_RelProbb 1;
+BA_ "GenSigSendType" SG_ 559 adas_seg_RelProbb 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_seg_PathIdx 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_seg_PathIdx 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_seg_PathIdx 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_seg_PathIdx 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_seg_PathIdx 1;
+BA_ "GenSigSendType" SG_ 559 adas_seg_PathIdx 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_seg_PartOfCalcRoute 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_seg_PartOfCalcRoute 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_seg_PartOfCalcRoute 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_seg_PartOfCalcRoute 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_seg_PartOfCalcRoute 1;
+BA_ "GenSigSendType" SG_ 559 adas_seg_PartOfCalcRoute 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_seg_Offset 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_seg_Offset 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_seg_Offset 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_seg_Offset 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_seg_Offset 1;
+BA_ "GenSigSendType" SG_ 559 adas_seg_Offset 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_seg_NumLaneOpp 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_seg_NumLaneOpp 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_seg_NumLaneOpp 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_seg_NumLaneOpp 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_seg_NumLaneOpp 1;
+BA_ "GenSigSendType" SG_ 559 adas_seg_NumLaneOpp 3;
+BA_ "GenSigStartValue" SG_ 559 adas_seg_NumLaneDrv 7;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_seg_NumLaneDrv 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_seg_NumLaneDrv 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_seg_NumLaneDrv 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_seg_NumLaneDrv 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_seg_NumLaneDrv 1;
+BA_ "GenSigSendType" SG_ 559 adas_seg_NumLaneDrv 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_seg_FuncRoadClass 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_seg_FuncRoadClass 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_seg_FuncRoadClass 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_seg_FuncRoadClass 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_seg_FuncRoadClass 1;
+BA_ "GenSigSendType" SG_ 559 adas_seg_FuncRoadClass 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_seg_FormOfWay 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_seg_FormOfWay 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_seg_FormOfWay 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_seg_FormOfWay 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_seg_FormOfWay 1;
+BA_ "GenSigSendType" SG_ 559 adas_seg_FormOfWay 3;
+BA_ "GenSigStartValue" SG_ 559 adas_seg_EffSpdLimType 7;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_seg_EffSpdLimType 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_seg_EffSpdLimType 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_seg_EffSpdLimType 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_seg_EffSpdLimType 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_seg_EffSpdLimType 1;
+BA_ "GenSigSendType" SG_ 559 adas_seg_EffSpdLimType 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_seg_EffSpdLim 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_seg_EffSpdLim 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_seg_EffSpdLim 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_seg_EffSpdLim 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_seg_EffSpdLim 1;
+BA_ "GenSigSendType" SG_ 559 adas_seg_EffSpdLim 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_seg_DivRoad 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_seg_DivRoad 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_seg_DivRoad 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_seg_DivRoad 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_seg_DivRoad 1;
+BA_ "GenSigSendType" SG_ 559 adas_seg_DivRoad 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_seg_CyclCnt 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_seg_CyclCnt 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_seg_CyclCnt 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_seg_CyclCnt 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_seg_CyclCnt 1;
+BA_ "GenSigSendType" SG_ 559 adas_seg_CyclCnt 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_seg_CmplxInsct 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_seg_CmplxInsct 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_seg_CmplxInsct 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_seg_CmplxInsct 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_seg_CmplxInsct 1;
+BA_ "GenSigSendType" SG_ 559 adas_seg_CmplxInsct 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_seg_BuildUpArea 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_seg_BuildUpArea 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_seg_BuildUpArea 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_seg_BuildUpArea 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_seg_BuildUpArea 1;
+BA_ "GenSigSendType" SG_ 559 adas_seg_BuildUpArea 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_seg_Bridge 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_seg_Bridge 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_seg_Bridge 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_seg_Bridge 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_seg_Bridge 1;
+BA_ "GenSigSendType" SG_ 559 adas_seg_Bridge 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_Value1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_Value1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_Value1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_Value1 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_Value1 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_Value1 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_Value0 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_Value0 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_Value0 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_Value0 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_Value0 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_Value0 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_Update 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_Update 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_Update 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_Update 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_Update 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_Update 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_Retr 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_Retr 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_Retr 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_Retr 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_Retr 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_Retr 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_ProfType 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_ProfType 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_ProfType 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_ProfType 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_ProfType 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_ProfType 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_PathIdx 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_PathIdx 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_PathIdx 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_PathIdx 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_PathIdx 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_PathIdx 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_Offset 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_Offset 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_Offset 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_Offset 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_Offset 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_Offset 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_Dist1 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_Dist1 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_Dist1 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_Dist1 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_Dist1 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_Dist1 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_CycCnt 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_CycCnt 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_CycCnt 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_CycCnt 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_CycCnt 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_CycCnt 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_CtrlPoint 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_CtrlPoint 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_CtrlPoint 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_CtrlPoint 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_CtrlPoint 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_CtrlPoint 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pShort_AccurClass 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pShort_AccurClass 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pShort_AccurClass 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pShort_AccurClass 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pShort_AccurClass 1;
+BA_ "GenSigSendType" SG_ 559 adas_pShort_AccurClass 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_noValue 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_noValue 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_noValue 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_noValue 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_noValue 1;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_noValue 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_Update 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_Update 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_Update 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_Update 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_Update 1;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_Update 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_Retr 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_Retr 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_Retr 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_Retr 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_Retr 1;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_Retr 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_ProfType 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_ProfType 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_ProfType 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_ProfType 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_ProfType 1;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_ProfType 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_PathIdx 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_PathIdx 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_PathIdx 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_PathIdx 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_PathIdx 1;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_PathIdx 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_Offset 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_Offset 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_Offset 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_Offset 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_Offset 1;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_Offset 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_CycCnt 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_CycCnt 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_CycCnt 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_CycCnt 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_CycCnt 1;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_CycCnt 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_pLong_CtrlPoint 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_pLong_CtrlPoint 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_pLong_CtrlPoint 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_pLong_CtrlPoint 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_pLong_CtrlPoint 1;
+BA_ "GenSigSendType" SG_ 559 adas_pLong_CtrlPoint 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_meta_SpdUnits 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_meta_SpdUnits 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_meta_SpdUnits 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_meta_SpdUnits 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_meta_SpdUnits 1;
+BA_ "GenSigSendType" SG_ 559 adas_meta_SpdUnits 3;
+BA_ "GenSigStartValue" SG_ 559 adas_meta_SpdUnits 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_meta_res 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_meta_res 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_meta_res 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_meta_res 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_meta_res 1;
+BA_ "GenSigSendType" SG_ 559 adas_meta_res 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_meta_RegionCode 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_meta_RegionCode 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_meta_RegionCode 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_meta_RegionCode 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_meta_RegionCode 1;
+BA_ "GenSigSendType" SG_ 559 adas_meta_RegionCode 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_meta_ProtVerMinor 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_meta_ProtVerMinor 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_meta_ProtVerMinor 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_meta_ProtVerMinor 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_meta_ProtVerMinor 1;
+BA_ "GenSigSendType" SG_ 559 adas_meta_ProtVerMinor 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_meta_ProtVerMajor 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_meta_ProtVerMajor 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_meta_ProtVerMajor 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_meta_ProtVerMajor 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_meta_ProtVerMajor 1;
+BA_ "GenSigSendType" SG_ 559 adas_meta_ProtVerMajor 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_meta_ProtVer_MinorSub 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_meta_ProtVer_MinorSub 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_meta_ProtVer_MinorSub 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_meta_ProtVer_MinorSub 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_meta_ProtVer_MinorSub 1;
+BA_ "GenSigSendType" SG_ 559 adas_meta_ProtVer_MinorSub 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_meta_MapVerYear 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_meta_MapVerYear 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_meta_MapVerYear 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_meta_MapVerYear 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_meta_MapVerYear 1;
+BA_ "GenSigSendType" SG_ 559 adas_meta_MapVerYear 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_meta_MapVerQtr 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_meta_MapVerQtr 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_meta_MapVerQtr 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_meta_MapVerQtr 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_meta_MapVerQtr 1;
+BA_ "GenSigSendType" SG_ 559 adas_meta_MapVerQtr 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_meta_MapProvider 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_meta_MapProvider 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_meta_MapProvider 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_meta_MapProvider 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_meta_MapProvider 1;
+BA_ "GenSigSendType" SG_ 559 adas_meta_MapProvider 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_meta_HwVer 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_meta_HwVer 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_meta_HwVer 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_meta_HwVer 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_meta_HwVer 1;
+BA_ "GenSigSendType" SG_ 559 adas_meta_HwVer 3;
+BA_ "GenSigStartValue" SG_ 559 adas_meta_DrvSide 1;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_meta_DrvSide 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_meta_DrvSide 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_meta_DrvSide 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_meta_DrvSide 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_meta_DrvSide 1;
+BA_ "GenSigSendType" SG_ 559 adas_meta_DrvSide 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_meta_CycCont 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_meta_CycCont 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_meta_CycCont 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_meta_CycCont 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_meta_CycCont 1;
+BA_ "GenSigSendType" SG_ 559 adas_meta_CycCont 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 559 adas_meta_CountryCode 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 559 adas_meta_CountryCode 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 559 adas_meta_CountryCode 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 559 adas_meta_CountryCode 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 559 adas_meta_CountryCode 1;
+BA_ "GenSigSendType" SG_ 559 adas_meta_CountryCode 3;
+BA_ "GenSigSendType" SG_ 558 EhData1_No_Actl 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 EhData1_No_Actl 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 EhData1_No_Actl 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 EhData1_No_Actl 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 EhData1_No_Actl 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 EhData1_No_Actl 1;
+BA_ "GenSigStartValue" SG_ 558 EhData1_No_Actl 0;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 adas_mini_Update 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 adas_mini_Update 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 adas_mini_Update 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 adas_mini_Update 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 adas_mini_Update 1;
+BA_ "GenSigSendType" SG_ 558 adas_mini_Update 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 adas_mini_Tunnel 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 adas_mini_Tunnel 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 adas_mini_Tunnel 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 adas_mini_Tunnel 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 adas_mini_Tunnel 1;
+BA_ "GenSigSendType" SG_ 558 adas_mini_Tunnel 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 adas_mini_Retr 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 adas_mini_Retr 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 adas_mini_Retr 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 adas_mini_Retr 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 adas_mini_Retr 1;
+BA_ "GenSigSendType" SG_ 558 adas_mini_Retr 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 adas_mini_res 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 adas_mini_res 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 adas_mini_res 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 adas_mini_res 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 adas_mini_res 1;
+BA_ "GenSigSendType" SG_ 558 adas_mini_res 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 adas_mini_RelProbb 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 adas_mini_RelProbb 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 adas_mini_RelProbb 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 adas_mini_RelProbb 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 adas_mini_RelProbb 1;
+BA_ "GenSigSendType" SG_ 558 adas_mini_RelProbb 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 adas_mini_PathIdx 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 adas_mini_PathIdx 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 adas_mini_PathIdx 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 adas_mini_PathIdx 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 adas_mini_PathIdx 1;
+BA_ "GenSigSendType" SG_ 558 adas_mini_PathIdx 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 adas_mini_PartOfCalcRoute 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 adas_mini_PartOfCalcRoute 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 adas_mini_PartOfCalcRoute 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 adas_mini_PartOfCalcRoute 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 adas_mini_PartOfCalcRoute 1;
+BA_ "GenSigSendType" SG_ 558 adas_mini_PartOfCalcRoute 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 adas_mini_Offset 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 adas_mini_Offset 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 adas_mini_Offset 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 adas_mini_Offset 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 adas_mini_Offset 1;
+BA_ "GenSigSendType" SG_ 558 adas_mini_Offset 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 adas_mini_NumLaneOpp 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 adas_mini_NumLaneOpp 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 adas_mini_NumLaneOpp 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 adas_mini_NumLaneOpp 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 adas_mini_NumLaneOpp 1;
+BA_ "GenSigSendType" SG_ 558 adas_mini_NumLaneOpp 3;
+BA_ "GenSigStartValue" SG_ 558 adas_mini_NumLaneDrv 7;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 adas_mini_NumLaneDrv 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 adas_mini_NumLaneDrv 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 adas_mini_NumLaneDrv 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 adas_mini_NumLaneDrv 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 adas_mini_NumLaneDrv 1;
+BA_ "GenSigSendType" SG_ 558 adas_mini_NumLaneDrv 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 adas_mini_FuncRoadClass 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 adas_mini_FuncRoadClass 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 adas_mini_FuncRoadClass 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 adas_mini_FuncRoadClass 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 adas_mini_FuncRoadClass 1;
+BA_ "GenSigSendType" SG_ 558 adas_mini_FuncRoadClass 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 adas_mini_FormOfWay 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 adas_mini_FormOfWay 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 adas_mini_FormOfWay 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 adas_mini_FormOfWay 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 adas_mini_FormOfWay 1;
+BA_ "GenSigSendType" SG_ 558 adas_mini_FormOfWay 3;
+BA_ "GenSigStartValue" SG_ 558 adas_mini_EffSpdLimType 7;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 adas_mini_EffSpdLimType 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 adas_mini_EffSpdLimType 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 adas_mini_EffSpdLimType 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 adas_mini_EffSpdLimType 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 adas_mini_EffSpdLimType 1;
+BA_ "GenSigSendType" SG_ 558 adas_mini_EffSpdLimType 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 adas_mini_EffSpdLim 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 adas_mini_EffSpdLim 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 adas_mini_EffSpdLim 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 adas_mini_EffSpdLim 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 adas_mini_EffSpdLim 1;
+BA_ "GenSigSendType" SG_ 558 adas_mini_EffSpdLim 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 adas_mini_DivRoad 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 adas_mini_DivRoad 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 adas_mini_DivRoad 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 adas_mini_DivRoad 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 adas_mini_DivRoad 1;
+BA_ "GenSigSendType" SG_ 558 adas_mini_DivRoad 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 adas_mini_CyclCnt 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 adas_mini_CyclCnt 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 adas_mini_CyclCnt 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 adas_mini_CyclCnt 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 adas_mini_CyclCnt 1;
+BA_ "GenSigSendType" SG_ 558 adas_mini_CyclCnt 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 adas_mini_CmplxInsct 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 adas_mini_CmplxInsct 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 adas_mini_CmplxInsct 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 adas_mini_CmplxInsct 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 adas_mini_CmplxInsct 1;
+BA_ "GenSigSendType" SG_ 558 adas_mini_CmplxInsct 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 adas_mini_BuildUpArea 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 adas_mini_BuildUpArea 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 adas_mini_BuildUpArea 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 adas_mini_BuildUpArea 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 adas_mini_BuildUpArea 1;
+BA_ "GenSigSendType" SG_ 558 adas_mini_BuildUpArea 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 adas_mini_Bridge 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 adas_mini_Bridge 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 adas_mini_Bridge 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 adas_mini_Bridge 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 adas_mini_Bridge 1;
+BA_ "GenSigSendType" SG_ 558 adas_mini_Bridge 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 ADAS_Posn_Spd 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 ADAS_Posn_Spd 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 ADAS_Posn_Spd 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 ADAS_Posn_Spd 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 ADAS_Posn_Spd 1;
+BA_ "GenSigSendType" SG_ 558 ADAS_Posn_Spd 3;
+BA_ "GenSigStartValue" SG_ 558 ADAS_Posn_res 0;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 ADAS_Posn_res 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 ADAS_Posn_res 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 ADAS_Posn_res 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 ADAS_Posn_res 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 ADAS_Posn_res 1;
+BA_ "GenSigSendType" SG_ 558 ADAS_Posn_res 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 ADAS_Posn_RelHead 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 ADAS_Posn_RelHead 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 ADAS_Posn_RelHead 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 ADAS_Posn_RelHead 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 ADAS_Posn_RelHead 1;
+BA_ "GenSigSendType" SG_ 558 ADAS_Posn_RelHead 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 ADAS_Posn_PosProbb 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 ADAS_Posn_PosProbb 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 ADAS_Posn_PosProbb 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 ADAS_Posn_PosProbb 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 ADAS_Posn_PosProbb 1;
+BA_ "GenSigSendType" SG_ 558 ADAS_Posn_PosProbb 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 ADAS_Posn_PosConf 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 ADAS_Posn_PosConf 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 ADAS_Posn_PosConf 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 ADAS_Posn_PosConf 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 ADAS_Posn_PosConf 1;
+BA_ "GenSigSendType" SG_ 558 ADAS_Posn_PosConf 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 ADAS_Posn_PathIdx 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 ADAS_Posn_PathIdx 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 ADAS_Posn_PathIdx 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 ADAS_Posn_PathIdx 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 ADAS_Posn_PathIdx 1;
+BA_ "GenSigSendType" SG_ 558 ADAS_Posn_PathIdx 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 ADAS_Posn_Offset 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 ADAS_Posn_Offset 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 ADAS_Posn_Offset 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 ADAS_Posn_Offset 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 ADAS_Posn_Offset 1;
+BA_ "GenSigSendType" SG_ 558 ADAS_Posn_Offset 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 ADAS_Posn_PosIdx 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 ADAS_Posn_PosIdx 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 ADAS_Posn_PosIdx 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 ADAS_Posn_PosIdx 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 ADAS_Posn_PosIdx 1;
+BA_ "GenSigSendType" SG_ 558 ADAS_Posn_PosIdx 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 ADAS_Posn_CycCnt 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 ADAS_Posn_CycCnt 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 ADAS_Posn_CycCnt 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 ADAS_Posn_CycCnt 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 ADAS_Posn_CycCnt 1;
+BA_ "GenSigSendType" SG_ 558 ADAS_Posn_CycCnt 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 ADAS_Posn_CurLane 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 ADAS_Posn_CurLane 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 ADAS_Posn_CurLane 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 ADAS_Posn_CurLane 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 ADAS_Posn_CurLane 1;
+BA_ "GenSigSendType" SG_ 558 ADAS_Posn_CurLane 3;
+BA_ "GenSigSendType" SG_ 558 ADAS_Posn_PosAge 3;
+BA_ "UsedOnCD42Gas_MY14" SG_ 558 ADAS_Posn_PosAge 1;
+BA_ "UsedOnCD42Diesel_MY14" SG_ 558 ADAS_Posn_PosAge 1;
+BA_ "UsedOnCD4Diesel_MY13" SG_ 558 ADAS_Posn_PosAge 1;
+BA_ "UsedOnCD4Hev_MY13" SG_ 558 ADAS_Posn_PosAge 1;
+BA_ "UsedOnCD4Gas_MY13" SG_ 558 ADAS_Posn_PosAge 1;
+VAL_ 559 adas_pShort_TurnLaneRoute1 1 "onRoute" 0 "notOnRoute" ;
+VAL_ 559 adas_pShort_TurnLaneDire1 4 "noTurnLane" 3 " Restricted (no turns allowed)" 2 "Right" 1 "Left" 0 "Bi-directional" ;
+VAL_ 559 adas_pShort_SpeedCategory1 1023 "NA" 8 "<11 KPH" 7 "11- 30 KPH" 6 "31- 50 KPH" 5 "51- 70 KPH" 4 "71- 90 KPH" 3 "91-100 KPH" 2 "101-130 KPH" 1 ">130 KPH" 0 "Unkown" ;
+VAL_ 559 adas_pShort_PostedSpeedLimit1 31 "Invalid" 30 "Unlimited" 29 "160" 28 "150" 27 "140" 26 "130" 25 "120" 24 "115" 23 "110" 22 "105" 21 "100" 20 "95" 19 "90" 18 "85" 17 "80" 16 "75" 15 "70" 14 "65" 13 "60" 12 "55" 11 "50" 10 "45" 9 "40" 8 "35" 7 "30" 6 "25" 5 "20" 4 "15" 3 "10" 2 "7" 1 "<= 5" 0 "Unknown" ;
+VAL_ 559 adas_pShort_NumLaneOpposite1 7 "N/A" 6 "6 or more" 0 "One-direction/Wrong-Way" ;
+VAL_ 559 adas_pShort_ImpliSpdLimitType1 256 "above 5th lane" 128 "above 4th lane" 64 "above 3rdl lane" 32 "above 2nd lane" 16 "above 1st lane" 8 "above Emergency lane" 4 "right of road" 2 "left of road" 1 "not defined position" 0 "unkown" ;
+VAL_ 559 adas_pShort_ImplicitSpeedLimit1 31 "Invalid" 30 "Unlimited" 29 "160" 28 "150" 27 "140" 26 "130" 25 "120" 24 "115" 23 "110" 22 "105" 21 "100" 20 "95" 19 "90" 18 "85" 17 "80" 16 "75" 15 "70" 14 "65" 13 "60" 12 "55" 11 "50" 10 "45" 9 "40" 8 "35" 7 "30" 6 "25" 5 "20" 4 "15" 3 "10" 2 "7" 1 "<= 5" 0 "Unknown" ;
+VAL_ 559 adas_pShort_CondiSpdLimType3_1 7 "Unknown" 6 "Explicit - snow" 5 "Explicit - rain" 4 "Explicit - time of day" 3 "Explicit - by day" 2 "Explicit - by night" 1 "Explicit - on traffic sign" 0 "Implicit" ;
+VAL_ 559 adas_pShort_CondiSpdLimType2_1 7 "Unknown" 6 "Explicit - snow" 5 "Explicit - rain" 4 "Explicit - time of day" 3 "Explicit - by day" 2 "Explicit - by night" 1 "Explicit - on traffic sign" 0 "Implicit" ;
+VAL_ 559 adas_pShort_CondiSpdLimType1_1 7 "Unknown" 6 "Explicit - snow" 5 "Explicit - rain" 4 "Explicit - time of day" 3 "Explicit - by day" 2 "Explicit - by night" 1 "Explicit - on traffic sign" 0 "Implicit" ;
+VAL_ 559 adas_pShort_CondiSpdLimit3_1 31 "Invalid" 30 "Unlimited" 29 "160" 28 "150" 27 "140" 26 "130" 25 "120" 24 "115" 23 "110" 22 "105" 21 "100" 20 "95" 19 "90" 18 "85" 17 "80" 16 "75" 15 "70" 14 "65" 13 "60" 12 "55" 11 "50" 10 "45" 9 "40" 8 "35" 7 "30" 6 "25" 5 "20" 4 "15" 3 "10" 2 "7" 1 "<= 5" 0 "Unknown" ;
+VAL_ 559 adas_pShort_CondiSpdLimit2_1 31 "Invalid" 30 "Unlimited" 29 "160" 28 "150" 27 "140" 26 "130" 25 "120" 24 "115" 23 "110" 22 "105" 21 "100" 20 "95" 19 "90" 18 "85" 17 "80" 16 "75" 15 "70" 14 "65" 13 "60" 12 "55" 11 "50" 10 "45" 9 "40" 8 "35" 7 "30" 6 "25" 5 "20" 4 "15" 3 "10" 2 "7" 1 "<= 5" 0 "Unknown" ;
+VAL_ 559 adas_pShort_CondiSpdLimit1_1 31 "Invalid" 30 "Unlimited" 29 "160" 28 "150" 27 "140" 26 "130" 25 "120" 24 "115" 23 "110" 22 "105" 21 "100" 20 "95" 19 "90" 18 "85" 17 "80" 16 "75" 15 "70" 14 "65" 13 "60" 12 "55" 11 "50" 10 "45" 9 "40" 8 "35" 7 "30" 6 "25" 5 "20" 4 "15" 3 "10" 2 "7" 1 "<= 5" 0 "Unknown" ;
+VAL_ 559 adas_pShort_CondiSpdActive3_1 2 "Inactive" 1 "Active" 0 "Unkown" ;
+VAL_ 559 adas_pShort_CondiSpdActive2_1 2 "Inactive" 1 "Active" 0 "Unkown" ;
+VAL_ 559 adas_pShort_CondiSpdActive1_1 2 "Inactive" 1 "Active" 0 "Unkown" ;
+VAL_ 559 adas_pShort_VariableSpeedLimit1 256 "above 5th lane" 128 "above 4th lane" 64 "above 3rdl lane" 32 "above 2nd lane" 16 "above 1st lane" 8 "above Emergency lane" 4 "right of road" 2 "left of road" 1 "not defined position" 0 "unkown" ;
+VAL_ 559 adas_pShort_RoadCond1 255 "Unkown" 254 "good/gravel" 253 "good" 252 "good/flexible" 251 "good" 250 "good/blocks" 249 "good/dirt" 248 "good/rigid" 247 "poor" 246 "poor/gravel" 245 "poor" 244 "poor/flexible" 243 "poor" 0 "invalid raod condition" 242 "poor/blocks" 241 "poor/dirt" 240 "poor/rigid" ;
+VAL_ 559 adas_pShort_HeadingChange1 255 "N/A" 254 "Unknown" ;
+VAL_ 559 adas_pShort_VariableSpeedLimit0 256 "above 5th lane" 128 "above 4th lane" 64 "above 3rdl lane" 32 "above 2nd lane" 16 "above 1st lane" 8 "above Emergency lane" 4 "right of road" 2 "left of road" 1 "not defined position" 0 "unkown" ;
+VAL_ 559 adas_pShort_TurnLaneRoute 1 "onRoute" 0 "notOnRoute" ;
+VAL_ 559 adas_pShort_TurnLaneDire 4 "noTurnLane" 3 " Restricted (no turns allowed)" 2 "Right" 1 "Left" 0 "Bi-directional" ;
+VAL_ 559 adas_pShort_SpeedCategory 1023 "NA" 8 "<11 KPH" 7 "11- 30 KPH" 6 "31- 50 KPH" 5 "51- 70 KPH" 4 "71- 90 KPH" 3 "91-100 KPH" 2 "101-130 KPH" 1 ">130 KPH" 0 "Unkown" ;
+VAL_ 559 adas_pShort_RoutNrTyp1 64 "Route Number Type 6" 32 "Route Number Type 5" 16 "Route Number Type 4" 15 "invalid RNT" 14 "Route Number Type 3 + 2 + 1" 13 "invalid RNT" 12 "Route Number Type 3 + 2" 11 "invalid RNT" 10 "Route Number Typ 3 + 1" 9 "invalid RNT" 8 "Route Number Type 3" 7 "invalid RNT" 6 "Route Number Type 2 + 1" 5 "invalid RNT" 4 "RouteNumberType 2" 3 "invalid RNT" 2 "RouteNumberType 1" 1 "No RouteNumberType" 0 "NA" ;
+VAL_ 559 adas_pShort_RoutNrTyp0 64 "Route Number Type 6" 32 "Route Number Type 5" 16 "Route Number Type 4" 15 "invalid RNT" 14 "Route Number Type 3 + 2 + 1" 13 "invalid RNT" 12 "Route Number Type 3 + 2" 11 "invalid RNT" 10 "Route Number Typ 3 + 1" 9 "invalid RNT" 8 "Route Number Type 3" 7 "invalid RNT" 6 "Route Number Type 2 + 1" 5 "invalid RNT" 4 "RouteNumberType 2" 3 "invalid RNT" 2 "RouteNumberType 1" 1 "No RouteNumberType" 0 "NA" ;
+VAL_ 559 adas_pShort_RoadCondi0 255 "Unkown" 254 "good/gravel" 253 "good" 252 "good/flexible" 251 "good" 250 "good/blocks" 249 "good/dirt" 248 "good/rigid" 247 "poor" 246 "poor/gravel" 245 "poor" 244 "poor/flexible" 243 "poor" 0 "invalid raod condition" 242 "poor/blocks" 241 "poor/dirt" 240 "poor/rigid" ;
+VAL_ 559 adas_pShort_PostedSpeedLimit 31 "Invalid" 30 "Unlimited" 29 "160" 28 "150" 27 "140" 26 "130" 25 "120" 24 "115" 23 "110" 22 "105" 21 "100" 20 "95" 19 "90" 18 "85" 17 "80" 16 "75" 15 "70" 14 "65" 13 "60" 12 "55" 11 "50" 10 "45" 9 "40" 8 "35" 7 "30" 6 "25" 5 "20" 4 "15" 3 "10" 2 "7" 1 "<= 5" 0 "Unknown" ;
+VAL_ 559 adas_pShort_NumLaneOpposite 7 "N/A" 6 "6 or more" 0 "One-direction/Wrong-Way" ;
+VAL_ 559 adas_pShort_ImpliSpdLimitType 256 "above 5th lane" 128 "above 4th lane" 64 "above 3rdl lane" 32 "above 2nd lane" 16 "above 1st lane" 8 "above Emergency lane" 4 "right of road" 2 "left of road" 1 "not defined position" 0 "unkown" ;
+VAL_ 559 adas_pShort_ImplicitSpeedLimit 31 "Invalid" 30 "Unlimited" 29 "160" 28 "150" 27 "140" 26 "130" 25 "120" 24 "115" 23 "110" 22 "105" 21 "100" 20 "95" 19 "90" 18 "85" 17 "80" 16 "75" 15 "70" 14 "65" 13 "60" 12 "55" 11 "50" 10 "45" 9 "40" 8 "35" 7 "30" 6 "25" 5 "20" 4 "15" 3 "10" 2 "7" 1 "<= 5" 0 "Unknown" ;
+VAL_ 559 adas_pShort_HeadingChange0 255 "N/A" 254 "Unknown" ;
+VAL_ 559 adas_pShort_Curvature1 0 "-0.16256" 1 "-0.16128" 2 "-0.16" 3 "-0.15872" 4 "-0.15744" 5 "-0.15616" 6 "-0.15488" 7 "-0.1536" 8 "-0.15232" 9 "-0.15104" 10 "-0.14976" 11 "-0.14848" 12 "-0.1472" 13 "-0.14592" 14 "-0.14464" 15 "-0.14336" 16 "-0.14208" 17 "-0.1408" 18 "-0.13952" 19 "-0.13824" 20 "-0.13696" 21 "-0.13568" 22 "-0.1344" 23 "-0.13312" 24 "-0.13184" 25 "-0.13056" 26 "-0.12928" 27 "-0.128" 28 "-0.12672" 29 "-0.12544" 30 "-0.12416" 31 "-0.12288" 32 "-0.1216" 33 "-0.12032" 34 "-0.11904" 35 "-0.11776" 36 "-0.11648" 37 "-0.1152" 38 "-0.11392" 39 "-0.11264" 40 "-0.11136" 41 "-0.11008" 42 "-0.1088" 43 "-0.10752" 44 "-0.10624" 45 "-0.10496" 46 "-0.10368" 47 "-0.1024" 48 "-0.10112" 49 "-0.09984" 50 "-0.09856" 51 "-0.09728" 52 "-0.096" 53 "-0.09472" 54 "-0.09344" 55 "-0.09216" 56 "-0.09088" 57 "-0.0896" 58 "-0.08832" 59 "-0.08704" 60 "-0.08576" 61 "-0.08448" 62 "-0.0832" 63 "-0.08128" 64 "-0.08064" 65 "-0.08" 66 "-0.07936" 67 "-0.07872" 68 "-0.07808" 69 "-0.07744" 70 "-0.0768" 71 "-0.07616" 72 "-0.07552" 73 "-0.07488" 74 "-0.07424" 75 "-0.0736" 76 "-0.07296" 77 "-0.07232" 78 "-0.07168" 79 "-0.07104" 80 "-0.0704" 81 "-0.06976" 82 "-0.06912" 83 "-0.06848" 84 "-0.06784" 85 "-0.0672" 86 "-0.06656" 87 "-0.06592" 88 "-0.06528" 89 "-0.06464" 90 "-0.064" 91 "-0.06336" 92 "-0.06272" 93 "-0.06208" 94 "-0.06144" 95 "-0.0608" 96 "-0.06016" 97 "-0.05952" 98 "-0.05888" 99 "-0.05824" 100 "-0.0576" 101 "-0.05696" 102 "-0.05632" 103 "-0.05568" 104 "-0.05504" 105 "-0.0544" 106 "-0.05376" 107 "-0.05312" 108 "-0.05248" 109 "-0.05184" 110 "-0.0512" 111 "-0.05056" 112 "-0.04992" 113 "-0.04928" 114 "-0.04864" 115 "-0.048" 116 "-0.04736" 117 "-0.04672" 118 "-0.04608" 119 "-0.04544" 120 "-0.0448" 121 "-0.04416" 122 "-0.04352" 123 "-0.04288" 124 "-0.04224" 125 "-0.0416" 126 "-0.04096" 127 "-0.04032" 128 "-0.04" 129 "-0.03968" 130 "-0.03936" 131 "-0.03904" 132 "-0.03872" 133 "-0.0384" 134 "-0.03808" 135 "-0.03776" 136 "-0.03744" 137 "-0.03712" 138 "-0.0368" 139 "-0.03648" 140 "-0.03616" 141 "-0.03584" 142 "-0.03552" 143 "-0.0352" 144 "-0.03488" 145 "-0.03456" 146 "-0.03424" 147 "-0.03392" 148 "-0.0336" 149 "-0.03328" 150 "-0.03296" 151 "-0.03264" 152 "-0.03232" 153 "-0.032" 154 "-0.03168" 155 "-0.03136" 156 "-0.03104" 157 "-0.03072" 158 "-0.0304" 159 "-0.03008" 160 "-0.02976" 161 "-0.02944" 162 "-0.02912" 163 "-0.0288" 164 "-0.02848" 165 "-0.02816" 166 "-0.02784" 167 "-0.02752" 168 "-0.0272" 169 "-0.02688" 170 "-0.02656" 171 "-0.02624" 172 "-0.02592" 173 "-0.0256" 174 "-0.02528" 175 "-0.02496" 176 "-0.02464" 177 "-0.02432" 178 "-0.024" 179 "-0.02368" 180 "-0.02336" 181 "-0.02304" 182 "-0.02272" 183 "-0.0224" 184 "-0.02208" 185 "-0.02176" 186 "-0.02144" 187 "-0.02112" 188 "-0.0208" 189 "-0.02048" 190 "-0.02016" 191 "-0.01984" 192 "-0.01968" 193 "-0.01952" 194 "-0.01936" 195 "-0.0192" 196 "-0.01904" 197 "-0.01888" 198 "-0.01872" 199 "-0.01856" 200 "-0.0184" 201 "-0.01824" 202 "-0.01808" 203 "-0.01792" 204 "-0.01776" 205 "-0.0176" 206 "-0.01744" 207 "-0.01728" 208 "-0.01712" 209 "-0.01696" 210 "-0.0168" 211 "-0.01664" 212 "-0.01648" 213 "-0.01632" 214 "-0.01616" 215 "-0.016" 216 "-0.01584" 217 "-0.01568" 218 "-0.01552" 219 "-0.01536" 220 "-0.0152" 221 "-0.01504" 222 "-0.01488" 223 "-0.01472" 224 "-0.01456" 225 "-0.0144" 226 "-0.01424" 227 "-0.01408" 228 "-0.01392" 229 "-0.01376" 230 "-0.0136" 231 "-0.01344" 232 "-0.01328" 233 "-0.01312" 234 "-0.01296" 235 "-0.0128" 236 "-0.01264" 237 "-0.01248" 238 "-0.01232" 239 "-0.01216" 240 "-0.012" 241 "-0.01184" 242 "-0.01168" 243 "-0.01152" 244 "-0.01136" 245 "-0.0112" 246 "-0.01104" 247 "-0.01088" 248 "-0.01072" 249 "-0.01056" 250 "-0.0104" 251 "-0.01024" 252 "-0.01008" 253 "-0.00992" 254 "-0.00976" 255 "-0.0096" 256 "-0.00952" 257 "-0.00944" 258 "-0.00936" 259 "-0.00928" 260 "-0.0092" 261 "-0.00912" 262 "-0.00904" 263 "-0.00896" 264 "-0.00888" 265 "-0.0088" 266 "-0.00872" 267 "-0.00864" 268 "-0.00856" 269 "-0.00848" 270 "-0.0084" 271 "-0.00832" 272 "-0.00824" 273 "-0.00816" 274 "-0.00808" 275 "-0.008" 276 "-0.00792" 277 "-0.00784" 278 "-0.00776" 279 "-0.00768" 280 "-0.0076" 281 "-0.00752" 282 "-0.00744" 283 "-0.00736" 284 "-0.00728" 285 "-0.0072" 286 "-0.00712" 287 "-0.00704" 288 "-0.00696" 289 "-0.00688" 290 "-0.0068" 291 "-0.00672" 292 "-0.00664" 293 "-0.00656" 294 "-0.00648" 295 "-0.0064" 296 "-0.00632" 297 "-0.00624" 298 "-0.00616" 299 "-0.00608" 300 "-0.006" 301 "-0.00592" 302 "-0.00584" 303 "-0.00576" 304 "-0.00568" 305 "-0.0056" 306 "-0.00552" 307 "-0.00544" 308 "-0.00536" 309 "-0.00528" 310 "-0.0052" 311 "-0.00512" 312 "-0.00504" 313 "-0.00496" 314 "-0.00488" 315 "-0.0048" 316 "-0.00472" 317 "-0.00464" 318 "-0.00456" 319 "-0.00448" 320 "-0.00444" 321 "-0.0044" 322 "-0.00436" 323 "-0.00432" 324 "-0.00428" 325 "-0.00424" 326 "-0.0042" 327 "-0.00416" 328 "-0.00412" 329 "-0.00408" 330 "-0.00404" 331 "-0.004" 332 "-0.00396" 333 "-0.00392" 334 "-0.00388" 335 "-0.00384" 336 "-0.0038" 337 "-0.00376" 338 "-0.00372" 339 "-0.00368" 340 "-0.00364" 341 "-0.0036" 342 "-0.00356" 343 "-0.00352" 344 "-0.00348" 345 "-0.00344" 346 "-0.0034" 347 "-0.00336" 348 "-0.00332" 349 "-0.00328" 350 "-0.00324" 351 "-0.0032" 352 "-0.00316" 353 "-0.00312" 354 "-0.00308" 355 "-0.00304" 356 "-0.003" 357 "-0.00296" 358 "-0.00292" 359 "-0.00288" 360 "-0.00284" 361 "-0.0028" 362 "-0.00276" 363 "-0.00272" 364 "-0.00268" 365 "-0.00264" 366 "-0.0026" 367 "-0.00256" 368 "-0.00252" 369 "-0.00248" 370 "-0.00244" 371 "-0.0024" 372 "-0.00236" 373 "-0.00232" 374 "-0.00228" 375 "-0.00224" 376 "-0.0022" 377 "-0.00216" 378 "-0.00212" 379 "-0.00208" 380 "-0.00204" 381 "-0.002" 382 "-0.00196" 383 "-0.00192" 384 "-0.0019" 385 "-0.00188" 386 "-0.00186" 387 "-0.00184" 388 "-0.00182" 389 "-0.0018" 390 "-0.00178" 391 "-0.00176" 392 "-0.00174" 393 "-0.00172" 394 "-0.0017" 395 "-0.00168" 396 "-0.00166" 397 "-0.00164" 398 "-0.00162" 399 "-0.0016" 400 "-0.00158" 401 "-0.00156" 402 "-0.00154" 403 "-0.00152" 404 "-0.0015" 405 "-0.00148" 406 "-0.00146" 407 "-0.00144" 408 "-0.00142" 409 "-0.0014" 410 "-0.00138" 411 "-0.00136" 412 "-0.00134" 413 "-0.00132" 414 "-0.0013" 415 "-0.00128" 416 "-0.00126" 417 "-0.00124" 418 "-0.00122" 419 "-0.0012" 420 "-0.00118" 421 "-0.00116" 422 "-0.00114" 423 "-0.00112" 424 "-0.0011" 425 "-0.00108" 426 "-0.00106" 427 "-0.00104" 428 "-0.00102" 429 "-0.001" 430 "-0.00098" 431 "-0.00096" 432 "-0.00094" 433 "-0.00092" 434 "-0.0009" 435 "-0.00088" 436 "-0.00086" 437 "-0.00084" 438 "-0.00082" 439 "-0.0008" 440 "-0.00078" 441 "-0.00076" 442 "-0.00074" 443 "-0.00072" 444 "-0.0007" 445 "-0.00068" 446 "-0.00066" 447 "-0.00064" 448 "-0.00063" 449 "-0.00062" 450 "-0.00061" 451 "-0.0006" 452 "-0.00059" 453 "-0.00058" 454 "-0.00057" 455 "-0.00056" 456 "-0.00055" 457 "-0.00054" 458 "-0.00053" 459 "-0.00052" 460 "-0.00051" 461 "-0.0005" 462 "-0.00049" 463 "-0.00048" 464 "-0.00047" 465 "-0.00046" 466 "-0.00045" 467 "-0.00044" 468 "-0.00043" 469 "-0.00042" 470 "-0.00041" 471 "-0.0004" 472 "-0.00039" 473 "-0.00038" 474 "-0.00037" 475 "-0.00036" 476 "-0.00035" 477 "-0.00034" 478 "-0.00033" 479 "-0.00032" 480 "-0.00031" 481 "-0.0003" 482 "-0.00029" 483 "-0.00028" 484 "-0.00027" 485 "-0.00026" 486 "-0.00025" 487 "-0.00024" 488 "-0.00023" 489 "-0.00022" 490 "-0.00021" 491 "-0.0002" 492 "-0.00019" 493 "-0.00018" 494 "-0.00017" 495 "-0.00016" 496 "-0.00015" 497 "-0.00014" 498 "-0.00013" 499 "-0.00012" 500 "-0.00011" 501 "-0.0001" 502 "-0.00009" 503 "-0.00008" 504 "-0.00007" 505 "-0.00006" 506 "-0.00005" 507 "-0.00004" 508 "-0.00003" 509 "-0.00002" 510 "-0.00001" 511 "0" 512 "0.00001" 513 "0.00002" 514 "0.00003" 515 "0.00004" 516 "0.00005" 517 "0.00006" 518 "0.00007" 519 "0.00008" 520 "0.00009" 521 "0.0001" 522 "0.00011" 523 "0.00012" 524 "0.00013" 525 "0.00014" 526 "0.00015" 527 "0.00016" 528 "0.00017" 529 "0.00018" 530 "0.00019" 531 "0.0002" 532 "0.00021" 533 "0.00022" 534 "0.00023" 535 "0.00024" 536 "0.00025" 537 "0.00026" 538 "0.00027" 539 "0.00028" 540 "0.00029" 541 "0.0003" 542 "0.00031" 543 "0.00032" 544 "0.00033" 545 "0.00034" 546 "0.00035" 547 "0.00036" 548 "0.00037" 549 "0.00038" 550 "0.00039" 551 "0.0004" 552 "0.00041" 553 "0.00042" 554 "0.00043" 555 "0.00044" 556 "0.00045" 557 "0.00046" 558 "0.00047" 559 "0.00048" 560 "0.00049" 561 "0.0005" 562 "0.00051" 563 "0.00052" 564 "0.00053" 565 "0.00054" 566 "0.00055" 567 "0.00056" 568 "0.00057" 569 "0.00058" 570 "0.00059" 571 "0.0006" 572 "0.00061" 573 "0.00062" 574 "0.00063" 575 "0.00064" 576 "0.00066" 577 "0.00068" 578 "0.0007" 579 "0.00072" 580 "0.00074" 581 "0.00076" 582 "0.00078" 583 "0.0008" 584 "0.00082" 585 "0.00084" 586 "0.00086" 587 "0.00088" 588 "0.0009" 589 "0.00092" 590 "0.00094" 591 "0.00096" 592 "0.00098" 593 "0.001" 594 "0.00102" 595 "0.00104" 596 "0.00106" 597 "0.00108" 598 "0.0011" 599 "0.00112" 600 "0.00114" 601 "0.00116" 602 "0.00118" 603 "0.0012" 604 "0.00122" 605 "0.00124" 606 "0.00126" 607 "0.00128" 608 "0.0013" 609 "0.00132" 610 "0.00134" 611 "0.00136" 612 "0.00138" 613 "0.0014" 614 "0.00142" 615 "0.00144" 616 "0.00146" 617 "0.00148" 618 "0.0015" 619 "0.00152" 620 "0.00154" 621 "0.00156" 622 "0.00158" 623 "0.0016" 624 "0.00162" 625 "0.00164" 626 "0.00166" 627 "0.00168" 628 "0.0017" 629 "0.00172" 630 "0.00174" 631 "0.00176" 632 "0.00178" 633 "0.0018" 634 "0.00182" 635 "0.00184" 636 "0.00186" 637 "0.00188" 638 "0.0019" 639 "0.00192" 640 "0.00196" 641 "0.002" 642 "0.00204" 643 "0.00208" 644 "0.00212" 645 "0.00216" 646 "0.0022" 647 "0.00224" 648 "0.00228" 649 "0.00232" 650 "0.00236" 651 "0.0024" 652 "0.00244" 653 "0.00248" 654 "0.00252" 655 "0.00256" 656 "0.0026" 657 "0.00264" 658 "0.00268" 659 "0.00272" 660 "0.00276" 661 "0.0028" 662 "0.00284" 663 "0.00288" 664 "0.00292" 665 "0.00296" 666 "0.003" 667 "0.00304" 668 "0.00308" 669 "0.00312" 670 "0.00316" 671 "0.0032" 672 "0.00324" 673 "0.00328" 674 "0.00332" 675 "0.00336" 676 "0.0034" 677 "0.00344" 678 "0.00348" 679 "0.00352" 680 "0.00356" 681 "0.0036" 682 "0.00364" 683 "0.00368" 684 "0.00372" 685 "0.00376" 686 "0.0038" 687 "0.00384" 688 "0.00388" 689 "0.00392" 690 "0.00396" 691 "0.004" 692 "0.00404" 693 "0.00408" 694 "0.00412" 695 "0.00416" 696 "0.0042" 697 "0.00424" 698 "0.00428" 699 "0.00432" 700 "0.00436" 701 "0.0044" 702 "0.00444" 703 "0.00448" 704 "0.00456" 705 "0.00464" 706 "0.00472" 707 "0.0048" 708 "0.00488" 709 "0.00496" 710 "0.00504" 711 "0.00512" 712 "0.0052" 713 "0.00528" 714 "0.00536" 715 "0.00544" 716 "0.00552" 717 "0.0056" 718 "0.00568" 719 "0.00576" 720 "0.00584" 721 "0.00592" 722 "0.006" 723 "0.00608" 724 "0.00616" 725 "0.00624" 726 "0.00632" 727 "0.0064" 728 "0.00648" 729 "0.00656" 730 "0.00664" 731 "0.00672" 732 "0.0068" 733 "0.00688" 734 "0.00696" 735 "0.00704" 736 "0.00712" 737 "0.0072" 738 "0.00728" 739 "0.00736" 740 "0.00744" 741 "0.00752" 742 "0.0076" 743 "0.00768" 744 "0.00776" 745 "0.00784" 746 "0.00792" 747 "0.008" 748 "0.00808" 749 "0.00816" 750 "0.00824" 751 "0.00832" 752 "0.0084" 753 "0.00848" 754 "0.00856" 755 "0.00864" 756 "0.00872" 757 "0.0088" 758 "0.00888" 759 "0.00896" 760 "0.00904" 761 "0.00912" 762 "0.0092" 763 "0.00928" 764 "0.00936" 765 "0.00944" 766 "0.00952" 767 "0.0096" 768 "0.00976" 769 "0.00992" 770 "0.01008" 771 "0.01024" 772 "0.0104" 773 "0.01056" 774 "0.01072" 775 "0.01088" 776 "0.01104" 777 "0.0112" 778 "0.01136" 779 "0.01152" 780 "0.01168" 781 "0.01184" 782 "0.012" 783 "0.01216" 784 "0.01232" 785 "0.01248" 786 "0.01264" 787 "0.0128" 788 "0.01296" 789 "0.01312" 790 "0.01328" 791 "0.01344" 792 "0.0136" 793 "0.01376" 794 "0.01392" 795 "0.01408" 796 "0.01424" 797 "0.0144" 798 "0.01456" 799 "0.01472" 800 "0.01488" 801 "0.01504" 802 "0.0152" 803 "0.01536" 804 "0.01552" 805 "0.01568" 806 "0.01584" 807 "0.016" 808 "0.01616" 809 "0.01632" 810 "0.01648" 811 "0.01664" 812 "0.0168" 813 "0.01696" 814 "0.01712" 815 "0.01728" 816 "0.01744" 817 "0.0176" 818 "0.01776" 819 "0.01792" 820 "0.01808" 821 "0.01824" 822 "0.0184" 823 "0.01856" 824 "0.01872" 825 "0.01888" 826 "0.01904" 827 "0.0192" 828 "0.01936" 829 "0.01952" 830 "0.01968" 831 "0.01984" 832 "0.02016" 833 "0.02048" 834 "0.0208" 835 "0.02112" 836 "0.02144" 837 "0.02176" 838 "0.02208" 839 "0.0224" 840 "0.02272" 841 "0.02304" 842 "0.02336" 843 "0.02368" 844 "0.024" 845 "0.02432" 846 "0.02464" 847 "0.02496" 848 "0.02528" 849 "0.0256" 850 "0.02592" 851 "0.02624" 852 "0.02656" 853 "0.02688" 854 "0.0272" 855 "0.02752" 856 "0.02784" 857 "0.02816" 858 "0.02848" 859 "0.0288" 860 "0.02912" 861 "0.02944" 862 "0.02976" 863 "0.03008" 864 "0.0304" 865 "0.03072" 866 "0.03104" 867 "0.03136" 868 "0.03168" 869 "0.032" 870 "0.03232" 871 "0.03264" 872 "0.03296" 873 "0.03328" 874 "0.0336" 875 "0.03392" 876 "0.03424" 877 "0.03456" 878 "0.03488" 879 "0.0352" 880 "0.03552" 881 "0.03584" 882 "0.03616" 883 "0.03648" 884 "0.0368" 885 "0.03712" 886 "0.03744" 887 "0.03776" 888 "0.03808" 889 "0.0384" 890 "0.03872" 891 "0.03904" 892 "0.03936" 893 "0.03968" 894 "0.04" 895 "0.04032" 896 "0.04096" 897 "0.0416" 898 "0.04224" 899 "0.04288" 900 "0.04352" 901 "0.04416" 902 "0.0448" 903 "0.04544" 904 "0.04608" 905 "0.04672" 906 "0.04736" 907 "0.048" 908 "0.04864" 909 "0.04928" 910 "0.04992" 911 "0.05056" 912 "0.0512" 913 "0.05184" 914 "0.05248" 915 "0.05312" 916 "0.05376" 917 "0.0544" 918 "0.05504" 919 "0.05568" 920 "0.05632" 921 "0.05696" 922 "0.0576" 923 "0.05824" 924 "0.05888" 925 "0.05952" 926 "0.06016" 927 "0.0608" 928 "0.06144" 929 "0.06208" 930 "0.06272" 931 "0.06336" 932 "0.064" 933 "0.06464" 934 "0.06528" 935 "0.06592" 936 "0.06656" 937 "0.0672" 938 "0.06784" 939 "0.06848" 940 "0.06912" 941 "0.06976" 942 "0.0704" 943 "0.07104" 944 "0.07168" 945 "0.07232" 946 "0.07296" 947 "0.0736" 948 "0.07424" 949 "0.07488" 950 "0.07552" 951 "0.07616" 952 "0.0768" 953 "0.07744" 954 "0.07808" 955 "0.07872" 956 "0.07936" 957 "0.08" 958 "0.08064" 959 "0.08128" 960 "0.08256" 961 "0.08384" 962 "0.08512" 963 "0.0864" 964 "0.08768" 965 "0.08896" 966 "0.09024" 967 "0.09152" 968 "0.0928" 969 "0.09408" 970 "0.09536" 971 "0.09664" 972 "0.09792" 973 "0.0992" 974 "0.10048" 975 "0.10176" 976 "0.10304" 977 "0.10432" 978 "0.1056" 979 "0.10688" 980 "0.10816" 981 "0.10944" 982 "0.11072" 983 "0.112" 984 "0.11328" 985 "0.11456" 986 "0.11584" 987 "0.11712" 988 "0.1184" 989 "0.11968" 990 "0.12096" 991 "0.12224" 992 "0.12352" 993 "0.1248" 994 "0.12608" 995 "0.12736" 996 "0.12864" 997 "0.12992" 998 "0.1312" 999 "0.13248" 1000 "0.13376" 1001 "0.13504" 1002 "0.13632" 1003 "0.1376" 1004 "0.13888" 1005 "0.14016" 1006 "0.14144" 1007 "0.14272" 1008 "0.144" 1009 "0.14528" 1010 "0.14656" 1011 "0.14784" 1012 "0.14912" 1013 "0.1504" 1014 "0.15168" 1015 "0.15296" 1016 "0.15424" 1017 "0.15552" 1018 "0.1568" 1019 "0.15808" 1020 "0.15936" 1021 "0.16064" 1022 ">0.16192" 1023 "Unkown" ;
+VAL_ 559 adas_pShort_Curvature0 0 "-0.16256" 1 "-0.16128" 2 "-0.16" 3 "-0.15872" 4 "-0.15744" 5 "-0.15616" 6 "-0.15488" 7 "-0.1536" 8 "-0.15232" 9 "-0.15104" 10 "-0.14976" 11 "-0.14848" 12 "-0.1472" 13 "-0.14592" 14 "-0.14464" 15 "-0.14336" 16 "-0.14208" 17 "-0.1408" 18 "-0.13952" 19 "-0.13824" 20 "-0.13696" 21 "-0.13568" 22 "-0.1344" 23 "-0.13312" 24 "-0.13184" 25 "-0.13056" 26 "-0.12928" 27 "-0.128" 28 "-0.12672" 29 "-0.12544" 30 "-0.12416" 31 "-0.12288" 32 "-0.1216" 33 "-0.12032" 34 "-0.11904" 35 "-0.11776" 36 "-0.11648" 37 "-0.1152" 38 "-0.11392" 39 "-0.11264" 40 "-0.11136" 41 "-0.11008" 42 "-0.1088" 43 "-0.10752" 44 "-0.10624" 45 "-0.10496" 46 "-0.10368" 47 "-0.1024" 48 "-0.10112" 49 "-0.09984" 50 "-0.09856" 51 "-0.09728" 52 "-0.096" 53 "-0.09472" 54 "-0.09344" 55 "-0.09216" 56 "-0.09088" 57 "-0.0896" 58 "-0.08832" 59 "-0.08704" 60 "-0.08576" 61 "-0.08448" 62 "-0.0832" 63 "-0.08128" 64 "-0.08064" 65 "-0.08" 66 "-0.07936" 67 "-0.07872" 68 "-0.07808" 69 "-0.07744" 70 "-0.0768" 71 "-0.07616" 72 "-0.07552" 73 "-0.07488" 74 "-0.07424" 75 "-0.0736" 76 "-0.07296" 77 "-0.07232" 78 "-0.07168" 79 "-0.07104" 80 "-0.0704" 81 "-0.06976" 82 "-0.06912" 83 "-0.06848" 84 "-0.06784" 85 "-0.0672" 86 "-0.06656" 87 "-0.06592" 88 "-0.06528" 89 "-0.06464" 90 "-0.064" 91 "-0.06336" 92 "-0.06272" 93 "-0.06208" 94 "-0.06144" 95 "-0.0608" 96 "-0.06016" 97 "-0.05952" 98 "-0.05888" 99 "-0.05824" 100 "-0.0576" 101 "-0.05696" 102 "-0.05632" 103 "-0.05568" 104 "-0.05504" 105 "-0.0544" 106 "-0.05376" 107 "-0.05312" 108 "-0.05248" 109 "-0.05184" 110 "-0.0512" 111 "-0.05056" 112 "-0.04992" 113 "-0.04928" 114 "-0.04864" 115 "-0.048" 116 "-0.04736" 117 "-0.04672" 118 "-0.04608" 119 "-0.04544" 120 "-0.0448" 121 "-0.04416" 122 "-0.04352" 123 "-0.04288" 124 "-0.04224" 125 "-0.0416" 126 "-0.04096" 127 "-0.04032" 128 "-0.04" 129 "-0.03968" 130 "-0.03936" 131 "-0.03904" 132 "-0.03872" 133 "-0.0384" 134 "-0.03808" 135 "-0.03776" 136 "-0.03744" 137 "-0.03712" 138 "-0.0368" 139 "-0.03648" 140 "-0.03616" 141 "-0.03584" 142 "-0.03552" 143 "-0.0352" 144 "-0.03488" 145 "-0.03456" 146 "-0.03424" 147 "-0.03392" 148 "-0.0336" 149 "-0.03328" 150 "-0.03296" 151 "-0.03264" 152 "-0.03232" 153 "-0.032" 154 "-0.03168" 155 "-0.03136" 156 "-0.03104" 157 "-0.03072" 158 "-0.0304" 159 "-0.03008" 160 "-0.02976" 161 "-0.02944" 162 "-0.02912" 163 "-0.0288" 164 "-0.02848" 165 "-0.02816" 166 "-0.02784" 167 "-0.02752" 168 "-0.0272" 169 "-0.02688" 170 "-0.02656" 171 "-0.02624" 172 "-0.02592" 173 "-0.0256" 174 "-0.02528" 175 "-0.02496" 176 "-0.02464" 177 "-0.02432" 178 "-0.024" 179 "-0.02368" 180 "-0.02336" 181 "-0.02304" 182 "-0.02272" 183 "-0.0224" 184 "-0.02208" 185 "-0.02176" 186 "-0.02144" 187 "-0.02112" 188 "-0.0208" 189 "-0.02048" 190 "-0.02016" 191 "-0.01984" 192 "-0.01968" 193 "-0.01952" 194 "-0.01936" 195 "-0.0192" 196 "-0.01904" 197 "-0.01888" 198 "-0.01872" 199 "-0.01856" 200 "-0.0184" 201 "-0.01824" 202 "-0.01808" 203 "-0.01792" 204 "-0.01776" 205 "-0.0176" 206 "-0.01744" 207 "-0.01728" 208 "-0.01712" 209 "-0.01696" 210 "-0.0168" 211 "-0.01664" 212 "-0.01648" 213 "-0.01632" 214 "-0.01616" 215 "-0.016" 216 "-0.01584" 217 "-0.01568" 218 "-0.01552" 219 "-0.01536" 220 "-0.0152" 221 "-0.01504" 222 "-0.01488" 223 "-0.01472" 224 "-0.01456" 225 "-0.0144" 226 "-0.01424" 227 "-0.01408" 228 "-0.01392" 229 "-0.01376" 230 "-0.0136" 231 "-0.01344" 232 "-0.01328" 233 "-0.01312" 234 "-0.01296" 235 "-0.0128" 236 "-0.01264" 237 "-0.01248" 238 "-0.01232" 239 "-0.01216" 240 "-0.012" 241 "-0.01184" 242 "-0.01168" 243 "-0.01152" 244 "-0.01136" 245 "-0.0112" 246 "-0.01104" 247 "-0.01088" 248 "-0.01072" 249 "-0.01056" 250 "-0.0104" 251 "-0.01024" 252 "-0.01008" 253 "-0.00992" 254 "-0.00976" 255 "-0.0096" 256 "-0.00952" 257 "-0.00944" 258 "-0.00936" 259 "-0.00928" 260 "-0.0092" 261 "-0.00912" 262 "-0.00904" 263 "-0.00896" 264 "-0.00888" 265 "-0.0088" 266 "-0.00872" 267 "-0.00864" 268 "-0.00856" 269 "-0.00848" 270 "-0.0084" 271 "-0.00832" 272 "-0.00824" 273 "-0.00816" 274 "-0.00808" 275 "-0.008" 276 "-0.00792" 277 "-0.00784" 278 "-0.00776" 279 "-0.00768" 280 "-0.0076" 281 "-0.00752" 282 "-0.00744" 283 "-0.00736" 284 "-0.00728" 285 "-0.0072" 286 "-0.00712" 287 "-0.00704" 288 "-0.00696" 289 "-0.00688" 290 "-0.0068" 291 "-0.00672" 292 "-0.00664" 293 "-0.00656" 294 "-0.00648" 295 "-0.0064" 296 "-0.00632" 297 "-0.00624" 298 "-0.00616" 299 "-0.00608" 300 "-0.006" 301 "-0.00592" 302 "-0.00584" 303 "-0.00576" 304 "-0.00568" 305 "-0.0056" 306 "-0.00552" 307 "-0.00544" 308 "-0.00536" 309 "-0.00528" 310 "-0.0052" 311 "-0.00512" 312 "-0.00504" 313 "-0.00496" 314 "-0.00488" 315 "-0.0048" 316 "-0.00472" 317 "-0.00464" 318 "-0.00456" 319 "-0.00448" 320 "-0.00444" 321 "-0.0044" 322 "-0.00436" 323 "-0.00432" 324 "-0.00428" 325 "-0.00424" 326 "-0.0042" 327 "-0.00416" 328 "-0.00412" 329 "-0.00408" 330 "-0.00404" 331 "-0.004" 332 "-0.00396" 333 "-0.00392" 334 "-0.00388" 335 "-0.00384" 336 "-0.0038" 337 "-0.00376" 338 "-0.00372" 339 "-0.00368" 340 "-0.00364" 341 "-0.0036" 342 "-0.00356" 343 "-0.00352" 344 "-0.00348" 345 "-0.00344" 346 "-0.0034" 347 "-0.00336" 348 "-0.00332" 349 "-0.00328" 350 "-0.00324" 351 "-0.0032" 352 "-0.00316" 353 "-0.00312" 354 "-0.00308" 355 "-0.00304" 356 "-0.003" 357 "-0.00296" 358 "-0.00292" 359 "-0.00288" 360 "-0.00284" 361 "-0.0028" 362 "-0.00276" 363 "-0.00272" 364 "-0.00268" 365 "-0.00264" 366 "-0.0026" 367 "-0.00256" 368 "-0.00252" 369 "-0.00248" 370 "-0.00244" 371 "-0.0024" 372 "-0.00236" 373 "-0.00232" 374 "-0.00228" 375 "-0.00224" 376 "-0.0022" 377 "-0.00216" 378 "-0.00212" 379 "-0.00208" 380 "-0.00204" 381 "-0.002" 382 "-0.00196" 383 "-0.00192" 384 "-0.0019" 385 "-0.00188" 386 "-0.00186" 387 "-0.00184" 388 "-0.00182" 389 "-0.0018" 390 "-0.00178" 391 "-0.00176" 392 "-0.00174" 393 "-0.00172" 394 "-0.0017" 395 "-0.00168" 396 "-0.00166" 397 "-0.00164" 398 "-0.00162" 399 "-0.0016" 400 "-0.00158" 401 "-0.00156" 402 "-0.00154" 403 "-0.00152" 404 "-0.0015" 405 "-0.00148" 406 "-0.00146" 407 "-0.00144" 408 "-0.00142" 409 "-0.0014" 410 "-0.00138" 411 "-0.00136" 412 "-0.00134" 413 "-0.00132" 414 "-0.0013" 415 "-0.00128" 416 "-0.00126" 417 "-0.00124" 418 "-0.00122" 419 "-0.0012" 420 "-0.00118" 421 "-0.00116" 422 "-0.00114" 423 "-0.00112" 424 "-0.0011" 425 "-0.00108" 426 "-0.00106" 427 "-0.00104" 428 "-0.00102" 429 "-0.001" 430 "-0.00098" 431 "-0.00096" 432 "-0.00094" 433 "-0.00092" 434 "-0.0009" 435 "-0.00088" 436 "-0.00086" 437 "-0.00084" 438 "-0.00082" 439 "-0.0008" 440 "-0.00078" 441 "-0.00076" 442 "-0.00074" 443 "-0.00072" 444 "-0.0007" 445 "-0.00068" 446 "-0.00066" 447 "-0.00064" 448 "-0.00063" 449 "-0.00062" 450 "-0.00061" 451 "-0.0006" 452 "-0.00059" 453 "-0.00058" 454 "-0.00057" 455 "-0.00056" 456 "-0.00055" 457 "-0.00054" 458 "-0.00053" 459 "-0.00052" 460 "-0.00051" 461 "-0.0005" 462 "-0.00049" 463 "-0.00048" 464 "-0.00047" 465 "-0.00046" 466 "-0.00045" 467 "-0.00044" 468 "-0.00043" 469 "-0.00042" 470 "-0.00041" 471 "-0.0004" 472 "-0.00039" 473 "-0.00038" 474 "-0.00037" 475 "-0.00036" 476 "-0.00035" 477 "-0.00034" 478 "-0.00033" 479 "-0.00032" 480 "-0.00031" 481 "-0.0003" 482 "-0.00029" 483 "-0.00028" 484 "-0.00027" 485 "-0.00026" 486 "-0.00025" 487 "-0.00024" 488 "-0.00023" 489 "-0.00022" 490 "-0.00021" 491 "-0.0002" 492 "-0.00019" 493 "-0.00018" 494 "-0.00017" 495 "-0.00016" 496 "-0.00015" 497 "-0.00014" 498 "-0.00013" 499 "-0.00012" 500 "-0.00011" 501 "-0.0001" 502 "-0.00009" 503 "-0.00008" 504 "-0.00007" 505 "-0.00006" 506 "-0.00005" 507 "-0.00004" 508 "-0.00003" 509 "-0.00002" 510 "-0.00001" 511 "0" 512 "0.00001" 513 "0.00002" 514 "0.00003" 515 "0.00004" 516 "0.00005" 517 "0.00006" 518 "0.00007" 519 "0.00008" 520 "0.00009" 521 "0.0001" 522 "0.00011" 523 "0.00012" 524 "0.00013" 525 "0.00014" 526 "0.00015" 527 "0.00016" 528 "0.00017" 529 "0.00018" 530 "0.00019" 531 "0.0002" 532 "0.00021" 533 "0.00022" 534 "0.00023" 535 "0.00024" 536 "0.00025" 537 "0.00026" 538 "0.00027" 539 "0.00028" 540 "0.00029" 541 "0.0003" 542 "0.00031" 543 "0.00032" 544 "0.00033" 545 "0.00034" 546 "0.00035" 547 "0.00036" 548 "0.00037" 549 "0.00038" 550 "0.00039" 551 "0.0004" 552 "0.00041" 553 "0.00042" 554 "0.00043" 555 "0.00044" 556 "0.00045" 557 "0.00046" 558 "0.00047" 559 "0.00048" 560 "0.00049" 561 "0.0005" 562 "0.00051" 563 "0.00052" 564 "0.00053" 565 "0.00054" 566 "0.00055" 567 "0.00056" 568 "0.00057" 569 "0.00058" 570 "0.00059" 571 "0.0006" 572 "0.00061" 573 "0.00062" 574 "0.00063" 575 "0.00064" 576 "0.00066" 577 "0.00068" 578 "0.0007" 579 "0.00072" 580 "0.00074" 581 "0.00076" 582 "0.00078" 583 "0.0008" 584 "0.00082" 585 "0.00084" 586 "0.00086" 587 "0.00088" 588 "0.0009" 589 "0.00092" 590 "0.00094" 591 "0.00096" 592 "0.00098" 593 "0.001" 594 "0.00102" 595 "0.00104" 596 "0.00106" 597 "0.00108" 598 "0.0011" 599 "0.00112" 600 "0.00114" 601 "0.00116" 602 "0.00118" 603 "0.0012" 604 "0.00122" 605 "0.00124" 606 "0.00126" 607 "0.00128" 608 "0.0013" 609 "0.00132" 610 "0.00134" 611 "0.00136" 612 "0.00138" 613 "0.0014" 614 "0.00142" 615 "0.00144" 616 "0.00146" 617 "0.00148" 618 "0.0015" 619 "0.00152" 620 "0.00154" 621 "0.00156" 622 "0.00158" 623 "0.0016" 624 "0.00162" 625 "0.00164" 626 "0.00166" 627 "0.00168" 628 "0.0017" 629 "0.00172" 630 "0.00174" 631 "0.00176" 632 "0.00178" 633 "0.0018" 634 "0.00182" 635 "0.00184" 636 "0.00186" 637 "0.00188" 638 "0.0019" 639 "0.00192" 640 "0.00196" 641 "0.002" 642 "0.00204" 643 "0.00208" 644 "0.00212" 645 "0.00216" 646 "0.0022" 647 "0.00224" 648 "0.00228" 649 "0.00232" 650 "0.00236" 651 "0.0024" 652 "0.00244" 653 "0.00248" 654 "0.00252" 655 "0.00256" 656 "0.0026" 657 "0.00264" 658 "0.00268" 659 "0.00272" 660 "0.00276" 661 "0.0028" 662 "0.00284" 663 "0.00288" 664 "0.00292" 665 "0.00296" 666 "0.003" 667 "0.00304" 668 "0.00308" 669 "0.00312" 670 "0.00316" 671 "0.0032" 672 "0.00324" 673 "0.00328" 674 "0.00332" 675 "0.00336" 676 "0.0034" 677 "0.00344" 678 "0.00348" 679 "0.00352" 680 "0.00356" 681 "0.0036" 682 "0.00364" 683 "0.00368" 684 "0.00372" 685 "0.00376" 686 "0.0038" 687 "0.00384" 688 "0.00388" 689 "0.00392" 690 "0.00396" 691 "0.004" 692 "0.00404" 693 "0.00408" 694 "0.00412" 695 "0.00416" 696 "0.0042" 697 "0.00424" 698 "0.00428" 699 "0.00432" 700 "0.00436" 701 "0.0044" 702 "0.00444" 703 "0.00448" 704 "0.00456" 705 "0.00464" 706 "0.00472" 707 "0.0048" 708 "0.00488" 709 "0.00496" 710 "0.00504" 711 "0.00512" 712 "0.0052" 713 "0.00528" 714 "0.00536" 715 "0.00544" 716 "0.00552" 717 "0.0056" 718 "0.00568" 719 "0.00576" 720 "0.00584" 721 "0.00592" 722 "0.006" 723 "0.00608" 724 "0.00616" 725 "0.00624" 726 "0.00632" 727 "0.0064" 728 "0.00648" 729 "0.00656" 730 "0.00664" 731 "0.00672" 732 "0.0068" 733 "0.00688" 734 "0.00696" 735 "0.00704" 736 "0.00712" 737 "0.0072" 738 "0.00728" 739 "0.00736" 740 "0.00744" 741 "0.00752" 742 "0.0076" 743 "0.00768" 744 "0.00776" 745 "0.00784" 746 "0.00792" 747 "0.008" 748 "0.00808" 749 "0.00816" 750 "0.00824" 751 "0.00832" 752 "0.0084" 753 "0.00848" 754 "0.00856" 755 "0.00864" 756 "0.00872" 757 "0.0088" 758 "0.00888" 759 "0.00896" 760 "0.00904" 761 "0.00912" 762 "0.0092" 763 "0.00928" 764 "0.00936" 765 "0.00944" 766 "0.00952" 767 "0.0096" 768 "0.00976" 769 "0.00992" 770 "0.01008" 771 "0.01024" 772 "0.0104" 773 "0.01056" 774 "0.01072" 775 "0.01088" 776 "0.01104" 777 "0.0112" 778 "0.01136" 779 "0.01152" 780 "0.01168" 781 "0.01184" 782 "0.012" 783 "0.01216" 784 "0.01232" 785 "0.01248" 786 "0.01264" 787 "0.0128" 788 "0.01296" 789 "0.01312" 790 "0.01328" 791 "0.01344" 792 "0.0136" 793 "0.01376" 794 "0.01392" 795 "0.01408" 796 "0.01424" 797 "0.0144" 798 "0.01456" 799 "0.01472" 800 "0.01488" 801 "0.01504" 802 "0.0152" 803 "0.01536" 804 "0.01552" 805 "0.01568" 806 "0.01584" 807 "0.016" 808 "0.01616" 809 "0.01632" 810 "0.01648" 811 "0.01664" 812 "0.0168" 813 "0.01696" 814 "0.01712" 815 "0.01728" 816 "0.01744" 817 "0.0176" 818 "0.01776" 819 "0.01792" 820 "0.01808" 821 "0.01824" 822 "0.0184" 823 "0.01856" 824 "0.01872" 825 "0.01888" 826 "0.01904" 827 "0.0192" 828 "0.01936" 829 "0.01952" 830 "0.01968" 831 "0.01984" 832 "0.02016" 833 "0.02048" 834 "0.0208" 835 "0.02112" 836 "0.02144" 837 "0.02176" 838 "0.02208" 839 "0.0224" 840 "0.02272" 841 "0.02304" 842 "0.02336" 843 "0.02368" 844 "0.024" 845 "0.02432" 846 "0.02464" 847 "0.02496" 848 "0.02528" 849 "0.0256" 850 "0.02592" 851 "0.02624" 852 "0.02656" 853 "0.02688" 854 "0.0272" 855 "0.02752" 856 "0.02784" 857 "0.02816" 858 "0.02848" 859 "0.0288" 860 "0.02912" 861 "0.02944" 862 "0.02976" 863 "0.03008" 864 "0.0304" 865 "0.03072" 866 "0.03104" 867 "0.03136" 868 "0.03168" 869 "0.032" 870 "0.03232" 871 "0.03264" 872 "0.03296" 873 "0.03328" 874 "0.0336" 875 "0.03392" 876 "0.03424" 877 "0.03456" 878 "0.03488" 879 "0.0352" 880 "0.03552" 881 "0.03584" 882 "0.03616" 883 "0.03648" 884 "0.0368" 885 "0.03712" 886 "0.03744" 887 "0.03776" 888 "0.03808" 889 "0.0384" 890 "0.03872" 891 "0.03904" 892 "0.03936" 893 "0.03968" 894 "0.04" 895 "0.04032" 896 "0.04096" 897 "0.0416" 898 "0.04224" 899 "0.04288" 900 "0.04352" 901 "0.04416" 902 "0.0448" 903 "0.04544" 904 "0.04608" 905 "0.04672" 906 "0.04736" 907 "0.048" 908 "0.04864" 909 "0.04928" 910 "0.04992" 911 "0.05056" 912 "0.0512" 913 "0.05184" 914 "0.05248" 915 "0.05312" 916 "0.05376" 917 "0.0544" 918 "0.05504" 919 "0.05568" 920 "0.05632" 921 "0.05696" 922 "0.0576" 923 "0.05824" 924 "0.05888" 925 "0.05952" 926 "0.06016" 927 "0.0608" 928 "0.06144" 929 "0.06208" 930 "0.06272" 931 "0.06336" 932 "0.064" 933 "0.06464" 934 "0.06528" 935 "0.06592" 936 "0.06656" 937 "0.0672" 938 "0.06784" 939 "0.06848" 940 "0.06912" 941 "0.06976" 942 "0.0704" 943 "0.07104" 944 "0.07168" 945 "0.07232" 946 "0.07296" 947 "0.0736" 948 "0.07424" 949 "0.07488" 950 "0.07552" 951 "0.07616" 952 "0.0768" 953 "0.07744" 954 "0.07808" 955 "0.07872" 956 "0.07936" 957 "0.08" 958 "0.08064" 959 "0.08128" 960 "0.08256" 961 "0.08384" 962 "0.08512" 963 "0.0864" 964 "0.08768" 965 "0.08896" 966 "0.09024" 967 "0.09152" 968 "0.0928" 969 "0.09408" 970 "0.09536" 971 "0.09664" 972 "0.09792" 973 "0.0992" 974 "0.10048" 975 "0.10176" 976 "0.10304" 977 "0.10432" 978 "0.1056" 979 "0.10688" 980 "0.10816" 981 "0.10944" 982 "0.11072" 983 "0.112" 984 "0.11328" 985 "0.11456" 986 "0.11584" 987 "0.11712" 988 "0.1184" 989 "0.11968" 990 "0.12096" 991 "0.12224" 992 "0.12352" 993 "0.1248" 994 "0.12608" 995 "0.12736" 996 "0.12864" 997 "0.12992" 998 "0.1312" 999 "0.13248" 1000 "0.13376" 1001 "0.13504" 1002 "0.13632" 1003 "0.1376" 1004 "0.13888" 1005 "0.14016" 1006 "0.14144" 1007 "0.14272" 1008 "0.144" 1009 "0.14528" 1010 "0.14656" 1011 "0.14784" 1012 "0.14912" 1013 "0.1504" 1014 "0.15168" 1015 "0.15296" 1016 "0.15424" 1017 "0.15552" 1018 "0.1568" 1019 "0.15808" 1020 "0.15936" 1021 "0.16064" 1022 ">0.16192" 1023 "Unkown" ;
+VAL_ 559 adas_pShort_CondiSpdLimit3 31 "Invalid" 30 "Unlimited" 29 "160" 28 "150" 27 "140" 26 "130" 25 "120" 24 "115" 23 "110" 22 "105" 21 "100" 20 "95" 19 "90" 18 "85" 17 "80" 16 "75" 15 "70" 14 "65" 13 "60" 12 "55" 11 "50" 10 "45" 9 "40" 8 "35" 7 "30" 6 "25" 5 "20" 4 "15" 3 "10" 2 "7" 1 "<= 5" 0 "Unknown" ;
+VAL_ 559 adas_pShort_CondiSpdLimit2 31 "Invalid" 30 "Unlimited" 29 "160" 28 "150" 27 "140" 26 "130" 25 "120" 24 "115" 23 "110" 22 "105" 21 "100" 20 "95" 19 "90" 18 "85" 17 "80" 16 "75" 15 "70" 14 "65" 13 "60" 12 "55" 11 "50" 10 "45" 9 "40" 8 "35" 7 "30" 6 "25" 5 "20" 4 "15" 3 "10" 2 "7" 1 "<= 5" 0 "Unknown" ;
+VAL_ 559 adas_pShort_CondiSpdLimit1 31 "Invalid" 30 "Unlimited" 29 "160" 28 "150" 27 "140" 26 "130" 25 "120" 24 "115" 23 "110" 22 "105" 21 "100" 20 "95" 19 "90" 18 "85" 17 "80" 16 "75" 15 "70" 14 "65" 13 "60" 12 "55" 11 "50" 10 "45" 9 "40" 8 "35" 7 "30" 6 "25" 5 "20" 4 "15" 3 "10" 2 "7" 1 "<= 5" 0 "Unknown" ;
+VAL_ 559 adas_pShort_CondiSpdLimType3 7 "Unknown" 6 "Explicit - snow" 5 "Explicit - rain" 4 "Explicit - time of day" 3 "Explicit - by day" 2 "Explicit - by night" 1 "Explicit - on traffic sign" 0 "Implicit" ;
+VAL_ 559 adas_pShort_CondiSpdLimType2 7 "Unknown" 6 "Explicit - snow" 5 "Explicit - rain" 4 "Explicit - time of day" 3 "Explicit - by day" 2 "Explicit - by night" 1 "Explicit - on traffic sign" 0 "Implicit" ;
+VAL_ 559 adas_pShort_CondiSpdLimType1 7 "Unknown" 6 "Explicit - snow" 5 "Explicit - rain" 4 "Explicit - time of day" 3 "Explicit - by day" 2 "Explicit - by night" 1 "Explicit - on traffic sign" 0 "Implicit" ;
+VAL_ 559 adas_pShort_CondiSpdActive3 2 "Inactive" 1 "Active" 0 "Unkown" ;
+VAL_ 559 adas_pShort_CondiSpdActive2 2 "Inactive" 1 "Active" 0 "Unkown" ;
+VAL_ 559 adas_pShort_CondiSpdActive1 2 "Inactive" 1 "Active" 0 "Unkown" ;
+VAL_ 559 adas_pLong_TS_Veh 3 "Unkown" 2 "Not specific to this but others" 1 "Specific to this" 0 "Not Vehicle Specific" ;
+VAL_ 559 adas_pLong_TS_Value 255 "NA" 0 "No TS-Value" ;
+VAL_ 559 adas_pLong_TS_Type 52 "Children: A13" 254 "Traffic Light" 253 "Speed Bumps" 252 "Zebra/Pedestrian Crossing" 251 "Railroad Crossing" 88 "End of Speed Limit: C,17b" 87 "Speed Limit" 83 "End of City Area: E, 8" 82 "Priority for oncoming: B,5" 81 "Priority over oncoming: B,6" 79 "End of all Prohibitations: C,17a" 77 "Beginning of City: E,7" 75 "Traffic Congestion: A,24" 59 "Tramway: A,27" 58 "Rrailway Crossing: A,28" 57 "Railway Cross w/o Gates: A,26" 56 "Railway Cross Gates: A,25" 55 "Two-Way Traffic; A23" 54 "Cyclists: A,14" 47 "End of No Overtake: C,17c" 46 "Overtaking Prohibited: C,13a" 44 "Lane Merging Right: G,12a" 43 "Lane Merging Left: G,12b" 39 "Direction to left: D,1 rev" 38 "Direction to right: D,1" 36 "Intersection Minor Road: A,19" 35 "Intersection: A,18" 34 "Priority Road: B,3" 33 "Stop: B,2" 32 "Give Way: B,1" 31 "Light Signals: A,17" 24 "Tunnel: E,11a" 21 "End of No Overtake Goods: C,17d" 20 "No Overtake by Goods Veh.: C,13b" 8 "End Pedestrian Area: E,17b" 7 "Beginning Pedestrian Area: E,17a" 6 "Road Works: A,16" 5 "Wild Animal Crossing: A,15b" 4 "Domestic Animal Crossing: A,15a" 3 "Pass Right Side: D,2" 2 "Pass Left Side: D,2 rev" 0 "Danger: A,32" 51 "Pedestrian Crossing: A,12" 71 "Domestic Animal Crossing: A,15a" 70 "Hump: A,7b" 69 "Railway Cross w/o Gates: A,26" 68 "Steep Descent; A,2" 67 "Steep Ascent: A,3" 66 "Slippery Road" 62 "Falling Rocks Right: A,11" 61 "Falling Rocks Right: A,11 rev" 42 "Carriageway Narrows Left: A,4c" 41 "Carriageway Narrows Right: A,4b" 40 "Carriageway Narrows: A,4a" 30 "River Benk Left: A,6 rev" 29 "River Bank: A,6" 14 "Double Bend Left First:A,1c" 13 "Double Bend Right First:A,1d" 10 "Left Bend:A, 1a" 9 "Right Bend:A,1b" ;
+VAL_ 559 adas_pLong_TS_Time 3 "Unkown" 2 "Not now, but time dependant" 1 "Applies now" 0 "Not Time dependant" ;
+VAL_ 559 adas_pLong_TS_Loca 7 "NA" 6 "on stretch" 5 "No physical sign" 4 "Surface" 3 "Above" 2 "Left" 1 "Right" 0 "Unkown" ;
+VAL_ 559 adas_pLong_TS_Lane 255 "NA" 0 "Not Lane Specific" ;
+VAL_ 559 adas_pLong_TS_Cond 15 "Unkown" 14 "Reserved" 13 "Reserved" 12 "validity - others" 11 "valid on turn" 10 "if night time" 9 "if day time" 8 "if rain" 7 "if fog" 6 "if snow" 5 "not valid" 4 "Other conditions-no vehicle" 3 "Other conditions-not this" 2 "Other conditions- this vehicle" 1 "Other conditions" 0 "always valid" ;
+VAL_ 559 adas_pLong_Veh_Long -1 "NA" ;
+VAL_ 559 adas_pLong_Veh_Lat -1 "NA" ;
+VAL_ 559 adas_pLong_Veh_Alti -1 "NA" ;
+VAL_ 559 adas_pLong_LinkID -1 "NA" ;
+VAL_ 559 adas_pLong_Lane_PrioPre 0 "No Predecessor" 255 "NA" ;
+VAL_ 559 adas_pLong_Lane_Num 255 "N/A" 0 "invalid lane number" ;
+VAL_ 559 adas_pLong_Lane_Mark 7 "N/A" 6 "Shaped Mark" 5 "Dashed Blocks" 4 "Dashed/Solid" 3 "Solid/Dashed" 2 "Dashed" 1 "Solid" 0 "No Marking" ;
+VAL_ 559 adas_pLong_Lane_LastPre 0 "No Predecessor" 255 "NA" ;
+VAL_ 559 adas_pLong_Lane_FirstPre 0 "No Predecessor" 255 "NA" ;
+VAL_ 559 adas_pLong_Lane_Arrow 0 "None" 65535 "N/A" 15 "Straight|Slight|Right|Hard" 14 "Slight|Right|Hard" 129 "Straigth + Slight Left" 128 "Slight Left" 65 "Straigth + Left" 64 "Left" 33 "Straigth + Hard Left" 32 "Hard Left" 16 "U Turn" 11 "Straigth + Hard Right" 8 "Hard Right" 5 "Straigth + Right" 4 "Right" 3 "Straight + Slight Right" 2 "Slight Right" 1 "Straight" ;
+VAL_ 559 adas_pLong_Hrzn_Long -1 "NA" ;
+VAL_ 559 adas_pLong_Hrzn_Lat -1 "NA" ;
+VAL_ 559 adas_pLong_Hrzn_Alti -1 "NA" ;
+VAL_ 559 adas_pLong_Lane_Type 15 "N/A" 14 "not used" 13 "Turn Lane / Suicide Lange" 12 "Driveable Should Lane" 11 "Slow Lane" 10 "Reversible Lane" 9 "Express Lane" 8 "HOV lane" 7 "Restricted (yes passenger)" 6 "Restricted (no passenger)" 5 "Emergency Lane" 4 "Aux Lane" 3 "Entry Lane" 2 "Exit Lane" 1 "Normal Lane" 0 "Virtual Shoulder Lane" ;
+VAL_ 559 adas_pLong_Bezier_Long -1 "NA" ;
+VAL_ 559 adas_pLong_Bezier_Lat -1 "NA" ;
+VAL_ 559 adas_pLong_Bezier_Alti -1 "NA" ;
+VAL_ 559 adas_stub_Update 1 "true" 0 "false" ;
+VAL_ 559 adas_stub_TurnAngle 255 "NA" 254 "Unkown" ;
+VAL_ 559 adas_stub_SubPathIdx 7 "Reserved" 6 "Stub within MPP" 5 "Stub Sub Path No Data" 4 "ADASIS Mini" 3 "Av2HP Positioning not calibrated" 2 "Position not on-road" 1 "Position not in Digitized Area" 0 "Unknnown" ;
+VAL_ 559 adas_stub_RtOfWay 3 "N/A" 2 "Unknown" 1 "Sub-path right-of-way over path" 0 "Right-of-way over sub-path" ;
+VAL_ 559 adas_stub_Retr 1 "true" 0 "false" ;
+VAL_ 559 adas_stub_RelProbb 31 "N/A" 0 "Unknown" ;
+VAL_ 559 adas_stub_PathIdx 7 "Reserved" 6 "Stub within MPP" 5 "Stub Sub Path No Data" 4 "ADASIS Mini" 3 "Av2HP Positioning not calibrated" 2 "Position not on-road" 1 "Position not in Digitized Area" 0 "Unknnown" ;
+VAL_ 559 adas_stub_PartOfCalcRoute 3 "N/A" 2 "Unknown" 1 "Part of Calculated Route" 0 "Not Part of Calculated Route" ;
+VAL_ 559 adas_stub_Offset 8191 "Invalid" ;
+VAL_ 559 adas_stub_NumLaneOpp 3 "N/A" 2 "multiple lanes" 1 "single lane" 0 "one-direction road" ;
+VAL_ 559 adas_stub_NumLaneDrv 7 "N/A" 6 "6 or more" 0 "One-direction/Wrong-Way" ;
+VAL_ 559 adas_stub_LastStub 1 "true" 0 "false" ;
+VAL_ 559 adas_stub_FuncRoadClass 7 "N/A" 0 "Unknown" ;
+VAL_ 559 adas_stub_FormOfWay 15 "N/A" 14 "Pedestrian Zone" 13 "Entrance / Exit to Service" 12 "Entrance / Exit to Car Park" 11 "Service / Frontage Road" 10 "Slip Road / Ramp -not Freeway" 9 "Slip Road / Ramp -Freeway" 8 "Parallel Road" 7 "Reserved" 6 "Reserved" 5 "Traffic Square / Special Figure" 4 "Roundabout Circle" 3 "Single Carriageway" 2 "Multiple Carriageway" 1 "Freeway / Controlled Access Road" 0 "Unknown" ;
+VAL_ 559 adas_stub_CplxInsc 3 "N/A" 2 "Unknown" 1 "Part of Complex Intersection" 0 "Not Part of Complex Intersection" ;
+VAL_ 559 adas_seg_Update 1 "true" 0 "false" ;
+VAL_ 559 adas_seg_Tunnel 3 "N/A" 2 "Unknown" 1 "Part of Tunnel" 0 "Not Part of Tunnel" ;
+VAL_ 559 adas_seg_Retr 1 "true" 0 "false" ;
+VAL_ 559 adas_seg_RelProbb 31 "N/A" 30 "100.00%" 29 "96.67%" 28 "93.33%" 27 "90.00%" 26 "86.67%" 25 "83.33%" 24 "80.00%" 23 "76.67%" 22 "73.33%" 21 "70.00%" 20 "66.67%" 19 "63.33%" 18 "60.00%" 17 "56.67%" 16 "53.33%" 15 "50.00%" 14 "46.67%" 13 "43.44%" 12 "40.00%" 11 "33.67%" 10 "33.33%" 9 "30.00%" 8 "26.67%" 7 "23.33%" 6 "20.00%" 5 "16.67%" 4 "13.33%" 3 "10.00%" 2 "6.67%" 1 "3.33%" 0 "Unknown" ;
+VAL_ 559 adas_seg_PathIdx 7 "Reserved" 6 "Stub within MPP" 5 "Stub Sub Path No Data" 4 "ADASIS Mini" 3 "Av2HP Positioning not calibrated" 2 "Position not on-road" 1 "Position not in Digitized Area" 0 "Unknown" ;
+VAL_ 559 adas_seg_PartOfCalcRoute 3 "N/A" 2 "Unknown" 1 "Part of Calculated Route" 0 "Not Part of Calculated Route" ;
+VAL_ 559 adas_seg_Offset 8191 "Invalid" ;
+VAL_ 559 adas_seg_NumLaneOpp 3 "N/A" 2 "multiple lanes (2 or more)" 1 "single lane" 0 "one-direction road" ;
+VAL_ 559 adas_seg_NumLaneDrv 7 "N/A" 6 "6 or more" 0 "One-direction/Wrong-Way" ;
+VAL_ 559 adas_seg_FuncRoadClass 7 "N/A" 0 "Unknown" ;
+VAL_ 559 adas_seg_FormOfWay 15 "N/A" 14 "Pedestrian Zone" 13 "Entrance / Exit to Service" 12 "Entrance / Exit to Car Park" 11 "Service / Frontage Road" 10 "Slip Road / Ramp -not Freeway" 9 "Slip Road / Ramp -Freeway" 8 "Parallel Road" 7 "Reserved" 6 "Reserved" 5 "Traffic Square / Special Figure" 4 "Roundabout Circle" 3 "Single Carriageway" 2 "Multiple Carriageway" 1 "Freeway / Controlled Access Road" 0 "Unknown" ;
+VAL_ 559 adas_seg_EffSpdLimType 7 "Unknown" 6 "Explicit - snow" 5 "Explicit - rain" 4 "Explicit - time of day" 3 "Explicit - by day" 2 "Explicit - by night" 1 "Explicit - on traffic sign" 0 "Implicit" ;
+VAL_ 559 adas_seg_EffSpdLim 31 "N/A" 30 "Unlimited" 29 "151-Unlimited" 28 "141-150" 27 "131-140" 26 "121-130" 25 "116-120" 24 "111-115" 23 "106-110" 22 "101-105" 21 "96-100" 20 "91-95" 19 "86-90" 18 "81-85" 17 "76-80" 16 "71-75" 15 "66-70" 14 "61-65" 13 "56-60" 12 "51-55" 11 "46-50" 10 "41-45" 9 "36-40" 8 "31-35" 7 "26-30" 6 "21-25" 5 "16-20" 4 "11-15" 3 "8-10" 2 "6-7" 1 "<= 5" 0 "Unknown" ;
+VAL_ 559 adas_seg_DivRoad 3 "N/A" 2 "Unknown" 1 "Part of divided Road" 0 "Not Part of divided Road" ;
+VAL_ 559 adas_seg_CmplxInsct 3 "N/A" 2 "Unknown" 1 "Part of Complex Intersection" 0 "Not Part of Complex Intersection" ;
+VAL_ 559 adas_seg_BuildUpArea 3 "N/A" 2 "Unknown" 1 "Part of Built-up area" 0 "Not Part of Built-up area" ;
+VAL_ 559 adas_seg_Bridge 3 "N/A" 2 "Unknown" 1 "Part of Bridge" 0 "Not Part of Bridge" ;
+VAL_ 559 adas_pShort_Value1 1023 "Unknown | N/A" ;
+VAL_ 559 adas_pShort_Value0 1023 "Unknown | N/A" ;
+VAL_ 559 adas_pShort_Update 1 "true" 0 "false" ;
+VAL_ 559 adas_pShort_Retr 1 "true" 0 "false" ;
+VAL_ 559 adas_pShort_ProfType 31 "Reserved system specific types" 30 "Reserved system specific types" 29 "Reserved system specific types" 28 "Reserved system specific types" 27 "Reserved system specific types" 26 "Reserved system specific types" 25 "Reserved system specific types" 24 "NumLaneOpp" 23 "TurnLane" 22 "Speed Category" 21 "travel speeds - probe data" 20 "Cond. Speed Limit 3" 19 "Cond. Speed Limit 2" 18 "Cond. Speed Limit 1" 17 "Posted Speed Limit" 16 "Implicit Speed Limit" 15 "Reserved for standard types" 14 "Reserved for standard types" 13 "Reserved for standard types" 12 "Reserved for standard types" 11 "Reserved for standard types" 10 "Reserved for standard types" 9 "Reserved for standard types" 8 "Heading Change" 7 "Variable Speed Sign Position" 6 "Road Condition" 5 "Road Accessability" 4 "Slope (linear interpolation)" 3 "Slope (steps interpolation)" 2 "Route Number Types" 1 "Curvature" 0 "N/A" ;
+VAL_ 559 adas_pShort_PathIdx 7 "Reserved" 6 "Stub within MPP" 5 "Stub Sub Path No Data" 4 "ADASIS Mini" 3 "Av2HP Positioning not calibrated" 2 "Position not on-road" 1 "Position not in Digitized Area" 0 "Unknnown" ;
+VAL_ 559 adas_pShort_Offset 8191 "Invalid" ;
+VAL_ 559 adas_pShort_Dist1 0 "No 2nd Value" 1023 "invalid" ;
+VAL_ 559 adas_pShort_CtrlPoint 1 "true" 0 "false" ;
+VAL_ 559 adas_pShort_AccurClass 3 "Unkown" 2 "Low Accuracy" 1 "Mid Accuracy" 0 "High Accuracy" ;
+VAL_ 559 adas_pLong_noValue -1 "NA" ;
+VAL_ 559 adas_pLong_Update 1 "true" 0 "false" ;
+VAL_ 559 adas_pLong_Retr 1 "true" 0 "false" ;
+VAL_ 559 adas_pLong_ProfType 31 "Reserved system specific types" 30 "Reserved system specific types" 29 "Reserved system specific types" 28 "Reserved system specific types" 27 "Reserved system specific types" 26 "Reserved system specific types" 25 "Reserved system specific types" 24 "Reserved system specific types" 23 "Reserved system specific types" 22 "Reserved system specific types" 21 "Reserved system specific types" 20 "Reserved system specific types" 19 "Reserved system specific types" 18 "Current Position, Altitude" 17 "Current Position, Latitude" 16 "Current Position, Longitude
+" 15 "Reserved for standard types" 14 "Reserved for standard types" 13 "Reserved for standard types" 12 "Reserved for standard types" 11 "Reserved for standard types" 10 "Extended Lane" 9 "Truck Speed Limit" 8 "Traffic Sign" 7 "LinkID" 6 "Bezier Altitude" 5 "Bezier Latitude" 4 "Bezier Longitude" 3 "Altitude" 2 "Latitude" 1 "Longitude" 0 "N/A" ;
+VAL_ 559 adas_pLong_PathIdx 7 "Reserved" 6 "Stub within MPP" 5 "Stub Sub Path No Data" 4 "ADASIS Mini" 3 "Av2HP Positioning not calibrated" 2 "Position not on-road" 1 "Position not in Digitized Area" 0 "Unknnown" ;
+VAL_ 559 adas_pLong_Offset 8191 "Invalid" ;
+VAL_ 559 adas_pLong_CtrlPoint 1 "true" 0 "false" ;
+VAL_ 559 adas_meta_SpdUnits 1 "mph" 0 "km/h" ;
+VAL_ 559 adas_meta_MapVerYear 63 "NA" 62 "2062" 61 "2061" 60 "2060" 59 "2059" 58 "2058" 57 "2057" 56 "2056" 55 "2055" 54 "2054" 53 "2053" 52 "2052" 51 "2051" 50 "2050" 49 "2049" 48 "2048" 47 "2047" 46 "2046" 45 "2045" 44 "2044" 43 "2043" 42 "2042" 41 "2041" 40 "2040" 39 "2309" 38 "2038" 37 "2037" 36 "2036" 35 "2035" 34 "2034" 33 "2033" 32 "2032" 31 "2031" 30 "2030" 29 "2029" 28 "2028" 27 "2027" 26 "2026" 25 "2025" 24 "2024" 23 "2023" 22 "2022" 21 "2021" 20 "2020" 19 "2019" 18 "2018" 17 "2017" 16 "2016" 15 "2015" 14 "2014" 13 "2013" 12 "2012" 11 "2011" 10 "2010" 9 "2009" 8 "2008" 7 "2007" 6 "2006" 5 "2005" 4 "2004" 3 "2003" 2 "2002" 1 "2001" 0 "2000" ;
+VAL_ 559 adas_meta_MapProvider 7 "N/A" 6 "Other" 5 "NavInfo" 4 "IPC" 3 "Zenrin" 2 "TomTom" 1 "NAVTEQ/Nokia Here" 0 "Unknown" ;
+VAL_ 559 adas_meta_DrvSide 1 "RSD" 0 "LSD" ;
+VAL_ 559 adas_meta_CountryCode 840 "USA" 826 "UK" 804 "Ukraine" 764 "Thailand" 756 "Schweiz" 752 "Sweden" 724 "Espania" 705 "Slowenien" 703 "Slowakei" 702 "Singapore" 688 "Serbien" 674 "San Marino" 643 "Ruﬂland" 642 "Romania" 620 "Portugal" 616 "Polska" 578 "Norway" 554 "New Zealand" 528 "Niederlande" 500 "Montserrat" 499 "Montenegro" 492 "Monaco" 484 "Mexico" 446 "Macao" 442 "Luxemburg" 440 "Litauen" 438 "Liechtenstein" 428 "Lettland" 392 "Japan" 380 "Italy" 376 "Israel" 372 "Ireland" 352 "Iceland" 348 "Ungarn" 344 "Hong Kong" 336 "Vatican" 300 "Greece" 276 "Deutschland" 250 "Frankreich" 248 "Aland Islands" 246 "Finland" 233 "Estland" 231 "Ethiopia" 208 "Denmark" 203 "Czech" 196 "Cyprus" 192 "Cuba" 191 "Croatia" 158 "Taiwan" 156 "China" 152 "Chile" 124 "Canada" 112 "Belarus" 100 "Bulgaria" 70 "Bosina Herzigovina" 56 "Belgium" 51 "Armenia" 40 "Austria" 36 "Australia" 32 "Argentina" 20 "Andorra" 12 "Algeria" 8 "Albania" 0 "NA" ;
+VAL_ 559 eH_MsgTyp_2 7 "Reserved" 6 "META-DATA" 5 "PROFILE LONG" 4 "PROFILE SHORT" 3 "STUB" 2 "SEGMENT" 1 "POSITION" 0 "System Specific" ;
+VAL_ 558 adas_mini_Update 1 "true" 0 "false" ;
+VAL_ 558 adas_mini_Tunnel 3 "N/A" 2 "Unknown" 1 "Part of Tunnel" 0 "Not Part of Tunnel" ;
+VAL_ 558 adas_mini_Retr 1 "true" 0 "false" ;
+VAL_ 558 adas_mini_RelProbb 31 "N/A" 30 "100.00%" 29 "96.67%" 28 "93.33%" 27 "90.00%" 26 "86.67%" 25 "83.33%" 24 "80.00%" 23 "76.67%" 22 "73.33%" 21 "70.00%" 20 "66.67%" 19 "63.33%" 18 "60.00%" 17 "56.67%" 16 "53.33%" 15 "50.00%" 14 "46.67%" 13 "43.44%" 12 "40.00%" 11 "33.67%" 10 "33.33%" 9 "30.00%" 8 "26.67%" 7 "23.33%" 6 "20.00%" 5 "16.67%" 4 "13.33%" 3 "10.00%" 2 "6.67%" 1 "3.33%" 0 "Unknown" ;
+VAL_ 558 adas_mini_PathIdx 7 "Reserved" 6 "Stub within MPP" 5 "Stub Sub Path No Data" 4 "ADASIS Mini" 3 "Av2HP Positioning not calibrated" 2 "Position not on-road" 1 "Position not in Digitized Area" 0 "Unknnown" ;
+VAL_ 558 adas_mini_PartOfCalcRoute 3 "N/A" 2 "Unknown" 1 "Part of Calculated Route" 0 "Not Part of Calculated Route" ;
+VAL_ 558 adas_mini_Offset 8191 "Invalid" ;
+VAL_ 558 adas_mini_NumLaneOpp 3 "N/A" 2 "multiple lanes" 1 "single lane" 0 "one-direction road" ;
+VAL_ 558 adas_mini_NumLaneDrv 7 "N/A" 6 "6 or more" 0 "One-direction/Wrong-Way" ;
+VAL_ 558 adas_mini_FuncRoadClass 7 "N/A" 0 "Unknown" ;
+VAL_ 558 adas_mini_FormOfWay 15 "N/A" 14 "Pedestrian Zone" 13 "Entrance / Exit to Service" 12 "Entrance / Exit to Car Park" 11 "Service / Frontage Road" 10 "Slip Road / Ramp -not Freeway" 9 "Slip Road / Ramp -Freeway" 8 "Parallel Road" 7 "Reserved" 6 "Reserved" 5 "Traffic Square / Special Figure" 4 "Roundabout Circle" 3 "Single Carriageway" 2 "Multiple Carriageway" 1 "Freeway / Controlled Access Road" 0 "Unknown" ;
+VAL_ 558 adas_mini_EffSpdLimType 7 "Unknown" 6 "Explicit - snow" 5 "Explicit - rain" 4 "Explicit - time of day" 3 "Explicit - by day" 2 "Explicit - by night" 1 "Explicit - on traffic sign" 0 "Implicit" ;
+VAL_ 558 adas_mini_EffSpdLim 31 "Invalid" 30 "Unlimited" 29 "160" 28 "150" 27 "140" 26 "130" 25 "120" 24 "115" 23 "110" 22 "105" 21 "100" 20 "95" 19 "90" 18 "85" 17 "80" 16 "75" 15 "70" 14 "65" 13 "60" 12 "55" 11 "50" 10 "45" 9 "40" 8 "35" 7 "30" 6 "25" 5 "20" 4 "15" 3 "10" 2 "7" 1 "<= 5" 0 "Unknown" ;
+VAL_ 558 adas_mini_DivRoad 3 "N/A" 2 "Unknown" 1 "Part of divided Road" 0 "Not Part of divided Road" ;
+VAL_ 558 adas_mini_CmplxInsct 3 "N/A" 2 "Unknown" 1 "Part of Complex Intersection" 0 "Not Part of Complex Intersection" ;
+VAL_ 558 adas_mini_BuildUpArea 3 "N/A" 2 "Unknown" 1 "Part of Built-up area" 0 "Not Part of Built-up area" ;
+VAL_ 558 adas_mini_Bridge 3 "N/A" 2 "Unknown" 1 "Part of Bridge" 0 "Not Part of Bridge" ;
+VAL_ 558 ADAS_Posn_Spd 511 "N/A" 510 ">=89.2 m/s" 509 "89.0 m/s" 508 "88.8 m/s" 507 "88.6 m/s" 506 "88.4 m/s" 505 "88.2 m/s" 504 "88.0 m/s" 503 "87.8 m/s" 502 "87.6 m/s" 501 "87.4 m/s" 500 "87.2 m/s" 499 "87.0 m/s" 498 "86.8 m/s" 497 "86.6 m/s" 496 "86.4 m/s" 495 "86.2 m/s" 494 "86.0 m/s" 493 "85.8 m/s" 492 "85.6 m/s" 491 "85.4 m/s" 490 "85.2 m/s" 489 "85.0 m/s" 488 "84.8 m/s" 487 "84.6 m/s" 486 "84.4 m/s" 485 "84.2 m/s" 484 "84.0 m/s" 483 "83.8 m/s" 482 "83.6 m/s" 481 "83.4 m/s" 480 "83.2 m/s" 479 "83.0 m/s" 478 "82.8 m/s" 477 "82.6 m/s" 476 "82.4 m/s" 475 "82.2 m/s" 474 "82.0 m/s" 473 "81.8 m/s" 472 "81.6 m/s" 471 "81.4 m/s" 470 "81.2 m/s" 469 "81.0 m/s" 468 "80.8 m/s" 467 "80.6 m/s" 466 "80.4 m/s" 465 "80.2 m/s" 464 "80.0 m/s" 463 "79.8 m/s" 462 "79.6 m/s" 461 "79.4 m/s" 460 "79.2 m/s" 459 "79.0 m/s" 458 "78.8 m/s" 457 "78.6 m/s" 456 "78.4 m/s" 455 "78.2 m/s" 454 "78.0 m/s" 453 "77.8 m/s" 452 "77.6 m/s" 451 "77.4 m/s" 450 "77.2 m/s" 449 "77.0 m/s" 448 "76.8 m/s" 447 "76.6 m/s" 446 "76.4 m/s" 445 "76.2 m/s" 444 "76.0 m/s" 443 "75.8 m/s" 442 "75.6 m/s" 441 "75.4 m/s" 440 "75.2 m/s" 439 "75.0 m/s" 438 "74.8 m/s" 437 "74.6 m/s" 436 "74.4 m/s" 435 "74.2 m/s" 434 "74.0 m/s" 433 "73.8 m/s" 432 "73.6 m/s" 431 "73.4 m/s" 430 "73.2 m/s" 429 "73.0 m/s" 428 "72.8 m/s" 427 "72.6 m/s" 426 "72.4 m/s" 425 "72.2 m/s" 424 "72.0 m/s" 423 "71.8 m/s" 422 "71.6 m/s" 421 "71.4 m/s" 420 "71.2 m/s" 419 "71.0 m/s" 418 "70.8 m/s" 417 "70.6 m/s" 416 "70.4 m/s" 415 "70.2 m/s" 414 "70.0 m/s" 413 "69.8 m/s" 412 "69.6 m/s" 411 "69.4 m/s" 410 "69.2 m/s" 409 "69.0 m/s" 408 "68.8 m/s" 407 "68.6 m/s" 406 "68.4 m/s" 405 "68.2 m/s" 404 "68.0 m/s" 403 "67.8 m/s" 402 "67.6 m/s" 401 "67.4 m/s" 400 "67.2 m/s" 399 "67.0 m/s" 398 "66.8 m/s" 397 "66.6 m/s" 396 "66.4 m/s" 395 "66.2 m/s" 394 "66.0 m/s" 393 "65.8 m/s" 392 "65.6 m/s" 391 "65.4 m/s" 390 "65.2 m/s" 389 "65.0 m/s" 388 "64.8 m/s" 387 "64.6 m/s" 386 "64.4 m/s" 385 "64.2 m/s" 384 "64.0 m/s" 383 "63.8 m/s" 382 "63.6 m/s" 381 "63.4 m/s" 380 "63.2 m/s" 379 "63.0 m/s" 378 "62.8 m/s" 377 "62.6 m/s" 376 "62.4 m/s" 375 "62.2 m/s" 374 "62.0 m/s" 373 "61.8 m/s" 372 "61.6 m/s" 371 "61.4 m/s" 370 "61.2 m/s" 369 "61.0 m/s" 368 "60.8 m/s" 367 "60.6 m/s" 366 "60.4 m/s" 365 "60.2 m/s" 364 "60.0 m/s" 363 "59.8 m/s" 362 "59.6 m/s" 361 "59.4 m/s" 360 "59.2 m/s" 359 "59.0 m/s" 358 "58.8 m/s" 357 "58.6 m/s" 356 "58.4 m/s" 355 "58.2 m/s" 354 "58.0 m/s" 353 "57.8 m/s" 352 "57.6 m/s" 351 "57.4 m/s" 350 "57.2 m/s" 349 "57.0 m/s" 348 "56.8 m/s" 347 "56.6 m/s" 346 "56.4 m/s" 345 "56.2 m/s" 344 "56.0 m/s" 343 "55.8 m/s" 342 "55.6 m/s" 341 "55.4 m/s" 340 "55.2 m/s" 339 "55.0 m/s" 338 "54.8 m/s" 337 "54.6 m/s" 336 "54.4 m/s" 335 "54.2 m/s" 334 "54.0 m/s" 333 "53.8 m/s" 332 "53.6 m/s" 331 "53.4 m/s" 330 "53.2 m/s" 329 "53.0 m/s" 328 "52.8 m/s" 327 "52.6 m/s" 326 "52.4 m/s" 325 "52.2 m/s" 324 "52.0 m/s" 323 "51.8 m/s" 322 "51.6 m/s" 321 "51.4 m/s" 320 "51.2 m/s" 319 "51.0 m/s" 318 "50.8 m/s" 317 "50.6 m/s" 316 "50,4 m/s" 315 "50.2 m/s" 314 "50.0 m/s" 313 "49.8 m/s" 312 "49.6 m/s" 311 "49.4 m/s" 310 "49.2 m/s" 309 "49.0 m/s" 308 "48.8 m/s" 307 "48.6 m/s" 306 "48.4 m/s" 305 "48.2 m/s" 304 "48.0 m/s" 303 "47.8 m/s" 302 "47.6 m/s" 301 "47.4 m/s" 300 "47.2 m/s" 299 "47.0 m/s" 298 "46.8 m/s" 297 "46.6 m/s" 296 "46.4 m/s" 295 "46.2 m/s" 294 "46.0 m/s" 293 "45.8 m/s" 292 "45.6 m/s" 291 "45.4 m/s" 290 "45.2 m/s" 289 "45.0 m/s" 288 "44.8 m/s" 287 "44.6 m/s" 286 "44.4 m/s" 285 "44.2 m/s" 284 "44.0 m/s" 283 "43.8 m/s" 282 "43.6 m/s" 281 "43.4 m/s" 280 "43.2 m/s" 279 "43.0 m/s" 278 "42.8 m/s" 277 "42.6 m/s" 276 "42.4 m/s" 275 "42.2 m/s" 274 "42.0 m/s" 273 "41.8 m/s" 272 "41.6 m/s" 271 "41.4 m/s" 270 "41.2 m/s" 269 "41.0 m/s" 268 "40.8 m/s" 267 "40.6 m/s" 266 "40.4 m/s" 265 "40.2 m/s" 264 "40.0 m/s" 263 "39.8 m/s" 262 "39.6 m/s" 261 "39.4 m/s" 260 "39.2 m/s" 259 "39.0 m/s" 258 "38.8 m/s" 257 "38.6 m/s" 256 "38.4 m/s" 255 "38.2 m/s" 254 "38.0 m/s" 253 "37.8 m/s" 252 "37.6 m/s" 251 "37.4 m/s" 250 "37.2 m/s" 249 "37.0 m/s" 248 "36.8 m/s" 247 "36.6 m/s" 246 "36.4 m/s" 245 "36.2 m/s" 244 "36.0 m/s" 243 "35.8 m/s" 242 "35.6 m/s" 241 "35.4 m/s" 240 "35.2 m/s" 239 "35.0 m/s" 238 "34.8 m/s" 237 "34.6 m/s" 236 "34.4 m/s" 235 "34.2 m/s" 234 "34.0 m/s" 233 "33.8 m/s" 232 "33.6 m/s" 231 "33.4 m/s" 230 "33.2 m/s" 229 "33.0 m/s" 228 "32.8 m/s" 227 "32.6 m/s" 226 "32.4 m/s" 225 "32.2 m/s" 224 "32.0 m/s" 223 "31.8 m/s" 222 "31.6 m/s" 221 "31.4 m/s" 220 "31.2 m/s" 219 "31.0 m/s" 218 "30.8 m/s" 217 "30.6 m/s" 216 "30.4 m/s" 215 "30.2 m/s" 214 "30.0 m/s" 213 "29.8 m/s" 212 "29.6 m/s" 211 "29.4 m/s" 210 "29.2 m/s" 209 "29.0 m/s" 208 "28.8 m/s" 207 "28.6 m/s" 206 "28.4 m/s" 205 "28.2 m/s" 204 "28.0 m/s" 203 "27.8 m/s" 202 "27.6 m/s" 201 "27.4 m/s" 200 "27.2 m/s" 199 "27.0 m/s" 198 "26.8 m/s" 197 "26.6 m/s" 196 "26.4 m/s" 195 "26.2 m/s" 194 "26.0 m/s" 193 "25.8 m/s" 192 "25.6 m/s" 191 "25.4 m/s" 190 "25.2 m/s" 189 "25.0 m/s" 188 "24.8 m/s" 187 "24.6 m/s" 186 "24.4 m/s" 185 "24.2 m/s" 184 "24.0 m/s" 183 "23.8 m/s" 182 "23.6 m/s" 181 "23.4 m/s" 180 "23.2 m/s" 179 "23.0 m/s" 178 "22.8 m/s" 177 "22.6 m/s" 176 "22.4 m/s" 175 "22.2 m/s" 174 "22.0 m/s" 173 "21.8 m/s" 172 "21.6 m/s" 171 "21.4 m/s" 170 "21.2 m/s" 169 "21.0 m/s" 168 "20.8 m/s" 167 "20.6 m/s" 166 "20.4 m/s" 165 "20.2 m/s" 164 "20.0 m/s" 163 "19.8 m/s" 162 "19.6 m/s" 161 "19.4 m/s" 160 "19.2 m/s" 159 "19.0 m/s" 158 "18.8 m/s" 157 "18.6 m/s" 156 "18.4 m/s" 155 "18.2 m/s" 154 "18.0 m/s" 153 "17.8 m/s" 152 "17.6 m/s" 151 "17.4 m/s" 150 "17.2 m/s" 149 "17.0 m/s" 148 "16.8 m/s" 147 "16.6 m/s" 146 "16.4 m/s" 145 "16.2 m/s" 144 "16.0 m/s" 143 "15.8 m/s" 142 "15.6 m/s" 141 "15.4 m/s" 140 "15.2 m/s" 139 "15.0 m/s" 138 "14.8 m/s" 137 "14.6 m/s" 136 "14.4 m/s" 135 "14.2 m/s" 134 "14.0 m/s" 133 "13.8 m/s" 132 "13.6 m/s" 131 "13.4 m/s" 130 "13.2 m/s" 129 "13.0 m/s" 128 "12.8 m/s" 127 "12.6 m/s" 126 "12.4 m/s" 125 "12.2 m/s" 124 "12.0 m/s" 123 "11.8 m/s" 122 "11.6 m/s" 121 "11.4 m/s" 120 "11.2 m/s" 119 "11.0 m/s" 118 "10.8 m/s" 117 "10.6 m/s" 116 "10.4 m/s" 115 "10.2 m/s" 114 "10.0 m/s" 113 "9.8 m/s" 112 "9.6 m/s" 111 "9.4 m/s" 110 "9.2 m/s" 109 "9.0 m/s" 108 "8.8 m/s" 107 "8.6 m/s" 106 "8.4 m/s" 105 "8.2 m/s" 104 "8.0 m/s" 103 "7.8 m/s" 102 "7.6 m/s" 101 "7.4 m/s" 100 "7.2 m/s" 99 "7.0 m/s" 98 "6.8 m/s" 97 "6.6 m/s" 96 "6.4 m/s" 95 "6.2 m/s" 94 "6.0 m/s" 93 "5.8 m/s" 92 "5.6 m/s" 91 "5.4 m/s" 90 "5.2 m/s" 89 "5.0 m/s" 88 "4.8 m/s" 87 "4.6 m/s" 86 "4.4 m/s" 85 "4.2 m/s" 84 "4.0 m/s" 83 "3.8 m/s" 82 "3.6 m/s" 81 "3.4 m/s" 80 "3.2 m/s" 79 "3.0 m/s" 78 "2.8 m/s" 77 "2.6 m/s" 76 "2.4 m/s" 75 "2.2 m/s" 74 "2.0 m/s" 73 "1.8 m/s" 72 "1.6 m/s" 71 "1.4 m/s" 70 "1.2 m/s" 69 "1.0 m/s" 68 "0.8 m/s" 67 "0.6 m/s" 66 "0.4 m/s" 65 "0.2 m/s" 64 "Standing still" 63 "-0.2 m/s" 62 "-0.4 m/s" 61 "-0.6 m/s" 60 "-0.8 m/s" 59 "-1.0 m/s" 58 "-1.2 m/s" 57 "-1.4 m/s" 56 "-1.6 m/s" 55 "-1.8 m/s" 54 "-2.0 m/s" 53 "-2.2 m/s" 52 "-2.4 m/s" 51 "-2.6 m/s" 50 "-2.8 m/s" 49 "-3.0 m/s" 48 "-3.2 m/s" 47 "-3.4 m/s" 46 "-3.6 m/s" 45 "-3.8 m/s" 44 "-4.0 m/s" 43 "-4.2 m/s" 42 "-4.4 m/s" 41 "-4.6 m/s" 40 "-4.8 m/s" 39 "-5.0 m/s" 38 "-5.2 m/s" 37 "-5.4 m/s" 36 "-5.6 m/s" 35 "-5.8 m/s" 34 "-6.0 m/s" 33 "-6-2 m/s" 32 "-6.4 m/s" 31 "-6.6 m/s" 30 "-6.8 m/s" 29 "-7.0 m/s" 28 "-7.2 m/s" 27 "-7.4 m/s" 26 "-7.6 m/s" 25 "-7.8 m/s" 24 "-8.0 m/s" 23 "-8.2 m/s" 22 "-8.4 m/s" 21 "-8.6 m/s" 20 "-8.8 m/s" 19 "-9.0 m/s" 18 "-9.2 m/s" 17 "-9.4 m/s" 16 "-9.6 m/s" 15 "-9.8 m/s" 14 "-10.0 m/s" 13 "-10.2 m/s" 12 "-10.4 m/s" 11 "-10.6 m/s" 10 "-10.8 m/s" 9 "-11.0 m/s" 8 "-11.2 m/s" 7 "-11.4 m/s" 6 "-11.6 m/s" 5 "-11.8 m/s" 4 "-12.0 m/s" 3 "-12.2 m/s" 2 "-12.4 m/s" 1 "-12.6 m/s" 0 "<= -12.8 m/s" ;
+VAL_ 558 ADAS_Posn_RelHead 255 "N/A" 254 "Unknown" ;
+VAL_ 558 ADAS_Posn_PosProbb 31 "N/A" 30 "100.00%" 29 "96.67%" 28 "93.33%" 27 "90.00%" 26 "86.67%" 25 "83.33%" 24 "80.00%" 23 "76.67%" 22 "73.33%" 21 "70.00%" 20 "66.67%" 19 "63.33%" 18 "60.00%" 17 "56.67%" 16 "53.33%" 15 "50.00%" 14 "46.67%" 13 "43.44%" 12 "40.00%" 11 "33.67%" 10 "33.33%" 9 "30.00%" 8 "26.67%" 7 "23.33%" 6 "20.00%" 5 "16.67%" 4 "13.33%" 3 "10.00%" 2 "6.67%" 1 "3.33%" 0 "Unknown" ;
+VAL_ 558 ADAS_Posn_PosConf 7 "N/A" 6 "Lowest Confidence" 5 "2. lowest Confidence" 4 "Lower medium Confdence" 3 "Medium Confidence" 2 "Higher medium Confidence" 1 "2. highest Confidence" 0 "Highest Confidence" ;
+VAL_ 558 ADAS_Posn_PathIdx 7 "Reserved" 6 "Stub within MPP" 5 "Stub Sub Path No Data" 4 "ADASIS Mini" 3 "Av2HP Positioning not calibrated" 2 "Position not on-road" 1 "Position not in Digitized Area" 0 "Unknnown" ;
+VAL_ 558 ADAS_Posn_Offset 8191 "Invalid" ;
+VAL_ 558 ADAS_Posn_CurLane 7 "N/A" 6 "Reserved" 5 "One of middle lanes (>=3 lanes)" 4 "Right-most lane" 3 "Left-most lane" 2 "Single-lane road" 1 "Emergency Lane" 0 "Unknown" ;
+VAL_ 558 ADAS_Posn_PosAge 511 "N/A" 510 ">2545 ms" 509 "2545 ms" 508 "2540 ms" 507 "2535 ms" 506 "2530 ms" 505 "2525 ms" 504 "2520 ms" 503 "2515 ms" 502 "2510 ms" 501 "2505 ms" 500 "2500 ms" 499 "2495 ms" 498 "2490 ms" 497 "2485 ms" 496 "2480 ms" 495 "2475 ms" 494 "2470 ms" 493 "2465 ms" 492 "2460 ms" 491 "2455 ms" 490 "2450 ms" 489 "2445 ms" 488 "2440 ms" 487 "2435 ms" 486 "2430 ms" 485 "2425 ms" 484 "2420 ms" 483 "2415 ms" 482 "2410 ms" 481 "2405 ms" 480 "2400 ms" 479 "2395 ms" 478 "2390 ms" 477 "2385 ms" 476 "2380 ms" 475 "2375 ms" 474 "2370 ms" 473 "2365 ms" 472 "2360 ms" 471 "2355 ms" 470 "2350 ms" 469 "2345 ms" 468 "2340 ms" 467 "2335 ms" 466 "2330 ms" 465 "2325 ms" 464 "2320 ms" 463 "2315 ms" 462 "2310 ms" 461 "2305 ms" 460 "2300 ms" 459 "2295 ms" 458 "2290 ms" 457 "2285 ms" 456 "2280 ms" 455 "2275 ms" 454 "2270 ms" 453 "2265 ms" 452 "2260 ms" 451 "2255 ms" 450 "2250 ms" 449 "2245 ms" 448 "2240 ms" 447 "2235 ms" 446 "2230 ms" 445 "2225 ms" 444 "2220 ms" 443 "2215 ms" 442 "2210 ms" 441 "2205 ms" 440 "2200 ms" 439 "2195 ms" 438 "2190 ms" 437 "2185 ms" 436 "2180 ms" 435 "2175 ms" 434 "2170 ms" 433 "2165 ms" 432 "2160 ms" 431 "2155 ms" 430 "2150 ms" 429 "2145 ms" 428 "2140 ms" 427 "2135 ms" 426 "2130 ms" 425 "2125 ms" 424 "2120 ms" 423 "2115 ms" 422 "2110 ms" 421 "2105 ms" 420 "2100 ms" 419 "2095 ms" 418 "2090 ms" 417 "2085 ms" 416 "2080 ms" 415 "2075 ms" 414 "2070 ms" 413 "2065 ms" 412 "2060 ms" 411 "2055 ms" 410 "2050 ms" 409 "2045 ms" 408 "2040 ms" 407 "2035 ms" 406 "2030 ms" 405 "2025 ms" 404 "2020 ms" 403 "2015 ms" 402 "2010 ms" 401 "2005 ms" 400 "2000ms" 399 "1995 ms" 398 "1990 ms" 397 "1985 ms" 396 "1980 ms" 395 "1975 ms" 394 "1970 ms" 393 "1965 ms" 392 "1960 ms" 391 "1955 ms" 390 "1950 ms" 389 "1945 ms" 388 "1940 ms" 387 "1935 ms" 386 "1960 ms" 385 "1925 ms" 384 "1920 ms" 383 "1915 ms" 382 "1910 ms" 381 "1905 ms" 380 "1900 ms" 379 "1895 ms" 378 "1890 ms" 377 "1885 ms" 376 "1880 ms" 375 "1875 ms" 374 "1870 ms" 373 "1865 ms" 372 "1860 ms" 371 "1855 ms" 370 "1850 ms" 369 "1845 ms" 368 "1840 ms" 367 "1835 ms" 366 "1830 ms" 365 "1825 ms" 364 "1820 ms" 363 "1815 ms" 362 "1810 ms" 361 "1805 ms" 360 "1800 ms" 359 "1795 ms" 358 "1790 ms" 357 "1785 ms" 356 "1780 ms" 355 "1775 ms" 354 "1770 ms" 353 "1765 ms" 352 "1760 ms" 351 "1755 ms" 350 "1750 ms" 349 "1745 ms" 348 "1740 ms" 347 "1735 ms" 346 "1730 ms" 345 "1725 ms" 344 "1720 ms" 343 "1715 ms" 342 "1710 ms" 341 "1705 ms" 340 "1700 ms" 339 "1695 ms" 338 "1690 ms" 337 "1685 ms" 336 "1680 ms" 335 "1675 ms" 334 "1670 ms" 333 "1665 ms" 332 "1660 ms" 331 "1655 ms" 330 "1650 ms" 329 "1645 ms" 328 "1640 ms" 327 "1635 ms" 326 "1630 ms" 325 "1625 ms" 324 "1620 ms" 323 "1615 ms" 322 "1610 ms" 321 "1605 ms" 320 "1600 ms" 319 "1595 ms" 318 "1590 ms" 317 "1585 ms" 316 "1580 ms" 315 "1575 ms" 314 "1570 ms" 313 "1565 ms" 312 "1560 ms" 311 "1555 ms" 310 "1550 ms" 309 "1545 ms" 308 "1540 ms" 307 "1535 ms" 306 "1530 ms" 305 "1525 ms" 304 "1520 ms" 303 "1515 ms" 302 "1510 ms" 301 "1505 ms" 300 "1500 ms" 299 "1495 ms" 298 "1490 ms" 297 "1485 ms" 296 "1480 ms" 295 "1475 ms" 294 "1470 ms" 293 "1465 ms" 292 "1460 ms" 291 "1455 ms" 290 "1450 ms" 289 "1445 ms" 288 "1440 ms" 287 "1435 ms" 286 "1430 ms" 285 "1425 ms" 284 "1420 ms" 283 "1415 ms" 282 "1410 ms" 281 "1405 ms" 280 "1400 ms" 279 "1395 ms" 278 "1390 ms" 277 "1385 ms" 276 "1380 ms" 275 "1375 ms" 274 "1370 ms" 273 "1365 ms" 272 "1360 ms" 271 "1355 ms" 270 "1350 ms" 269 "1345 ms" 268 "1340 ms" 267 "1335 ms" 266 "1330 ms" 265 "1325 ms" 264 "1320 ms" 263 "1315 ms" 262 "1310 ms" 261 "1305 ms" 260 "1300 ms" 259 "1295 ms" 258 "1290 ms" 257 "1285 ms" 256 "1280 ms" 255 "1275 ms" 254 "1270 ms" 253 "1265 ms" 252 "1260 ms" 251 "1255 ms" 250 "1250 ms" 249 "1245 ms" 248 "1240 ms" 247 "1235 ms" 246 "1230 ms" 245 "1225 ms" 244 "1220 ms" 243 "1215 ms" 242 "1210 ms" 241 "1205 ms" 240 "1200 ms" 239 "1195 ms" 238 "1190 ms" 237 "1185 ms" 236 "1180 ms" 235 "1175 ms" 234 "1170 ms" 233 "1165 ms" 232 "1160 ms" 231 "1155 ms" 230 "1150 ms" 229 "1145 ms" 228 "1140 ms" 227 "1135 ms" 226 "1130 ms" 225 "1125 ms" 224 "1120 ms" 223 "1115 ms" 222 "1110 ms" 221 "1105 ms " 220 "1100 ms" 219 "1095 ms" 218 "1090 ms" 217 "1085 ms" 216 "1080 ms" 215 "1075 ms" 214 "1070 ms" 213 "1065 ms" 212 "1060 ms" 211 "1055 ms" 210 "1050 ms" 209 "1045 ms" 208 "1040 ms" 207 "1035 ms" 206 "1030 ms" 205 "1025 ms" 204 "1020 ms" 203 "1015 ms" 202 "1010 ms" 201 "1005 ms" 200 "1000 ms" 199 "995 ms" 198 "990 ms" 197 "985 ms" 196 "980 ms" 195 "975 ms" 194 "970 ms" 193 "965 ms" 192 "960 ms" 191 "955 ms" 190 "950 ms" 189 "945 ms" 188 "940 ms" 187 "935 ms" 186 "930 ms" 185 "925 ms" 184 "920 ms" 183 "915 ms" 182 "910 ms" 181 "905 ms" 180 "900 ms" 179 "895 ms" 178 "890 ms" 177 "885 ms" 176 "880 ms" 175 "875 ms" 174 "870 ms" 173 "865 ms" 172 "860 ms" 171 "855 ms" 170 "850 ms" 169 "845 ms" 168 "840 ms" 167 "835 ms" 166 "830 ms" 165 "825 ms" 164 "820 ms" 163 "815 ms" 162 "810 ms" 161 "805 ms" 160 "800 ms" 159 "795 ms" 158 "790 ms" 157 "785 ms" 156 "780 ms" 155 "775 ms" 154 "770 ms" 153 "765 ms" 152 "760 ms" 151 "755 ms" 150 "750 ms" 149 "745 ms" 148 "740 ms" 147 "735 ms" 146 "730 ms" 145 "725 ms" 144 "720 ms" 143 "715 ms" 142 "710 ms" 141 "705 ms" 140 "700 ms" 139 "695 ms" 138 "690 ms" 137 "685 ms" 136 "680 ms" 135 "675 ms" 134 "670 ms" 133 "665 ms" 132 "660 ms" 131 "655 ms" 130 "650 ms" 129 "645 ms" 128 "640 ms" 127 "635 ms" 126 "630 ms" 125 "625 ms" 124 "620 ms" 123 "615 ms" 122 "610 ms" 121 "605 ms" 120 "600 ms" 119 "595 ms" 118 "590 ms" 117 "585 ms" 116 "580 ms" 115 "575 ms" 114 "570 ms" 113 "565 ms" 112 "560 ms" 111 "555 ms" 110 "550 ms" 109 "545 ms" 108 "540 ms" 107 "535 ms" 106 "530 ms" 105 "525 ms" 104 "520 ms" 103 "515 ms" 102 "510 ms" 101 "505 ms" 100 "500 ms" 99 "495 ms" 98 "490 ms" 97 "485 ms" 96 "480 ms" 95 "475 ms" 94 "470 ms" 93 "465 ms" 92 "460 ms" 91 "455 ms" 90 "450 ms" 89 "445 ms" 88 "440 ms" 87 "435 ms" 86 "430 ms" 85 "425 ms" 84 "420 ms" 83 "415 ms" 82 "410 ms" 81 "405 ms" 80 "400 ms" 79 "395 ms" 78 "390 ms" 77 "385 ms" 76 "380 ms" 75 "375 ms" 74 "370 ms" 73 "365 ms" 72 "360 ms" 71 "355 ms" 70 "350 ms" 69 "345 ms" 68 "340 ms" 67 "335 ms" 66 "330 ms" 65 "325 ms" 64 "320 ms" 63 "315 ms" 62 "310 ms" 61 "305 ms" 60 "300 ms" 59 "295 ms" 58 "290 ms" 57 "285 ms" 56 "280 ms" 55 "275 ms" 54 "270 ms" 53 "265 ms" 52 "260 ms" 51 "255 ms" 50 "250 ms" 49 "245 ms" 48 "240 ms" 47 "235 ms" 46 "230 ms" 45 "225 ms" 44 "220 ms" 43 "215 ms" 42 "210 ms" 41 "205 ms" 40 "200 ms" 39 "195 ms" 38 "190 ms" 37 "185 ms" 36 "180 ms" 35 "175 ms" 34 "170 ms" 33 "165 ms" 32 "160 ms" 31 "155 ms" 30 "150 ms" 29 "145 ms" 28 "140 ms" 27 "135 ms" 26 "130 ms" 25 "125 ms" 24 "120 ms" 23 "115 ms" 22 "110 ms" 21 "105 ms" 20 "100 ms" 19 "95 ms" 18 "90 ms" 17 "85 ms" 16 "80 ms" 15 "75 ms" 14 "70 ms" 13 "65 ms" 12 "60 ms" 11 "55 ms" 10 "50 ms" 9 "45 ms" 8 "40 ms" 7 "35 ms" 6 "30 ms" 5 "25 ms" 4 "20 ms" 3 "15 ms" 2 "10 ms" 1 "5 ms" 0 "0 ms" ;
+VAL_ 558 eH_MsgTyp_1 7 "Reserved" 6 "META-DATA" 5 "PROFILE LONG" 4 "PROFILE SHORT" 3 "STUB" 2 "SEGMENT" 1 "POSITION" 0 "System Specific" ;
+
+SG_MUL_VAL_ 559 adas_pShort_TurnLaneRoute1 adas_pShort_ProfType 23-23;
+SG_MUL_VAL_ 559 adas_pShort_TurnLaneNum1 adas_pShort_ProfType 23-23;
+SG_MUL_VAL_ 559 adas_pShort_TurnLaneDire1 adas_pShort_ProfType 23-23;
+SG_MUL_VAL_ 559 adas_pShort_SpeedCategory1 adas_pShort_ProfType 22-22;
+SG_MUL_VAL_ 559 adas_pShort_PostedSpeedLimit1 adas_pShort_ProfType 17-17;
+SG_MUL_VAL_ 559 adas_pShort_NumLaneOpposite1 adas_pShort_ProfType 24-24;
+SG_MUL_VAL_ 559 adas_pShort_ImpliSpdLimitType1 adas_pShort_ProfType 16-16;
+SG_MUL_VAL_ 559 adas_pShort_ImplicitSpeedLimit1 adas_pShort_ProfType 16-16;
+SG_MUL_VAL_ 559 adas_pShort_CondiSpdLimType3_1 adas_pShort_ProfType 20-20;
+SG_MUL_VAL_ 559 adas_pShort_CondiSpdLimType2_1 adas_pShort_ProfType 19-19;
+SG_MUL_VAL_ 559 adas_pShort_CondiSpdLimType1_1 adas_pShort_ProfType 18-18;
+SG_MUL_VAL_ 559 adas_pShort_CondiSpdLimit3_1 adas_pShort_ProfType 20-20;
+SG_MUL_VAL_ 559 adas_pShort_CondiSpdLimit2_1 adas_pShort_ProfType 19-19;
+SG_MUL_VAL_ 559 adas_pShort_CondiSpdLimit1_1 adas_pShort_ProfType 18-18;
+SG_MUL_VAL_ 559 adas_pShort_CondiSpdActive3_1 adas_pShort_ProfType 20-20;
+SG_MUL_VAL_ 559 adas_pShort_CondiSpdActive2_1 adas_pShort_ProfType 19-19;
+SG_MUL_VAL_ 559 adas_pShort_CondiSpdActive1_1 adas_pShort_ProfType 18-18;
+SG_MUL_VAL_ 559 adas_pShort_VariableSpeedLimit1 adas_pShort_ProfType 7-7;
+SG_MUL_VAL_ 559 adas_pShort_SlopeStep1 adas_pShort_ProfType 3-3;
+SG_MUL_VAL_ 559 adas_pShort_SlopeLinear1 adas_pShort_ProfType 4-4;
+SG_MUL_VAL_ 559 adas_pShort_RoadCond1 adas_pShort_ProfType 6-6;
+SG_MUL_VAL_ 559 adas_pShort_RoadAccess1 adas_pShort_ProfType 5-5;
+SG_MUL_VAL_ 559 adas_pShort_HeadingChange1 adas_pShort_ProfType 8-8;
+SG_MUL_VAL_ 559 adas_pShort_VariableSpeedLimit0 adas_pShort_ProfType 7-7;
+SG_MUL_VAL_ 559 adas_pShort_TurnLaneRoute adas_pShort_ProfType 23-23;
+SG_MUL_VAL_ 559 adas_pShort_TurnLaneNum adas_pShort_ProfType 23-23;
+SG_MUL_VAL_ 559 adas_pShort_TurnLaneDire adas_pShort_ProfType 23-23;
+SG_MUL_VAL_ 559 adas_pShort_SpeedCategory adas_pShort_ProfType 22-22;
+SG_MUL_VAL_ 559 adas_pShort_SlopeStep0 adas_pShort_ProfType 3-3;
+SG_MUL_VAL_ 559 adas_pShort_SlopeLinear0 adas_pShort_ProfType 4-4;
+SG_MUL_VAL_ 559 adas_pShort_RoutNrTyp1 adas_pShort_ProfType 2-2;
+SG_MUL_VAL_ 559 adas_pShort_RoutNrTyp0 adas_pShort_ProfType 2-2;
+SG_MUL_VAL_ 559 adas_pShort_RoadCondi0 adas_pShort_ProfType 6-6;
+SG_MUL_VAL_ 559 adas_pShort_RoadAccess0 adas_pShort_ProfType 5-5;
+SG_MUL_VAL_ 559 adas_pShort_PostedSpeedLimit adas_pShort_ProfType 17-17;
+SG_MUL_VAL_ 559 adas_pShort_NumLaneOpposite adas_pShort_ProfType 24-24;
+SG_MUL_VAL_ 559 adas_pShort_ImpliSpdLimitType adas_pShort_ProfType 16-16;
+SG_MUL_VAL_ 559 adas_pShort_ImplicitSpeedLimit adas_pShort_ProfType 16-16;
+SG_MUL_VAL_ 559 adas_pShort_HeadingChange0 adas_pShort_ProfType 8-8;
+SG_MUL_VAL_ 559 adas_pShort_Curvature1 adas_pShort_ProfType 1-1;
+SG_MUL_VAL_ 559 adas_pShort_Curvature0 adas_pShort_ProfType 1-1;
+SG_MUL_VAL_ 559 adas_pShort_CondiSpdLimit3 adas_pShort_ProfType 20-20;
+SG_MUL_VAL_ 559 adas_pShort_CondiSpdLimit2 adas_pShort_ProfType 19-19;
+SG_MUL_VAL_ 559 adas_pShort_CondiSpdLimit1 adas_pShort_ProfType 18-18;
+SG_MUL_VAL_ 559 adas_pShort_CondiSpdLimType3 adas_pShort_ProfType 20-20;
+SG_MUL_VAL_ 559 adas_pShort_CondiSpdLimType2 adas_pShort_ProfType 19-19;
+SG_MUL_VAL_ 559 adas_pShort_CondiSpdLimType1 adas_pShort_ProfType 18-18;
+SG_MUL_VAL_ 559 adas_pShort_CondiSpdActive3 adas_pShort_ProfType 20-20;
+SG_MUL_VAL_ 559 adas_pShort_CondiSpdActive2 adas_pShort_ProfType 19-19;
+SG_MUL_VAL_ 559 adas_pShort_CondiSpdActive1 adas_pShort_ProfType 18-18;
+SG_MUL_VAL_ 559 adas_pLong_TS_Veh adas_pLong_ProfType 8-8;
+SG_MUL_VAL_ 559 adas_pLong_TS_Value adas_pLong_ProfType 8-8;
+SG_MUL_VAL_ 559 adas_pLong_TS_Type adas_pLong_ProfType 8-8;
+SG_MUL_VAL_ 559 adas_pLong_TS_Time adas_pLong_ProfType 8-8;
+SG_MUL_VAL_ 559 adas_pLong_TS_Loca adas_pLong_ProfType 8-8;
+SG_MUL_VAL_ 559 adas_pLong_TS_Lane adas_pLong_ProfType 8-8;
+SG_MUL_VAL_ 559 adas_pLong_TS_Cond adas_pLong_ProfType 8-8;
+SG_MUL_VAL_ 559 adas_pLong_Veh_Long adas_pLong_ProfType 16-16;
+SG_MUL_VAL_ 559 adas_pLong_Veh_Lat adas_pLong_ProfType 17-17;
+SG_MUL_VAL_ 559 adas_pLong_Veh_Alti adas_pLong_ProfType 18-18;
+SG_MUL_VAL_ 559 adas_pLong_LinkID adas_pLong_ProfType 7-7;
+SG_MUL_VAL_ 559 adas_pLong_Lane_YFlag adas_pLong_ProfType 10-10;
+SG_MUL_VAL_ 559 adas_pLong_Lane_PrioPre adas_pLong_ProfType 10-10;
+SG_MUL_VAL_ 559 adas_pLong_Lane_Num adas_pLong_ProfType 10-10;
+SG_MUL_VAL_ 559 adas_pLong_Lane_Mark adas_pLong_ProfType 10-10;
+SG_MUL_VAL_ 559 adas_pLong_Lane_LastPre adas_pLong_ProfType 10-10;
+SG_MUL_VAL_ 559 adas_pLong_Lane_FirstPre adas_pLong_ProfType 10-10;
+SG_MUL_VAL_ 559 adas_pLong_Lane_Arrow adas_pLong_ProfType 10-10;
+SG_MUL_VAL_ 559 adas_pLong_Hrzn_Long adas_pLong_ProfType 1-1;
+SG_MUL_VAL_ 559 adas_pLong_Hrzn_Lat adas_pLong_ProfType 2-2;
+SG_MUL_VAL_ 559 adas_pLong_Hrzn_Alti adas_pLong_ProfType 3-3;
+SG_MUL_VAL_ 559 adas_pLong_Lane_Type adas_pLong_ProfType 10-10;
+SG_MUL_VAL_ 559 adas_pLong_Bezier_Long adas_pLong_ProfType 4-4;
+SG_MUL_VAL_ 559 adas_pLong_Bezier_Lat adas_pLong_ProfType 5-5;
+SG_MUL_VAL_ 559 adas_pLong_Bezier_Alti adas_pLong_ProfType 6-6;
+SG_MUL_VAL_ 559 EhData2_No_Actl eH_MsgTyp_2 0-0;
+SG_MUL_VAL_ 559 adas_stub_Update eH_MsgTyp_2 3-3;
+SG_MUL_VAL_ 559 adas_stub_TurnAngle eH_MsgTyp_2 3-3;
+SG_MUL_VAL_ 559 adas_stub_SubPathIdx eH_MsgTyp_2 3-3;
+SG_MUL_VAL_ 559 adas_stub_RtOfWay eH_MsgTyp_2 3-3;
+SG_MUL_VAL_ 559 adas_stub_Retr eH_MsgTyp_2 3-3;
+SG_MUL_VAL_ 559 adas_stub_RelProbb eH_MsgTyp_2 3-3;
+SG_MUL_VAL_ 559 adas_stub_PathIdx eH_MsgTyp_2 3-3;
+SG_MUL_VAL_ 559 adas_stub_PartOfCalcRoute eH_MsgTyp_2 3-3;
+SG_MUL_VAL_ 559 adas_stub_Offset eH_MsgTyp_2 3-3;
+SG_MUL_VAL_ 559 adas_stub_NumLaneOpp eH_MsgTyp_2 3-3;
+SG_MUL_VAL_ 559 adas_stub_NumLaneDrv eH_MsgTyp_2 3-3;
+SG_MUL_VAL_ 559 adas_stub_LastStub eH_MsgTyp_2 3-3;
+SG_MUL_VAL_ 559 adas_stub_FuncRoadClass eH_MsgTyp_2 3-3;
+SG_MUL_VAL_ 559 adas_stub_FormOfWay eH_MsgTyp_2 3-3;
+SG_MUL_VAL_ 559 adas_stub_CycCnt eH_MsgTyp_2 3-3;
+SG_MUL_VAL_ 559 adas_stub_CplxInsc eH_MsgTyp_2 3-3;
+SG_MUL_VAL_ 559 adas_seg_Update eH_MsgTyp_2 2-2;
+SG_MUL_VAL_ 559 adas_seg_Tunnel eH_MsgTyp_2 2-2;
+SG_MUL_VAL_ 559 adas_seg_Retr eH_MsgTyp_2 2-2;
+SG_MUL_VAL_ 559 adas_seg_res eH_MsgTyp_2 2-2;
+SG_MUL_VAL_ 559 adas_seg_RelProbb eH_MsgTyp_2 2-2;
+SG_MUL_VAL_ 559 adas_seg_PathIdx eH_MsgTyp_2 2-2;
+SG_MUL_VAL_ 559 adas_seg_PartOfCalcRoute eH_MsgTyp_2 2-2;
+SG_MUL_VAL_ 559 adas_seg_Offset eH_MsgTyp_2 2-2;
+SG_MUL_VAL_ 559 adas_seg_NumLaneOpp eH_MsgTyp_2 2-2;
+SG_MUL_VAL_ 559 adas_seg_NumLaneDrv eH_MsgTyp_2 2-2;
+SG_MUL_VAL_ 559 adas_seg_FuncRoadClass eH_MsgTyp_2 2-2;
+SG_MUL_VAL_ 559 adas_seg_FormOfWay eH_MsgTyp_2 2-2;
+SG_MUL_VAL_ 559 adas_seg_EffSpdLimType eH_MsgTyp_2 2-2;
+SG_MUL_VAL_ 559 adas_seg_EffSpdLim eH_MsgTyp_2 2-2;
+SG_MUL_VAL_ 559 adas_seg_DivRoad eH_MsgTyp_2 2-2;
+SG_MUL_VAL_ 559 adas_seg_CyclCnt eH_MsgTyp_2 2-2;
+SG_MUL_VAL_ 559 adas_seg_CmplxInsct eH_MsgTyp_2 2-2;
+SG_MUL_VAL_ 559 adas_seg_BuildUpArea eH_MsgTyp_2 2-2;
+SG_MUL_VAL_ 559 adas_seg_Bridge eH_MsgTyp_2 2-2;
+SG_MUL_VAL_ 559 adas_pShort_Value1 adas_pShort_ProfType 9-9;
+SG_MUL_VAL_ 559 adas_pShort_Value0 adas_pShort_ProfType 9-9;
+SG_MUL_VAL_ 559 adas_pShort_Update eH_MsgTyp_2 4-4;
+SG_MUL_VAL_ 559 adas_pShort_Retr eH_MsgTyp_2 4-4;
+SG_MUL_VAL_ 559 adas_pShort_ProfType eH_MsgTyp_2 4-4;
+SG_MUL_VAL_ 559 adas_pShort_PathIdx eH_MsgTyp_2 4-4;
+SG_MUL_VAL_ 559 adas_pShort_Offset eH_MsgTyp_2 4-4;
+SG_MUL_VAL_ 559 adas_pShort_Dist1 eH_MsgTyp_2 4-4;
+SG_MUL_VAL_ 559 adas_pShort_CycCnt eH_MsgTyp_2 4-4;
+SG_MUL_VAL_ 559 adas_pShort_CtrlPoint eH_MsgTyp_2 4-4;
+SG_MUL_VAL_ 559 adas_pShort_AccurClass eH_MsgTyp_2 4-4;
+SG_MUL_VAL_ 559 adas_pLong_noValue adas_pLong_ProfType 0-0;
+SG_MUL_VAL_ 559 adas_pLong_Update eH_MsgTyp_2 5-5;
+SG_MUL_VAL_ 559 adas_pLong_Retr eH_MsgTyp_2 5-5;
+SG_MUL_VAL_ 559 adas_pLong_ProfType eH_MsgTyp_2 5-5;
+SG_MUL_VAL_ 559 adas_pLong_PathIdx eH_MsgTyp_2 5-5;
+SG_MUL_VAL_ 559 adas_pLong_Offset eH_MsgTyp_2 5-5;
+SG_MUL_VAL_ 559 adas_pLong_CycCnt eH_MsgTyp_2 5-5;
+SG_MUL_VAL_ 559 adas_pLong_CtrlPoint eH_MsgTyp_2 5-5;
+SG_MUL_VAL_ 559 adas_meta_SpdUnits eH_MsgTyp_2 6-6;
+SG_MUL_VAL_ 559 adas_meta_res eH_MsgTyp_2 6-6;
+SG_MUL_VAL_ 559 adas_meta_RegionCode eH_MsgTyp_2 6-6;
+SG_MUL_VAL_ 559 adas_meta_ProtVerMinor eH_MsgTyp_2 6-6;
+SG_MUL_VAL_ 559 adas_meta_ProtVerMajor eH_MsgTyp_2 6-6;
+SG_MUL_VAL_ 559 adas_meta_ProtVer_MinorSub eH_MsgTyp_2 6-6;
+SG_MUL_VAL_ 559 adas_meta_MapVerYear eH_MsgTyp_2 6-6;
+SG_MUL_VAL_ 559 adas_meta_MapVerQtr eH_MsgTyp_2 6-6;
+SG_MUL_VAL_ 559 adas_meta_MapProvider eH_MsgTyp_2 6-6;
+SG_MUL_VAL_ 559 adas_meta_HwVer eH_MsgTyp_2 6-6;
+SG_MUL_VAL_ 559 adas_meta_DrvSide eH_MsgTyp_2 6-6;
+SG_MUL_VAL_ 559 adas_meta_CycCont eH_MsgTyp_2 6-6;
+SG_MUL_VAL_ 559 adas_meta_CountryCode eH_MsgTyp_2 6-6;

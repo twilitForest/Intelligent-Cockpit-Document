@@ -1,0 +1,4 @@
+Compared with Tailgate softswitch, following  are changes:
+
+1. signal 
+2. HMI icon
