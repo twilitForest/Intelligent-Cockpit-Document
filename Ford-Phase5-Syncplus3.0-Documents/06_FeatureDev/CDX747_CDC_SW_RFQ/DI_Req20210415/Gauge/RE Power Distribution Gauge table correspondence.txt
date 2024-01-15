@@ -1,0 +1,80 @@
+From:	Rodriguez Bollain, Arturo (R2.)
+Sent:	Tuesday, March 24, 2015 10:48 AM
+To:	Miloser, Jim (A.)
+Subject:	RE: Power Distribution Gauge CGEA1_3
+Attachments:	InterpolationTable - FixedToPercentage.xlsx
+
+Jim,
+
+This is the table Jamie is refering to.
+
+From: Miloser, Jim (A.)  
+Sent: martes, 24 de marzo de 2015 10:30 a.m. 
+To: JAMES_BONSALL@denso-diam.com 
+Cc: Rodriguez Bollain, Arturo (R2.); Luong, Daniel (D.); JACOB_NABOZNY@denso-diam.com 
+Subject: RE: Power Distribution Gauge CGEA1_3
+
+Ok.  Thank you for the clarification.
+
+From: JAMES_BONSALL@denso-diam.com [mailto:JAMES_BONSALL@denso-diam.com]  
+Sent: Tuesday, March 24, 2015 9:16 AM 
+To: Miloser, Jim (A.) 
+Cc: Rodriguez Bollain, Arturo (R2.); Luong, Daniel (D.); JACOB_NABOZNY@denso-diam.com 
+Subject: Re: Power Distribution Gauge CGEA1_3
+
+Jim 
+Per instructions from Arturo, we have to interpolate the values we get out of the model using a lookup 
+table. 
+ 
+        PDG_CGEA_1_2_V2_1_step( ); 
+ 
+        u2_t_pct = (U2)PDG_CGEA_1_2_V2_1_Y.PG_front_percent_fill; 
+        u2_s_powerdistgauge_frontfillpct = u2_POWERDIST_INTERPOLATE(u2_t_pct, 
+&u2_sp_POWERDIST_PCT_INTPL_TBL[0]); 
+ 
+        u2_t_pct = (U2)PDG_CGEA_1_2_V2_1_Y.PG_rear_percent_fill; 
+        u2_s_powerdistgauge_rearfillpct  = u2_POWERDIST_INTERPOLATE(u2_t_pct, 
+&u2_sp_POWERDIST_PCT_INTPL_TBL[0]); 
+ 
+---------------------------------- 
+Jamie Bonsall 
+DENSO International America, Inc. 
+(248) 750-3267 
+ 
+ 
+ 
+ "Miloser, Jim (A.)" ---03/23/2015 05:32:58 PM---Jamie, For the CGEA1_2 version:  Did your team do 
+anything with the lookup table? Or did you perform 
+ 
+From: "Miloser, Jim (A.)" <jmiloser@ford.com> 
+To: "JAMES_BONSALL@denso-diam.com" <JAMES_BONSALL@denso-diam.com>, "Rodriguez Bollain, Arturo (R2.)" 
+<arodr313@ford.com> 
+Cc: "Luong, Daniel (D.)" <dluong3@ford.com> 
+Date: 03/23/2015 05:32 PM 
+Subject: Power Distribution Gauge CGEA1_3
+ 
+ 
+ 
+ 
+Jamie, 
+For the CGEA1_2 version:  Did your team do anything with the lookup table? Or did you perform: 
+Front_Perceent_Fill ^ PG_LIN_FACTOR? 
+It looks like the CGEA1_2 model does the power operation and the CGEA1_3 model does not. 
+  
+Arturo, I think this is why I’m getting whole numbers for the Front and Rear using the auto-code for the 
+CGEA1_3.  What do you think? 
+  
+  
+Jim Miloser  
+Ford Motor Company – Research & Advanced Engineering IVI 
+.office.  313.206.2262  : Bldg3 2C074 
+.mobile. 313.805.7269  : jmiloser@ford.com 
+ 
+ 
+The information contained in and transmitted with this Email may be privileged, proprietary, confidential and protected 
+from disclosure. No privilege is hereby intended to be waived. This Email is intended only for the person to whom it is 
+addressed. If you are not the intended recipient/addressee, any use of the Email and/or its contents, including, but not 
+limited to, dissemination, distribution or copying is strictly prohibited and may be unlawful, and you must not take any 
+action in reliance on it. If you receive this Email in error, please immediately notify the sender and delete the original 
+message and any copies of it from your computer system. We deny any liability for damages resulting from the use of this 
+Email by the unintended recipient, including the recipient in error.

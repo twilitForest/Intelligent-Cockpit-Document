@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>播放功能</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/播放功能/styles.css" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-3.2.1.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
+    <script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
+    <script src="data/document.js"></script>
+    <script src="files/播放功能/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body>
+    <div id="base" class="">
+
+      <!-- Unnamed (矩形) -->
+      <div id="u82" class="ax_default _三级标题">
+        <div id="u82_div" class=""></div>
+        <div id="u82_text" class="text ">
+          <p><span>播放</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (形状) -->
+      <div id="u83" class="ax_default _文本段落">
+        <img id="u83_img" class="img " src="images/播放功能/u83.svg"/>
+        <div id="u83_text" class="text ">
+          <p><span style="font-family:'Arial Negreta', 'Arial Normal', 'Arial', sans-serif;font-weight:700;">一、音频播放</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">1.用户首次进入首页后，推荐里的第一个专辑的音频信息，同时播放该音频</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">2.用户进入app页，需判断用户是否为登录状态，如不是登录状态，判断该用户是否有本地历史数据可拉取，如有，则拉取本地历史数据，并默认播放该用户最近播放的一条音频节目；</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">如是登录状态，判断是否有历史音频节目可播放，如有，默认播放历史音频节目，历史音频拉取云端数据，从距离当前时间最近的音频从断点处开始播放。</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">如没有历史音频节目，则音频播放器展示推荐里的第一个专辑的音频信息，同时播放该音频</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">3.如用户首打开app历史播放内容为直播流电台内容时，在播放电台内容前会自动播放当前时间，如该用户首次打开app历史播放内容不是直播流电台内容，在首次播放直播流电台的内容时，会自动播放当前时间</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">4.场景电台自动报时仅初次进入的情况有，后续不再出现。</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">（初次进入定义：应用未在后台运行时，打开应用后首次播放场景电台，视为初次进入情形）</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">5.当前正在播放中的专辑/电台，图片右下角显示播放音频效果，</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">若专辑/电台名称位于图片底部，则隐藏专辑/电台名称</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;"><br></span></p><p><span style="font-family:'Arial Negreta', 'Arial Normal', 'Arial', sans-serif;font-weight:700;">二、底部播放器</span></p><p><span style="font-family:'Arial Negreta', 'Arial Normal', 'Arial', sans-serif;font-weight:700;">1.</span><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">展示内容</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">1.1广播、专辑：展示当前播放内容的封面图、单曲名称/节目名称（显示不全时跑马灯形式展示），专辑名称/电台名称（非电视、国家台类型的广播，此处同时展示频率号），播放进度（当前时长/当前节目的总时长）；</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">1.2封面图标签：专辑若为精品或vip，展示对应标签；电台若为直播流或回放，展示对应标签。</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">1.3AI电台：展示当前内容封面图、单曲名称，更新时间 | 来源专辑。</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">1.4进度时间显示：</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">无节目单的直播流内容（听电视视为该类型）-进度条时间为00:00/23:59:59，显示时间为当前播放时间/总时间23:59:59，暂停时播放条继续移动，时间继续计时；</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">有节目单的广播/专辑节目-进度条时间为00:00/节目总时长（例如07:00:00-11:00:00的节目，播放器时长显示为2:00:00），显示时间为当前播放时间/总时长，暂停时播放条暂停，时间暂停。</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">1.5进度时长未超过1小时，显示为xx:xx形式，例如44:13；超出1小时，显示为x:xx:xx或xx:xx:xx形式，例如4:56:56、12:23:23.</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;"><br></span></p><p><span style="font-family:'Arial Negreta', 'Arial Normal', 'Arial', sans-serif;font-weight:700;">2.</span><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">支持播放暂停、切换上一首、下一首；</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">在我的订阅、已购、播放历史中，点击播放任意专辑/广播，上/下一首仅支持切换当前专辑列表/广播节目单内容，不支持切换至其他专辑/广播。</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">3.播放器中的信息位置，可触发播放详情页（根据当前播放音频类型，打开对应类型详情页）</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;"><br></span></p><p><span style="font-family:'Arial Negreta', 'Arial Normal', 'Arial', sans-serif;font-weight:700;">三、详情页播放器</span></p><p><span style="font-family:'Arial Negreta', 'Arial Normal', 'Arial', sans-serif;font-weight:700;">1.广播、电视</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">支持上/下一首、播放/暂停、节目单；进度条、时间（同底部播放器1.4、1.5内容）</span></p><p><span style="font-family:'Arial Negreta', 'Arial Normal', 'Arial', sans-serif;font-weight:700;">2.专辑</span><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">：详情页播放器同底部播放器保持一致</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;"><br></span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;"><br></span></p><p><span style="font-family:'Arial Negreta', 'Arial Normal', 'Arial', sans-serif;font-weight:700;">四、底部播放器交互逻辑</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">1.进度条支持拖拽或点选进度位置区域跳转功能；注：传统广播的直播流不支持</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">2.点击暂停按钮，停止音频播放，同时播放进度条停止移动</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">3.若播放当前专辑第一个节目，则上一个icon置灰，点击则Toast提示：当前播放音频为专辑第一集；</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">4.若播放当前专辑最后一个节目，则下一个icon置灰，点击则Toast提示：当前播放音频为专辑最后一集；</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">5.底部播放器，数据切换，如当前页面展示的为专辑/ai电台列表则点击上一个下一个切换的为单曲，如页面展示的为广播/电视列表则点击上一个下一个切换的为广播/电视；广播详情节目单页，点击上一个下一个切换的为该广播的单曲</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">6.当前为直播流内容时，点击暂停按钮，停止音频播放，播放进度条仍继续移动，且继续计时</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;">当前为回听内容时，点击暂停按钮，停止音频播放，播放进度条停止移动</span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;"><br></span></p><p><span style="font-family:'Arial Normal', 'Arial', sans-serif;font-weight:400;"><br></span></p>
+        </div>
+      </div>
+    </div>
+    <script src="resources/scripts/axure/ios.js"></script>
+  </body>
+</html>
