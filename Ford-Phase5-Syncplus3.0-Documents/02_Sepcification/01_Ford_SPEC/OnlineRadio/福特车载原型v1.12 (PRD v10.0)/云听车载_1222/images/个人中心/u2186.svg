@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="97px" height="95px" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <mask fill="white" id="clip223">
+      <path d="M 824.5 561  C 798.1375 561  777 539.8625  777 513.5  L 777 513.5  C 777 487.1375  798.1375 466  824.5 466  L 826.5 466  C 852.8625 466  874 487.1375  874 513.5  L 874 513.5  C 874 539.8625  852.8625 561  826.5 561  " fill-rule="evenodd" />
+    </mask>
+  </defs>
+  <g transform="matrix(1 0 0 1 -777 -466 )">
+    <path d="M 777 466  L 874 466  L 874 561  L 777 561  L 777 466  " fill-rule="nonzero" fill="#cccccc" stroke="none" mask="url(#clip223)" />
+    <path d="M 784 473  L 867 473  L 867 554  L 784 554  L 784 473  " fill-rule="nonzero" fill="#ffffff" stroke="none" mask="url(#clip223)" />
+    <path d="M 834.565 494.5  C 830.575 494.5  827.44 491.365  827.44 487.375  C 827.44 483.385  830.575 480.25  834.565 480.25  C 838.555 480.25  841.69 483.385  841.69 487.375  C 841.69 491.365  838.555 494.5  834.565 494.5  " fill-rule="nonzero" fill="#cccccc" stroke="none" mask="url(#clip223)" />
+    <path d="M 787 552  L 787 510.2  L 806.5 491.2  L 833.8 507.340206185567  L 849.4 502.6  L 865 507.340206185567  L 865 552  L 787 552  " fill-rule="nonzero" fill="#169bd5" stroke="none" mask="url(#clip223)" />
+  </g>
+</svg>
