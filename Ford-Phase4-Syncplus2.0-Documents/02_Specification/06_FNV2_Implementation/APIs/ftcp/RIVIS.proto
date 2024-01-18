@@ -1,0 +1,72 @@
+//	Ford Motor Company
+//  Feature/Enabler/Common: Remote Interior View Services
+//	Version Number: 6.0.9
+//	Date Revised: 09/24/2019
+// 	Last Updated By: Suresh Kumar Sundararaj [SSUNDA56]
+// 	Reviewed By: Praveen Yalavarty [PYALAVAR], Srinivasa Samineni [SSAMINE1], Vikas Bijjam [VBIJJAM1]
+// 	Ford Confidential
+//************************************************************************************************************************************************************************
+// CHANGE LOG for version 6.0.9
+	// Added commands
+		// TriggerVideoStreamCommand
+	// Added command responses
+		// TriggerVideoStreamCommandResponse
+	// Added alerts
+		// VideoStreamStatusAlert
+//************************************************************************************************************************************************************************
+
+package com.ford.ftcp.apps;
+
+// Message structure to trigger Video Stream Command
+message TriggerVideoStreamCommand {
+ 	// Camera Source for the video
+ 	optional string videoSource = 1;
+ 	// Video Streaming Control Action
+ 	optional VideoStreamActionENUM action = 2;
+ 	// Session Description Protocol Offer String for Streaming Client
+ 	optional bytes sdpOffer = 3;
+
+	//Enumeration for the Video Stream Actions
+	enum VideoStreamActionENUM{
+		UNKNOWN_ACTION = 0;
+		STOP = 1;
+		START = 2;
+	}
+}
+
+// Message structure for Video Stream Trigger Command Response
+message TriggerVideoStreamCommandResponse{
+	// Enumeration for CommandStatus.
+	optional RIVISStatusENUM status = 1;
+ 	// Session Description Protocol Parameters for Streaming
+ 	optional bytes sdpAnswer = 2;
+	// Message structure for command error details. ECU(ECG/TCU) shall only set this upon any error condition
+	optional RIVISErrCodesENUM errorDetail = 3;
+	// Attribute to report error details
+	optional string errorDescription = 4;
+}
+
+// Message structure for Video Stream Status Alert
+message VideoStreamStatusAlert{
+ 	// Session Description Protocol Response for Streaming
+ 	optional bytes sdpAnswer = 1;
+	// Message structure for command error details. ECU(ECG/TCU) shall only set this upon any error condition
+	optional RIVISErrCodesENUM errorDetail = 2;
+	// Attribute to report error details
+	optional string errorDescription = 3;
+}
+
+// Status Enumerations for Remote Interior View Services
+enum RIVISStatusENUM{
+	// Video Stream command specific status codes
+	RIVIS_STATUS_UNKNOWN = 0;
+	VID_STR_CMD_FAILED = 1;
+	VID_STR_CMD_IN_PROGRESS = 2;
+	VID_STR_CMD_SUCCESS = 3;
+}
+
+// Error Enumeration for Remote Interior View Services
+enum RIVISErrCodesENUM{
+	RIVIS_ERR_UNKNOWN = 0;
+	VID_STR_APP_ERROR = 1;
+}

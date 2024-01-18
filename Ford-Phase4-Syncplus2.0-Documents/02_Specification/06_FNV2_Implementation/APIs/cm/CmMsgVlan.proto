@@ -1,0 +1,549 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2017.  Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// deliberate unauthorized publication.  Ford Motor Company also
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+//
+
+syntax = "proto2";
+option optimize_for = CODE_SIZE;
+package CmMsgVlan;
+import "CmMsgCommon.proto";
+
+// For CM internal use only
+// The protobuf captures enums and messages related to:
+// Virtual Interface and Networking Control.
+// These messages are exchanged between ECG CM, TCU CM and SYNC CM.
+// Command details:
+//  0. NONE:           Error
+//  1. ADD:            Add/configure virtual interfaces (VLANs) and endpoints.
+//    a. REQUEST:      Request from ECG CM to ECU CM.
+//    b. RESPONSE:     Response from ECU CM to ECG CM.
+//    c. INDICATION:   Unsolicited indication (unimplemented).
+//  1. REMOVE:         Remove/free up virtual interfaces (VLANs) and endpoints.
+//    a. REQUEST:      Request from ECG CM to ECU CM.
+//    b. RESPONSE:     Response from ECU CM to ECG CM.
+//    c. INDICATION:   Unsolicited indication (unimplemented).
+//  1. LINK:           Link virtual interface (VLAN) to a network interface.
+//    a. REQUEST:      Request from ECG CM to ECU CM.
+//    b. RESPONSE:     Response from ECU CM to ECG CM.
+//    c. INDICATION:   Unsolicited indication (unimplemented).
+//  1. UNLINK:         Unlink a virtual interface (VLAN) from a network interface.
+//    a. REQUEST:      Request from ECG CM to ECU CM.
+//    b. RESPONSE:     Response from ECU CM to ECG CM.
+//    c. INDICATION:   Unsolicited indication (unimplemented).
+//  1. RESET:          Reset the VNM on an ECU.
+//    a. REQUEST:      Request from ECG CM to ECU CM.
+//    b. RESPONSE:     Response from ECU CM to ECG CM.
+//    c. INDICATION:   Unsolicited indication (unimplemented).
+//  1. LINK_NETWORK:   Link user's request interface name to a network interface
+//    a. REQUEST:      Request from ECG CM to ECU CM.
+//    b. RESPONSE:     Response from ECU CM to ECG CM.
+//  1. UNLINK_NETWORK  Unlink user's request interface name from a network interface
+//    a. REQUEST:      Request from ECG CM to ECU CM.
+//    b. RESPONSE:     Response from ECU CM to ECG CM.
+
+/**
+ * @fnv_proto
+ * Enum of available commands for
+ * Virtual Interface and Networking
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum VlanSubCmdType
+{
+    // Error
+    VLAN_NONE = 0;
+
+    // Add/configure
+    ADD_REQ = 1;
+    ADD_RSP = 2;
+    //ADD_IND = 100;
+
+    // Remove/free
+    RMV_REQ = 3;
+    RMV_RSP = 4;
+    //RMV_IND = 110;
+
+    // Link VLAN to a network interface
+    LINK_REQ = 5;
+    LINK_RSP = 6;
+    //LINK_IND = 111;
+
+    // Unlink VLAN from a network interface
+    UNLINK_REQ = 7;
+    UNLINK_RSP = 8;
+    //UNLINK_IND = 112;
+
+    // Reset VNM, Clear all VLAN's and Link requests
+    VNM_RESET_REQ = 9;
+    VNM_RESET_RSP = 10;
+    //VNM_RESET_IND = 113;
+
+    // Link iface to a network interface
+    VNM_LINK_NETWORK_REQ = 11;
+    VNM_LINK_NETWORK_RSP = 12;	
+
+    // Unlink iface to a network interface
+    VNM_UNLINK_NETWORK_REQ = 13;
+    VNM_UNLINK_NETWORK_RSP = 14;
+}
+
+/**
+ * @fnv_proto
+ * Enum of return codes for commands for
+ * Virtual Interface and Networking
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum VlanRet
+{
+    // Error/Failure
+    VLAN_ERROR = 0;
+
+    // Success
+    VLAN_SUCCESS = 1;
+}
+
+/**
+ * @fnv_proto
+ * Enum of virtual interface endpoint type
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum VlanEndpointType
+{
+    // Host type endpoint
+    VLAN_HOST = 0;
+
+    // Gateway type endpoint
+    VLAN_GATEWAY = 1;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECG CM to send
+ * VLAN configuration request to ECU CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message VlanAddReq
+{
+    // Path Id used internally by CM
+    optional uint32 pathId = 1;
+
+    // Endpoint Id used internally by CM
+    optional uint32 vlanEndpointId = 2;
+
+    // Unique Vlan name
+    optional string vlanName = 3;
+
+    // Unique Vlan Id
+    optional string vlanId = 4;
+
+    // Origination ECU enum in string format
+    optional string origEcu = 5;
+
+    // Interface ECU enum in string format
+    optional string ifaceEcu = 6;
+
+    // Interface MTU in string format
+    optional string mtu = 7;
+
+    // Service Level of the VLAN in string format
+    optional string svcLevel = 8;
+
+    // Network Interface Type over which the VLAN would be setup
+    optional CmMsgCommon.NetworkInterfaceType ifaceType = 9;
+
+    // VLAN Endpoint type
+    optional VlanEndpointType vlanEndpointType = 10;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECU CM to send
+ * VLAN configuration response to ECG CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message VlanAddRsp
+{
+    // Path Id used internally by CM
+    optional uint32 pathId = 1;
+
+    // Endpoint Id used internally by CM
+    optional uint32 vlanEndpointId = 2;
+
+    // Return code for command
+    optional VlanRet ret = 3;
+
+    // Unique Vlan name
+    optional string vlanName = 4;
+
+    // Unique Vlan Id
+    optional string vlanId = 5;
+
+    // VLAN IP Address
+    optional string ipV4Address = 6;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECG CM to send
+ * VLAN removal request to ECU CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message VlanRmvReq
+{
+    // Path Id used internally by CM
+    optional uint32 pathId = 1;
+
+    // Endpoint Id used internally by CM
+    optional uint32 vlanEndpointId = 2;
+
+    // Unique Vlan name
+    optional string vlanName = 3;
+
+    // Unique Vlan Id
+    optional string vlanId = 4;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECU CM to send
+ * VLAN removal response to ECG CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message VlanRmvRsp
+{
+    // Path Id used internally by CM
+    optional uint32 pathId = 1;
+
+    // Endpoint Id used internally by CM
+    optional uint32 vlanEndpointId = 2;
+
+    // Return code for command
+    optional VlanRet ret = 3;
+
+    // Unique Vlan name
+    optional string vlanName = 4;
+
+    // Unique Vlan Id
+    optional string vlanId = 5;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECG CM to send
+ * VLAN link request to ECU CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message VlanLinkReq
+{
+    // Path Id used internally by CM
+    optional uint32 pathId = 1;
+
+    // Endpoint Id used internally by CM
+    optional uint32 vlanEndpointId = 2;
+
+    // Unique Vlan name
+    optional string vlanName = 3;
+
+    // Unique Vlan Id
+    optional string vlanId = 4;
+
+    // Network interface as enumerated in the OS
+    optional string ifaceName = 5;
+
+    // Service Level of the VLAN in string format
+    optional string serviceLevel = 6;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECU CM to send
+ * VLAN link response to ECG CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message VlanLinkRsp
+{
+    // Path Id used internally by CM
+    optional uint32 pathId = 1;
+
+    // Endpoint Id used internally by CM
+    optional uint32 vlanEndpointId = 2;
+
+    // Return code for command
+    optional VlanRet ret = 3;
+
+    // Unique Vlan name
+    optional string vlanName = 4;
+
+    // Unique Vlan Id
+    optional string vlanId = 5;
+
+    // Network interface as enumerated in the OS
+    optional string ifaceName = 6;
+
+    // Service Level of the VLAN in string format
+    optional string serviceLevel = 7;
+
+    // Unique link Id generated by Networking
+    optional string linkId = 8;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECG CM to send
+ * VLAN unlink request to ECU CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message VlanUnlinkReq
+{
+    // Path Id used internally by CM
+    optional uint32 pathId = 1;
+
+    // Endpoint Id used internally by CM
+    optional uint32 vlanEndpointId = 2;
+
+    // Unique Vlan name
+    optional string vlanName = 3;
+
+    // Unique Vlan Id
+    optional string vlanId = 4;
+
+    // Unique link Id generated by Networking
+    optional string linkId = 5;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECU CM to send
+ * VLAN unlink response to ECG CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message VlanUnlinkRsp
+{
+    // Path Id used internally by CM
+    optional uint32 pathId = 1;
+
+    // Endpoint Id used internally by CM
+    optional uint32 vlanEndpointId = 2;
+
+    // Return code for command
+    optional VlanRet ret = 3;
+
+    // Unique Vlan name
+    optional string vlanName = 4;
+
+    // Unique Vlan Id
+    optional string vlanId = 5;
+
+    // Unique link Id generated by Networking
+    optional string linkId = 6;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECG CM to send
+ * VNM reset request to ECU CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message VnmResetReq
+{
+    // ECU for the request
+    optional CmMsgCommon.EcuType ecu = 1;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECU CM to send
+ * VNM reset response to ECG CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message VnmResetRsp
+{
+    // ECU for the response
+    optional CmMsgCommon.EcuType ecu = 1;
+
+    // Return code for command
+    optional VlanRet ret = 2;
+}
+
+message VnmLinkNetworkReq
+{
+    // Path Id used internally by CM
+    optional uint32 pathId = 1;
+	
+    // Origination ECU enum in string format
+    optional string origEcu = 2;
+	
+    // Interface ECU enum in string format
+    optional string ifaceEcu = 3;
+	
+    // User's provided interface name to be linked
+    optional string interfaceZero = 4;
+	
+    // Network interface to be linked
+    optional string interfaceOne = 5;
+	
+    // Gateway ip address associated with network interface
+    optional string ipAddr = 6;
+}
+
+message VnmLinkNetworkRsp
+{
+    // Path Id used internally by CM
+    optional uint32 pathId = 1;
+
+    // Origination ECU enum in string format
+    optional string origEcu = 2;
+
+    // Unique link Id generated by Networking
+    optional string linkId = 3;
+
+    // Return code for command
+    optional VlanRet ret = 4;
+}
+
+message VnmUnlinkNetworkReq
+{
+    // Path Id used internally by CM
+    optional uint32 pathId = 1;
+
+    // Origination ECU enum in string format
+    optional string origEcu = 2;
+
+    // Interface ECU enum in string format
+    optional string ifaceEcu = 3;
+
+    // Unique link Id generated by Networking
+    optional string linkId = 4;
+}
+
+message VnmUnlinkNetworkRsp
+{
+    // Path Id used internally by CM
+    optional uint32 pathId = 1;
+
+    // Origination ECU enum in string format
+    optional string origEcu = 2;
+
+    // Return code for command
+    optional VlanRet ret = 3;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf captures Virtual
+ * Interface and Networking Control
+ * related messaging between ECG CM and ECU CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message VlanMsg
+{
+    // Virtual Interface and Networking Control command
+    optional VlanSubCmdType vlanCmdId = 1;
+
+    // VLAN add request
+    optional VlanAddReq vlanAddReq = 2;
+
+    // VLAN add response
+    optional VlanAddRsp vlanAddRsp = 3;
+
+    // VLAN remove request
+    optional VlanRmvReq vlanRmvReq = 4;
+
+    // VLAN remove response
+    optional VlanRmvRsp vlanRmvRsp = 5;
+
+    // VLAN link request
+    optional VlanLinkReq vlanLinkReq = 6;
+
+    // VLAN link response
+    optional VlanLinkRsp vlanLinkRsp = 7;
+
+    // VLAN unlink request
+    optional VlanUnlinkReq vlanUnlinkReq = 8;
+
+    // VLAN unlink response
+    optional VlanUnlinkRsp vlanUnlinkRsp = 9;
+
+    // VNM reset request
+    optional VnmResetReq vnmResetReq = 10;
+
+    // VNM reset response
+    optional VnmResetRsp vnmResetRsp = 11;
+    
+    // VNM link network request
+    optional VnmLinkNetworkReq vnmLinkNetworkReq = 12;
+
+    // VNM link network response
+    optional VnmLinkNetworkRsp vnmLinkNetworkRsp = 13;
+
+    // VNM unlink network request
+    optional VnmUnlinkNetworkReq vnmUnlinkNetworkReq = 14;
+
+    // VNM unlink network response
+    optional VnmUnlinkNetworkRsp vnmUnlinkNetworkRsp = 15;
+}

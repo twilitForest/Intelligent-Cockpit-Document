@@ -1,0 +1,449 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2017.  Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// deliberate unauthorized publication.  Ford Motor Company also
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+//
+
+syntax = "proto2";
+option optimize_for = CODE_SIZE;
+package CmMsgCtrl;
+import "CmMsgCommon.proto";
+
+// For CM internal use only
+// The protobuf captures enums and messages related to:
+// CM internal control commands.
+// These messages are exchanged between ECG CM, TCU CM and SYNC CM.
+// Command details:
+//  1. RESET INDICATION:        Unimplemented and reserved for future use.
+//  2. HEARTBEAT INDICATION:    Indication from ECU CM to ECG CM and vice versa
+//                              to indicate online status over SOA
+//  3. POLICY:                  Client policy related messaging
+//    a. REQUEST:               Request of a specific client policy from ECU CM to ECG CM.
+//    b. RESPONSE:              Response regarding a specific client policy from ECG CM to ECU CM.
+//    c. INDICATION:            Unsolicited indication from ECG CM to ECU TCM regarding specific client policy updates.
+//  4. POLICY TABLE INDICATION: Unsolicited indication from ECG CM to ECU CM with the complete policy table update.
+//  5. IFACE TABLE INDICATION:  Unsolicited indication from ECG CM to ECU CM with the active network interfaces table update.
+
+/**
+ * @fnv_proto
+ * Enum of available commands for
+ * CM internal control commands
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum CtrlSubCmdType
+{
+    // Unimplemented
+    CTRL_RESETIND = 0;
+
+    // Heartbeat indication
+    CTRL_HEARTBEAT = 1;
+
+    // Specific client policy
+    CTRL_POLICY_REQ = 4;
+    CTRL_POLICY_RSP = 5;
+    CTRL_POLICY_IND = 2;
+    // Policy table update
+    CTRL_POLICYTABLE_IND = 3;
+    CTRL_POLICYTABLE_STATUS_IND = 7;
+
+    // Interface table update
+    CTRL_IFACETABLE_IND = 6;
+    
+    // Config manager update
+    CTRL_CONFIGMANAGER_IND = 8;
+
+    // DB Persistence
+    CTRL_DBSTATE_REQ = 9;
+    CTRL_DBSTATE_RSP = 10;
+    CTRL_DBUPDATE_REQ = 11;
+    CTRL_DBUPDATE = 12;
+    CTRL_DBUPDATE_RSP = 13;
+}
+
+/**
+ * @fnv_proto
+ * Enum of return codes for commands for
+ * CM Internal control
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum CtrlRet
+{
+    // Error/Failure
+    CTRL_ERROR = 0;
+
+    // Success
+    CTRL_SUCCESS = 1;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by CM for reserved purposes.
+ * Not used currently. Placeholder for future.
+ * @fnv_topic N/A
+ * @fnv_scope N/A
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message ResetInd
+{
+    // Reserved
+    optional string resetMsg = 1;
+
+    // Reserved
+    optional CmMsgCommon.EcuType ecu = 2;
+}
+
+/**
+ * @fnv_proto
+ * Enum of type of HeartBeat event for
+ * CM Internal control
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum HeartBeatType
+{
+    // Initial HeartBeat type
+    HB_INITIAL = 0;
+
+    // Regular HeartBeat type
+    HB_REGULAR = 1;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by CM to relay
+ * HeartBeat events.
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message HeartBeat
+{
+    // Payload with a message string (optional)
+    optional string hbMsg = 1;
+
+    // HeartBeat event type (optional)
+    optional HeartBeatType hbType = 2;
+
+    // HeartBeat event index (optional)
+    optional uint32 hbIndex = 3;
+
+    // HeartBeat event timer duration provided by ECG (optional)
+    optional uint32 hbTimer = 4;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECG CM to
+ * specify policy table version to ECU CM.
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message PolicyTableVersion
+{
+    // Policy Table Version Major
+    optional uint32 policyTableVersionMajor = 1;
+
+    // Policy Table Version Minor
+    optional uint32 policyTableVersionMinor = 2;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECG CM to
+ * push client specific policy update to ECU CM.
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message PolicyInd
+{
+    // CM Client Unique AppId
+    optional string appId = 1;
+
+    // CM Client Policy
+    optional uint32 policy = 2;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECG CM to
+ * push policy table updates to ECU CM.
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message PolicyTableInd
+{
+    // CM Client Policy Table map (appId vs policy)
+    map<string, uint32> policyTable = 1;
+
+    // CM Client Policy Table Version
+    optional PolicyTableVersion policyTableVersion = 2;
+}
+
+message PolicyTableStatusInd
+{
+    optional CtrlRet ret = 1;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECU CM to request
+ * client specific policy from ECG CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message PolicyReq
+{
+    // CM Client Unique AppId
+    optional string appId = 1;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECG CM to send
+ * client specific policy response to ECU CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message PolicyRsp
+{
+    // Return code for command
+    optional CtrlRet ret = 1;
+
+    // CM Client Unique AppId
+    optional string appId = 2;
+
+    // CM Client Policy
+    optional uint32 policy = 3;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECG CM to
+ * push available interfaces table update to ECU CM.
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message IfaceTableInd
+{
+    // Interface Table
+    optional uint32 ifaceTable = 1;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf captures CM internal control
+ * related messaging between ECG CM and ECU CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message CtrlMsg
+{
+    // CM Internal Control command
+    optional CtrlSubCmdType ctrlCmdId = 1;
+
+    // Reserved
+    optional ResetInd resetInd = 2;
+
+    // CM HeartBeat command
+    optional HeartBeat heartBeat = 3;
+
+    // CM Client Policy request
+    optional PolicyReq policyReq = 6;
+
+    // CM Client Policy response
+    optional PolicyRsp policyRsp = 7;
+
+    // CM Client Policy indication
+    optional PolicyInd policyInd = 4;
+
+    // CM Client Policy Table Update indication
+    optional PolicyTableInd policyTableInd = 5;
+
+    // CM Client Policy Table Update Status indication
+    optional PolicyTableStatusInd policyTableStatusInd = 9;
+
+    // Available Interfaces Table Update indication
+    optional IfaceTableInd ifaceTableInd = 8;
+
+    // Config Manager Update indication
+    optional SpcmPersistConfig spcmPersistConfig = 10;
+
+    // CM Database State Request
+    optional DbStateReq  dbStateReq = 11;
+
+    // CM Database State Response
+    optional DbStateRsp dbStateRsp = 12;
+
+    // CM Database Update Request
+    optional DbUpdateReq dbUpdateReq = 13;
+
+    // CM Database Update
+    optional DbUpdate dbUpdate= 14;
+
+    // CM Database Update
+    optional DbUpdateRsp dbUpdateRsp= 15;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf captures CM internal control
+ * related protobuf used to serialize/deserialize
+ * collection of WIR client policies
+ * persisted on the filesystem.
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message PolicyPersistConfig
+{
+    // Persisted policy table
+    optional PolicyTableInd policyTable = 1;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECG CM to
+ * store configurable data managed by CmSpcmClient
+ * and ConfigManager
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message ConfigDataValue
+{
+    optional bool boolValue = 1;
+
+    optional uint32 oneByteValue = 2;
+
+    optional uint32 twoByteValue = 3;
+
+    optional string stringValue = 4;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf map used by ECG CM to
+ * store configurable data managed by
+ * ConfigManager
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message SpcmPersistConfig
+{
+    map<uint32, ConfigDataValue> spcmDataTable = 1;
+}
+
+/**
+ * TODO: description
+ */
+message DbStateReq
+{
+    optional uint32 dataType = 2;
+    optional uint32 reqId = 3;
+    optional string msg = 4;
+}
+
+/**
+ * TODO: description
+ */
+message DbStateRsp
+{
+    optional uint32 dataType = 2;
+    optional bytes hash = 3;
+    optional uint32 reqId = 4;
+    optional string msg = 5;
+}
+
+/**
+ * TODO: description
+ */
+message DbUpdateReq
+{
+    optional uint32 dataType = 2;
+    optional uint32 reqId = 3;
+    optional string msg= 4;
+}
+
+/**
+ * TODO: description
+ */
+message DbUpdate
+{
+    optional uint32 dataType = 2;
+    optional bytes data = 3;
+    optional bytes hash = 4;
+    optional uint32 reqId = 5;
+    optional bool notify = 6;
+    optional string msg = 7;
+}
+
+/**
+ * TODO: description
+ */
+message DbUpdateRsp
+{
+    optional uint32 reqId = 2;
+    optional CtrlRet status = 3;
+    optional string msg = 4;
+}
+
+/**
+ * This is test code for debug builds only
+ */
+message PersistManagerTest
+{
+    optional uint32 gearCount = 1;
+    optional uint32 hmiCount = 2;
+}

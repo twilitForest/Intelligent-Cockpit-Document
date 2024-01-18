@@ -1,0 +1,121 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2018.  Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// deliberate unauthorized publication.  Ford Motor Company also
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+
+syntax = "proto3";
+
+package fnv.ChimeManager;
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to send IPC_Infotainment message 
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/CHIMESERVICE
+ * @fnv_command "IPC_INFOTAINMENT"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message IPC_Infotainment_RequestMessage {
+    string client_id        = 1;    
+    uint32 chime_src        = 2;
+	uint32 chime_pwrup_st   = 3;
+	uint32 chime_att_level  = 4;
+	uint32 chime_new_att    = 5;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to send IPC_Chime/IPC_Chime2 message 
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/CHIMESERVICE
+ * @fnv_command "IPC_CHIME" or "IPC_CHIME2"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message IPC_Chime_RequestMessage {
+    string client_id        = 1;
+    uint32 chime_id         = 2;
+	uint32 chime_vol_level  = 3;
+	uint32 chime_dir        = 4;
+	uint32 chime_crtclty    = 5;
+	uint32 chime_offtime    = 6;
+	uint32 chime_occ        = 7;
+	uint32 chime_adjvol     = 8;
+	uint32 chime_id_no      = 9;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to send Audible_Beep message 
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/CHIMESERVICE
+ * @fnv_command "AUDIBLE_BEEPS"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message Audible_Beep_RequestMessage {
+    string client_id        = 1;	
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to send Chime_State_Event message 
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/CHIMESERVICE
+ * @fnv_command "CHIME_STATE_EVENT"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message Chime_State_Event_RequestMessage {
+    string client_id        = 1;
+	uint32 chime_type		= 2;
+    uint32 event            = 3;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to publish about AHU_Alert Status message 
+ * @fnv_topic SERVICES/DATA/SYNCAPPS/CHIMESERVICE/AHUALERTSTATUS
+ * @fnv_command NONE
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message AHU_Alert_StatusMessage {
+    uint32 chime_supported             = 1;
+	uint32 chime_not_recognized        = 2;
+	uint32 chime2_not_recognized       = 3;
+	uint32 chime_active                = 4;
+	uint32 chime2_active               = 5;
+	uint32 chime_alert_chan            = 6;
+	uint32 chime_alert_chan2           = 7;
+	uint32 adjustedchimevolsupported   = 8;
+	uint32 adjustedchime2volsupported  = 9;
+	uint32 chimeid_no_stat             = 10;
+	uint32 chime2id_no_stat            = 11;
+	uint32 alert_channel1              = 12;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to send DSP_Amp_Alert Status message 
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/CHIMESERVICE
+ * @fnv_command "DSP_AMP_ALERT"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message DSP_Amp_Alert_StatusMessage {
+    string client_id                       = 1;
+    uint32 dsp_chimes_supported            = 2;
+}

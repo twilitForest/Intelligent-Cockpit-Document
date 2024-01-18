@@ -1,0 +1,167 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2017.  Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+
+syntax = "proto2";
+option optimize_for = CODE_SIZE;
+package fci.broadcastinterface;
+import "fci_info.proto";
+
+// FCI proto file
+// Version 1.0.0
+// This protobuf deinfes messages to be broadcasted by FCI. The supported FCI broadcast messages include
+// SDN connect status, power state and SMS messages. Whenever FCI connects/disconnects with SDN server, it
+// will broadcast the SDN connect status message to all subscribed parties. The connect status message incluses
+// the connection status and the corresponding interface (cellular, WiFi or SDL). The power state message includes
+// the current power state info (such as full power, low power, wakeup or scan modes). And the SMS message contains
+// either SMS Type 2 or Type 3 message. In a SMS Type 2 case, either the Home URL or Ford APN or both are included.
+
+// FCI broadcast message type
+enum BroadcastType
+{
+    SDN_CONNECT_STATUS = 0;
+    POWER_STATE = 1;
+    SMS_MESSAGE = 2;
+}
+
+/**
+ * @fnv_mesage_proto: Protobuf to be used to specify FCI SDN connect status message
+ * @fnv_topic
+ * @fnv_command
+ * @fnv_description:
+ */
+message SdnConnStatusMessage
+{
+    // Interface: cellular, WiFi or SDL
+    optional ConnInterfaceType ifType = 1;
+
+    // Connection status: connect or disconnect
+    optional SdnConnStatus connStatus = 2;
+
+    // SDN connection interface
+    enum ConnInterfaceType
+    {
+        CONN_IFACE_UNKNOWN = 0;
+        CONN_TCU_CELL = 1;
+        CONN_TCU_WIFI = 2;
+        CONN_SYNC_WIFI = 3;
+        CONN_SYNC_SDL = 4;
+    }
+
+    // SDN connection status
+    enum SdnConnStatus
+    {
+        SDN_CONNECTED = 0;
+        SDN_DISCONNECTED = 1;
+    }
+}
+
+/**
+ * @fnv_message_proto: Protobuf to be used to specify FCI power state broadcast message
+ * @fnv_topic
+ * @fnv_command
+ * @fnv_description:
+ */
+message PowerStateMessage
+{
+    // Power state
+    optional PowerStateType powerState = 1;
+
+    enum PowerStateType
+    {
+        UNKNOWN = 0;
+        FPO     = 1;  // Full Power Igintion ON 
+        FPC     = 2;  // Full Power Igition OFF, Charging ON
+        FPS     = 3;  // Full Power Ignition OFF< Charging OFF
+        LPR     = 4;  // Low Power Registered
+        DWU     = 5;  // DRX Wake Up
+        HSLP    = 6;  // High-Scan Sleep
+        LSLP    = 7;  // Low-Scan Sleep
+        DSLP    = 8;  // Deep Sleep
+    }
+}
+
+/**
+ * @fnv_message_proto: Protobuf to be used to specify SMS broadcast message
+ * @fnv_topic
+ * @fnv_command
+ * @fnv_description:
+ */
+message SmsMessage
+{
+    // Message type
+    optional MessageType msgType = 1;
+
+    // Type 2 Message
+    optional Type2Message type2Msg = 2;
+
+
+    /**
+     * @fnv_message_proto: Protobuf to be used to specify SMS Type 2 message
+     * @fnv_topic
+     * @fnv_command
+     * @fnv_description:
+     */
+    message Type2Message
+    {
+        // Payload type
+        optional PayloadType payloadType = 1;
+
+        // SDN URL
+        optional string sdnUrl = 2;
+
+        // Ford APN
+        optional string fordApn = 3;
+
+        // Payload type
+        enum PayloadType
+        {
+            HURL = 0;
+            FAPN = 1;
+            HURL_FAPN = 2;
+        }
+    }
+
+    // SMS message type
+    enum MessageType
+    {
+        TYPE_2 = 0;
+        TYPE_3 = 1;
+    }
+}
+
+/**
+ * @fnv_message_proto: Protobuf to be used to specify FCI broadcast messages
+ * @fnv_topic "SERVICES/DATA/FNV/FCI/BROADCAST"
+ * @fnv_command
+ * @fnv_description:
+ */
+message BroadcastMessage
+{
+    // Timestamp for data in UTC in seconds since 1.1.1970
+    optional uint32 timeStamp = 1;
+
+    // Broadcast Messge Type
+    optional BroadcastType broadcastType = 2;
+
+    // Sdn Connection Status Message
+    optional SdnConnStatusMessage sdnConnStatusMsg = 3;
+
+    // Power State Message
+    optional PowerStateMessage powerStateMsg = 4;
+
+    // SMS Message
+    optional SmsMessage smsMsg = 5;
+
+    // API version, static field
+    optional __ApiVersion __api_version = 10;
+}

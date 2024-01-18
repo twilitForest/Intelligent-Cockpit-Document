@@ -1,0 +1,709 @@
+syntax = "proto2";
+//	Ford Telematics Communication Protocol
+//  Feature/Enabler/Common: Dynamic Vehicle Data (DVD)
+//	Version Number: 6.0.9
+//	Date Revised: 07/08/2019
+// 	Last Updated By: Mageshwaran Mohan [MMOHAN17]
+// 	Reviewed By:Murali Chitturi,Rumeli Das[RDAS9], Vijai Thoppae [VTHOPPAE]
+// 	Ford Confidential
+//
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 01/22/2018 for version 6.0.5
+//************************************************************************************************************************************************************************
+// CR ECG-23053
+	// Renamed Variable "avdStatus" --> "dvdStatus" in the following alerts
+		// AddDVDRDRFunctionAlert
+		// AddDVDPARSEDFunctionAlert
+	// Updated ADDDVDFunctionErrorENUM
+		// FUNCTION_MISMATCH --> FUNCTION_TOTAL_MISMATCH
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 10/18/2018 for version 6.0.4
+//************************************************************************************************************************************************************************
+	// ADDED Command
+		// DVDPARSEDRawFunctionCommand
+	// ADDED Command Response
+		// DVDPARSEDRawFunctionCommandResponse
+	// ADDED Alert
+		// DVDPARSEDRawFunctionAlert
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 09/07/2018 for version 6.0.2
+	//Renamed variables and Fixed Typo in the following messages
+		// GetDVDFunctionDetailsAlert
+		// Operand
+		// AddDVDCARMONFunctionAlert
+		// DeleteDVDFunctionAlert
+		// DVDFuntionProcessStatusENUM
+		// NOTOperatorENUM
+	// Packaging of proto files have been introduced and referenced
+	// Added syntax = "proto2" to the header
+	// Updated SignalData
+		// Added string signalName
+	// Updated SignalResponseData
+		// Added string signalName
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 06/20/2018 for version 6.0.1
+	//Reordered tags in all the message structures and Alerts
+	//Cleaned up commented messages
+//************************************************************************************************************************************************************************
+// Changes/Version based on B4 FTCP version and FNV2 FTCP Proposal for Dynamic Vehicle Data Feature
+//************************************************************************************************************************************************************************
+package com.ford.ftcp.apps;
+import "FeatureCommon.proto";
+import "ErrorAndStatus.proto";
+
+//Dynamic Vehicle Data command
+
+//Cloud shall send this command when RDR functions needs to be added in ECU/Vehicle
+message AddDVDRDRFunctionCommand{
+	// Number of functions sent as part of the command
+	optional uint32 totalNoOfFunctions = 1;
+	// Message structure for the function definition. Cloud shall always set this.
+	repeated DVDFunction dvdFunction = 2;
+}
+
+//Cloud shall send this command when CARMON functions needs to be added in ECU/Vehicle
+message AddDVDCARMONFunctionCommand{
+	// Number of functions sent as part of the command
+	optional uint32 totalNoOfFunctions = 1;
+	// Message structure for the function definition. Cloud shall always set this.
+	repeated DVDFunction dvdFunction = 2;
+}
+
+//Cloud shall send this command when PARSED functions needs to be added in ECU/Vehicle
+message AddDVDPARSEDFunctionCommand{
+	// Number of functions sent as part of the command
+	optional uint32 totalNoOfFunctions = 1;
+	// Message structure for the function definition. Cloud shall always set this.
+	repeated DVDFunction dvdFunction = 2;
+}
+
+//Cloud shall send this command when functions needs to be deleted in ECU/Vehicle
+message DeleteDVDFunctionCommand{
+	// Number of function ids sent as part of the command
+	optional uint32 totalNoOfFunctions = 1;
+	// function ids to be removed from ECU/Vehicle
+	repeated string functionId = 2;
+}
+
+//Cloud shall send this to get metadata(function id)of all deployed functions
+message GetDVDFunctionMetadataCommand{
+}
+
+//Cloud shall send this to get the details of given functions
+message GetDVDFunctionDetailsCommand{
+	// Number of function ids sent as part of the command
+	optional uint32 totalNoOfFunctions = 1;
+	// Function ids
+	repeated string functionId = 2;
+}
+
+// Dynamic Vehicle Data Command responses
+
+// Message structure for AddDVDRDRFunctionCommandResponse
+message AddDVDRDRFunctionCommandResponse{
+	// Enumeration for CommandStatus. ECU(ECG) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for error details. ECU(ECG) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+}
+// Message structure for AddDVDCARMONFunctionCommandResponse
+message AddDVDCARMONFunctionCommandResponse{
+	// Enumeration for CommandStatus. ECU(ECG) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for error details. ECU(ECG) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+}
+// Message structure for AddDVDPARSEDFunctionCommandResponse
+message AddDVDPARSEDFunctionCommandResponse{
+	// Enumeration for CommandStatus. ECU(ECG) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for error details. ECU(ECG) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+}
+// Message structure for DeleteDVDFunctionCommandResponse
+message DeleteDVDFunctionCommandResponse{
+	// Enumeration for CommandStatus. ECU(ECG) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for error details. ECU(ECG) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+}
+// Message structure for GetDVDFunctionMetadataCommandResponse
+message GetDVDFunctionMetadataCommandResponse{
+	// Enumeration for CommandStatus. ECU(ECG) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for error details. ECU(ECG) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+}
+// Message structure for GetDVDFunctionDetailsCommandResponse
+message GetDVDFunctionDetailsCommandResponse{
+	// Enumeration for CommandStatus. ECU(ECG) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for error details. ECU(ECG) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+}
+//Dynamic Vehicle Data Command responses - END
+
+// Dynamic Vehicle Data Alert message structures -start
+// Message structure for DVDRDRCollectionAlert. ECU(ECG) shall set this.
+message DVDRDRCollectionAlert{
+	// Function ID of the RDR function
+	optional string functionId = 1;
+	// Response data for RDR function
+	optional DiagnosticResponseData rdrResponseData = 2;
+	// Status for RDR data collection
+	optional DATACollectionStatusENUM dataCollectionStatus = 3;
+	// Error codes, to be populated only when dataCollectionStatus is FAILED
+	optional DATACollectionErrorENUM dataCollectionError = 4;
+	// Error description, to be populated only when dataCollectionStatus is FAILED
+	optional string errorDescription = 5;
+
+	// Status codes
+	enum DATACollectionStatusENUM{
+		FAILED = 0;
+		SUCCESS = 1;
+	}
+	// Error codes
+	enum DATACollectionErrorENUM{
+		COULD_NOT_COLLECT_DATA = 0;
+		FAILED_TO_PROCESS = 1;
+		OTHER_ERROR = 2;
+	}
+}
+
+// Message structure for DVDPARSEDCollectionAlert. ECU(ECG) shall set this.
+message DVDPARSEDCollectionAlert{
+	// Function ID of the PARSED function
+	optional string functionId = 1;
+	// Response data for PARSED function
+	optional PARSEDResponseData parsedResponseData = 2;
+	// Status of PARSED data collection
+	optional DATACollectionStatusENUM dataCollectionStatus = 3;
+	// Error codes, to be populated only when dataCollectionStatus is FAILED
+	optional DATACollectionErrorENUM dataCollectionError = 4;
+	// Error description, to be populated only when dataCollectionStatus id FAILED
+	optional string errorDescription = 5;
+
+	// Status Codes
+	enum DATACollectionStatusENUM{
+		FAILED = 0;
+		SUCCESS = 1;
+	}
+	// Error codes
+	enum DATACollectionErrorENUM{
+		COULD_NOT_COLLECT_DATA = 0;
+		FAILED_TO_PROCESS = 1;
+		OTHER_ERROR = 2;
+	}
+}
+// Message structure for DVDCARMONCollectionAlert. ECU(ECG) shall set this.
+message DVDCARMONCollectionAlert{
+	// Function ID of the CARMON function
+	optional string functionId = 1;
+	// Response data for CARMON function
+	optional CARMONResponseData carmonResponseData = 2;
+	// Status of CARMON data collection
+	optional DATACollectionStatusENUM dataCollectionStatus = 3;
+	// Error codes, to be populated only when dataCollectionStatus is FAILED
+	optional DATACollectionErrorENUM dataCollectionError = 4;
+	// Error description, to be populated only when dataCollectionStatus is FAILED
+	optional string errorDescription = 5;
+
+	// Status codes
+	enum DATACollectionStatusENUM{
+		FAILED = 0;
+		SUCCESS = 1;
+	}
+	// Error codes
+	enum DATACollectionErrorENUM{
+		COULD_NOT_COLLECT_DATA = 0;
+		FAILED_TO_PROCESS = 1;
+		OTHER_ERROR = 2;
+	}
+}
+// Dynamic Vehicle Data Upload Alert message structures -end
+
+//FB4 Dynamic Vehicle Data correlated alert
+
+//Message structure for AddDVDRDRFunctionAlert. ECU(ECG) shall set this.
+message AddDVDRDRFunctionAlert{
+	// Number of functions that ECU(ECG) has processed
+	optional int32 noOfFunctionsRequested = 1;
+	// Number of functions that ECU(ECG) has processed
+	optional int32 noOfFunctionsProcessed = 2;
+	// Status of the each function addition in ECU(ECG)
+	repeated FunctionStatus dvdStatus = 3;
+	// Status of DVD function addition
+	optional ADDDVDFunctionStatusENUM addDVDFuncStatus = 4;
+	// Error codes while adding a DVD function, to be populated only when addDVDFuncStatus id FAILED
+	optional ADDDVDFunctionErrorENUM errorCode = 5;
+	// Error description, to be populated only when addDVDFuncStatus is FAILED
+	optional string errorDescription = 6;
+	// Add Status Codes
+	enum ADDDVDFunctionStatusENUM{
+		FAILED = 0;
+		SUCCESS = 1;
+	}
+
+	// Error codes
+	enum ADDDVDFunctionErrorENUM{
+		FAILED_TO_PROCESS = 0;
+		FUNCTION_TOTAL_MISMATCH = 1;
+		OTHER_ERROR = 2;
+	}
+}
+
+//Message structure for AddDVDPARSEDFunctionAlert. ECU(ECG) shall set this.
+message AddDVDPARSEDFunctionAlert{
+	// Number of functions that ECU(ECG) has processed
+	optional int32 noOfFunctionsRequested = 1;
+	// Number of functions that ECU(ECG) has processed
+	optional int32 noOfFunctionsProcessed = 2;
+	// Status of the each function processed in ECU(ECG)
+	repeated FunctionStatus dvdStatus = 3;
+	// Status of DVD PARSED function addition
+	optional ADDDVDFunctionStatusENUM addDVDFuncStatus = 4;
+	// Error codes while adding a DVD function, to be populated only when addDVDFuncStatus is FAILED
+	optional ADDDVDFunctionErrorENUM errorCode = 5;
+	// Error description, to be populated only when addDVDFuncStatus is FAILED
+	optional string errorDescription = 6;
+	// Status Codes
+	enum ADDDVDFunctionStatusENUM{
+		FAILED = 0;
+		SUCCESS = 1;
+	}
+
+	// Error codes
+	enum ADDDVDFunctionErrorENUM{
+		FAILED_TO_PROCESS = 0;
+		FUNCTION_TOTAL_MISMATCH = 1;
+		OTHER_ERROR = 2;
+	}
+}
+//Message structure for AddDVDCARMONFunctionAlert. ECU(ECG) shall set this.
+message AddDVDCARMONFunctionAlert{
+	// Number of functions that ECU(ECG) has processed
+	optional int32 noOfFunctionsRequested = 1;
+	// Number of functions that ECU(ECG) has processed
+	optional int32 noOfFunctionsProcessed = 2;
+	// Status of the each function processed in ECU(ECG)
+	repeated FunctionStatus dvdStatus = 3;
+	// Status of DVD CARMON function addition
+	optional ADDDVDFunctionStatusENUM addDVDFuncStatus = 4;
+	// Error codes while adding a DVD function, populated only when addDVDFuncStatus is FAILED
+	optional ADDDVDFunctionErrorENUM errorCode = 5;
+	// Error description, populated only when addDVDFuncStatus is FAILED
+	optional string errorDescription = 6;
+	// Add Status Code
+	enum ADDDVDFunctionStatusENUM{
+		FAILED = 0;
+		SUCCESS = 1;
+	}
+
+	// Error Codes
+	enum ADDDVDFunctionErrorENUM{
+		FAILED_TO_PROCESS = 0;
+		FUNCTION_TOTAL_MISMATCH = 1;
+		OTHER_ERROR = 2;
+	}
+}
+
+//Message structure for DeleteDVDFunctionAlert. ECU(ECG) shall set this.
+message DeleteDVDFunctionAlert{
+	// Number of functions that ECU(ECG) has processed
+	optional int32 noOfFunctionsRequested = 1;
+	// Number of functions that ECU(ECG) has processed
+	optional int32 noOfFunctionsProcessed = 2;
+	// Status of the each function processed in ECU(ECG)
+	repeated FunctionStatus dvdStatus = 3;
+	// Status of DVD function deletion
+	optional DELETEDVDStatusENUM deleteStatus = 4;
+	// Error codes - to be populated only when deleteStatus is FAILED
+	optional DELETEDVDFunctionErrorENUM errorCode = 5;
+	// Error description - to be populated when deleteStatus is FAILED
+	optional string errorDescription = 6;
+	// Delete Status codes
+	enum DELETEDVDStatusENUM{
+		FAILED = 0;
+		SUCCESS = 1;
+	}
+
+	// Error codes
+	enum DELETEDVDFunctionErrorENUM{
+		FAILED_TO_PROCESS = 0;
+		FUNCTION_TOTAL_MISMATCH = 1;
+		OTHER_ERROR = 2;
+	}
+}
+
+//Message structure for GetDVDFunctionMetadataAlert. ECU(ECG) shall set this.
+message GetDVDFunctionMetadataAlert{
+	// Total number of functions available in ECU(ECG)
+	optional int32 totalNumberOfFunctions = 1;
+	// List of functionIds in ECU(ECG) memory
+	repeated string functionId = 2;
+	// Status of read DVD function metadata
+	optional METADATAReadStatusENUM metadataReadStatus = 3;
+	// Error codes while reading a DVD function metadata, populated only when metadataReadStatus is FAILED
+	optional METADATAReadErrorENUM errorCode = 4;
+	// Error description, populated only when metadataReadStatus is FAILED
+	optional string errorDescription = 5;
+	// Metadata read status codes
+	enum METADATAReadStatusENUM{
+		FAILED = 0;
+		SUCCESS = 1;
+	}
+
+	// Error codes
+	enum METADATAReadErrorENUM{
+		FAILED_TO_PROCESS = 0;
+		OTHER_ERROR = 1;
+	}
+}
+
+//Message structure for GetDVDFunctionDetailsAlert. ECU(ECG) shall set this.
+message GetDVDFunctionDetailsAlert{
+	// Number of functions that ECU(ECG) has processed
+	optional int32 noOfFunctionsRequested = 1;
+	// Number of functions that ECU(ECG) has processed
+	optional int32 noOfFunctionsProcessed = 2;
+	// DVD function definition
+	repeated DVDFunction dvdFunction = 3;
+	// Status of the each function processed in ECU(ECG)
+	repeated FunctionStatus dvdStatus = 4;
+	// Status of reading function details
+	optional READDVDStatusENUM readStatus = 5;
+	// Error codes for reading function details, populated only when readStatus is FAILED
+	optional READDVDErrorENUM errorCode = 6;
+	// Error description to be populated only if readStatus is FAIED
+	optional string errorDescription = 7;
+	// ReadStatus codes
+	enum READDVDStatusENUM{
+		FAILED = 0;
+		SUCCESS = 1;
+	}
+
+	// Error codes
+	enum READDVDErrorENUM{
+		FAILED_TO_PROCESS = 0;
+		FUNCTION_TOTAL_MISMATCH = 1;
+		OTHER_ERROR = 2;
+	}
+}
+//END DVD correlated alert
+
+//Dynamic Vehicle Data structures
+//Function definition for Dynamic Vehicle Data collection
+message DVDFunction{
+	// Function id to uniquely identify a function
+	optional string functionId = 1;
+	// Storage priority for the function while storing collected data in ECU(ECG) memory
+	optional StoragePriorityENUM storagePriority = 2;
+
+	// Set this ONLY for RDR function
+	optional RDRFunction rdrFunction = 3;
+	// Set this ONLY for CARMON function
+	optional CARMONFunction carmonFunction = 4;
+	// Set this ONLY for PARSED function
+	optional PARSEDFunction parsedFunction = 5;
+
+	// Enumeration for Storage priority
+	enum StoragePriorityENUM{
+		LOW = 0;
+		HIGH = 1;
+	}
+}
+
+//Function definition for RDR function
+message RDRFunction{
+	// Diagnostics data for RDR function
+	optional DIAGData diagData = 1;
+	// ECU(ECG) shall start the diagnostic process with a delay(minutes)
+	optional uint32 delayTimeToStart = 2;
+}
+
+//Function definition for PARSED function
+message PARSEDFunction{
+	// Target ECU to which the PARSED channel is opened
+	optional uint32 targetECUId = 1;
+	// Channel id of the ECU
+	optional uint32 channelId = 2;
+	// Time interval between each consecutive frame on CAN
+	optional uint32 dataFrameFrequency = 3;
+}
+
+//Function definition for CARMON function
+message CARMONFunction{
+	// Triggers for CARMON function
+	optional Trigger trigger = 1;
+	// Cloud shall set this if signal data set is collected
+	repeated SignalData carmonSignalData = 2;
+	// Cloud shall set this if Diagnostics data set is collected
+	repeated DIAGData carmonDiagData = 3;
+	// Cloud shall set this if DTC should be collected
+	optional CollectAllDTCENUM  collectDTCs = 4;
+	//Total number of CARMON Signal Data sets
+	optional uint32 totalNumberOfSignalDataSets =5;
+	//Total number of CARMON Diagnostics Data sets
+	optional uint32 totalNumberOfDIAGDataSets =6;
+
+	enum CollectAllDTCENUM{
+		NO = 0;
+		YES = 1;
+	}
+}
+
+//Message structure for CARMON triggers
+message Trigger{
+	// Enumeration to define the type of trigger
+	optional EventTypeENUM eventType = 1;
+	// Time in seconds for PERIODIC EventType (e.g. 30 seconds).Cloud shall ONLY populate this for PERIODIC event
+	optional uint32 timeInterval = 2;
+	// Math trigger type. Cloud shall ONLY populate this for MATH event type
+	optional Math mathTrigger = 3;
+
+	//Trigger type enumeration
+	enum EventTypeENUM{
+		KEY_ON = 0;
+		KEY_OFF = 1;
+		PERIODIC = 2;
+		MATH = 3;
+	}
+}
+
+//Message structure to define the Math trigger
+message Math{
+	//Math expressions.
+	repeated Expression expression = 1;
+	//All math expressions to satisfy for duration in seconds
+	optional uint32 duration = 2;
+	//Math expression evaluation conditions
+	optional EvaluationTypeENUM evaluationType = 3;
+	//Total no. of expressions
+	optional uint32 totalNumberOfExpressions = 4;
+
+	//enumeration to specify the evaluation type
+	enum EvaluationTypeENUM {
+		//All math expression must be true to satisfy the trigger condition
+		ALL_TRUE = 0;
+		//At least one math expression true will satisfy the trigger condition
+		ATLEAST_ONE_TRUE = 1;
+	}
+
+}
+//Message structure for Math expression
+message Expression{
+	//Left side operand
+	optional Operand leftOperand = 1;
+	//Right side operand
+	optional Operand rightOperand = 2;
+	//Operator Enumeration
+	optional OperatorENUM operator = 3;
+
+	//Applicable only for Delta operator
+	optional OverKeyCycleENUM overKeyCycle = 4;
+	//If true the math expression needs to be false to be triggered
+	optional NOTOperatorENUM notOperator = 5;
+
+	//Enumeration for Operator
+	enum OperatorENUM{
+		GREATER_THAN = 0;
+		LESS_THAN = 1;
+		GREATER_THAN_EQ = 2;
+		LESS_THAN_EQ = 3;
+		EQUALS = 4;
+		DELTA = 5;
+		DTC = 6;
+		NOT_EQUAL = 7;
+	}
+
+	//Enumeration for Over the Key cycle
+	enum OverKeyCycleENUM{
+		FALSE = 0;
+		TRUE = 1;
+	}
+
+	//Enumeration for negating the expression
+	enum NOTOperatorENUM{
+		NOT_OP_FALSE = 0;
+		NOT_OP_TRUE = 1;
+	}
+}
+
+//Message structure for Math Operand
+message Operand{
+	//Type of operand
+	optional OperandTypeENUM operandType = 1;
+	// Signal Data, to be populated if operand type is SIGNAL
+	optional SignalData carmonSignalData = 2;
+	// DID data, to be populated if the operand is DID
+	optional DIDData carmonDIDData = 3;
+	// DTC data, to be populated if operand is DTC_NAME
+	optional DTCData carmonDTCData = 4;
+	// Value in bytes to be populated if operand is VALUE
+	optional bytes value = 5;
+
+	//Enumeration for Operand Type
+	enum OperandTypeENUM{
+		SIGNAL = 0;
+		DID = 1;
+		DTC_NAME = 2;
+		VALUE = 3;
+	}
+
+}
+
+//Message structure for signal data
+message SignalData{
+	// Signal token
+	optional uint32 signalToken = 1;
+	// Message Id
+	optional uint32 msgId = 2;
+	// Start bit of the signal
+	optional uint32 startBit = 3;
+	// Length of the signal
+	optional uint32 length = 4;
+	// Signal name
+    optional string signalName = 5;
+}
+
+//Message structure for DID data
+message DIDData{
+	// DID id
+	optional uint32 didId = 1;
+	// Target ECU Id
+	optional uint32 targetECUId = 2;
+	// Start bit of the DID
+	optional uint32 startBit = 3;
+	// Length of the DID
+	optional uint32 length = 4;
+}
+
+//Message structure for DTC data
+message DTCData{
+	// Target ECU Id
+	optional uint32 targetECUId = 1;
+	// DTC Id
+	optional uint32 dtcId = 2;
+}
+
+//message structure for DIAG data
+message DIAGData{
+	// Target ECU id for DIAGNOSTIC data
+	optional uint32 targetECUId = 1;
+	// Diagnostic request data to be sent to target ECU
+	optional bytes diagnosticRequestData = 2;
+
+}
+// DVD data bundles
+//Response data for RDR function and diagnostic data for CARMON function
+message DiagnosticResponseData{
+	//Target ECU Id
+	optional uint32 targetECUId = 1;
+	// Diagnostic Request Status type
+	optional com.ford.ftcp.appcommon.DiagnosticRequestStatusENUM diagnosticRequestStatus = 2;
+	// diagnostic request data that was sent as part of the request
+	optional bytes diagnosticRequestData = 3;
+	// Response data for the original command for fulfilling the diagnostic request
+	repeated com.ford.ftcp.appcommon.VehicleDiagnosticResponseData diagnosticResponseData = 4;
+}
+
+
+//Response Data for CARMON function
+message CARMONResponseData {
+	// DTC response for RDR data
+	repeated com.ford.ftcp.appcommon.ECUData ecuData = 1;
+	// Signal response for CAMORN function
+	repeated SignalResponseData signalResponseData = 2;
+	// Diagnostics response for CARMRON function
+	repeated DiagnosticResponseData diagResponseData = 3;
+	// total no. of SignalResponseData
+	optional uint32 totalNumberOfSignalResponseData = 4;
+	// total no. of DIAGDiagnosticResponseData
+	optional uint32 totalNumberOfDiagnosticResponseData = 5;
+}
+
+//Message structure for Signal response data
+message SignalResponseData {
+	// Signal token should be populated
+	optional uint32 signalToken = 1;
+	// Stream of bytes representing signal data
+	optional bytes value = 2;
+	// Enumeration to indicate the signal token is calculated or not
+	optional SignalTokenCalStatusENUM isSignalTokenCalculated = 3;
+	// Signal name
+    optional string signalName = 4;
+
+	enum SignalTokenCalStatusENUM{
+		NO = 0;
+		YES = 1;
+	}
+}
+
+//Response data for PARSED function
+message PARSEDResponseData{
+	// Response ECU ID
+	optional uint32 responseECUId = 1;
+	// Response channel ID
+	optional uint32 channelId = 2;
+	// Response data in bytes
+	optional bytes responseDataFromECU = 3;
+}
+
+//Status of the function addition or deletion in ECU(ECG)
+message FunctionStatus{
+	// Function ID
+	optional string functionId = 1;
+	// Status of the function creation or deletion or reading. ECU(ECG) shall always populate this
+	optional DVDFunctionProcessStatusENUM dvdfunctionStatus = 2;
+	// Error codes will be populated by ECU(ECG) when DVDfunctionStatus is FAILED
+	optional DVDErrorCodeENUM dvdErrorCode = 3;
+	// Error description shall be populated when DVDfunctionStatus is FAILED
+	optional string errorDescription = 4;
+
+	// Function Processing status
+	enum DVDFunctionProcessStatusENUM{
+		FAILED  = 0;
+		SUCCESS = 1;
+	}
+	//Error codes
+	enum DVDErrorCodeENUM{
+		TOO_MANY_FUNCTIONS = 0;
+		FUNCTION_ID_EXISTS = 1;
+		UNABLE_TO_PROCESS = 2;
+		OUT_OF_MEMORY = 3;
+		OTHER_ERROR = 4;
+	}
+
+}
+
+
+message DVDPARSEDRawFunctionCommand{
+    // Target ECU id
+    optional uint32 targetECUId = 1;
+    // PARSED Function
+    optional bytes PARSEDFunction = 2;
+}
+
+message DVDPARSEDRawFunctionCommandResponse {
+	// Common message structure for all command responses. ECG shall always set this.
+    optional com.ford.ftcp.appcommon.CommandStatusEnum commandStatus = 1;
+    // Message structure for error details. ECU shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+}
+
+message DVDPARSEDRawFunctionAlert {
+
+    // Response data for PARSED function
+    optional PARSEDResponseData parsedRawResponseData = 1;
+    // Status of the PARSED RAW function Execution
+    optional PARSEDRawFunctionStatusENUM rawFunctionStatus = 2;
+    // Error description, to be populated only when dataCollectionStatus id FAILED
+	optional string errorDescription = 3;
+
+    enum PARSEDRawFunctionStatusENUM {
+        FAILED = 0;
+        SUCCESS = 1;
+    }
+}
+
+// FB4 Dynamic vehicle Data structure

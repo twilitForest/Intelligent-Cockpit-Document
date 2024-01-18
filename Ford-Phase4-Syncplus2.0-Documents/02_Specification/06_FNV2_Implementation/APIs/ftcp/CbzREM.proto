@@ -1,0 +1,175 @@
+syntax = "proto2";
+//	Ford Telematics Communication Protocol
+//  Feature/Enabler/Common: Connected Blue Zone - Road Experience Management (REM)
+//	Version Number: 6.0.9
+//	Date Revised: 08/20/2019
+// 	Last Updated By: Thoppae, Vijai [VTHOPPAE]
+// 	Reviewed By: Murali Chitturi[MCHITTUR], Rumeli Das[RDAS9], Mageshwaran Mohan [MMOHAN17], Jahnavi Athaluri[JATHALU1]
+// 	Ford Confidential
+//
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 08/20/2019 for version 6.0.8
+//************************************************************************************************************************************************************************
+	// Added Commands
+		// ConfigurePrivacyPatternCommand
+		// ConfigureRSDCollectionCommand
+	// Added Commands Response
+		// ConfigurePrivacyPatternCommandResponse
+		// ConfigureRSDCollectionCommandResponse
+	// Added Alerts
+		// PrivacyPatternConfigurationAlert
+		// RSDCollectionConfigurationAlert
+	// Message Bundle
+		// RSDCollection
+//************************************************************************************************************************************************************************
+package com.ford.ftcp.apps;
+import "ErrorAndStatus.proto";
+
+//Message structure for RSD Collection command
+message ConfigurePrivacyPatternCommand{
+	// Message structure for the collection definition. Cloud shall always set this.
+	optional RSDCollection rsdCollection = 1;
+}
+
+//Message structure for RSD Collection command response
+message ConfigurePrivacyPatternCommandResponse {
+	// Common message structure for all command responses. ECG shall always set this.
+    optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for error details. ECU(ECG/TCU) shall only set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+}
+
+// Message structure for Road Segment Data (RSD) collection
+message RSDCollection{
+	// msgid to identify change
+	optional uint32 pri_msgid = 1;
+	// crc32
+	optional uint32 pri_crc32 = 2;
+	// Buffer information
+	optional uint32 pri_Buffer = 3;
+	// Defines the start of drive meaning after first 500 meter drop - control the first default 1000 meter collection
+	optional PRI_STARTINTERVALS_ENUM priStartIntervals = 4;
+	// The length of the collected 1st interval
+	optional uint32 start_Length_1 = 5;
+	// The length of the collected 2nd interval
+	optional uint32 start_Length_2 = 6;
+	// The length of the collected 3rd interval
+	optional uint32 start_Length_3 = 7;
+	// The length of the collected 4th interval
+	optional uint32 start_Length_4 = 8;
+	// The jitterness  of the 1st interval
+	optional uint32 start_Jitter_1 = 9;
+	// The jitterness  of the 2nd interval
+	optional uint32 start_Jitter_2 = 10;
+	// The jitterness  of the 3rd interval
+	optional uint32 start_Jitter_3 = 11;
+	// The jitterness  of the 4th interval
+	optional uint32 start_Jitter_4 = 12;
+	// Number of different settings.The first setting is not depended on the speed, and is always 1000.0.
+	optional uint32 pri_Num_Settings = 13;
+	// Number of Intervals
+	optional uint32 pri_Intervals_xx = 14;
+	// The speed minimum threshold that defines the speed scenario of each setting (e.g. Urban, country, HW..)
+	optional uint32 pri_Speed_TH_xx = 15;
+	// The length of the collected 1st interval
+	optional uint32 pri_Length_1_xx = 16;
+	// The length of the collected 2nd interval
+	optional uint32 pri_Length_2_xx = 17;
+	// The length of the collected 3rd interval
+	optional uint32 pri_Length_3_xx = 18;
+	// The length of the collected 4th interval
+	optional uint32 pri_Length_4_xx = 19;
+	// Jitter of 1st RSD length
+	optional uint32 pri_Jitter_1_xx = 20;
+	// Jitter of 2nd RSD length
+	optional uint32 pri_Jitter_2_xx = 21;
+	// Jitter of 3rd RSD length
+	optional uint32 pri_Jitter_3_xx = 22;
+	// Jitter of 4th RSD length
+	optional uint32 pri_Jitter_4_xx = 23;
+
+
+	// enum PRI_STARTINTERVALS_ENUM
+	enum PRI_STARTINTERVALS_ENUM {
+		// Interval 1
+		PRI_STARTINTERVAL_1 = 0;
+		// Interval 2
+		PRI_STARTINTERVAL_2 = 1;
+		// Interval 3
+		PRI_STARTINTERVAL_3 = 2;
+		// Interval 4
+		PRI_STARTINTERVAL_4 = 3;
+	}
+}
+
+// Message structure for Privacy Pattern Configuration Alert - Correlated Alert
+message PrivacyPatternConfigurationAlert{
+	// Counter to identify change
+	optional uint32 hrvc_msgid = 1;
+	// crc16
+	optional uint32 hrvc_crc16 = 2;
+	// Indicates response to be privacy or ex_sum type
+	optional HRVC_MsgType_ENUM hrvc_msgtype = 3;
+	// HRVC type
+	optional HRVC_Type_ENUM hrvcType = 4;
+	// HRVC Buffer
+	optional uint32 hrvc_Buffer = 5;
+
+	// enum HRVC Msg Type
+	enum HRVC_MsgType_ENUM {
+		// Privacy
+		HRVC_PRIVACY = 0;
+		// Ex_Summary
+		HRVC_EXSUMMARY = 1;
+	}
+
+	// enum HRVC Type
+	enum HRVC_Type_ENUM {
+		// Unknown
+		HRVC_UNKNOWN = 0;
+		// NACK
+		HRVC_NACK = 1;
+		// ACK
+		HRVC_ACK = 2;
+	}
+}
+
+// Message structure to Enable / Disable RSD collection Command
+message ConfigureRSDCollectionCommand{
+	// RSD Collection Configuration status
+	optional RSDCollectionConfiguration.RSDCollectionConfigurationENUM rsdCollConfiguration = 1;
+}
+
+// Message structure to Enable / Disable RSD collection command Response
+message ConfigureRSDCollectionCommandResponse {
+	// Common message structure for all command responses. ECG shall always set this.
+    optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for error details. ECU(ECG/TCU) shall only set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+}
+
+// Message structure for RSD collection Configuration Alert - Correlated Alert
+message RSDCollectionConfigurationAlert{
+	// RSD Collection Configuration Command Status
+	optional RSDConfigurationStatusENUM rsdConfigurationStatus = 1;
+	// RSD Collection Configuration status
+	optional RSDCollectionConfiguration.RSDCollectionConfigurationENUM rsdCollConfiguration = 2;
+
+	enum RSDConfigurationStatusENUM{
+		FAILED = 0;
+		SUCCESS = 1;
+	}
+}
+
+// Message structure for RSD data collection configuration (Disabled / Enabled)
+message RSDCollectionConfiguration
+{
+	// RSDCollectionConfigurationENUM
+	enum RSDCollectionConfigurationENUM
+	{
+		// Disable
+		DISABLE = 0;
+		// Enabled
+		ENABLE = 1;
+	}
+}

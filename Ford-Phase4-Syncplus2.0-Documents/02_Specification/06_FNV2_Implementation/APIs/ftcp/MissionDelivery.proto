@@ -1,0 +1,530 @@
+//	Ford Motor Company
+//  Feature/Enabler/Common: Mission Delivery
+//	Version Number: 6.0.9
+//	Date Revised: 09/24/2019
+// 	Last Updated By: Suresh Kumar Sundararaj [SSUNDA56]
+// 	Reviewed By: Praveen Yalavarty [PYALAVAR], Mohammad Talha [MTALHA]
+// 	Ford Confidential
+//************************************************************************************************************************************************************************
+// Covers Mission Delivery and Status, AV User Authentication, User Profile and Comfort Settings
+// CHANGE LOG for version 6.0.9
+	//	Added commands
+		// AddMissionCommand
+		// UpdateMissionCommand
+		// CancelMissionCommand
+		// RevokeMissionKeyCommand
+		// PublishMissionInstructionCommand
+	// Added command responses
+		// AddMissionCommandResponse
+		// UpdateMissionCommandResponse
+		// CancelMissionCommandResponse
+		// RevokeMissionKeyCommandResponse
+		// PublishMissionInstructionCommandResponse
+	// Added alerts
+		// MissionStatusAlert
+		// MissionRevokeKeyStatusAlert
+//************************************************************************************************************************************************************************
+
+package com.ford.ftcp.apps;
+import "Common.proto";
+
+// Message/Command structure to send new Mission to the Vehicle
+message AddMissionCommand{
+	// Message structure for Mission Payload
+	optional Mission mission = 1;
+}
+
+// Message Structure to send response for the Mission Command to Cloud
+message AddMissionCommandResponse{
+	// Enumeration for CommandStatus. ECU component shall always set this.
+	optional MDHStatusENUM status = 1;
+	// Message structure for command error details. ECU shall only set this upon any error condition
+	optional MDHErrCodesENUM errorCode = 2;
+	// Attribute to report error details
+	optional string errorDescription = 3;
+}
+
+// Message/Command structure to send Mission/Trip updates to the Vehicle
+message UpdateMissionCommand{
+	// Message structure for Mission Payload
+	optional Mission mission = 1;
+}
+
+// Message Structure to send response for the Mission/Trip Update Command to Cloud
+message UpdateMissionCommandResponse{
+	// Enumeration for CommandStatus. ECU component shall always set this.
+	optional MDHStatusENUM status = 1;
+	// Message structure for command error details. ECU shall only set this upon any error condition
+	optional MDHErrCodesENUM errorCode = 2;
+	// Attribute to report error details
+	optional string errorDescription = 3;
+}
+
+// Message/Command structure to send Mission/Trip Cancellation to the Vehicle
+message CancelMissionCommand{
+	// Message structure for Mission Payload
+	optional Mission mission = 1;
+}
+
+// Message Structure to send response for the Mission/Trip Cancellation Command to Cloud
+message CancelMissionCommandResponse{
+	// Enumeration for CommandStatus. ECU component shall always set this.
+	optional MDHStatusENUM status = 1;
+	// Message structure for command error details. ECU shall only set this upon any error condition
+	optional MDHErrCodesENUM errorCode = 2;
+	// Attribute to report error details
+	optional string errorDescription = 3;
+}
+
+// Message Structure to send status update for each Trip received in the Mission Command
+message MissionStatusAlert{
+	// Unique Vehicle Identifier (extracted from VIN)
+	optional string vehicleId = 1;
+	// Unique Mission Identifier (36 characters, auto generated)
+	optional string missionId = 2;
+	// Unique Trip Identifier (36 characters, auto generated) uint128
+	optional bytes tripID = 3;
+	// Current Timestamp for ETA
+	optional com.ford.ftcp.appcommon.UTCDateTime currentTimestamp = 4;
+	// Indicates the type of Mission Status Update
+	optional StatusUpdateTypeENUM statusUpdateType = 5;
+	// Trip Status Notification Type from TVF (TaaS Vehicle Function)
+	optional TripStatus tripStatus = 6;
+	// Authentication Status
+	optional AuthenticationStatus authenticationStatus = 7;
+	// Key Delivery/Revoke Status for the Trip
+	optional KeyStatus keyStatus = 8;
+	// Mission Data Handler Status and Errors
+	optional MDHStatus mdhStatus = 9;
+
+	// Enumeration of all Mission Status Update Types
+	enum StatusUpdateTypeENUM{
+		STATUS_TYPE_UNKNOWN = 0;
+		TRIP_STATUS = 1;
+		AUTHENTICATION_STATUS = 2;
+		KEY_STATUS = 3;
+		MDH_STATUS = 4;
+	}
+
+	// Message structure to capture Trip Status Updates
+	message TripStatus{
+		// Status Identifier/Code from TVF
+		optional uint32 status = 1;
+		// Status Detail Identifier/Code from TVF
+		optional uint32 statusDetail = 2;
+	}
+
+	// Message structure for Mission Data Handler Status and Error updates
+	message MDHStatus{
+		optional MDHStatusENUM status = 1;
+		optional MDHErrCodesENUM errorCode = 2;
+		optional string errorDescription = 3;
+	}
+}
+
+// Message Structure to send Key Revoke Mission Command to the Vehicle
+message RevokeMissionKeyCommand{
+	// List of Key to be revoked
+	repeated MissionKey revokeKeyList = 1;
+}
+
+// Message Structure to send response for the Key Revoke Command to Cloud
+message RevokeMissionKeyCommandResponse{
+	// Enumeration for CommandStatus. ECU shall always set this.
+	optional MDHStatusENUM status = 1;
+	// Message structure for command error details. ECU shall only set this upon any error condition
+	optional MDHErrCodesENUM errorCode = 2;
+	// Attribute to report error details
+	optional string errorDescription = 3;
+}
+
+// Message Structure to send correlated status update for the Key Revoke Command to Cloud
+message MissionRevokeKeyStatusAlert{
+	// List of Keys revoked
+	repeated MissionRevokeKeyResponse missionRevokeKeyResponse = 1;
+}
+
+// Message Structure to send Mission/Trip Instruction to the Vehicle
+message PublishMissionInstructionCommand{
+	// Unique Mission Identifier (36 characters)
+	optional string missionId = 1;
+	// Unique Vehicle Identifier (36 characters) - extracted from VIN
+	optional string vehicleId = 2;
+	// Unique Trip/Segment Identifier (36 characters, auto generated) uint128
+	optional bytes tripId = 3;
+	// Instruction
+	optional InstructionENUM instruction = 4;
+	// Instruction Value
+	optional int32 instructionValue = 5;
+
+	enum InstructionENUM{
+		UNKNOWN_INSTRUCTION = 0;
+		EXTEND_LINGER_TIME_BY_X = 1;
+		UPDATE_PASS_COUNT_TO_X = 2;
+		PROCEED_WITH_QUEUE = 3;
+		CANCEL_QUEUE_AWAIT_LOGISTICS = 4;
+		REMOVE_PES_LEO_BLOCK = 5;
+		DISMISS_TRIP = 6;
+	}
+}
+
+// Message Structure to send response for the Mission/Trip Instruction Command to Cloud
+message PublishInstructionCommandResponse{
+	// Enumeration for CommandStatus. ECU component shall always set this.
+	optional MDHStatusENUM status = 1;
+	// Message structure for command error details. ECU shall only set this upon any error condition
+	optional MDHErrCodesENUM errorCode = 2;
+	// Attribute to report error details
+	optional string errorDescription = 3;
+}
+
+// Message structure for Mission Payload
+message Mission{
+	// Unique Mission Identifier (36 characters)
+	optional string missionId = 1;
+	// Unique Vehicle Identifier (36 characters) - extracted from VIN
+	optional string vehicleId = 2;
+	// Location to return in case of trip/segment completion or loss of connectivity
+	optional GPS backupLocation = 3;
+	// List of trips/segments to be operated per Mission
+	repeated Trip trip = 4;
+}
+
+// Message structure for Trip/Segment Payload
+message Trip{
+	// Unique Trip Identifier (36 characters, auto generated)
+	// 128 bit
+	optional bytes tripId = 1;
+	// Trip Operation
+	optional ActionENUM action = 2;
+	// Details of each Trip, applicable for Passenger, Goods or Logistics Trips
+	optional TripData tripData = 3;
+	// Authentication Data, applicable for Passenger, Goods or Service Trips
+	// Optional for Logistics
+	repeated AuthenticationData authData = 4;
+	// User Profile and Comfort Settings Data
+	// Applicable/Mandatory for Passenger(SINGLE), Service
+	repeated UserProfile userProfileData = 5;
+	// Identifer to cancel active Trips, when Action is CANCEL
+	optional ActiveTripCancelFlagENUM canCancelActiveTrip = 6;
+
+	// Enumeration for Active Trip Cancellation
+	enum ActiveTripCancelFlagENUM{
+		FALSE = 0;
+		TRUE = 1;
+	}
+}
+
+// Message structure for Trip Data Payload
+message TripData{
+	// Trip Category/Type (Passenger/Goods Pick up or Drop off)
+	optional TripTypeENUM tripType = 1;
+	// Mandatory, Indicator for pooled vs single passenger ride
+	optional PooledRideENUM isPooled = 2;
+	// Total number of passengers traveling in the activity
+	optional uint32 passengerCount = 3;
+	// Trip sequence identifers, to be placed as first or last trip in the mission
+	// or to be placed before/after a specific trip)
+	// Applicable Only for Passenger Trip, when more than one trip in a Mission
+	optional Sequence onSequence = 4;
+	// Applicable Only for Passenger Trip, when more than one trip in a Mission
+	optional Sequence offSequence = 5;
+	// Trip Origin Address
+	optional Address origin  = 6;
+	// Trip Destination Address
+	optional Address destination  = 7;
+
+	// Enumeration/Indicator for Pooled Ride
+	enum PooledRideENUM{
+		FALSE = 0;
+		TRUE = 1;
+	}
+
+	// Message structure to capture trip sequence
+	message Sequence{
+		// Sequence Enumeration/Identifier for the Trip
+		optional SequenceENUM seqEnum = 1;
+		// Populate Off Board/ On Board Trip ID:uint128
+		optional bytes tripId = 2;
+
+		enum SequenceENUM{
+			UNKNOWN_SEQUENCE = 0;
+			FIRST = 1;
+			LAST = 2;
+			AFTER_ONB_ID = 3;
+			AFTER_OFF_ID = 4;
+			BEFORE_ONB_ID = 5;
+			BEFORE_OFF_ID = 6;
+		}
+	}
+}
+
+// Message Strcuture for Address Payload
+message Address {
+	// Address Latitude and Longitude
+	optional GPS location = 1;
+	// Curbside Need Identifer
+	optional CurbsideFlagENUM curbside = 2;
+	// Stop Name
+	optional string stopName = 3;
+	// Duration of wait time in the location
+	optional uint32 waitTime = 4;
+	// Addtional/Increase Wait Time
+	optional uint32 updWaitTime = 5;
+	// Maximum number of Extensions for Wait Time
+	optional uint32 maxWaitExtensions = 6;
+
+	// Enumeration for Curbside Identifier
+	enum CurbsideFlagENUM{
+		FALSE = 0;
+		TRUE = 1;
+	}
+}
+
+// Message structure for Coordinates with Latitude and Longitude
+message GPS{
+	// Latitude
+	optional Point latitude = 1;
+	// Longitude
+	optional Point longitude = 2;
+	// Unique ID for Location - uint128
+	optional bytes bguid = 3;
+}
+
+// Message structure for capturing Latitude/Longitude
+message Point{
+	// Latitude/Longitude degrees.
+	optional uint32 degree = 1;
+	// Latitude/Longitude minutes
+	optional uint32 minute = 2;
+	// Latitude/Longitude minutes decimal
+	optional uint32 minuteDec = 3;
+	// Latitude / Longitude Orientation
+	optional OrientationENUM orientation = 4;
+
+	//Enumeration for Orientation
+	enum OrientationENUM{
+		ORIENTATION_UNKNOWN = 0;
+		// For Latitude 1 is South, Longitude 2 is West
+		SOUTH_OR_WEST = 1;
+		// For Latitude 2 is North, Longitude 2 is East
+		NORTH_OR_EAST = 2;
+	}
+}
+
+// Message structure for Authentication Payload
+message AuthenticationData{
+	// Key ID
+	optional string keyId = 1;
+	// Enumeration for Key specific Action
+	optional KeyActionENUM action = 2;
+	// Data to be sent to BLEM, for CAK activation or revocation
+	// This data is encrypted and/or signed using BLEM SyncP, any other ECU would not be able to decrypt this
+	optional bytes cakPayload = 3;
+
+	// Enumeration Key specific actions
+	enum KeyActionENUM{
+		KEY_ACTION_UNKNOWN = 0;
+		ADD = 1;
+		REVOKE = 2;
+	}
+}
+
+// Message structure for Mission/Trip Authentication Status Update
+message AuthenticationStatus{
+	// Success/Failure status for Authentication
+	optional StatusENUM status = 1;
+	// Indicator of type/method of Authentication
+	optional MethodENUM method = 2;
+	// Number of attempts made to authenticate
+	optional uint32 retryCount = 3;
+
+	// Enumeration for Authentication Status
+	enum StatusENUM{
+		AUTH_STATUS_UNKNOWN =0;
+		NOT_AUTHENTICATED = 1;
+		AUTH_IN_PROGRESS = 2;
+		AUTHENTICATED = 3;
+		AUTH_FAILED = 4;
+	}
+	// Enumeration for Authentication Method
+	enum MethodENUM{
+		AUTH_METHOD_UNKNOWN = 0;
+		PAAK = 1; //CAK
+	}
+}
+
+
+// Message structure for Mission/Trip Key Delivery Status Update
+message KeyStatus{
+	// Key ID for CAK
+	optional string keyID = 1;
+	// Response from the module which stores CAK and this is signed by the module
+	// Used for both Delivery and Revoke
+	optional bytes responsePayload = 2;
+	// Key Action Status
+	optional StatusENUM status = 3;
+	// Key Action
+	optional KeyActionENUM keyAction = 4;
+
+	// Enumeration for Key Action Status
+	enum StatusENUM{
+		KEY_ACTION_STATUS_UNKNOWN = 0;
+		SUCCESS = 1;
+		FAILURE = 2;
+		KEY_NOT_FOUND = 3;
+	}
+	// Enumeration for Key Action
+	enum KeyActionENUM{
+		KEY_ACTION_UNKNOWN = 0;
+		DELIVERY = 1;
+		REVOKE = 2;
+	}
+}
+
+// Message structure for Key Revoke
+message MissionKey{
+	// Unique Mission Identifier (36 characters)
+	optional string missionId = 1;
+	// List of Trip Keys to be revoked
+	repeated RevokeKey revokeKeys = 2;
+
+	// Message structure for Revoke Key
+	message RevokeKey{
+		// Unique Trip/Segment Identifier (36 characters, auto generated) uint128
+		optional bytes tripId = 1;
+		// Unique Key ID generated in PaaK
+		optional string keyId = 2;
+		// BLEM Signed/Encrypted Consumer Access Key Revoke payload
+		optional bytes cakRevokePayload = 3;
+	}
+}
+
+// Message structure for Revoke Key Status
+message MissionRevokeKeyResponse{
+	// Unique Mission Identifier (36 characters)
+	optional string missionId = 1;
+	// Revoke Key Response
+	repeated RevokeKeyResponse revokeKeyResponse = 2;
+
+	// Message structure for Revoke Key Response
+	message RevokeKeyResponse{
+		// Unique Trip/Segment Identifier (36 characters, auto generated)
+		optional bytes tripId = 1;
+		// Unique Key ID generated in PaaK
+		optional string keyId = 2;
+		// Response from the module which stores CAK and this is signed by the module
+		optional bytes revokeResponse = 3;
+		// Describes whether an add or revoke was successful or not
+		optional RevokeStatusENUM revokeStatus = 4;
+	}
+
+	// Enumeration to identify the CAK Status
+	enum RevokeStatusENUM
+	{
+		UNKNOWN_REVOKE_STATUS = 0;
+		SUCCESS = 1;
+		FAILED = 2;
+		KEY_NOT_FOUND = 3;
+	}
+}
+
+// Message structure for User Profile
+message UserProfile{
+	// Unique Trip Identifier (36 characters, auto generated) uint128
+	optional bytes tripId = 1;
+	// User ID from User Profile Database
+	optional string userId = 2;
+	// UserIdentity : Unique Identifier/Name for personalization of in-vehicle messages to the user
+	// Four digit alphanumeric identifer and special character ID for display purpose
+	optional bytes dispUserId = 3;
+	// Profile Settings Collection
+	// Helps Profile Manager to construct individual command messages for different ECUs using in-vehicle services
+	repeated ProfileSettings profileSettings = 4;
+}
+
+// Message structure for Profile Settings
+message ProfileSettings{
+	// Settings Group Identifier/Name for Comfort settings
+	// (e.g. 1:Climate, 2:Audio, 3:Interior Lighting, 4:Notification,5:Accessibility)
+	optional int32 settingsGroupId = 1;
+	// Target ECU ID : Electronic Control Unit ID
+	// (CAN/Diagnostc ID for the ECU)
+	optional int32 ECUId = 2;
+	// List of Setting attributes
+	repeated Setting settingsGroupData = 3;
+
+	// Message to capture Setting/Signal Information
+	message Setting {
+		// Setting ID (GSDB Signal ID/Token)
+		optional int32 settingId = 1;
+		// Setting Value : Signal Value
+		optional SettingValue settingValue = 2;
+		// Setting Name : Setting specific CAN Signal or Ethernet Primitive Name
+		optional string settingName = 3;
+
+		// Populate only one (oneof) field based on applicable values/data-type
+		message SettingValue {
+			// Set when the data is of type 32 integer
+			optional int32 int32Value = 1;
+			// Set when the data is of type un-signed 32 integer
+			optional uint32 uint32Value = 2;
+			// Set when the data is of type signed 32 integer
+			optional sint32 sint32Value = 3;
+			// Set when the data is of type string
+			optional string stringValue = 4;
+			// Set when the data is of type bytes
+			optional bytes  byteValue = 5;
+			// Set when the data is of type double
+			optional double doubleValue = 6;
+			// Set when the data is of type float
+			optional float  floatValue = 7;
+		}
+	}
+}
+
+// Enumeration for Trip operations
+enum ActionENUM {
+	ACTION_UNKNOWN = 0;
+	NEW = 1;
+	UPDATE = 2;
+	CANCEL = 3;
+}
+
+// Enumeration for Trip Types
+enum TripTypeENUM{
+	//UNKNOWN
+	TRIP_TYPE_UNKNOWN = 0;
+	// Logistics
+	LOGISTICS = 1;
+	// Passenger
+	PASSENGER = 2;
+	// Goods Drop Off
+	GOODS = 3;
+}
+
+// Enumeration for User Roles
+enum RoleENUM{
+	UNKNOWN_ROLE = 0;
+	TERMINAL_MANUAL_DRIVER = 1;
+	TERMINAL_ENTRY_ONLY = 2;
+	RIDER = 3;
+	PACKAGE_LOADER = 4;
+	PACKAGE_UNLOADER = 5;
+	TERMINAL_PERSONNEL = 6;
+	EMERGENCY_PERSONNEL = 7;
+}
+
+// Status Enumeration for Mission Data Handler
+enum MDHStatusENUM{
+	MDH_STATUS_UNKNOWN = 0;
+	MDH_CMD_SUCCESS = 1;
+	MDH_CMD_FAILED = 2;
+	MDH_CMD_IN_PROGRESS = 3;
+}
+
+// Error Enumeration for Mission Data Handler
+enum MDHErrCodesENUM{
+	MDH_ERR_UNKNOWN = 0;
+	MDH_APP_ERROR = 1;
+}

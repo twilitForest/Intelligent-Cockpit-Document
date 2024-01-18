@@ -1,0 +1,22 @@
+syntax = "proto2";
+option optimize_for = CODE_SIZE;
+
+package fnv.soa.gateway;
+
+/**
+* @fnv_proto
+* Reads the FESN from the local ECU the Gateway is running on and sends it to the ECG 
+* @fnv_topic SERVICES/DATA/GATEWAY/ESN
+* @fnv_scope ECG_INTERNAL
+* @fnv_api_source INTERNAL
+* @fnv_message_version 1.0
+*/
+message SoaGatewayFesn{
+    
+    // ECU name e.g. TCU, SYNC. Same name as what is provided in the CommonName field of the TLS Certificat
+    required string ecuName= 1;
+     
+    // Ford ESN
+    optional string esn = 2;
+
+}

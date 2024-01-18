@@ -1,0 +1,75 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2017.  Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// deliberate unauthorized publication.  Ford Motor Company also
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+//
+
+syntax = "proto2";
+option optimize_for = CODE_SIZE;
+package CmMsgCommon;
+
+// For CM internal use only
+// The protobuf captures commonly used enums and messages.
+
+/**
+ * @fnv_proto
+ * Enum of available edge network interfaces
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum NetworkInterfaceType
+{
+    // None selected/specified
+    IFACE_NONE = 0;
+
+    // Cellular interface on TCU
+    IFACE_TCUCELL = 1;
+
+    // Wlan interface on TCU
+    IFACE_TCUWIFI = 2;
+
+    // Wlan interface on SYNC
+    IFACE_SYNCWIFI = 3;
+
+    // AppLink interface on SYNC (currently out of scope for CM)
+    IFACE_SYNCAPPL = 4;
+
+    // Error condition
+    IFACE_ERR = 5;
+}
+
+/**
+ * @fnv_proto
+ * Enum of FNV2 enabled ECUs
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum EcuType
+{
+    // Error condition
+    ECU_UNK = 0;
+
+    // ECG
+    ECU_ECG = 1;
+
+    // TCU
+    ECU_TCU = 2;
+
+    // SYNC
+    ECU_SYNC = 3;
+}

@@ -1,0 +1,346 @@
+syntax = "proto2";
+//	Ford Telematics Communication Protocol
+//  Feature/Enabler/Common: Plug n Charge Electric Vehicle Application
+//	Version Number: 6.0.9
+//	Date Revised: 08/07/2019
+// 	Last Updated By:  Thoppae, Vijai [VTHOPPAE]
+// 	Reviewed By: Murali Chitturi[MCHITTUR], Rumeli Das[RDAS9],Mageshwaran Mohan [MMOHAN17], Jahnavi Athaluri[JATHALU1]
+// 	Ford Confidential
+//
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 08/07/2019 for version 6.0.8
+	// CR-972; ECG-JIRA#31374
+		// Updated Command
+			// PnCChargeSummaryCommand
+		// Updated alert
+			// PnCChargingStationInfoAlert
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 03/29/2019 for version 6.0.6
+	// CR-808; ECG-JIRA#23293
+		// Updated Data Bundle
+			// PnCStatusData			
+			// PnCChargeStationFaultData
+		// Added new alerts
+			// PnCFeatureStatusAlert
+			// PnCChargeCompleteAlert
+		// Updated alert
+			// PnCChargingStationInfoAlert
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 02/05/2019 for version 6.0.5
+	// CR - ECG-23293
+		// Updated Commands
+			// Renamed Commands
+				// PnCActivateCommand -> OptInPnCCommand
+				// PnCDeactivateCommand -> OptOutPnCCommand
+				// PnCActivateCommandResponse -> OptInPnCCommandResponse
+				// PnCDeactivateCommandResponse -> OptOutPnCCommandResponse
+			// Added SyncP Encryption
+				// OptInPnCCommand
+				// OptOutPnCCommand
+			// Reordered Enumeration tag numbers to start from 0 
+				// PnCStationTypeENUM
+				// PnCAuthorizationErrorStatusENUM 
+				// PnCPaymentStatusENUM
+		// Updated Alerts
+			// Renamed Alerts
+				// PnCActivateAlert -> PnCOptInAlert
+				// PnCDeactivateAlert -> PnCOptOutAlert
+			// Added SyncP Encryption
+				// PnCOptInAlert
+				// PnCOptOutAlert
+			// Renamed Enumerations in PnCManageCertificateStatusAlert
+				// ManageCertRevokeReasonENUM --> PnCCertRevokeReasonENUM
+				// ManageCertRevokeStatusENUM --> PnCCertRevokeStatusENUM
+
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 10/18/2018 for version 6.0.4
+//	Added Command
+	// PnCActivateCommand
+	// PnCDeactivateCommand
+	// PnCStationTypeCommand
+	// PnCChargeSummaryCommand
+	// PnCAuthorizationErrorCommand
+	// PnCManageCertificateCommand
+// Added Command Response
+	// PnCActivateCommandResponse
+	// PnCDeactivateCommandResponse
+	// PnCStationTypeCommandResponse
+	// PnCChargeSummaryCommandResponse
+	// PnCAuthorizationErrorCommandResponse
+	// PnCManageCertificateResponse
+// Added Alert
+	// PnCActivateAlert
+	// PnCDeactivateAlert
+	// PnCChargingStationInfoAlert
+	// PnCDisabledAtPlugInAlert
+	// PnCAuthorizationInProgressAlert
+	// PnCChargeStationFaultAlert
+	// PnCManageCertificateStatusAlert
+//************************************************************************************************************************************************************************
+package com.ford.ftcp.apps;
+import "FeatureCommon.proto";
+import "ErrorAndStatus.proto";
+
+// Message structure to track status - Activate / Deactivated / Not Used / No Data Exists
+message PnCStatusData {
+	// The Status of PnC Feature enable/disable from BCCM to ECG
+	optional int32 ChrgrPncEnbl_D_Stat = 1 [deprecated=true];
+	// The status of the PnC Feature from OBCC Module
+	optional int32 DgtlCommPnc_D_Stat = 2;
+}
+
+// Enumeration status that contains errors at the time of OptIn / OptOut Feature
+enum PnCErrorCodesENUM{
+	APP_ERROR =0;
+	OTHER_ERRORS = 1;
+}
+
+// Message structure to OptIn PnC feature
+message OptInPnCCommand{
+	// This byte stream is SyncP Signed & Encrypted in order for OBCC to consume it
+	optional bytes optInStatus = 1;
+}
+
+// Message structure for PnC OptIn Response Command
+message OptInPnCCommandResponse{
+	// Common message structure for all command responses. ECG shall always set this.
+    optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+    // Message structure for error codes. ECU shall ONLY set this upon any error condition
+	optional PnCErrorCodesENUM errorCode = 2;
+	// Populate this when there is an error, A brief description for the failure.
+	optional string errorDescription = 3;
+}
+
+// Message structure that sends PnC OptIn Alert (Correlated)
+message PnCOptInAlert{
+	// This byte stream is SyncP Signed & Encrypted for Cloud to consume it
+	optional bytes optInStatus = 1;
+    // Message structure for error codes. ECU shall ONLY set this upon any error condition
+	optional PnCErrorCodesENUM errorCode = 2;
+	// Populate this when there is an error, A brief description for the failure.
+	optional string errorDescription = 3;
+}
+
+// Message structure to Optout PnC feature
+message OptOutPnCCommand{
+	optional bytes optOutStatus = 1;
+}
+
+// Message structure for PnC Optout Response Command
+message OptOutPnCCommandResponse{
+	// Common message structure for all command responses. ECG shall always set this.
+    optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+     // Message structure for error codes. ECU shall ONLY set this upon any error condition
+	optional PnCErrorCodesENUM errorCode = 2;
+	// Populate this when there is an error, A brief description for the failure.
+	optional string errorDescription = 3;
+}
+
+// Message structure that sends PnC OptOut Alert  (Correlated)
+message PnCOptOutAlert{
+	// This byte stream is SyncP Signed & Encrypted in order for OBCC to consume it
+	optional bytes optOutStatus = 1;
+    // Message structure for error codes. ECU shall ONLY set this upon any error condition
+	optional PnCErrorCodesENUM errorCode = 2;
+	// Populate this when there is an error, A brief description for the failure.
+	optional string errorDescription = 3;
+}
+
+// Message structure that sends PnC status during plugin. This is a Non-Correlated Alert and it is sent, if the PnC feature is disabled when connected to an PnC Station.
+message PnCDisabledAtPlugInAlert{
+	// Message structure for PnC Status during plugin - On / Off
+	optional PnCStatusData pncStatusData = 1;
+}
+
+message PnCChargeStateData
+{
+	// The status of the digital communications regarding discovered charging services reported by DCGM
+	optional int32 DgtlCommGtwyMde_D_Stat = 1;
+}
+
+// Message structure to denote the PnC Station type & Station ID (Non-Correlated)
+message PnCChargingStationInfoAlert{
+	// PnCChargeStateData
+	optional PnCChargeStateData pncChargeStateInfo = 1;
+	// Charge station contains TLS & EVSE ID Information
+	optional bytes chargeStationID = 2;
+	// Charging Station schedule
+	optional bytes chrgStatSchedule = 3;
+	// GPS information of the vehicle
+	optional com.ford.ftcp.appcommon.GPSInfo gpsInfo = 4;
+}
+
+// Message structure to denote whether it's PnC Capable / Non PnC Capable - In Network / Out of Network
+message PnCStationTypeCommand{
+	// Message containing PnCStationTypeENUM
+	optional PnCStationTypeENUM pncStationType = 1;
+
+	enum PnCStationTypeENUM {
+		// PNC Capable In Network
+		PNC_IN_NETWORK = 0;
+		// PNC Capable Out of Network
+		PNC_OUT_NETWORK = 1;
+		// Non-PNC Capable In Network
+		NON_PNC_IN_NETWORK = 2;
+		// Non-PNC Capable Out of Network
+		NON_PNC_OUT_NETWORK= 3;
+	}
+}
+
+// Message structure for PnC Station Type Command Response
+message PnCStationTypeCommandResponse{
+	// Common message structure for all command responses. ECG shall always set this.
+    optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+    // Message structure for error details. ECU shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+}
+
+message PnCDigitalCommGatewayData
+{
+	// Command from BCCM to DCGM on the mode of digital communication to follow
+	optional int32 DgtlCommGtwyMde_D_Rq = 1;
+}
+
+message PnCDCChargeReadyStateData
+{
+	// Charger Ready status indicator, enumerated BCCM transmitter and OBCC and other module are receiver
+	optional int32 DcChrgRdy_D_Stat = 2;
+}
+
+// Message structure that shows PnC Authorization In-Progress Alert for PNC Capable In Network station type
+message PnCAuthorizationInProgressAlert{
+
+	// PnCDigitalCommGatewayData
+	optional PnCDigitalCommGatewayData pncDigitalCommGateway = 1;
+	// PnCDCChargeReadyStateData
+	optional PnCDCChargeReadyStateData pncDCChargeReady = 2;
+}
+
+// Message structure that sends Charge summary details
+message PnCChargeSummaryCommand{
+	// Payment Status Enumeration
+	optional PnCPaymentStatusENUM paymentStatus = 1;
+	// Total Cost for this charge
+	optional float totalCost = 2;
+	// Subscription balance available after charge
+	optional float balanceInSubscription = 3;
+	// Total distance added after the charge
+	optional float totalDistanceAdded = 4;
+	//  Type of Currency for HMI display
+	optional string currencyType = 5;
+
+	enum PnCPaymentStatusENUM {
+		// Payment Information Available
+		PAYMENTINFO_AVAILABLE = 0;
+		// Payment Information Not available
+		PAYMENTINFO_NOT_AVAILABLE = 1;
+	}
+}
+
+// Message structure for Payment Summary Command Response
+message PnCChargeSummaryCommandResponse{
+	// Common message structure for all command responses. ECG shall always set this.
+    optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+    // Message structure for error details. ECU shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+}
+
+// Message structure that sends Authorization Error command
+message PnCAuthorizationErrorCommand{
+	// PnC Authorization Error Status Enumeration
+	optional PnCAuthorizationErrorStatusENUM authStatus = 1;
+	// PnCAuthorizationErrorStatusENUM maps to different error codes
+	enum PnCAuthorizationErrorStatusENUM {
+		//  Payment subscription balance is low
+		PAYMENT_SUBSCRIPTION_LOW = 0;
+		//  Payment balance has run out
+		PAYMENT_BALANCE_LOW = 1;
+		// Charging account is overdue, but charging is still allowed (post-pay account)
+		ACCOUNT_OVERDUE_CHARGING_ALLOWED = 2;
+		// Charging account is overdue and charging is suspended (post-pay account)
+		ACCOUNT_OVERDUE_CHARGING_NOT_ALLOWED = 3;
+		// Payment method issue for variable fees or monthly subscription fees
+		PAYMENT_SETUP_ISSUE = 4;
+		// Payment Backend system failure has occurred
+		PAYMENT_BACKEND_SYSTEM_FAILURE = 5;
+	}
+}
+
+// Message structure for Payment Verification command Response
+message PnCAuthorizationErrorCommandResponse{
+	// Common message structure for all command responses. ECG shall always set this.
+    optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+    // Message structure for error details. ECU shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+}
+
+message PnCChargeStationFaultData
+{
+	// OBCC to report the EVSE failure reasons for digital communications to ECG
+	optional int32 DgtlCommFlt_D_Stat = 1 [deprecated=true];
+	// The cause of failure in an off board charger digital communications event
+	optional int32 DgtlCommGtwy_D_Falt = 2;
+}
+
+// Message structure to denote EVSE charge Station fault alert (Non-Correlated)
+message PnCChargeStationFaultAlert{
+	// PnCChargeStationFaultData
+	optional PnCChargeStationFaultData pncChargeStatFault = 1;
+}
+
+// Message structure to install / Delete certificate
+message PnCManageCertificateCommand{
+	// This byte stream is SyncP Signed & Encrypted for OBCC to consume it
+	optional bytes manageCertRequest = 1;
+}
+
+// Message structure for SyncP certificate Response command (Install / Delete / Assign Certificate Priority)
+message PnCManageCertificateCommandResponse{
+	// Common message structure for all command responses. ECG shall always set this.
+    optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for error details. ECU(ECG/TCU) shall only set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+}
+
+// Message structure that sends SyncP Certificate Installation / Deletion / MASTER RESET Status as part of this Alert (Both Correlated and Non-Correlated)
+message PnCManageCertificateStatusAlert{
+	// This byte stream is SyncP Signed & Encrypted for Cloud to consume it
+	optional bytes pncCertInfo = 1;
+	// Message structure for error details. ECU(ECG/TCU) shall only set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+	// Set this enumeration only during certificate deletion and describes the cause for the certificate revoke
+	optional PnCCertRevokeReasonENUM certRevokeReason = 3;
+	// Set this enumeration only during revoke with the actual status
+	optional PnCCertRevokeStatusENUM certRevokeStatus = 4;
+
+	// Enumeration to identify the reason for SyncP certificate revoke
+	enum PnCCertRevokeReasonENUM
+	{
+		MASTER_RESET = 0;
+		BRAND_RESET = 1;
+		CLOUD_CLEARSETTING = 2;
+		OTHERS = 3;
+	}
+
+	// Enumeration that contains status during Revoke
+	enum PnCCertRevokeStatusENUM{
+		FAILED = 0;
+		SUCCESS = 1;
+	}
+}
+
+// Message structure that sends PnC feature status. This is a Non-Correlated Alert
+message PnCFeatureStatusAlert{
+	// Message structure for PnC Feature Status
+	optional PnCStatusData pncStatusData = 1;
+}
+
+// Message structure that display PnC Charge complete. This is a Non-Correlated Alert
+message PnCChargeCompleteAlert{
+	// Message structure for Battery status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.BatteryStatusData battStat = 1;
+	// Total distance calculated by leveraging this signal VehElRnge_L2_Dsply data before and after charge
+	optional float totalDistanceAdded = 2;
+	// Total time plugged calculated by leveraging this signal PlgActv_D_ActlChrgr state (Unit:Seconds)
+	optional int32 totalTimePluggedIn = 3;
+}

@@ -1,0 +1,173 @@
+syntax = "proto2";
+//	Ford Telematics Communication Protocol
+//  Feature/Enabler/Common: Portable Profile Preferences (PPP)
+//	Version Number: 6.0.9
+//	Date Revised: 09/06/2019
+// 	Last Updated By: Mageshwaran Mohan [MMOHAN17]
+// 	Reviewed By: Murali Chitturi[MCHITTUR], Rumeli Das[RDAS9], Thoppae, Vijai [VTHOPPAE], Jahnavi Athaluri[JATHALU1]
+// 	Ford Confidential
+//
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 09/06/2019 for version 6.0.8
+// PPP Feature
+	// Added Data Bundles
+		// ProfileData
+		// ProfileValueMap
+		// ProfileStructureInfo
+		// LabelValue
+		// BLEAutoPairKeySetupData
+	// Added Commands
+		// PublishProfilePreferencesCommand
+		// PublishBLEAutoPairKeyCommand
+	// Added Commands Response
+		// PublishProfilePreferencesCommandResponse
+		// PublishBLEAutoPairKeyCommandResponse
+	// Added Alert
+		// PortableProfileStatusAlert
+		// BLEAutoPairStatusAlert
+
+//************************************************************************************************************************************************************************
+package com.ford.ftcp.apps;
+import "FeatureCommon.proto";
+import "ErrorAndStatus.proto";
+
+
+// Message structure for User Profile Data
+message ProfileData{
+	// Message structure set of user profile preferences
+	repeated ProfileValueMap profileDataSet= 1;
+}
+
+// Message structure for set of user profile preferences and corresponding group ID
+message ProfileValueMap{
+	// Unique Group ID for set of preferences
+	optional int32 labelGroupID = 1;
+	// Message structure for the profile preference and corresponding mapped label ID.
+	repeated ProfileStructureInfo profileInfo = 2;
+}
+
+// Message structure for user profile preference and corresponding label ID
+message ProfileStructureInfo{
+	// Unique ID for each preference
+	optional int32 labelID = 1;
+	// Message structure for the Label Values
+	optional LabelValue labelValue = 2;
+}
+
+// Message structure for Label Value (Preferences Value)
+// Always ONE of the following data types shall be set
+message LabelValue{
+	optional int32 integerValue = 1;
+	optional string stringValue = 2;
+	optional double doubleValue = 3;
+	optional float floatValue = 4;
+	optional bytes byteValue = 5;
+}
+
+// Message structure for User Profile Command
+message PublishProfilePreferencesCommand{
+	// Indicator whether the profile data is encoded or not
+	// This shall be set for both with or without encoded ProfileData
+	optional com.ford.ftcp.appcommon.EncodingTypeENUM encodingType = 1;
+	// Profile message structure
+	// The encodingType shall be set as NONE
+	optional ProfileData profileData = 2;
+	// Cloud shall set this field only if profile data needs to be Sync-P encoded
+	// The profile data structure shall be same as the ProfileData, Refer feature specification
+	// Based on the encodingType (Encrypted/Signed) the encodingType enum type shall be set
+	optional bytes encodedProfileData = 3;
+
+}
+
+// Message structure for User Profile Command Response
+message PublishProfilePreferencesCommandResponse{
+	// Enumeration for CommandStatus. ECU shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum cmdStatus = 1;
+	// Message structure for error details. ECU shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail cmdErrorDetail = 2;
+}
+
+//Message structure for user profile update status alert
+message PortableProfileUpdateStatusAlert{
+
+	// Enumeration for User Profile update Status
+	optional ProfileUpdateStatusENUM updateStatus = 1;
+	// Enumeration for Failure reason,
+	//this shall be populated only when the PortableProfileSetupStatusENUM is FAILED
+	optional PortableProfileFailureReasonENUM failureReasonENUM = 2;
+	// Enumeration for Failure Description
+	optional string failureDescription = 3;
+
+	enum ProfileUpdateStatusENUM{
+		APPLIED = 0;
+		FAILED = 1;
+	}
+
+	enum PortableProfileFailureReasonENUM{
+		PAYLOAD_CORRUPTED = 0;
+		MASTER_RESET_INTERUPTED = 1;
+		NO_USER_RESPONSE = 2;
+	}
+}
+
+// Message structure for the BLE AutoPair Key delivery
+message PublishBLEAutoPairKeyCommand{
+	// Indicator whether the profile data is encoded or not
+	// This shall be set for both with or without encoded BLE Key data
+	optional com.ford.ftcp.appcommon.EncodingTypeENUM encodingType = 1;
+	// BLE Auto Pair message structure
+	// The encodingType shall be set as NONE
+	optional BLEAutoPairKeyData BLEautoPairKeyData = 2;
+	// Cloud shall set this field only if BLE Key Data needs to be Sync-P encoded
+	// The  BLE Key data structure shall be same as the BLEAutoPairKeyData, Refer feature specification
+	// Based on the encodingType (Encrypted/Signed) the encodingType enum type shall be set
+	optional bytes encodedBLEAutoPairKeyData = 3;
+
+}
+
+// Message structure for BLE Auto Pair Key  data
+message BLEAutoPairKeyData{
+	// Vehicle Unique Identifier
+	optional string VUID = 1;
+	// Mobile Unique Identifier
+	optional string MUID = 2;
+	//BLE interface payload enryption key
+	optional bytes SPEK = 3;
+	// SPEK creation timestamp
+	optional com.ford.ftcp.appcommon.Time SPEKCreationTime = 4;
+	// SPEK expiry timestamp
+	optional com.ford.ftcp.appcommon.Time SPEKExpiryTime = 5;
+}
+
+// Message structure for User PublishBLEAutoPairKeyCommand's Response
+message PublishBLEAutoPairKeyCommandResponse{
+	// Enumeration for CommandStatus. ECU shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum cmdStatus = 1;
+	// Message structure for error details. ECU shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail cmdErrorDetail = 2;
+
+}
+
+// Message structure for BLE AutoPair status
+message BLEAutoPairStatusAlert{
+	// Enumeration for BLE auto-pair status
+	optional BLEAutoPairStatusENUM BLEautoPairStatus = 1;
+	// Enumeration for BLE Auto Pairing Failure reason
+	// ECU shall set only when the BLEautoPairStatus is AUTO_PAIR_FAILED
+	optional BLEAutoPairingFailureReasonENUM BLEautoPairingFailureReason = 2;
+	// Enumeration for Failure Description
+	// ECU shall set only when the BLEautoPairStatus is failed
+	optional string failureDescription = 3;
+
+	enum BLEAutoPairStatusENUM{
+		AUTO_PAIR_FAILED = 0;
+		AUTO_PAIR_SUCCESS = 1;
+	}
+
+	enum BLEAutoPairingFailureReasonENUM{
+		PAYLOAD_CORRUPTED = 0;
+		MASTER_RESET_INTERRUPTED = 1;
+		NO_USER_RESPONSE = 2;
+	}
+}
+

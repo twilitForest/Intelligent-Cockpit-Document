@@ -1,0 +1,2557 @@
+syntax = "proto2";
+//	Ford Telematics Communication Protocol
+//  Feature/Enabler/Common: Feature Common
+//	Version Number: 6.0.9
+//	Date Revised: 10/10/2019
+// 	Last Updated By: Rumeli Das[RDAS9]
+// 	Reviewed By:Murali Chitturi[MCHITTUR], Vijai Thoppae [VTHOPPAE], Jahnavi Athaluri[JATHALU1],Mageshwaran Mohan [MMOHAN17]
+// 	Ford Confidential
+//
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 10/10/2019 for version 6.0.9
+// OTA changes
+	// Added data bundles
+		// InhibitEventSourceENUM
+		// LifeCycleMode
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 09/04/2019 for version 6.0.8
+// Trip Planner Feature
+	// Added new data bundle ChargeToNextPOIData with below Signals
+		// DestChrgEndDay_No_Actl
+		// DestChrgEndHr_No_Actl
+		// DestChrgEndMin_No_Actl
+		// DestSocRqd_Pc_Dsply
+//CR#935 - EV
+	// Added new signals to VehicleStatus
+		// BattTracLoThres_D_Stat
+		// BattTracLoSoc_D_Dsply
+	// Added new data bundle
+		// AverageRangePerFullChargeData
+//CR#971 - EV
+	// Added new data bundle BatteryConsumptionData_V2 with updated data types
+	// Update ChargeLocationGPSInfo
+		// Deprecated data bundle ShiftedChargeLocation
+		// Added new data bundle ShiftedChargeLocation_V2 with updated data types
+	// Added comment to the deprecated ShiftedChargeLocation data bundle
+		// Deprecated due to data type mismatch
+// Portable Profile Preferences (PPP)
+	// Added new Enumeration
+		// EncodingTypeENUM
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 06/27/2019 for version 6.0.7
+	// CR #903;ECG-JIRA#27786 - To support Smart Charge Feature
+		// Update Data Bundle
+			// VehicleStatus
+	// CR#786 ; ECG#21622
+	// Updated existing GPSInfo Message Structure
+		// Deprecated existing data bundles UnshiftedGPSInfo and ShiftedGPSInfo
+		// Added new data bundles AdvancedUnshiftedGPSInfo ,AdvancedShiftedGPSInfo and CommonGPSInfo
+		// Added new enumeration GPSInfoTypeENUM
+// UBI - CR#784
+	// Deprecated signals in DrivingBehaviourData
+		// FirstRowBuckleDriver
+		// VRM_BTPhoneSts_St
+// CBZ
+	// Added new enumeration ActivationStatusENUM
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 03/28/2019 for version 6.0.6
+	// CR #847;ECG-JIRA#24014 - To support Smart Charge Feature
+		// Update Data Bundles
+			// SmartChargeProfileCloudData
+	// CR-808; ECG-JIRA#23293 - To support PnC feature
+		//  Added new data bundle
+			// BatteryStatusData
+// EV Changes
+   	// CR #691;ECG-JIRA#23912
+		//  Deprecated following signals in EnergyConsumptionData
+			// 	ChrgrInHi_I_Actl
+			// 	ChrgrInHi_U_Actl
+		//  Added new signals in EnergyConsumptionData
+			//	ChrgrOutHi_I_Actl
+			//	ChrgrOutHi_U_Actl
+		//  Added new data bundle
+			// ChargeCompleteTimeData
+			// DCFastChargeData
+	// CR#636;ECG-JIRA#23501
+		// Added "ShiftedGPSENUM" enumeration to ChargeLocationGPSInfo
+		// Added the below signals to ShiftedChargeLocation data bundle
+			// ChrgLocLattDeg_An_Sav
+			// ChrgLocLattPostv_B_Sav
+			// ChrgLocLattFrct_An_Sav
+			// ChrgLocLongDeg_An_Sav
+			// ChrgLocLongPostv_B_Sav
+			// ChrgLocLongFrct_An_Sav
+			// ChrgLocLattDeg_An_Uns
+			// ChrgLocLattPostv_B_Uns
+			// ChrgLocLattFrct_An_Uns
+			// ChrgLocLongDeg_An_Uns
+			// ChrgLocLongPostv_B_Uns
+			// ChrgLocLongFrct_An_Uns
+	// CR#640;ECG-JIRA#24428; ECG-JIRA#26010
+		// Added Signals to VehicleStatus and BatteryChargingPeriodData data bundles
+			// ActChrgStrtYr_No2_Actl
+			// ActChrgEndYr_No2_Actl
+			// VehElRnge_L2_Dsply
+		// Added DCFastChargeData to VehicleStatus
+// CR#630;ECG-JIRA#24678 - China Data Monitoring Changes
+		// Added signal "ChrgStat_D2_Dsply" to XEVVehicleStatusData
+// CR# 841;ECG-JIRA#23976
+	// Added signal "CurntTrgtSoc_Pc_Dsply" --> ChargeProgrammingData
+// CR# 762;ECG-JIRA#20050
+	// Added signal BattULoChrgHyb_D_Stat --> VehicleStatus
+// CR# 866;FNV3402
+	// Added data bundle DataUsageUOMENUM for WIR
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 02/04/2019 for version 6.0.5
+	//Smart Charge - New Feature
+		//Added Data Bundles
+			// SmartChargeProfileCloudData
+			// SmartChargeCloudSettingsData
+			// SmartChargeDurationData
+			// SmartChargeProfileVehicleData
+			// SmartChargeVehicleSettingsData
+			// SmartChargeGPSInfo
+			// SmartChargeGPSLatCoordinates
+			// SmartChargeGPSLongCoordinates
+			// SmartChargeCurrentLocationData
+		// Moved XEVErrorDetails from ElectricVehicle.proto
+	// FLEET
+		// CR #ECG-22257
+			// Deprecated Signals in DriverSafetyData
+				// LscmbbPostEvnt_B_Dsply
+				// GearRvrseActv_D_Actl
+				// PrkBrkActv_B_Actl
+			// Added new Signals to DriverSafetyData
+				// CmbbPostEvnt_B_Dsply
+				// GearRvrse_D_Actl
+				// PrkBrkStatus
+	// Removed SED states related comments for SED signals in all data bundles
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 10/26/2018 for version 6.0.4
+// CR #493
+	// Added Data Bundles
+		// DieselSystemStatusData
+		// UpfitterModuleStatusData
+// CR #691
+	// Added Data Bundles
+		// BatteryConsumptionData
+		// EnergyConsumptionData
+	// Added signals to VSTAT data bundle
+		// EstmChrgTimeHP_St
+		// EstmChrgTimeLP_St
+	// Added signal to ChargeProgrammingData data bundle
+		// ChrgLocIdCurnt_D_Uns
+		// ExtChrgNowButtn_B_Rq
+// SVS Feature (CR: FNV-2817)
+	// Added "ThreeDimensionalEstimatedError" Field
+		// ShiftedGPSInfo
+		// UnshiftedGPSInfo
+// CCS
+	// Added enum PromptTypeENUM -> HMIScreenInfo
+// Command and Control Change CR #679
+	// Modified comments for signals in CGEA13_C1MCA_DoorAjarStatus data bundle
+		//  DrStatInnrTgate_B_Actl (Inner tail gate door ajar status --> Liftgate door ajar status)
+		//  DrStatTgate_B_Actl (Tail gate door ajar status  -- > Trunk door ajar status)
+// PnC
+	// Added Signal to VSTAT data bundle
+		// DgtlCommGtwyMde_D_Rq
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 09/21/2018 for version 6.0.3
+// SVS Feature
+	// Added fixType to UnshiftedGPSInfo
+// CR #686
+	// Removed data bundle
+		// HEVBatteryData
+	// Added following signals to BECMData
+		// VehStrtInhbt_B_RqBatt
+		// BattTrac_Pw_LimChrg
+		// BattTrac_Pw_LimDchrg
+		// BattTracOffFst_D_Actl
+	// Added data bundle
+		// EngineData
+// CR #691
+	// Updated data bundle UnshiftedChargeLocation
+		// Datatype changed from uint32 to float
+			// ChrgLocLattFrct_An_Uns
+			// ChrgLocLongFrct_An_Uns
+			// ChrgLocLattFrct_An_Sav
+			// ChrgLocLongFrct_An_Sav
+	// Updated data bundle GPSCloudCoordinates
+		// Datatype changed from uint32 to float
+			// gpsFraction
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 09/07/2018 for version 6.0.2
+	// Packaging of proto files have been introduced and referenced
+	// Added syntax = "proto2" to the header
+	// Removed DIDTypeENUM from DIDConfiguration
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 06/20/2018 for version 6.0.1
+	// Moved AppConfiguration inside ECUConfiguration.
+	// Added new Data bundle
+		// AppConfigData
+	// Reordered tags in all the message structures and Alerts
+	// Cleaned up commented messages
+	// Remove signals from Vehicle Status
+		// parkrbrake_hard
+		// parkbrake_soft
+//************************************************************************************************************************************************************************
+// Changes/Version based on B4 FTCP version and FNV2 FTCP Proposal
+// Covers data bundles/message with CAN signals for all Applications and ECG Base S/W
+//************************************************************************************************************************************************************************
+package com.ford.ftcp.appcommon;
+// Message structure for capturing status of the Vehicle at a point in time
+message VehicleStatus{
+
+	//Field tags 1, 2, 24,25,26,27,52,88 are reserved to make the message binary format backward compatible with earlier FTCP
+	//versions
+
+	// Door lock status from CAN bus - for CGEA vehicles only - first 3 bits will be '0'
+	// $0: LOCK_DBL
+	// $1: LOCK_ALL
+	// $2: UNLOCK_ALL
+	// $3: UNLOCK_DRV
+	optional int32 Veh_Lock_Status = 1;
+
+	//Used for "motive mode" -  for C1MCA(CD346 and CD344 ) and CGEA all program
+	//Used for Remote Start - for C1MCA CD346 and CD344 programs
+	optional int32 PwPckTq_D_Stat  = 2;
+	// remote start status from CAN bus-CGEA Only
+	optional int32 Remote_Device_Feedback = 3;
+	// remote start setting from CAN bus: tells how long remote start should be active 5, 10 or 15 min
+	optional int32 RstrtSetting_T_Actl = 4;
+	// Remote start timer from CAN bus.  This tells how long remote start would stay active.
+	//This is applicable for CGEA only
+	optional int32 Rstrt_T_Actl = 5;
+	// 12V battery status from CAN bus for CGEA1.3
+	optional float BattULo_U_Actl = 6;
+	// Tire pressure from CAN bus for CGEA1.3
+	optional int32 Tire_Press_System_Stat = 7;
+	// Gear level position from CAN bus
+	optional int32 GearLvrPos_D_Actl = 8;
+	// Ignition status from CAN bus
+	optional int32 Ignition_Status = 9;
+
+	// Perimeter alarm status from CAN bus for CGEA1.3 – Alarm Mode
+	optional int32 Perimeter_Alarm_Status = 10;
+	// Alarm status cause/trigger from CAN bus for CGEA1.3
+	optional int32 PrmtrAlrmEvnt_D_Stat = 11;
+
+	// Fuel Level percentage from CAN bus for PHEV
+	// See look-up table on Fuel 10-bit R-Card tab in ACP spec and logic from PHEV PRD
+	// This raw 10-bits is the "green" column on the Fuel 10-bit R-Card table"
+	optional float FuelLvl_Pc_Dsply = 12;
+	// Engine Oil from CAN bus
+	optional int32 EngOilLife_Pc_Actl = 13;
+
+	// Distance before fuel reservoir becomes empty -
+	// this signal replaces "fuelDistanceToEmpty" .
+	optional float FuelRange_L_Dsply = 14;
+	// Odometer value from CAN bus
+	optional int32 OdometerMasterValue = 15;
+	// GPS information of the vehicle
+	optional GPSInfo gpsInfo = 16;
+	// Key in Use - CGEA for Model Year 13 vehicles with PEPS (Passive Entry Passive Start) only
+	optional int32 PepsKeyActv_D_Stat = 17;
+
+	//EV Specific signals - Non EV vehicles do not need to populate these values
+	// Percentage of the Battery charge from CAN bus -
+	optional float BattTracSoc_Pc_Dsply = 18;
+	// Battery Charge condition alert flag from CAN bus
+	optional int32 PtRmtRprt_D_Rq = 19;
+	// Plug Status signal from CAN bus
+	optional int32 PlgActvArb_B_Actl = 20;
+	// Clear Battery Performance signal from CAN bus
+	optional int32 BattElecPerf_D_Actl = 21;
+	// Energy consumed by vehicle in KiloWatt Hours
+	optional float TripSum_E_Dsply = 22;
+	// Energy consumed by vehicle in Liters
+	optional float TripSum_Vl_Dsply = 23;
+	// Trip Length in Kilometers
+	optional float TripSum_L_Dsply = 24;
+
+	// Next charge Begin Time Year
+	optional int32 ActChrgStrtYr_No_Actl = 25;
+	// Next charge Begin Time Month
+	optional int32 ActChrgStrMnth_No_Actl = 26;
+	// Next charge Begin Time Day
+	optional int32 ActChrgStrtDay_No_Actl = 27;
+	// Next charge Begin Time Hour
+	optional int32 ActChrgStrtHr_No_Actl = 28;
+	// Next charge Begin Time Minute
+	optional int32 ActChrgStrtMin_No_Actl = 29;
+
+	// Next charge End Time Year
+	optional int32 ActChrgEndYr_No_Actl = 30;
+	// Next charge End Time Month
+	optional int32 ActChrgEndMnth_No_Actl = 31;
+	// Next charge End Time Day
+	optional int32 ActChrgEndDay_No_Actl = 32;
+	// Next charge End Time Hour
+	optional int32 ActChrgEndHr_No_Actl = 33;
+	// Next charge End Time Minute
+	optional int32 ActChrgEndMin_No_Actl = 34;
+
+	// Charge Point location Id (Charge point arrival flag) - Legacy EV signal
+	optional int32 ChrgLocID_No_Rq = 35;
+	// Hours to FULL CHARGE for "Charge Now"
+	optional float ChargeNowDuration_St = 36;
+	// RSSI Signal Quality - non EV signal
+	optional int32 receivedSignalQuality = 37;
+	// GSM DRX Level - non EV signal
+	optional int32 GSMDRXLevel = 38;
+	// GSM Roaming Flag - non EV signal
+	optional int32 GSMRoamingFlag = 39;
+	// GSM Number of neighbors to track - non EV signal
+	optional int32 GSMNumberOfNeighbors = 40;
+	// Long Term Regen % Energy Recovery  % of regenerative braking energy recovered
+	// since last long term FE reset. Similar to brake coach, but for a longer term.
+	optional float RgenLongTerm_Pc_Dsply = 41;
+	// Trip Regen % Energy Recovery % of regenerative braking energy recovered on the
+	// trip. Similar to brake coach, but for the entire trip rather than a single stop.
+	optional float RgenTrip_Pc_Dsply = 42;
+	// Trip Regenerated Energy Recovery Distance Achieved  distance driven with
+	// regenerative braking energy recovered on the trip
+	optional float RgenTrip_L_Dsply = 43;
+	// Long Term Regenerated Energy Recovery Distance Achieved  distance driven with
+	// regenerative braking energy recovered since the last long term reset
+	optional float RgenLongTerm_L_Dsply = 44;
+	// Display Language setting - non EV signal
+	optional int32 Disp_LangSel_St = 45;
+
+	// Communicates the users overall score in relation to the consumption tips.
+	// 100% is the best performance, 0% is the worst performance. - Legacy EV signal
+	optional float ConsTipTot_Pc_Dsply = 46;
+
+	// Fuel economy - No display
+	optional int32 ConsAvgTrip_No_Dsply = 47;
+	// Fuel economy - Display
+	// Communicates the instrument cluster current unit mode setting.
+	// Used thru-out displays to update units and labels for the fuel consumption history displays.
+	// If units updated on cluster, other displays thru-out vehicle should be updated as well.
+	optional int32 ConsUnitIPC_D_Dsply = 48;
+	// Fuel economy - Longterm no display
+	optional int32 ConsLongTerm_No_Dsply = 49;
+	// Engine service required indicator - non EV signal
+	optional int32 EngSrvcRqd_B_Rq = 50;
+	// Request from the hybrid transmission system to illuminate the Powertrain Malfunction Lamp
+	optional int32 HtrnSrvcRqd_B_Dsply = 51;
+	// Request from the hybrid transmission system to illuminate the Hazard Lamp (red triangle telltale).
+	optional int32 HtrnWarnLamp_B_Dsply = 52;
+	// illuminate the Powertrain service indicator - Legacy EV signal
+	optional int32 PtSrvcLamp_B_RqHtrn = 53;
+	// illuminate the Powertrain warning indicator - Legacy EV signal
+	optional int32 PtWarnLamp_B_RqHtrn = 54;
+	// Request from the Traction (HV) Battery system to illuminate the Powertrain Malfunction Lamp
+	optional int32 BattTracSrvcRqd_B_Rq = 55;
+	// Request from the Traction (HV) Battery system to illuminate the Hazard Lamp (red triangle telltale).
+	optional int32 BattTracWarnLamp_B_Rq = 56;
+	// Request to the driver information system to indicate High Voltage battery Charger service is required.
+	// HEV Repair Telltale request. 0 = Off, 1 = On
+	optional int32 ChrgrSrvcRqd_B_Rq = 57;
+	// transmission service required indicator - non EV signal
+	optional int32 TrnSrvcRqd_B_Rq = 58;
+	// Long term distance driven in kilometers
+	optional float ElLongTerm_L_Dsply = 59;
+	// MPGe
+	optional float ConsAvgTrip_Fe_Dsply = 60;
+
+	// RSSI Signal Strength  - non EV signal
+	optional int32 receivedSignalStrength = 61;
+
+	// Hybrid Mode Status(Current operating mode the plug in hybrid vehicle)
+	optional int32 HybMdeStat_D_Dsply= 62;
+
+	// DTE for electric battery
+	optional float VehElRnge_L_Dsply= 63;
+	// PreConditioning Status
+	optional int32 PreCondStat_D_Dsply= 64;
+	// Cabin Ambient Temp - non EV signal
+	optional sint32 CabnAmb_Te_Actl= 65;
+	// Charger Power type - Legacy EV signal
+	optional int32 ChrgrInPwType_D_Actl= 66;
+	// Charging status
+	optional int32 ChrgStat_D_Dsply= 67;
+	// Time to Target SoC (State of Charge)
+	optional int32 BattChrgTrgSocPt_T_Est= 68;
+	// Time to Full Charge
+	optional int32 BattChrgCmpltPt_T_Est= 69;
+	// Charger Plug Status
+	optional int32 PlgActv_D_ActlChrgr= 70;
+	// Charger Power Draw - Legacy EV signal
+	optional int32 ChrgrIn_Pw_Mx= 71;
+	// outside Air Ambient Temperature  - non EV signal
+	optional float AirAmb_Te_ActlFilt= 72;
+	// Key IDs of an Active Keys – CGEA1.3 -- Bit encoded values for active keys - non EV signal
+	optional int32 PepsKeyFound_No_Actl= 73;
+
+	// CAN signal for Transport Mode (CGEA) - non EV signal
+	optional int32 LifeCycMde_D_Actl = 74;
+	// Key in use - CGEA for Model Year 14 and above vehicle with PEPS and KEYED Keys - non EV signal
+	optional int32 VehKeyActv_D_Stat = 75;
+
+	repeated BatteryDTEPerKey batteryDTEPerKeyList = 76;
+	//This message structure captures battery DTE for each key as well as overall DTE across all keys  - Legacy EV signal
+	message BatteryDTEPerKey{
+		optional int32 PtDataKeyId_D_Stat = 1;
+		optional float VehElRngeCyc_L_Dsply = 2;
+	}
+
+	// Need to add signals for Park Brake Status / Park Brake switch status - Added for VHR
+	// These Park Brake signals have to be confirmed - these are just place holders until they are confirmed by NetComm team
+	// PrkBrkStatus, parkbrake_hard, parkbrake_soft are out of scope for Bundle 1. Do not populate these values.
+	optional int32 PrkBrkStatus = 77;
+	optional int32 PrkBrkActv_B_Actl = 78;
+
+	// Position of all windows
+	optional CGEA13_C1MCA_WindowPosition windowPosition = 79;
+	// Ajar status of all doors
+	optional CGEA13_C1MCA_DoorAjarStatus doorAjarStatus = 80;
+
+	//Accelerator pedal position. Final arbitrated between different sources.
+	//Percent of full range pedal travel - 0% = released pedal. 100% = maximum pedal.
+	//If total failure in pedal sensors, value will be = 0.
+	optional float ApedPos_Pc_ActlArb = 81;
+	//Engine speed. Current flywheel speed averaged.
+	optional int32 EngAout_N_Actl = 82;
+	//Engine coolant temperature
+	optional sint32 EngClnt_Te_Actl = 83;
+	//The calculated torque currently being delivered to all the axles at wheel level
+	//(sum at all wheels) by the propulsion system (all actuators - engine and electric machines).
+	//It includes gear ratio, final drive ratio, and friction and interita effects.
+	optional sint32 PrplWhlTot2_Tq_Actl = 84;
+	//The residual charge of 12V battery at nominal temperature as percentage of the capacity
+	//if the battery would be charged at that moment.
+	optional int32 BSBattSOC = 85;
+
+	//Arbitrated indication of whether the brake pedal is being depressed by the driver
+	// (except for possible external failures such as an object resting on the pedal) or not.
+	//Possible values are 0=Not_Allowed, 1=Driver_Not_Braking, 2=Driver_Braking and 3=Not_Allowed
+	//ECU(ECG/TCU) shall populate following signal from Bundle#2 onwards
+	optional int32 BpedDrvAppl_D_Actl = 86;
+
+	// Data structure for individual Tire Pressure Status and Values including Placard(CGEA)
+	optional TPMSStatusData TPMSStatusdata = 87;
+
+	// Data structure for Driving Characteristics per CCS requirements
+	// Signal index 54,55,56,58,74 got removed and included in below structure
+	optional DriverCharacteristicsData driverCharacteristicsData = 88;
+
+	// Data structure for Driving Characteristics per CCS requirements
+	// Signal index 16 got removed and included in below structure
+	optional VehicleLocationData vehicleLocationData = 89;
+
+	//EV related signals for 4G ECU(ECG/TCU) - ECU(ECG/TCU) SHOULD ONLY populate this for EV vehicles
+	//plug status data
+	optional int32 PlgActvArb_B_Dsply = 90;
+	//Fuel level low signal EV
+	optional int32 FuelLvlWarn_D_Actl = 91;
+	// Charge to distance
+	// This is FTCP variable, the actual signal should be mapped to this variable as per the SPSS
+	// Please refer to SPSS for the mapping
+	optional float NtfyDrvTrgtDist_L_Rq = 92;
+	// Charge to %
+	optional int32 NtfyDrvSocLvl1_Pc_Rq = 93;
+	// Charge Power Type
+	optional int32 ChrgrInPwMde_D_Actl = 94;
+	// Average Watt hours per km based on vehicle history for display
+	optional int32 VehElEffAvg_No_Dsply = 95;
+	// Signal to indicate the current status of the charge
+	optional int32 ChrgStat_D2_Dsply = 96;
+	// Indicates if vehicle has ignition off at a saved location.
+	// Signal will provide the location ID of the current saved location the Vehicle is at.
+	optional int32 ChrgLocIdCurnt_D_Sav = 97;
+	// Status of the estimated time to full charge using High Power charge port.
+	optional int32 EstmChrgTimeHP_St = 98;
+	// Status of the estimated time to full charge using Low Power charge port.
+	optional int32 EstmChrgTimeLP_St = 99;
+	// Digital Communication gateway Model whether it's PnC (AC / DC)
+	optional int32 DgtlCommGtwyMde_D_Rq = 100;
+	// Next charge Begin Time Year - 6 bit signal to support more range in year (100+)
+	optional int32 ActChrgStrtYr_No2_Actl = 101;
+	// Next charge End Time Year - 6 bit signal to support more range in  year (100+)
+	optional int32 ActChrgEndYr_No2_Actl = 102;
+	// Reasons for energy transfer from HV to LV, sent by BCM
+	optional int32 BattULoChrgHyb_D_Stat = 103;
+	// Distance To Empty (DTE) for electric battery
+	optional float VehElRnge_L2_Dsply = 104;
+	// DC fast charge data structure
+	optional DCFastChargeData dcFastCharge = 105;
+	// Smart Charge current location data
+	optional SmartChargeCurrentLocationData profileLoc = 106;
+	// Signal to indicate the specified HV battery low charge threshold status
+	optional int32 BattTracLoThres_D_Stat = 107;
+	// Signal to indicate the BEV Low DTE warning thresholds
+	optional int32 BattTracLoSoc_D_Dsply = 108;
+
+}
+
+// Data structure for Driver Characteristics signals from Vehicle Status, per CCS requirements
+message DriverCharacteristicsData{
+	// Communicates the users performance against the acceleration consumption tip.
+	optional float ConsTipA_No_Dsply = 1;
+	// Communicates the users performance against the vehicle speed consumption tip.
+	optional float ConsTipV_No_Dsply = 2;
+	// Communicates the users performance against the deceleration consumption tip.
+	optional float ConsTipDecel_No_Dsply = 3;
+	// Communicates the units of the individual consumption tips.
+	optional int32 ConsTipUnitPt_D_Dsply = 4;
+	// Trip distance driven in Kilometers
+	optional float ElTrip_L_Dsply = 5;
+	// HSCAN signal whether the first row driver seat is buckled
+	optional int32 FirstRowBuckleDriver = 6;
+	// HSCAN signal whether the first row passenger seat is buckled
+	optional int32 FirstRowBucklePsngr = 7;
+	// HSCAN signal for lateral acceleration CGEA 1.3
+	optional float VehLatComp_A_Actl = 8;
+	// Hard Braking- HSCAN Signal CGEA 1.3
+	optional float VehLongComp_A_Actl = 9;
+	// HSCAN signal for Yaw Rate CGEA 1.3
+	optional float VehYawComp_W_Actl = 10;
+	// Pursuit Mode ( PCM feature)
+	optional int32 BrkTot_Tq_RqArb = 11;
+
+	//ECO coach signals for 4G ECU(ECG/TCU)
+	//Accumulated acceleration coaching score during a drive cycle (btw key cycle)
+	optional float EcoCochA_Pc_Dsply = 12;
+	//Accumulated vehicle speed cruising coaching score during a drive cycle (btw key cycle)
+	optional float EcoCochCrus_Pc_Dsply = 13;
+	//Accumulated deceleration coaching score during a drive cycle (btw key cycle)
+	optional float EcoCochDecel_Pc_Dsply = 14;
+	//Percentage of vehicle idle (vehicle stop) equivalent fuel use during a drive cycle (btw key cycle)
+	optional float EcoCochIdlFuel_Pc_Dsply = 15;
+	//Instantaneous display for real time Eco driving coaching on acceleration and vehicle speed cruising
+	optional float EcoCochInst_Pc_Dsply = 16;
+	//Indication of direction of EcoCochInst_Pc_Dsply to the driver
+	optional int32 EcoCochInstNeg_B_Dsply = 17;
+	//Accumulated shift coaching score during a drive cycle (btw key cycle)
+	optional float EcoCochShif_Pc_Dsply = 18;
+}
+
+// Message Structure for CCS Vehicle Location Data
+message VehicleLocationData{
+	// Vehicle speed from CAN bus
+	optional float Veh_V_ActlEng = 1;
+}
+
+message VehiclePositionData{
+
+	// Crew Chief related signals
+	// HSCAN signal for Engine coolant temparature
+	optional sint32 EngClnt_Te_Actl = 1;
+	// HSCAN signal for Transmission fluid temparature - Gear Box Oil temparature -
+	optional sint32 GboxOil_Te_Actl = 2;
+	// Reference SPSS for specific DID addresses by vehicle program  - derived value based on DID read by ECU(ECG/TCU)
+	// This value is used if GboxOil_Te_Actl signal is unsupported
+	optional sint32 TransFluidTemp_DIDVal = 3;
+	// HSCAN signal whether the first row driver seat is buckled
+	optional int32 FirstRowBuckleDriver = 4;
+	// HSCAN signal whether the first row passenger seat is buckled
+	optional int32 FirstRowBucklePsngr = 5;
+	// HSCAN signal for Occupant in front passenger seat status
+	optional int32 PsngrFrntDetct_D_Actl = 6;
+	// HSCAN signal for Engine RPM - CEA1.3 and C1MCA
+	optional int32 EngAout_N_Actl = 7;
+	optional float FuelLvl_Pc_Dsply = 8;
+	// Vehicle speed from CAN bus
+	optional float Veh_V_ActlEng = 9;
+	// Odometer value from CAN bus
+	optional int32 OdometerMasterValue = 10;
+	// GPS information of the vehicle
+	optional GPSInfo gpsInfo = 11;
+	// Rolling Counter Signal which indicates cumulative fuel consumed
+	optional int32 FuelFlw_Vl_Dsply = 12;
+	// Stop Start Drive Mode Indicator
+	optional int32 StopStrtDrvMde_D_Indic = 13;
+	//Battery Low indicator
+	optional float BattULo_U_Actl =14;
+	// Stop Start Event Indicator
+	optional int32 StopStrtIODTxt_D_Rq = 15;
+	// Ignition status from CAN bus
+	optional int32 Ignition_Status = 16;
+}
+
+message  DriverSafetyData
+{
+		// ABS Event - HSCAN Signal CGEA 1.3
+		optional int32 AbsActv_B_Actl = 1;
+		// Advanced Trac event - HSCAN Signal CGEA 1.3
+		optional int32 StabCtlBrkActv_B_Actl = 2;
+		// Collision Mitigation Braking Event - Applying brake while decelerating - HSCAN Signal CGEA 1.3
+		optional int32 CmbbBrkDecel_B_Rq = 3;
+		// Collision Mitigation Braking Event - brakes are pre-charging master cylinder - HSCAN Signal CGEA 1.3
+		optional int32 CmbbBrkPrchg_D_Rq = 4;
+		// Driver Alert System warning to driver - HSCAN Signal CGEA 1.3
+		optional int32 DasWarn_D_Dsply = 5;
+		// driver alert system disabled by driver - HSCAN Signal CGEA 1.3
+		optional int32 DasStats_D_Dsply = 6;
+		// Forward collision warning - HSCAN Signal CGEA 1.3
+		optional int32 FcwAudioWarn_B_Rq = 7;
+		// Forward collision warning - Driver disabled - HSCAN Signal CGEA 1.3
+		optional int32 FcwMemStat_B_Actl = 8;
+		// Forward collision warning - sensitivity change - HSCAN Signal CGEA 1.3
+		optional int32 FcwMemSens_D_Actl = 9;
+		// Hands off the wheel - HSCAN Signal CGEA 1.3
+		optional int32 LaHandsOff_D_Dsply = 10;
+		// Lane Keeping Aid or Lane Departure Warning Disabled - - HSCAN Signal CGEA 1.3
+		// Same signal used for both Lane Departure and Lane Keeping Aid Events
+		optional int32 LaActvStats_D_Dsply = 11;
+		// Low Speed Collision Mitigation by Braking - HSCAN Signal CGEA 1.3
+		optional int32 LscmbbPostEvnt_B_Dsply = 12 [deprecated=true];
+		// Traction control event - Powertrain controlled - HSCAN Signal CGEA 1.3
+		optional int32 TracCtlPtActv_B_Actl = 13;
+		// Traction control event - brake controlled - HSCAN Signal CGEA 1.3
+		optional int32 TCMode = 14;
+		// Trailer sway event in progress - HSCAN Signal CGEA 1.3
+		optional int32 TRLR_SWAY_EVNT_IN_PROG = 15;
+		// AWD or 4x4 engaged status - HSCAN Signal CGEA 1.3
+		optional int32 AwdRnge_D_Actl = 16;
+		// eCall Event - HSCAN Signal CGEA 1.3
+		optional int32  eCallConfirmation = 17; // removed
+		// e-locker usage - HSCAN Signal CGEA 1.3
+		optional int32 RearDiffLckLamp_D_Rq = 18;
+		// Engine idle shutdown event - HSCAN Signal CGEA 1.3
+		optional int32 EngIdlShutDown_D_Stat = 19;
+		// Pairing of cellular phone to Sync system - HSCAN Signal CGEA 1.3
+		optional int32 VRM_BTPhoneSts_St = 20;
+		// Power Take Off or SEIC usage - HSCAN Signal CGEA 1.3
+		optional int32 EngPtoMde_D_Actl = 21;
+		// Reverse gear usage - HSCAN Signal CGEA 1.3
+		optional int32 GearRvrseActv_D_Actl = 22 [deprecated=true];
+		//Park Brake Status- HSCAN Signal CGEA 1.3
+		optional int32 PrkBrkActv_B_Actl = 23 [deprecated=true];
+		//Hard Braking- HSCAN Signal CGEA 1.3
+		optional float VehLongComp_A_Actl = 24;
+		//RSC turned off
+		optional int32  DrvSlipCtlMde_B_Rq =25;
+		//RSC turned off
+		optional int32 DrvSlipCtlMde_B_Rq2 =26;
+		//RSC turned off
+		optional int32 DrvSlipCtlMde_D_Rq =27;
+		//RSC turned off
+		optional int32 DrvSlipCtlMdeMsg_D_Rq = 28;
+		optional int32 DrvSlipCtlMde_D_Ind = 29;
+		//BLIS Side Alert Disabled
+		optional int32 Cta_D_Rq =30;
+		//BLIS Cross Alert Disabled
+		optional int32 Sod_D_Rq = 31;
+
+		//Low Speed Collision Mitigation by Braking. Driver turned Off/On system
+		optional int32 LscmbbStat_B_Actl=32;
+
+		//Pursuit Mode ( PCM feature)
+		optional int32 BrkTot_Tq_RqArb = 33;
+		//EDR Triggered
+		optional int32 EDRTriggerEvntSync = 34;
+		//E-Locker Driver Select
+		optional int32 RearDiffLckMsg_D_Rq =35;
+
+		//Load Shed Event
+		optional int32 PwSysULoFalt_D_Stat = 36;
+		//Airbag Deployment- HSCAN Signal CGEA 1.3
+		optional int32 RstrnImpactEvntStatus = 37;
+		//BLIS with Trailer Tow
+		optional int32 BttOn_B_Rq = 38;
+
+		// eCall Event - HSCAN Signal CGEA 1.3
+		optional int32  eCall_Event = 39;
+		// eCall Notification - HSCAN Signal CGEA 1.3
+		optional int32  eCallNotification = 40;
+		// HSCAN signal for lateral acceleration CGEA 1.3
+		optional float VehLatComp_A_Actl = 41;
+		// HSCAN signal for Yaw Rate CGEA 1.3
+		optional float VehYawComp_W_Actl = 42;
+		// HSCAN signal for accelerated pedal position CGEA 1.3
+		optional float ApedPos_Pc_ActlArb = 43;
+
+		// Message structure for audioVolume
+ 		optional AudioVolumeData audioVolumeData = 44;
+		// Message structure for Steering Wheel Angle
+ 		optional SteeringWheelAngleData steeringWheelAngleData = 45;
+
+		// Low Speed Collision Mitigation by Braking
+		optional int32 CmbbPostEvnt_B_Dsply = 46;
+		// Reverse gear usage
+		optional int32 GearRvrse_D_Actl = 47;
+		//Park Brake Status
+		optional int32 PrkBrkStatus = 48;
+}
+
+//Message structure for Driving Behaviour Data (ref. Driving Summary data)
+message DrivingBehaviourData{
+	// GPS information of the vehicle
+	optional GPSInfo gpsInfo = 1;
+	// Vehicle speed from CAN bus
+	optional float Veh_V_ActlEng = 2;
+	//  HSCAN signal for lateral acceleration CGEA 1.3
+	optional float VehLatComp_A_Actl = 3;
+	//  Hard Braking- HSCAN Signal CGEA 1.3
+	optional float VehLongComp_A_Actl = 4;
+	//  HSCAN signal whether the first row driver seat is buckled
+	optional int32 FirstRowBuckleDriver = 5 [deprecated=true];
+	//  Paired Phone usage
+	optional int32 VRM_BTPhoneSts_St= 6 [deprecated=true];
+}
+
+
+// Message structure to report Audio volume
+message AudioVolumeData
+{
+	// signal for Audio Source
+	optional int32 ACU_RUAudioSource_St = 1;
+	// signal for Audio Source request status
+	optional int32 ACU_RUResReqstStatus_St = 2;
+	// signal for Audio volume
+	optional int32 ACU_Volume_St = 3;
+	// signal for DSP Amp Audio Volume Level status
+	optional int32 DSP_Audio_Vol_Level_St= 4;
+	// signal for DSP Amp Audio Volume Update status
+	optional int32 DSP_Audio_Volume_Up_St= 5;
+}
+
+// Message structure to report Steering Wheel Angle
+message SteeringWheelAngleData
+{
+	// HSCAN signal for Compensated steering pinion angle
+	optional float StePinComp_An_Est = 1;
+	// HSCAN signal for Compensated SPA Quality Factor
+	optional int32 StePinCompAnEst_D_Qf = 2;
+}
+
+
+
+// Message structure for Upfitter Module Status Data bundle
+message UpfitterModuleStatusData
+{
+	// Upfitter Digital Input1 logical state and out of range status.
+	optional int32	UpftrDgtlIn01_D_Stat = 1;
+	// Upfitter Digital Input2 logical state and out of range status.
+	optional int32	UpftrDgtlIn02_D_Stat = 2;
+	// Upfitter Digital Input3 logical state and out of range status.
+	optional int32	UpftrDgtlIn03_D_Stat = 3;
+	// Upfitter Digital Input4 logical state and out of range status.
+	optional int32	UpftrDgtlIn04_D_Stat = 4;
+	// Upfitter Digital Input5 logical state and out of range status.
+	optional int32	UpftrDgtlIn05_D_Stat = 5;
+	// Upfitter Digital Input6 logical state and out of range status.
+	optional int32	UpftrDgtlIn06_D_Stat = 6;
+	// Upfitter Digital Input7 logical state and out of range status.
+	optional int32	UpftrDgtlIn07_D_Stat = 7;
+	// Upfitter Digital Input8 logical state and out of range status.
+	optional int32	UpftrDgtlIn08_D_Stat = 8;
+	// Upfitter Digital Input9 logical state and out of range status.
+	optional int32	UpftrDgtlIn09_D_Stat = 9;
+	// Upfitter Digital Input10 logical state and out of range status.
+	optional int32	UpftrDgtlIn10_D_Stat = 10;
+	// Upfitter Digital Input11 logical state and out of range status.
+	optional int32	UpftrDgtlIn11_D_Stat = 11;
+	// Upfitter Digital Input12 logical state and out of range status.
+	optional int32	UpftrDgtlIn12_D_Stat = 12;
+	// Upfitter high side digital output1 state and fault status.
+	optional int32	UpftrDgtlOutHi01_D_Stat = 13;
+	// Upfitter high side digital output2 state and fault status.
+	optional int32	UpftrDgtlOutHi02_D_Stat = 14;
+	// Upfitter high side digital output3 state and fault status.
+	optional int32	UpftrDgtlOutHi03_D_Stat = 15;
+	// Upfitter high side digital output4 state and fault status.
+	optional int32	UpftrDgtlOutHi04_D_Stat = 16;
+	// Upfitter high side digital output5 state and fault status.
+	optional int32	UpftrDgtlOutHi05_D_Stat = 17;
+	// Upfitter high side digital output6 state and fault status.
+	optional int32	UpftrDgtlOutHi06_D_Stat = 18;
+	// Upfitter high side digital output7 state and fault status.
+	optional int32	UpftrDgtlOutHi07_D_Stat = 19;
+	// Upfitter high side digital output8 state and fault status.
+	optional int32	UpftrDgtlOutHi08_D_Stat = 20;
+	// Upfitter low side digital output1 state and fault status.
+	optional int32	UpftrDgtlOutLo01_D_Stat = 21;
+	// Upfitter low side digital output2 state and fault status.
+	optional int32	UpftrDgtlOutLo02_D_Stat = 22;
+	// Upfitter low side digital output3 state and fault status.
+	optional int32	UpftrDgtlOutLo03_D_Stat = 23;
+	// Upfitter low side digital output4 state and fault status.
+	optional int32	UpftrDgtlOutLo04_D_Stat = 24;
+	// Upfitter low side digital output5 state and fault status.
+	optional int32	UpftrDgtlOutLo05_D_Stat = 25;
+	// Upfitter low side digital output6 state and fault status.
+	optional int32	UpftrDgtlOutLo06_D_Stat = 26;
+	// Upfitter low side digital output7 state and fault status.
+	optional int32	UpftrDgtlOutLo07_D_Stat = 27;
+}
+
+// Diesel System Status Data bundle
+ message DieselSystemStatusData
+{
+	// Indicates the diesel exhaust fluid level as a percentage.
+	optional int32 UreaLvl_Pc_Actl   = 1;
+	// Indicates the low urea level
+	optional int32 UreaLvlTxt_D_RqDsply = 2;
+	// low urea quality or system error
+	optional int32 UreaQltySys_D_RqDsply = 3;
+	// Boolean signal which further differentiates the cluster messaging,
+	// required as a response to driver for the various states of the signal:  UreaQltySys_D_RqDsply
+	optional int32 UreaQltyFlg_B_RqDsply = 4;
+
+	// The distance before urea will run out
+	optional int32 VehUreaRnge2_L_DsplyMx = 5;
+	// Unitless Urea Distance to Empty display signal to cluster.
+	// Indicating the driver the remaining urea quantity in the appropriate format
+	// (miles or km depending on signal MetricActv_B_Actl)
+	optional int32 VehUreaRnge3_L_DsplyMx = 6;
+	// Speed limit during Low urea warning mode.
+	optional int32 VehUreaWarn_V_DsplyMx = 7;
+	// Indicates units type - English or Metric
+	optional int32 MetricActv_B_Actl = 8;
+	// To inform that the engine is about to shutdown due to long continuous idle operation.
+	optional int32 EngIdlShutDown_D_Stat = 9;
+	// Diesel Particulate Filter regeneration status message
+	optional int32 DieslPrtc2_D_RqDsply = 10;
+	// Lamp activation indicates the state of a 'filter' in the fuel pipe
+	// that is designed to trap any water that may be mixed with the fuel.
+	optional int32 WaterInFuel = 11;
+	// Diesel Particulate Filter (DPF) Soot Load
+	optional int32 ManRgenSoot_Pc_RqDsply = 12;
+	// Manual Diesel Particulate Filter (DPF) Regeneration error message
+	optional int32 ManRgenTxt_D_RqDsply = 13;
+	// The operation mode of the automatic (normal) exhaust filter cleaning function in the Engine Control Module
+	optional int32 AutoRgenTxt_B_RqDsply = 14;
+	// Signal from Low fuel pressure feature to alert customer to check fuel filters.
+	optional int32 FuelFilterLamp_B_Dsply = 15;
+	// Indicator that engine is shutting down due to high exhaust temperature.
+	optional int32 EngExhOvrTe_B_RqDsply = 16;
+}
+
+
+// Message structure for capturing GPS info
+message GPSInfo{
+	// Message structure for unshifted GPS
+	optional UnshiftedGPSInfo unshiftdGPSInfo = 1 [deprecated=true];
+	// Message structure for shifted GPS
+	optional ShiftedGPSInfo shiftedGPSInfo = 2 [deprecated=true];
+	// Message structure for common GPS info
+	optional CommonGPSInfo	commonGPSInfo = 3;
+	// Message structure for un-shifted GPS
+	optional AdvancedUnshiftedGPSInfo advancedUnshiftdGPSInfo = 4;
+	// Message structure for shifted GPS
+	optional AdvancedShiftedGPSInfo advancedShiftedGPSInfo = 5;
+	// Indicator for the GPS type (Shifted vs Unshifted)
+	optional GPSInfoTypeENUM gpsInfoType = 6;
+
+	enum GPSInfoTypeENUM {
+		UNSHIFTED = 0;
+		SHIFTED = 1;
+	}
+}
+
+
+message CommonGPSInfo{
+	// UTC Seconds from GPS module
+	optional int32 utcTimeSeconds = 1;
+	// UTC Minutes from GPS module
+	optional int32 utcTimeMinutes = 2;
+	// UTC Hours from GPS module
+	optional int32 utcTimeHours = 3;
+	// UTC Day from GPS module
+	optional int32 utcTimeDay = 4;
+	// UTC Month from GPS module
+	optional int32 utcMonth = 5;
+	// UTC year from GPS module
+	optional int32 utcYear = 6;
+	// Fault from GPS module
+	optional int32 faultBitMask = 7;
+	// Compass direction from GPS module
+	optional int32 compassDirection = 8;
+	// Fix Type from GPS module
+	optional int32 fixType = 9;
+	// heading in degrees from GPS module
+	optional int32 heading = 10;
+	// Altitude in meters from GPS module. Can have -ve values
+	optional int32 meanSeaLevelAltitude = 11;
+	// Speed in KPH from GPS module
+	optional int32 velocity = 12;
+	// Number of GPS satellites in solution
+	optional int32 gpsSatellitesInSolution = 13;
+	// Number of GLONASS satellites in solution
+	optional int32 glonassSatellitesInSolution = 14;
+	// Number of Galileo satellites in solution
+	optional int32 galileoSatellitesInSolution = 15;
+	// Number of compass satellites in solution
+	optional int32 compassSatellitesInSolution = 16;
+	// Indicates whether the data is reliable or not
+	optional int32 dataGoodToUse = 17;
+	// Indicates the three dimensional error in meters of the location solution, Refer GNSS Message 'Location Quality'
+	optional int32 ThreeDimensionalEstimatedError = 18;
+}
+
+
+message AdvancedUnshiftedGPSInfo{
+	// latitude integer portion in degrees
+	optional int32 latitudeDegreesInteger = 1;
+	// latitude fractional portion in degrees
+	optional float latitudeDegreesFractional = 2;
+	// latitude sign
+	optional int32 latitudeSign = 3;
+	// longitude integer portion in degrees
+	optional int32 longitudeDegreesInteger = 4;
+	// longitude fractional portion in degrees
+	optional float longitudeDegreesFractional = 5;
+	// longitude sign
+	optional int32 longitudeSign = 6;
+}
+
+message AdvancedShiftedGPSInfo{
+	// latitude integer portion in degrees
+	optional int32 latitudeDegreesInteger = 1;
+	// latitude fractional portion in degrees
+	optional float latitudeDegreesFractional = 2;
+	// latitude sign
+	optional int32 latitudeSign = 3;
+	// longitude integer portion in degrees
+	optional int32 longitudeDegreesInteger = 4;
+	// longitude fractional portion in degrees
+	optional float longitudeDegreesFractional = 5;
+	// longitude sign
+	optional int32 longitudeSign = 6;
+}
+
+
+// Message structure for capturing Unshifted GPS info
+// Unshifted GPS info consists of CAN msgs $465, $466, $467
+message UnshiftedGPSInfo{
+
+	// Latitude degrees, minutes decimal and minutes from GPS. Can have -ve values
+	optional Latitude latitude = 1;
+	// Longitude degrees, minutes decimal and minutes from GPS. Can have -ve values
+	optional Longitude longitude = 2;
+	// UTC datetime from CAN
+	optional UTCDateTimeFromCAN CANUTCDateTime = 3;
+	// Compass direction from GPS module
+	optional int32 GPS_Compass_direction = 4;
+	// Altitude from GPS module. Can have -ve values
+	optional sint32 GPS_MSL_altitude = 5;
+	// HemisphereEast from GPS module
+	optional int32 GpsHsphLongEast_D_Actl = 6;
+	// HemisphereSouth from GPS module
+	optional int32 GpsHsphLattSth_D_Actl = 7;
+	// Fault from GPS module
+	optional int32 Gps_B_Falt = 8;
+	// Heading from GPS module
+	optional float GPS_Heading = 9;
+	// Speed from GPS module
+	optional int32 GPS_Speed = 10;
+	// Actual vs. Inferred position from GPS module
+	optional int32 GPS_Actual_vs_Infer_pos = 11;
+	// Dimension from GPS module
+	optional int32 GPS_dimension = 12;
+	// ECU(ECG/TCU) shall always set this flag
+	optional IncludeLatLongENUM includeLatLongEnum = 13;
+	// Fix type
+	optional int32 fixType = 14;
+	// Indicates the three dimensional error in meters of the location solution, Refer GNSS Message 'Location Quality'
+	optional int32 ThreeDimensionalEstimatedError =15;
+
+	//ECU(ECG/TCU) shall always set this value
+	//Enumeration to identify whether the GPSInfo is Shifted or not
+	//When GPS is shifted, ECU(ECG/TCU) shall not send GPS values for latitude and longitude
+	enum IncludeLatLongENUM
+	{
+		YES = 0;
+		NO = 1;
+	}
+}
+
+// Message structure for capturing UTCDateTime from CAN signals
+message UTCDateTimeFromCAN{
+	// UTC year from GPS module
+	optional int32 GpsUtcYr_No_Actl = 1;
+	// UTC month from GPS module
+	optional int32 GpsUtcMnth_No_Actl = 2;
+	// UTC day from GPS module
+	optional int32 GpsUtcDay_No_Actl = 3;
+	// UTC hours from GPS module.
+	optional int32 GPS_UTC_hours = 4;
+	// UTC minutes from GPS module
+	optional int32 GPS_UTC_minutes = 5;
+	// UTC seconds from GPS module.
+	optional int32 GPS_UTC_seconds = 6;
+}
+
+// Message structure for capturing Shifted GPS info
+message ShiftedGPSInfo{
+
+	// This information is contained within data fields in CAN signal LocationServices_1
+	// The data fields are not stand-alone CAN signals
+
+	// The hour portion of GPS time
+	optional int32 utcTimeHours = 1;
+	// The minute portion of GPS time
+	optional int32 utcTimeMinutes = 2;
+	// The seconds portion of GPS time
+	optional int32 utcTimeSeconds = 3;
+	// Fault bits for wheel tick, gyro, accelerometer, antenna
+	optional int32 faultBitMask = 4;
+	// The day portion of GPS date
+	optional int32 utcTimeDay = 5;
+	// The month portion of GPS date
+	optional int32 utcMonth = 6;
+	// The year portion of GPS date
+	optional int32 utcYear = 7;
+	// WGS84 heading in degrees
+	optional float heading = 8;
+	// WGS84 altitude in meters
+	optional sint32 meanSeaLevelAltitude = 9;
+	// WGS84 velocity in kph
+	optional float velocity = 10;
+	// Compass direction
+	optional int32 compassDirection = 11;
+	// Number of GPS satellites in solution
+	optional int32 gpsSatellitesInSolution = 12;
+	// Number of GLONASS satellites in solution
+	optional int32 glonassSatellitesInSolution = 13;
+	// Number of Galileo satellites in solution
+	optional int32 galileoSatellitesInSolution = 14;
+	// Number of compass satellites in solution
+	optional int32 compassSatellitesInSolution = 15;
+	// Fix type
+	optional int32 fixType = 16;
+	// China shifted latitude integer portion in degrees
+	optional int32 latitudeDegreesInteger = 17;
+	// Sign of China shifted latitude integer in degrees
+	optional int32 latitudeSign = 18;
+	// China shifted latitude fractional portion in degrees
+	optional float latitudeDegreesFractional = 19;
+	// China shifted longitude integer portion in degrees
+	optional int32 longitudeDegreesInteger = 20;
+	// China shifted latitude fractional portion in degrees
+	optional float longitudeDegreesFractional = 21;
+	// Sign of China shifted longitude integer in degrees
+	optional int32 longitudeSign = 22;
+	// Indicates whether the data is reliable or not
+	optional int32 dataGoodToUse = 23;
+	// Indicates the three dimensional error in meters of the location solution, Refer GNSS Message 'Location Quality'
+	optional int32 ThreeDimensionalEstimatedError =24;
+}
+
+// Message structure for capturing Latitude
+message Latitude{
+	// Latitude degrees from GPS module. Can have -ve values
+	optional sint32 GPS_Latitude_Degrees = 1;
+	// Latitude minutes decimal from GPS module
+	optional float GPS_Latitude_Min_dec = 2;
+	// Latitude minutes from GPS module
+	optional int32 GPS_Latitude_Minutes = 3;
+}
+
+// Message structure for capturing Longitude
+message Longitude{
+	// Longitude degrees from GPS module. Can have -ve values
+	optional sint32 GPS_Longitude_Degrees = 1;
+	// Longitude minutes decimal from GPS module
+	optional float GPS_Longitude_Min_dec = 2;
+	// Longitude minutes from GPS module
+	optional int32 GPS_Longitude_Minutes = 3;
+}
+
+// The Window position signals for both CGEA1.3 and C1MCA architectures are same
+message CGEA13_C1MCA_WindowPosition{
+	// Driver window position from CAN bus
+	optional int32 DriverWindowPosition = 1;
+	// Passenger window position from CAN bus
+	optional int32 PassWindowPosition = 2;
+	// Rear Passenger window position from CAN bus
+	optional int32 RearPassWindowPos = 3;
+	// Rear Driver window position from CAN bus
+	optional int32 RearDriverWindowPos = 4;
+}
+
+// The Door Ajar Status signals for both CGEA1.3 and C1MCA architectures are same
+message CGEA13_C1MCA_DoorAjarStatus{
+	// right rear door ajar status from CAN bus
+	optional int32 DrStatRr_B_Actl = 1;
+	// left rear door ajar status from CAN bus
+	optional int32 DrStatRl_B_Actl = 2;
+	// passenger door ajar status from CAN bus
+	optional int32 DrStatPsngr_B_Actl = 3;
+	// Liftgate door ajar status from CAN bus
+	optional int32 DrStatInnrTgate_B_Actl = 4;
+	// hood ajar status from CAN bus
+	optional int32 DrStatHood_B_Actl = 5;
+	// Drive door ajar status from CAN bus
+	optional int32 DrStatDrv_B_Actl= 6;
+	// Trunk door ajar status from CAN bus
+	optional int32 DrStatTgate_B_Actl = 7;
+}
+
+// Message structure to capture individual tire pressure status and value
+// Tire Pressure Monitoring System Data
+message TPMSStatusData
+{
+	// Front Placard Tire Pressure
+	optional int32 Tire_Press_Placrd_Frnt = 1;
+	// Rear Placard Tire Pressure
+	optional int32 Tire_Press_Placrd_Rear = 2;
+	// Left Front Tire Pressure status
+	optional int32 Tire_Press_LF_Stat = 3;
+	//Left Front Tire Pressure Value
+	optional int32 Tire_Press_LF_Data = 4;
+	//Right Front Tire Pressure status
+	optional int32 Tire_Press_RF_Stat = 5;
+	//Right Front Tire Pressure value
+	optional int32 Tire_Press_RF_Data = 6;
+	//Left inner Left Rear tire pressure status
+	optional int32 Tire_Press_ILR_Stat = 7;
+	//Left inner Left Rear tire pressure value
+	optional int32 Tire_Press_ILR_Data = 8;
+	//Right inner Right Rear tire pressure status
+	optional int32 Tire_Press_IRR_Stat = 9;
+	//Right inner Right Rear tire pressure value
+	optional int32 Tire_Press_IRR_Data = 10;
+	//Left Rear OLR Tire Pressure status
+	optional int32 Tire_Press_LR_OLR_Stat = 11;
+	//Left Rear OLR Tire Pressure value
+	optional int32 Tire_Press_LR_OLR_Data = 12;
+	//Right Rear ORR Tire Pressure status
+	optional int32 Tire_Press_RR_ORR_Stat = 13;
+	//Right Rear ORR Tire Pressure value
+	optional int32 Tire_Press_RR_ORR_Data = 14;
+}
+
+
+
+// Diagnostics
+
+// Message structure for a specific Electronic Control Unit
+message ECUData{
+
+	// Diagnostic Node Id for the Electronic Control Unit
+	optional int32 ECUId = 1;
+	// Status of the ECU with respect to ECU(ECG/TCU) communication with that specific ECU
+	optional ECUStatusEnum ECUStatus = 2;
+
+	// captures all DTCs for a specific ECU
+	repeated DTCInfo dtcInfo = 3;
+
+	// Message structure for DTC Info
+	message DTCInfo{
+		// Actual DTC value
+		optional int32 DTCId = 1;
+		// Additional information to the DTC value - mode $19 only element
+		optional int32 DTCAdditionalInfo = 2;
+		// Status of the DTC - example confirmed, pending..etc.
+		optional int32 DTCStatus = 3;
+	}
+
+	enum ECUStatusEnum {
+		// ECU(ECG/TCU) unable to communicate to the specific ECU
+		NO_COMMUNICATION = 0;
+		// When ECU(ECG/TCU) communicated to the ECU using mode $18
+		CAN_GDS = 1;
+		// When ECU(ECG/TCU) communicated to the ECU using mode $19
+		GGDS = 2;
+		// When ECU(ECG/TCU) communicated to the ECU using modes other than mode $18 or mode $19
+		UNKNOWN = 3;
+	}
+}
+
+//Days of the Week enumeration
+enum CalendarDayENUM{
+	SUNDAY = 0;
+	MONDAY = 1;
+	TUESDAY = 2;
+	WEDNESDAY = 3;
+	THURSDAY = 4;
+	FRIDAY = 5;
+	SATURDAY = 6;
+}
+
+// ---------------
+enum DiagnosticRequestStatusENUM{
+	// When a module other than the ECU(ECG/TCU) is making diagnostic request on the CAN network
+	TESTER_PRESENT = 0;
+	// ECU(ECG/TCU) Successfully sent diagnostic request on the CAN network based on conditions provided in the command
+	SUCCESSFUL = 1;
+	// ECU(ECG/TCU) unable to successfully send diagnostic request to the CAN network in the specified timeframe based on the conditions
+	// provided in the command
+	EXPIRED = 2;
+	// ECU(ECG/TCU) successfully sent diagnostic request to the CAN network but no response was received
+	NO_RESPONSE = 3;
+}
+
+message VehicleDiagnosticResponseData{
+	// Target ECU to which the diagnostic request should be sent
+	optional int32 responseECUId = 1;
+	// diagnstic request data to be sent to target ECU
+	optional bytes diagnosticResponseDataFromVehicle = 2;
+}
+
+
+message HMIScreenInfo{
+
+	// Every HMI display shall have a unique screenId to be defined by cloud and ECU(ECG/TCU) shall map the cloud defined screenIds to
+	// APIM HMI screens
+	// screenID is out of scope for bundle 1 and hence SDN shall not populate.
+	optional int32 screenId = 1;
+
+	repeated HMIElementInfo hmiElementInfo = 2;
+
+	optional PromptTypeENUM promptType = 3;
+
+	// message structure to capture any HMI element info that should be displayed on an HMI screen
+	message HMIElementInfo{
+		optional string elementName = 1;
+		optional string elementValue = 2;
+		optional DisplayToggleEnum displayToggleEnum = 3;
+		// Enumeration to toggle the display (NO equals - do not display certain HMI Info and YES equals display it)
+		enum DisplayToggleEnum{
+			NO = 0;
+			YES = 1;
+		}
+	}
+	// Enumeration for prompt type
+	enum PromptTypeENUM{
+		INITIAL_PROMPT = 0;
+		ERROR = 1;
+		INFORMATION = 2;
+	}
+}
+
+// Message structure for ECU Identifier attributes
+message ECUIdentifier{
+	// ESN : Electronic Serial Number
+	optional string esn = 1;
+	//Ford ESN F17E
+	optional string fordEsn = 2;
+	// ECU ID : Electronic Control Unit ID
+	// (CAN/Diagnostc ID, Module on CAN only)
+	optional int32 ECUId = 3;
+	//Primary ETHERNET/MAC ID for the ECU/Module in CAN and ETHERNET
+	optional string ethernetMACAddress = 4;
+}
+
+// DID Configuration data structure
+message DTCConfiguration
+{
+		//Mode
+		optional bytes mode = 1;
+		//SubFunction
+		optional bytes subFunction = 2;
+		// Actual DTC
+		optional bytes dtc = 3;
+		// Status of the DTC - example confirmed, pending..etc.
+		optional bytes dtcStatusMask = 4;
+		//Extended Data Record Number
+		optional bytes extendedDataRecordNumber = 5;
+		// Memory Location
+		optional bytes memoryLocation = 6;
+		// Snapshot Record Number
+		optional bytes snapshotRecordNumber = 7;
+}
+
+// Enumeration for Driver Safety Alert Event State - Fleet only
+enum EventStateEnum
+{
+	BEGIN = 0;
+	END=1;
+}
+
+// Message structure for ECUConfiguration
+message ECUConfiguration
+{
+	//ECU Id of the module for which the requested configuration need to be applied
+	optional int32 ECUId = 1;
+	// SDN/ECU[ECG/TCU] shall set the current Part2 specification's part number which has the requested Config. definitions.
+	optional string partIIPartNumber = 2;
+	//SDN/Cloud shall set the DIDs (one or more) to ECU(ECG/TCU) to update
+	//The DID structure shall be
+	repeated DIDConfiguration didConfiguration = 3;
+	// SDN shall set list of app-configurations to be applied/updated in respective applications
+	repeated AppConfiguration appConfiguration = 4;
+}
+
+// Message structure for App Configuration
+message AppConfiguration
+{
+	// Target Application to Configure
+	optional string applicationPartNumber = 1;
+	// Target Configuration and Name / Value pair
+	repeated AppConfigData appConfigData = 2;
+
+}
+
+// Message structure for App Configuration data structure
+message AppConfigData{
+	//App-config name
+	optional string AppConfigName = 1;
+	//App-config value
+	optional string AppConfigValue = 2;
+}
+
+// DID Configuration data structure
+message DIDConfiguration
+{
+	// DID address/value of the config (Method2/PartII, GMRDB, Other) DIDs
+	optional int32 DIDAddress = 1;
+	// ensure Bit/Byte ordering is captured -
+	// Must contain all bytes to mimic CAN diagnostics behavior
+	optional bytes DIDConfigData = 2;
+}
+
+
+//Message structure for Charge Programming data
+message ChargeProgrammingData{
+	// Next go time schedule ID
+	optional uint32 ChrgGoTNext_D_Stat = 1;
+	// Global go time on/off status
+	optional uint32 ChrgGoTAllOn_B_Stat = 2;
+	// Entire go time schedules
+	repeated GoTimeScheduleTCUData shceudleData =3;
+	// Entire Charge profiles
+	repeated ChargeProfileTCUData profileData = 4;
+	// Current Unsaved Charge Location (ID) that the vehicle is located at.
+	optional int32 ChrgLocIdCurnt_D_Uns = 5;
+	// Signal communicates the press of a button at the Charge Port to request a change between Charge Now and Value Charge.
+	optional int32 ExtChrgNowButtn_B_Rq = 6;
+	// Current target charge level at saved location or smart charging location
+	optional int32 CurntTrgtSoc_Pc_Dsply = 7;
+}
+
+//Daily go time schedule data - TCU shall set this
+message GoTimeScheduleTCUData{
+	// Calendar  days
+	optional CalendarDayENUM calendarDay = 1;
+	// Schedule data per day - shall have 2 schedules per day
+	repeated PreConditioningScheduleFromVeh inVehicleSchedule = 2;
+}
+
+//Charge schedules/Go Time schedules. TCU shall set this for go time schedule
+message PreConditioningScheduleFromVeh{
+	//go time schedule id/element id
+	optional uint32 ChrgGoTElement_D_Stat = 1;
+	// GoTime hour
+	optional int32 ChrgGoTHr_T_Stat = 2;
+	// GoTime Minute
+	optional int32 ChrgGoTMnte_D_Stat = 3;
+	// pre-conditioning information
+	optional PreConditioningData preCondtioningTemp = 4;
+	// Signal to indicate if current Go Time ID is active
+	// 0-No, 1-Yes
+	optional int32 ChrgGoTElement_B_Dsply = 5;
+}
+
+//Pre conditioning message structure
+message PreConditioningData {
+	//TCU shall always send this value - pre conditioning temperature signal
+	optional uint32 ChrgGoTPrcond_D_Stat = 1;
+}
+
+//Charge profiles with location information and charge windows. TCU shall use this structure for charge profile setup
+message ChargeProfileTCUData {
+	// Defines the profile type (Value charge or Charge Now)
+	optional ChargeProfileTypeENUM profileType = 1;
+
+	// Charge location id for saved location
+	optional uint32 ChrgLocId_D_Sav = 2;
+	// Charge location id for unsaved location
+	optional uint32 ChrgLocId_D_Uns = 3;
+
+	// Name of charge location
+	optional string chargeLocationName = 4;
+	// Charge Location GPS information
+	optional ChargeLocationGPSInfo chargeLocationGPS = 5;
+
+	// Week day Charge Schedules for Charge profiles
+	optional WeekDayChargeSchedule weekDayChargeSchedule = 6;
+	// Week end Charge Schedules for Charge profiles
+	optional WeekEndChargeSchedule weekEndChargeSchedule = 7;
+
+	//Signal to indicate if current Charge Profile is active
+	// 0-No, 1-Yes.
+	optional uint32 ChrgLocSaved_B_Dsply = 8;
+
+
+	//Charge profile type enumeration
+	enum ChargeProfileTypeENUM{
+		VALUE_CHARGE = 0;
+		CHARGE_NOW = 1;
+	}
+}
+
+//Message structure for Week Day charge schedule - TCU shall set this
+message WeekDayChargeSchedule{
+	// WeekDay % of charge
+	optional uint32 ChrgToPcWkdySav_D_Stat = 1;
+	// Charge time window weekday
+	optional uint32 ChrgPrflWkdy_No_Stat = 2 [deprecated=true];
+	// Charge time window weekday - replaced "ChrgPrflWkdy_No_Stat" --> "ChrgPrflWkdy_No_Actl"
+	optional uint32 ChrgPrflWkdy_No_Actl = 3;
+}
+
+//Message structure for Week End charge schedule - TCU shall set this
+message WeekEndChargeSchedule{
+	// Weekend  % of charge
+	optional uint32 ChrgToPcWkndSav_D_Stat = 1;
+	// Charge time window weekend
+	optional uint32 ChrgPrflWknd_No_Stat = 2  [deprecated=true];
+	// Charge time window weekend - replaced "ChrgPrflWknd_No_Stat" --> "ChrgPrflWknd_No_Actl"
+	optional uint32 ChrgPrflWknd_No_Actl = 3;
+}
+
+//Message structure for Charge location GPS Information
+message ChargeLocationGPSInfo{
+	// Message structure for charge location with original(unshifted) GPS information, ECG sets this only when ShiftedGPSENUM is NO
+	optional UnshiftedChargeLocation unshiftedChargeLocation = 1;
+	// Message structure for charge location with shifted GPS information
+	optional ShiftedChargeLocation shiftedChargeLocation = 2 [deprecated=true];
+	// Enumeration indication whether the charge location has shifted GPS or not
+	optional ShiftedGPSENUM  shiftedGPS = 3;
+	// Message structure for charge location with shifted GPS information
+	optional ShiftedChargeLocation_V2 shiftedChargeLocationV2 = 4;
+
+	enum ShiftedGPSENUM{
+		// Indicates the GPS is NOT SHIFTED
+        NO = 0;
+        // Indicates the GPS is SHIFTED
+        YES = 1;
+    }
+}
+
+//Message structure for Charge location-unshifted
+message UnshiftedChargeLocation{
+	//Latitude and Longitude information for saved location
+	// Latitude degree
+	optional uint32 ChrgLocLattDeg_An_Sav = 1;
+	// Latitude sign
+	optional uint32 ChrgLocLattPostv_B_Sav = 2;
+	// Latitude fraction
+	optional float ChrgLocLattFrct_An_Sav = 3;
+	//Longitude information for saved location
+	// Longitude degree
+	optional uint32 ChrgLocLongDeg_An_Sav = 4;
+	// Longitude sign
+	optional uint32 ChrgLocLongPostv_B_Sav = 5;
+	// Longitude fraction
+	optional float ChrgLocLongFrct_An_Sav = 6;
+
+	//Latitude information for unsaved location
+	// Latitude degree
+	optional uint32 ChrgLocLattDeg_An_Uns = 7;
+	// Latitude sign
+	optional uint32 ChrgLocLattPostv_B_Uns = 8;
+	// Latitude fraction
+	optional float ChrgLocLattFrct_An_Uns = 9;
+	//Longitude information for unsaved location
+	// Longitude degree
+	optional uint32 ChrgLocLongDeg_An_Uns = 10;
+	// Longitude sign
+	optional uint32 ChrgLocLongPostv_B_Uns = 11;
+	// Longitude fraction
+	optional float ChrgLocLongFrct_An_Uns = 12;
+}
+
+//Message structure for Charge location-shifted (Deprecated due to data type mismatch)
+message ShiftedChargeLocation{
+	// Latitude and Longitude information for saved location
+	// Latitude degree
+	optional uint32 ChrgLocLattDeg_An_Sav = 1;
+	// Latitude sign
+	optional uint32 ChrgLocLattPostv_B_Sav = 2;
+	// Latitude fraction
+	optional uint32 ChrgLocLattFrct_An_Sav = 3;
+	//Longitude information for saved location
+	// Longitude degree
+	optional uint32 ChrgLocLongDeg_An_Sav = 4;
+	// Longitude sign
+	optional uint32 ChrgLocLongPostv_B_Sav = 5;
+	// Longitude fraction
+	optional uint32 ChrgLocLongFrct_An_Sav = 6;
+
+	//Latitude information for unsaved location
+	// Latitude degree
+	optional uint32 ChrgLocLattDeg_An_Uns = 7;
+	// Latitude sign
+	optional uint32 ChrgLocLattPostv_B_Uns = 8;
+	// Latitude fraction
+	optional uint32 ChrgLocLattFrct_An_Uns = 9;
+	//Longitude information for unsaved location
+	// Longitude degree
+	optional uint32 ChrgLocLongDeg_An_Uns = 10;
+	// Longitude sign
+	optional uint32 ChrgLocLongPostv_B_Uns = 11;
+	// Longitude fraction
+	optional uint32 ChrgLocLongFrct_An_Uns = 12;
+}
+
+
+//Message structure for Charge location - shifted (with proper data types)
+message ShiftedChargeLocation_V2{
+	//Latitude and Longitude information for saved location
+	// Latitude degree
+	optional uint32 ChrgLocLattDeg_An_Sav = 1;
+	// Latitude sign
+	optional uint32 ChrgLocLattPostv_B_Sav = 2;
+	// Latitude fraction
+	optional float ChrgLocLattFrct_An_Sav = 3;
+	//Longitude information for saved location
+	// Longitude degree
+	optional uint32 ChrgLocLongDeg_An_Sav = 4;
+	// Longitude sign
+	optional uint32 ChrgLocLongPostv_B_Sav = 5;
+	// Longitude fraction
+	optional float ChrgLocLongFrct_An_Sav = 6;
+
+	//Latitude information for unsaved location
+	// Latitude degree
+	optional uint32 ChrgLocLattDeg_An_Uns = 7;
+	// Latitude sign
+	optional uint32 ChrgLocLattPostv_B_Uns = 8;
+	// Latitude fraction
+	optional float ChrgLocLattFrct_An_Uns = 9;
+	//Longitude information for unsaved location
+	// Longitude degree
+	optional uint32 ChrgLocLongDeg_An_Uns = 10;
+	// Longitude sign
+	optional uint32 ChrgLocLongPostv_B_Uns = 11;
+	// Longitude fraction
+	optional float ChrgLocLongFrct_An_Uns = 12;
+}
+
+
+
+//Electric Vehicle
+// XEV Data Bundles
+
+//Battery Data structure (Battery Control Module)
+message BECMData{
+	//Request from the Traction (HV) Battery system to illuminate the Hazard Lamp (red triangle tellltale).
+	optional int32 BattTracWarnLamp_B_Rq = 1;
+	//Request from the Traction (HV) Battery system to illuminate the Powertrain Malfunction Lamp (wrench tellltale).
+	optional int32 BattTracSrvcRqd_B_Rq = 2;
+	// Total HV Battery voltage warning status for HV battery voltage exceeding upper limit or lower limit.
+	optional int32 BattTracUAlrm_B_Stat = 3;
+	// Request from the Traction (HV) battery system to illuminate the Malfunction Indicator Light (MIL).
+	optional int32 BattTracMil_D_Rq = 4;
+	//Battery voltage. Voltage of the high voltage battery.
+	optional float BattTrac_U_Actl  = 5;
+	//Battery current. Electric current flow into or out of the high voltage battery.  Discharge is positive.
+	optional float BattTrac_I_Actl = 6;
+	//Battery SOC. (Battery State of Charge)
+	optional float BattTracSoc2_Pc_Actl = 7;
+	//Battery temperature. Actual temperature of the Traction (HV) Battery.
+	optional float BattTrac_Te_Actl = 8;
+	//Indication that the Traction (HV) Battery system has shutdown or is about to shutdown.
+	optional int32 BattTracOff_B_Actl = 9;
+
+	// Maximum Voltage Sensor value of all HV Battery cells
+	optional float BattTracCell_U_Mx = 10;
+	// Minimum Voltage sensor value of all HV Battery cells
+	optional float BattTracCell_U_Mn = 11;
+	// Battery Energy available
+	optional int32 BattTrac_E_Avail = 12;
+	// HV System Insulation Resistance
+	optional int32 BattTracInsltn_R_Actl = 13;
+	// HV Battery Cell Equalization on/off status
+	optional int32 BattTracEq_B_Actl = 14;
+	// Maximum Temperature of HV Battery Cell Temperature Sensors.
+	optional sint32 BattTracMxCell_Te_Actl = 15;
+	// Minimum Temperature of HV Battery Cell Temperature Sensors.
+	optional sint32 BattTracMnCell_Te_Actl = 16;
+	// HV Battery Maximum Temperature Threshold Warning Status
+	optional int32 BattTracTeMx_B_Stat = 17;
+	// HV Battery Minimum Temperature Threshold Warning Status
+	optional int32 BattTracTeMn_B_Stat = 18;
+	//BECM warning signal list
+	optional BECMWarningData becmWarningData = 19;
+	//Total number of cell
+	optional int32 BattTracCellCnt_No_Actl = 20;
+	//ID No. of cell with max. voltage
+	optional int32 BattTracCellUMx_No_Actl = 21;
+	//ID No. of cell with min. voltage
+	optional int32 BattTracCellUMn_No_Actl = 22;
+	//Battery CellVoltage information
+	optional BatteryCellVoltageData battCellVoltageData = 24;
+	//Quantity of chargeable energy-storage temperature probes
+	optional int32 BattTracTeCnt_No_Actl = 25;
+	//ID No. of single probe with max. temperature
+	optional int32 BattTracTeMx_No_Actl = 26;
+	//ID No.  of single probe  with min. temperature
+	optional int32 BattTracTeMn_No_Actl = 27;
+	//Battery Probe temperature information
+	optional BatteryProbeTemperatureData battProbeTempData = 28;
+
+	//CR 686
+	//Request from the Traction (HV) Battery system to inhibit vehicle start in order to protect the high voltage battery
+	optional int32 VehStrtInhbt_B_RqBatt = 29;
+	//Amount of power that the Traction (HV) Battery can accept (i.e., charge limit).
+	optional int32 BattTrac_Pw_LimChrg = 30;
+	//Amount of power that the Traction (HV) Battery can provide (i.e., discharge limit).
+	optional int32 BattTrac_Pw_LimDchrg = 31;
+	//Indication of unexpected Traction (HV) Battery contactor opening which may require special action by other subsystems.
+	//Notes: HV Battery Rapid Discharge (Shutdown)
+	optional int32 BattTracOffFst_D_Actl = 32;
+}
+
+//Message structure for BECMWarningData
+message BECMWarningData{
+	//Temperature difference warning
+	optional int32 BattTracTeDelta_B_Falt = 1;
+	//Battery high-temperature warning
+	optional int32 BattTracTeMx_B_Falt = 2;
+	//Vehicle energy-storage device type over-voltage warning
+	optional int32 BattTracUMx_B_Falt = 3;
+	//Vehicle energy-storage device type under-voltage warning
+	optional int32 BattTracUMn_B_Falt = 4;
+	//Low SOC Warning
+	optional int32 BattChrgSocMn_B_Falt = 5;
+	//Excessively-high SOC warning
+	optional int32 BattChrgSocMx_B_Falt = 6;
+	//SOC jump warning
+	optional int32 BattChrgSocErrtc_B_Falt = 7;
+	//Chargeable energy-storage system unmatched warning
+	optional int32 BattTracSoftware_B_Falt = 8;
+	//Cell poor-consistency warning
+	optional int32 BattTracCellDiff_B_Falt = 9;
+	//Vehicle energy-storage device t over-charging warning
+	optional int32 BattChrgUMx_B_Falt = 10;
+	// HV Battery Maximum Cell Voltage Threshold Warning Status
+	optional int32 BattTracUMx_B_Stat = 11;
+	// HV Battery Minimum Cell Voltage Threshold Warning Status
+	optional int32 BattTracUMn_B_Stat = 12;
+	// HV Battery Insulation Alarm Warning Status.
+	optional int32 BattTracInsAlrm_B_Stat = 13;
+}
+
+//Message structure for battery cell voltage
+message BatteryCellVoltageData {
+	//Voltage of cell No.1
+	optional float BattTracCell01_U_Actl = 1;
+	//Voltage of cell No.2
+	optional float BattTracCell02_U_Actl = 2;
+	//Voltage of cell No.3
+	optional float BattTracCell03_U_Actl = 3;
+	//Voltage of cell No.4
+	optional float BattTracCell04_U_Actl = 4;
+	//Voltage of cell No.5
+	optional float BattTracCell05_U_Actl = 5;
+	//Voltage of cell No.6
+	optional float BattTracCell06_U_Actl = 6;
+	//Voltage of cell No.7
+	optional float BattTracCell07_U_Actl = 7;
+	//Voltage of cell No.8
+	optional float BattTracCell08_U_Actl = 8;
+	//Voltage of cell No.9
+	optional float BattTracCell09_U_Actl = 9;
+	//Voltage of cell No.10
+	optional float BattTracCell10_U_Actl = 10;
+	//Voltage of cell No.11
+	optional float BattTracCell11_U_Actl = 11;
+	//Voltage of cell No.12
+	optional float BattTracCell12_U_Actl = 12;
+	//Voltage of cell No.13
+	optional float BattTracCell13_U_Actl = 13;
+	//Voltage of cell No.14
+	optional float BattTracCell14_U_Actl = 14;
+	//Voltage of cell No.15
+	optional float BattTracCell15_U_Actl = 15;
+	//Voltage of cell No.16
+	optional float BattTracCell16_U_Actl = 16;
+	//Voltage of cell No.17
+	optional float BattTracCell17_U_Actl = 17;
+	//Voltage of cell No.18
+	optional float BattTracCell18_U_Actl = 18;
+	//Voltage of cell No.19
+	optional float BattTracCell19_U_Actl = 19;
+	//Voltage of cell No.20
+	optional float BattTracCell20_U_Actl = 20;
+	//Voltage of cell No.21
+	optional float BattTracCell21_U_Actl = 21;
+	//Voltage of cell No.22
+	optional float BattTracCell22_U_Actl = 22;
+	//Voltage of cell No.23
+	optional float BattTracCell23_U_Actl = 23;
+	//Voltage of cell No.24
+	optional float BattTracCell24_U_Actl = 24;
+	//Voltage of cell No.25
+	optional float BattTracCell25_U_Actl = 25;
+	//Voltage of cell No.26
+	optional float BattTracCell26_U_Actl = 26;
+	//Voltage of cell No.27
+	optional float BattTracCell27_U_Actl = 27;
+	//Voltage of cell No.28
+	optional float BattTracCell28_U_Actl = 28;
+	//Voltage of cell No.29
+	optional float BattTracCell29_U_Actl = 29;
+	//Voltage of cell No.30
+	optional float BattTracCell30_U_Actl = 30;
+	//Voltage of cell No.31
+	optional float BattTracCell31_U_Actl = 31;
+	//Voltage of cell No.32
+	optional float BattTracCell32_U_Actl = 32;
+	//Voltage of cell No.33
+	optional float BattTracCell33_U_Actl = 33;
+	//Voltage of cell No.34
+	optional float BattTracCell34_U_Actl = 34;
+	//Voltage of cell No.35
+	optional float BattTracCell35_U_Actl = 35;
+	//Voltage of cell No.36
+	optional float BattTracCell36_U_Actl = 36;
+	//Voltage of cell No.37
+	optional float BattTracCell37_U_Actl = 37;
+	//Voltage of cell No.38
+	optional float BattTracCell38_U_Actl = 38;
+	//Voltage of cell No.39
+	optional float BattTracCell39_U_Actl = 39;
+	//Voltage of cell No.40
+	optional float BattTracCell40_U_Actl = 40;
+	//Voltage of cell No.41
+	optional float BattTracCell41_U_Actl = 41;
+	//Voltage of cell No.42
+	optional float BattTracCell42_U_Actl = 42;
+	//Voltage of cell No.43
+	optional float BattTracCell43_U_Actl = 43;
+	//Voltage of cell No.44
+	optional float BattTracCell44_U_Actl = 44;
+	//Voltage of cell No.45
+	optional float BattTracCell45_U_Actl = 45;
+	//Voltage of cell No.46
+	optional float BattTracCell46_U_Actl = 46;
+	//Voltage of cell No.47
+	optional float BattTracCell47_U_Actl = 47;
+	//Voltage of cell No.48
+	optional float BattTracCell48_U_Actl = 48;
+	//Voltage of cell No.49
+	optional float BattTracCell49_U_Actl = 49;
+	//Voltage of cell No.50
+	optional float BattTracCell50_U_Actl = 50;
+	//Voltage of cell No.51
+	optional float BattTracCell51_U_Actl = 51;
+	//Voltage of cell No.52
+	optional float BattTracCell52_U_Actl = 52;
+	//Voltage of cell No.53
+	optional float BattTracCell53_U_Actl = 53;
+	//Voltage of cell No.54
+	optional float BattTracCell54_U_Actl = 54;
+	//Voltage of cell No.55
+	optional float BattTracCell55_U_Actl = 55;
+	//Voltage of cell No.56
+	optional float BattTracCell56_U_Actl = 56;
+	//Voltage of cell No.57
+	optional float BattTracCell57_U_Actl = 57;
+	//Voltage of cell No.58
+	optional float BattTracCell58_U_Actl = 58;
+	//Voltage of cell No.59
+	optional float BattTracCell59_U_Actl = 59;
+	//Voltage of cell No.60
+	optional float BattTracCell60_U_Actl = 60;
+	//Voltage of cell No.61
+	optional float BattTracCell61_U_Actl = 61;
+	//Voltage of cell No.62
+	optional float BattTracCell62_U_Actl = 62;
+	//Voltage of cell No.63
+	optional float BattTracCell63_U_Actl = 63;
+	//Voltage of cell No.64
+	optional float BattTracCell64_U_Actl = 64;
+	//Voltage of cell No.65
+	optional float BattTracCell65_U_Actl = 65;
+	//Voltage of cell No.66
+	optional float BattTracCell66_U_Actl = 66;
+	//Voltage of cell No.67
+	optional float BattTracCell67_U_Actl = 67;
+	//Voltage of cell No.68
+	optional float BattTracCell68_U_Actl = 68;
+	//Voltage of cell No.69
+	optional float BattTracCell69_U_Actl = 69;
+	//Voltage of cell No.70
+	optional float BattTracCell70_U_Actl = 70;
+	//Voltage of cell No.71
+	optional float BattTracCell71_U_Actl = 71;
+	//Voltage of cell No.72
+	optional float BattTracCell72_U_Actl = 72;
+	//Voltage of cell No.73
+	optional float BattTracCell73_U_Actl = 73;
+	//Voltage of cell No.74
+	optional float BattTracCell74_U_Actl = 74;
+	//Voltage of cell No.75
+	optional float BattTracCell75_U_Actl = 75;
+	//Voltage of cell No.76
+	optional float BattTracCell76_U_Actl = 76;
+	//Voltage of cell No.77
+	optional float BattTracCell77_U_Actl = 77;
+	//Voltage of cell No.78
+	optional float BattTracCell78_U_Actl = 78;
+	//Voltage of cell No.79
+	optional float BattTracCell79_U_Actl = 79;
+	//Voltage of cell No.80
+	optional float BattTracCell80_U_Actl = 80;
+	//Voltage of cell No.81
+	optional float BattTracCell81_U_Actl = 81;
+	//Voltage of cell No.82
+	optional float BattTracCell82_U_Actl = 82;
+	//Voltage of cell No.83
+	optional float BattTracCell83_U_Actl = 83;
+	//Voltage of cell No.84
+	optional float BattTracCell84_U_Actl = 84;
+	//Voltage of cell No.85
+	optional float BattTracCell85_U_Actl = 85;
+	//Voltage of cell No.86
+	optional float BattTracCell86_U_Actl = 86;
+	//Voltage of cell No.87
+	optional float BattTracCell87_U_Actl = 87;
+	//Voltage of cell No.88
+	optional float BattTracCell88_U_Actl = 88;
+	//Voltage of cell No.89
+	optional float BattTracCell89_U_Actl = 89;
+	//Voltage of cell No.90
+	optional float BattTracCell90_U_Actl = 90;
+	//Voltage of cell No.91
+	optional float BattTracCell91_U_Actl = 91;
+	//Voltage of cell No.92
+	optional float BattTracCell92_U_Actl = 92;
+	//Voltage of cell No.93
+	optional float BattTracCell93_U_Actl = 93;
+	//Voltage of cell No.94
+	optional float BattTracCell94_U_Actl = 94;
+	//Voltage of cell No.95
+	optional float BattTracCell95_U_Actl = 95;
+	//Voltage of cell No.96
+	optional float BattTracCell96_U_Actl = 96;
+}
+
+//Message structure for battery probe temperature
+message BatteryProbeTemperatureData{
+	//Temp. of Probe No.1
+	optional sint32 BattTracTe01_Te_Actl= 1;
+	//Temp. of Probe No.2
+	optional sint32 BattTracTe02_Te_Actl= 2;
+	//Temp. of Probe No.3
+	optional sint32 BattTracTe03_Te_Actl= 3;
+	//Temp. of Probe No.4
+	optional sint32 BattTracTe04_Te_Actl= 4;
+	//Temp. of Probe No.5
+	optional sint32 BattTracTe05_Te_Actl= 5;
+	//Temp. of Probe No.6
+	optional sint32 BattTracTe06_Te_Actl= 6;
+	//Temp. of Probe No.7
+	optional sint32 BattTracTe07_Te_Actl= 7;
+	//Temp. of Probe No.8
+	optional sint32 BattTracTe08_Te_Actl= 8;
+	//Temp. of Probe No.9
+	optional sint32 BattTracTe09_Te_Actl= 9;
+	//Temp. of Probe No.10
+	optional sint32 BattTracTe10_Te_Actl= 10;
+	//Temp. of Probe No.11
+	optional sint32 BattTracTe11_Te_Actl= 11;
+	//Temp. of Probe No.12
+	optional sint32 BattTracTe12_Te_Actl= 12;
+	//Temp. of Probe No.13
+	optional sint32 BattTracTe13_Te_Actl= 13;
+	//Temp. of Probe No.14
+	optional sint32 BattTracTe14_Te_Actl= 14;
+	//Temp. of Probe No.15
+	optional sint32 BattTracTe15_Te_Actl= 15;
+	//Temp. of Probe No.16
+	optional sint32 BattTracTe16_Te_Actl= 16;
+	//Temp. of Probe No.17
+	optional sint32 BattTracTe17_Te_Actl= 17;
+	//Temp. of Probe No.18
+	optional sint32 BattTracTe18_Te_Actl= 18;
+	//Temp. of Probe No.19
+	optional sint32 BattTracTe19_Te_Actl= 19;
+}
+
+// Message Structure for Body Control Module
+message BCMData{
+	// Ignition status from CAN bus (The processed value for current Ignition state.)
+	// Ignition on time
+	optional int32 Ignition_Status = 1;
+}
+
+//Message structure Hybrid Powertrain control Module
+message HPCMData{
+	// Traction Motor Inverter Temperature
+	optional sint32 MtrTrac2Inv_Te_Actl = 1;
+	// Traction Motor Rotation Speed
+	optional int32 MtrTrac2_W_Actl = 2 [deprecated=true];
+	// Traction Motor Coil Temperature
+	optional sint32 MtrTrac2Coil_Te_Actl = 3;
+	// Traction Motor DC Voltage Equivalent.
+	optional int32 MtrTrac2_U_Actl = 4;
+	// Traction Motor DC  Motor Current Equivalent
+	optional float MtrTrac2_I_Actl = 5;
+	// Traction Motor Torque (Signed) in NM (+ torque moves vehicle in positive drive direction)
+	optional sint32 MtrTrac2_Tq_Actl = 6;
+	// Traction Motor Fault Status indicating Motor Available/Not Available.
+	optional int32 MtrTrac2Falt_B_Stat = 7;
+	// Inverter System Controller Internal Temperature.
+	optional sint32 Inv1_Te_Actl = 8;
+	// Indicates if the power pack is a motive (wheel torque producing) or non-motive (non-wheel torque producing) mode.
+	// It also indicates to if a transition from a non-motive to a motive mode is in progress. NOTE: nothing else should be inferred from this signal.
+	optional int32 PwPckTq_D_Stat = 9;
+	// Traction Motor Rotation Speed
+	optional float Mtr2Aout_W_ActlMntr = 10;
+	//Indicates status of High Voltage Interlock (HVIL) at the Hybrid Transaxle.
+	optional int32 HtrnHvilOpen_B_Actl = 11;
+	// This signal is used to drive the electrical path DTE displays on BEV and PHEV.
+	// On BEV, there is only electric path energy available, so the DTE displays shall be equal to this signal.
+	// Sender shall account for filtering, calculation, etc.
+	optional float VehElRnge_L_Dsply = 12;
+	// This bundle includes, signals to the year stamp (calendar year) for the actual start and end of battery charging in BEV or PHEV.
+	optional BatteryChargingPeriodData batteryChargingPeriodData = 13;
+	// Voltage of Battery Charger High Voltage Output as measured by the Charger.
+	optional int32 ChrgrOutHi_U_Actl = 14;
+	// Current of Battery Charger High Voltage Output as measured by the Charger.
+	optional float ChrgrOutHi_I_Actl = 15;
+	//State of Electrical Machine
+	optional int32 Mtr2State_D_ActlMntr = 16;
+	//Current of DC bus of electrical machine controller
+	optional float Inv1Ain_I_ActlMntr = 17;
+	//Charging State
+	optional int32 ChrgStat_D_ActlMntr = 18;
+	//Operation Mode
+	optional int32 HybVehMde_D_ActlMntr = 19;
+	//optional HPCMWarningData
+	optional HPCMWarningData hpcmWarningData = 20;
+}
+
+message BatteryChargingPeriodData{
+	// Next charge Begin Time Year
+	optional int32 ActChrgStrtYr_No_Actl = 1;
+	// Next charge Begin Time Month
+	optional int32 ActChrgStrMnth_No_Actl = 2;
+	// Next charge Begin Time Day
+	optional int32 ActChrgStrtDay_No_Actl = 3;
+	// Next charge Begin Time Hour
+	optional int32 ActChrgStrtHr_No_Actl = 4;
+	// Next charge Begin Time Minute
+	optional int32 ActChrgStrtMin_No_Actl = 5;
+
+	// Next charge End Time Year
+	optional int32 ActChrgEndYr_No_Actl = 6;
+	// Next charge End Time Month
+	optional int32 ActChrgEndMnth_No_Actl = 7;
+	// Next charge End Time Day
+	optional int32 ActChrgEndDay_No_Actl = 8;
+	// Next charge End Time Hour
+	optional int32 ActChrgEndHr_No_Actl = 9;
+	// Next charge End Time Minute
+	optional int32 ActChrgEndMin_No_Actl = 10;
+
+	// Next charge Begin Time Year - 6 bit signal to support more range in year (100+)
+	optional int32 ActChrgStrtYr_No2_Actl = 11;
+	// Next charge End Time Year - 6 bit signal to support more range in  year (100+)
+	optional int32 ActChrgEndYr_No2_Actl = 12;
+}
+
+//Message structure of HPCMWarningData
+message HPCMWarningData {
+
+	// Traction Motor Controller Temperature Warning Status
+	optional int32 Mtr2CntlTeAlrm_B_Stat = 1;
+	// Traction Motor Coil Temperature Warning Status.
+	optional int32 MtrTrac2TeAlrm_B_Stat = 2;
+	//Input Voltage of Electrical Machine Controller
+	optional float HtrnAin_UHi_Actl = 3;
+}
+
+// Message structure for Powertrain Control Module
+message PCMData{
+	//Accelerator pedal position. Final arbitrated between different sources.
+	//Percent of full range pedal travel - 0% = released pedal. 100% = maximum pedal.
+	//If total failure in pedal sensors, value will be = 0.
+	optional float ApedPos_Pc_ActlArb = 1;
+	//Arbitrated indication of whether the brake pedal is being depressed by the driver
+	// (except for possible external failures such as an object resting on the pedal) or not.
+	//Possible values are 0=Not_Allowed, 1=Driver_Not_Braking, 2=Driver_Braking and 3=Not_Allowed
+	//ECU(ECG/TCU) shall populate following signal from Bundle#2 onwards
+	optional int32 BpedDrvAppl_D_Actl = 2;
+	// Gear level position from CAN bus
+	optional int32 GearLvrPos_D_Actl = 3;
+	//Engine State
+	optional int32 Eng_D_Stat = 4;
+	//Engine speed. Current flywheel speed averaged.
+	optional int32 EngAout_N_Actl = 5;
+	// Vehicle speed from CAN bus
+	optional float Veh_V_ActlEng = 6;
+}
+
+//Messae structure for Direct Current to Direct Current Converter module
+message DCDCData {
+	// High voltage DCDC (HDCDC) request for cooling from the high voltage battery system.
+	optional int32 PwSrcULoOvrTe_B_Actl = 1;
+	// Operating status of 12V power source.
+	optional int32 PwSrcULoOn_B_Actl = 2;
+	// DCDC Status warning - Fault status of 12V power source
+	optional int32 PwSrcULoFalt_D_Stat = 3;
+}
+
+// Message Structure for Instrument Panel Cluster Module
+message IPCData{
+	// Odometer value from CAN bus (Mileage)
+	optional int32 OdometerMasterValue = 1;
+	// Distance before fuel reservoir becomes empty - (Distance to empty from liquid fuel for display to the customer)
+	// this signal replaces "fuelDistanceToEmpty" .
+	optional float FuelRange_L_Dsply = 2;
+	//Fuel consumption
+	optional float ConsAvgTrip_Fe_Dsply = 3;
+}
+
+// Message structure for Restraint Control Module
+message RCMData{
+	// The purpose of this signal is communicate that a qualified impact event has occurred to initiate an emergency call.
+	optional int32 eCallNotification = 1;
+}
+
+// Message structure for Anti-Lock Braking System module
+message ABSData{
+	// Indicates normal four-wheel antilock function is not available. Used to inhibit transmission shifts.
+	// EuCD should use this instead of ABSWarningLamp signal. Used for regenerative braking to limit compression braking levels and engine speed protection.
+	optional int32 Abs_B_Falt = 1;
+}
+
+//Message structure of XEVVehicleStatus
+message XEVVehicleStatusData{
+		// 12V battery status from CAN bus for CGEA1.3
+	optional float BattULo_U_Actl = 1;
+	// Engine Oil from CAN bus
+	optional int32 EngOilLife_Pc_Actl = 2;
+	// Plug Status signal from CAN bus
+	optional int32 PlgActvArb_B_Actl = 3;
+	// Clear Battery Performance signal from CAN bus
+	optional int32 BattElecPerf_D_Actl = 4;
+	// Engine service required indicator
+	optional int32 EngSrvcRqd_B_Rq = 5;
+	// Request from the hybrid transmission system to illuminate the Powertrain Malfunction Lamp
+	optional int32 HtrnSrvcRqd_B_Dsply = 6;
+	// Request from the hybrid transmission system to illuminate the Hazard Lamp (red triangle telltale).
+	optional int32 HtrnWarnLamp_B_Dsply = 7;
+	// Percentage of the Battery charge from CAN bus -
+	optional float BattTracSoc_Pc_Dsply = 8;
+	// Display Language setting
+	optional int32 Disp_LangSel_St = 9;
+	// Request to the driver information system to indicate High Voltage battery Charger service is required.
+	// HEV Repair Telltale request. 0 = Off, 1 = On
+	optional int32 ChrgrSrvcRqd_B_Rq = 10;
+	// transmission service required indicator
+	optional int32 TrnSrvcRqd_B_Rq = 11;
+	// Request from the transaxle system to illuminate the Hazard Lamp (red triangle telltale).
+	// optional int32 TrnWarnLamp_B_Dsply = 12; // C1MCA Not Applicable
+	// Hybrid Mode Status(Current operating mode the plug in hybrid vehicle)
+	optional int32 HybMdeStat_D_Dsply= 13;
+	// Charger Power type
+	optional int32 ChrgrInPwType_D_Actl= 14;
+	// Charging status
+	optional int32 ChrgStat_D_Dsply= 15;
+	// Time to Target SoC (State of Charge)
+	optional int32 BattChrgTrgSocPt_T_Est= 16;
+	// Time to Full Charge
+	optional int32 BattChrgCmpltPt_T_Est= 17;
+	// Charger Plug Status
+	optional int32 PlgActv_D_ActlChrgr= 18;
+	// Charger Power Draw
+	optional int32 ChrgrIn_Pw_Mx= 19;
+	// Park Brake Status
+	optional int32 PrkBrkStatus = 20;
+
+	// Fuel Level in percentage
+	// Signal according to damped total fuel level in tank.
+	// or
+	// Fuel Level percentage from CAN bus for PHEV
+	// See look-up table on Fuel 10-bit R-Card tab in ACP spec and logic from PHEV PRD
+	// This raw 10-bits is the "green" column on the Fuel 10-bit R-Card table"
+	optional float FuelLvl_Pc_Dsply = 21;
+	//Engine coolant temperature
+	optional sint32 EngClnt_Te_Actl = 22;
+	//The calculated torque currently being delivered to all the axles at wheel level
+	//(sum at all wheels) by the propulsion system (all actuators - engine and electric machines).
+	//It includes gear ratio, final drive ratio, and friction amd interita effects.
+	optional sint32 PrplWhlTot2_Tq_Actl = 23;
+	//The residual charge of 12V battery at nominal temperature as percentage of the capacity
+	//if the battery would be charged at that moment.
+	optional int32 BSBattSOC = 24;
+
+
+	// TripData //
+	// Energy consumed by vehicle in KiloWatt Hours
+	optional float TripSum_E_Dsply = 25;
+	// Energy consumed by vehicle in Liters
+	optional float TripSum_Vl_Dsply = 26;
+	// Trip Length in Kilometers
+	optional float TripSum_L_Dsply = 27;
+
+	// Trip distance driven in Kilometers
+	optional float ElTrip_L_Dsply = 28;
+	// Long term distance driven in kilometers
+	optional float ElLongTerm_L_Dsply = 29;
+
+	// Regenerative Trip Data //
+	// Long Term Regen % Energy Recovery  % of regenerative braking energy recovered
+	// since last long term FE reset. Similar to brake coach, but for a longer term.
+	optional float RgenLongTerm_Pc_Dsply = 30;
+	// Trip Regen % Energy Recovery % of regenerative braking energy recovered on the
+	// trip. Similar to brake coach, but for the entire trip rather than a single stop.
+	optional float RgenTrip_Pc_Dsply = 31;
+	// Trip Regenerated Energy Recovery Distance Achieved  distance driven with
+	// regenerative braking energy recovered on the trip
+	optional float RgenTrip_L_Dsply = 32;
+	// Long Term Regenerated Energy Recovery Distance Achieved  distance driven with
+	// regenerative braking energy recovered since the last long term reset
+	optional float RgenLongTerm_L_Dsply = 33;
+
+	// Consumption Data //
+	// Communicates the users performance against the acceleration consumption tip.
+	optional float ConsTipA_No_Dsply = 34;
+	// Communicates the users performance against the vehicle speed consumption tip.
+	optional float ConsTipV_No_Dsply = 35;
+	// Communicates the users performance against the deceleration consumption tip.
+	optional float ConsTipDecel_No_Dsply = 36;
+	// Communicates the units of the individual consumption tips.
+	optional int32 ConsTipUnitPt_D_Dsply = 37;
+	// Communicates the users overall score in relation to the consumption tips.
+	// 100% is the best performance, 0% is the worst performance.
+	optional float ConsTipTot_Pc_Dsply = 38;
+	// Fuel economy - No display
+	optional int32 ConsAvgTrip_No_Dsply = 39;
+	// Fuel economy - Display
+	// Communicates the instrument cluster current unit mode setting.
+	// Used thru-out displays to update units and labels for the fuel consumption history displays.
+	// If units updated on cluster, other displays thru-out vehicle should be updated as well.
+	optional int32 ConsUnitIPC_D_Dsply = 40;
+	// Fuel economy - Longterm no display
+	optional int32 ConsLongTerm_No_Dsply = 41;
+
+	// Powertrain HPCM Data
+	// Battery Charge condition alert flag from CAN bus
+	optional int32 PtRmtRprt_D_Rq = 42;
+	// illuminate the Powertrain service indicator
+	optional int32 PtSrvcLamp_B_RqHtrn = 43;
+	// illuminate the Powertrain warning indicator
+	optional int32 PtWarnLamp_B_RqHtrn = 44;
+
+	// Ambient Data
+	// Cabin Ambient Temp
+	optional int32 CabnAmb_Te_Actl= 45;
+	// outside Air Ambient Temperature
+	optional float AirAmb_Te_ActlFilt= 46;
+
+	// Signal to indicate the current status of the charge
+	optional int32 ChrgStat_D2_Dsply = 47;
+
+}
+// XEV Data Bundles
+
+// Engine information
+message EngineData{
+	//engine type e.g. GAS, DIESEL, PHEV, HEV etc
+	optional uint32 engineType = 1;
+}
+
+//EV related data bundles for 4G ECU(ECG/TCU)
+
+//Daily go time schedule Data - Cloud should set this
+message GoTimesScheduleCloudData{
+	// Calendar  days
+	optional CalendarDayENUM calendarDay = 1;
+	// Schedule data per day - shall have 2 schedules per day
+	repeated PreCondScheduleFromCloud scheduleFromCloud = 2;
+}
+
+//Go Time schedules from SDN. Cloud shall set this for go time schedule
+message PreCondScheduleFromCloud{
+	// Go time schedule id/element id - (Ref. "ChrgGoTElement_D_Stat")
+	optional uint32 scheduleID = 1;
+	// GoTime hour and minute - populate ONLY hour and minute(Ref. "ChrgGoTHr_T_Stat", "ChrgGoTMnte_D_Stat" )
+	optional Time goTime = 2;
+	// pre-conditioning temperature - pre conditionins temp(Ref. "ChrgGoTPrcond_D_Stat")
+	optional PreconditioningTempENUM preConditioningTemp = 3;
+	// Go Time schedule status (Active/Inactive) (Ref. "ChrgGoTElement_B_Dsply")
+	optional GoTimeScheduleStatusENUM goTimeScheduleStatus = 4; // DBC?? SED
+
+	//Charge profile status enumeration
+	enum GoTimeScheduleStatusENUM{
+		INACTIVE = 0;
+		ACTIVE = 1;
+	}
+
+	// pre-conditioning temperature enumeration
+	enum PreconditioningTempENUM{
+		LOW = 0;
+		MEDIUM = 1;
+		HIGH = 2;
+		OFF = 3;
+	}
+}
+
+//Message structure to represent Time
+message Time{
+	// Hour in time for 24 hour clock
+	optional uint32 hour = 1;
+	// Minute in Time
+	optional uint32 minute = 2;
+	// Second in time
+	optional uint32 second = 3;
+	// Millisecond in time
+	optional uint32 milliSecond = 4;
+}
+
+//Message structure to represent time window
+message TimeWindow{
+	// Start time
+	optional Time startTime = 1;
+	// End time
+	optional Time endTime = 2;
+}
+
+//Message structure for charge schedules in a charge profile. Cloud shall populate this
+message ChargeSchedule{
+	//Charge schedule week day or week end enum
+	optional WeekDayCategoryENUM weekDayCategory = 1;
+	//Target charge percentage - (Ref. "ChrgToPcWkdySav_D_Stat" and "ChrgToPcWkndSav_D_Stat")
+	optional int32 chargeTarget = 2;
+	//Charge profile Time windows(in hours ONLY) set by user - (Ref. "ChrgPrflWkdy_No_Actl" and "ChrgPrflWknd_No_Actl")
+	repeated TimeWindow chargeScheduleWindow = 3;
+	//Enumeration to specify week day/week end
+	enum WeekDayCategoryENUM{
+		WEEK_DAY = 0;
+		WEEK_END = 1;
+	}
+}
+
+//Charge profiles with location information and charge windows. Cloud shall use this structure for charge profile
+message ChargeProfileCloudData {
+	// Defines the profile type (Value charge or Charge Now) -
+	// This shall only be populated when editing a charge profile
+	optional ChargeProfileTypeENUM chargeProfileType = 1;
+	// Location id of saved charge location - cloud shall populate this(Ref. "ChrgLocId_D_Sav")
+	optional uint32 savedLocationId = 2;
+	// Location id of unsaved charge location
+	// Cloud shall populate this only for 'AddChargeProfile' command to save an unsaved change profile
+	// (Ref. "ChrgLocId_D_Uns")
+	optional uint32 unSavedLocationId = 3;
+	// Name of charge location of the current Charge Profile
+	optional string chargeLocationName = 4;
+	// GPS information of the current charge location
+	optional GPSInfoFromCloud gpsInfoFromCloud = 5;
+	// Charge schedules for the charge profile
+	repeated ChargeSchedule chargeSchedule = 6;
+	// Saved location status (Active/Inactive) (Ref. "ChrgLocSaved_B_Dsply")
+	optional SavedLocationStatusENUM savedLocationStatus = 7; //DBC?? SED
+
+	// Saved location status enumeration
+	enum SavedLocationStatusENUM{
+		INACTIVE = 0;
+		ACTIVE = 1;
+	}
+
+	//Charge profile type enumeration
+	enum ChargeProfileTypeENUM{
+		VALUE_CHARGE = 0;
+		CHARGE_NOW = 1;
+	}
+}
+
+//GPS message structure from Cloud
+message GPSInfoFromCloud{
+	// Latitude  information for location
+	optional GPSCloudCoordinates latitudeCoordinates = 1;
+	// Longitude  information for location
+	optional GPSCloudCoordinates longitudeCoordinates = 2;
+}
+
+//Message structure for GPS co-ordinate information represented in "Signed degrees format"
+message GPSCloudCoordinates{
+	// Latitude or Longitude degree
+	optional uint32 gpsDegree = 1;
+	// Latitude or Longitude sign
+	// Two possible values: 0 - Negative; 1 - Positive
+	optional uint32 gpsSign = 2;
+	// Latitude or Longitude fraction
+	optional float gpsFraction = 3;
+}
+
+//Message structure for Charge Schedule Change , either charge window alerted or charge to desired level not reached.
+message ChargeScheduleChangeData{
+	// Signal to indicate vehicle is charging outside time window or Vehicle may not reach the desired charge level.
+	optional int32 NtfctnConflict1_D_Rq = 1;
+	// Estimated level of charge for next departure time, when there is a conflict and vehicle cannot charge to desired target
+	optional float NxtUsgSocEst_Pc_Dsply = 2;
+}
+
+// This data bundle is deprecated from 6.0.8 due to the data type mismatch for a few signals.
+// BatteryConsumptionData_V2 should be used instead of this data bundle
+message BatteryConsumptionData {
+	// Percent of trip electric energy that was used for driving the wheels (BEV/PHEV).
+	optional int32 TripSumDrvE_Pc_Dsply = 1;
+	// Percent of trip electric energy that was used for climate control
+	optional int32 TripClimE_Pc_Dsply = 2;
+	// Percent of trip electric energy that was used as a result of external factors
+	optional int32 TripExtFctrE_Pc_Dsply = 3;
+	// Percent of trip electric energy that was used for low voltage accessories
+	optional int32 TripBattULoE_Pc_Dsply = 4;
+	// Trip/long term averaged electric range per full charge estimate (km), depending on HPCM calibration.
+	optional int32 RngPerChrgAvg_L_Dsply = 5;
+	// Indicates the electric fuel consumption in terms of gasoline equivalent volume to support fuel economy equivalent calculations
+	optional int32 ElFuelFlw_Vl_Dsply = 6;
+	// Energy available in the High Voltage Traction Battery
+	optional int32 BattTrac2_E_Avail = 7;
+
+}
+
+// Message structure for battery consumption data
+message BatteryConsumptionData_V2 {
+	// Percent of trip electric energy that was used for driving the wheels (BEV/PHEV).
+	optional float TripSumDrvE_Pc_Dsply = 1;
+	// Percent of trip electric energy that was used for climate control
+	optional float TripClimE_Pc_Dsply = 2;
+	// Percent of trip electric energy that was used as a result of external factors
+	optional float TripExtFctrE_Pc_Dsply = 3;
+	// Percent of trip electric energy that was used for low voltage accessories
+	optional float TripBattULoE_Pc_Dsply = 4;
+	// Trip/long term averaged electric range per full charge estimate (km), depending on HPCM calibration.
+	// This is FTCP variable, the actual signal should be mapped to this variable as per the SPSS
+	// Please refer to SPSS for the mapping
+	optional float RngPerChrgAvg_L_Dsply = 5;
+	// Indicates the electric fuel consumption in terms of gasoline equivalent volume to support fuel economy equivalent calculations
+	optional int32 ElFuelFlw_Vl_Dsply = 6;
+	// Energy available in the High Voltage Traction Battery
+	optional int32 BattTrac2_E_Avail = 7;
+
+}
+
+message AverageRangePerFullChargeData{
+	// Trip/long term averaged electric range per full charge estimate (km), depending on HPCM calibration.
+	// This is FTCP variable, the actual signal should be mapped to this variable as per the SPSS
+	// Please refer to SPSS for the mapping
+	optional float RngPerChrgAvg_L_Dsply = 1;
+}
+
+//Message structure for Energy Consumption Data
+message EnergyConsumptionData{
+	// Current of Battery Charger High Voltage Input as measured by the Charger
+	optional float ChrgrInHi_I_Actl = 1 [deprecated=true];
+	// Voltage of Battery Charger High Voltage Output as measured by the Charger
+	optional float ChrgrInHi_U_Actl = 2 [deprecated=true];
+	// Current of Battery Charger High Voltage Output as measured by the Charger
+	optional float ChrgrOutHi_I_Actl = 3;
+	// Voltage of Battery Charger High Voltage Output as measured by the Charger
+	optional float ChrgrOutHi_U_Actl = 4;
+}
+
+//Message structure for PaaK message from Vehicle
+message CommonForPaaKFromVehicle{
+	// Indicates if security validation is needed or not - 0: NO ; 1: YES
+	optional int32 securityValidationRequired = 1;
+}
+
+//Smart Charging profile settings with location information and charge windows. Cloud shall use this structure for charge profile
+message SmartChargeProfileCloudData {
+	// Location id of Smart charge location - cloud shall populate this(Ref. "ScLocId_No_RqCld")
+	optional uint32 scProfileId = 1;
+	// Name of the smart charge profile
+	optional string scProfileName = 2;
+	// GPS information of the current charge location
+	optional GPSInfoFromCloud scGPSInfoFromCloud = 3;
+	// Validation bit for HPCM to show, if a Smart Charge location is valid or invalid
+ 	optional SmartChargeValidLocationENUM scValidLocation = 4;
+	// Charge to Percent value stored for a Smart Charge location
+	optional int32 scChargeTarget = 5;
+	// Duration data
+	optional SmartChargeDurationData scChrgDuration = 6;
+	// message structure for Smart Charge cloud settings data
+	repeated SmartChargeCloudSettingsData scSettingsData = 7;
+	// Radial distance from the GPS coordinates of a Smart Charging location within which the location is valid (e.g. 100 m resolution)
+	optional int32 scLocRadiusToActl = 8;
+
+	enum SmartChargeValidLocationENUM{
+		LOCATION_INVALID =0;
+		LOCATION_VALID=1;
+	}
+	// Maximum power the charger equipment is allowed to draw from the mains
+	optional int32 scMaximumChrgrPowerFromMain = 9;
+}
+
+// message structure for Smart Charge cloud settings data
+message SmartChargeCloudSettingsData {
+	// Calendar  days
+	optional CalendarDayENUM calendarDay = 1;
+	//Charge profile Time windows(in hours ONLY) set by user - (Ref. "ScChrgPrfl_No_Actl" )
+	repeated TimeWindow chargeScheduleWindow = 2;
+}
+
+message SmartChargeDurationData{
+
+	// Duration-based charging setting for a Smart Charging location
+	optional ChargeDurationSettingsENUM scChrgDuraSettings = 1;
+	// Time value of duration based charging for a Smart Charging location
+	optional int32 scChrgDuration = 2;
+
+	enum ChargeDurationSettingsENUM
+	{
+		DISABLED = 0;
+		ENABLED = 1;
+	}
+
+}
+//Message structure for Smart Charging Vehicle data
+message SmartChargeProfileVehicleData{
+	// Smart Charge Location ID Status
+	optional uint32 ScLocId_No_Stat = 1;
+	// Name of the smart charge profile
+	optional string scProfileName = 2;
+	// GPS information of the current charge location
+	optional SmartChargeGPSInfo scGPSInfo = 3;
+	// Validation bit HPCM to show if a Smart Charging location is valid or invalid
+	optional int32 ScLocSaved_B_Dsply = 4;
+	// Charge to Percent Status for a Smart Charge location
+	optional int32 ScChrgToPc_Pc_Actl = 5;
+	// Duration-based Charging setting status for a Smart Charge Location
+	optional int32 ScChrgDurSet_B_Stat = 6;
+	// Time value status of Duration-based Charging for a Smart Charge location
+	optional int32 ScChrgDur_T_Actl = 7;
+	// Smart Charge Vehicle Settings data
+	repeated SmartChargeVehicleSettingsData vehSettings  = 8;
+	// Status of Radial distance from the GPS Coordinates of a Smart Charge Location
+	optional int32 ScLocRdius_L_Actl = 9;
+}
+
+// message structure for Smart Charge settings Vehicle data
+message SmartChargeVehicleSettingsData {
+	// Day of the Week ID .
+	// This is a cycling (1-7) signal that will be used to update the Charge Profile settings for a Smart Charge Location for a given day of the week
+	optional int32 ScDayofWeekId_D_Stat = 1;
+	// The Charge time window for a Smart Charge Location
+	optional int32 ScChrgPrfl_No_Actl = 2;
+}
+
+//SC GPS message structure from Vehicle
+message SmartChargeGPSInfo{
+	// Latitude  information for location
+	optional SmartChargeGPSLatCoordinates latitudeCoordinates = 1;
+	// Longitude  information for location
+	optional SmartChargeGPSLongCoordinates longitudeCoordinates = 2;
+}
+
+//Message structure for GPS co-ordinate information represented in "Signed degrees format"
+message SmartChargeGPSLatCoordinates{
+	// Latitude degree
+	optional uint32 ScLocLattDeg_An_Actl = 1;
+	// Latitude sign
+	// Two possible values: 0 - Negative; 1 - Positive
+	optional uint32 ScLocLattPostv_B_Stat = 2;
+	// Latitude fraction
+	optional float ScLocLattFrct_An_Actl = 3;
+}
+
+//Message structure for GPS co-ordinate information represented in "Signed degrees format"
+message SmartChargeGPSLongCoordinates{
+	// Longitude degree
+	optional uint32 ScLocLongDeg_An_Actl = 1;
+	// Longitude sign
+	// Two possible values: 0 - Negative; 1 - Positive
+	optional uint32 ScLocLongPostv_B_Stat = 2;
+	// Longitude fraction
+	optional float ScLocLongFrct_An_Actl = 3;
+}
+
+//EV error details from 4G ECG
+//ECG shall use this structure for communicating errors related to EV user setting setup
+message XEVErrorDetails{
+	//Error codes for updating charge programming information. ECG shall set this
+	optional EVErrorENUM evErrorCodes = 1;
+
+	//Description of the error codes
+	optional string errorDescription = 2;
+
+	enum EVErrorENUM{
+		//HPCM did not respond
+		NO_RESPONSE_FROM_HPCM = 0;
+		//Incomplete charge settings data provided
+		INCOMPLETE_CHARGE_SETTINGS_DATA = 1;
+		//HPCM is busy with another update
+		ANOTHER_UPDATE_IN_PROGRESS = 2;
+	}
+}
+
+// SC message structure for Smart Charge Minimum State of Charge
+message SmartChargeMinSOCData{
+	// Minimum Charge to Percent "comfort level" value status for a Smart Charge location
+	optional int32 ScMnSoc_Pc_Actl = 2;
+}
+
+//SC message structure for Smart Charge Profile Location
+message SmartChargeCurrentLocationData{
+	// Current Smart Charging Location ID
+	optional uint32 ScLocIdCurnt_No_Stat = 1;
+}
+
+// Message structure for Estimated end time to complete charge
+message ChargeCompleteTimeData{
+	// Year portion of the Charge End Time for PHEVs and BEVs.
+	optional int32 ActChrgEndYr_No2_Actl = 1;
+	// This signal reports the year stamp (calendar year) for the actual end of battery charging in BEV or PHEV.
+	optional int32 ActChrgEndYr_No_Actl = 2;
+	// This signal reports the month stamp (month of the year) for the actual end of battery charging in BEV or PHEV.
+	optional int32 ActChrgEndMnth_No_Actl = 3;
+	// This signal reports the day stamp (day of the month) for the actual end of battery charging in BEV or PHEV.
+	optional int32 ActChrgEndDay_No_Actl = 4;
+	// This signal reports the time stamp (hour of the day) for the actual end of battery charging in BEV or PHEV.
+	optional int32 ActChrgEndHr_No_Actl = 5;
+	// This signal reports the time stamp (minute of the hour) for the actual end of battery charging in BEV or PHEV.
+	optional int32 ActChrgEndMin_No_Actl = 6;
+}
+
+// Message structure for DC Fast charge data
+message DCFastChargeData{
+	// DC Fast Charge Bulk Charge Time Estimate
+	optional int32 FstChrgBulk_T_Est = 1;
+	// DC Fast Charge Complete Time Estimate
+	optional int32 FstChrgCmplt_T_Est = 2;
+}
+
+// Message structure that contains Battery status data
+message BatteryStatusData{
+	// State of Charge of Battery in percentage
+	optional float BattTracSoc_Pc_Dsply = 1;
+}
+
+// Data Usage - Unit of Measure
+enum DataUsageUOMENUM{
+		BYTES = 0;
+		KB = 1;
+		MB = 2;
+		GB = 3;
+}
+
+// Activation Status
+enum ActivationStatusENUM{
+	ACTIVE = 0;
+	INACTIVE = 1;
+}
+
+ // Message structure that contains Trip Charge Threshold status data
+message ChargeToNextPOIData{
+	// This signal reports the day stamp (day of the month) for charge end time to reach the destination
+	optional int32  DestChrgEndDay_No_Actl= 1;
+	// This signal reports the hour stamp (hour of the Day) for charge end time to reach the destination
+	optional int32  DestChrgEndHr_No_Actl= 2;
+	// This signal reports the minute stamp (Minute of the hour) for charge end time to reach the destination
+	optional int32  DestChrgEndMin_No_Actl= 3;
+	// This Signal reports the percentage of charge required to reach the destination
+	optional float  DestSocRqd_Pc_Dsply= 4;
+}
+
+// Enumeration to indicate the type of Sync-P security encoding used
+enum EncodingTypeENUM{
+	NONE = 0;
+	ENCRYPTED = 1;
+	SIGNED = 2;
+	SIGNED_AND_ENCRYPTED = 3;
+}
+
+// Vehicle Life cycle Mode
+message LifeCycleMode{
+	// CAN signal for Life cycle mode of vehicle e.g. Factory Mode, Transport Mode etc. (CGEA)
+	optional int32 LifeCycMde_D_Actl = 1;
+}
+
+// Event source causing vehicle inhibit
+enum InhibitEventSourceENUM{
+	OTA = 0;
+}

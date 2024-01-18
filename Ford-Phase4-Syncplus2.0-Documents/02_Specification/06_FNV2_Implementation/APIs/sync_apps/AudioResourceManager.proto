@@ -1,0 +1,225 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2018.  Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// deliberate unauthorized publication.  Ford Motor Company also
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+
+syntax = "proto3";
+
+package fnv.AudioResourceManager;
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to send the register or remove client message
+ * @fnv_topic "SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE"
+ * @fnv_command "REGISTER_CLIENT"
+ * @fnv_command "REMOVE_CLIENT"
+ * @fnv_scope FNV2
+ * @fnv_api_source INTERNAL
+ * @fnc_message_version 1.0
+ */
+message RegisterRemoveMessage {
+    string client_id = 1;
+    repeated uint32 stream_id = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to send the request or release audio resource 
+ * or release delayed message
+ * @fnv_topic "SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE"
+ * @fnv_command "REQUEST_AUDIO_RESOURCE"
+ * @fnv_command "RELEASE_AUDIO_RESOURCE"
+ * @fnv_command "RELEASE_AUDIO_RESOURCE_DELAYED"
+ * @fnv_scope FNV2
+ * @fnv_api_source INTERNAL
+ * @fnc_message_version 1.0
+ */
+message RequestReleaseMessage {
+    string client_id = 1;
+    uint32 stream_id = 2;
+    uint32 zone = 3;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to send the HMI Mode message
+ * @fnv_topic "SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE"
+ * @fnv_command "HMI_AUDIO_MODE"
+ * @fnv_scope FNV2
+ * @fnv_api_source INTERNAL
+ * @fnc_message_version 1.0
+ */
+message HmiAudioModeMessage {
+    string client_id = 1;
+    uint32 hmi_mode = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to send the Valet Mode message
+ * @fnv_topic "SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE"
+ * @fnv_command "SET_VALET_MODE"
+ * @fnv_scope FNV2
+ * @fnv_api_source INTERNAL
+ * @fnc_message_version 1.0
+ */
+message ValetModeMessage {
+    string client_id = 1;
+    uint32 valet_mode = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request for stream mute/unmute message
+ * @fnv_topic "SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE"
+ * @fnv_command "STREAM_MUTE"
+ * @fnv_command "STREAM_UNMUTE"
+ * @fnv_scope FNV2
+ * @fnv_api_source INTERNAL
+ * @fnc_message_version 1.0
+ */
+message MuteUnmuteMessage {
+    string client_id = 1;
+    uint32 stream_id = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to set the acoustic mode
+ * @fnv_topic "SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE"
+ * @fnv_command "SET_ACOUSTIC_MODE"
+ * @fnv_scope FNV2
+ * @fnv_api_source INTERNAL
+ * @fnc_message_version 1.0
+ */
+message SetAcousticModeMessage {
+    string client_id = 1;
+    uint32 echo_mode = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to send the MIC mute/unmute message
+ * @fnv_topic "SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE"
+ * @fnv_command "MIC_MUTE"
+ * @fnv_scope FNV2
+ * @fnv_api_source INTERNAL
+ * @fnc_message_version 1.0
+ */
+message MicMuteMessage {
+    string client_id = 1;
+    bool mute_state = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request for relase all audio resource or Audio ON/OFF
+ * or Master Mute/Unmute or System shutdown message
+ * @fnv_topic "SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE"
+ * @fnv_command "RELEASE_ALL_AUDIO_RESOURCE"
+ * @fnv_command "AUDIO_ON_OFF"
+ * @fnv_command "MASTER_MUTE_UNMUTE"
+ * @fnv_command "SYSTEM_SHUTDOWN"
+ * @fnv_scope FNV2
+ * @fnv_api_source INTERNAL
+ * @fnc_message_version 1.0
+ */
+message MasterControlMessage {
+    string client_id = 1;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to publish the audio resource status message as well as
+ * the response sent to the clients
+ * @fnv_topic "SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE"
+ * @fnv_command "AUDIO_RESRC_MGR_AUDIO_ON_OFF"
+ * @fnv_scope FNV2
+ * @fnv_api_source INTERNAL
+ * @fnc_message_version 1.0
+ */
+message AudioOnOffMessage {
+	string client_id = 1;
+    uint32 audio_mode = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to publish the audio resource status message as well as
+ * the response sent to the clients
+ * @fnv_topic "SERVICES/DATA/SYNCAPPS/AUDIOSERVICE/AUDIORESOURCESTATUS"
+ * @fnv_command "AUDIO_RESRC_MGR_STATUS"
+ * @fnv_scope FNV2
+ * @fnv_api_source INTERNAL
+ * @fnc_message_version 1.0
+ */
+message AudioStatusMessage {
+    uint32 stream_id = 1;
+    uint32 audio_state = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to send the request or release audio resource 
+ * or release delayed message
+ * @fnv_topic "SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE"
+ * @fnv_command "REGISTER_APP_LINK_ID"
+ * @fnv_command "UNREGISTER_APP_LINK_ID"
+ * @fnv_scope FNV2
+ * @fnv_api_source INTERNAL
+ * @fnc_message_version 1.0
+ */
+message RegisterUnregisterAppLinkIdMessage {
+    string client_id = 1;
+    uint32 stream_id = 2;
+    uint32 app_id = 3;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to publish the register status message as well as
+ * the response sent to the clients
+ * @fnv_topic "SERVICES/DATA/SYNCAPPS/AUDIOSERVICE/AUDIORESOURCESTATUS"
+ * @fnv_command "AUDIO_RESRC_MGR_REGISTER_STATUS"
+ * @fnv_scope FNV2
+ * @fnv_api_source INTERNAL
+ * @fnc_message_version 1.0
+ */
+message RegisterStatusMessage {    
+    repeated uint32 stream_id = 1;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to send the HMI Mode message
+ * @fnv_topic "SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE"
+ * @fnv_command "HMI_AUDIO_MODE_STATUS"
+ * @fnv_scope FNV2
+ * @fnv_api_source INTERNAL
+ * @fnc_message_version 1.0
+ */
+message HmiAudioModeStatusMessage {   
+    uint32 hmi_mode = 1;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to send audio general response message
+ * @fnv_topic "SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE"
+ * @fnv_command "ANY COMMAND-Doesnot matter with CommondId"
+ * @fnv_scope FNV2
+ * @fnv_api_source INTERNAL
+ * @fnc_message_version 1.0
+ */
+message AudioGerenalResponseMessage {
+    uint32 status = 1;
+}

@@ -1,0 +1,54 @@
+
+syntax = "proto2";
+option optimize_for = CODE_SIZE;
+
+import public "SoaIpcConnectionOptions.proto"; 
+import public "SoaMessageWrapper.proto"; 
+
+package fnv.soa.gateway;
+
+/**
+* @fnv_proto
+* Base message structure to communicate back and forth between SOA Gateway and client 
+* @fnv_topic This GPB is used over the IPC interface and does not use SOA messaging
+* @fnv_scope ECG_INTERNAL
+* @fnv_api_source INTERNAL
+* @fnv_message_version 1.0
+*/
+message SoaIpcMessage{
+    // The command to transfer over IPC (e.g. publish)
+    required CommandType command = 1;   
+    // Service endpoint. The endpoint to be used by consumers to deliver service requests.
+    optional string endpoint = 2;
+    // SOA Message
+    optional SoaMessageWrapper soaMessageWrapper = 3;
+    // connection options.
+    optional SoaIpcConnectionOptions connectionOptions = 4;
+    // Client uid.
+    optional string uid = 5;
+    // Client pid
+    optional int32 pid = 6;
+    // ipc correlation Id use as a message Id
+    optional int32 msgId = 7;
+
+    // Commands that can be sent via this protobuf
+    // ### If adding new enums, DO NOT change exiting values under any circumstances
+    // ### Just to be safe with respect to potential different versions of GW and clients
+    enum CommandType {
+        PUBLISH = 0;
+        SUBSCRIBE = 1;
+        UNSUBSCRIBE = 2;
+        // Used to trigger Gateway connect to- or disconnect from Broker
+        CONNECT = 3;
+        DISCONNECT = 4;
+        // Used by the Gateway when Data are received
+        DATA = 5;
+        INVALID = 6;
+        // Used when MQTT connection is lost
+        CONNECTIONLOST = 7;
+        // Used to regsiter to- or deregister from Gateway only 
+        REGISTER_GW = 8;
+        DEREGISTER_GW = 9;
+        CONNECTREQUEST = 10;
+    }
+}

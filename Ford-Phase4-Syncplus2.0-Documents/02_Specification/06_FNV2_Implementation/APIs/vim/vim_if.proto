@@ -1,0 +1,1030 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2019.  Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// deliberate unauthorized publication.  Ford Motor Company also
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+//
+
+// Protobuf configuration
+syntax = "proto2";
+package vimsoainterface;
+
+import public "vim_info.proto";
+
+/**
+ * @fnv_message_proto Protobuf to be used to request information from VIM
+ * @fnv_topic "SERVICES/REQUEST/ECG/VIM/CANPDUSERVICE"
+ * @fnv_topic "SERVICES/REQUEST/ECG/VIM/PRIMITIVESERVICE"
+ * @fnv_topic "SERVICES/REQUEST/ECG/VIM/PRIMITIVEMETADATASERVICE"
+ * @fnv_topic "SERVICES/REQUEST/ECG/VIM/<SERVICE_ID>"
+ * @fnv_topic "SERVICES/REQUEST/ECG/VIM/DYNAMICSERVICE"
+ * @fnv_topic "SERVICES/REQUEST/ECG/VIM/NETWORKIDSERVICE"
+ * @fnv_description The msgType will vary depending on type of request and the oneof message
+ * has to match the message type.
+ * For example, If msgType is GET_PRIMITIVE_DYNAMIC_INFO_MSG, then the oneof message
+ * should have getPrimitiveDynamicReq.
+ * If msgType is SERVICE_REQUEST_MSG, then the oneof message should have getServiceReq
+ * @fnv_command N/A
+ * @fnv_response VimResponseMsg
+ */
+message VimRequestMsg
+{
+    // SOA API version field
+    optional __ApiVersion __api_version = 1;
+
+    // Designates the type of message 
+    optional VimMsgType msgType = 2;
+
+    oneof reqBody {
+        VimGetPrimitiveDynamicDataReq  getPrimitiveDynamicReq = 3;
+        VimGetPrimitiveStaticDataReq getPrimitiveStaticReq = 4;
+        VimSetPrimitiveReq setPrimitiveReq = 5;
+        VimGetServiceReq  getServiceReq = 6;
+        VimCreateStaticCalcReq createStaticCalcReq = 7;
+        VimGetCanPduReq getCanPduReq = 8;
+        VimDynamicServiceReq dynamicServiceReq = 9;
+        VimSetServiceReq setServiceReq = 10;
+        VimPersistPrimitiveReq persistPrimitiveReq = 11;
+        VimGetNetworkIdReq getNetworkIdReq = 12;
+    }
+}
+
+/**
+ * @fnv_message_proto Protobuf to be used by VIM to respond back to clients
+ * @fnv_topic "SERVICES/DATA/ECG/VIM/CANPDU/+/+/ONCHANGE"
+ * @fnv_topic "SERVICES/DATA/ECG/VIM/CANPDU/+/+/ONRECEPTION"
+ * @fnv_topic "SERVICES/DATA/ECG/VIM/CANPDU/+/+/+"
+ * @fnv_topic "SERVICES/DATA/ECG/VIM/+/ONCHANGE"
+ * @fnv_topic "SERVICES/DATA/ECG/VIM/+/ONRECEPTION"
+ * @fnv_topic "SERVICES/DATA/ECG/VIM/+/+"
+ * @fnv_topic "SERVICES/DATA/ECG/VIM/+/ONTRIGGER/CONJUNCTION/+/+"
+ * @fnv_topic "SERVICES/DATA/ECG/VIM/+/ONTRIGGER/CONJUNCTION/+"
+ * @fnv_topic "SERVICES/DATA/ECG/VIM/+/ONTRIGGER/+/+"
+ * @fnv_topic "SERVICES/DATA/ECG/VIM/+/ONTRIGGER/+"
+ * @fnv_description The msgType will vary depending on type of client request and the oneof message
+ * will match the message type.
+ * For example, If msgType is GET_PRIMITIVE_DYNAMIC_INFO_MSG, then the oneof message
+ * should have getPrimitiveDynamicRsp.
+ * If msgType is SERVICE_REQUEST_MSG, then the oneof message should have getServiceRsp
+ * @fnv_command N/A
+ * @fnv_request VimRequestMsg
+ */
+message VimResponseMsg
+{
+    // SOA API version field
+    optional __ApiVersion __api_version = 1;
+
+    // Value corresponds to the type of the original request message 
+    optional VimMsgType msgType = 2;
+
+    oneof respBody {
+        VimGetPrimitiveDynamicDataRsp  getPrimitiveDynamicRsp = 3;
+        VimGetPrimitiveStaticDataRsp getPrimitiveStaticRsp = 4;
+        VimSetPrimitiveRsp setPrimitiveRsp = 5;
+        VimGetServiceRsp  getServiceRsp = 6;
+        VimCreateStaticCalcRsp createStaticCalcRsp = 7;
+        VimGetCanPduRsp getCanPduRsp = 8;
+        VimDynamicServiceRsp dynamicServiceRsp = 9;
+        VimSetServiceRsp setServiceRsp = 10;
+        VimPersistPrimitiveRsp persistPrimitiveRsp = 11;
+        VimGetNetworkIdRsp getNetworkIdRsp = 12;
+    }
+}
+
+/**
+ * @fnv_message_proto Protobuf to be used by clients to request raw CAN PDUs
+ * @fnv_topic "SERVICES/REQUEST/ECG/VIM/CANPDUSERVICE"
+ * @fnv_description nwId The network ID of the CAN PDU
+ * msgId The message ID of the CAN PDU
+ * subscriptionType can be ONE_SHOT, subscribing/cancelling ON_CHANGE, ON_RECEPTION, PERIODIC
+ * period If periodic subscription, then period in milliseconds
+ * @fnv_command N/A
+ * @fnv_response VimGetCanPduRsp
+ */
+message VimGetCanPduReq 
+{
+    // CAN PDU identifier
+    optional uint32 nwId = 1;
+    optional uint32 msgId = 2;
+
+    // Designates the type of subscription requested
+    optional VimSubscriptionType subscriptionType = 3;
+
+    // For periodic subscriptions (ignored otherwise):
+    // Designates update interval in milliseconds
+    optional uint32 period = 4;
+}
+
+/**
+ * @fnv_message_proto Protobuf used by VIM to send raw CAN PDUs to clients
+ * @fnv_topic "SERVICES/DATA/ECG/VIM/CANPDU/<NWID>/<MSGID>/ONCHANGE"
+ * @fnv_topic "SERVICES/DATA/ECG/VIM/CANPDU/<NWID>/<MSGID>/ONRECEPTION"
+ * @fnv_topic "SERVICES/DATA/ECG/VIM/CANPDU/<NWID>/<MSGID>/<PERIOD>"
+ * @fnv_descrption  requestStatus tells whether the request was successful or not
+ * canPduData contains the CAN PDU including nwid, msgid, timestamp, length and data
+ * broadcastEndpoint specifies the endpoint where VIM will publish data in the future
+ * @fnv_command N/A
+ * @fnv_request VimGetCanPduReq
+ */
+message VimGetCanPduRsp 
+{
+    // Return status of function
+    optional VimRequestStatus reqStatus = 1;
+
+    // Current value of the requested CAN PDU (present if reqStatus == SUCCESS and subscription type was not UNSUBSCRIBE)
+    optional VimCanPdu canPduData = 2;
+
+    // Endpoint to which further updates will be published (when not a oneshot subscription)
+    optional string broadcastEndpoint= 3;
+}
+
+/**
+ * @fnv_message_proto Protobuf used by clients to request dynamic information of primitives
+ * @fnv_topic "SERVICES/REQUEST/ECG/VIM/PRIMITIVESERVICE"
+ * @fnv_descrption  signalName is the name of the signal/primitive
+ * @fnv_command N/A
+ * @fnv_response VimGetPrimitiveDynamicDataRsp
+ */
+message VimGetPrimitiveDynamicDataReq  
+{
+    // Primitive to be fetched
+    optional string signalName = 1;
+}
+
+/**
+ * @fnv_message_proto Protobuf used by VIM to send dynamic information of primitives to clients
+ * @fnv_topic N/A
+ * @fnv_description  reqStatus tells whether the request was susccessful or not
+ * primitiveDynamicInfo contains the dynamic information of the primitive
+ * @fnv_command N/A
+ * @fnv_request VimGetPrimitiveDynamicDataReq
+ */
+message VimGetPrimitiveDynamicDataRsp  
+{
+    // Return status of function
+    optional VimRequestStatus reqStatus = 1;
+
+    // Current value of the primitive (present if reqStatus == SUCCESS and subscription type was not UNSUBSCRIBE)
+    optional VimPrimitiveDynamicInfo primitiveDynamicInfo = 2;
+}
+
+/**
+ * @fnv_message_proto Protobuf used by clients to request static information of primitives
+ * @fnv_topic "SERVICES/REQUEST/ECG/VIM/PRIMITIVEMETADATASERVICE"
+ * @fnv_description  signalName is the name of the signal/primitive
+ * @fnv_command N/A
+ * @fnv_response VimGetPrimitiveStaticDataRsp
+ */
+message VimGetPrimitiveStaticDataReq 
+{
+    // Primitive to be fetched
+    optional string signalName = 1;
+}
+
+/**
+ * @fnv_message_proto Protobuf used by VIM to send static information of primitives to clients
+ * @fnv_topic N/A
+ * @fnv_description  reqStatus tells whether the request was susccessful or not
+ * primitiveStaticInfo contains the static information of the primitive
+ * @fnv_command N/A
+ * @fnv_request VimGetPrimitiveStaticDataReq
+ */
+message VimGetPrimitiveStaticDataRsp 
+{
+    // Return status of function
+    optional VimRequestStatus reqStatus = 1;
+
+    // Current value of the primitive (present if reqStatus == SUCCESS and subscription type was not UNSUBSCRIBE)
+    optional VimPrimitiveStaticInfo primitiveStaticInfo = 2;
+}
+
+/**
+ * @fnv_message_proto Not used currently. Placeholder if needed in future
+ * @fnv_topic N/A
+ * @fnv_description N/A
+ * @fnv_command N/A
+ * @fnv_response VimSetPrimitiveRsp
+ */
+message VimSetPrimitiveReq 
+{
+    // Primitive identifier
+    optional string signalName = 1;
+
+    // Desired value of the primitive
+    optional VimPrimitiveDynamicInfo primitiveDynamicInfo = 2;
+}
+
+/**
+ * @fnv_message_proto Not used currently. Placeholder if needed in future
+ * @fnv_topic N/A
+ * @fnv_description N/A
+ * @fnv_command N/A
+ * @fnv_request VimSetPrimitiveReq
+ */
+message VimSetPrimitiveRsp 
+{
+    // Primitive identifier
+    optional string signalName = 1;
+
+    // Return status of function
+    optional VimRequestStatus reqStatus = 2;
+}
+
+/**
+ * @fnv_message_proto Protobuf used by clients to request services
+ * @fnv_topic "SERVICES/REQUEST/ECG/VIM/<SERVICE_ID>"
+ * @fnv_description  service is the name of the service subscribing to
+ * subscriptionType can be ONE_SHOT, subscribing/cancelling ON_CHANGE, ON_RECEPTION, PERIODIC, ON TRIGGER
+ * period is the period in milliseconds for periodic subscriptions
+ * triggerInfo is the list of triggers for the service
+ * clientId is unique identifier for the client for on-trigger subscription
+ * @fnv_command N/A
+ * @fnv_response VimGetServiceRsp
+ */
+message VimGetServiceReq  
+{
+    // Designates the invoked service endpoint
+    optional VimServiceId service = 1;
+
+    // Designates the type of subscription requested
+    optional VimSubscriptionType subscriptionType = 2;
+
+    // For periodic subscriptions (ignored otherwise):
+    // Designates update interval in milliseconds
+    optional uint32 period = 3;
+
+    // For On-trigger subscription, details about trigger
+    // which will cause VIM to broadcast the service
+    repeated TriggerInfo triggerInfo = 4;
+
+    // Unique client id to identify a on-trigger subscription
+    optional string clientId = 5;
+
+    // For On-trigger subscription, details about DID triggers
+    // which will cause VIM to broadcast the service
+    repeated DIDTriggerInfo didTriggerInfo = 6;
+
+    // For On-trigger subscription, details about DTC triggers
+    // which will cause VIM to broadcast the service
+    repeated DTCTriggerInfo dtcTriggerInfo = 7;
+
+    // Time qualifier for conjunction or disjunction
+    optional uint32 timeQualifier = 8;
+
+    // Type of on trigger subscription
+    optional OnTriggerSubscriptionType onTriggerSubscriptionType = 9;
+}
+
+/**
+ * @fnv_message_proto Protobuf used by VIM to publish services
+ * @fnv_topic "SERVICES/DATA/ECG/VIM/<SERVICE_ID>/ONCHANGE"
+ * @fnv_topic "SERVICES/DATA/ECG/VIM/<SERVICE_ID>/ONRECEPTION"
+ * @fnv_topic "SERVICES/DATA/ECG/VIM/<SERVICE_ID>/<PERIOD>"
+ * @fnv_topic "SERVICES/DATA/ECG/VIM/<SERVICE_ID>/ONTRIGGER/CONJUNCTION/<TIME QUALIFIER>/<CLIENT_ID>"
+ * @fnv_topic "SERVICES/DATA/ECG/VIM/<SERVICE_ID>/ONTRIGGER/CONJUNCTION/<CLIENT_ID>"
+ * @fnv_topic "SERVICES/DATA/ECG/VIM/<SERVICE_ID>/ONTRIGGER/<TIME QUALIFIER>/<CLIENT_ID>"
+ * @fnv_topic "SERVICES/DATA/ECG/VIM/<SERVICE_ID>/ONTRIGGER/<CLIENT_ID>"
+ * @fnv_description service is the name of the service requested by client
+ * reqStatus specifies if the request was successful or not
+ * primitiveDynamicInfo dynamic information of all the primitives mapped to the service
+ * broadcastEndpoint specifies the endpoint where VIM will publish data in the future
+ * @fnv_command N/A
+ * @fnv_request VimGetServiceReq
+ */
+message VimGetServiceRsp
+{
+    // Designates the invoked service endpoint
+    optional VimServiceId service = 1;
+
+    // Return status of function
+    optional VimRequestStatus reqStatus = 2;
+
+    // Current value of the primitive  (present if reqStatus == SUCCESS)
+    repeated VimPrimitiveDynamicInfo primitiveDynamicInfo = 3;
+
+    // Endpoint to which further updates will be published (when not a oneshot subscription)
+    optional string broadcastEndpoint= 4;
+
+    // DTCs contained in the service
+    repeated VimDTCData dtcData = 5;
+
+    // DIDs contained in the service
+    repeated VimDIDData didData = 6;
+}
+
+/**
+ * @fnv_message_proto Protobuf used by clients to request VIM to send signals to CAN ECUs
+ * @fnv_topic "SERVICES/REQUEST/ECG/VIM/<SERVICE_ID>"
+ * @fnv_description  service is the name of the service which contains the primitives to be sent
+ * primitiveDynamicInfo contains the primitive values which need to be sent over to CAN ECUs
+ * @fnv_command N/A
+ * @fnv_response VimSetServiceRsp
+ */
+message VimSetServiceReq  
+{
+    // Designates the invoked service endpoint
+    optional VimServiceId service = 1;
+
+    // Values to be written to  primitives
+    repeated VimPrimitiveDynamicInfo primitiveDynamicInfo = 2;
+}
+
+/**
+ * @fnv_message_proto Protobuf used by VIM to send response for service write requests
+ * @fnv_topic N/A
+ * @fnv_description  service is the name of the service which was requested by the clients
+ * reqStatus specifies if the request was successful or not
+ * @fnv_command N/A
+ * @fnv_request VimSetServiceReq
+ */
+message VimSetServiceRsp  
+{
+    // Designates the invoked service endpoint
+    optional VimServiceId service = 1;
+
+    // Return status of function
+    optional VimRequestStatus reqStatus = 2;
+}
+
+/**
+ * @fnv_message_proto Not used currently. Placeholder if needed in future
+ * @fnv_topic N/A
+ * @fnv_descripition N/A
+ * @fnv_command N/A
+ * @fnv_response VimCreateStaticCalcRsp
+ */
+message VimCreateStaticCalcReq 
+{
+    // TBD
+    optional VimServiceId service = 1;
+}
+
+/**
+ * @fnv_message_proto Not used currently. Placeholder if needed in future
+ * @fnv_topic N/A
+ * @fnv_descripition N/A
+ * @fnv_command N/A
+ * @fnv_request VimCreateStaticCalcReq
+ */
+message VimCreateStaticCalcRsp 
+{
+    //TBD
+    optional VimServiceId service = 1;
+}
+
+/**
+ * @fnv_message_proto Message used for dynamic service request at run time
+ * @fnv_topic "SERVICES/REQUEST/ECG/VIM/DYNAMICSERVICE"
+ * @fnv_description  dynamicService is the service to be affected at run time by that request
+ * service any existing service that the new service contains
+ * primitiveId signal name(primitive id) that the new service contains
+ * @fnv_command N/A
+ * @fnv_response VimDynamicServiceRsp
+ */
+message VimDynamicServiceReq 
+{
+    // Consumer data required by the Service Manager
+    message ConsumerData {
+        // the consumer response topic
+        optional string topic = 1;
+        // the consumer ecu id
+        optional string ecu_id = 2;
+        // the consumer uid
+        optional string uid = 3;
+    }
+
+    // ServiceId of service to be registered
+    optional VimServiceId dynamicService = 1;
+
+    // Services included in the user defined service
+    repeated VimServiceId service = 3;
+
+    // Primitives included in the user defined service
+    repeated string primitiveId = 2;
+
+    // DTCs in the user defined service
+    repeated VimDTCData dtcData = 4;
+
+    // DIDs in the user defined service
+    repeated VimDIDData didData = 5;
+
+    // Deprecated
+    repeated string consumerTopics = 6;
+
+    // Consumer's information to register with service manager
+    repeated ConsumerData consumerData = 7;
+}
+
+/**
+ * @fnv_message_proto Response to request to register a service at run time
+ * @fnv_topic N/A
+ * @fnv_description reqStatus specifies if the request was successful or not
+ * @fnv_command N/A
+ * @fnv_request VimDynamicServiceReq
+ */
+message VimDynamicServiceRsp 
+{
+    // Enum with failure reason
+    enum FailureReason {
+        SERVICE_NAME_NOT_AVAILABLE = 0;
+        SERVICE_ALREADY_REGISTERED = 1;
+        SERVICE_MANAGER_REGISTRATION_FAILURE = 2;
+        INVALID_SERVICE_DEFINITION = 3;
+        ERROR_UNKNOWN = 4;
+        SERVICE_BLACKLISTED = 5;
+        PERMISSIONS_DENIED = 6;
+    }
+
+    // Return status of function
+    optional VimRequestStatus reqStatus = 2;
+
+    // Failure reason
+    optional FailureReason failureReason = 3;
+}
+
+/**
+ * @fnv_message_proto Request to persist the dynamic part of primitive. Not used currently. Placeholder if needed in future
+ * @fnv_topic N/A
+ * @fnv_description N/A
+ * @fnv_command N/A
+ * @fnv_response VimPersistPrimitiveRsp
+ */
+message VimPersistPrimitiveReq  
+{
+    // Primitive to be persisted
+    optional string signalName = 11;
+}
+
+/**
+ * @fnv_message_proto Resonse for the request to persist the dynamic part of primitive. Not used currently. Placeholder if needed in future
+ * @fnv_topic N/A
+ * @fnv_description N/A
+ * @fnv_command N/A
+ * @fnv_request VimPersistPrimitiveReq
+ */
+message VimPersistPrimitiveRsp  
+{
+    // Return status of function
+    optional VimRequestStatus reqStatus = 1;
+}
+
+// enum for the request/response message type
+enum VimMsgType
+{
+    // Requests for dynamic portion of primitive
+    GET_PRIMITIVE_DYNAMIC_INFO_MSG = 0;
+    SET_PRIMITIVE_MSG = 1;
+
+    // Request for action based on service
+    SERVICE_REQUEST_MSG = 2;
+    SET_SERVICE_REQUEST_MSG = 3;
+
+    // Request to create static calculation
+    STATIC_CALCULATION_MSG = 4;
+
+    // Requests for raw CAN PDU
+    GET_CAN_PDU_MSG = 5;
+
+    // Request to register a user defined service
+    REGISTER_DYNAMIC_SERVICE_MSG = 6;
+
+    // Requests for primitive metadata
+    GET_PRIMITIVE_STATIC_INFO_MSG = 7;
+
+    // Network Id requests
+    GET_NETWORK_ID_MSG = 8;
+
+    // Request to redefine an existing user defined service
+    REDEFINE_DYNAMIC_SERVICE_MSG = 9;
+
+    VIM_MSG_TYPE_MAX = 0xFF;
+}
+
+// enum for request status error codes
+enum VimReqStatusCode
+{
+    // VIM processed the request successfully
+    SUCCESS = 0;
+    // VIM failed to process the request
+    FAIL = 1;
+    // VIM is processing the request
+    PENDING = 2;
+}
+
+// enum for Service/CAN subscription types
+enum VimSubscriptionType
+{
+    // Request a one shot read
+    SUBSCRIPTION_ONE_SHOT = 0;
+    // Request a periodic subscription
+    SUBSCRIPTION_PERIODIC = 1;
+    // Request an on change subscription
+    SUBSCRIPTION_ON_CHANGE = 2;
+    // Request an on reception subscription
+    SUBSCRIPTION_ON_RECEPTION = 3;
+    // Request an on trigger subscription
+    SUBSCRIPTION_ON_TRIGGER = 4;
+    // Cancel a periodic subscription
+    PERIODIC_SUBSCRIPTION_CANCEL = 5;
+    // Cancel an on change subscription
+    ON_CHANGE_SUBSCRIPTION_CANCEL = 6;
+    // Cancel an on trigger subscription
+    ON_TRIGGER_SUBSCRIPTION_CANCEL = 7;
+    // Cancel an on reception subscription
+    ON_RECEPTION_SUBSCRIPTION_CANCEL = 8;
+}
+
+// enum for quality factor
+enum QualityFactor {
+    // Signal is expected to have a QF signal and it is missing
+    UNKNOWN = 0;
+    // Signal has no quality factor
+    NOT_PRESENT = 1;
+    // Faulty quality factor
+    FAULTY = 2;
+    // No quality factor data available
+    NO_DATA_EXISTS = 3;
+    // Degraded quality factor
+    DEGRADED = 4;
+    // Quality factor ok
+    OK = 5;
+}
+
+/**
+ * @fnv_message_proto The protobuf to be used for primitive dynamic information
+ * @fnv_topic N/A
+ * @fnv_description Contains signal name, timestamp, value, signal counter and quality factor
+ * @fnv_command N/A
+ */
+message VimPrimitiveDynamicInfo
+{
+    // Primitive identifier
+    optional string signalName = 1;
+    // Identifies when the CAN/CAN-FD message frame was received by the vehicle’s gateway module
+    optional uint32 timeStamp = 2;
+    // The engineering/physical value of the received CAN/CAN-FD signal.
+    optional VimPrimitiveValue value = 3;
+    // Used for identifying whether the transmitting module has updated the value since last tx.
+    optional uint32 signalCounter = 4;
+    // Quality factor provides information about the integrity of a CAN/CAN-FD signal’s data
+    optional QualityFactor qualityFactor = 5;
+}
+
+/**
+ * @fnv_message_proto The protobuf used to send request to VIM to get network id information
+ * @fnv_topic "SERVICES/REQUEST/ECG/VIM/NETWORKIDSERVICE"
+ * @fnv_description Network Id can be requested for only one of the next inputs :
+ *          1. a single primitive / list of primitives 2. a service, or 3. an ECU name
+ * @fnv_command N/A
+ * @fnv_response VimGetNetworkIdRsp
+ */
+message VimGetNetworkIdReq
+{
+    // Single/Multiple Primitive names
+    repeated string signalName = 1;
+
+    // Service identifier
+    optional VimServiceId serviceId = 2;
+    
+    // ECU name
+    optional string ecuName = 3;
+}
+
+/**
+ * @fnv_message_proto The protobuf used to send response to clients with network id information
+ * @fnv_topic N/A
+ * @fnv_description Response contains or primitiveToNetworkIdInfo with 
+ * a list of primitives with their respective network id/s or single network id for input ECU
+ *
+ * @fnv_command N/A
+ * @fnv_request VimGetNetworkIdReq
+ */
+message VimGetNetworkIdRsp
+{
+    // Status of the original request
+    optional VimRequestStatus reqStatus = 1;
+
+    // Response containing primitive to network id mapping
+    repeated VimPrimitiveToNetworkIdInfo primitiveToNetworkIdInfo = 2;
+    
+    // Response can contain a single network id
+    optional uint32 networkId = 3; 
+}
+
+// enum for CAN PDU transmit models
+enum TransmitModel
+{
+    // Transmit model is not defined
+    NOT_DEFINED = 0;
+    // Transmit model is periodic
+    FIXED_PERIODIC = 1;
+    // Transmit model is event periodic
+    EVENT_PERIODIC = 2;
+    // Transmit on change
+    EVENT_ON_CHANGE = 3;
+    // Transmit model is enabled periodic
+    ENABLED_PERIODIC = 4;
+    // Transmit only once
+    ONCE = 5;
+    // Transmit on reception
+    ON_RECEPTION = 6;
+}
+
+// enum for signal units
+enum SignalUnits
+{
+    NOT_AVAILABLE = 0;
+    UNITLESS = 1;
+    KW_TIMES_HRS = 2; // KW*HRS
+    LITERS = 3;
+    DEGREESC = 4;
+    CNT = 5;
+    PARTS_PER_MILLION = 6; // PARTS/MILLION
+    ONE_M = 7; // 1/M
+    MRAD = 8;
+    VOLT_PER_SEC = 9; // VOLT/SEC
+    DECIBEL = 10;
+    V = 11;
+    LITRE_PER_100KM = 12; // LITRE/100KM
+    DEG_PER_S = 13; // DEG/S
+    RADIANS_PER_SEC = 14; // RADIANS/SEC
+    VOLTS_PER_SECOND = 15; // VOLTS/SECOND
+    LITRE = 16;
+    KILOMETER_PER_HOUR = 17; // KILOMETER/HOUR
+    FEET = 18;
+    MICRO_LITRE = 19; // MICRO_LITRE
+    MILIBAR = 20;
+    KILOGRAM = 21;
+    AMPERE = 22;
+    METERS = 23;
+    MBAR = 24;
+    DEGC = 25;
+    OHM = 26;
+    PERCENT_PER_MS = 27; // %/MS
+    RPM_PER_MS = 28; // RPM/MS
+    KILOPASCAL = 29;
+    DEGREES_PER_SECOND = 30; // DEGREES/SECOND
+    DAYS = 31;
+    DEGREES_PER_SEC = 32; // DEGREES/SEC
+    SECOND_POWER_OF_0_DOT_5 = 33; // SECOND^0.5
+    KILOMETER = 34;
+    KM = 35;
+    SECONDS = 36;
+    MONTH = 37;
+    MICRO_LITER = 38;
+    HOUR = 39;
+    UNDEFINED = 40;
+    RATIO = 41;
+    YEAR = 42;
+    MM = 43;
+    COUNTS = 44;
+    ASCII = 45;
+    MINUTE = 46;
+    WATTS = 47;
+    MIXED = 48;
+    SED = 49;
+    SECOND = 50;
+    C = 51;
+    CHARGE_LOCATION_ID = 52;
+    RPM = 53;
+    MS = 54;
+    MICROLITRE = 55;
+    MILLIMETER = 56;
+    DEG_C = 57; // DEG C
+    PERCENT_SYMBOL = 58; // %
+    NM = 59;
+    BAR = 60;
+    POUNDS_PER_INCH_POWER_OF_2 = 61; // POUNDS/INCH^2
+    METER = 62;
+    MINUTES = 63;
+    DEGREES = 64;
+    MILLISECOND = 65;
+    AMPERE_TIMES_HOUR = 66; // AMPERE*HOUR
+    DISCRETE = 67;
+    STEPS = 68;
+    LITER_PER_SECOND = 69; // LITER/SECOND
+    HOURS = 70;
+    WATT_TIMES_HOUR = 71; // WATT*HOUR
+    KPH = 72;
+    MPH = 73;
+    DEGREES_C = 74; // DEGREES C
+    ID = 75;
+    RAD_PER_S = 76; //RAD/S
+    DAY = 77;
+    VOLT = 78;
+    PERCENT_DUTY_CYCLE = 79; // PERCENT DUTY CYCLE
+    AMPS = 80;
+    METERS_SEC = 81; // METERS/SEC
+    RADIANS_SECOND = 82; // RADIANS/SECOND
+    MILLIBAR = 83;
+    RADIANS = 84;
+    JULIAN_DAY = 85; // JULIAN DAY
+    NUMBER = 86;
+    ENCRYPTED = 87;
+    PERCENT = 88;
+    ONE_PER_METER = 89; // 1/METER
+    VOLTS = 90;
+    DEG = 91;
+    KM_PER_H = 92; // KM/H
+    M_PER_SEC_POWER_OF_2 = 93; // M/SEC^2
+    M_PER_S_POWER_OF_2 = 94; //  M/S^2
+    WATTHR_PER_KM = 95; // WATTHR/KM
+    WATT_TIMES_HR_PER_KM = 96; // WATT*HR/KM
+    L_PER_100KM = 97; // L/100KM
+    SECONDS_POWER_OF_0_DOT_5 = 98; // SECONDS^0.5
+    WATT_TIMES_HR = 99; // WATT*HR
+}
+
+/**
+ * @fnv_message_proto Protobuf used for the primitive static information (meta-data)
+ * @fnv_topic N/A
+ * @fnv_description  It contains signal name, 64-bit primitiveId, 64-bit counter primitive id
+ * 64-bit quality factor primitive id, minimum value, maximum value, default value
+ * update rate, version, factor, key Id, signal units and transmit model
+ * @fnv_command N/A
+ */
+message VimPrimitiveStaticInfo
+{
+    // Name of the signal
+    optional string                  signalName = 1;
+    // primitive id
+    optional uint64                  primitiveId = 2;
+    // primitive id of counter signal
+    optional uint64                  counterPrimitiveId = 3;
+    // primitive id of quality factor
+    optional uint64                  qualityFactorPrimitiveId = 4;
+    // The minimum value field identifies the minimum value the
+    // CAN/CAN-FD signal may have as defined within the GSDB.
+    optional VimPrimitiveValue       minimumValue = 5;
+    // The maximum value field identifies the maximum value the
+    // CAN/CAN-FD signal may have as defined within the GSDB.
+    optional VimPrimitiveValue       maximumValue = 6;
+    // The default value field identifies the initial or default value of a
+    // CAN/CAN-FD signal as defined within the GSDB.
+    optional VimPrimitiveValue       defaultValue = 8;
+    // The update rate field provides the nominal transmission or frame
+    // rate of the CAN/CAN-FD message that contains the signal.
+    optional uint32                  updateRate = 9;
+    // The version field identifies the released version of the information model
+    // and applies to the mapping of CAN/CAN-FD data and its properties to the information model.
+    optional uint32                  version = 10;
+    // The factor field identifies the value applied to convert the
+    // engineering/physical value to the raw CAN/CAN-FD binary value as defined within the GSDB.
+    optional float                   factor = 11;
+    // The Signal Key / ID Field provides the CAN/CAN-FD signal ID as defined within the GSDB ID field.
+    optional uint32                  keyId = 12;
+    // The signal unit field provides the units for the
+    // CAN/CAN-FD signal as defined within the GSDB.
+    optional SignalUnits             signalUnit = 13;
+    // The transmit model field identifies the model used for CAN/CAN-FD message which contained the
+    // signal as defined within a programs CAN/CAN-FD message database and may vary between programs.
+    optional TransmitModel           transmitModel = 14;
+}
+
+/**
+ * @fnv_message_proto Protobuf used to provide the raw CAN PDUs to VIM clients
+ * @fnv_topic N/A
+ * @fnv_description It contains network id, message id, timestamp, data length and data
+ * @fnv_command N/A
+ */
+message VimCanPdu
+{
+    optional uint32 networkId = 1;
+    optional uint32 messageId = 2;
+    optional uint32 timeStamp = 3;
+    optional uint32 dataLength = 4;
+    optional bytes data = 5;
+}
+
+/**
+ * @fnv_message_proto Protobuf to specify the service id/name
+ * @fnv_topic N/A
+ * @fnv_description Service id for the request
+ * @fnv_command N/A
+ */
+message VimServiceId 
+{
+    optional string serviceId = 1;
+}
+
+/**
+ * @fnv_message_proto Protobuf to specify the status of client requests
+ * @fnv_topic N/A
+ * @fnv_description It contains status code and optional string error message
+ * @fnv_command N/A
+ */
+message VimRequestStatus 
+{
+    //The status code is always present.
+    optional VimReqStatusCode reqStatus = 1;
+
+    //A human readable error string may be present
+    optional string errMsg = 2;
+}
+
+// enum for the primitive value type
+enum VimPrimitiveValueType 
+{
+    VALUE_UINT32 = 1;
+    VALUE_STRING = 2;
+    VALUE_BYTES = 3;
+    VALUE_BOOL = 4;
+    VALUE_UINT_64 = 5;
+/////////////////////////////////////////////////////////
+// VALUE_DOUBLE = 6; Removed, never to be used in VIM. //
+/////////////////////////////////////////////////////////
+    VALUE_FLOAT = 7;
+    VALUE_INT64 = 8;
+    VALUE_INT32 = 9;
+    VALUE_SINT32 = 10;
+    VALUE_SINT64 = 11;
+}
+
+/**
+ * @fnv_message_proto Protobuf to specify the primitive value and value type
+ * @fnv_topic N/A
+ * @fnv_description Type and value of the primitive
+ * @fnv_command N/A
+ */
+message VimPrimitiveValue 
+{
+    optional VimPrimitiveValueType valueType = 1;
+    oneof value 
+    {
+        uint32 uint32Value = 2;
+        bytes bytesValue = 3;
+        string stringValue = 4;
+        bool boolValue = 5;
+        uint64 uint64Value = 6;
+    ///////////////////////////////////////////////////////////////
+    // double doubleValue = 7; Removed, never to be used in VIM. //
+    ///////////////////////////////////////////////////////////////
+        float floatValue = 8;
+        int64 int64Value = 9;
+        int32 int32Value = 10;
+        sint32 sint32Value = 11;
+        sint64 sint64Value = 12;
+    }
+}
+
+// enum for type of service request. Not used currently. placeholder if needed in future
+enum VimServiceReqType
+{
+    //  Create a new user-defined service
+    REQ_TYPE_CREATE = 0;
+    // Delete a previously defined service
+    REQ_TYPE_DELETE = 1;
+}
+
+// enum for trigger types for on trigger subscription
+enum TriggerType
+{
+    // Current value is greater than set value
+    GREATER_THAN = 0;
+    // Current value is less than set value
+    LESS_THAN = 1;
+    // Current value is greater than or equal to the set value
+    GREATER_THAN_EQUAL = 2;
+    // Current value is less than or equal to the set value
+    LESS_THAN_EQUAL = 3;
+    // Current value is equal to the set value
+    EQUALS = 4;
+    // Current value is not equal to the set value
+    NOT_EQUAL = 5;
+    // Current value starts or stops being equal to set value
+    START_OR_STOP_EQUAL_TO_SET_VALUE = 6;
+    // Current value is not equal to the previous value
+    CHANGE = 7;
+    // New value received, but not necessarily different from the previous value
+    RECEPTION = 8;
+    // Current value greater than or equal to setpoint, 
+    // but then switches to a less than trigger 
+    // (including hysteresis) once the setpoint is crossed. 
+    // The trigger switches every time the setpoint is crossed.
+    SETPOINT_GREATER_EQUAL = 9;
+    // Current value less than or equal to setpoint, 
+    // but then switches to a greater than trigger 
+    // (including hysteresis) once the setpoint is crossed.
+    // The trigger switches every time the setpoint is crossed.
+    SETPOINT_LESS_EQUAL = 10;
+    // Value is within specified limits
+    RANGE = 11;
+    // Value is outside specified limits
+    N_RANGE = 12;
+    // Maximum value during ignition cycle
+    MAX_VALUE = 13;
+    // Minimum value during ignition cycle
+    MIN_VALUE = 14;
+}
+
+/**
+ * @fnv_message_proto Protobuf for clients to specify different triggers for a service
+ * @fnv_topic N/A
+ * @fnv_description trigger information for a primitive
+ * @fnv_command N/A
+ */
+message TriggerInfo
+{
+    // Primitive identifier
+    optional string signalName = 1;
+    // Trigger type for the primitive
+    optional TriggerType  triggerType = 2;
+    // Trigger value or values
+    repeated VimPrimitiveValue value = 3;
+}
+
+/**
+ * @fnv_message_proto Protobuf used by VIM to send DTC data from other ECUs
+ * @fnv_description Not used currently
+ * @fnv_topic N/A
+ * @fnv_command N/A
+ */
+message VimDTCData
+{
+    // Target ECU Id
+    optional uint32 ecuId = 1;
+    // DTC Id
+    optional uint32 dtcId = 2;
+    // DTC data
+    optional bytes dtcData = 3;
+}
+
+/**
+ * @fnv_message_proto Protobuf used by VIM to send DID data from other ECUs
+ * @fnv_description Not used currently
+ * @fnv_topic N/A
+ * @fnv_command N/A
+ */
+message VimDIDData
+{
+    // Target ECU Id
+    optional uint32 ecuId = 1;
+    // DID Id
+    optional uint32 didId = 2;
+    // DID data
+    optional bytes didData = 3;
+}
+
+/**
+ * @fnv_message_proto Protobuf for clients to specify different DID triggers for a service
+ * @fnv_description Not used currently
+ * @fnv_topic N/A
+ * @fnv_command N/A
+ */
+message DIDTriggerInfo
+{
+    // Primitive identifier
+    optional VimDIDData didData = 1;
+    // Trigger type for the primitive
+    optional TriggerType triggerType = 2;
+}
+
+/**
+ * @fnv_message_proto Protobuf for clients to specify different DTC triggers for a service
+ * @fnv_description Not used currently
+ * @fnv_topic N/A
+ * @fnv_command N/A
+ */
+message DTCTriggerInfo
+{
+    // Primitive identifier
+    optional VimDTCData dtcData = 1;
+    // Trigger type for the primitive
+    optional TriggerType triggerType = 2;
+    // Trigger value 1
+    optional uint32 value1 = 3;
+    // Optional trigger value 2
+    optional uint32 value2 = 4;
+}
+
+// enum for on trigger subscription types
+enum OnTriggerSubscriptionType
+{
+    // Conjunction with or without time qualifier
+    TRIGGER_TYPE_CONJUNCTION = 0;
+    // Disjunction with or without time qualifier
+    TRIGGER_TYPE_DISJUNCTION = 1;
+}
+
+/**
+ * @fnv_message_proto Protobuf for VIM to give the primitive to network id mapping information
+ * @fnv_topic N/A
+ * @fnv_description Get a list of network ids for a particular signal/primitive
+ * @fnv_command N/A
+ */
+message VimPrimitiveToNetworkIdInfo
+{
+    // Primitive Name
+    optional string primitiveName = 1;
+    // Netowork Id as per IPC S23c specification
+    repeated uint32 networkId = 2;
+}
+

@@ -1,0 +1,46 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2017.  Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// deliberate unauthorized publication.  Ford Motor Company also
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+//
+
+syntax = "proto2";
+option optimize_for = CODE_SIZE;
+
+import public "sm_transaction_status_public.proto";
+import public "Endpoint.proto";
+
+package fnv.soa.framework.protobuf;
+
+message SoaStartServiceResultProto {
+	enum ActionStatus {
+		OK = 0;
+		ERROR_SERVICE_NOT_AVAILABLE = 1;
+		ERROR_GENERAL_ERROR = 2;
+		ERROR_ALM_ERROR = 3;
+		ERROR_SERVICES_DB_ERROR = 4;
+		ERROR_SERVICE_TYPE_ERROR = 5;
+	}
+	optional Endpoint endpoint = 1;
+	optional ActionStatus status = 2 [default = OK];
+}
+
+// Response message payload
+// Interfaces: "startService".
+/**
+* @fnv_proto
+* @fnv_message_proto
+*/
+message SoaStartServiceResponsePayloadProto {
+    optional fnv.soa.framework.protobuf.SmTransactionStatus.Status transactionStatus = 1 [default = OK];
+    repeated SoaStartServiceResultProto metadata = 2;
+}

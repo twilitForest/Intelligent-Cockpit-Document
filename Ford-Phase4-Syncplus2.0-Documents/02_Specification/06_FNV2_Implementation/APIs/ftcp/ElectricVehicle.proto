@@ -1,0 +1,553 @@
+syntax = "proto2";
+//	Ford Telematics Communication Protocol
+//  Feature/Enabler/Common: Electric Vehicle Application
+//	Version Number: 6.0.9
+//	Date Revised: 09/03/2019
+// 	Last Updated By: Mageshwaran Mohan [MMOHAN17]
+// 	Reviewed By: Murali Chitturi[MCHITTUR], Rumeli Das[RDAS9], Thoppae, Vijai [VTHOPPAE], Jahnavi Athaluri[JATHALU1]
+// 	Ford Confidential
+//
+//************************************************************************************************************************************************************************
+// CHANGE LOG on 06/25/2019 for version 6.0.8
+// TripPlanner - New Feature
+	// Added data bundle ChargeToNextPOIData to XEVEnergyConsumptionDataAlert
+// EV Feature - CR# 1027 & ECG JIRA 31293
+	// Deprecated Data Bundle in XEVEnergyConsumptionDataAlert
+		// ChargeCompleteTimeData
+// EV Feature - CR# 971
+	// Deprecated Data Bundle in XEVMotiveModeEndAlert & XEVMotiveModeEndAlert
+		// BatteryConsumptionData
+	// Added new Data Bundle to XEVMotiveModeEndAlert & XEVMotiveModeEndAlert
+		// BatteryConsumptionData_V2
+// EV Feature - CR# 935
+	// Added data bundle AverageRangePerFullChargeData to alerts
+		// XEVBatteryChargeStateChangeAlert
+		// XEVTripReadySOCReachedAlert
+		// TripReadySOCSyncAlert
+		// XEVMotiveModeBeginAlert
+		// XEVMotiveModeEndAlert
+		// XEVPlugStatusChangeAlert
+//************************************************************************************************************************************************************************
+// CHANGE LOG on 06/25/2019 for version 6.0.7
+// EV Feature - CR#721 & ECG JIRA 22738
+	// Added enumeration ProfileUpdateEventSourceENUM to ChargeProfileSyncAlert
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 03/29/2019 for version 6.0.6
+	// CR #691;ECG-JIRA#23912
+		// Updated Alert
+			// XEVEnergyConsumptionDataAlert
+	// CR #762;ECG-JIRA#20050
+		// Added alert
+			// XEVReducedSOCAlert
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 01/25/2019 for version 6.0.5
+	// Moved XEVErrorDetails to FeatureCommon.proto
+	// Updated XEVErrorDetails reference to featureCommon in messages
+		// GoTimesONAlert
+		// GoTimesOFFAlert
+		// GoTimesSyncAlert
+		// ChargeProfileSyncAlert
+		// GetChargeProgrammingSyncAlert
+		// TripReadySOCSyncAlert
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 10/22/2018 for version 6.0.4
+// CR #691
+	// Added Alerts
+		// XEVMotiveModeBeginAlert
+		// XEVMotiveModeEndAlert
+		// XEVEnergyConsumptionDataAlert
+	// Added Enumeration "TripReadySOCTypeENUM"
+		// SetupTripReadySOCCommand
+		// XEVTripReadySOCReachedAlert
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 09/07/2018 for version 6.0.3
+	// Updated Command
+		// Datatype changed for tripSOCInDistance to float from int32 in SetupTripReadySOCCommand
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 09/07/2018 for version 6.0.2
+	// Packaging of proto files have been introduced and referenced
+	// Added syntax = "proto2" to the header
+	// Removed GearInParkAlert
+	// Removed GearOutofParkAlert
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 06/20/2018 for version 6.0.1
+	// Reordered tags in all the message structures and Alerts
+	// Cleaned up commented messages
+//************************************************************************************************************************************************************************
+// Changes/Version based on B4 FTCP version and FNV2 FTCP Proposal
+// Covers EV, HEV Data Monitoring and XEV Data Monitoring Requirements
+//************************************************************************************************************************************************************************
+package com.ford.ftcp.apps;
+import "FeatureCommon.proto";
+import "ErrorAndStatus.proto";
+
+// EV Commands - BEGIN
+
+//EV commands - BEGIN
+//Cloud shall set this when global go time/pre conditioning switched on
+message TurnONGoTimesCommand{
+}
+
+//Cloud shall set this when global go time/pre conditioning switched off
+message TurnOFFGoTimesCommand{
+}
+
+
+//Cloud shall set this when user creates go time information from app
+message AddGoTimesCommand{
+	//Message structure to sync Go time with Cloud and ECU(ECG/TCU). Cloud shall always set this.
+	repeated com.ford.ftcp.appcommon.GoTimesScheduleCloudData goTimeScheduleData =1;
+}
+
+//Cloud shall set this when user updates go time information from app
+message UpdateGoTimesCommand{
+	//Message structure to sync Go time with Cloud and ECU(ECG/TCU). Cloud shall always set this.
+	repeated com.ford.ftcp.appcommon.GoTimesScheduleCloudData goTimeScheduleData =1;
+}
+
+//Cloud shall set this when user deletes go time information from app
+message DeleteGoTimesCommand{
+	//Message structure to sync Go time with Cloud and ECU(ECG/TCU). Cloud shall always set this.
+	repeated com.ford.ftcp.appcommon.GoTimesScheduleCloudData goTimeScheduleData =1;
+}
+
+//Cloud shall set this when user deletes all go time information from app
+message DeleteAllGoTimesCommand{
+}
+
+//cloud shall set this to save one or more unsaved charge profile(s)
+message AddChargeProfilesCommand{
+	//Message structure to sync charge profiles with Cloud and ECU(ECG/TCU). Cloud shall always set this.
+	repeated com.ford.ftcp.appcommon.ChargeProfileCloudData chargeProfileData = 1;
+}
+
+//cloud shall set this to update one or more charge profile(s)
+message UpdateChargeProfilesCommand{
+	//Message structure to sync charge profiles with Cloud and ECU(ECG/TCU). Cloud shall always set this.
+	repeated com.ford.ftcp.appcommon.ChargeProfileCloudData chargeProfileData = 1;
+}
+
+//cloud shall set this to delete one or more charge profile(s)
+message DeleteChargeProfilesCommand{
+	//Message structure to sync charge profiles with Cloud and ECU(ECG/TCU). Cloud shall always set this.
+	repeated com.ford.ftcp.appcommon.ChargeProfileCloudData chargeProfileData = 1;
+}
+
+//cloud shall set this for SetupTripReadySOCCommand
+message SetupTripReadySOCCommand{
+	//charge to range - cloud shall set this
+	optional float tripSOCInDistance = 1;
+	//charge to % - cloud shall set this
+	optional int32 tripSOCInPercent = 2;
+
+	optional TripReadySOCTypeENUM tripReadySOCType = 3;
+
+	enum TripReadySOCTypeENUM{
+		CHARGE_TO_DISTANCE = 0;
+		CHARGE_TO_PERCENTAGE = 1;
+	}
+}
+
+
+//Cloud shall send this command to get user charge settings data
+message GetChargeProgrammingCommand{
+}
+
+//EV related Command responses
+
+// Message structure for TurnONGoTimesCommandResponse
+message TurnONGoTimesCommandResponse{
+	// Enumeration for CommandStatus. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 2;
+	// Message structure for error details. ECU(ECG/TCU) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+
+}
+
+// Message structure for TurnOFFGoTimesCommandResponse
+message TurnOFFGoTimesCommandResponse{
+	// Enumeration for CommandStatus. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 2;
+	// Message structure for error details. ECU(ECG/TCU) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+
+}
+
+// Message structure for AddGoTimesCommandResponse
+message AddGoTimesCommandResponse{
+	// Enumeration for CommandStatus. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 2;
+	// Message structure for error details. ECU(ECG/TCU) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+}
+
+// Message structure for UpdateGoTimesCommandResponse
+message UpdateGoTimesCommandResponse{
+	// Enumeration for CommandStatus. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 2;
+	// Message structure for error details. ECU(ECG/TCU) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+}
+
+// Message structure for DeleteGoTimesCommandResponse
+message DeleteGoTimesCommandResponse{
+	// Enumeration for CommandStatus. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 2;
+	// Message structure for error details. ECU(ECG/TCU) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+}
+
+// Message structure for DeleteAllGoTimesCommandResponse
+message DeleteAllGoTimesCommandResponse{
+	// Enumeration for CommandStatus. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 2;
+	// Message structure for error details. ECU(ECG/TCU) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+}
+
+
+// Message structure for AddChargeProfilesCommandResponse
+message AddChargeProfilesCommandResponse{
+	// Enumeration for CommandStatus. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 2;
+	// Message structure for error details. ECU(ECG/TCU) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+}
+// Message structure for UpdateChargeProfilesCommandResponse
+message UpdateChargeProfilesCommandResponse{
+	// Enumeration for CommandStatus. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 2;
+	// Message structure for error details. ECU(ECG/TCU) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+}
+// Message structure for DeleteChargeProfilesCommandResponse
+message DeleteChargeProfilesCommandResponse{
+	// Enumeration for CommandStatus. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 2;
+	// Message structure for error details. ECU(ECG/TCU) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+}
+
+// Message structure for SetupTripReadySOCCommandResponse
+message SetupTripReadySOCCommandResponse{
+	// Enumeration for CommandStatus. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 2;
+	// Message structure for error details. ECU(ECG/TCU) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+}
+
+//Message structure for GetChargeProgrammingCommandResponse
+message GetChargeProgrammingCommandResponse{
+	// Enumeration for CommandStatus. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 2;
+	// Message structure for error details. ECU(ECG/TCU) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+}
+
+//EV related Command response
+
+//Alert indicates when the battery is vehicle is conditioned
+message XEVDriveConditioningCompleteAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Charge programming data
+	optional com.ford.ftcp.appcommon.ChargeProgrammingData chargeProgrammingData = 2;
+}
+// Message structure for XEVScheduledChargeNotOccuringAlert. ECU(ECG/TCU) shall set this.
+message XEVScheduledChargeNotOccuringAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Charge programming data
+	optional com.ford.ftcp.appcommon.ChargeProgrammingData chargeProgrammingData = 2;
+
+}
+// Message structure for XEVClearBatteryPerformanceAlert. ECU(ECG/TCU) shall set this.
+message XEVClearBatteryPerformanceAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Charge programming data
+	optional com.ford.ftcp.appcommon.ChargeProgrammingData chargeProgrammingData = 2;
+}
+
+// Message structure for XEVPlugStatusChangeAlert. ECU(ECG/TCU) shall set this.
+message XEVPlugStatusChangeAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Charge programming data
+	optional com.ford.ftcp.appcommon.ChargeProgrammingData chargeProgrammingData = 2;
+	// Trip/long term averaged electric range per full charge estimate (km), depending on HPCM calibration.
+	optional com.ford.ftcp.appcommon.AverageRangePerFullChargeData averageRangePerFullChargeData = 3;
+
+}
+// Message structure XEVBatteryChargeSystemFaultAlert. ECU(ECG/TCU) shall set this.
+message XEVBatteryChargeSystemFaultAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Charge settings data
+	optional com.ford.ftcp.appcommon.ChargeProgrammingData chargeProgrammingData = 2;
+}
+
+// Message structure for XEVTripReadySOCReachedAlert. ECU(ECG/TCU) shall set this.
+message XEVTripReadySOCReachedAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Charge programming data
+	optional com.ford.ftcp.appcommon.ChargeProgrammingData chargeProgrammingData = 2;
+
+	optional TripReadySOCTypeENUM tripReadySOCType = 3;
+
+	// Trip/long term averaged electric range per full charge estimate (km), depending on HPCM calibration.
+	optional com.ford.ftcp.appcommon.AverageRangePerFullChargeData averageRangePerFullChargeData = 4;
+
+	enum TripReadySOCTypeENUM{
+		CHARGE_TO_DISTANCE = 0;
+		CHARGE_TO_PERCENTAGE = 1;
+	}
+
+}
+
+
+
+// Message structure for XEVFuelLevelLowAlert for Hybrid vehicles. ECU(ECG/TCU) shall set this.
+message XEVFuelLevelLowAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Charge programming data
+	optional com.ford.ftcp.appcommon.ChargeProgrammingData chargeProgrammingData = 2;
+}
+
+// Message structure for XEVChargeProgrammingDataMonitoringAlert. ECU(ECG/TCU) shall set this.
+message XEVChargeProgrammingDataMonitoringAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Charge programming data
+	optional com.ford.ftcp.appcommon.ChargeProgrammingData chargeProgrammingData = 2;
+}
+
+
+// Message structure for XEVBatteryChargeStateChangeAlert. Covers charge 100% complete alert. ECU(ECG/TCU) shall set this.
+message XEVBatteryChargeStateChangeAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	//User charge programming data
+	optional com.ford.ftcp.appcommon.ChargeProgrammingData chargeProgrammingData = 2;
+	// Trip/long term averaged electric range per full charge estimate (km), depending on HPCM calibration.
+	optional com.ford.ftcp.appcommon.AverageRangePerFullChargeData averageRangePerFullChargeData = 3;
+}
+// Message structure for XEVBatteryPerformanceAlert. ECU(ECG/TCU) shall set this.
+message XEVBatteryPerformanceAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Charge programming data
+	optional com.ford.ftcp.appcommon.ChargeProgrammingData chargeProgrammingData = 2;
+}
+// EV alerts - END
+// EV alerts for 4G ECU(ECG/TCU)
+// ECU(ECG/TCU) shall set this for GoTimesONAlert. This alert can be both correlated and non correlated
+message GoTimesONAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Charge programming data
+	optional com.ford.ftcp.appcommon.ChargeProgrammingData chargeProgrammingData = 2;
+	// Status code for Go Times On - to be populated for correlated alerts
+	optional GoTimesActionStatusENUM goTimesActionStatus = 3;
+	// ECU(ECG/TCU) shall set this only for correlated alert
+	// Error codes shall be populated when goTimesActionStatus is FAILED
+	optional com.ford.ftcp.appcommon.XEVErrorDetails xEVErrorDetails = 4;
+	// Go Time action off action status
+	enum GoTimesActionStatusENUM{
+		FAILED = 0;
+		SUCCESS = 1;
+	}
+}
+
+// ECU(ECG/TCU) shall set this for GoTimesOFFAlert. This alert can be both correlated and non correlated
+message GoTimesOFFAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Charge programming data
+	optional com.ford.ftcp.appcommon.ChargeProgrammingData chargeProgrammingData = 2;
+	// Status code for Go Time Off - to be populated only for correlated alerts
+	optional GoTimesActionStatusENUM goTimesActionStatus = 3;
+	// ECU(ECG/TCU) shall set this only for correlated alert
+	// Error codes shall be populated when goTimesActionStatus is FAILED
+	optional com.ford.ftcp.appcommon.XEVErrorDetails xEVErrorDetails = 4;
+	// Go time action status
+	enum GoTimesActionStatusENUM{
+		FAILED = 0;
+		SUCCESS = 1;
+	}
+}
+
+// ECU(ECG/TCU) shall set this for GoTimesSyncAlert. This alert can be both correlated and non correlated
+message GoTimesSyncAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Charge programming data
+	optional com.ford.ftcp.appcommon.ChargeProgrammingData chargeProgrammingData = 2;
+	// Status code for Go Time Data modification - to be populated only for correlated alerts
+	optional GoTimesActionStatusENUM goTimesActionStatus = 3;
+	// ECU(ECG/TCU) shall set this only for correlated alert
+	// Error codes shall be populated when goTimesActionStatus is FAILED
+	optional com.ford.ftcp.appcommon.XEVErrorDetails xEVErrorDetails = 4;
+	//Go time action status enum
+	enum GoTimesActionStatusENUM{
+		FAILED = 0;
+		SUCCESS = 1;
+	}
+}
+
+// Message structure for ChargeProfileSyncAlert. This alert can be both correlated and non correlated
+message ChargeProfileSyncAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Charge programming data
+	optional com.ford.ftcp.appcommon.ChargeProgrammingData chargeProgrammingData = 2;
+	// Status Code for Charge Profile Data modification - to be populated only for correlated alert
+	optional ChargeProfileActionStatusENUM chargeProfileActionStatus = 3;
+	// ECU(ECG/TCU) shall set this only for correlated alert
+	// Error codes shall be populated when chargerofileActionStatus is FAILED
+	optional com.ford.ftcp.appcommon.XEVErrorDetails xEVErrorDetails = 4;
+	// The source type (HMI switch/ External Physical switch) for charge profile update event
+	optional ProfileUpdateEventSourceENUM profileUpdateEventSource = 5;
+
+	// Charge Profile action status enum
+	enum ChargeProfileActionStatusENUM{
+		FAILED = 0;
+		SUCCESS = 1;
+	}
+
+	// Profile event source either HMI or External switch
+	enum ProfileUpdateEventSourceENUM{
+		HMI_SWITCH = 0;
+		EXTERNAL_SWITCH = 1;
+	}
+
+}
+
+// ECU(ECG/TCU) shall set this for GetChargeProgrammingSyncAlert. This alert can be both correlated and non correlated
+message GetChargeProgrammingSyncAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Charge programming data
+	optional com.ford.ftcp.appcommon.ChargeProgrammingData chargeProgrammingData = 2;
+	// Status code for getting user charge programming data
+	optional ChargeProgrammingActionStatusENUM chargeProgrammingActionStatus = 3;
+	// Error codes, to be populated only when chargeProgrammingActionStatus is FAILED
+	optional com.ford.ftcp.appcommon.XEVErrorDetails xEVErrorDetails = 4;
+	// Get User charge programming status code
+	enum ChargeProgrammingActionStatusENUM{
+		FAILED = 0;
+		SUCCESS = 1;
+	}
+
+}
+// ECU(ECG/TCU) shall set this for TripReadySOCSyncAlert. This alert ONLY correlated
+message TripReadySOCSyncAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Charge programming data
+	optional com.ford.ftcp.appcommon.ChargeProgrammingData chargeProgrammingData = 2;
+	// Status of setting trip ready SOC
+	optional TripReadySOCActionStatusENUM tripReadySCOActionStatus = 3;
+	// Error codes, to e populated only when tripReadySCOActionStatus is FAILED
+	optional com.ford.ftcp.appcommon.XEVErrorDetails xEVErrorDetails = 4;
+	// Trip/long term averaged electric range per full charge estimate (km), depending on HPCM calibration.
+	optional com.ford.ftcp.appcommon.AverageRangePerFullChargeData averageRangePerFullChargeData = 5;
+
+	// Trip ready SOC setup status
+	enum TripReadySOCActionStatusENUM{
+		FAILED = 0;
+		SUCCESS = 1;
+	}
+}
+
+// Message structure for XEVSavedLocationReachedAlert to indicate vehicle is at saved charge location. TCU shall set this.
+message XEVSavedLocationReachedAlert{
+	// Message structure for vehicle status. TCU shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Charge programming data
+	optional com.ford.ftcp.appcommon.ChargeProgrammingData chargeProgrammingData = 2;
+}
+
+// Message structure for XEVChargeScheduleChangeNotificationAlert. TCU shall set this.
+message XEVChargeScheduleChangeNotificationAlert{
+	// Message structure for vehicle status. TCU shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Charge programming data
+	optional com.ford.ftcp.appcommon.ChargeProgrammingData chargeProgrammingData = 2;
+	// Charging window and desired charge level impact data
+	optional com.ford.ftcp.appcommon.ChargeScheduleChangeData chargeScheduleChangeData = 3;
+}
+
+// Message structure for Electric Vehicle Motive Mode Begin Alert
+message XEVMotiveModeBeginAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Charge programming data
+	optional com.ford.ftcp.appcommon.ChargeProgrammingData chargeProgrammingData = 2;
+
+	optional com.ford.ftcp.appcommon.BatteryConsumptionData batteryConsumptionData = 3 [deprecated = true];
+	// Message structure for battery consumption details
+	optional com.ford.ftcp.appcommon.BatteryConsumptionData_V2 batteryConsumptionDataV2 = 4;
+	// Trip/long term averaged electric range per full charge estimate (km), depending on HPCM calibration.
+	optional com.ford.ftcp.appcommon.AverageRangePerFullChargeData averageRangePerFullChargeData = 5;
+}
+
+// Message structure for Electric Vehicle Motive Mode End Alert
+message XEVMotiveModeEndAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Charge programming data
+	optional com.ford.ftcp.appcommon.ChargeProgrammingData chargeProgrammingData = 2;
+
+	optional com.ford.ftcp.appcommon.BatteryConsumptionData batteryConsumptionData = 3 [deprecated = true];
+	// Message structure for battery consumption details
+	optional com.ford.ftcp.appcommon.BatteryConsumptionData_V2 batteryConsumptionDataV2 = 4;
+	// Trip/long term averaged electric range per full charge estimate (km), depending on HPCM calibration.
+	optional com.ford.ftcp.appcommon.AverageRangePerFullChargeData averageRangePerFullChargeData = 5;
+}
+
+// Message structure for Electric Vehicle power consumption alert
+// Refer alert name "XEVChargingPowerDataAlert" in specification
+message XEVEnergyConsumptionDataAlert{
+	// Message structure to monitor power consumption signals
+	optional com.ford.ftcp.appcommon.EnergyConsumptionData energyConsumptionData = 1;
+	// Message structure for vehicle status data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 2;
+	// Message structure for Charge completion time Data
+	optional com.ford.ftcp.appcommon.ChargeCompleteTimeData chargeCompleteTimeData = 3 [deprecated = true];
+	// Message structure for charge required to reach next destination(POI)
+	optional com.ford.ftcp.appcommon.ChargeToNextPOIData chargeToNextPOIData = 4;
+}
+
+// Message structure for Reduced SOC due to Energy transferred alert
+// Refer alert name "xEVHVtoLVtransferAlert" in specification
+message XEVReducedSOCAlert{
+	// Message structure for vehicle status data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Charge programming data
+	optional com.ford.ftcp.appcommon.ChargeProgrammingData chargeProgrammingData = 2;
+}

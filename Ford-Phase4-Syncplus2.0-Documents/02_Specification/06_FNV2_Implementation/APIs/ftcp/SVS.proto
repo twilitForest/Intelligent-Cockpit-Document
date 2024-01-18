@@ -1,0 +1,175 @@
+syntax = "proto2";
+//	Ford Telematics Communication Protocol
+//  Feature/Enabler/Common: SVS
+//	Version Number: 6.0.9
+//	Date Revised: 07/08/2019
+// 	Last Updated By: Mageshwaran Mohan [MMOHAN17]
+// 	Reviewed By: Murali Chitturi[MCHITTUR], Rumeli Das[RDAS9], Thoppae, Vijai [VTHOPPAE]
+// 	Ford Confidential
+//
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 06/25/2019 for version 6.0.7
+// CR#918 & ECG#28651
+	// Deprecated Alerts
+		// UnauthorizedAccessAlert
+		// InconsistentVehicleLocationAlert
+		// PeriodicLocationReportingAlert
+		// CancelLocationReportingAlert
+
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 01/22/2019 for version 6.0.5
+// CR #ECG-21427
+	// Renamed Alert
+		// UnauthorizedDoorOpenAlert --> UnauthorizedAccessAlert
+	// Updated Alert
+		// UnauthorizedAccessAlert
+			// Added enumeration UnauthorizedAccessReasonENUM
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 10/22/2018 for version 6.0.4
+//************************************************************************************************************************************************************************
+// CR #FNV-2817
+	// Added Alert
+		// CancelLocationReportingAlert
+	// Updated Command Response
+		// ActivateTheftModeCommandResponse
+			// Added enumeration ActivationFailureReasonEnum
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 09/21/2018 for version 6.0.3
+//************************************************************************************************************************************************************************
+// SVS
+	// Added Commands
+		// ActivateTheftModeCommand
+		// DeactivateTheftModeCommand
+		// CancelLocationReportingCommand
+	// Added Commands Response
+		// ActivateTheftModeCommandResponse
+		// DeactivateTheftModeCommandResponse
+		// CancelLocationReportingCommandResponse
+	// Added Alert
+		// PeriodicLocationReportingAlert
+	 	// UnauthorizedDoorOpenAlert
+	 	// InconsistentVehicleLocationAlert
+//************************************************************************************************************************************************************************
+package com.ford.ftcp.apps;
+import "ErrorAndStatus.proto";
+import "FeatureCommon.proto";
+
+// Message structure to Activate Theft Mode with specified reporting frequency (Time period)
+message ActivateTheftModeCommand{
+	// Theft mode reporting time duration/frequency (Measured in Seconds)
+	optional int32 reportingTimeDuration = 1;
+}
+
+// Message structure for ActivateTheftModeCommand Response
+message ActivateTheftModeCommandResponse {
+	// Common message structure for all command responses. ECG shall always set this.
+    optional com.ford.ftcp.appcommon.CommandStatusEnum commandStatus = 1;
+    // Message structure for error details. ECU shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+
+	optional ActivationFailureReasonEnum ActivationFailureReason = 3;
+
+	enum ActivationFailureReasonEnum{
+		GRPC_CONNECTION_FAILED = 0;
+		SUBSCRIPTION_INVALID = 1;
+		CAPABILITY_CHECK_DISABLED = 2;
+		FACTORY_MODE = 3;
+		TRANSPORT_MODE = 4;
+	}
+}
+
+// Message structure for Deactivate the Theft Mode - Sent by call center after law enforcement confirms
+message DeactivateTheftModeCommand{
+
+}
+
+// Message structure for DeactivateTheftModeCommand Response
+message DeactivateTheftModeCommandResponse {
+	// Common message structure for all command responses. ECG shall always set this.
+    optional com.ford.ftcp.appcommon.CommandStatusEnum commandStatus = 1;
+    // Message structure for error details. ECU shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+}
+
+// Message structure for Stop Reporting Location Data - by user using the mobile APP
+message CancelLocationReportingCommand {
+
+}
+
+// Message structure for cancel Location Reporting command response
+message CancelLocationReportingCommandResponse {
+	// Common message structure for all command responses. ECG shall always set this.
+    optional com.ford.ftcp.appcommon.CommandStatusEnum commandStatus = 1;
+    // Message structure for error details. ECU shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+}
+
+// ------------------------------------------------------------
+// ** Deprecated Alert ** - ECG should not populate this alert
+// ** From 6.0.7 onwards these alerts are deprecated and should 
+// ** not be used in vehicle and cloud
+// ------------------------------------------------------------
+// Message structure for Cancel Location Reporting Alert, Sent when cancel location reporting happens based on  SMS request.
+message CancelLocationReportingAlert{
+	// Enumeration for Location Report Status
+	optional CancelLocationReportingStatusENUM cancelLocationReportingStatus = 1;
+
+	enum CancelLocationReportingStatusENUM{
+		FAILED = 0;
+		SUCCESS = 1;
+	}
+}
+
+// ------------------------------------------------------------
+// ** Deprecated Alert ** - ECG should not populate this alert
+// ** From 6.0.7 onwards these alerts are deprecated and should
+// ** not be used in vehicle and cloud
+// ------------------------------------------------------------
+// Message structure for reporting location data periodically. Note this is not sent during theft mode.
+message PeriodicLocationReportingAlert {
+	// GPS information of the vehicle
+	optional com.ford.ftcp.appcommon.GPSInfo gpsInfo = 1;
+}
+
+// ------------------------------------------------------------
+// ** Deprecated Alert ** - ECG should not populate this alert
+// ** From 6.0.7 onwards these alerts are deprecated and should 
+// ** not be used in vehicle and cloud
+// ------------------------------------------------------------
+// Message structure for reporting Unauthorized Access Alert.
+// Previously named as UnauthorizedDoorOpenAlert
+message UnauthorizedAccessAlert{
+	// Message structure GPS information of the vehicle
+	optional com.ford.ftcp.appcommon.GPSInfo gpsInfo = 1;
+	// Reason for Unauthorized Access
+	optional UnauthorizedAccessReasonENUM unauthorizedAccessReason = 2;
+
+	// Enumeration for Unauthorized Access Reasons
+	enum UnauthorizedAccessReasonENUM{
+		DF_DOOR = 0;
+		DR_DOOR = 1;
+		PF_DOOR = 2;
+		PR_DOOR = 3;
+		HOOD = 4;
+		DECKLID = 5;
+		LG_DOOR = 6;
+		IGN_TAMPER = 7;
+		INCLINATION = 8;
+		INTRUSION = 9;
+		TRAILER = 10;
+		DIAG_TAMPER = 11;
+	}
+}
+
+// ------------------------------------------------------------
+// ** Deprecated Alert ** - ECG should not populate this alert
+// ** From 6.0.7 onwards these alerts are deprecated and should
+// ** not be used in vehicle and cloud
+// ------------------------------------------------------------
+// Message structure for reporting vehicle location inconsistencies between ignition on and off.
+message InconsistentVehicleLocationAlert{
+	// Message structure GPS information of the vehicle
+	optional com.ford.ftcp.appcommon.GPSInfo gpsInfo = 1;
+}
+
+

@@ -1,0 +1,83 @@
+syntax = "proto2";
+package fnv.pnc;
+/**
+ * @fnv_proto
+ * Protobuf to be used to send a display message from ECG to SYNC,
+ * and to receive responses from SYNC to ECG
+ * @fnv_topic "SERVICES/REQUEST/SYNCAPPS/EVPNC/HMI"
+ * @fnv_command DISPLAY_STATION_TYPE
+ * @fnv_command DISPLAY_AUTHORIZATION_ERROR
+ * @fnv_command DISPLAY_PAYMENT_INFO
+ * @fnv_command DISPLAY_DISABLE_AT_PLUGIN
+ * @fnv_scope FNV2
+ * @fnv_api_source INTERNAL
+ * @fnc_message_version 1.0
+ */
+message SoaHmiPncMessage {
+    enum PncRequestType {
+        DISPLAY_STATION_TYPE = 0;
+        DISPLAY_AUTHORIZATION_ERROR = 1;
+        DISPLAY_PAYMENT_INFO = 2;
+        DISPLAY_DISABLE_AT_PLUGIN = 3;       // no data for this command
+    }
+    message PncStationTypeRequest {
+        optional PncStationTypeENUM pncStationType = 1;
+        enum PncStationTypeENUM {
+            // PNC Capable In Network
+            PNC_IN_NETWORK = 0;
+            // PNC Capable Out of Network
+            PNC_OUT_NETWORK = 1;
+        }
+    }
+ 
+    message PncAuthorizationErrorRequest {
+        // PnC Authorization Error Status Enumeration
+        optional PncAuthorizationErrorStatusENUM authStatus = 1;
+        // PncAuthorizationErrorStatusENUM maps to different error codes
+        enum PncAuthorizationErrorStatusENUM {
+            // Payment subscription balance is low
+            PAYMENT_SUBSCRIPTION_LOW = 0;
+            // Payment balance has run out
+            PAYMENT_BALANCE_LOW = 1;
+            // Charging account is overdue, but charging is still allowed (post-pay account)
+            ACCOUNT_OVERDUE_CHARGING_ALLOWED = 2;
+            // Charging account is overdue and charging is suspended (post-pay account)
+            ACCOUNT_OVERDUE_CHARGING_NOT_ALLOWED = 3;
+            // Payment method issue for variable fees or monthly subscription fees
+            PAYMENT_SETUP_ISSUE = 4;
+            // Payment Backend system failure has occurred
+            PAYMENT_BACKEND_SYSTEM_FAILURE = 5;
+        }
+    }
+ 
+    message PncPaymentSummaryRequest {
+        // State of charge
+        optional float stateOfCharged = 1;
+        // Total time plugged in
+        optional int32 totalTimePluggedIn = 2;
+        // Total distance added after the charge
+        optional float totalDistanceAdded = 3;
+        // Total Cost for this charge
+        optional float totalCost = 4;
+        // Subscription balance available after charge
+        optional float balanceInSubscription = 5;
+        // Currency Type
+    	optional string currencyType = 6;
+        // Payment Status Enumeration
+        optional PncPaymentStatusENUM paymentStatus = 7;
+
+        enum PncPaymentStatusENUM {
+            // Payment Information Available
+            PAYMENTINFO_AVAILABLE = 0;
+            // Payment Information Not available
+            PAYMENTINFO_NOT_AVAILABLE = 1;
+        }
+    }
+    // This field is required for both request and response.
+    // The response fills this field with the same request type
+    // as its corresponding request.
+    optional PncRequestType request = 1;
+    optional PncStationTypeRequest stationType = 2;
+    optional PncAuthorizationErrorRequest authorizationError = 3;
+    optional PncPaymentSummaryRequest paymentSummary = 4;
+}

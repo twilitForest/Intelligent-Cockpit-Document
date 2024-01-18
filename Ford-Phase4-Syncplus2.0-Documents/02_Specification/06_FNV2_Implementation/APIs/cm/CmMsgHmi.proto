@@ -1,0 +1,303 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2017.  Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// deliberate unauthorized publication.  Ford Motor Company also
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+//
+
+syntax = "proto2";
+option optimize_for = CODE_SIZE;
+package CmMsgHmi;
+import "CmMsgWlan.proto";
+
+// For CM internal use only
+// The protobuf captures enums and messages related to:
+// SYNC HMI Client Interface for WiFi Configuration.
+// These messages are exchanged between ECG CM and SYNC CM.
+// Re-uses enums and messages contained in CmMsgWlan.proto.
+// Command details: TBD
+
+/**
+ * @fnv_proto
+ * Enum of available commands for
+ * SYNC HMI Client Interface for WiFi Configuration
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum HmiCmdType
+{
+    HMI_WLAN_ENABLE_REQ  = 100;
+    HMI_WLAN_ENABLE_RSP  = 101;
+    HMI_WLAN_DISABLE_REQ = 102;
+    HMI_WLAN_DISABLE_RSP = 103;
+    HMI_WLAN_SCAN_APS_REQ = 104;
+    HMI_WLAN_SCAN_APS_RSP = 105;
+    HMI_WLAN_CONNECT_AP_REQ = 106;
+    HMI_WLAN_CONNECT_AP_RSP = 107;
+    HMI_WLAN_CANCEL_CONNECT_AP_REQ = 108;
+    HMI_WLAN_CANCEL_CONNECT_AP_RSP = 109;
+    HMI_WLAN_DISCONNECT_AP_REQ = 110;
+    HMI_WLAN_DISCONNECT_AP_RSP = 111;
+    HMI_WLAN_FORGET_AP_REQ = 112;
+    HMI_WLAN_FORGET_AP_RSP = 113;
+    HMI_WLAN_GET_WPS_PIN_REQ = 114;
+    HMI_WLAN_GET_WPS_PIN_RSP = 115;
+    HMI_WLAN_GET_NETWORK_DETAILS_REQ = 116;
+    HMI_WLAN_GET_NETWORK_DETAILS_RSP = 117;
+    HMI_WLAN_QUERY_ENABLE_DISABLE_STATUS_REQ = 118;
+    HMI_WLAN_QUERY_ENABLE_DISABLE_STATUS_RSP = 119;
+    HMI_WLAN_AVAILABLE_NOTIFICATION_ON_REQ = 120;
+    HMI_WLAN_AVAILABLE_NOTIFICATION_ON_RSP = 121;
+    HMI_WLAN_AVAILABLE_NOTIFICATION_OFF_REQ = 122;
+    HMI_WLAN_AVAILABLE_NOTIFICATION_OFF_RSP = 123;
+    HMI_WLAN_AVAILABLE_NOTIFICATION_STATUS_REQ = 124;
+    HMI_WLAN_AVAILABLE_NOTIFICATION_STATUS_RSP = 125;
+    HMI_WLAN_CANCEL_SCAN_AP_REQ = 126;
+    HMI_WLAN_CANCEL_SCAN_AP_RSP = 127;
+
+    HMI_WLAN_WIFI_AVAILABLE_IND = 200;
+    HMI_WLAN_WIFI_UNAVAILABLE_IND = 201;
+    HMI_WLAN_WIFI_CONNECTED_IND = 202;
+    HMI_WLAN_WIFI_DISCONNECTED_IND = 203;
+    HMI_WLAN_WIFI_SIGNAL_STRENGTH_IND = 204;
+    HMI_WLAN_NETWORK_AVAILABLE_IND = 205;
+    HMI_WLAN_NETWORK_AVAILABLE_COUNT_IND = 206;
+    HMI_WLAN_WIFI_MAC_ADDRESS_IND = 207;
+}
+
+/**
+ * @fnv_proto
+ * Enum of return codes for commands for
+ * SYNC HMI Client Interface for WiFi Configuration
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum HmiRet
+{
+    // Error/Failure
+    HMI_ERROR = 0;
+
+    // Success
+    HMI_SUCCESS = 1;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf used TBD
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum WifiConnectionType
+{
+    CONNECTION_TYPE_PIN = 0;
+    CONNECTION_TYPE_WPS_PIN = 1;
+    CONNECTION_TYPE_WPS_PBC = 2;
+    CONNECTION_TYPE_OPEN = 3;
+    CONNECTION_TYPE_HIDDEN_SECURE = 4;
+    CONNECTION_TYPE_HIDDEN_OPEN = 5;
+}
+
+/**
+ * @fnv_proto
+ * Wifi connection status
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum EWifiConnectionStatus
+{
+    WIFI_STATUS_SUCCESS = 0;       /**<  Success */
+    WIFI_AP_SCAN_SUCCESS = 1;      /**<  Scan Successful */
+    WIFI_NO_APS_AVAILABLE = 2;     /**<  No Access Points available */
+    WIFI_CONNECTED = 3;            /**<  Connected to Access Point */
+    WIFI_NOT_CONNECTED = 4;        /**<  Wifi is not connected to Access Point */
+    WIFI_OTH_FAIL = 5;             /**<  Authentication Failure */
+    WIFI_CONNECTING = 6;           /**<  Connecting to Access Point */
+    WIFI_SECURITY_MISSMATCH = 7;   /**<  There is security type missmatch between what requested and what is in actual */
+    WIFI_AUTHENTICATING = 11;
+    WIFI_ABORTED = 12;
+    WIFI_WRONG_PASSWORD = 13;
+    WIFI_WRONG_WPS_PIN = 14;
+    WIFI_CONNECTION_PROGRESS = 15;
+    WIFI_RESTRICTED_NETWORK = 16;   /**<  Connection failure due to trying to connect to a restricted network eg : TCU hotspot */
+    WIFI_NOT_IMPLEMENTED = 101;     /**<  Not Implemented */
+    WIFI_STATUS_FAIL = 102;         /**<  Failure */
+    WIFI_STATUS_FAIL_OTHER = 103;   /**<  Other Failure or Connecting to AP Failed */
+    WIFI_CANCEL_CONNECTION = -3;
+}
+
+/**
+ * @fnv_proto
+ * Additional access pgit oint info
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message AdditionalApInfo
+{
+    optional string ipV4Addr = 1;
+    optional string netmask = 2;
+    optional bool connected = 3;                         /**< connected to AP */
+    optional bool prevConnected = 4;                     /**< previously connected*/
+    optional bool isHidden = 5;                          /**< hidden */
+    optional WifiConnectionType connectionType = 6;      /**< see wifi_service.h, WifiConnectionType */
+    optional EWifiConnectionStatus connectionStatus = 7; /**< see wifi_service_protocol.h, EWifiConnectionType */
+}
+
+
+/**
+ * @fnv_proto
+ * HMI access point info
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message HmiApInfo
+{
+    optional CmMsgWlan.WlanScanResult apInfoScanResult = 1;
+    optional AdditionalApInfo apInfo = 2; /**< additional AP information  */
+}
+
+/**
+ * @fnv_proto
+ * HMI Scan Response
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message HmiScanRsp
+{
+    optional HmiRet ret = 1;                /**< indicates whether the scan was successful */
+    optional uint32 ifId = 2;
+    optional uint64 scanId = 3;             /**< ID value used to track scans */
+    optional CmMsgWlan.WlanScanConfig scanConfig = 4; /**< Config used to generate this scan */
+    optional uint32 count = 5;				/**< number of APs found */
+    repeated HmiApInfo ap = 6;              /**< information of the APs found */
+    optional bool scanResultsComplete = 7;  /**< True if all the scan results have been reported */
+}
+
+/**
+ * @fnv_proto
+ * Protobuf used TBD
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WlanConnectApRsp
+{
+    optional int32 status = 1;
+    optional CmMsgWlan.WlanScanResult apInfo = 2; // information of the connected AP
+    optional AdditionalApInfo additonalApInfo = 3; /**< additional AP information  */
+}
+
+/**
+ * @fnv_proto
+ * Protobuf used TBD
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WlanWpsPinRsp
+{
+    optional int32 status = 1;
+    optional CmMsgWlan.WlanWpsSecurity wpsSecurity = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf used TBD
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WlanNetworkDetailsRsp
+{
+    optional int32 status = 1;
+    optional CmMsgWlan.WlanProfileCommon wlanProfile = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf used to deliver WLAN MAC
+ * address Information to HMI
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WlanHmiMacAddressInd
+{
+    optional uint32 count = 1; /**< number of mac addressess found */
+    repeated string macAddress = 2; /**< List of all mac addresses */
+}
+
+/**
+ * @fnv_proto
+ * The protobuf captures
+ * SYNC HMI Client Interface for WiFi Configuration
+ * related messaging between ECG CM and SYNC CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message HmiWlanMsg
+{
+    optional HmiCmdType hmiIfCmdId = 1;
+    optional uint32 referenceId = 2;
+    optional string appId = 3; 
+    optional HmiRet hmiRet = 4;
+    optional int32 wifiOnResp = 5;
+    optional int32 wifiOffResp = 6;
+    optional CmMsgWlan.ScanReq scanApsReq = 7;
+    optional HmiScanRsp scanApsRsp = 8;
+    optional CmMsgWlan.ConnectReq connectApReq = 9;
+    optional WlanConnectApRsp connectApRsp = 10;
+    optional int32 cancelConnectRsp = 11;
+    optional int32 disconnectApRsp = 12;
+    optional CmMsgWlan.WlanScanResult forgetAp = 13;
+    optional int32 forgetApRsp = 14;
+    optional WlanWpsPinRsp wpsPinRsp = 15;
+    optional WlanNetworkDetailsRsp networkDetailsRsp = 16;
+    optional CmMsgWlan.WlanProfileCommon wifiConnectedInd = 17;
+    optional int32 signalStrengthInd = 18; // rssi
+    optional int32 networkAvailableCountInd = 19;
+    optional WlanHmiMacAddressInd wlanHmiMacAddressInd = 20;
+    optional bool wifiEnableDisableStatusRsp = 21;
+    optional int32 wifiAvailableNotificationOnResp = 22;
+    optional int32 wifiAvailableNotificationOffResp = 23;
+    optional bool wifiAvailableNotificationStatusRsp = 24;
+}

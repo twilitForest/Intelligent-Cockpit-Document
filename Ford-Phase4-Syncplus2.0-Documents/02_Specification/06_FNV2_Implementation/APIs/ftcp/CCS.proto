@@ -1,0 +1,251 @@
+syntax = "proto2";
+//	Ford Telematics Communication Protocol
+//  Feature/Enabler/Common: Customer Connectivity Settings (CCS)
+//	Version Number: 6.0.9
+//	Date Revised: 07/08/2019
+// 	Last Updated By:  Mageshwaran Mohan [MMOHAN17]
+// 	Reviewed By:Murali Chitturi, Vijai Thoppae [VTHOPPAE], Rumeli Das,[RDAS9]
+// 	Ford Confidential
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 01/22/2019 for version 6.0.5
+//************************************************************************************************************************************************************************
+// CR #ECG-23231
+	// added additional field to PolicyGovernedCCSFileType Enumeration
+		// CCS_SERVICE_CFG
+	// Added ccsServiceConfigFile data bundle to message
+		// CCSData
+	// Added ccsServiceConfigMetaData data Bundle  to message
+		// CCSSettingsUpdateCommand
+		// CCSUserPromptCommand
+		// CCSUpdateAlert
+		// CCSUserPromptResponseAlert
+		// CCSUpdateQuery
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 10/26/2018 for version 6.0.4
+// CCS
+	// Added DISPLAYED --> CCSUserPromptResponseCode
+	// Added FUNCTION  --> EntityTypeENUM
+	// Removed command
+		// UserAuthorizationCommand
+	// Removed command response
+		// UserAuthorizationCommandResponse
+	// Removed alerts
+		// UserAuthorizationResponseAlert
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 09/07/2018 for version 6.0.2
+	// Fixed Typos mainly in comments
+	// Reordered tags
+	// Packaging of proto files have been introduced and referenced
+	// Added syntax = "proto2" to the header
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 06/20/2018 for version 6.0.1
+	//Reordered tags in all the message structures and Alerts
+	//Cleaned up commented messages
+//************************************************************************************************************************************************************************
+// Changes/Version based on B4 FTCP version and FNV2 FTCP Proposal
+// Covers CCS and User Authorization Requirements
+//************************************************************************************************************************************************************************
+package com.ford.ftcp.apps;
+import "Common.proto";
+import "FeatureCommon.proto";
+import "ErrorAndStatus.proto";
+
+// Policy Governed CCS File binary for storage in the ECU(ECG/TCU)
+message PolicyGovernedCCSFile {
+	// Command will include both above metadata fields and content in case of SDN/Cloud updates
+	optional PolicyGovernedCCSFileMetaData policyGovernedCCSFileMetaData = 1;
+	optional bytes fileContent = 2;
+}
+
+// Policy Governed CCS File binary for storage in the ECU(ECG/TCU)
+message PolicyGovernedCCSFileMetaData {
+	optional PolicyGovernedCCSFileType ccsFileType = 1;
+	optional bytes fingerprintSHA256 = 2;
+	// Use 16 bits to identify platform version, i.e. embedded modem and head-unit combination
+	optional int32 platformVersion = 3;
+	// Use 16 bits to identify major version
+	optional int32 majorVersion = 4;
+	// Use 16 bits to identify minor version
+	optional int32 minorVersion = 5;
+	// Timestamp for the file revision
+	optional com.ford.ftcp.appcommon.UTCDateTime timestamp = 6;
+
+	enum PolicyGovernedCCSFileType {
+		POLICY_TABLE_EXTN = 0;
+		USER_FRIENDLY_MSGS = 1;
+		CCS_SERVICE_CFG = 2;
+	}
+}
+
+// Message structure for customer's consent status per Feature/Meta
+message EntitySettings {
+	// Unique sequence/transaction ID to track final consent changes applied
+	optional int32 consentSequenceId = 1;
+	// Customer Connectivity Menu item(Feature/Meta) for which user consents
+	optional Entity entity = 2;
+	// Captures opt in/out selection from user
+	optional CustomerConsentENUM optIn = 3;
+	// Date and time user consented(opted in or out)
+	optional com.ford.ftcp.appcommon.UTCDateTime consentTimestamp = 4;
+	// Enumeration for customer consent status
+	enum CustomerConsentENUM{
+		OFF = 0;
+		ON = 1;
+	}
+}
+
+// Message structure for Meta/Feature
+message Entity {
+	optional EntityTypeENUM entityType = 1;
+	// Feature/META identifier
+	optional uint32 entityId = 2;
+}
+
+enum EntityTypeENUM {
+	META = 0;
+	FEATURE = 1;
+	FUNCTION = 2;
+}
+
+//Configuration event
+enum CCSApplyModeEnum{
+	//Immediate ex. Key on
+	IMMEDIATE = 0;
+	// Delayed ex. Key off
+	DELAYED = 1;
+}
+
+// CCS Data Synchronization States
+enum CCSDataSynchronizationStateEnum {
+	Invalid = 0;
+	Waiting = 1;
+	SynchronizationNeeded = 2;
+	Synchronizing = 3;
+	SynchronizationFailed = 4;
+	DataStorageError = 5;
+	UnrecoverableSynchronizationError = 6;
+	Synchronized = 7;
+	OnBoardUpdatePending = 8;
+	OffBoardUpdatePending = 9;
+	OnBoardDistributedStateMachineInconsistent = 10;
+}
+
+// Message structure for Customer Connectivity Settings
+message CCSData {
+	repeated EntitySettings ccsSettings = 1;
+	optional PolicyGovernedCCSFile policyTableExtension = 2;
+	optional PolicyGovernedCCSFile userFriendlyMessages = 3;
+	optional PolicyGovernedCCSFile ccsServiceConfigFile = 4;
+}
+
+// Message structure for CCS command to publish ONLY customer settings from SDN/Cloud to Vehicle
+message CCSSettingsUpdateCommand {
+	optional PolicyGovernedCCSFileMetaData policyTableExtensionMetaData = 1;
+	optional PolicyGovernedCCSFileMetaData userFriendlyMessagesMetaData = 2;
+	repeated EntitySettings ccsSettings = 3;
+	// SDN/Cloud always shall set this identifier for the module to to apply the changes immediately or Delayed
+	optional CCSApplyModeEnum ccsApplyMode = 4;
+	optional PolicyGovernedCCSFileMetaData ccsServiceConfigMetaData = 5;
+}
+
+// Message structure for CCS command to publish CCS Policies and Settings
+message CCSPoliciesAndSettingsUpdateCommand {
+	optional CCSData ccsData = 1;
+	// SDN/Cloud always shall set this identifier for the module to to apply the changes immediately or Delayed
+	optional CCSApplyModeEnum ccsApplyMode = 2;
+}
+
+// Message structure for CCS user prompt command
+message CCSUserPromptCommand {
+	optional PolicyGovernedCCSFileMetaData policyTableExtensionMetaData = 1;
+	optional PolicyGovernedCCSFileMetaData userFriendlyMessagesMetaData = 2;
+	optional com.ford.ftcp.appcommon.HMIScreenInfo ccsUserPromptInfo = 3;
+	optional PolicyGovernedCCSFileMetaData ccsServiceConfigMetaData = 4;
+}
+
+// Message structure for CCS command response
+message CCSSettingsUpdateCommandResponse {
+	// Enumeration for CommandStatus. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// CCS Data Synchronization status
+	optional CCSDataSynchronizationStateEnum synchronizationStatus = 2;
+	// Message structure for command error details. ECU(ECG/TCU) shall only set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+}
+
+// Message structure for CCSPoliciesAndSettingsUpdateCommand response
+message CCSPoliciesAndSettingsUpdateCommandResponse {
+	// Enumeration for CommandStatus. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// ECU(ECG/TCU's) synchronization state for CCSData
+	optional CCSDataSynchronizationStateEnum synchronizationStatus = 2;
+	// Message structure for command error details. ECU(ECG/TCU) shall only set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+}
+
+// Message structure for CCSUserPromptCommand response
+message CCSUserPromptCommandResponse {
+	// Enumeration for CommandStatus. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// State of CCSOnBoardDistributedStateMachine when request came in
+	optional CCSDataSynchronizationStateEnum synchronizationStatus = 2;
+	// Message structure for command error details. ECU(ECG/TCU) shall only set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+}
+
+// Message structure for correlated CCS Data Update alert
+// ECU(ECG/TCU) shall publish this alert as correlated alert for commands CCSPoliciesAndSettingsUpdateCommand and CCSSettingsUpdateCommand
+// ECU(ECG/TCU) shall set this as non-correlated alert when the settings are updated within the vehicle
+// Refer ECU(ECG/TCU) SPSS for complete implementation details
+message CCSUpdateAlert {
+	optional CCSDataSynchronizationStateEnum synchronizationStatus = 1;
+	optional PolicyGovernedCCSFileMetaData policyTableExtensionMetadata =2;
+	optional PolicyGovernedCCSFileMetaData userFriendlyMetadata = 3;
+	repeated EntitySettings ccsSettings = 4;
+	optional PolicyGovernedCCSFileMetaData ccsServiceConfigMetaData = 5;
+}
+
+// Message structure for CCS User Prompt Repose alert
+message CCSUserPromptResponseAlert {
+	optional PolicyGovernedCCSFileMetaData policyTableExtensionMetaData = 1;
+	optional PolicyGovernedCCSFileMetaData userFriendlyMessagesMetaData = 2;
+	optional CCSUserPromptResponseCode responseCode = 3;
+	optional PolicyGovernedCCSFileMetaData ccsServiceConfigMetaData = 4;
+
+	enum CCSUserPromptResponseCode {
+		// Represents failure of prompt delivery
+		FAILED = 0;
+		// Represents time-out of prompt validity
+		TIMEOUT = 1;
+		// Represents user selection of "NO" button
+		SELECT_NO = 2;
+		// Represents user selection of "Ask Me Later" button
+		SELECT_ASKMELATER = 3;
+		// Represents user selection of "Yes/Allow" button
+		SELECT_YES = 4;
+		// Represents user selection of "check box" in the prompt dialog
+		SELECT_YES_PLUS_OPTIONAL = 5;
+		// Represents screen has displayed in case of information/error messages
+		DISPLAYED = 6;
+	}
+}
+
+// Message structure for ECU(ECG/TCU) to get CCS Settings and policies from SDN/Cloud
+message CCSUpdateQuery {
+	optional CCSDataSynchronizationStateEnum synchronizationStatus = 1;
+	optional PolicyGovernedCCSFileMetaData policyTableExtensionMetaData = 2;
+	optional PolicyGovernedCCSFileMetaData userFriendlyMetaData = 3;
+	repeated EntitySettings ccsSettings = 4;
+	optional PolicyGovernedCCSFileMetaData ccsServiceConfigMetaData = 5;
+}
+
+// Message Structure of CCSUpdateQuery Response
+message CCSUpdateQueryResponse {
+	//Cloud shall always set this to return Query response status
+	optional com.ford.ftcp.appcommon.SDNQueryStatusENUM SDNQueryStatus = 1;
+	optional CCSData ccsData = 2;
+	// Message structure for error details. SDN shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.SDNErrorDetail SDNerrorDetail = 3;
+	// SDN/Cloud always shall set this identifier for the module to to apply the changes immediately or delayed
+	optional CCSApplyModeEnum ccsApplyMode = 4;
+}

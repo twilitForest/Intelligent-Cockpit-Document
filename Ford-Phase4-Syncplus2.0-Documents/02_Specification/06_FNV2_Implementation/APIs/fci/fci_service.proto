@@ -1,0 +1,195 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2017.  Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+
+syntax = "proto2";
+option optimize_for = CODE_SIZE;
+package fci.genericservice;
+import "fci_broadcast.proto";
+import "fci_info.proto";
+
+// FCI generic service proto file
+// Version 1.0.0
+// This protobuf defines messages to support FCI generic services. The supported FCI generic services are SDN Connect,
+// SDN Disconnect and TCU SMS Message services. SDN Connect service allows an app to send connect request message to FCI
+// with required interface (cellular, wifi or SDL) type and FCI will ask the Connection Manager to set up the corresponding
+// interface connection then use it to connect to SDN server. The TCU SMS Message service allow TCU to send Type 1, Type 2
+// and Type 3 SMS messages to FCI then FCI will handle them accordingly.
+
+// FCI generic service type
+enum ServiceType
+{
+    SDN_CONNECT           = 0;
+    TCU_SMS               = 1;
+    REQ_BROADCAST_INFO    = 2;
+    VEHICLE_STATUS_UPDATE = 3;
+}
+
+// SDN interface type
+enum SdnInterfaceType
+{
+    UNKNOWN   = 0;
+    TCU_CELL  = 1;
+    TCU_WIFI  = 2;
+    SYNC_WIFI = 3;
+    SYNC_SDL  = 4;
+}
+
+// Broadcast Information type
+enum BroadcastInfoType
+{
+    BCASTINFO_CONNSTATUS = 0;
+    BCASTINFO_POWERSTATE = 1;
+    BCASTINFO_ALL        = 2;
+}
+
+/**
+ * @fnv_message_proto: Protobuf to be used to specify SDN connect/disconnect messages to be sendt to FCI
+ * @fnv_topic
+ * @fnv_command
+ * @fnv_description:
+ */
+message SdnConnectMessage
+{
+    // SDN connect type: conenct or disconnect request
+    optional SdnConnectType connType = 1;
+
+    // SDN interface type: cellular, TCU WiFi, SYNC WiFi or SDL
+    optional SdnInterfaceType ifaceType = 2;
+
+    // SDN URL: FCI will connect to over the required interface
+    optional string sdnUrl = 3;
+
+    // WiFi profile: ssid and password
+    optional WifiProfile wifiProfile = 4;
+
+    // SDN connect type
+    enum SdnConnectType
+    {
+        SDN_CONNECT_REQUEST = 0;
+        SDN_DISCONNECT_REQUEST = 1;
+    }
+
+    // WiFi profile
+    message WifiProfile
+    {
+        // Ssid
+        optional string ssid = 1;
+
+        // Password
+        optional string password = 2;
+    }
+}
+
+/**
+ * @fnv_message_proto: Protobuf to be used to specify TCU SMS messages to be sent to FCI
+ * @fnv_topic
+ * @fnv_command
+ * @fnv_description:
+ */
+message TcuSmsMessage
+{
+    // MT SMS message type: Type 1, 2 or 3
+    optional MessageType msgType = 1;
+
+    // source address of the received SMS message
+    optional string srcAddr = 2;
+
+    // SMS message payload
+    optional string payload = 3;
+
+    enum MessageType
+    {
+        MT_FORD_TYPE_1 = 1;
+        MT_FORD_TYPE_2 = 2;
+        MT_FORD_TYPE_3 = 3;
+    }
+}
+
+/**
+ * @fnv_message_proto: Protobuf to be used to send the authorization and anonymization status
+ * @fnv_topic
+ * @fnv_command
+ * @fnv_description:
+ */
+message VehicleStatusUpdateMessage
+{
+    // ECG authorization status
+    optional AuthStatusENUM authStatus = 1;
+
+    // ECG anonymization status
+    optional AnonyStatusENUM anonyStatus = 2;
+    
+    enum AuthStatusENUM
+    {
+        NOT_AUTHORIZED = 0;
+        AUTHORIZED = 1;
+    }
+
+    enum AnonyStatusENUM
+    {
+        ANONY_OFF = 0;
+        ANONY_ON = 1;
+    }
+}
+
+// FCI generic service message
+/**
+ * @fnv_message_proto: Protobuf to be used to send FCI generic service app requests to FCI
+ * @fnv_topic "SERVICES/REQUEST/FNV/FCI/GENSERVICE"
+ * @fnv_command
+ * @fnv_description:
+ */
+message FciGenericService
+{
+    // Service type: SDN Connect/Disconnect or TCU SMS Message
+    optional ServiceType serviceType = 1;
+
+    // Request FCI to send a response message
+    optional bool rpcResponseRequired = 2 [default = false];
+
+    // Sdn Connect Message
+    optional SdnConnectMessage sdnConnMsg = 3;
+
+    // TCU SMS Message
+    optional TcuSmsMessage tcuSmsMsg = 4;
+    
+    // REQUEST BROADCAST INFO Type
+    optional BroadcastInfoType reqBroadcastInfoType = 5;
+
+    // authorization and anonymization update
+    optional VehicleStatusUpdateMessage vstatusUpdateMsg = 6;
+
+    // API version, static field
+    optional __ApiVersion __api_version = 10;
+}
+
+/**
+ * @fnv_message_proto: Protobuf to be used to send the broadcast information
+ * @fnv_topic
+ * @fnv_command
+ * @fnv_description:
+ */
+message BroadcasInfoMessage
+{
+    // Info type
+    optional BroadcastInfoType type = 1;
+
+    // Sdn Connection Status Message
+    optional fci.broadcastinterface.SdnConnStatusMessage sdnConnStatusMsg = 2;
+
+    // Power State Message
+    optional fci.broadcastinterface.PowerStateMessage powerStateMsg = 3;
+
+    // API version, static field
+    optional __ApiVersion __api_version = 10;
+}

@@ -1,0 +1,39 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2019.  Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// deliberate unauthorized publication.  Ford Motor Company also
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+//
+
+syntax = "proto2";
+option optimize_for = CODE_SIZE;
+package fci;
+
+/**
+* @fnv_service_proto
+* @fnv_scope: FNV2
+* @fnv_api_source: INTERNAL
+* @fnv_hld_link: https://www.eesewiki.ford.com/pages/viewpage.action?pageId=8024822
+* @fnv_dd_link: https://www.eesewiki.ford.com/display/ecg/FNV2-FCI+Framework+Detailed+Design
+* @fnv_user_guide_link: https://www.eesewiki.ford.com/display/ecg/FCI+User+Guide
+* @fnv_release_note_1.0
+*/
+
+message __ApiVersion
+{
+    enum Ver 
+    {
+       option allow_alias = true;
+       major = 1;
+       minor = 0;
+       file_update = 0;
+   }
+}

@@ -1,0 +1,34 @@
+syntax = "proto2";
+option optimize_for = CODE_SIZE;
+
+package fnv.soa.gateway;
+
+/**
+* @fnv_proto
+* Defines the connection information sent by the SOA Gateway when it connects to the ECG 
+* @fnv_topic SERVICES/DATA/GATEWAY/CONNECTIONSTATE
+* @fnv_scope ECG_INTERNAL
+* @fnv_api_source INTERNAL
+* @fnv_message_version 1.0
+*/
+message SoaGatewayConnectionState{
+    // The connection state
+    required ConnectionState connectionState = 1;
+    
+    // ECU name e.g. TCU, SYNC. Same name as what is provided in the CommonName field of the TLS Certificat
+    required string ecuName= 2;
+     
+    // IP address
+    optional string ipAddress = 3;
+
+    // Number of connection retries since previous report
+    optional int32 retryCount = 4;
+     
+    // connection retries reason 
+    //optional soaGatewayConnectionFailedReason SoaConnectionFailedReason= 5;
+     
+    enum ConnectionState {
+        CONNECTED = 0;
+        DISCONNECTED = 1;
+    }
+}

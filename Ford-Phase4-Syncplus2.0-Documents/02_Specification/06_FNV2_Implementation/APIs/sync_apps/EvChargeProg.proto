@@ -1,0 +1,51 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2018.  Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// deliberate unauthorized publication.  Ford Motor Company also
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+
+syntax = "proto3";
+
+package fnv.evcp;
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to send read/modify requests for EV charge location labels
+ * from ECG to SYNC, and to receive responses from SYNC to ECG
+ * @fnv_topic "SERVICES/REQUEST/SYNCAPPS/EVCP/CHARGELOCATIONLABEL"
+ * @fnv_command READ
+ * @fnv_command MODIFY
+ * @fnv_scope FNV2
+ * @fnv_api_source INTERNAL
+ * @fnc_message_version 1.0
+ */
+message ChargeProfileLocationLabelMessage {
+    enum RequestType {
+        READ = 0;
+        MODIFY = 1;
+    }
+
+    message LocationLabelRecord {
+        uint32 charge_profile_id_num = 1;
+        string charge_location_name = 2;
+    }
+
+    // This field is required for both request and response.
+    // The response fills this field with the same request type
+    // as its corresponding request.
+    RequestType request = 1;
+
+    // This field is only required for the MODIFY request and it should
+    // be an omitted for READ. For the response, all the 10
+    // charge location labels should always be included in the payload
+    // for all request types
+    repeated LocationLabelRecord locations = 2;
+}

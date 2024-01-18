@@ -1,0 +1,141 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2017.  Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// deliberate unauthorized publication.  Ford Motor Company also
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+//
+
+syntax = "proto2";
+option optimize_for = CODE_SIZE;
+package CmMsgInterface;
+
+import "connectivitymgr_info.proto";
+//import "CmMsgCommon.proto";
+import "CmMsgCtrl.proto";
+import "CmMsgWirIf.proto";
+import "CmMsgCell.proto";
+import "CmMsgWlan.proto";
+import "CmMsgVlan.proto";
+import "CmMsgNqm.proto";
+//import "CmMsgDiag.proto";
+import "CmMsgHmi.proto";
+import "CmMsgMeta.proto";
+
+// For CM internal use only
+// The protobuf captures enums and messages related to:
+// All messages in all domains exchanged between ECG CM, TCU CM and SYNC CM.
+// Domain details:
+//  0. CM_CTRL:   CM Internal Control
+//  1. CM_WIRIF:  WIR Client Interface
+//  2. CM_CELL:   Cellular Interace Control
+//  3. CM_WLAN:   WLAN Station Mode Interface Control
+//  4. CM_VLAN:   Virtual Interface and Networking Control
+//  5. CM_DIAG:   CM Diagnostics and Analytics (Unimplemented)
+//  6. CM_NQM:    Network Interface Quality Monitoring
+//  7. CM_HMI:    SYNC HMI Client Interface for WiFi Configuration
+
+/**
+ * @fnv_proto
+ * Enum of domains in the scope of CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum Domain
+{
+    // CM Internal Control
+    CM_CTRL = 0;
+
+    // WIR Client Interface
+    CM_WIRIF = 1;
+
+    // Cellular Interace Control
+    CM_CELL  = 2;
+
+    // WLAN Station Mode Interface Control
+    CM_WLAN  = 3;
+
+    // Virtual Interface and Networking Control
+    CM_VLAN  = 4;
+
+    // CM Diagnostics and Analytics
+    CM_DIAG  = 5;
+
+    // Network Interface Quality Monitoring
+    CM_NQM   = 6;
+
+    // SYNC HMI Client Interface for WiFi Configuration
+    CM_HMI   = 7;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf captures all the messaging
+ * between ECG CM and ECU CM.
+ * @fnv_topic SERVICES/DATA/ECG/CM/TCU
+ *            SERVICES/DATA/ECG/CM/SYNC
+ *            SERVICES/DATA/TCU/CM/ECG
+ *            SERVICES/DATA/SYNC/CM/ECG
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command ECG_CM, TCU_CM, SYNC_CM
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message CmMsg
+{
+    // CM Internal Version
+    optional uint32 ver = 1;
+
+    // Domain of the message
+    optional Domain domain = 2;
+
+    // CM Internal Control Message
+    // Please refer to CmMsgCtrl.proto
+    optional CmMsgCtrl.CtrlMsg ctrlMsg = 3;
+
+    // WIR Client Interface
+    // Please refer to CmMsgWirIf.proto
+    optional CmMsgWirIf.WirIfMsg wirIfMsg = 4;
+
+    // Cellular Interace Control
+    // Please refer to CmMsgCell.proto
+    optional CmMsgCell.CellMsg cellMsg = 5;
+
+    // WLAN Station Mode Interface Control
+    // Please refer to CmMsgWlan.proto
+    optional CmMsgWlan.WlanMsg wlanMsg = 6;
+
+    // Virtual Interface and Networking Control
+    // Please refer to CmMsgVlan.proto
+    optional CmMsgVlan.VlanMsg vlanMsg = 7;
+
+    // CM Diagnostics and Analytics
+    // Please refer to CmMsgDiag.proto (Unimplemented)
+    // Placeholder for future use.
+//    optional CmMsgDiag.DiagMsg diagMsg = 8;
+
+    // Network Interface Quality Monitoring
+    // Please refer to CmMsgNqm.proto
+    optional CmMsgNqm.NqmMsg nqmMsg = 9;
+
+    // SYNC HMI Client Interface for WiFi Configuration
+    // Please refer to CmMsgHmi.proto
+    optional CmMsgHmi.HmiWlanMsg hmiWlanMsg = 10;
+
+    // SOA API Version
+    optional __ApiVersion __api_version = 11;
+    
+    // Information about the message or message delivery (including message 
+    // acknowledgement)
+    optional CmMsgMeta.MsgMeta meta = 12;
+}

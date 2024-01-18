@@ -1,0 +1,236 @@
+syntax = "proto2";
+//	Ford Telematics Communication Protocol
+//  Feature/Enabler/Common: Zone Lighting (360 Degree Lighting)
+//	Version Number: 6.0.9
+//	Date Revised: 07/08/2019
+// 	Last Updated By: Mageshwaran Mohan [MMOHAN17]
+// 	Reviewed By: Murali Chitturi[MCHITTUR], Rumeli Das[RDAS9], Thoppae, Vijai [VTHOPPAE]
+// 	Ford Confidential
+//
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 10/21/2018 for version 6.0.4
+	// Added Alert
+		// ClearZoneLightingShutdownWarningAlert
+	// Updated Command Response
+		// Added data bundle 'ZoneLightingActivationStatusData'
+			// ActivateZoneLightingCommandResponse
+			// InactivateZoneLightingCommandResponse
+		// Added Enumeration 'ZoneONFailureReasonENUM'
+			// TurnONZoneCommandResponse
+	// Updated Alert
+		// ZoneLightingActivateAlert
+			// Removed errorDescription, ActivationStatusENUM and ActivationFailureReasonENUM
+		// ZoneLightingInactivateAlert
+			// Removed errorDescription, InactivationStatusENUM and InactivationFailureReasonENUM
+		// ZoneAndLightSwitchStatusSyncAlert
+			// Added enumeration ZoneLightingFaultStatusENUM
+	// Updated Comments
+		// LightSwitchStatusData
+			// updated the data bundle comment
+				// "Message structure for individual light status that represents the proxy status of defined lights with and without hard switches"
+			// replaced "Switch Status" --> "Status" in each signal's comment
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 09/21/2018 for version 6.0.3
+	// Renamed TurnOnZoneCommand --> TurnONZoneCommand
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 09/07/2018 for version 6.0.2
+// Zone Lighting
+	// Added Data Bundles
+		// ZoneLightActivationStatusData
+		// ZoneStatusData
+		// LightSwitchStatusData
+	// Added Commands
+		// ActivateZoneLightingCommand
+		// InactivateZoneLightingCommand
+		// TurnOnZoneCommand
+		// TurnOFFZoneCommand
+	// Added Commands Response
+		// ActivateZoneLightingCommandResponse
+		// InactivateZoneLightingCommandResponse
+		// TurnONZoneCommandResponse
+		// TurnOFFZoneCommandResponse
+	// Added Alert
+	 	// ZoneLightingActivateAlert
+	 	// ZoneLightingInactivateAlert
+	 	// ZoneAndLightSwitchStatusSyncAlert
+	 	// ZoneLightingShutdownWarningAlert
+//************************************************************************************************************************************************************************
+
+
+package com.ford.ftcp.apps;
+import "ErrorAndStatus.proto";
+
+// Zone Lighting terminologies
+// ---------------------------
+// ZoneLighting refers to Zone Lighting feature
+// Light/Lamp switch status refers to signals that are associated with physical hard switches and hardwired signals
+// Zone refers to the individual zones
+
+// Message structure for the 'ZoneLighting' Active/ Inactive  (1 is On (Active) , 0 is Off (Inactive))
+message ZoneLightingActivationStatusData {
+	// Signal for 'ZoneLighting' Activation data - Active/Inactive
+	optional int32 ExtLghtDsply_B_StatArb = 1;
+}
+
+// Message structure for Zone's ON/OFF status
+message ZoneStatusData{
+	// Left Zone ON/OFF status
+	optional int32 ExtLghtLeft_D_Stat = 1;
+	// Right Zone ON/OFF status
+  	optional int32 ExtLghtRight_D_Stat = 2;
+  	// Front Zone ON/OFF status
+	optional int32 ExtLghtFront_D_Stat = 3;
+	// Rear Zone ON/OFF status
+	optional int32 ExtLghtRear_D_Stat = 4;
+}
+
+// Message structure for individual light status that represents the proxy status of defined lights with and without hard switches
+message LightSwitchStatusData {
+	// Front Fog Lamps (x2 lights) Status
+	optional int32 FogLghtFrontOn_B_Stat = 1;
+	// Front High beams Light Status
+	optional int32 HeadLghtHiOn_B_Stat = 2;
+	// Front Park lamp Status
+	optional int32 Parklamp_Status= 3;
+	// Rear Bed Lamps (x2 lights) Status
+	optional int32 TrukBedLght_B_Stat= 4;
+	// Rear Reverse Lamps (x2 lights) Status
+	optional int32 RvrseLghtOn_B_Stat= 5;
+	// Rear License Plate Lamps (x2 lights) Status
+	optional int32 LicPlateLght_B_Stat= 6;
+	// Rear Trailer Assist Lamps Status
+	optional int32 TrlrHitchLamp_D_Stat= 7;
+	// Left/Right Puddle Lamp Status (both On/Off at same time)
+	optional int32 PudLamp_D_Rq= 8;
+	// Left Spot Light Status
+	optional int32 SpotLghtLeft_D_Stat = 9;
+	// Left Spot Light Status
+	optional int32 SpotLghtRight_D_Stat = 10;
+	// Derived Value for Rear Cargo Lights based on two Status ( PudLamp_D_Rq ( logical OR ) TrlrHitchLamp_D_Stat )
+	optional int32 rearCargoLight = 11;
+}
+
+// Enumeration for the zone type
+enum ZoneTypeENUM {
+	// All Zone (Ref. all zone signals)
+	ALL		= 0;
+	// Front Zone (Ref. "ExtLghtFront_D_RqOta" and "ExtLghtFront_D_Stat")
+	FRONT 	= 1;
+	// Rear Zone (Ref. "ExtLghtRear_D_RqOta" and "ExtLghtRear_D_Stat")
+	REAR 	= 2;
+	// Left Zone (Ref. "ExtLghtLeft_D_RqOta" and "ExtLghtLeft_D_Stat")
+	LEFT 	= 3;
+	// Right Zone (Ref. "ExtLghtRight_D_RqOta" and "ExtLghtRight_D_Stat")
+	RIGHT 	= 4;
+}
+
+// Message structure for Activate the ZONE Lighting Feature
+message ActivateZoneLightingCommand{
+}
+
+// Message structure for Inactivate the ZONE Lighting Feature
+message InactivateZoneLightingCommand{
+}
+
+// Message structure for Zone ON command
+message TurnONZoneCommand{
+	// Enumeration for the Zone Type
+	optional ZoneTypeENUM zoneType = 1;
+}
+
+// Message structure for Zone OFF command
+message TurnOFFZoneCommand{
+	// Enumeration for the zone type
+	optional ZoneTypeENUM zoneType = 1;
+}
+
+// Message structure for response to ActivateZoneLightingCommand containing Feature Active/Inactive status
+message ActivateZoneLightingCommandResponse{
+	// Enumeration for Command Status. ECG shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum cmdStatus = 1;
+	// Message structure for error details. ECG shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail cmdErrorDetail = 2;
+	// Message structure for Zone Lighting Activation Status - Active/Inactive
+	optional ZoneLightingActivationStatusData activationData = 3;
+}
+
+// Message structure for response to InactivateZoneLightingCommand containing Feature Active/Inactive status
+message InactivateZoneLightingCommandResponse{
+	// Enumeration for CommandStatus. ECG shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum cmdStatus = 1;
+	// Message structure for error details. ECG shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail cmdErrorDetail = 2;
+ 	// Message structure for Zone Lighting Activation Status - Active/Inactive
+	optional ZoneLightingActivationStatusData activationData = 3;
+}
+
+// Message structure for Zone ON command response with Zone ON/OFF status and failure error codes
+message TurnONZoneCommandResponse{
+	// Enumeration for CommandStatus. ECG shall always set this.
+	// Populate this as 'FAILED' for any reason Turn ON Zone Request Fails
+	optional com.ford.ftcp.appcommon.CommandStatusEnum cmdStatus = 1;
+	// Message structure for error details. ECG shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+	// Message structure for exterior zones ON/OFF status (All 4).
+	optional ZoneStatusData zoneStatus = 3;
+	// Message structure for failure reason, Populate this when the cmdStatus is "FAILED"
+	optional ZoneONFailureReasonENUM zoneONFailureReason = 4;
+
+	enum ZoneONFailureReasonENUM{
+		LOW_BATTERY = 0;
+ 		NOT_STATIONARY =1;
+ 		OTHER_ERRORS = 2;
+	}
+}
+
+// Message structure for Zone OFF command Response
+message TurnOFFZoneCommandResponse{
+	// Enumeration for CommandStatus. ECG shall always set this.
+	// Populate this as 'FAILED' for any reason Turn OFF request Fails
+	optional com.ford.ftcp.appcommon.CommandStatusEnum cmdStatus = 1;
+	// Message structure for error details. ECG shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+	// Message structure for exterior zones ON/OFF status (All 4).
+	optional ZoneStatusData ZoneData = 3;
+}
+
+// Message structure to indicate the Zone Lighting feature is Active
+message ZoneLightingActivateAlert{
+	// Message structure for Zone Lighting Activation Status - Active/Inactive
+	optional ZoneLightingActivationStatusData activationData = 1;
+}
+
+// Message structure to indicate the Zone Lighting feature is Inactive
+message ZoneLightingInactivateAlert{
+	// Message structure for Zone Lighting Activation Status - Active/Inactive
+	optional ZoneLightingActivationStatusData inactivationData = 1;
+}
+
+// Message structure for indicating the LightSwitch / Zones Status change.
+message ZoneAndLightSwitchStatusSyncAlert{
+	// Message structure for every individual exterior lights switch
+	optional LightSwitchStatusData lightSwitchStatus = 1;
+	// Message structure for exterior zones ON/OFF status (All 4).
+	optional ZoneStatusData zoneStatus = 2;
+	// Message structure to Zone Lighting Fault Status
+	optional ZoneLightingFaultStatusENUM zoneLightingFaultStatus = 3;
+
+	enum ZoneLightingFaultStatusENUM{
+		NO_FAULT = 0;
+		LOW_BATTERY = 1;
+ 		NOT_STATIONARY = 2;
+ 		OTHER_ERRORS = 3;
+	}
+}
+
+// Message structure for indicates that the lights will be Turned OFF in two minutes.
+message ZoneLightingShutdownWarningAlert{
+	// Message structure for exterior zones ON/OFF status (All 4).
+	optional ZoneStatusData zoneStatus = 1;
+}
+
+// Message structure for indicates the zone lighting shutdown warning is cleared.
+message ClearZoneLightingShutdownWarningAlert{
+	// Message structure for exterior zones ON/OFF status (All 4).
+	optional ZoneStatusData zoneStatus = 1;
+}

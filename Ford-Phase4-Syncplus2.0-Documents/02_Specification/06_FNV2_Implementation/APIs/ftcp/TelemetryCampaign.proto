@@ -1,0 +1,236 @@
+syntax = "proto2";
+//	Ford Telematics Communication Protocol
+//  Feature/Enabler/Common: Telemetry Campaign
+//	Version Number: 6.0.9
+//	Date Revised: 07/08/2019
+// 	Last Updated By: Vijai Thoppae [VTHOPPAE]
+// 	Ford Confidential
+//
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 09/07/2018 for version 6.0.2
+	// Packaging of proto files have been introduced and referenced
+	// Added syntax = "proto2" to the header
+	// Added 'STOP_NONE = 0' to enum StopCause
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 06/20/2018 for version 6.0.1
+	// Reordered tags in all the message structures and Alerts
+	// Cleaned up commented messages
+//************************************************************************************************************************************************************************
+// Covers Telemetry Campaign Implementation Requirements
+//************************************************************************************************************************************************************************
+package com.ford.ftcp.apps;
+
+//syntax = "proto2";
+import "ErrorAndStatus.proto";
+
+message TelemetryCampaignSetCommand {
+// Detail of the campaign to be run. The Cloud must set this parameter when a new campaign is being deployed.
+// Separate TelemetryCampaignSetCommand should be sent for every ECU on which a campaign is to be run.
+	optional Campaign diagCampaign = 1;
+}
+
+message TelemetryCampaignSetCommandResponse {
+// Enumeration for CommandStatus. TCU shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for error details. TCU shall only set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+	// TCU must echo back the campaign IDs it was assigned by the Cloud
+	optional Campaign.Status ecuCampaignStatus = 3;
+}
+
+message TelemetryCampaignGetCommand {
+// ECU whose telemetry campaign is being queried. Cloud must always set this.
+	optional Campaign.EcuName ecuName = 1;
+}
+
+message TelemetryCampaignGetCommandResponse {
+// Enumeration for CommandStatus. TCU shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for error details. TCU shall only set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+	// Message structure for details of the current campaigns running on the TCU.
+	optional Campaign.Status ecuCampaignStatus = 3;
+}
+
+// Message structure for CampaignExpiryAlert
+message TelemetryCampaignExpiryAlert {
+// ECU-specific information about the campaign. If multiple campaigns have expired, separate messages
+// should be sent for each of them.
+	optional Campaign.Status ecuCampaignStatus = 1;
+}
+
+// Defines a Campaign for a single FAST ECU
+message Campaign {
+	enum EcuName {
+		ECG = 0;
+		TCU = 1;
+		SYNC = 2;
+	}
+
+	message ModuleVerbosity {
+		enum DebugLevel {
+			DEBUG_LEVEL_NONE = 0;
+			DEBUG_LEVEL_MANDATORY = 1;
+			DEBUG_LEVEL_OPTIONAL = 2;
+			DEBUG_LEVEL_VERBOSE = 3;
+		}
+
+		enum LogLevel {
+			LOG_LEVEL_NONE = 0;
+			LOG_LEVEL_CRITICAL = 1;
+			LOG_LEVEL_ERROR = 2;
+			LOG_LEVEL_WARNING = 3;
+			LOG_LEVEL_INFO = 4;
+			LOG_LEVEL_DEBUG = 5;
+		}
+
+		// Tag used to identify the software module whose verbosity is being controlled
+		required string logTag = 1;
+
+		// Verbosity for each category (e.g., traces, logworthy, etc) that is being filtered for
+		optional LogLevel maxLogLevel = 2;
+		optional DebugLevel maxDebugLevel = 3;
+	}
+
+	message PeriodicLogworthyOptions {
+
+	// Time, in minutes, from the receipt of the campaign message till when the first
+	// logworthy will be generated
+		optional uint32 timeToFirstLogworthy = 1;
+
+		// Time, in minutes, between consecutive logworthy generation
+		optional uint32 logworthyPeriodicity = 2;
+
+		// Maximum number of logworthies to generate. If campaign expires before this number
+		// is reached, no further logworthies are generated.
+		optional uint32 maxLogworthyCount = 3;
+	}
+
+	// Defining campaign data specific to TCU
+	message TcuConfigExtension {
+	// In version 1, we only support a TCU mask file name. In future, we will consider
+	// sending fully defined masks as byte streams or string payload.
+
+	// This is the file name used for the main buffer. It can be left empty if default
+	// mask file is to be used.
+		optional string mainBufferMask = 1;
+
+		// This is the file name for the long play buffer. It can be left empty if default
+		// mask file is to be used.
+		optional string longplayBufferMask = 2;
+
+		// This is the file name for supplementary buffer 01. It can be left empty if default
+		// mask file is to be used.
+		optional string supplementaryBufferMask01 = 3;
+	}
+
+	enum Result {
+	// Operation successful
+		RESULT_SUCCESS = 0;
+
+		// Something other than the known error cases
+		RESULT_GENERIC_FAILURE = 1;
+
+		// There's an extension for the wrong ECU
+		RESULT_EXTENSION_MISMATCH = 2;
+
+		// TCU-specific command not supported on this system
+		RESULT_TCU_EXTENSION_UNSUPPORTED = 3;
+
+		// Periodic logworhty feature not supported on this system
+		RESULT_PERIODIC_LOGWORTHY_UNSUPPORTED = 4;
+
+		// This SW version doesn't support campaigns
+		RESULT_UNSUPPORTED_FEATURE = 5;
+
+		// Identifier is bad (duplicate or 0 without override confirmation)
+		RESULT_INVALID_ID = 6;
+
+		// ECU ID is unknown
+		RESULT_UNSUPPORTED_ECU = 7;
+
+		// Duration not supported on this system
+		RESULT_UNSUPPORTED_DURATION = 8;
+
+		// Periodicity value is too short
+		RESULT_UNSUPPORTED_PERIODICITY = 9;
+
+		// Other parsing error
+		RESULT_PARSING_FAILURE = 10;
+
+		// No security token for campaign support
+		RESULT_TOKEN_ABSENT = 11;
+	}
+
+	enum StopCause {
+		// None with default 0 as start
+		STOP_NONE = 0;
+		// Natural death of campaign
+		STOP_NORMAL_EXPIRY = 1;
+
+		// Default campaign was redefined with a new default
+		STOP_DEFAULT_REDEFINED = 2;
+
+		// New campaign push (including id=0 case) caused old one to be removed
+		STOP_NEW_DEPLOYMENT = 3;
+
+		// Campaign was stopped due to a token removal
+		STOP_TOKEN_ABSENT = 4;
+	}
+
+	// Message type used to report meta information about campaigns (e.g., for expiry indications)
+	message Status {
+
+	// In responses and alerts, ECU MUST populate this with its own identity for the message to be considered valid.
+	// Cloud MUST populate this field in appropriate commands (get).
+		optional EcuName ecuName = 1 [default = ECG];
+
+		// In responses and alerts, ECU MUST populate this field with the identifier of the campaign being deployed (for
+		// new deployment) or the campaign being stopped (for campaign stop alerts).
+		// Cloud SHOULD NOT include this field in any messages.
+		optional uint32 campaignIdentifier = 2;
+
+		// In resonses, ECU MUST include this field in responses to new deployment. For other messages, the field
+		// is optional and, if included, shall be set to RESULT_SUCCESS
+		// Cloud SHOULD NOT include this field in any messages.
+		optional Result result = 3;
+
+		// In alerts, ECU MUST include this field only in campaign stop alerts. The field MUST NOT be included
+		// in response messages.
+		// Cloud SHOULD NOT include this field in any messages.
+		optional StopCause stopCause = 4;
+	}
+
+	// ECU that this campaign should apply to
+	optional EcuName ecuName = 1 [default = ECG];
+
+	// Identifier to identify campaign expire. Ideally this value should be unique for a vehicle/ECU combination.
+	// ECU must use this value when alerting the SDN about campaign expiry and when responding to queries
+	// about campaign status.
+	optional uint32 campaignIdentifier = 2;
+
+	// Verbosity definition for a single software module running on this ECU.
+	repeated ModuleVerbosity moduleVerbosity = 3;
+
+	// TCU-specific field used to represent TCU modem mask information
+	optional TcuConfigExtension tcuConfigExt = 4;
+
+	// Whether logging eCall messages is allowed. Setting this to true violates regulatory requirements!
+	// Default is false
+	optional bool ecallLoggingEnabled = 5 [default = false];
+
+	// Options to generate logworthy at fixed periods to try and catch device snapshot
+	optional PeriodicLogworthyOptions periodicLogworthyOptions = 6;
+
+	// Option to change analytics report periodicity from default. Periodicity value is in
+	// minutes.
+	optional uint32 analyticsReportPeriodicity = 7 [default = 7200];
+
+	// Duration, in minutes, of how long this campaign should run.
+	optional uint32 duration = 8 [default = 60];
+
+	// Confirm that the intent is to really overwrite the default campaign. This field
+	// is ignored unless campaignIdentifier is set to 1.
+	optional bool overwriteConfirmation = 9 [default = false];
+}
+

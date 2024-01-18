@@ -1,0 +1,23 @@
+syntax = "proto2";
+option optimize_for = CODE_SIZE;
+ 
+package fnv.soa.gateway;
+ 
+// Connection options for Gateway Client
+
+/**
+* @fnv_proto
+* Sends the connection options from the SOA Gateway client to the client 
+* @fnv_topic This GPB is used over the IPC interface and does not use SOA messaging
+* @fnv_scope ECG_INTERNAL
+* @fnv_api_source INTERNAL
+* @fnv_message_version 1.0
+*/
+message SoaIpcConnectionOptions {
+    required string serverFilePath = 1;
+    required string clientFilePath = 2;
+    optional bool cleanSession = 3;
+    optional int32 keepAlive = 4;
+    optional bool lastWillAndTestament = 5;
+    optional bool retained = 6;
+}

@@ -1,0 +1,255 @@
+syntax = "proto2";
+//	Ford Telematics Communication Protocol
+//  Feature/Enabler/Common: Fleet Telematics (Vehicle Data)
+//	Version Number: 6.0.9
+//	Date Revised: 09/09/2019
+// 	Last Updated By: Thoppae, Vijai [VTHOPPAE]
+// 	Reviewed By: Murali Chitturi[MCHITTUR], Rumeli Das[RDAS9], Mageshwaran Mohan [MMOHAN17], Jahnavi Athaluri[JATHALU1]
+// 	Ford Confidential
+//
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 08/12/2019 for version 6.0.8
+// Geo Fence - New Feature
+	// Added PeriodicVehicleGeoPositionAlert
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 10/22/2018 for version 6.0.4
+// CR #447
+	// Updated PeriodicVehicleDataAlert
+		// Added new data Bundles
+			// VehiclePositionData
+			// DriverSafetyData
+			// DieselSystemStatusData
+			// UpfitterModuleStatusData
+		// Removed Data Bundle
+			// DrivingBehaviourData
+// CR #493
+	// Following new alerts are added
+		// UpfitterStatusChangeAlert
+		// DieselExhaustFluidAlert
+		// DieselParticulateFilterAlert
+		// DieselWaterInFuelAlert
+		// DieselExhaustOverTempAlert
+		// DieselIdleShutdownAlert
+		// DieselFuelFilterAlert
+	// Following New Data bundles are added
+		// DieselSystemStatusData
+		// UpfitterModuleStatusData
+	// Added data bundle UpfitterModuleStatusData to alerts
+		// IgnitionOnAlert
+		// IgnitionOffAlert
+	// Added data bundles UpfitterModuleStatusData and DieselSystemStatusData to alert
+		// PeriodicVehicleDataAlert
+// #CR691
+	// Removed data bundle ChargeProgrammingData from the following Alerts
+		// MotiveModeBeginAlert
+		// MotiveModeEndAlert
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 09/07/2018 for version 6.0.2
+	// Packaging of proto files have been introduced and referenced
+	// Added syntax = "proto2" to the header
+	// Removed DiagnosticTesterPresentAlert
+	// Removed VehicleGPS3DFixLossAlert
+//************************************************************************************************************************************************************************
+// Changes/Version based on B4 FTCP version and FNV2 FTCP Proposal
+// Covers part of Fleet Telematics Vehicle Data Requirements
+//************************************************************************************************************************************************************************
+// Change Log for version 6.0.1
+// TelematicsEmergencyVehicle
+	// Re-ordered TAG numbers
+//************************************************************************************************************************************************************************
+
+// Fleet Telematics Vehicle Data Messages
+package com.ford.ftcp.apps;
+
+import "FeatureCommon.proto";
+
+
+message PowertrainActiveAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+}
+
+message PowertrainDeactivatedAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+}
+
+//This is also referred as MinorTimedAlert / VehiclePositionAlert
+message PeriodicVehicleDataAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Message structure for Driver Safety data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+	// Message structure for Diesel Systems Status Data
+	optional com.ford.ftcp.appcommon.DieselSystemStatusData dieselSystemStatusData= 3;
+	// Upfitter Module Status Data
+	optional com.ford.ftcp.appcommon.UpfitterModuleStatusData upfitterModuleStatusData = 4;
+}
+
+message PeriodicDataDuringKeyOffModeAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+}
+
+// Message Structure for Upfitter Status Change alert
+// Indicating the upfitter signals status changes between ignition off to ignition on or any state transition(any signal) while engine running
+message UpfitterStatusChangeAlert
+{
+	// Message structure for vehicle position data. TCU shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+	// Upfitter Module Status Data
+	optional com.ford.ftcp.appcommon.UpfitterModuleStatusData upfitterModuleStatusData = 3;
+}
+
+// Message Structure for Diesel Exhaust Fluid status change (Urea level and Quality change) Alert
+message DieselExhaustFluidAlert
+{
+	// Message structure for vehicle position data. TCU shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+	// Message structure for Diesel Systems Status Data
+	optional com.ford.ftcp.appcommon.DieselSystemStatusData dieselSystemStatusData= 3;
+}
+
+// Message Structure for Diesel Particulate Filter Status Change Alert
+message DieselParticulateFilterAlert
+{
+	// Message structure for vehicle position data. TCU shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+	// Message structure for Diesel Systems Status Data
+	optional com.ford.ftcp.appcommon.DieselSystemStatusData dieselSystemStatusData= 3;
+}
+
+// Message Structure for Diesel engine's water in fuel Alert
+message DieselWaterInFuelAlert
+{
+	// Message structure for vehicle position data. TCU shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+	// Message structure for Diesel Systems Status Data
+	optional com.ford.ftcp.appcommon.DieselSystemStatusData dieselSystemStatusData= 3;
+
+}
+
+// Message Structure for Diesel Engine's exhaust over temperature indicator Alert
+message DieselExhaustOverTempAlert
+{
+	// Message structure for vehicle position data. TCU shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+	// Message structure for Diesel Systems Status Data
+	optional com.ford.ftcp.appcommon.DieselSystemStatusData dieselSystemStatusData= 3;
+}
+
+// Message Structure for Diesel Engine's shutdown on idle state alert (transition from 0 to 1 or 1 to 2)
+message DieselIdleShutdownAlert
+{
+	// Message structure for vehicle position data. TCU shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData  vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+	// Message structure for Diesel Systems Status Data
+	optional com.ford.ftcp.appcommon.DieselSystemStatusData dieselSystemStatusData= 3;
+}
+
+// Message Structure for Diesel Engine's fuel filter alert (low fuel pressure due to filter fault)
+message DieselFuelFilterAlert
+{
+	// Message structure for vehicle position data. TCU shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+	// Message structure for Diesel Systems Status Data
+	optional com.ford.ftcp.appcommon.DieselSystemStatusData dieselSystemStatusData= 3;
+}
+
+// Message structure for AlarmTriggeredAlert
+message AlarmTriggeredAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+}
+
+message IgnitionOnAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 2;
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 3;
+}
+
+message IgnitionOffAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Trip report data
+	optional TripReportData tripReportData = 2;
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 3;
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 4;
+}
+
+// Message structure for LowTirePressureAlert
+message LowTirePressureAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+}
+
+// Message structure for ClearLowTirePressureAlert
+message ClearLowTirePressureAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+}
+
+// Data bundle of calculations/accumulations to report when
+// Ignition Status goes from any state to OFF (IgnitionOffAlert)
+message TripReportData{
+	// Fuel used idling this period - a derived value based on HSCAN Signal CGEA 1.3 FuelFlw_Vl_Dsply(Added in vpd),
+	// EngAout_N_Actl(vstat,VPD), Veh_V_ActlEng(vstat,VPD) and GearLvrPos_D_Actl(vstat)
+	optional int32 FuelUsedIdlingThisDuration = 1;
+	// Fuel used this duration - derived value based on HSCAN Signal CGEA 1.3 FuelFlw_Vl_Dsply
+	optional int32 FuelUsedThisDuration = 2;
+	// Miles accumulated using fuel this duration - derived value
+	optional int32 AccumulatedMiles = 3;
+	// Maximum Speed - Peak value of speed during this duration - based on HSCAN Signal CGEA 1.3 Veh_V_ActlEng
+	optional int32 MaximumSpeed	= 4;
+	// Total Engine Hours
+	optional int32 TotalEngineHours = 5;
+	// Total Idle  Run Hours
+	optional int32 TotalIdleRunTime = 6;
+}
+
+// Message structure for MotiveModeBeginAlert
+message MotiveModeBeginAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+}
+
+// Message structure for MotiveModeEndAlert
+message MotiveModeEndAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+}
+
+// Message structure for Low12VBatteryAlert
+message Low12VBatteryAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+}
+
+// Message structure for ClearLow12VBatteryAlert
+message ClearLow12VBatteryAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+}
+
+// Message structure for Periodic Vehicle Geo-Position Alert.Sends vehicle GPS snapshot at a periodic interval as configured by cloud
+message PeriodicVehicleGeoPositionAlert{
+	// GPS information of the vehicle
+	optional com.ford.ftcp.appcommon.GPSInfo gpsInfo = 1;
+}

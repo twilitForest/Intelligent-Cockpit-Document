@@ -1,0 +1,150 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2017.  Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+
+syntax = "proto2";
+option optimize_for = CODE_SIZE;
+package fci.ftcpinterface;
+import "fci_info.proto";
+
+// FCI proto file
+// Version 1.0.0
+// This protobuf defines FCI FTCP messages. Those messages include FciAlert, FciQuery and FciCommandResponse.
+// When a vehicle application wants to send an FTCP message or repsonse to a received FTCP command message from
+// cloud, it shall use those FCI FTCP message format to send the corresponding FTCP messages. In order for an
+// application to receive a delivery confirmation message, it shall also provide an delivery confirmation endpoint.
+// FCI will send a delivery confirmation message to this endpoint (topic) after FCI delivers Alert, Query or Command
+// Response to the cloud. The application also need to provide a response endpoint (Alert and Query) so that FCI
+// can publish the received Alert Response and Querey Response from the cloud to those endpoints later on.
+//
+// This protobuf also defines the FTCP message deliverery status message which indicates to the corresponding
+// application if the message has been delivered successfully or not. If not, a reason code of failure of queue
+// overflow is sent back to the application.
+
+/**
+ * @fnv_message_proto: Protobuf to be used to specify the FCI FTCP Alert message
+ * @fnv_topic "SERVICES/REQUEST/FNV/FCI/FTCP/ALERT"
+ * @fnv_command
+ * @fnv_description:
+ */
+message FciAlert
+{
+    // TCU_ALERT message
+    optional bytes ftcpAlert = 1;
+    
+    // The component can be set this field with the topic string that the component subscribes
+    // to receive a SOA message containing the corresponding ALERT_RESPONSE.
+    // FCI will store this endpoint, topic, to publish ALERT_RESPONSE later.
+    optional string alertResponseEndpoint = 2;
+    
+    // Configured value for DRX mode
+    optional int32 drxConfig = 3 [default = 0]; 
+
+    // Qos value for sending an alert message
+    optional uint32 qos = 4 [default = 1];
+
+    // Delivery confirmation message
+    optional DeliveryConfirmation deliveryConfirmation = 5;
+
+    // API version, static field
+    optional __ApiVersion __api_version = 10;
+}
+
+/**
+ * @fnv_message_proto: Protobuf to be used to specify the FCI FTCP Query message
+ * @fnv_topic "SERVICES/REQUEST/FNV/FCI/FTCP/QUERY"
+ * @fnv_command
+ * @fnv_description:
+ */
+message FciQuery
+{
+    // SDN_QUERY message
+    optional bytes ftcpQuery = 1;
+
+    // The component must set this field with the topic string that the component subscribes
+    // to receive a SOA message containing the corresponding SDN_QUERY_RESPONSE.
+    // FCI will store this endpoint, topic, to publish SDN_QUERY_RESPONSE later.
+    optional string queryResponseEndpoint = 2;
+
+    // Delivery confirmation message
+    optional DeliveryConfirmation deliveryConfirmation = 3;
+
+    // API version, static field
+    optional __ApiVersion __api_version = 10;
+}
+
+/**
+ * @fnv_message_proto: Protobuf to be used to specify the FCI FTCP Command Response message
+ * @fnv_topic "SERVICES/REQUEST/FNV/FCI/FTCP/RESPONSE"
+ * @fnv_command
+ * @fnv_description:
+ */
+message FciCommandResponse
+{
+    // SDN_COMMAND_RESPONSE message
+    optional bytes ftcpCommandResponse = 1;
+
+    // Delivery confirmation message
+    optional DeliveryConfirmation deliveryConfirmation = 2;
+
+    // API version, static field
+    optional __ApiVersion __api_version = 10;
+}
+
+/**
+ * @fnv_message_proto: Protobuf to be used to specify the FTCP message delivery status message
+ * @fnv_topic "delivery confirmation endpoint"
+ * @fnv_command
+ * @fnv_description:
+ */
+message FtcpMessageDelivered
+{
+    optional FtcpMessageType msg_type = 1;
+    optional DeliveryStatus deliveryStatus = 2;
+
+    // API version, static field
+    optional __ApiVersion __api_version = 10;
+}
+
+// FTCP message type
+enum FtcpMessageType
+{
+    FTCP_ALERT = 0;
+    FTCP_QUERY = 1;
+    FTCP_COMMAND_RESPONSE = 2;
+}
+
+/**
+ * @fnv_message_proto: Protobuf to be used to specify the FTCP delivery confirmation message
+ * @fnv_topic
+ * @fnv_command
+ * @fnv_description:
+ */
+message DeliveryConfirmation
+{
+    // Request FCI to send a delivery confirmation message after an alert, query or command-response is delivered to the cloud.
+    optional bool sentConfirmation = 1 [default = false];
+
+    // Delivery confirmation endpoint. If the sentConfirmation option above is set to true, FCI will send a delivery
+    // confirmaiton message to this topic after FCI delivers the message to cloud.
+    optional string deliveryConfirmationEndpoint = 2;
+}
+
+// FTCP message delivery status
+enum DeliveryStatus
+{
+    DELIVERY_SUCCEEDED = 1;
+    DELIVERY_FAILED = 2;
+    DELIVERY_FAILED_INVALID_FORMAT = 3;
+    DELIVERY_QUEUE_OVERFLOW = 4;
+}
+

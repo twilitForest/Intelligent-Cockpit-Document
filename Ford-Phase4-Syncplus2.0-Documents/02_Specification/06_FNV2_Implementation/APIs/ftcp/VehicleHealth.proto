@@ -1,0 +1,188 @@
+syntax = "proto2";
+//	Ford Telematics Communication Protocol
+//  Feature/Enabler/Common: Vehicle Health Application (VHA)
+//	Version Number: 6.0.9
+//	Date Revised: 07/08/2019
+// 	Last Updated By: Vijai Thoppae [VTHOPPAE]
+// 	Reviewed By:Murali Chitturi,Rumeli Das, Mageshwaran Mohan [MMOHAN17]
+// 	Ford Confidential
+//
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 09/07/2018 for version 6.0.2
+	// Packaging of proto files have been introduced and referenced
+	// Added syntax = "proto2" to the header
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 06/20/2018 for version 6.0.1
+	//Reordered tags in all the message structures and Alerts
+	//Cleaned up commented messages
+//************************************************************************************************************************************************************************
+// Changes/Version based on B4 FTCP version and FNV2 FTCP Proposal
+// Covers Vehicle Health/Diagnostics, Status and Fleet Diagnostics Requirements
+//************************************************************************************************************************************************************************
+package com.ford.ftcp.apps;
+import "Common.proto";
+import "FeatureCommon.proto";
+import "ErrorAndStatus.proto";
+
+// VHR Commands - START
+
+// Message structure for VehicleStatusUpdateCommand
+message VehicleStatusUpdateCommand{
+}
+
+// Message structure for VehicleStatusUpdateCommandResponse
+message VehicleStatusUpdateCommandResponse{
+	// Enumeration for CommandStatus. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 2;
+	// Message structure for error details. ECU(ECG/TCU) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+}
+
+message VehicleDiagnosticDataRequestCommand{
+	// message structure for Diagnostic Data Request
+	optional VehicleDiagnosticData diagnosticData = 1;
+}
+// VHR Commands - END
+
+// Message structure for VehicleDiagnosticDataRequestCommandResponse
+message VehicleDiagnosticDataRequestCommandResponse{
+	// Enumeration for CommandStatus. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 2;
+	// Message structure for error details. ECU(ECG/TCU) shall only set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+}
+
+message VehicleDiagnosticDataResponseAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Diagnostic Request Status type
+	optional com.ford.ftcp.appcommon.DiagnosticRequestStatusENUM diagnosticRequestStatusEnum = 2;
+	// Original data sent from the cloud in Vehicle diagnostic command
+	optional VehicleDiagnosticData diagnosticData = 3;
+	// Response data for the original command for fulfilling the diagnostic request
+	repeated com.ford.ftcp.appcommon.VehicleDiagnosticResponseData diagnosticResponseData = 4;
+}
+
+
+// VHR Alert
+// Message structure for Vehicle Health Data alert
+message VehicleHealthDataAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Status type
+	optional VehicleHealthStatusEnum vehicleHealthStatus = 2;
+	// Health data of all ECUs
+	optional VehicleHealthData vehicleHealthData = 3;
+	enum VehicleHealthStatusEnum{
+		// When a module other than the ECU(ECG/TCU) is making diagnostic requests on the CAN network
+		TESTER_PRESENT = 0;
+		// When Vehicle health monitor starts but ECU discovery is not completed
+		IN_DISCOVERY = 1;
+		// Data when vehicle health monitor is started in the ECU(ECG/TCU)
+		INITIAL_HEALTH = 2;
+		// When the VHR DIDs have a change since the last send to cloud
+		CHANGE_IN_HEALTH = 3;
+	}
+}
+
+// Fleet specific DIDs Diagnostic READ - Start
+
+// Message structure for Fleet Vehicle Diagnostic DID Request Command
+message FleetVehicleDiagnosticDataRequestCommand{
+	// SDN shall populate this structure for with ECU ID and DID Address for DID request
+	repeated FleetVehicleDiagnosticData fleetVehicleDiagnosticData = 1;
+	// Date and Time when the ECU(ECG/TCU) shall expire the diagnostic request process
+	optional com.ford.ftcp.appcommon.UTCDateTime diagnosticRequestExpiration = 2;
+	// ECU(ECG/TCU) shall issue/start/repeat the diagnostic request to the DIDs in the specified interval(in minutes)
+	// Interval of zero minutes, is one time execution
+	optional int32 timeInterval = 3;
+	// ECU(ECG/TCU) shall start the diagnostic process with a delay(minutes) for first time, after detecting Engine Run condition
+	optional int32 delayTimeToStart = 4;
+}
+
+// Message structure for FleetVehicleDiagnosticDataRequestCommandResponse
+message FleetVehicleDiagnosticDataRequestCommandResponse{
+	// Enumeration for CommandStatus. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for command error details. ECU(ECG/TCU) shall only set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+}
+
+// Message structure for Fleet Vehicle Diagnostic Data Response Alert
+message FleetVehicleDiagnosticDataResponseAlert{
+	// Response data for the original command for fulfilling the diagnostic request
+	repeated FleetVehicleDiagnosticResponseData fleetVehicleDiagnosticResponseData = 1;
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 2;
+}
+
+// Message structure for Fleet Vehicle Diagnostic Data Request
+message FleetVehicleDiagnosticData{
+	// Target ECU to which the diagnostic request should be sent
+	optional int32 targetECUId = 1;
+	// DID address on/to which diagnostic request to be performed
+	optional int32 DIDAddress = 2;
+}
+
+// Message Structure for Fleet Vehicle Diagnostic Response Data
+message FleetVehicleDiagnosticResponseData{
+	// Target ECU on which the diagnostic request performed
+ 	optional int32 responseECUId = 1;
+	// DID address on/to which diagnostic request performed
+	optional int32 DIDAddress = 2;
+	// Diagnostic DID response data for the DID address
+	optional bytes diagnosticResponseDataFromVehicle = 3;
+	// Diagnostic Response Status type
+	optional DiagnosticResponseStatusEnum diagnosticResponseStatus = 4;
+
+	enum DiagnosticResponseStatusEnum{
+		// When a module other than the ECU(ECG/TCU) is making diagnostic request on the CAN network
+		NETWORK_NOT_AVAILABLE = 0;
+		// ECU(ECG/TCU) Successfully sent diagnostic request on the CAN network based on conditions provided in the command
+		SUCCESSFUL = 1;
+		// ECU(ECG/TCU) successfully sent diagnostic request to the CAN network but no response was received
+		NO_RESPONSE = 2;
+		// ECU(ECG/TCU) unable to successfully send diagnostic request to the CAN network in the specified timeframe based on the conditions
+		// provided in the command
+		EXPIRED = 3;
+	}
+}
+
+// Fleet specific DIDs Diagnostic READ - End
+
+// Message structure for capturing Vehicle Health Data from all ECUs
+message VehicleHealthData{
+
+	repeated com.ford.ftcp.appcommon.ECUData ECUData = 1;
+
+	repeated com.ford.ftcp.appcommon.ECUConfiguration ecuConfigurationData = 2;
+}
+
+// message structure for Diagnostic Data Request
+message VehicleDiagnosticData{
+	// Target ECU to which the diagnostic request should be sent
+	optional int32 targetECUId = 1;
+	// diagnstic request data to be sent to target ECU
+	optional bytes diagnosticRequestDataFromCloud = 2;
+	// time before when the ECU(ECG/TCU) shall expire the diagnostic request - if unable to execute
+	optional com.ford.ftcp.appcommon.UTCDateTime diagnosticRequestExpiration = 3;
+	// State when the ECU(ECG/TCU) shall issue a diagnostic request to the target ECU
+	optional DiagnosticStateEnum diagnosticState = 4;
+	// ECU(ECG/TCU) shall start the diagnostic process with a delay(minutes) for first time, after detecting Engine Run condition
+	optional int32 delayTimeToStart = 5;
+
+	enum DiagnosticStateEnum{
+		// Key-On Engine-Off
+		KOEO = 0;
+		// Key-On Engine-Crank
+		KOEC = 1;
+		// Key-On Engine-Run
+		KOER = 2;
+	}
+}
+
+

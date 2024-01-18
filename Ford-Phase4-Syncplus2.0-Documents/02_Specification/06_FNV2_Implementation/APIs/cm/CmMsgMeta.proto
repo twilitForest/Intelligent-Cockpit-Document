@@ -1,0 +1,44 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2019.  Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// deliberate unauthorized publication.  Ford Motor Company also
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+//
+
+syntax = "proto2";
+option optimize_for = CODE_SIZE;
+package CmMsgMeta;
+
+/**
+ * @fnv_proto
+ * CM internal. Information about the message or delivery (including
+ * acknowledgement)
+ *
+ * @fnv_topic       Not applicable.
+ * @fnv_command     Not applicable.
+ * @fnv_description CM internal. Information about the message or message 
+ *                  delivery (including message acknowledgement)
+ * @fnv_message_version 1.0
+ */
+message MsgMeta 
+{
+    // Sequence number of this message. If set, an acknowledgment is requested.  
+    optional uint32 seq = 1;
+    
+    // List of message sequence numbers to acknowledge. 
+    //
+    // Implementation note: while a message can contain multiple 
+    // acknowledgments, the current implementation sends each acknowledgement 
+    // separately. so if we want to implement delta encoding or run-length 
+    // encoding, it can be done in a way that does not require extra bytes on 
+    // signaling.
+    repeated uint32 acks = 2 [packed = true]; 
+}

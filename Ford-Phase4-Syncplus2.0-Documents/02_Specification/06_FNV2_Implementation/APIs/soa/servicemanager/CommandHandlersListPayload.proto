@@ -1,0 +1,40 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2017.  Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// deliberate unauthorized publication.  Ford Motor Company also
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+//
+
+syntax = "proto2";
+option optimize_for = CODE_SIZE;
+
+import public "EndpointListPayload.proto";
+import public "sm_transaction_status_public.proto";
+import public "soa_service_manager_info.proto";
+
+package fnv.soa.framework.protobuf;
+
+// Message to deliver a map of comand handlers.
+
+/**
+* @fnv_message_proto
+* @fnv_topic SERVICES/REQUEST/FNV/SOA/SERVICEMANAGER
+* @fnv_command GET_CMND_HANDLERS
+* @fnv_description:
+* @fnv_request: CommandListPayloadProto
+*/
+message CommandHandlersListPayloadProto {
+	optional fnv.soa.framework.protobuf.SmTransactionStatus.Status transactionStatus = 1 [default = OK];
+    // command handlers map.
+    map<string, EndpointListPayload> handlers = 2;
+    // API version, static field
+    optional __ApiVersion __api_version = 10;
+}

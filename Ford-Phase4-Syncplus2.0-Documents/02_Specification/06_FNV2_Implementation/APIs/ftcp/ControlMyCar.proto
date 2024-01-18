@@ -1,0 +1,112 @@
+syntax = "proto2";
+//	Ford Telematics Communication Protocol
+//  Feature/Enabler/Common: Command and Control (ControlMyCar Application)
+//	Version Number: 6.0.9
+//	Date Revised: 09/19/2019
+// 	Last Updated By: Mageshwaran Mohan [MMOHAN17]
+// 	Reviewed By:Murali Chitturi,Rumeli Das, Vijai Thoppae [VTHOPPAE],  Jahnavi Athaluri[JATHALU1]
+// 	Ford Confidential
+//
+//************************************************************************************************************************************************************************
+// CHANGE LOG on 09/19/2019 for version 6.0.9
+// Guard Mode feature
+	// Added alerts
+		// LockAndAjarStatusAlert
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 09/07/2018 for version 6.0.2
+	// Packaging of proto files have been introduced and referenced
+	// Added syntax = "proto2" to the header
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 06/20/2018 for version 6.0.1
+	//Reordered tags in all the message structures and Alerts
+	//Cleaned up commented messages
+//************************************************************************************************************************************************************************
+// Changes/Version based on B4 FTCP version and FNV2 FTCP Proposal for Command and Control
+//************************************************************************************************************************************************************************
+
+package com.ford.ftcp.apps;
+import "FeatureCommon.proto";
+import "ErrorAndStatus.proto";
+
+// Message structure for LockCommand
+message LockCommand{
+}
+
+// Message structure for LockCommandResponse
+message LockCommandResponse{
+	// Enumeration for CommandStatus. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 2;
+	// Message structure for error details. ECU(ECG/TCU) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+}
+
+// Message structure for UnlockCommand
+message UnlockCommand{
+}
+
+// Message structure for UnlockCommandResponse
+message UnlockCommandResponse{
+	// Enumeration for CommandStatus. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 2;
+	// Message structure for error details. ECU(ECG/TCU) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+}
+
+// Message structure for InitiateRemoteStartCommand
+// ECU(ECG/TCU) SHALL ALWAYS EXECUTE LOCK FIRST BEFORE ATTEMPTING REMOTE START
+message InitiateRemoteStartCommand{
+}
+
+// Message structure for InitiateRemoteStartCommandResponse
+message InitiateRemoteStartCommandResponse{
+	// Enumeration for CommandStatus. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 2;
+	// Message structure for error details. ECU(ECG/TCU) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+}
+
+// Message structure for CancelRemoteStartCommand
+message CancelRemoteStartCommand{
+}
+
+// Message structure for CancelRemoteStartCommandResponse
+message CancelRemoteStartCommandResponse{
+	// Enumeration for CommandStatus. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 2;
+	// Message structure for error details. ECU(ECG/TCU) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+}
+
+
+// Message structure for RemoteStartBeginAlert
+message RemoteStartBeginAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+}
+
+// Message structure for RemoteStartEndAlert
+message RemoteStartEndAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+}
+
+
+//Message structure for door lock status change alert. It is sent when any door's lock status and/or ajar status changes
+message LockAndAjarStatusAlert{
+	// Door lock status from CAN bus
+	optional int32 Veh_Lock_Status = 1;
+	// Ignition status from CAN bus
+	optional int32 Ignition_Status = 2;
+	// Door Ajar Status from CAN bus
+	optional com.ford.ftcp.appcommon.CGEA13_C1MCA_DoorAjarStatus doorAjarStatus = 3;
+	// Window Position status
+	optional com.ford.ftcp.appcommon.CGEA13_C1MCA_WindowPosition windowPositionStatus = 4;
+}

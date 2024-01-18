@@ -1,0 +1,96 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2019. Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// deliberate unauthorized publication.  Ford Motor Company also
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+//
+
+// Protobuf configuration
+syntax = "proto2";
+option optimize_for = CODE_SIZE;
+
+import public "vndl_info.proto";
+
+package vndl.pb;
+
+/**
+ * @fnv_message_proto Protobuf to request network CAN data to be exported to files
+ * @fnv_topic "SERVICES/REQUEST/ECG/VNDL/NETWORKDATALOG"
+ * @fnv_command N/A
+ * @fnv_description N/A
+ * @fnv_response VndlGetNetworkDataLogResponse
+ */
+message VndlGetNetworkDataLogRequest
+{
+    // SOA API version field
+    optional __ApiVersion __api_version = 1;
+
+    // CAN network ID to filter for
+    repeated uint32 network_id = 2;
+
+    // CAN message ID to filter for
+    repeated uint32 message_id = 3;
+
+    // Relative start time of the log
+    optional sint32 start_time_ms = 4;
+
+    // Duration of the log
+    optional uint32 duration_ms = 5;
+
+    // Destination directory for the export. Required.
+    optional string destination_directory = 6;
+    
+    // Maximum output file size. When this limit is exceeded multiple output files will be created.
+    // If not specified, the provider's default value is used.
+    optional uint64 max_file_size_kb = 7;
+    
+    // enum for output file format
+    // Prefer Binary format: it is 4 times smaller and 4 times faster then the Csv format. 
+    enum OutputFileFormat {
+        BINARY = 0;
+        CSV = 1;
+    }
+    
+    // Output file format, if not specified the binary file will be created.
+    optional OutputFileFormat file_format = 8;
+}
+
+/**
+ * @fnv_message_proto Protobuf used by VNDL to send response to clients.
+ *                    Used to send a request acknowledgement to the client
+ *                    as well as to send data.
+ * @fnv_topic N/A
+ * @fnv_command N/A
+ * @fnv_description request_status tells whether the request was successful or not.
+ * @fnv_request VndlGetNetworkDataLogRequest
+ */
+message VndlGetNetworkDataLogResponse
+{
+    // SOA API version field
+    optional __ApiVersion __api_version = 1;
+
+    // enum for request status error codes
+    enum RequestStatus
+    {
+        // VNDL processed the request successfully
+        SUCCESS = 0;
+        // VNDL failed to process the request
+        FAIL = 1;
+        // VNDL is processing the request
+        PENDING = 2;
+    }
+
+    // The status code is always present
+    optional RequestStatus request_status = 2;
+
+    // List of paths of generated log files
+    repeated string filepath = 3;
+}

@@ -1,0 +1,46 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2017.  Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// deliberate unauthorized publication.  Ford Motor Company also
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+//
+
+syntax = "proto2";
+option optimize_for = CODE_SIZE;
+
+package fnv.soa.framework;
+
+/**
+* @fnv_proto
+* Contains SOA on demand broadcast generic message payload.
+* This is an outer nesting of the client's original message,
+* stripped by the SOA Framework on the receiver side before handing
+* the sender's original message to the receiver
+* These extra fields are used for the on-demand broadcast feature
+* @fnv_topic none
+* @fnv_scope ECG_INTERNAL
+* @fnv_api_source INTERNAL
+* @fnv_message_version 1.0
+*/
+message SoaOnDemandProto
+{
+    // the user's message, may be request, response, cancel
+    optional bytes usermessage = 1;
+
+	// MQTT Client ID of client. Identifies the connection used.
+    optional string clientid = 100;
+	    
+	// Consumer's raw endpoint. This is not the response endpoint
+    optional string consumerbaseendpoint = 101;
+    
+    // SoaHandle - included only as part of the context for asynchronous calls
+    optional int64 soahandle = 102;
+}

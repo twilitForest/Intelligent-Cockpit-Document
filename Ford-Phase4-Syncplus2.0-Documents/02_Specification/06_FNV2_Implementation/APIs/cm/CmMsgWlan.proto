@@ -1,0 +1,1295 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2017.  Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// deliberate unauthorized publication.  Ford Motor Company also
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+//
+
+syntax = "proto2";
+option optimize_for = CODE_SIZE;
+option cc_enable_arenas = true;
+package CmMsgWlan;
+import "CmMsgCommon.proto";
+
+// For CM internal use only
+// The protobuf captures enums and messages related to:
+// WLAN Station Mode Interface Control.
+// These messages are exchanged between ECG CM, TCU CM and SYNC CM.
+// Command details:
+//  1. SCAN:             Scan request triggered by ECG CM to ECU CM to relay to wlan_service
+//    a. REQUEST:        Request from ECG CM to ECU CM.
+//    b. RESPONSE:       Response from ECU CM to ECG CM.
+//  2. CONNECT:          Connect request triggered by ECG CM to ECU CM to relay to wlan_service
+//    a. REQUEST:        Request from ECG CM to ECU CM.
+//    b. RESPONSE:       Response from ECU CM to ECG CM.
+//  3. DISCONNECT:       Disconnect request triggered by ECG CM to ECU CM to relay to wlan_service
+//    a. REQUEST:        Request from ECG CM to ECU CM.
+//    b. RESPONSE:       Response from ECU CM to ECG CM.
+//  4. PROFILE_UPDATE:   Profile update request triggered by ECU CM to ECG CM
+//    a. REQUEST:        Request from ECU CM to ECG CM.
+//    b. RESPONSE:       Response from ECG CM to ECU CM.
+//    c. INDICATION:     Indication from ECG CM to ECU CM or vice versa.
+//  5. CONNECTION_STATE: Connection state request triggered by ECG CM to ECU CM to relay to wlan_service
+//    a. REQUEST:        Request from ECG CM to ECU CM.
+//    b. RESPONSE:       Response from ECU CM to ECG CM.
+//    c. STAT_UPATE_IND: Unsolicited indication from ECU CM to ECG CM
+//  6. STATS:            WLAN traffic statistics request triggered by ECG CM to ECU CM to relay to wlan_service
+//    a. REQUEST:        Request from ECG CM to ECU CM.
+//    b. RESPONSE:       Response from ECU CM to ECG CM.
+//    c. INDICATION:     Unsolicited indication from ECU CM to ECG CM
+//  7. STATE:            WLAN state (ON/OFF) request triggered by ECU CM to ECG CM
+//    a. REQUEST:        Request from ECU CM to ECG CM.
+//    b. RESPONSE:       Response from ECG CM to ECU CM.
+//    c. INDICATION:     Unsolicited indication from ECG CM to ECU CM
+//  8. WHS_INFO:         WLAN Hot Spot info request triggered by ECG CM to ECU CM to relay to wlan_service
+//    a. REQUEST:        Request from ECG CM to ECU CM.
+//    b. RESPONSE:       Response from ECU CM to ECG CM.
+//  9. SIG_UPDATE:       WLAN Signal Strength Indicator triggered by ECU CM to ECG CM
+//    a. INDICATION:     Unsolicited indication from ECU CM to ECG CM.
+//  9. WLAN_MAC_INFO:    WLAN mac info request by ECG CM to ECU CM to relay to wlan_service
+//    a. REQUEST:        Request from ECG CM to ECU CM.
+//    b. RESPONSE:       Response from ECU CM to ECG CM.
+
+/**
+ * @fnv_proto
+ * Enum of available commands for
+ * WLAN Station Mode Interface Control
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum WlanSubCmdType
+{
+    SCAN_REQ = 100;
+    SCAN_RSP = 101;
+    CONNECT_REQ = 102;
+    CONNECT_RSP = 103;
+    DISCONNECT_REQ = 104;
+    DISCONNECT_RSP = 105;
+    PROFILE_UPDATE_REQ = 106;
+    PROFILE_UPDATE_RSP = 107;
+    CONNECTION_STATE_REQ = 108;
+    CONNECTION_STATE_RSP = 109;
+    STATE_UPDATE_IND = 110;
+    STATS_REQ = 111;
+    STATS_RSP = 112;
+    STATS_IND = 113;
+    PROFILE_UPDATE_IND = 114;
+    STATE_REQ = 115;
+    STATE_RSP = 116;
+    STATE_IND = 117;
+    WHS_INFO_REQ = 118;
+    WHS_INFO_RSP = 119;
+    SIG_UPDATE_IND = 120;
+    WLAN_MAC_INFO_REQ = 121;
+    WLAN_MAC_INFO_RSP = 122;
+    WLAN_HISTORY_IND = 123;
+}
+
+/**
+ * @fnv_proto
+ * Enum of return codes for commands for
+ * WLAN Station Mode Interface Control
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum WlanReturn
+{
+    // Error/Failure
+    WLAN_ERROR = 0;
+
+    // Success
+    WLAN_SUCCESS = 1;
+}
+
+/**
+ * @fnv_proto
+ * Enum of WLAN Station Mode
+ * Network Interface type
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum WlanEcu
+{
+    TCU_WLAN = 0;
+    SYNC_WLAN = 1;
+}
+
+/**
+ * @fnv_proto
+ * Enum of WLAN Station Mode
+ * Scan type
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum WlanScanType
+{
+    WLAN_SCAN_TYPE_ACTIVE = 0;
+    WLAN_SCAN_TYPE_PASSIVE = 1;
+}
+
+/**
+ * @fnv_proto
+ * Enum of WLAN Station Mode
+ * State Machine state
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum WlanStaSmState
+{ 
+    WLAN_STA_SM_STATE_OFF = 0;
+    WLAN_STA_SM_STATE_ENABLING = 1;
+    WLAN_STA_SM_STATE_ON = 2;
+    WLAN_STA_SM_STATE_CONNECTING = 3;
+    WLAN_STA_SM_STATE_CONNECTED = 4;
+    WLAN_STA_SM_STATE_DISCONNECTING = 5;
+    WLAN_STA_SM_STATE_DISABLING = 6;
+    WLAN_STA_SM_STATE_ERROR = 7;
+    WLAN_STA_SM_STATE_AUTHERROR = 8;
+    WLAN_STA_SM_STATE_NWNOTFOUND = 9;
+    WLAN_STA_SM_STATE_DHCPERROR = 10;
+    WLAN_STA_SM_STATE_INELIGIBLE = 11;
+}
+
+/**
+ * @fnv_proto
+ * Enum of WLAN Station Mode
+ * Connection state
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum WlanStaConnState
+{ 
+   WLAN_STA_CON_STATE_DISCONNECTED = 0;
+   WLAN_STA_CON_STATE_WPS_ACTIVE = 1;
+   WLAN_STA_CON_STATE_ASSOCIATING = 2;
+   WLAN_STA_CON_STATE_IP_ADDRESSING = 3;
+   WLAN_STA_CON_STATE_CONNECTED = 4;
+   WLAN_STA_CON_STATE_DISCONNECTING = 5;
+   WLAN_STA_CON_STATE_AUTHERROR = 6;
+   WLAN_STA_CON_STATE_NWNOTFOUND = 7;
+   WLAN_STA_CON_STATE_DHCPERROR = 8;
+}
+
+/**
+ * @fnv_proto
+ * Enum of WLAN Station Mode
+ * Channels
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum WlanChannel
+{
+    WLAN_CH_MIN = 0;
+    WLAN_CH_1 = 1;    /**< Channel 1 - 2412 MHz */
+    WLAN_CH_2 = 2;    /**< Channel 2 - 2417 MHz - NA, Japan, and World */
+    WLAN_CH_3 = 3;    /**< Channel 3 - 2422 MHz - NA, Japan, and World */
+    WLAN_CH_4 = 4;    /**< Channel 4 - 2427 MHz - NA, Japan, and World */
+    WLAN_CH_5 = 5;    /**< Channel 5 - 2432 MHz - NA, Japan, and World */
+    WLAN_CH_6 = 6;    /**< Channel 6 - 2437 MHz - NA, Japan, and World */
+    WLAN_CH_7 = 7;    /**< Channel 7 - 2442 MHz - NA, Japan, and World */
+    WLAN_CH_8 = 8;    /**< Channel 8 - 2447 MHz - NA, Japan, and World */
+    WLAN_CH_9 = 9;    /**< Channel 9 - 2452 MHz - NA, Japan, and World */
+    WLAN_CH_10 = 10;   /**< Channel 10 - 2457 MHz - NA, Japan, and World  */
+    WLAN_CH_11 = 11;   /**< Channel 11 - 2462 MHz - NA, Japan, and World */
+    WLAN_CH_12 = 12;   /**< Channel 12 - 2467 MHz - Japen and World*/
+    WLAN_CH_13 = 13;   /**< Channel 13 - 2472 MHz - Japan and World*/
+    WLAN_CH_14 = 14;   /**< Channel 14 - 2484 MHz - Japan Only*/
+    WLAN_CH_34 = 15;   /**< Channel 34 */
+    WLAN_CH_36 = 16;   /**< Channel 36 */
+    WLAN_CH_38 = 17;   /**< Channel 38 */
+    WLAN_CH_40 = 18;   /**< Channel 40 */
+    WLAN_CH_42 = 19;   /**< Channel 42 */
+    WLAN_CH_44 = 20;   /**< Channel 44 */
+    WLAN_CH_46 = 21;   /**< Channel 46 */
+    WLAN_CH_48 = 22;   /**< Channel 48 */
+    WLAN_CH_50 = 23;   /**< Channel 50 */
+    WLAN_CH_52 = 24;   /**< Channel 52 */
+    WLAN_CH_54 = 25;   /**< Channel 54 */
+    WLAN_CH_56 = 26;   /**< Channel 56 */
+    WLAN_CH_58 = 27;   /**< Channel 58 */
+    WLAN_CH_60 = 28;   /**< Channel 60 */
+    WLAN_CH_62 = 29;   /**< Channel 62 */
+    WLAN_CH_64 = 30;   /**< Channel 64 */
+    WLAN_CH_100 = 31;  /**< Channel 100 */
+    WLAN_CH_102 = 32;  /**< Channel 102 */
+    WLAN_CH_104 = 33;  /**< Channel 104 */
+    WLAN_CH_106 = 34;  /**< Channel 106 */
+    WLAN_CH_108 = 35;  /**< Channel 108 */
+    WLAN_CH_110 = 36;  /**< Channel 110 */
+    WLAN_CH_112 = 37;  /**< Channel 112 */
+    WLAN_CH_114 = 38;  /**< Channel 114 */
+    WLAN_CH_116 = 39;  /**< Channel 116 */
+    WLAN_CH_118 = 40;  /**< Channel 118 */
+    WLAN_CH_120 = 41;  /**< Channel 120 */
+    WLAN_CH_122 = 42;  /**< Channel 122 */
+    WLAN_CH_124 = 43;  /**< Channel 124 */
+    WLAN_CH_126 = 44;  /**< Channel 126 */
+    WLAN_CH_128 = 45;  /**< Channel 128 */
+    WLAN_CH_132 = 46;  /**< Channel 132 */
+    WLAN_CH_134 = 47;  /**< Channel 134 */
+    WLAN_CH_136 = 48;  /**< Channel 136 */
+    WLAN_CH_138 = 49;  /**< Channel 138 */
+    WLAN_CH_140 = 50;  /**< Channel 140 */
+    WLAN_CH_142 = 51;  /**< Channel 142 */
+    WLAN_CH_144 = 52;  /**< Channel 144 */
+    WLAN_CH_149 = 53;  /**< Channel 149 */
+    WLAN_CH_151 = 54;  /**< Channel 151 */
+    WLAN_CH_153 = 55;  /**< Channel 153 */
+    WLAN_CH_155 = 56;  /**< Channel 155 */
+    WLAN_CH_157 = 57;  /**< Channel 157 */
+    WLAN_CH_159 = 58;  /**< Channel 159 */
+    WLAN_CH_161 = 59;  /**< Channel 161 */
+    WLAN_CH_165 = 60;  /**< Channel 165 */
+    WLAN_CH_169 = 61;  /**< Channel 169 */
+    WLAN_CH_173 = 62;  /**< Channel 173 */
+    WLAN_CH_ALL = 63;  /**< Use all channels */
+    WLAN_CH_ANY = 64;  /**< Use any channel; for AP mode, let wlan_service pick channel */
+    WLAN_CH_ANY2GHZ = 65;  /**< Use any 2.4GHz channel; for AP mode, let wlan_service pick channel */
+    WLAN_CH_ANY5GHZ = 66;  /**< Use any 5.0GHz channel; for AP mode, let wlan_service pick channel */
+    WLAN_CH_MAX = 67;
+}
+
+
+/**
+ * @fnv_proto
+ * Enum of WLAN Station Mode
+ * WLAN Tech employed
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum WlanTech
+{
+    b = 1;      /**< 11b; 2.4Ghz, Max data rate 11Mbps */
+    a = 2;      /**< 11a, 5.0Ghz, Max data rate 54Mbps */
+    g = 3;      /**< 11g, 2.4Ghz, Max data rate 54Mbps */
+    n = 4;      /**< 11n, 2.4/5.0Ghz, Max data rate - 1ss (20/40): 72.2/150Mbps */
+    ac = 5;     /**< 11ac, 2.4/5.0Ghz, Max data rate - 1ss (20/40/80/160) : 78/200/433/866Mbps */
+}
+
+/**
+ * @fnv_proto
+ * Enum of WLAN Station Mode
+ * Security type
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum WlanSecurity
+{
+    MIN = 0;
+    OPEN = 1;           /**< Open or no security */
+    WEP = 2;            /**< WEP */
+    WPS = 3;            /**< WPS (WiFi Protected Setup) */
+    WPA_PERSONAL = 4;    /**< WPA/WPA2 Personal (passkey) */
+    WPA_ENTERPRISE = 5;  /**< WPA/WPA2 Enterprise (EAP-PEAP/EAP-TLS/etc)  NOT SUPPORTED */
+    MAX = 6;
+}
+
+/**
+ * @fnv_proto
+ * Enum of WLAN Station Mode
+ * Security Pairwise Cipher
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum WlanPairwiseCipher
+{
+    PAIR_MIN = 0;
+    PAIR_NONE = 1;
+    PAIR_TKIP = 2;       /**< TKIP */
+    PAIR_CCMP = 3;       /**< CCMP/AES */
+    PAIR_TKIPCCMP = 4;   /**< Mixmode - tkip or ccmp */
+    PAIR_MAX = 5;
+}
+
+/**
+ * @fnv_proto
+ * Enum of WLAN Station Mode
+ * Security Group Cipher
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum  WlanGroupCipher
+{
+    GROUP_MIN = 0;
+    GROUP_NONE = 1;
+    GROUP_TKIP = 2;       /**< TKIP */
+    GROUP_CCMP = 3;       /**< CCMP/AES */
+    GROUP_TKIPCCMP = 4;   /**< Mixmode - tkip or ccmp */
+    GROUP_MAX = 5;
+}
+
+/**
+ * @fnv_proto
+ * Enum of WLAN Station Mode
+ * Bandwidth
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum WlanBandwidth
+{
+    WLAN_BW_MIN = 0;
+    WLAN_BW_MHZ20 = 1; /**< 20MHz channel */
+    WLAN_BW_MHZ40 = 2; /**< 40MHz channel; must use 11n/11ac.  Few devices support on 2.4Ghz */
+    WLAN_BW_MHZ80 = 3; /**< 80MHz channel; must use 11ac */
+    WLAN_BW_MHZ8080 = 4; /**< 80-80MHz, 2 non-contiguous 80MHz; must use 11ac */
+    WLAN_BW_MHZ160 = 5; /**< 160MHz channel; must 11ac */
+    WLAN_BW_Max = 6;
+}
+
+/**
+ * @fnv_proto
+ * Enum of WLAN Profile Source
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum WlanProfileSource
+{
+    PROFSRC_DEFAULT = 0; /**< default internal */
+    PROFSRC_HMI = 1;     /**< HMI/User configured  */
+    PROFSRC_CLOUD = 2;   /**< Cloud pushed */
+    PROFSRC_SPECIAL = 3;    /**< Special Intent */
+    PROFSRC_PROV = 4;    /**< EOL provisioned */
+}
+
+/**
+ * @fnv_proto
+ * Enum of WLAN Profile Action
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum WlanProfileAction
+{
+    ACT_UPDATE = 0; /**< add/update */
+    ACT_REMOVE = 1; /**< remove */
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * WEP Security
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WlanWepSecurity
+{
+    repeated string key = 1; /**< Array of WEP keys */
+    optional uint32 defaultKeyIndex = 2; /**< Default WEP key to use */
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * WPS Security
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum WlanWpsType
+{
+    WLAN_WPS_MIN = 0;
+    WLAN_WPS_KEYPAD = 1; /**< AP supplies the Pin */
+    WLAN_WPS_PIN = 2; /**< STA supplies the Pin */
+    WLAN_WPS_PBC = 3; /**< Pushbutton */
+    WLAN_WPS_Max = 4;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * WPS Security
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WlanWpsSecurity
+{
+    optional WlanWpsType type = 1; /**< WPS type */
+    optional string pin = 2; /**< the Pin when using Keypad type */
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * WPA Personal Security
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WlanWpaPersonalSecurity
+{
+    optional string password = 1; /**< Password */
+    optional WlanPairwiseCipher pairCipher = 2; /**< Pairwise Ciphers to use */
+    optional WlanGroupCipher groupCipher = 3; /**< Group Ciphers to use */
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * WPA Enterprise Security
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WlanWpaEnterprise
+{
+    //to be implemented
+}
+
+/**
+ * @fnv_proto
+ * The enum used for
+ * WLAN Station Mode
+ * IP Address V4 Scheme Type
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum WlanIpv4AddrType
+{
+    WLAN_IPV4_ADDR_MIN = 0;
+    WLAN_IPV4_ADDR_NONE = 1; /**< No IPv4 Addressing is used */
+    WLAN_IPV4_ADDR_STATIC = 2; /**< Static IPv4 Address */
+    WLAN_IPV4_ADDR_DHCP_CLIENT = 3; /**< DHCP Client IPv4 Address */
+    WLAN_IPV4_ADDR_DHCP_SERVER = 4; /**< DHCP Server IPv4 Address */
+    WLAN_IPV4_ADDR_MAX = 5;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * IP Address V4
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WlanIpv4Addr
+{
+    optional string ip = 1; /**< IP address of current connection */
+    optional string netmask = 2; /**< Netmask of currenct connection */
+    optional string gateway = 3; /**< default gateway of current connection */
+    optional string dnsPref = 4; /**< Prefered DNS server */
+    optional string dnsAlt = 5; /**< Secondary DNS server */
+}
+
+/**
+ * @fnv_proto
+ * The enum used for
+ * WLAN Station Mode
+ * IP Address V6 Scheme Type
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum WlanIpv6AddrType
+{
+    WLAN_IPV6_ADDR_MIN = 0;
+    WLAN_IPV6_ADDR_NONE = 1; /**< No IPv6 Addressing is used */
+    WLAN_IPV6_ADDR_STATIC = 2; /**< Static IPv6 Address */
+    WLAN_IPV6_ADDR_MAX = 3;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * IP Address V6
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WlanIpv6Addr
+{
+    // To be implemented
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * WLAN Profile Information (used for connect requests)
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WlanProfileCommon
+{
+    optional string ssid = 1; /**< SSID of network */
+    optional string bssid = 2; /**< Optional - BSSID of AP */
+    optional WlanChannel channel = 3; /**< Optional - Channel of AP */
+    optional WlanSecurity securityType = 4; /**< Security settings to use */
+    optional WlanWepSecurity wep = 5;
+    optional WlanWpsSecurity wps = 6; /**< WPS Settings */
+    optional WlanWpaPersonalSecurity wpaPsk = 7; /**< WPA/WPA2-Personal Settings */
+    optional WlanWpaEnterprise wpaEap = 8; /**< WPA/WPA2-Enterprise Settings */
+    optional WlanIpv4AddrType ipv4AddrType = 9;
+    optional WlanIpv4Addr ipv4 = 10;
+    optional WlanIpv6AddrType ipv6AddrType = 11;
+    optional WlanIpv6Addr ipv6 = 12;
+    optional bool exclusiveUse = 13; /**< exclusive to a WIR client */
+    optional WlanProfileSource profileSource = 14; /**< origin of the profile */
+    optional uint64 timeStamp = 15; /**< last known update time stamp */
+    optional bool hidden = 16; /**< hidden AP */
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * Connected WLAN AP Information
+ * (used for diagnostics and analytics)
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WlanApInfo
+{
+    optional string apSsid = 1;
+    optional string apBssid = 2;
+    optional WlanChannel apChannel = 3;
+    optional int32 apBandwidth = 4;
+    optional int32 apRssi = 5;
+    optional WlanSecurity apSecurity = 6;
+    //  Due to sensitivie information. No detail information for APInfo based on WlanSecurity type.
+    // Save only user input password for Known AP, input by user.
+    optional string apPassword = 7;
+    // last updated timestamp of this Apinformation
+    optional uint64 timeStamp = 8;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * List of Connected WLAN APs
+ * (used for diagnostics and analytics)
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WlanApInfoList
+{
+    required uint64 profileTimeStamp = 1;
+    required WlanEcu ecuOrig = 2;
+    // It can have multiple items
+    required uint32 sizeOfAp = 3;
+    repeated WlanApInfo wlanAps= 4;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * Scan request configuration
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WlanScanConfig
+{
+    optional bool passive = 1; /**< true = passive scan (no pkts tx'd), false = active scan */
+    repeated WlanChannel channel = 2; /**< list of channels to scan or All */
+    repeated string ssid = 3;    /**< list of SSIDs to specifically scan for. Used to scan for hidden networks. "passive" will be ignored as a active scan is required. */
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * Scan request
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message ScanReq
+{
+    optional uint32 ifId = 1;
+    optional WlanScanConfig scanConfig = 2;
+    optional uint64 scanId = 3;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * Individual scan result
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WlanScanResult
+{
+    optional string ssid = 1; /**< SSID */
+    optional string bssid = 2; /**< MAC address of AP */
+    optional WlanChannel channel = 3; /**< Channel */
+    optional WlanBandwidth bw = 4; /**< bandwidth */
+    optional int32 rssi = 5; /**< RSSI of beacon/probe response */
+    optional WlanSecurity security = 6; /**< Security used by AP */
+    optional bool isWpsSupported = 7; /**< does AP support WPS */
+    optional bool isEssSupported = 8; /**< is AP part of an Extended Service Set */
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * Scan results
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message ScanRsp
+{
+    optional WlanReturn ret = 1; /**< indicates whether the scan was successful */
+    optional uint32 ifId = 2;
+    optional uint64 scanId = 3; /**< ID value used to track scans */
+    optional WlanScanConfig scanConfig = 4; /**< Config used to generate this scan */
+    optional uint32 count = 5;				 /**< number of APs found */
+    repeated WlanScanResult ap = 6; /**< information of the APs found */
+    optional bool scanResultsComplete = 7; /**< True if all the scan results have been reported */
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * Connect request
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message ConnectReq
+{
+    optional uint32 ifId = 1;
+    optional WlanProfileCommon wlanProfile = 2;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * Connect response
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message ConnectRsp
+{
+    optional WlanReturn ret = 1;
+    optional uint32 ifId = 2;
+    optional string ifaceName = 3;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * Disconnect request
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message DisconnectReq
+{
+    optional uint32 ifId = 1;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * Disconnect response
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message DisconnectRsp
+{
+    optional WlanReturn ret = 1;
+    optional uint32 ifId = 2;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * Profile update request
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message ProfileUpdateReq
+{
+    optional string txId = 1;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * Profile update response
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message ProfileUpdateRsp
+{
+    optional WlanReturn ret = 1;
+    optional string txId = 2;
+    optional bool UpdateComplete = 3;
+    map<string, WlanProfileCommon> profiles = 4;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * Profile update indication
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message ProfileUpdateInd
+{
+    optional WlanProfileAction action = 1;
+    optional string ssid = 2;
+    optional WlanProfileCommon profile = 3;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * Connection state request
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message ConnStateReq
+{
+    optional string ssid = 1;
+    optional string bSsid= 2;
+    optional uint32 ifId = 3;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * Connection state response
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message ConnStateRsp
+{
+    optional WlanReturn ret = 1;
+    optional string ssid = 2;
+    optional string bSsid= 3;
+    optional WlanStaConnState apConnState= 4;
+    optional WlanStaSmState apSmState= 5;
+    optional uint32 ifId = 6;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * State update indication
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message StateUpdateInd
+{
+    optional WlanEcu ecu = 1;
+    optional WlanStaSmState smState = 2;
+    optional WlanStaConnState connState = 3;
+    optional string macAddr = 4;
+    optional string ssid = 5;
+    optional string bSsid = 6;
+    optional WlanSecurity security = 7;
+    optional WlanPairwiseCipher pairWise = 8;
+    optional WlanGroupCipher groupCipher = 9;
+    optional WlanChannel channel = 10;
+    optional int32 bandwidth = 11;
+    optional WlanTech wifiTech = 12;
+    optional int32 dataRate = 13;
+    optional int32 signalStrength = 14;
+    // Noise level last seen and Signal to noise level
+    optional int32 signalNoise = 15;
+    optional int32 signalSNR = 16;
+    // IP network information 
+    optional string ipAddr = 17;
+    optional string ipSubnet = 18;
+    optional string ipGateway = 19;
+    optional string ipDnsPref = 20;
+    optional string ipDnsAlt = 21;
+    // No IPv6 supported from Wlan.
+    optional string ifaceName = 22;
+    optional uint32 ifId = 23;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * WLAN traffic statistics
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message StatsType
+{    
+    optional uint64 PKTS_TX_V4 = 1; 
+    optional uint64 PKTS_RX_V4 = 2;  
+    optional uint64 BYTES_TX_V4 = 3;
+    optional uint64 BYTES_RX_V4 = 4;
+    optional uint64 PKTS_DROPPED_TX = 5;
+    optional uint64 PKTS_DROPPED_RX = 6;   
+}
+
+/**
+ * @fnv_proto
+ * The enum used for
+ * WLAN Station Mode
+ * WLAN traffic statistics command type
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum StatsCmdType
+{
+    DISABLE = 0;
+    ENABLE = 1;
+    QUERY = 2;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * Statistics request
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WlanStatsReq
+{
+    optional uint32 ifId = 1;
+    optional string ifaceName = 2;
+    optional StatsCmdType cmdType = 3;  
+    optional uint32 reportingWindow = 4;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * Statistics response
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WlanStatsRsp
+{
+    optional uint32 ifId = 1;
+    optional string  ifaceName = 2;
+    optional StatsCmdType cmdType = 3; 
+    optional WlanReturn ret = 4;
+    optional StatsType statsV4 = 5; 
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * Statistics indication
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WlanStatsInd
+{
+    optional uint32 ifId = 1;
+    optional string  ifaceName = 2;
+    optional StatsCmdType cmdType = 3; 
+    optional WlanReturn ret = 4;
+    optional StatsType statsV4 = 5;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * State response/indication
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WlanStateInd
+{
+    optional bool wlanState = 1;
+    optional bool wlanNotifState = 2;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * WLAN Hotspot Information request
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WhsInfoReq
+{
+    optional uint32 ifId = 1;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * WLAN Hotspot Information response
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WhsInfoRsp
+{
+    optional string intf = 1; /**< The name of the interface */
+    optional string macAddr = 2; /**< MAC address of interface */
+    optional string ssid = 3; /**< SSID of our AP */
+    optional string password = 4; /**< Current Password */
+    optional WlanReturn ret = 5; /**< Return success or failure */
+    optional uint32 ifId = 6;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * WLAN Signal Strength Information
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WlanSigUpdateInd
+{
+    optional uint32 ifId = 1;
+    optional int32 rssi = 2; /**< RSSI of the currently connected AP*/
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * WLAN Mac Information Request
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WlanMacInfoReq
+{
+    optional uint32 ifId = 1;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * WLAN Station Mode
+ * WLAN Mac Information Response
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WlanMacInfoRsp
+{
+    optional uint32 ifId = 1;
+    optional string macAddr = 2; /**< MAC address of interface */
+    optional WlanReturn ret = 3; /**< Return success or failure */
+}
+
+/**
+ * @fnv_proto
+ * The protobuf captures
+ * WLAN Station Mode Interface Control
+ * related messaging between ECG CM and ECU CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WlanMsg
+{
+    optional WlanSubCmdType wlanCmdId = 1;
+    optional ScanReq scanReq = 2;
+    optional ScanRsp scanRsp = 3;
+    optional ConnectReq connectReq = 4;
+    optional ConnectRsp connectRsp = 5;
+    optional DisconnectReq disconnectReq = 6;
+    optional DisconnectRsp disconnectRsp = 7;
+    optional ProfileUpdateReq profileReq = 8;
+    optional ProfileUpdateRsp profileRsp = 9;
+    optional ConnStateReq connStReq = 10;
+    optional ConnStateRsp connStRsp = 11;
+    optional StateUpdateInd updateInd = 12;
+    optional WlanStatsReq wlanStatsReq = 13;
+    optional WlanStatsRsp wlanStatsRsp = 14;
+    optional WlanStatsInd wlanStatsInd = 15;
+    optional ProfileUpdateInd profileInd = 16;
+    optional WlanStateInd wlanStateInd = 17;
+    optional WhsInfoRsp whsInfoRsp = 18;
+    optional WhsInfoReq whsInfoReq = 19;
+    optional WlanSigUpdateInd wlanSigUpdateInd = 20;
+    optional WlanMacInfoReq wlanMacInfoReq = 21;
+    optional WlanMacInfoRsp wlanMacInfoRsp = 22;
+    optional WlanHistory wlanHistoryInd = 23;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf captures
+ * WLAN Station Mode Interface Control
+ * related protobuf used to serialize/deserialize
+ * WLAN configuration items persisted on the filesystem.
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WlanPersistConfig
+{
+    optional bool wlanOn = 1;
+    map<string, WlanProfileCommon> profiles = 2;
+    optional bool wlanAvailNotifOn = 3;
+    // TBD: add other configuration items that need to be persisted
+}
+/**
+ * @fnv_proto
+ * The protobuf captures Wlan diagnostics
+ * related protobuf used to serialize/deserialize
+ * single connect/disconnect event persisted on the filesystem.
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WlanActivity
+{
+    optional CmMsgCommon.NetworkInterfaceType iface = 1;
+    
+    optional WlanApType apType = 2;
+    
+    // Connection status information (Connected OR Disconnected)
+    optional WlanStaConnState connState = 3;
+    
+    // Timestamp of event
+    // range: 1970-01-01 00:00+0000 to 2106-02-07 06:28+0000
+    optional uint32 timeStamp = 4;
+
+    // connection channel
+    optional WlanChannel channel = 5;
+    
+    // connection bandwidth
+    optional WlanBandwidth bandwidth = 6;
+    
+    // protocol data rate (cast from WlanDataRate_t)
+    optional int32 dataRate = 7;
+    
+    // signal strength (format unspecified)
+    optional int32 signalStrength = 8;
+    
+    optional StatsType statsType = 9;
+    
+    optional string cause = 10;  
+}
+
+/**
+ * @fnv_proto
+ * The protobuf captures Wlan diagnostics
+ * related protobuf used to serialize/deserialize
+ * collection of connect/disconnect events of one interface
+ * persisted on the filesystem.
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WlanRecord
+{
+    // Activity
+    repeated WlanActivity WlanActivity = 1;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf captures Wlan diagnostics
+ * related protobuf used to serialize/deserialize
+ * collection of connect/disconnect events across all interfaces
+ * persisted on the filesystem.
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WlanHistory
+{
+    // identify the file format and revision
+    // in case we need to move to a different format or encapsulation.
+    optional string header = 16;
+
+    // timestamp of file creation
+    // record may contain entries with earlier date if system clock changes!
+    optional uint32 timeStamp = 1;
+
+    repeated WlanRecord wlanRecord = 2 [deprecated = true];
+
+    // list of WLAN connection events.
+    // since this repeated field is at the top level, two WlanHistory
+    // messages can be concatenated and still remain a valid message.
+    // Thus, log entries can be added by appending new entries at the end.
+    repeated WlanActivity activity = 3;
+}
+
+enum WlanApType
+{
+     AP_PARTNER = 0;
+     AP_CUSTOMER = 1;
+}

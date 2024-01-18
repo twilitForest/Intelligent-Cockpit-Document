@@ -1,0 +1,127 @@
+syntax = "proto2";
+//	Ford Telematics Communication Protocol
+//  Feature/Enabler/Common: Common
+//	Version Number: 6.0.9
+//	Date Revised: 07/08/2019
+// 	Last Updated By: Vijai Thoppae [VTHOPPAE]
+// 	Reviewed By:Murali Chitturi,Rumeli Das, Mageshwaran Mohan [MMOHAN17]
+// 	Ford Confidential
+//
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 10/26/2018 for version 6.0.4
+// Updated ErrorCode Enum
+	//AUTHENTICATION_FAILURE
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 09/07/2018 for version 6.0.2
+	// Packaging of proto files have been introduced and referenced
+	// Added syntax = "proto2" to the header
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 06/20/2018 for version 6.0.1
+// Updated SDNErrorCodeEnum
+// Renamed TCU_INTERNAL_ERROR --> ECU_INTERNAL_ERROR in ErrorCodeEnum
+//************************************************************************************************************************************************************************
+// Added/Moved for FNV2 Architecture, ECG : FCI and Apps dependencies
+//************************************************************************************************************************************************************************
+package com.ford.ftcp.appcommon;
+
+// Query
+// Enumeration for Query Request status
+// package common;
+enum SDNQueryStatusENUM{
+	// SDN/Cloud sets this status if the ECU(ECG/TCU) requested query is successfully executed
+	QUERY_SUCCESS = 0;
+	// SDN/Cloud sets this status if the ECU(ECG/TCU) requested query has failed to execute
+	QUERY_FAILED = 1;
+	// SDN/Cloud sets this status for the ECU(ECG/TCU) requested queries that cannot be processed immediately and those
+	// that require a delayed response via command
+	QUERY_IN_PROGRESS = 2;
+}
+
+// Message structure that encapsulates error codes and error message detail.
+// SDN shall use this structure for communicating errors related to the ECU(ECG/TCU) Requests/Queries
+message SDNErrorDetail{
+	// Error code from the ErrorCodeEnum
+	optional SDNErrorCodeEnum errorCode = 1;
+	// Description of the error
+	optional string SDNerrorDescription = 2;
+}
+
+//SDN Error code enumeration
+enum SDNErrorCodeEnum{
+	//SDN/Cloud set error codes for ECU(ECG/TCU) initiated query requests
+	//ECU(ECG/TCU) shall not set these error codes
+	//This error is set when the requested query is not recognized by SDN(ex. Invalid query, Query not defined in FTCP spec etc.)
+	UNKNOWN_QUERY_TYPE=0;
+	//This error is set for all SDN internal failures to process the query request
+	SDN_INTERNAL_ERROR=1;
+	//This is error is set when the requested query failed due to downstream system failures
+	DOWNSTREAM_SYSTEMS_ERROR=2;
+	//This error is set when same query request from same ECU(ECG/TCU) is already in-progress
+	QUERY_ALREADY_INPROGRESS=3;
+	//This error is to indicate the ECU(ECG/TCU) Requested query failed to process the requests from Unauthorized Vehicles
+	AUTHORIZATION_FAILURE=4;
+	// This error is to indicate the requested query from vehicle failed to process due to temporary reason and can be retried
+	TEMPORARY_FAILURE = 5;
+	// This error is to indicate the requested query has some data issue and should not be retried
+	DATA_ERROR = 6;
+
+}
+// Query
+
+// Enumeration for command status
+enum CommandStatusEnum{
+	// ECU(ECG/TCU) sets this status if the command is successfully executed
+	SUCCESS = 0;
+	// ECU(ECG/TCU) sets this status if the command has failed to execute
+	FAILED = 1;
+	// ECU(ECG/TCU) sets this status for the commands that cannot be processed immediately and those
+	// that require a delayed response via an alert
+	IN_PROGRESS = 2;
+}
+
+// Message structure that encapsulates error codes and error message detail.
+// ECU(ECG/TCU) shall use this structure for communicating errors related to commands through command response messages
+message ErrorDetail{
+	// Error code from the ErrorCodeEnum
+	optional ErrorCodeEnum errorCode = 1;
+	// Description of the error
+	optional string errorDescription = 2;
+}
+
+// Enumeration for error codes
+enum ErrorCodeEnum{
+	// This error is to indicate that parameter that is being changed or written does not exist in the current firmware version
+	// of the ECU(ECG/TCU)
+	PARAM_DOES_NOT_EXIST = 0;
+	// This error is to indicate that parameter that is being changed or written is Read only in the current firmware version
+	// of the ECU(ECG/TCU)
+	PARAM_READ_ONLY = 1;
+	// This error is to indicate that parameter that is being changed or written is out of range in the current firmware version
+	// of the ECU(ECG/TCU)
+	PARAM_OUT_OF_RANGE = 2;
+	// This error is to indicate that parameter that is being changed or written has incorrect size for the current firmware version
+	// of the ECU(ECG/TCU)
+	PARAM_SIZE_INCORRECT = 3;
+	// This error is to indicate that received message has incorrect vehicle descriptor for the vehicle ECU(ECG/TCU) is in.
+	INCORRECT_VEHICLE_DESCRIPTOR = 4;
+	// This error is to indicate that the received command is of the unknown type in the current firmware version of the ECU(ECG/TCU)
+	UNKNOWN_COMMAND_TYPE = 5;
+	// This error is to indicate that there is some ECU(ECG/TCU) internal error preventing requested function to be executed successfully
+	ECU_INTERNAL_ERROR = 6;
+	// This error is to indicate that command being requested is not allowed to be executed per current global configuration
+	// settings in the ECU(ECG/TCU)
+	COMMAND_NOT_PERMITTED_PER_GC_SETTING = 7;
+	// This error is to indicate that the command being requested cannot be successfully completed due to error downstream from ECU(ECG/TCU).
+	DOWNSTREAM_MODULE_ERROR = 8;
+	// This error is to indicate that a similar/same command that was sent from the SDN already being executed by ECU(ECG/TCU).
+	COMMAND_ALREADY_IN_PROGRESS = 9;
+	// This error is to indicate that, this command is not applicable/permitted based on ECU(ECG/TCU)'s current state.
+	COMMAND_NOT_PERMITTED = 10;
+	// CCS Failure due to policy/user-friendly messages files metadata mismatch
+	CCS_META_DATA_MISMATCH = 11;
+	// This error is to indicate that command being requested is not allowed to be executed per customer connectivity configuration
+	// settings in the ECU(ECG/TCU)
+	COMMAND_NOT_PERMITTED_PER_CCS_SETTING = 12;
+	// This error is to indicate any authentication failure. e.g. SSID & Password update failure
+	AUTHENTICATION_FAILURE = 13;
+}

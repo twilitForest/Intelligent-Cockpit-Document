@@ -1,0 +1,103 @@
+syntax = "proto2";
+//	Ford Telematics Communication Protocol
+//  Feature/Enabler/Common: ECG : Ford Cloud Interface (Part of ECG Base S/W)
+//	Version Number: 6.0.9
+//	Date Revised: 07/08/2019
+// 	Last Updated By: Vijai Thoppae [VTHOPPAE]
+// 	Reviewed By:Murali Chitturi,Rumeli Das, Mageshwaran Mohan [MMOHAN17],
+// 	Ford Confidential
+//
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 09/07/2018 for version 6.0.2
+	// Packaging of proto files have been introduced and referenced
+	// Added syntax = "proto2" to the header
+	// Removed OUT_OF_SEQUENCE_MESSAGE from SecurityErrorEnum
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 06/20/2018 for version 6.0.1
+	// Reordered tags in all the message structures and Alerts
+	// Cleaned up commented messages
+	// Moved VehicleMessageHeader to Common.proto
+//************************************************************************************************************************************************************************
+// Added for FNV2 Architecture and ECG FCI
+// Added ConnectionStatusAlert
+// Added messages for Server and Module Security Error
+// Added DRX alert and import for FeatureCommon
+//************************************************************************************************************************************************************************
+package com.ford.ftcp.core;
+import "FeatureCommon.proto";
+
+
+// Message Structure for Connection Status Alert. This is the message that gets published to the topic "Connection Status Alert".
+message ConnectionStatusAlert{
+	optional ConnectionStatusEnum connectionStatus = 1;
+	// Enumeration for connection statuses with Cloud
+	enum ConnectionStatusEnum{
+		//Hello message - sent by ECU when ECU connects to the MQTT Broker in the cloud
+		CONNECTED = 0;
+		// Good Bye message - sent by ECU when ECU gracefully disconnects from the MQTT Broker
+		DISCONNECTED = 1;
+		// Last Will And Testament message - Sent when the ECU abruptly disconnects or drops from the network
+		LOST_CONNECTION = 2;
+	}
+}
+
+// Security Error Messages
+
+// Message Structure for Module Security Error. This message is sent from Vehicle(ECU) to communicate message level security errors.
+message ModuleSecurityError
+{
+	// Message structure for security error details. ECU shall only set this upon any error condition
+	optional SecurityErrorDetail errorDetail = 1;
+}
+
+// Message Structure for Server Security Error. This message is sent by the Cloud to communicate message level security errors.
+message ServerSecurityError
+{
+	// Message structure for security error details. Cloud shall set this upon any error condition
+	optional SecurityErrorDetail errorDetail = 1;
+}
+//   Security error messages are exchanged with a signature only, not encryption
+
+// Vehicle(ECU and Cloud shall use this structure for communicating errors related to message level security
+message SecurityErrorDetail{
+
+	// Error code from the SecurityErrorEnum
+	optional SecurityErrorEnum errorCode = 1;
+	// Description of the error
+	optional string errorDescription = 2;
+}
+
+// Enumeration for Security error codes - this enumeration is used by both module and server security error messsages
+enum SecurityErrorEnum{
+	// This error code is set when unexpected flags are received in SyncP header values(ex. bandwidth type, Signed, Encrypted etc.)
+	INVALID_SECURITY_TYPE = 0;
+	// This error code is set when the message size is out of bounds - refer S13i SyncP Security Specification for more details
+	MESSAGE_SIZE_OUT_OF_BOUNDS = 1;
+	// This error code is set either when encryption/decryption or signature validation fails
+	INVALID_DATA = 2;
+	// This is a generic security error code and is set if the above specific error codes can't be set for the type of error
+	GENERIC_SECURITY = 3;
+}
+
+// DRX
+// Message structure for sleep status change Alert from the ECU/Vehicle to the Cloud
+message SleepStateChangeAlert{
+	// Message structure for vehicle status. ECU shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Enumeration for identifying sleep status. ECU shall always set this.
+	optional SleepStatus sleepStatus = 2;
+	// Used only for HI_RATE and LOW_RATE. ECU shall always set this.
+	optional int32 SleepInterval = 3;
+
+	// Enumeration for identifying sleep status.
+	enum SleepStatus{
+		//This is to inform back-end that ECU is about to enter HI_RATE power state
+		ENTERING_HI_RATE = 0;
+		// This is to inform back-end that ECU is about to enter LOW_RATE power state
+		ENTERING_LOW_RATE = 1;
+		//This is to inform back-end that ECU is about to enter DEEP_SLEEP power state
+		ENTERING_DEEP_SLEEP = 2;
+		//This is to inform back-end that ECU is has entered AWAKE power state (i.e. back in business state)
+		AWAKE = 3;
+	}
+}

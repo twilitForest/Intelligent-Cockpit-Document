@@ -1,0 +1,190 @@
+syntax = "proto2";
+//	Ford Telematics Communication Protocol
+//  Feature/Enabler/Common: PTTB (Power To The Box)
+//	Version Number: 6.0.9
+//	Date Revised: 09/19/2019
+// 	Last Updated By: Mageshwaran Mohan [MMOHAN17]
+// 	Reviewed By: Murali Chitturi[MCHITTUR], Rumeli Das[RDAS9], Thoppae, Vijai [VTHOPPAE], Jahnavi Athaluri[JATHALU1]
+// 	Ford Confidential
+//
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 09/06/2019 for version 6.0.9
+// CR 1048
+	// Added Signal to PTTBStatusData
+		// DcacOut_E_Tot
+	// Added ErrorCodes
+		// TurnOFFFailureReasonENUM to TurnOFFPTTBCommandResponse
+		// UpdateFailureReasonENUM to UpdatePTTBStatusCommandResponse
+// CR 1049
+	// Added Alert
+		// ClearPTTBFaultAlert
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 09/06/2019 for version 6.0.8
+// PTTB Feature
+	// Added Data Bundles
+		// PTTBStatusData
+		// PTTBFaultStatusData
+		// ReservedFuelData
+	// Added Commands
+		// TurnONPTTBCommand
+		// TurnOFFPTTBCommand
+		// ResetPTTBFaultCommand
+		// UpdatePTTBStatusCommand
+	// Added Commands Response
+		// TurnONPTTBCommandResponse
+		// TurnOFFPTTBCommandResponse
+		// ResetPTTBFaultCommandResponse
+		// UpdatePTTBStatusCommandResponse
+	// Added Alert
+		// PTTBFaultAlert
+		// PTTBLowFuelWarningAlert
+		// PTTBPowerModeChangeAlert
+//************************************************************************************************************************************************************************
+package com.ford.ftcp.apps;
+import "ErrorAndStatus.proto";
+
+// Message structure for PTTB Status Values
+message PTTBStatusData{
+	// Signal to indicate an fault status on the power source
+  	optional int32 DcacFaltMsgTxt_D_Rq = 1;
+  	// Warning signal to user to use the vehicle outside
+  	optional int32 DcacEngOnMsgTxt_D_Rq = 2;
+  	// Signal to indicate the reserve fuel level low and the feature turn off warning
+  	optional int32 DcacLoFuelMsgTxt_D_Rq = 3;
+  	// Signal to indicate current power mode
+  	optional int32 DcacElPw_D_Stat = 4;
+  	// Signal to indicate the Outlet A usage status
+  	optional int32 DcacOut1_Pw_Dsply = 5;
+  	// Signal to indicate the Outlet B usage status
+  	optional int32 DcacOut2_Pw_Dsply = 6;
+  	// Signal to indicate the maximum available power
+  	optional int32 DcacOut_Pw_DsplyMx = 7;
+  	// Signal to indicate the hardware configuration
+  	optional int32 DcacHw_D_Confg = 8;
+  	// Signal to indicate the Aggregated Power consumption over time from power-to-the-box
+  	optional int32 DcacOut_E_Tot = 9;
+}
+
+// Message structure for PTTB Fault Status Values
+message PTTBFaultStatusData{
+	// Signal to indicate Fault status
+	optional int32 DcacFaltMsgTxt_D_Rq = 1;
+}
+
+// Message structure for the 'low-fuel' level warning indicator for PTTB feature
+message ReservedFuelData{
+ 	// Signal to indicate the reserved fuel level low status
+	optional int32 DcacLoFuelMsgTxt_D_Rq = 1;
+}
+
+// Message structure for Turn ON PTTB Feature Command
+message TurnONPTTBCommand{
+	// enumeration for the power mode type
+	optional PowerModeTypeENUM powerModeType = 1;
+
+	enum PowerModeTypeENUM{
+		// Turn on the feature under low power mode (400W)
+		LOW = 0;
+		// Turn on the feature under high power mode (generator mode)
+		HIGH = 1;
+	}
+}
+
+// Message structure for Turn ON PTTB Feature Command Response
+message TurnONPTTBCommandResponse{
+	// Enumeration for CommandStatus. ECG shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum cmdStatus = 1;
+	// Message structure for error details. ECG shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail cmdErrorDetail = 2;
+	// Message structure for PTTB Status information
+	optional PTTBStatusData pttbStatusData = 3;
+	// Message structure for failure reason, Populate this when the cmdStatus is "FAILED"
+	optional TurnONFailureReasonENUM turnONFailureReason = 4;
+
+	enum TurnONFailureReasonENUM{
+		PRE_CONDITION_NOT_MET = 0;
+	}
+}
+
+// Message structure for Turn OFF PTTB Feature
+message TurnOFFPTTBCommand{
+
+}
+
+// Message structure for Turn OFF PTTB Feature Command Response
+message TurnOFFPTTBCommandResponse{
+	// Enumeration for CommandStatus. ECG shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum cmdStatus = 1;
+	// Message structure for error details. ECG shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail cmdErrorDetail = 2;
+	// Message structure for failure reason, Populate this when the cmdStatus is "FAILED"
+	optional TurnOFFFailureReasonENUM turnOFFFailureReason = 3;
+
+	enum TurnOFFFailureReasonENUM{
+		PRE_CONDITION_NOT_MET = 0;
+	}
+}
+
+// Message structure to get the updated PTTB feature status
+message UpdatePTTBStatusCommand{
+
+}
+
+// Message structure for Update PTTB Status Command Response
+message UpdatePTTBStatusCommandResponse{
+	// Enumeration for CommandStatus. ECG shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum cmdStatus = 1;
+	// Message structure for error details. ECG shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail cmdErrorDetail = 2;
+	// Message structure for PTTB Status information
+	optional PTTBStatusData pttbStatusData = 3;
+	// Message structure for failure reason, Populate this when the cmdStatus is "FAILED"
+	optional UpdateFailureReasonENUM updateFailureReason = 4;
+
+	enum UpdateFailureReasonENUM{
+		PRE_CONDITION_NOT_MET = 0;
+	}
+}
+
+// Message structure to get the Reset PTTB Fault
+message ResetPTTBFaultCommand{
+
+}
+
+// Message structure for Update PTTB Fault Command Response
+message ResetPTTBFaultCommandResponse{
+	// Enumeration for CommandStatus. ECG shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum cmdStatus = 1;
+	// Message structure for error details. ECG shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail cmdErrorDetail = 2;
+}
+
+// Message structure for reporting PTTB Power Mode Change
+message PTTBPowerModeChangeAlert{
+	// Message structure for PTTB Status information
+	optional PTTBStatusData pttbStatusData = 1;
+}
+
+// Message structure for reporting PTTB Feature Fault occurrence
+message PTTBFaultAlert{
+	// Message structure for Fault Status
+	optional PTTBFaultStatusData  pttbFaultStatusData = 1;
+	// Message structure for PTTB Status information
+	optional PTTBStatusData pttbStatusData = 2;
+}
+
+// Message structure for reporting PTTB Feature Fault has been cleared
+message ClearPTTBFaultAlert{
+	// Message structure for Fault Status
+	optional PTTBFaultStatusData  pttbFaultStatusData = 1;
+	// Message structure for PTTB Status information
+	optional PTTBStatusData pttbStatusData = 2;
+}
+
+// Message structure to indicate the reserved fuel is low and the feature will automatically turn off in configured time
+message PTTBLowFuelWarningAlert{
+	// Message structure for the 'low-fuel' level warning indicator for PTTB feature
+	optional ReservedFuelData reservedFuelData = 1;
+	// Message structure for PTTB Status information
+	optional PTTBStatusData pttbStatusData = 2;
+}

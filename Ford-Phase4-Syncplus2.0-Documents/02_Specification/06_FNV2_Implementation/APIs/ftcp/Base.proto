@@ -1,0 +1,1059 @@
+syntax = "proto2";
+//	Ford Telematics Communication Protocol
+//  Feature/Enabler/Common: ECG Base S/W
+//	Version Number: 6.0.9
+//	Date Revised: 10/10/2019
+// 	Last Updated By: Rumeli Das [RDAS9]
+// 	Reviewed By:Murali Chitturi[MCHITTUR], Mageshwaran Mohan [MMOHAN17], Thoppae, Vijai [VTHOPPAE],Jahnavi Athaluri[JATHALU1],Suresh Kumar Sundararaj [SSUNDA56],Praveen Yalavarty [PYALAVAR]
+// 	Ford Confidential
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 10/10/2019 for version 6.0.9
+	// Provisioning : Peripherals (AV)
+		// Added Alerts
+			// PeripheralProvisioningAlert
+			// PeripheralProvisioningConfirmationAlert
+		// Added Alert Response
+			// PeripheralProvisioningAlertResponse
+		// Added Command
+			// ProvisioningDataRequestCommand
+		// Added Command Response
+			// ProvisioningDataRequestCommandResponse
+	// Added comments received from Security Team for PayloadType enumeration
+
+	// OTA changes
+		// Added command and command response
+			// ScheduleVehicleInhibitCommand
+			// ScheduleVehicleInhibitCommandResponse
+		// Added alerts
+			// LifeCycleModeStatusAlert
+			// VehicleInhibitScheduleStatusAlert
+			// VehicleInhibitStatusAlert
+			// ASUSettingsStatusAlert
+			// ASUStatusAlert
+		// Added data bundles
+			// InhibitEventSource
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 09/04/2018 for version 6.0.8
+	// Master Reset
+		// Added Command
+			// UpdateResetControlSettingsCommand
+		// Added Command Response
+			// UpdateResetControlSettingsCommandResponse
+		// Added Alert
+			// ResetControlStatusAlert
+			// ResetControlNotificationAlert
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 06/25/2019 for version 6.0.7
+	// IVSU Feature - CR 851 and CR933
+		// Added displayInfoURL and additionalConsentInfoURL to IVSUCloudTriggerCommand
+	// Provisioning - CR 879 ; ECG JIRA - 26733
+		// Added euiccId to ProvisioningData
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 03/29/2019 for version 6.0.6
+	//CR #848;ECG-JIRA#24732
+		// Added alert
+			// TCUProvisioningConfirmationAlert
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 01/11/2019 for version 6.0.5
+	//CR # SYNC-31147
+		// Added alert
+			// SYNCProvisioningConfirmationAlert
+			// OBCCProvisioningConfirmationAlert
+			// DSRCProvisioningConfirmationAlert
+			// BLEMProvisioningConfirmationAlert
+		// Removed unused data bundle "SYNCProvisioningState"
+		// Renamed variable obccProvstate --> dsrcProvState in DSRCProvisioningAlert
+	// Updated Alert
+		// TCUProvisioningAlert
+			// Renamed variable encodedPprovisioningPayload --> encodedProvisioningPayload
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 10/26/2018 for version 6.0.4
+	// Added alerts
+		// BLEMProvisioningAlert
+		// OBCCProvisioningAlert
+		// DSRCProvisioningAlert
+	// Added commands
+		// BLEMProvisioningRequestCommand
+		// OBCCProvisioningDataRequestCommand
+		// DSRCProvisioningDataRequestCommand
+	// Added command responses
+		// BLEMProvisioningRequestCommandResponse
+		// OBCCProvisioningDataRequestCommandResponse
+		// DSRCProvisioningDataRequestCommandresponse
+	// Added provisioingData to following alerts and command responses
+		// TCUProvisioningAlert
+		// SYNCProvisioningAlert
+		// TCUProvisioningDataRequestCommand
+		// SYNCProvisioningDataRequestCommand
+	// Added engineType in provisioingData - CR# 747
+	// Added SIGNED_AND_ENCRYPTED in ProvisioningPayloa
+	// Removed command
+		// AuthorizationStatusChangeCommand
+	// Removed command response
+		// AuthorizationStatusChangeCommandResponse
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 09/21/2018 for version 6.0.3
+	// Added new variable deploymentId to
+		// IVSUCloudTriggerCommand
+		// IVSUCloudTriggerCommandResponse
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 09/07/2018 for version 6.0.2
+	// Fixed Typos mainly in comments
+	// Packaging of proto files have been introduced and referenced
+	// Added syntax = "proto2" to the header
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 06/20/2018 for version 6.0.1
+// RVCM Feature Changes
+	// Removed data bundle "AppConfiguration" from VehicleConfigChangeCommand
+	// Renamed data bundle "ConfigUpdateErrorDetail" --> "VehicleConfigErrorDetail" in VehicleConfigChangeResponseAlert
+	// Renamed enumeration "ConfigUpdateErrorEnum" --> "VehicleConfigErrorEnum" in VehicleConfigErrorDetail data bundle
+	// Added new attribute to VehicleConfigErrorEnum
+		// APP_PARTNUMBER_MISMATCH
+	// Added Command
+		// GetVehicleConfigCommand
+	// Added Command Response
+		// GetVehicleConfigCommandResponse
+	// Added Alert
+		// GetVehicleConfigAlert
+// OTA Feature Changes
+	// Datatype changed for CampaignID to string from Int32
+//************************************************************************************************************************************************************************
+// Covers message requirements for following
+	// Provisioning
+	// Master Reset
+	// RVCM
+	// OTA
+//************************************************************************************************************************************************************************
+	// Changed CANDatabaseVersion element back to "optional" from "repeated"
+	// Removed(commented for id tracking) firmwareVersion element under ProvisioningData
+//************************************************************************************************************************************************************************
+package com.ford.ftcp.core;
+import "FeatureCommon.proto";
+import "ErrorAndStatus.proto";
+import "Common.proto";
+
+// Message structure for ECG Provisioning Alert from the Vehicle to the cloud
+message ECGProvisioningAlert{
+	// Message structure for provisioning data. ECU/Application shall always set this.
+	// This filed is not sync-p encoded.
+	optional ProvisioningData provisioningData = 1;
+	// Indicates ECUs to be provisioned
+	repeated com.ford.ftcp.appcommon.ECUIdentifier provECUList = 2;
+	//Provisioning Method
+	optional NetworkInterface provisioningMethod = 3;
+}
+
+// Message structure for ECG Provisioning Alert Response from Cloud to Vehicle
+message ECGProvisioningAlertResponse{
+	// ECG Provisioning Status from Cloud
+	optional ProvisioningAlertStatus provAlertStatus = 1;
+}
+
+// Message structure for TCU Provisioning Alert from the Vehicle to the cloud
+message TCUProvisioningAlert{
+	// Electronic Serial Number
+	optional string esn = 1;
+	// Ford Electronic Serial Number
+	optional string fordEsn = 2;
+	// TCU Provisioning State
+	optional TCUProvisioningState.States tcuProvState = 3;
+	// Following field will have sync-p encoded provisioning data for TCU
+	// Populate this field if TCU provisioning data needs to be sync-p encoded
+	optional ProvisioningPayload encodedProvisioningPayload = 4;
+	//Provisioning Method
+	optional NetworkInterface provisioningMethod = 5;
+	// Following field will NOT have sync-p encoding
+	// Populate this field if TCU provisioning data does not need to be sync-p encoded
+	optional ProvisioningData provisioningData = 6;
+}
+
+// Message structure for TCU Provisioning Alert Response from Cloud to Vehicle
+message TCUProvisioningAlertResponse{
+	// TCU Provisioning Status from Cloud
+	optional ProvisioningAlertStatus provAlertStatus = 1;
+}
+
+// TCU Provisioning Confirmation Alert
+// ECG shall send this when TCU moves to Provisioned state
+message TCUProvisioningConfirmationAlert{
+	// Electronic Serial Number
+	optional string esn = 1;
+	// Ford Electronic Serial Number
+	optional string fordEsn = 2;
+	// TCU Provisioning State
+	optional TCUProvisioningState.States tcuProvState = 3;
+}
+
+// Command message structure for changing Home URL
+message ChangeHomeURLCommand{
+	// Value of Home URL in the special DID that can ONLY be updated via this command
+	optional bytes homeURL = 1;
+}
+
+// Command Response message structure for changing Home URL
+// The ECG/ECU shall send the command response after executing the command to change the Home URL. The ECG/ECU shall write the "bytes"
+// delivered by cloud in the specific DID that is reserved for HomeURL. Upon "success", the ECG/ECU shall read the "bytes" from the
+// DID and set those bytes to the homeURL field in the command response.
+message ChangeHomeURLCommandResponse{
+	// Enumeration for CommandStatus. ECU/Application shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for error details. ECU/Application shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+	// Value of Home URL as read from the ECU(e.g.,TCU,ECG) special DID
+	optional bytes homeURL = 3;
+}
+
+// Message structure for ECG Provisioning Data Request Command
+message ECGProvisioningDataRequestCommand{
+}
+
+// Message structure for ECG Provisioning Data Request Command Response
+message ECGProvisioningDataRequestCommandResponse{
+	// Enumeration for CommandStatus. ECU/Application shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for error details. ECU/Application shall only set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+	// Message structure for Provisioning data. ECU/Application shall always set this.
+	// This field is not sync-p encoded.
+	optional ProvisioningData provisioningData = 3;
+	// Indicates ECUs to be provisioned, including ECG
+	repeated com.ford.ftcp.appcommon.ECUIdentifier provECUList = 4;
+}
+
+// Message structure for TCU Provisioning Data Request Command
+message TCUProvisioningDataRequestCommand{
+}
+
+// Message structure for TCU Provisioning Data Request Command Response
+message TCUProvisioningDataRequestCommandResponse{
+	// Enumeration for CommandStatus. ECU/Application shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for error details. ECU/Application shall only set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+	// Electronic Serial Number
+	optional string esn = 3;
+	// Ford Electronic Serial Number
+	optional string fordEsn = 4;
+	// TCU Provisioning State
+	optional TCUProvisioningState.States tcuProvState = 5;
+	// Following field will have sync-p encoded provisioning data for TCU
+	// Populate this field if TCU provisioning data needs to be sync-p encoded
+	optional ProvisioningPayload encodedProvisioningPayload = 6;
+	// Following field will NOT have sync-p encoding
+	// Populate this field if TCU provisioning data does not need to be sync-p encoded
+	optional ProvisioningData provisioningData = 7;
+}
+
+
+
+// Message structure for SYNC Peripheral ECU Provisioning Alert
+message SYNCProvisioningAlert{
+	// Electronic Serial Number
+	optional string esn = 1;
+	// Ford Electronic Serial Number
+	optional string fordEsn = 2;
+	// SYNC Provisioning State
+
+	optional PeripheralProvisioningState.States syncProvState = 3;
+	// Following field will have sync-p encoded provisioning data for SYNC
+	// Populate this field if SYNC provisioning data needs to be sync-p encoded
+	optional ProvisioningPayload encodedProvisioningPayload = 4;
+	//Provisioning Method
+	optional NetworkInterface provisioningMethod = 5;
+	// Following field will NOT have sync-p encoding
+	// Populate this field if SYNC provisioning data does not need to be sync-p encoded
+	optional ProvisioningData provisioningData = 6;
+}
+
+// Message structure for SYNC Provisioning Data Request
+message SYNCProvisioningDataRequestCommand{
+
+}
+
+// Message structure for SYNC Provisioning Data Response
+message SYNCProvisioningDataRequestCommandResponse{
+	// Enumeration for CommandStatus. ECU/Application shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for error details. ECU/Application shall only set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+
+	// Electronic Serial Number
+	optional string esn = 3;
+	// Ford Electronic Serial Number
+	optional string fordEsn = 4;
+
+	// SYNC Provisioning State
+	optional PeripheralProvisioningState.States syncProvState = 5;
+	// Following field will have sync-p encoded provisioning data for SYNC
+	// Populate this field if SYNC provisioning data needs to be sync-p encoded
+	optional ProvisioningPayload encodedProvisioningPayload = 6;
+	// Following field will NOT have sync-p encoding
+	// Populate this field if SYNC provisioning data does not need to be sync-p encoded
+	optional ProvisioningData provisioningData = 7;
+}
+
+// SYNC Provisioning Confirmation Alert
+// ECG shall send this when SYNC moves to Provisioned state
+message SYNCProvisioningConfirmationAlert{
+	// Electronic Serial Number
+	optional string esn = 1;
+	// Ford Electronic Serial Number
+	optional string fordEsn = 2;
+	// Sync Provisioning State
+	optional PeripheralProvisioningState.States syncProvState = 3;
+}
+
+// Message structure for OBCC Peripheral ECU Provisioning Alert
+message OBCCProvisioningAlert{
+	// Electronic Serial Number
+	optional string esn = 1;
+	// Ford Electronic Serial Number
+	optional string fordEsn = 2;
+	// OBCC Provisioning State
+	optional PeripheralProvisioningState.States obccProvState = 3;
+	// Following field will have sync-p encoded provisioning data for OBCC
+	// Populate this field if OBCC provisioning data needs to be sync-p encoded
+	optional ProvisioningPayload encodedProvisioningPayload = 4;
+	//Provisioning Method
+	optional NetworkInterface provisioningMethod = 5;
+	// Following field will NOT have sync-p encoding
+	// Populate this field if OBCC provisioning data does not need to be sync-p encoded
+	optional ProvisioningData provisioningData = 6;
+}
+
+// Message structure for OBCC Provisioning Data Request
+message OBCCProvisioningDataRequestCommand{
+
+}
+
+// Message structure for OBCC Provisioning Data Response
+message OBCCProvisioningDataRequestCommandResponse{
+	// Enumeration for CommandStatus. ECU/Application shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for error details. ECU/Application shall only set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+
+	// Electronic Serial Number
+	optional string esn = 3;
+	// Ford Electronic Serial Number
+	optional string fordEsn = 4;
+
+	// OBCC Provisioning State
+	optional PeripheralProvisioningState.States obccProvState = 5;
+	// Following field will have sync-p encoded provisioning data for OBCC
+	// Populate this field if OBCC provisioning data needs to be sync-p encoded
+	optional ProvisioningPayload encodedProvisioningPayload = 6;
+	// Following field will NOT have sync-p encoding
+	// Populate this field if OBCC provisioning data does not need to be sync-p encoded
+	optional ProvisioningData provisioningData = 7;
+}
+
+// OBCC Provisioning Confirmation Alert
+// ECG shall send this when OBCC moves to Provisioned state
+message OBCCProvisioningConfirmationAlert{
+	// Electronic Serial Number
+	optional string esn = 1;
+	// Ford Electronic Serial Number
+	optional string fordEsn = 2;
+	// OBCC Provisioning State
+	optional PeripheralProvisioningState.States obccProvState = 3;
+}
+
+// Message structure for DSRC Peripheral ECU Provisioning Alert
+message DSRCProvisioningAlert{
+	// Electronic Serial Number
+	optional string esn = 1;
+	// Ford Electronic Serial Number
+	optional string fordEsn = 2;
+	// DSRC Provisioning State
+	optional PeripheralProvisioningState.States dsrcProvState = 3;
+	// Following field will have sync-p encoded provisioning data for DSRC
+	// Populate this field if DSRC provisioning data needs to be sync-p encoded
+	optional ProvisioningPayload encodedProvisioningPayload = 4;
+	//Provisioning Method
+	optional NetworkInterface provisioningMethod = 5;
+	// Following field will NOT have sync-p encoding
+	// Populate this field if DSRC provisioning data does not need to be sync-p encoded
+	optional ProvisioningData provisioningData = 6;
+}
+
+// Message structure for DSRC Provisioning Data Request
+message DSRCProvisioningDataRequestCommand{
+
+}
+
+// Message structure for DSRC Provisioning Data Response
+message DSRCProvisioningDataRequestCommandResponse{
+	// Enumeration for CommandStatus. ECU/Application shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for error details. ECU/Application shall only set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+
+	// Electronic Serial Number
+	optional string esn = 3;
+	// Ford Electronic Serial Number
+	optional string fordEsn = 4;
+
+	// DSRC Provisioning State
+	optional PeripheralProvisioningState.States dsrcProvState = 5;
+	// Following field will have sync-p encoded provisioning data for DSRC
+	// Populate this field if DSRC provisioning data needs to be sync-p encoded
+	optional ProvisioningPayload encodedProvisioningPayload = 6;
+	// Following field will NOT have sync-p encoding
+	// Populate this field if DSRC provisioning data does not need to be sync-p encoded
+	optional ProvisioningData provisioningData = 7;
+}
+
+// DSRC Provisioning Confirmation Alert
+// ECG shall send this when DSRC moves to Provisioned state
+message DSRCProvisioningConfirmationAlert{
+	// Electronic Serial Number
+	optional string esn = 1;
+	// Ford Electronic Serial Number
+	optional string fordEsn = 2;
+	// DSRC Provisioning State
+	optional PeripheralProvisioningState.States dsrcProvState = 3;
+}
+
+// Generic Provisioning Messages for Peripherals
+
+// Message structure for Peripheral ECU Provisioning Alert
+message PeripheralProvisioningAlert{
+	// Primary attributes for the ECU (ESN, FESN, ECU ID)
+	optional com.ford.ftcp.appcommon.ECUIdentifier ecuIdentifier = 1;
+	// Peripheral ECU Provisioning State
+	optional PeripheralProvisioningState.States ecuProvState = 2;
+	// Following field will have sync-p encoded provisioning data for Peripheral ECU
+	// Populate this field if ECU provisioning data needs to be sync-p encoded
+	optional ProvisioningPayload encodedProvisioningPayload = 3;
+	// Provisioning Method
+	optional NetworkInterface provisioningMethod = 4;
+	// Following field will NOT have sync-p encoding
+	// Populate this field if ECU provisioning data does not need to be sync-p encoded
+	optional ProvisioningData provisioningData = 5;
+}
+
+// Message structure for Peripheral Provisioning Alert Response from Cloud to Vehicle
+message PeripheralProvisioningAlertResponse{
+	// Peripheral ECU Provisioning Status from Cloud
+	optional ProvisioningAlertStatus provAlertStatus = 1;
+}
+
+// Peripheral Provisioning Confirmation Alert
+// ECG shall send this when Peripheral ECU moves to Provisioned state
+message PeripheralProvisioningConfirmationAlert{
+	// Includes ESN/FESN, ECU ID and Ethernet MAC Address
+	optional com.ford.ftcp.appcommon.ECUIdentifier ecuIdentifier = 1;
+	// Peripheral ECU Provisioning State
+	optional PeripheralProvisioningState.States peripheralProvState = 2;
+	// Total time taken for provisioning, to make it to PROVISIONED state
+	// Unit of measure in minutes
+	optional int32 totalProvisioningTime = 3;
+}
+
+// Message structure for provisioning data request command
+message ProvisioningDataRequestCommand{
+	// Populate ECU ID and/or ESN to request Provisioning Data
+	optional com.ford.ftcp.appcommon.ECUIdentifier ecuIdentifier = 1;
+}
+
+// Message structure for ProvisioningDataRequestCommandResponse
+message ProvisioningDataRequestCommandResponse{
+	// Enumeration for CommandStatus. ECU/Application shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for error details. ECU/Application shall only set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+	// Includes ESN/FESN, ECU ID and Ethernet MAC Address
+	optional com.ford.ftcp.appcommon.ECUIdentifier ecuIdentifier = 3;
+	// Peripheral ECU Provisioning State
+	optional PeripheralProvisioningState.States peripheralProvState = 4;
+	// Following field will have sync-p encoded provisioning data for Peripheral ECU
+	// Populate this field if ECU provisioning data needs to be sync-p encoded
+	optional ProvisioningPayload encodedProvisioningPayload = 5;
+	// Following field will NOT have sync-p encoding
+	// Populate this field if ECU provisioning data does not need to be sync-p encoded
+	optional ProvisioningData provisioningData = 6;
+}
+
+//Message structure for BLEMProvisioningAlert
+message BLEMProvisioningAlert{
+	// Common message structure for PaaK messages
+	optional com.ford.ftcp.appcommon.CommonForPaaKFromVehicle commonForPaaKFromVehicle = 1;
+	// Metadata of BLEM
+	optional BlemModuleMetadata blemModuleMetadata = 2;
+}
+
+//Message structure of Module metadata for BLEM
+message BlemModuleMetadata{
+	// BLEM metadata sent from BLEM
+	optional bytes moduleMetaData = 1;
+
+	//BLEM provisioning state
+	optional BLEMStateENUM blemState = 2;
+
+	//Enumeration for provisioning state of BLEM
+	enum BLEMStateENUM{
+		FACTORY = 0;
+		UNPROVISIONED = 1;
+		WAIT_FOR_PROV_ALERT_ACK = 2;
+		READY_FOR_KEY = 3;
+		KEY_DELIVERED = 4;
+	}
+
+}
+
+//Phone as a Key commands
+//Cloud shall send this to ask for Blem provisioning information
+message BLEMProvisioningRequestCommand{
+}
+
+// Message structure for BLEMProvisioningRequestCommandResponse
+message BLEMProvisioningRequestCommandResponse{
+	// Common message structure for PaaK messages
+	optional com.ford.ftcp.appcommon.CommonForPaaKFromVehicle commonForPaaKFromVehicle = 1;
+	// Enumeration for CommandStatus. ECU/Application shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 2;
+	// Message structure for error details. ECU/Application shall only set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+	// Message structure for Blem module data. ECG shall always set this.
+	optional BlemModuleMetadata blemModuleMetadata = 4;
+}
+
+// BLEM Provisioning Confirmation Alert
+// ECG shall send this when BLEM moves to Provisioned state/READY FOR KEY state
+message BLEMProvisioningConfirmationAlert{
+	// Electronic Serial Number
+	optional string esn = 1;
+	// Ford Electronic Serial Number
+	optional string fordEsn = 2;
+
+	//BLEM provisioning status
+	optional BlemModuleMetadata.BLEMStateENUM blemStatus = 3;
+}
+
+// Message structure to capture Provisioning Alert Status as part of Alert Response
+message ProvisioningAlertStatus{
+	// Provisioning Alert Status from Cloud/SDN
+	optional ProvisioningAlertStatusEnum status = 1;
+	// Provisioning Error Code for FAILURE
+	optional ProvisioningErrorCodeEnum error = 2;
+
+	enum ProvisioningAlertStatusEnum{
+		// Cloud sets this status if ECU provisioning/validation is failed
+		FAILURE = 0;
+		// Cloud sets this status if ECU provisioning/validation is successful
+		SUCCESS = 1;
+	}
+	enum ProvisioningErrorCodeEnum{
+		// Cloud sets this status if ECU provisioning/validation is failed
+		TEMPORARY = 0;
+		// Cloud sets this status if ECU provisioning/validation successful
+		CRITICAL = 1;
+	}
+}
+
+// Message structure for Provisioning Payload
+message ProvisioningPayload{
+	// Secured Provisioning Data (encrypted or signed or both)
+	// Respective ECU will use ProvisioiningData structure to populate
+	// the bytes stream/payload
+	optional bytes securedProvisioningData = 1;
+	// Indicator for security validation of encrypted vs signed data
+	optional PayloadType payloadType = 2;
+}
+
+// Message Structure for capturing Provisioning Data
+message ProvisioningData{
+	// This is the veh_architecture parameter that ECG populates based on Ford EOL configuration
+	optional int32 bus_architecture = 1;
+
+	// This is the destination region code as recorded at the end of line - This MUST always be populated when sending provisioning
+	// data.
+	//ECG shall have a EOL configuration where Ford can write the destination region of the vehicle
+	//Destination region code shall be two char. code(NA,RU,CN,EU,SA,AU) that was defined in partII. Following is the two char.
+	// region codes mapping.
+		//NA  - North America
+		//RU  - Russian Federation
+		//CN  - China
+		//EU  - European Union
+		//SA - South America
+		//AU - Australia
+	optional string destinationRegionCode = 2;
+	//TCU shall have a EOL configuration where Ford can write the WERS country code of vehicle destination
+	optional string destinationCountryCode = 3;
+
+	// Package ID - DID D03D
+	optional string packageId = 4;
+	// This MUST be mapped to the Hardware Part number for the ECU in IVS
+	// DID for Ford supplied Hardware Part Number - F111
+	optional string hardwarePartNumber = 5;
+	// This MUST be mapped to the assembly part number for the ECU in IVS
+	// DID for Ford assembly Part Number - F113
+	optional string assemblyPartNumber = 6;
+	// This MUST be mapped to the Config Part number for the ECU in IVS
+	// Config Part Number - DID F10A
+	optional string configPartNumber = 7;
+	// ECU Part II Part Number
+	// ECU(TCU,ECG) shall set the current Part2 specification's part number
+	optional string partIIPartNumber = 8;
+	// Element to report CAN database version(s)
+	optional string CANDatabaseVersion = 9;
+
+	// ************************************************************************************** //
+	// Firmware Version Removed in FNV2, this place holder can be used to add GSDB version if required later
+	// ECU firmware version number
+	// optional string firmwareVersion = 10;
+	// ************************************************************************************** //
+
+	// This MUST be mapped to the Strategy(Software) Part number for the ECU in IVS
+	// TCU Firmware (Strategy) Part Number - DID F188
+	optional string strategyPartNumber = 11;
+	// ECU Primary Bootloader Part Number
+	optional string primaryBootLoaderPartNumber = 12;
+	// ECU Recovery Load Part Number
+	optional string recoveryLoadPartNumber = 13;
+	// ECU's Current global config version number
+	optional string globalConfigVersion = 14;
+	// Value of Home URL as read from the ECU(ECG/TCU) special DID
+	optional bytes homeURL = 15;
+
+	//CAN ID for the ECU/Module
+	optional int32 ECUId = 16;
+	// Ethernet MAC Address for the ECU
+	// Populate for Primary MAC for the identifying respective ECU alone in Ethernet
+	optional string primaryEthernetMACAddress = 17;
+	// Populate all MAC except the primary MAC Address
+	repeated string ethernetMACAddress = 18;
+	// Wi-Fi MAC Address - DID FD26 (SYNC/TCU)
+	optional string wifiMACAddress = 19;
+	// Bluetooth MAC Address (SYNC/TCU/BLEM)
+	optional string bluetoothMACAddress = 20;
+
+	// ICCID of the SIM provided by the wireless carrier
+	optional string iccid = 21;
+	// IMEI number
+	optional string imei = 22;
+	// MSISDN of the carrier SIM
+	optional string sim_msisdn = 23;
+	// IMSI of the SIM
+	optional string sim_imsi = 24;
+	// Firmware version of the host micro - Teseo II.(TCU)
+	optional string firmware_version_teseo2 = 25;
+
+	// BLEM BPEK
+	optional string bpek = 26;
+	// Engine type in engine data
+	optional com.ford.ftcp.appcommon.EngineData enginedata = 27;
+	// euiccId of the SIM provided by the wireless carrier
+	optional string euiccId = 28;
+}
+
+// Message structure for TCU Provisioning State
+message TCUProvisioningState{
+	// Enumeration for TCU Provisioning status
+	enum States{
+		// Default TCU status at the factory at B+ while DTC E10000 is still there.
+		FACTORY = 0;
+		// TCU shall enter this mode when DTC E10000 is cleared and waiting to be provisioned.
+		UNPROVISIONED = 1;
+		// Provisioned
+		PROVISIONED = 2;
+	}
+}
+
+
+// Message structure for Peripheral ECU Provisioning State
+message PeripheralProvisioningState{
+	// Enumeration for peripheral ECU Provisioning status
+	enum States{
+		// Default ECU/SYNC status at the factory at B+ while DTC E10000 is still there.
+		FACTORY = 0;
+		// ECU/SYNC shall enter this mode when DTC E10000 is cleared and waiting to be provisioned.
+		UNPROVISIONED = 1;
+		// WAITING_FOR_ACK
+		WAITING_FOR_ACK = 2;
+		// Provisioned
+		PROVISIONED = 3;
+	}
+}
+
+// Enumeration for type of security encoding used in sync-p
+enum PayloadType{
+	//ENCRYPTED option is NOT APPLICABLE based on Cryptotypes listed in Sync-P Spec
+	ENCRYPTED = 0;
+	SIGNED = 1;
+	SIGNED_AND_ENCRYPTED = 2;
+}
+
+enum NetworkInterface{
+	TCU_CELLULAR = 0;
+	TCU_WIFI =1;
+	SYNC_WIFI =2;
+}
+
+//--------------------------------------------------
+// RVCM
+//--------------------------------------------------
+
+// Message structure for changing vehicle configuration parameters
+message VehicleConfigChangeCommand{
+	//SDN shall set list of ECUs and configurations
+	repeated com.ford.ftcp.appcommon.ECUConfiguration ecuConfiguration=1;
+	// SDN/Cloud always shall set this identifier for the module to apply the configuration changes immediately or Delayed
+	// (during Key off event)
+	optional ConfigApplyTypeENUM configApplyType = 2;
+
+
+	//Configuration event
+	enum ConfigApplyTypeENUM
+	{
+		//Applied Immediately ex. Key on
+		IMMEDIATE = 0;
+		//Applied with Delay ex. Key off
+		DELAYED = 1;
+	}
+}
+
+
+
+// Response message structure for Vehicle Configuration Change command
+message VehicleConfigChangeCommandResponse{
+	// Enumeration for CommandStatus. ECU/Application shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for error details. ECU/Application shall only set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+}
+
+// Correlated alert message structure for Vehicle Configuration Change command
+message VehicleConfigChangeResponseAlert{
+	// Enumeration for configuration update status. ECU/Application shall always set this.
+	optional ConfigUpdateStatusENUM configUpdateStatus = 1;
+	// ECU/Application shall report back the updated config data that is written to the DIDs provided
+	// in the command by reading the DIDs after they are being written
+	repeated com.ford.ftcp.appcommon.ECUConfiguration ECUConfiguration = 2;
+	// Message structure for error details. ECU/Application shall only set this upon any error condition
+	optional VehicleConfigErrorDetail vehicleConfigError = 3;
+
+	// Enumeration definition for Configuration update process status
+	enum ConfigUpdateStatusENUM{
+		// ECU sets this status if the Configuration Upgrade is successfully executed
+		FAILED = 0;
+		// ECU sets this status if the Configuration Upgrade has failed
+		SUCCESS = 1;
+	}
+}
+
+//ECU shall use this message structure to report the errors related Configuration update process
+//message ConfigUpdateErrorDetail{
+message VehicleConfigErrorDetail{
+	// Enumeration for communicating the errors related Configuration (Method2/PartII, GMRDB etc.) update errors.
+	// ECU/Application shall always set this.
+	optional VehicleConfigErrorEnum configUpdateError = 1;
+	// Description of the error. ECU/Application shall set this.
+	optional string errorDescription = 2;
+}
+
+// Enumeration for communicating Configuration update process errors
+// SDN shall define the recovery processes(Retry, Operations Alerts/Notification etc.) for every reason code
+
+enum VehicleConfigErrorEnum{
+	// Failure due to ECU's Internal memory errors (write failure,Cache full etc)
+	INTERNAL_MEMORY_ERROR=0;
+	// Failure due to Invalid configuration (ex. Unknown DID, invalid Length/Format, Values not recognized by ECU etc.)
+	INVALID_CONFIG_DATA=1;
+	// Failure due to unknown part2 part number (part number in the command is different from ECU's current part 2 number)
+	PART2PARTNUMER_MISMATCH = 2;
+	// Failure due to invalid/unknown ECU ID(ECU in the command is unknown)
+	INVALID_ECU=3;
+	// Failure due to invalid ApplyType combination in the command (validation rule: all DIDs in the command shall have the same ApplyType)
+	INVALID_APPLY_TYPE_COMBINATION=4;
+	// Failure due to access issues, one or more configurations are not allowed to be updated by SDN
+	ACCESS_DENIED=5;
+	// Failure due to reserved/mis-configurable values in the command
+	CONFIG_ITEM_MISMATCH=6;
+	// Failure due to application part number mismatch
+	APP_PARTNUMBER_MISMATCH = 7;
+}
+
+// Message structure for reading vehicle configuration parameters
+message GetVehicleConfigCommand{
+	//SDN shall set the list of ECUIds and/or application part numbers or DID addresses
+	repeated com.ford.ftcp.appcommon.ECUConfiguration ecuConfiguration=1;
+}
+
+// Response message structure for the associated Vehicle Configuration Get command
+message GetVehicleConfigCommandResponse{
+	// Enumeration for CommandStatus. ECU/Application shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for error details. ECU/Application shall only set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+}
+
+// Alert message structure for Vehicle Configuration Get command
+message GetVehicleConfigAlert{
+	// Enumeration for configuration update status. ECU/Application shall always set this.
+	optional GetConfigStatusENUM getConfigStatus = 1;
+	// ECU/Application shall report back the updated config data that is stored against the DIDs in the vehicle
+	repeated com.ford.ftcp.appcommon.ECUConfiguration ECUConfiguration = 2;
+	// Message structure for error details. ECU/Application shall only set this upon any error condition
+	optional VehicleConfigErrorDetail configError = 3;
+
+	// Enumeration definition for Configuration update process status
+	enum GetConfigStatusENUM{
+		// ECU sets this status if the get Configuration has failed
+		FAILED = 0;
+		// ECU sets this status if the get Configuration is successfully executed
+		SUCCESS = 1;
+	}
+}
+
+
+//--------------------------------------------------
+// Master Reset
+//--------------------------------------------------
+
+// Message structure for MasterResetAlert
+message MasterResetAlert{
+	// Common message structure for all alerts and command responses. ECU/Application shall always set this.
+	// optional CommonFromVehicle vehicleCommon = 1;
+	// Message structure for vehicle status. ECU/Application shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Identifier to indicate the Brand Connect Reset or master reset
+	optional ResetTypeENUM resetType = 2;
+
+	// Enumeration to indicate the reset type
+	enum ResetTypeENUM{
+		MASTER_RESET = 0;
+		BRAND_RESET = 1;
+	}
+}
+
+// Message structure for ClearUserSettingsCommand
+// Cloud shall send this command to ECU(ECG/TCU), to clear user settings
+// Refer SDN and TCU Specifications for implementation details
+message ClearUserSettingsCommand{
+
+}
+
+// Message structure for ClearUserSettingsCommandResponse
+message ClearUserSettingsCommandResponse{
+	// Enumeration for CommandStatus. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 2;
+	// Message structure for error details. ECU(ECG/TCU) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+}
+
+enum ResetControlStatusENUM{
+	ACTIVATE_RESET = 0;
+	DEACTIVATE_RESET  = 1;
+	DISABLE_RESET_CONTROL_FEATURE = 2;
+}
+
+// Message structure to update the Reset Control Settings
+message UpdateResetControlSettingsCommand{
+	// Time (in minutes) till master reset settings will be ACTIVATED, This will be sent when Reset Control timer configuration needs to be changed
+	optional int32 timeInterval = 1;
+	// Reset Control Status Type
+	optional ResetControlStatusENUM resetControlStatus= 2;
+}
+
+// Message structure for Master Reset Control Response
+message UpdateResetControlSettingsCommandResponse{
+	// Enumeration for CommandStatus. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for error details. ECU(ECG/TCU) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+}
+
+// Message structure for Reset Control Status Alert
+message ResetControlStatusAlert{
+	// Enumeration for reset control status
+	optional ResetControlStatusENUM ResetControlStatus = 1;
+}
+
+// Message structure to notify the type of reset attempted when reset control is deactivated
+message ResetControlNotificationAlert{
+
+	// Enumeration to indicate the type of reset attempted when Reset Control is Deactivated
+	optional AttemptedResetTypeENUM attemptedResetType = 1;
+
+	enum AttemptedResetTypeENUM{
+		MASTER_RESET = 0;
+		BRAND_RESET = 1;
+	}
+}
+
+//--------------------------------------------------
+// IVSU/MMOTA/OTA
+//--------------------------------------------------
+// Message structure for Firmware Upgrade Trigger Command for ECU/ECG
+message IVSUCloudTriggerCommand{
+	// Unique Identifier for IVSU Cloud Trigger
+	optional string campaignId = 1;
+	// Unique Identifier for Cloud Deployment
+	optional string deploymentId = 2;
+	// URL to which the vehicle shall post the Interrogator log, upon beginning upgrade process
+	// and completing the same
+	optional string vehicleInterrogatorPostURL = 3;
+	// Expiration time/duration for an update from cloud to vehicle.
+	// Unit of measure in hours
+	optional int32 ivsuExpirationHours = 4;
+	// Trigger Type from cloud
+	optional IVSUTriggerType triggerType = 5;
+	// IVSU Trigger Manifest/Details
+	repeated IVSUManifest ivsuManifest = 6;
+	// Informs IVSU/OTA to popup and get additional user consent for OTA Campaign
+    optional int32 otaUserConsent = 7;
+    // URL to download software release note 
+    optional string displayInfoURL = 8;
+     // URL to download additional consent information
+    optional string additionalConsentInfoURL = 9;
+}
+
+// Message structure for Firmware Upgrade Trigger Command Response
+message IVSUCloudTriggerCommandResponse{
+	// Unique Identifier for IVSU Cloud Trigger
+	optional string campaignId = 1;
+	// Unique Identifier for Cloud Deployment
+	optional string deploymentId = 2;
+	// Enumeration for CommandStatus. Vehicle shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 3;
+	// Message structure for error details. Vehicle shall only set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 4;
+}
+
+// Enumeration for IVSU Trigger Types
+enum IVSUTriggerType{
+	// SOFTWARE UPDATE TRIGGER
+	SOFTWARE_UPDATE = 0; //
+	// APPLICATION UPDATE
+	APP_UPDATE = 1;
+	// CAMPAIGN CONTROL
+	CAMPAIGN_CONTROL = 2;
+	// OTA POLICY UPDATE
+	OTA_POLICY_UPDATE = 3;
+	// OTA_SNAPSHOT_UPLOAD
+	OTA_SNAPSHOT_UPLOAD = 4;
+	// GET_ODL
+	GET_ODL = 5;
+	// SECURITY CERTIFICATE UPDATE
+	CERT_UPDATE = 6;
+	// OTA DIAGNOSTICS UPDATE
+	OTA_DIAG_UPLOAD = 7;
+}
+
+// Message structure for IVSU manifest with Node/ECU ID and Vender details
+message IVSUManifest{
+	// ECU ID : Electronic Control Unit ID
+	optional int32 ecuId = 1;
+	// Vender List
+	repeated Vender vender = 2;
+}
+
+// Message structure for Vender
+message Vender{
+	// Vender ID for IVSU update
+	optional string venderId = 1; // map id, app id
+}
+
+// Message structure for ScheduleASUActivationCommand(ASU - Automatic Software Update)
+message ScheduleASUActivationCommand{
+	// Vehicle ASU activation schedule
+	optional com.ford.ftcp.appcommon.UTCDateTime ASUActiveSchedule = 1;
+}
+
+// Message structure for ScheduleASUActivationCommandResponse
+message ScheduleASUActivationCommandResponse{
+	// Enumeration for CommandStatus. Vehicle shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for error details. Vehicle shall only set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+}
+
+// Message structure for ASUActivationScheduleStatusAlert.
+message ASUActivationScheduleStatusAlert{
+	// Current Schedule time for Automatic Software Update
+	optional com.ford.ftcp.appcommon.UTCDateTime ASUActiveSchedule = 1;
+}
+
+// Message structure for ASUSettingsStatusAlert(Automatic Software Update Status AlertASUSettingsStatusAlert)
+message ASUSettingsStatusAlert{
+	// Enumeration to indicate Automatic Software Update Settings
+	optional ASUSettingsENUM ASUState = 1;
+	// Enumeration indicating notification settings
+	optional NotificationSettingsENUM notificationState = 2;
+
+	// Enumeration for Automatic Software Update Settings
+	enum ASUSettingsENUM{
+		// ASU settings OFF
+		OFF= 0;
+		// ASU setting ON and recurring
+		ON_RECURRING = 1;
+		// ASU settings ON and not recurring
+		ON_NOT_RECURRING = 2;
+	}
+
+	// Enumeration for Notification on/off
+	enum NotificationSettingsENUM{
+		NOTIFICATION_OFF = 0;
+		NOTIFICATION_ON = 1;
+	}
+}
+
+// Message structure for ASUStatusAlert(Automatic Software Update Status alert)
+message ASUStatusAlert{
+	// Unique ID for software update
+	optional string deploymentId = 1;
+	// Enumeration of error codes of Software Update
+	optional ASUErrorCodesENUM errorCodes = 2;
+	// Error description
+	optional string errorDesc = 3;
+
+	// Automatic Software Update error codes
+	enum ASUErrorCodesENUM{
+		// Update failed
+		UPDATE_FAILED = 0;
+		// Update failed with no drivability
+		UPDATE_FAILED_NO_DRIVABILITY = 1;
+		// Update failed with partial functionality (Vehicle requires service)
+		UPDATE_FAILED_LIMITED_FUNC = 2;
+		// Update postponed due to one or more pre-condition not met
+		UPDATE_POSTPONED = 3;
+	}
+}
+
+//--------------------------------------------------
+// IVSU/MMOTA/OTA - END
+//--------------------------------------------------
+
+// Life cycle Mode related alert
+// Message structure for LifeCycleModeStatusAlert. ECG shall send this every time the life cycle mode of vehicle changes
+message LifeCycleModeStatusAlert{
+	// Life Cycle Mode of vehicle
+	optional com.ford.ftcp.appcommon.LifeCycleMode lifeCycleMode = 1;
+}
+
+// Inhibit related alerts
+// Message structure for VehicleInhibitStatusAlert. ECG shall send this whenever inhibit status of the vehicle changes
+message VehicleInhibitStatusAlert{
+	// Source of inhibit event
+	optional InhibitEventSource inhibitEvntSrc = 1;
+	// Enumeration to indicate vehicle inhibit status
+	optional InhibitStatusENUM inhibitStatus = 2;
+
+	enum InhibitStatusENUM{
+		INHIBITED= 0;
+		DE_INHIBITED = 1;
+	}
+}
+
+// Event source causing vehicle inhibit
+message InhibitEventSource{
+	// Enumeration indicating Sources of inhibit event
+	optional com.ford.ftcp.appcommon.InhibitEventSourceENUM source = 1;
+	// Unique ID for cloud trigger - ECG shall populate this when inhibit source is IVSU
+	optional string deploymentId = 2;
+
+}

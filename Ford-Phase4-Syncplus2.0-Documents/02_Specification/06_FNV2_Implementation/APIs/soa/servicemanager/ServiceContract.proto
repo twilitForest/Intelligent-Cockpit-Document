@@ -1,0 +1,41 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2017.  Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// deliberate unauthorized publication.  Ford Motor Company also
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+//
+
+syntax = "proto2";
+option optimize_for = CODE_SIZE;
+
+import public "Endpoint.proto";
+
+package fnv.soa.framework.protobuf;
+
+// SOA Service contract.
+// Generic type to be used in most of interfaces.
+
+/**
+* @fnv_message_proto
+* @fnv_deprecated
+*/
+message ServiceContract {
+    // Service endpoint. The endpoint to be used by consumers to deliver service requests.
+    optional Endpoint endpoint = 1;
+    // Current service version.
+    optional string version = 2;
+    // Endpoint of real MQTT client hosting the service.
+    optional Endpoint hostEndpoint = 3;
+    // List of commands the service can handle
+    repeated string commandID = 4;
+        // List of ftcp commands the service can handle
+    repeated string ftcpCommandID = 5;
+}

@@ -1,0 +1,593 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2017.  Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// deliberate unauthorized publication.  Ford Motor Company also
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+//
+
+syntax = "proto2";
+option optimize_for = CODE_SIZE;
+option cc_enable_arenas = true;
+package CmMsgWirIf;
+
+import "CmMsgCommon.proto";
+import "CmMsgCell.proto";
+import "CmMsgWlan.proto";
+
+// For CM internal use only
+// The protobuf captures enums and messages related to:
+// WIR Client Interface.
+// These messages are exchanged between ECG CM, TCU CM and SYNC CM.
+// Command details:
+//  0. ALLOC_NW_IF:           Relay allocation request from an ECU WIR Client to ECG CM Central Controller
+//    a. REQUEST:             Request from ECU CM to ECG CM.
+//    b. RESPONSE:            Response from ECG CM to ECU CM.
+//  1. RLS_NW_IF:             Relay allocation release request from an ECU WIR Client to ECG CM Central Controller
+//    a. REQUEST:             Request from ECU CM to ECG CM.
+//    b. RESPONSE:            Response from ECG CM to ECU CM.
+//  2. GET_NW_IF_ALLOC_ST:    Relay allocation status request from an ECU WIR Client to ECG CM Central Controller
+//    a. REQUEST:             Request from ECU CM to ECG CM.
+//    b. RESPONSE:            Response from ECG CM to ECU CM.
+//  3. GET_NW_IF_POLICY:      Relay policy request from an ECU WIR Client to ECG CM Central Controller
+//    a. REQUEST:             Request from ECU CM to ECG CM.
+//    b. RESPONSE:            Response from ECG CM to ECU CM.
+//  4. GET_ACT_NW_IF:         Relay request of available networks from an ECU WIR Client to ECG CM Central Controller
+//    a. REQUEST:             Request from ECU CM to ECG CM.
+//    b. RESPONSE:            Response from ECG CM to ECU CM.
+//  5. SET_FNV_SOCK:          Relay default socket option setting request from an ECU WIR Client to ECG CM Central Controller
+//    a. REQUEST:             Request from ECU CM to ECG CM.
+//    b. RESPONSE:            Response from ECG CM to ECU CM.
+//  6. ACT_NW_IF:             Activity Status of an allocation sent from ECG CM Central Controller to an ECU WIR Client
+//    a. REQUEST:             Request from ECG CM to ECU CM.
+//    b. RESPONSE:            Response from ECU CM to ECG CM.
+//  7. NW_IF_ALLOC_ST:        Allocation Status callback from ECG CM Central Controller to an ECU WIR Client
+//  8. NW_IF_DOWN:            Network Interface Down Status callback from ECG CM Central Controller to an ECU WIR Client
+//  9. NW_IF_DOWN:            Network Interface Up Status callback from ECG CM Central Controller to an ECU WIR Client
+//  10. NW_IF_POLICY:         WIR Client policy update callback from ECG CM Central Controller to an ECU WIR Client
+//  11. DT_PAUSE:             Pause signal callback from ECG CM Central Controller to an ECU WIR Client
+//  12. DT_RESUME:            Resume signal callback from ECG CM Central Controller to an ECU WIR Client
+//  13. DT_STOP:              Stop signal callback from ECG CM Central Controller to an ECU WIR Client
+
+/**
+ * @fnv_proto
+ * Enum of available commands for
+ * WIR Client Interface
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum WirIfSubCmdType
+{
+    // REQUESTs/RESPONSEs
+    //INITIALIZE_CLIENT_REQ = 100;
+    ALLOC_NW_IF_REQ = 101;
+    ALLOC_NW_IF_RSP = 102;
+    GET_NW_IF_ALLOC_ST_REQ = 103;
+    GET_NW_IF_ALLOC_ST_RSP = 104;
+    GET_NW_IF_POLICY_REQ = 105;
+    GET_NW_IF_POLICY_RSP = 106;
+    GET_ACT_NW_IF_REQ = 107;
+    GET_ACT_NW_IF_RSP = 108;
+    SET_FNV_SOCK_REQ = 109;
+    SET_FNV_SOCK_RSP = 110;
+    RLS_NW_IF_REQ = 111;
+    RLS_NW_IF_RSP = 112;
+    ACT_NW_IF_REQ = 113;
+    ACT_NW_IF_RSP = 114;
+
+    // INDICATIONS
+    NW_IF_ALLOC_ST_IND = 201;
+    NW_IF_DOWN_IND = 202;
+    NW_IF_UP_IND = 203;
+    NW_IF_POLICY_IND = 204;
+    DT_PAUSE_IND = 205;
+    DT_RESUME_IND = 206;
+    DT_STOP_IND = 207;
+    WIRCLIENT_REG_IND = 210;
+    WIRCLIENT_DEREG_IND = 211;
+    NW_IF_ALLOC_HIST_IND = 212;
+}
+
+/**
+ * @fnv_proto
+ * Enum of return codes for commands for
+ * WIR Client Interface
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum WirRet
+{
+    // Error/Failure
+    WIR_ERROR = 0;
+
+    // Success
+    WIR_SUCCESS = 1;
+}
+
+/**
+ * @fnv_proto
+ * Enum of Status callback return code
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum NetworkInterfaceAllocationStatus
+{
+    // Error/Failure
+    NET_IFACE_ALLOC_FAILURE = 0;
+
+    // Success
+    NET_IFACE_ALLOC_SUCCESS = 1;
+
+    // In queue/In progress
+    NET_IFACE_ALLOC_INQUEUE = 2;
+
+    // Not supported by policy
+    NET_IFACE_ALLOC_ILLEGAL = 3;
+}
+
+/**
+ * @fnv_proto
+ * Enum of network interface priority levels
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum NetworkInterfacePriorityLevel
+{
+    NET_IFACE_PRI_0 = 0;
+    NET_IFACE_PRI_1 = 1;
+    NET_IFACE_PRI_2 = 2;
+    NET_IFACE_PRI_3 = 3;
+    NET_IFACE_PRI_4 = 4;
+}
+
+/**
+ * @fnv_proto
+ * Enum of Offpeak flag setting
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum OffpeakFlag
+{
+    OFFP_NO = 0;
+    OFFP_YES = 1;
+}
+
+/**
+ * @fnv_proto
+ * Enum of WiFi preferred flag setting
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum WifiPreferredFlag
+{
+    WIFI_PREF_NO = 0;
+    WIFI_PREF_YES = 1;
+}
+
+/**
+ * @fnv_proto
+ * Enum of Intent types available for the WIR Clients
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum IntentType
+{
+    INTENT_FOREGROUND = 0;
+    INTENT_BACKGROUND_BESTEFFORT = 1;
+    INTENT_BACKGROUND_GUARANTEED = 2;
+    INTENT_SPECIAL = 3;
+    INTENT_OFFPEAK = 4;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECU CM to send
+ * Intent of a WIR Client to ECG CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message Intent
+{
+    optional IntentType intentType  = 1;
+    optional CmMsgCommon.NetworkInterfaceType iface = 2;
+    optional CmMsgCell.CellApnType apn = 3;
+    optional NetworkInterfacePriorityLevel priority = 4;
+    optional uint32 expiry = 5;
+    optional OffpeakFlag offpeak = 6;
+    optional WifiPreferredFlag wifiPref = 7;
+    optional CmMsgWlan.WlanProfileCommon profile = 8;
+    optional string ifaceNametoLink = 9;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECU CM to send
+ * Allocation request of a WIR Client to ECG CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message NwIfAllocReq
+{
+    // WIR Client AppId
+    optional string appId = 1;
+
+    // Unique Allocation Id
+    optional uint32 allocId = 2;
+
+    // Intent specified by WIR Client
+    optional Intent intent = 3;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECG CM to send
+ * Allocation response of a
+ * WIR Client to ECU CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message NwIfAllocRsp
+{
+    // WIR Client AppId
+    optional string appId = 1;
+
+    // Unique Allocation Id
+    optional uint32 allocId = 2;
+
+    // Return code for command
+    optional WirRet ret = 3;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECU CM to send
+ * Allocation release request of a
+ * WIR Client to ECG CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message NwIfRlsReq
+{
+    // WIR Client AppId
+    optional string appId = 1;
+
+    // Unique Allocation Id
+    optional uint32 allocId = 2;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECG CM to send
+ * Allocation release response of a
+ * WIR Client to ECU CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message NwIfRlsRsp
+{
+    // WIR Client AppId
+    optional string appId = 1;
+
+    // Unique Allocation Id
+    optional uint32 allocId = 2;
+
+    // Return code for command
+    optional WirRet ret = 3;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECG CM to send
+ * Allocation status indication of a
+ * WIR Client to ECU CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message NwIfAllocStatInd
+{
+    // WIR Client AppId
+    optional string appId = 1;
+
+    // Unique Allocation Id
+    optional uint32 allocId = 2;
+
+    // Allocation status
+    optional NetworkInterfaceAllocationStatus allocStatus = 3;
+
+    // Allocated Network Interface
+    optional CmMsgCommon.NetworkInterfaceType iface = 4;
+
+    // IP Address of the allocated interface
+    optional string ipAddr = 5;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECG CM to send
+ * Allocated network interface down indication to a
+ * WIR Client to ECU CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message NwIfDownInd
+{
+    // WIR Client AppId
+    optional string appId = 1;
+
+    // Unique Allocation Id
+    optional uint32 allocId = 2;
+
+    // Allocation status
+    optional NetworkInterfaceAllocationStatus allocStatus = 3;
+
+    // Allocated Network Interface
+    optional CmMsgCommon.NetworkInterfaceType iface = 4;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECG CM to send
+ * Allocated network interface up indication to a
+ * WIR Client to ECU CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message NwIfUpInd
+{
+    // WIR Client AppId
+    optional string appId = 1;
+
+    // Unique Allocation Id
+    optional uint32 allocId = 2;
+
+    // Allocation status
+    optional NetworkInterfaceAllocationStatus allocStatus = 3;
+
+    // Allocated Network Interface
+    optional CmMsgCommon.NetworkInterfaceType iface = 4;
+
+    // IP Address of the allocated interface
+    optional string ipAddr = 5;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECU CM to send
+ * a WIR Client registration indication to ECG CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WirClientRegInd
+{
+    // WIR Client AppId
+    optional string appId = 1;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECU CM to send
+ * a WIR Client de-registration indication to ECG CM
+ * WIR Client to ECU CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WirClientDeregInd
+{
+    // WIR Client AppId
+    optional string appId = 1;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf captures WIR Client Interface
+ * related messaging between ECG CM and ECU CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message WirIfMsg
+{
+    // WIR Client Interface command
+    optional WirIfSubCmdType wirifCmdId = 1;
+
+    // WIR Client Allocation request
+    optional NwIfAllocReq nwIfAllocReq = 2;
+
+    // WIR Client Allocation response
+    optional NwIfAllocRsp nwIfAllocRsp = 3;
+
+    // WIR Client Allocation release request
+    optional NwIfRlsReq nwIfRlsReq = 4;
+
+    // WIR Client Allocation release response
+    optional NwIfRlsRsp nwIfRlsRsp = 5;
+
+    // WIR Client Allocation status indication
+    optional NwIfAllocStatInd nwIfAllocStatInd = 6;
+
+    // WIR Client Allocation network interface down indication
+    optional NwIfDownInd nwIfDownInd = 7;
+
+    // WIR Client Allocation network interface up indication
+    optional NwIfUpInd nwIfUpInd = 8;
+
+    // WIR Client registration indication
+    optional WirClientRegInd wirClientRegInd = 9;
+
+    // WIR Client deregistration indication
+    optional WirClientDeregInd wirClientDeregInd = 10;
+
+    // WIR Client allocation history
+    optional NwIfAllocHistory nwIfAllocHistoryInd = 11;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf captures WIR Client Interface
+ * related protobuf used to serialize/deserialize
+ * single allocation event persisted on the filesystem.
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message NwIfAllocActivity
+{
+    // Unique Allocation Id
+    optional uint32 allocId = 1;
+
+    // Timestamp of event
+    // range: 1970-01-01 00:00+0000 to 2106-02-07 06:28+0000
+    optional uint32 timeStamp = 2;
+
+    // Req Ecu
+    optional CmMsgCommon.EcuType reqEcu = 3;
+
+    // Allocation event
+    optional WirIfSubCmdType nwIfEvent = 4;
+
+    // Allocated Network Interface
+    optional CmMsgCommon.NetworkInterfaceType iface = 5;
+
+    // IP Address of the allocated interface
+    optional string ipAddr = 6;
+    
+    // Heartbeat index
+    optional uint32 hbIndex = 7;
+
+    // name of app that requested this.
+    // present only if this message is not part of a map
+    // up to PATH_MAX - 2 characters.
+    optional string appId = 16;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf captures WIR Client Interface
+ * related protobuf used to serialize/deserialize
+ * collection of allocation events of one specific appId
+ * persisted on the filesystem.
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message NwIfAllocRecord
+{
+    // Activity
+    repeated NwIfAllocActivity nwIfAllocActivity = 1;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf captures WIR Client Interface
+ * related protobuf used to serialize/deserialize
+ * collection of allocation events of all appIds
+ * persisted on the filesystem.
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message NwIfAllocHistory
+{
+    // for future extension: file format header
+    // identify the file as using a protobuf message for the whole file,
+    // in case we need to move to a different format or encapsulation.
+    optional string header = 16;
+
+    // timestamp of file creation
+    // record may contain entries with earlier date if system clock changes!
+    optional uint32 timeStamp = 1;
+
+    // key-value pair of appIds to a list of allocation events
+    map<string, NwIfAllocRecord> nwIfAllocHistory = 2 [deprecated = true];
+
+    // list of allocation events
+    // since this repeated field is at the top level, two NwIfAllocHistory
+    // messages can be concatenated and still remain a valid message.
+    // Thus, log entries can be added by appending new entries at the end.
+    repeated NwIfAllocActivity log = 3;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf captures WIR Client Interface
+ * related protobuf used to serialize/deserialize
+ * collection of intents
+ * persisted on the filesystem.
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message IntentPersistConfig
+{
+    // Persisted intent map vs allocId
+    map<uint32, NwIfAllocReq> intentTable = 1;
+    map<string, int32> vehicleState = 2;
+}

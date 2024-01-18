@@ -1,0 +1,181 @@
+syntax = "proto2";
+//	Ford Telematics Communication Protocol
+//  Feature/Enabler/Common: Script Engine
+//	Version Number: 6.0.9
+//	Date Revised: 09/10/2019
+// 	Last Updated By: Rumeli Das[RDAS9]
+// 	Reviewed By:Murali Chitturi, Mageshwaran Mohan [MMOHAN17],Vijai Thoppae [VTHOPPAE], Jahnavi Athaluri[JATHALU1]
+// 	Ford Confidential
+//************************************************************************************************************************************************************************
+// Changes/Version based on B4 FTCP version and FNV2 FTCP Proposal
+// Covers Advanced Data Collection(ADC)/Script Engine Requirements
+// CHANGE LOG for version 6.0.8
+	// Added commands
+		// AdministerScriptCommand
+	// Added command responses
+		// AdministerScriptCommandResponse
+	// Added alerts
+		//	ScriptDataCollectionAlert
+		//  ScriptAdministrationStatusAlert
+		//  ScriptExecutionStatusAlert
+	// Added data bundles
+		//	ScriptData
+		//	ScriptDataElement
+		//  ScriptDataElementArray
+//************************************************************************************************************************************************************************
+package com.ford.ftcp.core;
+import "ErrorAndStatus.proto";
+
+// Data collected or needed by script
+message ScriptData{
+	// Label of the data
+	optional string label = 1;
+	// Actual data of the data type
+	optional ScriptDataElement dataElements = 2;
+}
+
+
+//Message structure for the actual data elements
+message ScriptDataElement{
+	// Set when the data is of type boolean
+	optional BooleanENUM boolData = 1;
+	// Set when the data is of type signed integer
+	optional sint32 sintValue = 2;
+	// Set when the data is of type un-signed integer
+	optional uint32 uintValue = 3;
+	// Set when the data is of type string
+	optional string stringValue = 4;
+	// Set when the data is of type bytes
+	optional bytes  byteValue = 5;
+	// Set when the data is of type double
+	optional double doubleValue = 6;
+	// Set when the data is of type float
+	optional float  floatValue = 7;
+	// List of values for script data
+	optional ScriptDataArray dataArray = 8;
+
+	// True/False enumeration
+	enum BooleanENUM{
+		FALSE = 0;
+		TRUE = 1;
+	}
+}
+
+// Message structure to support list of data elements
+message ScriptDataArray{
+	// Array of script data
+	repeated ScriptData dataArray = 1;
+}
+
+
+// Message structure for AdministerScriptCommand
+// This command is used to control the existing script's runtime behavior
+message AdministerScriptCommand{
+	// Metadata about the script
+	optional string scriptID = 1;
+	// Administration/control action requested in this command either to start/stop or restart a script.
+	optional ScriptActionENUM scriptAction = 2;
+	// Arguments/Parameters needed to start or stop a script
+	repeated ScriptData commandParams = 3;
+
+	//Administration of Script enumeration
+	enum ScriptActionENUM{
+		// Stop a script
+		STOP = 0;
+		// Start a script
+		START = 1;
+		// Restart a script
+		RESTART = 2;
+	}
+}
+
+// Message structure for AdministerScriptCommandResponse
+message AdministerScriptCommandResponse{
+	// Additional data to be sent as par of the response
+	repeated ScriptData additionalData = 1;
+	// Enumeration for CommandStatus. ECU(ECG) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 2;
+	// Message structure for error details. ECU(ECG) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+	// Error codes, to be populated only when status is FAILED
+	optional ScriptActionErrorENUM scriptActionError = 4;
+
+	// Error Codes
+	enum ScriptActionErrorENUM{
+		// Script with the given ID not found
+        SCRIPT_NOT_FOUND = 0;
+        // Script temporarily disabled from running
+        SCRIPT_DISABLED = 1;
+		// Script Can't be started because too many script are currently running
+        TOO_MANY_SCRIPTS_RUNNING = 2;
+        // Script integrity check (signature/hash verification) failed
+        INTEGRITY_CHECK_FAILED = 3;
+        // Script initialization failed
+        INITIALIZATION_FAILED = 4;
+        // Script not started/running
+        NOT_INITIALIZED = 5;
+        // Unknown error
+        UNKNOWN_ERROR = 6;
+	}
+}
+
+// Message structure for ScriptAdministrationStatusAlert
+message ScriptAdministrationStatusAlert{
+	// Additional data sent as part of alert
+	repeated ScriptData additionalData = 1;
+	// Status of the action
+	optional ScriptActionStatusENUM actionStatus = 2;
+	// Error codes to be populated only when actionStatus id FAILED
+	optional ScriptActionErrorENUM scriptActionError = 3;
+	// Error description, to be populated only when actionStatus is FAILED
+	optional string errorDescription = 4;
+
+	// script action status
+	enum ScriptActionStatusENUM{
+		FAILED = 0;
+		SUCCESS = 1;
+	}
+
+	// Error codes
+	enum ScriptActionErrorENUM{
+		// A generic/unknown error
+		UNKNOWN_FAILURE = 0;
+		// Internal error
+        INTERNAL_ERROR = 1;
+		// Script exceeded its storage quota cannot be started
+        EXCEEDED_STORAGE_QUOTA = 2;
+	}
+}
+
+// Message structure for ScriptExecutionStatusAlert
+message ScriptExecutionStatusAlert{
+	// Meta data of the script
+	optional string scriptID = 1;
+	// Additional data sent as part of alert
+	repeated ScriptData additionalData = 2;
+	// Execution status of a script
+	optional ScriptExceutionStatusENUM executionStatus = 3;
+
+	//Runtime status of scripts
+	enum ScriptExceutionStatusENUM{
+		// Script is suspended
+		SUSPENDED = 0;
+		// Script is resumed from suspended state
+        RESUMED = 1;
+        // Script terminated
+        TERMINATED = 2;
+        // Script Killed
+        KILLED = 3;
+        // A generic error that is not listed above
+        UNKNOWN_FAILURE = 4;
+	}
+}
+
+// Message structure for ScriptDataCollectionAlert. ECU(ECG) shall set this.
+message ScriptDataCollectionAlert{
+	//Meta data about the script
+	optional string scriptID = 1;
+	// Data collected by a particular script
+	//repeated ScriptCollectedData collectedData = 2;
+	repeated ScriptData collectedData = 2;
+}

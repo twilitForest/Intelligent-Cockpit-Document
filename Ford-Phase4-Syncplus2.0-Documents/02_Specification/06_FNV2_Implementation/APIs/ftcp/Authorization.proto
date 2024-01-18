@@ -1,0 +1,80 @@
+syntax = "proto2";
+//	Ford Telematics Communication Protocol
+//  Feature/Enabler/Common: Authorization
+//	Version Number: 6.0.9
+//	Date Revised: 04/08/2019
+// 	Last Updated By: Rumeli Das[RDAS9]
+// 	Reviewed By:Murali Chitturi, Mageshwaran Mohan [MMOHAN17],Vijai Thoppae [VTHOPPAE]
+// 	Ford Confidential
+//************************************************************************************************************************************************************************
+// Changes/Version based on B4 FTCP version and FNV2 FTCP Proposal
+// Covers Authorization Requirements
+// Removed AuthorizationRequestType from all authorization commands
+//************************************************************************************************************************************************************************
+package com.ford.ftcp.apps;
+import "Common.proto";
+import "FeatureCommon.proto";
+import "ErrorAndStatus.proto";
+
+
+// Message structure for User Authorization command
+message UserAuthorizationCommand{
+
+	// New Owner's User Id shall be set using the below message structure (elementName and elementValue).
+	// Cloud shall always set this.
+	// an array of HMIScreenInfo message structures to enable multiple HMI screens to be delivered to APIM by ECU(ECG/TCU).
+	// In this scenario, the array shall have only one element.
+	// Cloud shall use this message structure to instruct ECU(ECG/TCU) to display User Authorization Popup and also leverage
+	// elementName and elementValue to communicate the userId (email Id) parameter to the authorization popup
+	repeated com.ford.ftcp.appcommon.HMIScreenInfo HMIScreenInfo = 1;
+}
+
+// Message structure for UserAuthorizationCommandResponse
+message UserAuthorizationCommandResponse{
+	// Enumeration for CommandStatus. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for error details. ECU(ECG/TCU) shall only set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+
+}
+
+// Message structure for User Auth Response Alert from the ECU(ECG/TCU) to the cloud
+message UserAuthorizationResponseAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall set/populate this only for ALLOWED response.
+	// ECU(ECG/TCU) shall not populate VehicleStatus when authorization response is DENIED.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Enumeration for user's response for authorization. ECU(ECG/TCU) shall always set this.
+	optional AuthorizationResponse authResponse = 2;
+
+	// Enumeration for user's response for authorization.
+	enum AuthorizationResponse{
+		//This is to let back-end know that in vehicle authorization request has been accepted
+		ALLOWED = 0;
+		//This is to let back-end know that in vehicle authorization request has been denied
+		DENIED = 1;
+	}
+}
+
+// Command message structure to change ECG Authorization Status
+message AuthorizationStatusChangeCommand{
+	// Enumeration for ECU(ECG) Authorization status which the ECU shall change its state to. Cloud shall always set this.
+	optional com.ford.ftcp.appcommon.AuthStatusENUM newAuthorizationStatus = 1;
+
+	// an array of HMIScreenInfo message structures to enable multiple HMI screens to be delivered to APIM by ECU(ECG).
+	// In this scenario, the array shall have only one element.
+	// Cloud shall use this message structure to instruct ECU(ECG) to display "Show Disclaimer" Popup and also leverage
+	// elementName and elementValue to communicate any other dynamic parameters to be displayed in the HMI.
+	// In the event if there is no need to display any HMI screens, there shall be no element populated in this array.
+	repeated com.ford.ftcp.appcommon.HMIScreenInfo HMIScreenInfo = 2;
+}
+
+// Message structure for AuthorizationStatusChangeCommandResponse
+message AuthorizationStatusChangeCommandResponse{
+	// Enumeration for CommandStatus. ECU(ECG) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for vehicle status. ECU(ECG) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 2;
+	// Message structure for error details. ECU(ECG) shall only set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+}
+

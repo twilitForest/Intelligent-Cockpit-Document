@@ -1,0 +1,82 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2019.  Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// deliberate unauthorized publication.  Ford Motor Company also
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+
+syntax = "proto3";
+
+package fnv.dte;
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to send a refresh registration request from ECG to SYNC.
+ * Once ECG SOA client is registered to the SYNC server, SYNC will PUSH RefreshDataIndicator
+ * messages to ECG.
+ * @fnv_topic "SERVICES/REQUEST/SYNCAPPS/CEDTE/TRIP"
+ * @fnv_command SOA_CEDTE_REFRESH_REQ
+ * @fnv_scope FNV2
+ * @fnv_api_source INTERNAL
+ * @fnc_message_version 1.0
+ */
+message SoaCedteRefreshReq {
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to send a refresh registration request response from
+ * SYNC to ECG indicating whether the registration was successfully or failed.
+ * @fnv_topic "SERVICES/RESPONSE/SYNCAPPS/CEDTE/TRIP"
+ * @fnv_command SOA_CEDTE_REFRESH_RESP
+ * @fnv_scope FNV2
+ * @fnv_api_source INTERNAL
+ * @fnc_message_version 1.0
+ */
+message SoaCedteRefreshRes {
+    // This is a required field which contains the response status
+    SoaCedteResponseStatusEnum responseStatus = 1;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to push a RefreshDataIndicator on-demand.
+ * @fnv_topic "SERVICES/DATA/SYNCAPPS/CEDTE/TRIP"
+ * @fnv_command SOA_CEDTE_REFRESH_DATA_IND
+ * @fnv_scope FNV2
+ * @fnv_api_source INTERNAL
+ * @fnc_message_version 1.0
+ */
+message SoaCedteRefreshDataIndicator {
+    SoaCedteTripInfo tripInfo = 1;
+}
+
+enum SoaCedteResponseStatusEnum
+{
+    SOA_CEDTE_SUCCESS = 0;                   // Request successfully executed
+    SOA_CEDTE_ERROR_INTERNAL = 1;            // Request failed due to SYNC internal error
+    SOA_CEDTE_ERROR_ACCESS_PERMISSION = 2;   // Request failed due to access permission
+    SOA_CEDTE_ERROR_INVALID_PARAMETER = 3;   // Request failed due to invalid parameter
+    SOA_CEDTE_ERROR_NOT_INITIALIZED = 4;     // Request failed due to SYNC not completing initialization. Caller should retry
+}
+
+message SoaCedteTripInfo {
+    // "New", "Planned", "Ongoing", and "Completed".  If both tripStatus
+    // and tripData are empty then it indicates no route as well.
+    string tripStatus = 1;
+    // Trip data info.
+    string tripStructure = 2;
+    // battery connector type
+    string connectorType = 3;
+    // battery pack type
+    string batteryPackType = 4;
+    // to be used in the future
+    string timestamp = 5;
+}

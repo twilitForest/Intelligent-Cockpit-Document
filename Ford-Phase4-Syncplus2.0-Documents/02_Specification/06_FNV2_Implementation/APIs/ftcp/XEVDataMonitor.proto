@@ -1,0 +1,94 @@
+syntax = "proto2";
+//	Ford Telematics Communication Protocol
+//  Feature/Enabler/Common: Data Monitoring Application
+//	Version Number: 6.0.9
+//	Date Revised: 07/08/2019
+// 	Last Updated By: Rumeli Das[RDAS9]
+// 	Reviewed By:Murali Chitturi[MCHITTUR], Mageshwaran Mohan [MMOHAN17],Vijai Thoppae [VTHOPPAE]
+// 	Ford Confidential
+//
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 09/28/2018 for version 6.0.3
+	// Changes to support CR 686
+	// Removed alerts
+		// HEVDataMonitoringAlert
+		// HEVBatteryFaultAlert
+		// ClearHEVBatteryFaultAlert
+	// Added engineData -> XEVVehicleOperationData (This includes the engineType information)
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 09/06/2018 for version 6.0.2
+	// Packaging of proto files have been introduced and referenced
+	// Added syntax = "proto2" to the header
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 06/20/2018 for version 6.0.1
+	// Reordered tags in all the message structures and Alerts
+	// Cleaned up commented messages
+//************************************************************************************************************************************************************************
+// Changes/Version based on B4 FTCP version and FNV2 FTCP Proposal
+// Covers China Data Monitoring and Warning Requirements
+//************************************************************************************************************************************************************************
+package com.ford.ftcp.apps;
+
+import "FeatureCommon.proto";
+import "Common.proto";
+
+
+// XEV China Data Monitoring Alerts
+
+//Message structure for China XEV Data Monitoring Alert
+message XEVDataMonitoringAlert{
+	// ECU(ECG/TCU) shall populate this data monitor data set
+	optional XEVVehicleOperationData xevVehicleOperationData = 1;
+}
+
+//Message structure for China XEV Data Monitoring History Alert
+message XEVDataMonitoringHistoryAlert{
+	// ECU(ECG/TCU) shall populate this data monitor data set
+	optional XEVVehicleOperationData xevVehicleOperationData = 1;
+}
+
+//Message structure for China XEV Warning Alert
+message XEVWarningAlert{
+	// ECU(ECG/TCU) shall populate XEVDataMonitoringData
+	optional XEVVehicleOperationData xevVehicleOperationData = 1;
+	//Message Structure of module specific Diagnostic data(e.g BECM,HPCM,PCM,DCDC,ABS)
+	repeated com.ford.ftcp.appcommon.ECUData xevECUDiagnosticsData = 2;
+}
+
+//Message Structure for China Clear Warning Alert
+message ClearXEVWarningAlert{
+	// ECU(ECG/TCU) shall populate XEVDataMonitoringData
+	optional XEVVehicleOperationData xevVehicleOperationData = 1;
+	//Message Structure of module specific Diagnostic data(e.g BECM,HPCM,PCM,DCDC,ABS)
+	repeated com.ford.ftcp.appcommon.ECUData xevECUDiagnosticsData = 2;
+}
+
+//Message structure for xEV Vehicle operation data
+message XEVVehicleOperationData{
+	// UTC Timestamp when vehicle operation data collected
+	optional com.ford.ftcp.appcommon.UTCDateTime eventTimeStamp = 1;
+	// ECU(ECG/TCU) shall populate this structure with "Battery Control Module (BECM)" data
+	optional com.ford.ftcp.appcommon.BECMData xevBECMData = 2;
+	// ECU(ECG/TCU) shall populate this structure with "Body Control Module (BCM)" data
+	optional com.ford.ftcp.appcommon.BCMData xevBCMData = 3;
+	// ECU(ECG/TCU) shall populate this structure with "Hybrid Powertrain Control Module (HPCM)" data
+	optional com.ford.ftcp.appcommon.HPCMData xevHPCMData = 4;
+	// ECU(ECG/TCU) shall populate this structure with "Powertrain Control Module (PCM)" data
+	optional com.ford.ftcp.appcommon.PCMData xevPCMData = 5;
+	// ECU(ECG/TCU) shall populate this structure with "Direct Current to Direct Current Converter (DCDC)" Module data
+	optional com.ford.ftcp.appcommon.DCDCData xevDCDCData = 6;
+	// ECU(ECG/TCU) shall populate this structure with "Instrument Panel Cluster (IPC)" Module data
+	optional com.ford.ftcp.appcommon.IPCData xevIPCData = 7;
+	// ECU(ECG/TCU) shall populate this structure with "Restraint Control Module (RCM)" data
+	optional com.ford.ftcp.appcommon.RCMData xevRCMData = 8;
+	// ECU(ECG/TCU) shall populate this structure with "Anti-Lock Braking System (ABS)" module data
+	optional com.ford.ftcp.appcommon.ABSData xevABSData = 9;
+	// ECU(ECG/TCU) shall populate this structure with GPS information of the vehicle for China XEV Data Monitoring
+	optional com.ford.ftcp.appcommon.GPSInfo gpsInfo = 10;
+	// ECU(ECG/TCU) shall populate this structure to include subset of VSTAT data
+	optional com.ford.ftcp.appcommon.XEVVehicleStatusData xevVehicleStatusData = 11;
+	// ECU(ECG/TCU) shall populate this structure with engineType data
+	optional com.ford.ftcp.appcommon.EngineData engineTypeData = 12;
+}
+
+// XEV China Data Monitoring Alerts

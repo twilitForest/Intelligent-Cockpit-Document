@@ -1,0 +1,697 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2018.  Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// deliberate unauthorized publication.  Ford Motor Company also
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+
+syntax = "proto3";
+
+package fnv.TunerSOAService;
+
+/*************  Commands provided by Tuner service for its clients - (HMI/Nav/Diag/IPC/RearHMI) ****************/
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request the tuner module to get the preset list 
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "REQUEST_TUNER_PRESET_LIST"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+
+message PresetListRequest {
+    string client_id = 1;    
+    uint32 preset_band = 2;
+	uint32 start_index = 3;
+	uint32 index_count = 4;
+}
+
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request the tuner module to store the tuned station to given preset
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "REQUEST_TUNER_PRESET_STORE"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message PresetStoreRequest {
+    string client_id = 1;    
+    uint32 preset_band = 2;
+	uint32 preset_num = 3;
+}
+
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request the tuner module to tune to a given preset 
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "REQUEST_TUNER_PRESET_RECALL"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message PresetRecallRequest {
+    string client_id = 1;    
+    uint32 preset_band = 2;
+	uint32 preset_num = 3;
+}
+
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request the tuner module to tune to a given frequency/multicast/Band 
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "REQUEST_TUNER_TUNE"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+ message TuneRequest {
+    string client_id = 1;    
+    uint32 source = 2;
+	uint32 freq = 3;
+	uint32 hdChannel = 4;
+}
+
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request the tuner module to get the station list for a particular band
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "REQUEST_TUNER_STATION_LIST"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message StationListRequest {
+    string client_id = 1;    
+    uint32 source = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request the tuner module to tune to a station from the station list
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "REQUEST_TUNER_STATION_SELECTION_FROM_STATION_LIST"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message StationSelectFromStationListRequest {
+    string client_id = 1;    
+    uint32 source = 2;	
+    uint32 index = 3;
+}
+
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request the tuner module to seek
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "REQUEST_TUNER_SEEK"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message SeekRequest {
+    string client_id = 1;   
+	uint32 source = 2;		
+    uint32 seek_type = 3;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request the tuner module to select source
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "REQUEST_TUNER_SELECT_SOURCE"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message SelectSourceRequest {
+    string client_id = 1;    
+    uint32 source = 2;
+}
+
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request the tuner module to select preset bank
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "REQUEST_TUNER_SELECT_PRESET_BANK"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message SelectPresetBankRequest {
+    string client_id = 1;    
+    uint32 source = 2;
+	uint32 preset_bank = 3;
+}
+
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request the tuner module to enable/disable userSetting
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "REQUEST_TUNER_SET_USER_SETTING"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message SetUserSeettingRequest {
+    string client_id = 1;    
+	uint32 source = 2;
+	uint32 user_setting_type = 3;
+    bool set = 4;
+}
+
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request the tuner module to do resetAllSettingsToFactoryDefaults
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "REQUEST_TUNER_SELECT_ALL_SETTINGS_TO_FACTORY_DEFAULTS"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message ResetAllSettingsToFactoryDefaultsRequest {
+    string client_id = 1;    
+}
+
+/*************  Notifications from Tuner Service to clients(HMI/Nav/Diag/IPC/RearHMI) ****************/
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - Indicates the Active Preset number
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "TUNER_STATUS_ACTIVE_PRESET_NUMBER"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message ActivePresetNumber {
+	uint32 source_type = 1;	
+	uint32 active_preset_number = 2;
+}
+
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - Indicate the Frequency which is currently playing
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "TUNER_STATUS_CURRENT_FREQ"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message CurrentFreq {
+	uint32 source_type = 1;	
+	uint32 current_freq = 2;
+	string current_freq_str = 3;
+}
+
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - Indicate the station name which is currently playing
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "TUNER_STATUS_CURRENT_STATION_NAME"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message CurrentStationName {
+	uint32 source_type = 1;	
+	string current_station_name = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - Indicate the station data(Radio text) of currently playing
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "TUNER_STATUS_STATION_DATA"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message CurrentStationData {
+	uint32 source_type = 1;	
+	string current_station_data = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - Indicate the Artist Name of currently playing
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "TUNER_STATUS_ARTIST_NAME"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message ArtistName {
+	uint32 source_type = 1;	
+	string artistname = 2;
+}
+
+
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - Indicate the HD channels available for currently tuned frequency
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "TUNER_STATUS_CHANNEL_AVAIALBLE_LIST"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message HD_channel_avaialble_list {
+	bool Chan_Valid = 1;
+	bool Chan_St_1 = 2;
+    bool Chan_St_2 = 3;
+    bool Chan_St_3 = 4;
+    bool Chan_St_4 = 5;
+    bool Chan_St_5 = 6;
+    bool Chan_St_6 = 7;
+	bool Chan_St_7 = 8;
+}	
+
+
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - Indicate the HD channel status
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "TUNER_STATUS_CHANNEL_STATUS"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message HD_channel_status {
+	uint32 source_type = 1;
+	uint32 HD_channel_status = 2;
+}	
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - Indicate the Currently playing HD sub channel
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "TUNER_STATUS_CURRENT_HD_SUB_CHANNEL"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message CurrentHDSubChannel {
+	uint32 source_type = 1;
+	uint32 current_HD_sub_channel = 2;
+}	
+
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - Indicate the Currently playing HD sub channel
+ * Mode status is one of {HDModeStatus_Inactive == 0,
+ *                        HDModeStatus_Off == 1, 
+ *                        HDModeStatus_On == 2} 
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "TUNER_STATUS_HD_MODE_STATUS"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message HDModeStatus {
+	uint32 source_type = 1;
+	uint32 current_HD_mode_status = 2;
+}	
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - Provide HMI the number of Multicast Channels
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "TUNER_STATUS_NUMBER_OF_HD_CHANNELS"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message HDNumOfMCChannels {
+	uint32 source_type = 1;
+	uint32 HDNumOfMCChannels = 2;
+}	
+
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - Provides HMI the Station name for HD Channels
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "TUNER_STATUS_HD_SHORT_STATION_NAME"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message HDShortStationName {
+	uint32 source_type = 1;
+	string HDShortStationName = 2;
+}	
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - Provides HMI the Title for Songs over HD Channels
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "TUNER_STATUS_HD_SONG_TITLE"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message HDSongTitle {
+	uint32 source_type = 1;
+	string HDSongTitle = 2;
+}	
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - update the preset list
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "TUNER_STATUS_PRESET_LIST"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message PresetList {
+	uint32 source_type = 1;
+	uint32 list_size = 2;
+	uint32 preset_bank = 3;
+	
+	message PresetInfo {
+		uint32 preset_Number = 1;
+		string frequency = 2;
+		string station_name = 3;
+		string HDChannel = 4;
+	}
+	
+	repeated PresetInfo preset_info = 4;
+}	
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - Provides HMI the Program type of currently tunned station
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "TUNER_STATUS_CURRENT_PTY"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message CurrentPTYName {
+	uint32 source_type = 1;
+	string pty_name = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - Notify HMI about the availablity of Dualtune mode
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "TUNER_STATUS_DUAL_STATUS_TUNER_AVAIALBLE"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message DualTunerAvailable {
+	uint32 source_type = 1;
+	bool DualTunerAvailable = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - Provides HMI the Maximum value of FM frequency in a particular region
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "TUNER_STATUS_FREQ_RANGE_MAX"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message FrequencyRangeMax {
+	uint32 source_type = 1;
+	float FrequencyRangeMax = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - Provides HMI the Minimum value of FM frequency in a particular region
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "TUNER_STATUS_FREQ_RANGE_MIN"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message FrequencyRangeMin {
+	uint32 source_type = 1;
+	float FrequencyRangeMin = 2;
+}
+
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - Indicates the difference between two adjacent frequencies
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "TUNER_STATUS_FREQ_STEP"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message FrequencyStep {
+	uint32 source_type = 1;
+	uint32 FrequencyStep = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - Indicates either particular user setting/mode Enable or Disable
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "TUNER_STATUS_USER_SETTING_STATUS"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message UserSettings {
+	uint32 source_type = 1;
+	bool FMRDSEnabled = 2;
+	bool HDEnabled = 3;
+	bool RadioTextEnabled = 4;
+	bool RegionalModeEnabled = 5;
+	bool AlternateFrequencyEnabled = 6;
+	bool NewsAnnouncementEnabled = 7;
+	bool TrafficAnnouncementEnabled = 8;
+	bool ServiceLinkingEnabled = 9;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - Indicates the current preset Bank
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "TUNER_STATUS_CURRENT_PRESET_BANK"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message CurrentPresetBank {
+	uint32 source_type = 1;
+	uint32 CurrentPresetBank = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - Indicates the status of FM HD Signal Loss
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "TUNER_STATUS_HD_SIGNAL_LOSS"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message HDSignalLoss {
+	uint32 source_type = 1;
+	bool HDSignalLoss = 2;
+}
+
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - Indicates the TP Seek is in Progress or not
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "TUNER_STATUS_TP_SEEK_IN_PROGRESS"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message TP_Seek_InProgress {
+	uint32 source_type = 1;
+	bool TP_Seek_InProgress = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - Indicates the status of Station Name being Available
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "TUNER_STATUS_PSN_NAME_VALID"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message PSNameValid {
+	uint32 source_type = 1;
+	bool PSNameValid = 2;
+}
+
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - send the Station lists
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "TUNER_STATUS_FM_RDS_LIST_INFO"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message StationListInfo {
+	uint32 source_type = 1;
+	uint32 StationList = 2;
+	uint32 ListSize = 3;
+	uint32 TotalNumOfStatAval = 4;
+	uint32 RequestedPTY = 5;
+	uint32 RefreshFlag = 6;
+	
+	message ListInfo {
+		uint32 IndexNumber = 1;
+		string frequency = 2;
+		string station_name = 3;
+		string HDChannel = 4;
+		bool TPStatus = 5;
+		bool TMCStatus = 6;
+		uint32 ProgramType =7;
+		string HDSSN = 8;
+		bool TPAvailable = 9;
+	}
+	repeated ListInfo list_info = 7;
+}	
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - Indicate the current playing station index in case of RDS station list
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "TUNER_STATUS_CURRENT_STATION_INDEX"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message RDSCurrentStationIndex {
+	uint32 source_type = 1;
+	uint32 RDSCurrentStationIndex = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - update the fm RDS List Update Status
+ * Status is one of {UpdateDone == 0,
+ *                   UpdateInProgress == 1}
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "TUNER_STATUS_LIST_UPDATE_STATUS"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message ListUpdateStatus {
+	uint32 source_type = 1;
+	uint32 ListUpdateStatus = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - update the ongoing announcement type as per the broadcast
+ * Type is one of {NoAnnouncement == 0,
+ *                  TrafficAnnouncement,
+ *                  NewsAnnouncement,
+ *                  AlarmAnnounceemnt}
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/TUNER_SERVICE
+ * @fnv_command "TUNER_STATUS_ANNOUNCEMENT_TYPE"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message Announcement_Type {
+	uint32 source_type = 1;
+	uint32 Announcement_Type = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - Indicates if a Traffic Announcement program was selected
+ * @fnv_command "TUNER_STATUS_TA_PROGRAM_SELECTED"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message TrafficAnnouncementProgramSelected {
+	uint32 source_type = 1;
+	uint32 TrafficAnnouncementProgramSelected = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - Holds the current playing station index (Non-RDS Market)
+ * @fnv_command "TUNER_STATUS_NONRDS_CURRENT_STATION_INDEX"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message NonRDSCurrentStationIndex {
+	uint32 source_type = 1;
+	uint32 NonRDSCurrentStationIndex = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to - Indicates the path in file system, where station logo is available for FM.
+ * @fnv_command "TUNER_STATUS_STATION_LOGO_PATH"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message StationLogo_Path {
+	uint32 source_type = 1;
+	string StationLogo_Path = 2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+

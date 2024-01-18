@@ -1,0 +1,402 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2017.  Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// deliberate unauthorized publication.  Ford Motor Company also
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+//
+
+syntax = "proto2";
+option optimize_for = CODE_SIZE;
+package CmMsgNqm;
+import "CmMsgCommon.proto";
+import "CmMsgWlan.proto";
+
+// For CM internal use only
+// The protobuf captures enums and messages related to:
+// Network Interface Quality Monitoring.
+// These messages are exchanged between ECG CM and SYNC CM.
+// Re-uses enums and messages contained in CmMsgWlan.proto.
+// Command details: TBD
+
+/**
+ * @fnv_proto
+ * Enum of available commands for
+ * Network Interface Quality Monitoring
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum NqmCmdType
+{
+    NQM_WLAN_REQ = 50;
+    NQM_WLAN_RSP = 51;
+    NQM_CELL_REQ = 52;
+    NQM_CELL_RSP = 53;
+    NQM_WLAN_IND = 54;
+    NQM_CELL_IND = 55;
+}
+
+/**
+ * @fnv_proto
+ * Enum of available sub-commands for
+ * Network Interface Quality Monitoring
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum NqmMsgSubType
+{
+    option allow_alias = true;
+    // CELLULAR
+    CELL_PLMN = 60;
+    CELL_NET_TYPE = 61;
+    CELL_RAT_TYPE = 62;
+    // signal strength semantics depend on RAT_TYPE. Calling it RSSI when not
+    // on a GSM network is inaccurate.
+    CELL_SIGNAL_STRENGTH = 63;
+    CELL_RSSI = 63 [deprecated = true];
+    CELL_REG_STATUS = 64;
+    CELL_SVC_STATUS = 65;
+    CELL_PWR_STATUS = 66;
+    // WLAN
+    WLAN_STATUS = 70;
+}
+
+/**
+ * @fnv_proto
+ * Enum of return codes for commands for
+ * Network Interface Quality Monitoring
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum NqmReturn
+{
+    // Error/Failure
+    NQM_ERROR = 0;
+
+    // Success
+    NQM_SUCCESS = 1;
+}
+
+/**
+ * @fnv_proto
+ * Enum of NQM service provider type indicator
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum NqmEcu
+{
+    TCU_WLAN = 0;
+    SYNC_WLAN = 1;
+    TCU_CELL = 2;
+}
+
+/**
+ * @fnv_proto
+ * Enum of Cellular RAT type
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum CellularRatType
+{
+    NO_NW = 0;
+    GSM = 1;
+    GPRS = 2;
+    EDGE = 3;
+    UMTS = 4;
+    HSPA_P = 5;
+    LTE = 6;
+}
+
+/**
+ * @fnv_proto
+ * Enum of Cellular Network type
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum CellularNwType
+{
+    NO_NW_TYPE = 0;
+    GSM_NW =  1;
+    UMTS_NW = 2;
+    LTE_NW =  4;
+}
+
+/**
+ * @fnv_proto
+ * Enum of Cellular registration status
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum CellularRegStatus
+{
+    REG_NO_SRV = 0;
+    LIMITED_SRV = 1;
+    SRV = 2;
+}
+
+/**
+ * @fnv_proto
+ * Enum of Cellular Service Status type
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum CellularSrvStatus
+{
+    NO_SRV = 0;
+    CS_ONLY = 1;
+    PS_ONLY = 2;
+    CS_PS = 3;
+}
+
+/**
+ * @fnv_proto
+ * Enum of Cellular power status type
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum CellularPwrStatus
+{
+    // Modem Power Off
+    MODEM_PWR_OFF = 0;
+    // Low Power Mode - Cellular Off
+    MODEM_PWR_CELL_OFF = 1;
+    // Cellular On
+    MODEM_PWR_CELL_ON = 2;
+    // Power Reset
+    MODEM_PWR_RESETTING = 3;
+    //Factory Test Mode
+    MODEM_PWR_TESTING = 4;
+    // Just prior to Low Power Mode
+    MODEM_PWR_LPM_IMMINENT = 5;
+    // Just prior to Resetting
+    MODEM_PWR_RESET_IMMINENT = 6;
+    // modem back in service
+    MODEM_PWR_RESET_COMPLETE = 7;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for Cellular PLMN
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message CellularPlmn
+{
+    optional uint32 mcc = 1;
+    optional uint32 mnc = 2;
+    optional bool three_digit_mnc = 3;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * NQM Wlan service Req/Rsp
+ * There is no request use-case at this time
+ * because it is unidirectional indication
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message NqmWlanReq
+{
+    optional CmMsgCommon.EcuType ecu = 1;
+    optional CmMsgCommon.NetworkInterfaceType iface = 2;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * NQM Wlan service Req/Rsp
+ * There is no request use-case at this time
+ * because it is unidirectional indication
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message NqmWlanRsp
+{
+    optional NqmReturn result = 1;
+    optional CmMsgCommon.EcuType ecu = 2;
+    optional CmMsgCommon.NetworkInterfaceType iface = 3;
+    optional NqmWlanInfo wlanInfo = 4;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * NQM Cellular service Req/Rsp
+ * There is no request use-case at this time
+ * because it is unidirectional indication
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message NqmCellularReq
+{
+    optional CmMsgCommon.EcuType ecu = 1;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * NQM Cellular service Req/Rsp
+ * There is no request use-case at this time
+ * because it is unidirectional indication
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message NqmCellularRsp
+{
+    optional NqmReturn result = 1;
+    optional CmMsgCommon.EcuType ecu = 2;
+    optional NqmCellularInd cellInfo = 3;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * NQM Wlan service indication
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message NqmWlanInd
+{
+    optional CmMsgCommon.EcuType ecu = 1;
+    optional CmMsgCommon.NetworkInterfaceType iface = 2;
+    optional NqmWlanInfo wlanInfo = 3;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * NQM for connected WLAN
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message NqmWlanInfo
+{
+    optional NqmMsgSubType msgType = 1;
+    // General status information
+    optional CmMsgWlan.WlanStaSmState smState = 2;
+    optional string macAddr = 3;
+    // Connection status information
+    optional CmMsgWlan.WlanStaConnState connState = 4;
+    optional string connSsid = 5;
+    optional string connBssid = 6;
+    optional string Conn80211Tech = 7;
+    optional int32 connChannel = 8;
+    optional int32 bandwidth = 9;
+    optional int32 dataRate = 10;
+    // WLAN signal information
+    optional int32 signalStrength = 11;
+    optional int32 signalNoise = 12;
+    optional int32 signalSNR = 13;
+    // IP network information
+    optional string ipAddr = 14;
+    optional string ipSubnet = 15;
+    optional string ipGateway = 16;
+    optional string ipDnsPref = 17;
+    optional string ipDnsAlt = 18;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used for
+ * NQM for connected Cellular
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message NqmCellularInd
+{
+    optional NqmMsgSubType msgType = 1;
+    // Network Identifier/name
+    optional CellularPlmn plmn = 2;
+    // Network Type
+    optional CellularNwType netType = 3;
+    optional CellularRatType ratType = 4;
+    // Signal Strength(dBm): LTE(RSRP), UMTS(RSCP), GSM(RSSI)
+    optional int32 signalStrength = 5;
+    // Registration Status
+    optional CellularRegStatus regStatus = 6;
+    // Service Status
+    optional CellularSrvStatus srvStatus = 7;
+    // Power Status
+    optional CellularPwrStatus pwrStatus = 8;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf captures
+ * Network Interface Quality Monitoring
+ * related messaging between ECG CM and ECU CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message NqmMsg
+{
+    optional NqmCmdType nqmCmdId = 1;
+    optional NqmWlanReq wlanReq = 2;
+    optional NqmWlanRsp wlanRsp = 3;
+    optional NqmCellularReq cellReq = 4;
+    optional NqmCellularRsp cellRsp = 5;
+    optional NqmWlanInd wlanInd = 6;
+    optional NqmCellularInd cellInd = 7;
+}

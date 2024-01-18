@@ -1,0 +1,331 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2018.  Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// deliberate unauthorized publication.  Ford Motor Company also
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+
+syntax = "proto3";
+
+package fnv.AudioSettings;
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request tone settings with absolute value
+ * @fnv_topic "SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE"
+ * @fnv_command "TONE_INDEX"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message ToneIndexMessage {
+    string client_id = 1;
+    uint32 tone_type = 2;
+    uint32 tone_index = 3;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request tone settings in +/- step 
+ * @fnv_topic "SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE"
+ * @fnv_command "TONE_STEP"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message ToneStepMessage{
+    string client_id = 1;
+    uint32 tone_type = 2;
+    uint32 direction = 3;
+    uint32 tone_step = 4;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request Balance/Fader with absolute value
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE
+ * @fnv_command "BALANCE_FADE_INDEX"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message BalanceFadeIndexMessage {
+    string client_id = 1;
+    uint32 balance_fade_type = 2;
+    uint32 balance_fade_index = 3;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request Balance/Fader in +/- step
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE
+ * @fnv_command "BALANCE_FADE_STEP"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message BalanceFadeStepMessage {
+    string client_id = 1;
+    uint32 balance_fade_type = 2;
+    uint32 direction = 3;
+    uint32 balance_fade_step = 4;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request Audio demo mode ON/OFF
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE
+ * @fnv_command "AUDIO_DEMO"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message AudioDemoMessage{
+    string client_id = 1;
+    uint32 command = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request the occupancy mode
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE
+ * @fnv_command "OCCUPANCY_MODE"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message OccupancyModeMessage{
+    string client_id = 1;
+    uint32 occupancy_mode = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request the immersion level
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE
+ * @fnv_command "IMMERSION_LEVEL"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message ImmersionLevelMessage{
+    string client_id = 1;
+    uint32 immersion_level = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request the immersion mode
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE
+ * @fnv_command "IMMERSION_SOUND_MODE"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message ImmersionSoundModeMessage{
+    string client_id = 1;
+    uint32 immersion_mode = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request the speed compensated volume
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE
+ * @fnv_command "SPEED_COMP_VOLUME_LEVEL"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message SpeedCompVolumeLevelMessage{
+    string client_id = 1;
+    uint32 speed_comp_volume_level = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to reset the tone controls to default
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE
+ * @fnv_command "RESET_TONE_CONTROL"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message ResetToneControlMessage{
+    string client_id = 1;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to reset the balance/fade to default
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE
+ * @fnv_command "RESET_BALANCE_FADE"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message ResetBalanceFadeMessage{
+    string client_id = 1;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request a factory reset for Audio Settings
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE
+ * @fnv_command "FACTORY_RESET_AUDIO_SETTINGS"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message FactoryResetAudioSettingsMessage {
+    string client_id = 1;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request Audio demo mode ON/OFF
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE
+ * @fnv_command "VEHICLE_SPEED_QUALITY"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message VehicleSpeedQualityMessage{
+    string client_id = 1;
+    uint32 speed = 2;
+    uint32 quality = 3;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request Audio demo mode ON/OFF
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE
+ * @fnv_command "CONVERTIBLE_ROOF_POSITION"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message ConvertibleRoofPositionMessage{
+    string client_id = 1;
+    uint32 value = 2;	
+}
+
+/* All publishing messages are listed below */
+/**
+ * @fnv_proto
+ * Protobuf to be used to request a factory reset for Audio Settings
+ * @fnv_topic SERVICES/DATA/SYNCAPPS/AUDIOSERVICE/AUDIOSETTINGSSTATUS
+ * @fnv_command "TONE_CONTROL_UPDATE_STATUS"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message ToneControlStatusMessage {
+    uint32 bass_level = 1;
+    uint32 mid_range_level = 2;
+    uint32 treble_level = 3;
+    bool tone_control_updated = 4;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request a factory reset for Audio Settings
+ * @fnv_topic SERVICES/DATA/SYNCAPPS/AUDIOSERVICE/AUDIOSETTINGSSTATUS
+ * @fnv_command "BALANCE_FADE_UPDATE_STATUS"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message BalanceFadeStatusMessage {
+    uint32 balance_level = 1;
+    uint32 fade_level = 2;
+    bool balance_fade_level_updated = 3;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request a factory reset for Audio Settings
+ * @fnv_topic SERVICES/DATA/SYNCAPPS/AUDIOSERVICE/AUDIOSETTINGSSTATUS
+ * @fnv_command "OCCUPANCY_MODE_UPDATE_STATUS"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message OccupancyModeStatusMessage {
+    uint32 occupancy_mode = 1;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request a factory reset for Audio Settings
+ * @fnv_topic SERVICES/DATA/SYNCAPPS/AUDIOSERVICE/AUDIOSETTINGSSTATUS
+ * @fnv_command "IMMERSION_UPDATE_STATUS"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message ImmersionUpdateStatusMessage {
+    uint32 immersion_mode = 1;
+    uint32 immersion_level = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request a factory reset for Audio Settings
+ * @fnv_topic SERVICES/DATA/SYNCAPPS/AUDIOSERVICE/AUDIOSETTINGSSTATUS
+ * @fnv_command "SPEED_COMP_LEVEL_UPDATE_STATUS"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message SpeedCompLevelUpdateStatusMessage {
+    uint32 speed_comp_volume_level = 1;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request a factory reset for Audio Settings
+ * @fnv_topic SERVICES/DATA/SYNCAPPS/AUDIOSERVICE/AUDIOSETTINGSSTATUS
+ * @fnv_command "AUDIO_DEMO_STATUS"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message AudioDemoStatusMessage {
+    uint32 demo_state = 1;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request a factory reset for Audio Settings
+ * @fnv_topic SERVICES/DATA/SYNCAPPS/AUDIOSERVICE/AUDIOSETTINGSSTATUS
+ * @fnv_command "AUDIO_SETTINGS_OCCUPANCY_MODES_SUPPORT_STATUS"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message OccupancyModesSupportStatus
+{
+    repeated OccupancyMessage status_message = 1;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request a factory reset for Audio Settings
+ * @fnv_topic SERVICES/DATA/SYNCAPPS/AUDIOSERVICE/AUDIOSETTINGSSTATUS
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+
+message OccupancyMessage
+{
+    uint32 occupancy_mode = 1;
+    uint32 support_status = 2;
+}  

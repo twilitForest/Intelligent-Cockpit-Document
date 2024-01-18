@@ -1,0 +1,456 @@
+syntax = "proto2";
+//	Ford Telematics Communication Protocol
+//  Feature/Enabler/Common: WIR
+//	Version Number: 6.0.9
+//	Date Revised: 07/08/2019
+// 	Last Updated By: Rumeli Das[RDAS9]
+// 	Reviewed By: Murali Chitturi[MCHITTUR], Mageshwaran Mohan [MMOHAN17], Thoppae, Vijai [VTHOPPAE]
+// 	Ford Confidential
+//
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 03/27/2019 for version 6.0.6
+// CR #866 FNV-JIRA#3402
+	// Added alert
+		// AppDataUsageAlert
+	// Added data bundle
+		// AppDataUsageStatisticsData
+		// DataUsageByConnectionType
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 01/10/2019 for version 6.0.5
+//************************************************************************************************************************************************************************
+// CR #ECG-22508
+	// Created new data bundle
+		// WIRPolicyVersionData
+	// Added data bundle "WIRPolicyVersionData" to messages
+		// WIRPolicyUpdateCommand
+		// WIRPolicyUpdateCommandResponse
+//************************************************************************************************************************************************************************
+// Change Log on 09/21/2018 for version 6.0.3
+// IPPT
+	// Added Command
+		// RevokeTokenCommand
+	// Added CommandResponse
+		// RevokeTokenCommandResponse
+	// Added Alert
+		// RevokeTokenStatusAlert
+	// Updated AccessTokenErrorCodeENUM
+		// Replaced CVFMA_DOWN To --> POLICY_VALIDATION_SYSTEM_DOWN
+	// Added new ENUMS to AccessTokenErrorCodeENUM
+		// PAYLOAD_ERROR
+		// INVALID_URL
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 09/07/2018 for version 6.0.2
+//************************************************************************************************************************************************************************
+	// Packaging of proto files have been introduced and referenced
+	// Added syntax = "proto2" to the header
+	// Enum tagging starting with 0
+//************************************************************************************************************************************************************************
+// Covers messaging requirements for WIR and IP Passthrough
+//************************************************************************************************************************************************************************
+
+// Change Log for version 6.0.1
+// WIR
+	// Added Command
+		// OndemandOffPeakProcessCommand
+	// Added Command Response
+		// OndemandOffPeakProcessCommandResponse
+	// Added Alerts
+		// OndemandOffPeakProcessFinishedAlert
+	// Removed Alerts
+		// OffPeakActivityBeginAlert
+		// OffPeakActivityEndAlert
+		// WIRPolicyUpdateAlert
+	// Update OffPeakWakeUpRequestAlert
+	// Updated AppDataUsageRequestCommand
+		// Added the enumeration field 'requestType'
+	// Updated AppDataUsageRequestCommandResponse
+	// Updated AppDataUsageResetCommand
+		// Added attribute featureID
+		// Added new enumerations for RequestType
+	// Moved enumerations "PolicyUpdateErrorCodesENUM" under WIRPolicyUpdateCommandResponse
+	// Re-ordered TAG numbers overall
+// IPPT
+	// Renamed appID as featureID in
+		// AppDataUsageRequestCommand
+		// AppDataUsageStatistics data bundle
+		// WIRApplicationIntentPolicyTable data bundle
+		// AppAccessTokenQuery
+	// Renamed tokenReqID as uniqueID in
+		// AppAccessTokenQuery
+		// AppAccessTokenQueryResponse
+	// Added AccessTokenErrorDetail to AppAccessTokenQueryResponse
+	// Added enumerations AccessTokenErrorCodeENUM to AccessTokenErrorDetail
+//************************************************************************************************************************************************************************
+package com.ford.ftcp.apps;
+
+// WIR FTCP Messages
+import "ErrorAndStatus.proto";
+import "FeatureCommon.proto";
+
+// Message structure to request from cloud for on-demand off-peak activity to start immediately in vehicle
+message OndemandOffPeakProcessCommand{
+    // The duration is the maximum time allowed for the off peak activity for this request in seconds
+	optional int32 duration = 1;
+}
+
+// Message structure to report OndemandOffPeakProcessCommand status back to cloud
+message OndemandOffPeakProcessCommandResponse{
+	// Common message structure for all command responses. ECG shall always set this.
+    optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+    // Off-Peak Process error details. ECG shall ONLY set this upon error condition
+    optional OffPeakProcessErrorDetail offPeakProcessErrorDetails = 2;
+    // Message structure for error details. ECU(ECG/TCU) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+}
+
+// Message structure to indicate off-Peak activity process completion status
+message OndemandOffPeakProcessFinishedAlert{
+	// Enumeration for off Peak activity status. ECG shall always set this.
+    optional OffPeakActivityStatusENUM activityStatus = 1;
+	 // Off-Peak Process error details.ECG shall ONLY set this when OffPeakActivityStatusENUM is FAILED
+    optional OffPeakProcessErrorDetail errorDetails = 2;
+
+    // Enumeration for off-peak activity status
+	enum OffPeakActivityStatusENUM{
+		// ECU sets this status if the Activity has failed to execute
+		FAILED = 0;
+		// ECU sets this status if the Activity is successfully executed
+		SUCCESS = 1;
+	}
+}
+
+// Message structure for off-peak process error details
+message OffPeakProcessErrorDetail{
+	// Off-Peak Error code details
+	optional OffPeakErrorCodeENUM errorCode = 1;
+	// Off-Peak Error Description
+	optional string errorDescription = 2;
+
+	// Enumeration for off-peak error code
+	enum OffPeakErrorCodeENUM{
+		// This error code is set if Ignition is ON and as a result off-peak is not possible
+		IGNITION_ON = 0;
+		// This error code is set if Vehicle is in Hibernate or Critical battery state so off-peak is not possible
+		CRITICAL_BATTERY = 1;
+		// This error code is set for all other Errors
+		OTHER_ERRORS = 2;
+	}
+}
+
+// Message structure to schedule off-peak wake up activity in Off-Peak Wakeup(OPW) Service (cloud)
+message OffPeakWakeUpRequestAlert{
+
+}
+
+// Message structure for Application Data Usage request
+message AppDataUsageRequestCommand{
+	// Feature ID - Each application has a global feature ID used by WIR to identify applications
+	repeated string featureID = 1;
+	// Enumeration indicating whether data usage request is for All APPs or specific APPs
+	optional RequestTypeENUM requestType = 2;
+
+	// Enumeration for Request Type
+	enum RequestTypeENUM{
+		BY_APP = 0;
+		ALL_APP = 1;
+	}
+}
+
+
+// Message structure for Application Data Usage response
+message AppDataUsageRequestCommandResponse{
+
+	// Enumeration for Command process status
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for App data usage statistics. ECG shall always set this.
+	repeated AppDataUsageStatistics appDataUsageStats = 2;
+	// Message structure for error details. ECG shall ONLY set this upon any error condition
+	optional DataUsageErrorResponseENUM errorResponse = 3;
+	// Message structure for error details. ECU(ECG/TCU) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 4;
+
+	// Enumeration for DataUsageErrorResponse
+	enum DataUsageErrorResponseENUM{
+		CANNOT_BE_OBTAINED = 0;
+		UNRELIABLE = 1;
+		OTHER_ERROR = 2;
+	}
+}
+
+// Message structure for Application Data Usage Statistics
+message AppDataUsageStatistics{
+	// Feature ID - Each application has a global feature ID used by WIR to identify applications
+	optional string featureid = 1;
+	// Data Usage
+	optional float dataUsage = 2;
+	// Data UOM
+	optional DataUOMENUM dataUsageUOM = 3;
+
+	// Data Usage - Unit of Measure
+	enum DataUOMENUM{
+		KB = 0;
+		MB = 1;
+		GB = 2;
+	}
+}
+
+// Message structure to request/reset Application Data Usage from cloud
+message AppDataUsageResetCommand{
+
+}
+
+message AppDataUsageResetCommandResponse{
+	// Enumeration for CommandStatus. ECG shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Enumeration for
+	optional DataUsageResetStatus resetStatus = 2;
+	// Message structure for error details. ECU(ECG/TCU) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+
+	// Enumeration for data reset status
+	enum DataUsageResetStatus{
+		// Request to Reset Data usage statistics failed for one or more Apps
+		FAILURE = 0;
+		// Request to Reset Data usage statistics success for all Apps
+		SUCCESS = 1;
+	}
+}
+
+
+
+// Message structure to request connection statistics data from cloud
+message WIRWiFiDiagnosticRequestCommand{
+	// Unique ID for Wi-Fi Diagnostic Request
+	optional string wirwifiDiagReqID = 1;
+}
+
+// Message structure of the response to connection statistics data request.
+message WiFiDiagnosticRequestCommandResponse{
+	// Unique ID for Wi-Fi Diagnostic Request
+	optional string wirwifiDiagReqID = 1;
+	// Enumeration for CommandStatus. ECG shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 2;
+	// Message structure for error details. ECU(ECG/TCU) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+}
+
+
+// Message structure to update WIR Policy Table for Applications from cloud
+message WIRPolicyUpdateCommand{
+	// Message Structure for Intent Policy table
+	repeated WIRApplicationIntentPolicyTable policyTable = 1;
+	// Global policy version number for all policies.
+	optional WIRPolicyVersionData wirPolicyVersionNumber = 2;
+ }
+
+// Message structure to WIR Policy Version information
+message WIRPolicyVersionData{
+	// Policy Version Number - Major
+	optional uint32 wirPolicyMajorVersion = 1;
+	// Policy Version Number - Minor
+	optional uint32 wirPolicyMinorVersion = 2;
+}
+
+// Message structure to respond WIR Policy Table updates from vehicle
+message WIRPolicyUpdateCommandResponse{
+	// Enumeration for CommandStatus. ECG shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum cmdStatus = 1;
+	// Message structure for error details. ECG shall ONLY set this upon any error condition
+	optional string wirPolicyUpdateErrorDescription = 2;
+	// Message structure for error details. ECU(ECG/TCU) shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+	// Enumeration policy update status. ECG shall always set this.
+	optional PolicyUpdateStatusENUM policyUpdateStatus = 4;
+	// Enumeration for policy update failure error codes, set only when PolicyUpdateStatus is FAILURE
+	optional PolicyUpdateErrorCodesENUM errorCode = 5;
+	// Global policy version number for all policies.
+	optional WIRPolicyVersionData wirPolicyVersionNumber = 6;
+
+	enum PolicyUpdateStatusENUM{
+		// Failed to update the policy any of the WIR Clients or WIR Server
+		FAILURE = 0;
+		// Policy update successful in all WIR Clients and WIR Server
+		SUCCESS = 1;
+	}
+
+	enum PolicyUpdateErrorCodesENUM{
+		// This error code is set for all other Errors
+		OTHER_ERRORS = 0;
+		// This error code is set when there is error in the Payload
+		PAYLOAD_ERROR = 1;
+		// This error code is set when Policy update in SYNC failed
+		SYNC_POLICY_UPDATE_FAILED = 2;
+		// This error code is set when Policy update in TCU failed
+		TCU_POLICY_UPDATE_FAILED = 3;
+		// This error code is set when Policy update in ECG failed
+		ECG_POLICY_UPDATE_FAILED = 4;
+		// This error code is set when Policy update for SYNC and ECG failed
+		SYNC_ECG_POLICY_UPDATE_FAILED = 5;
+		// This error code is set when Policy update for TCU and ECG failed
+		TCU_ECG_POLICY_UPDATE_FAILED = 6;
+		// This error code is set when Policy update for SYNC and TCU failed
+		SYNC_TCU_POLICY_UPDATE_FAILED = 7;
+		// This error code is set when Policy update SYNC, ECG and TCU failed
+		SYNC_ECG_TCU_POLICY_UPDATE_FAILED = 8;
+	}
+}
+
+// Message Structure for  WIR Application Intent Policy
+message WIRApplicationIntentPolicyTable{
+	// Each application has a global feature ID used by WIR to identify applications
+	optional string featureID = 1;
+	// Intent Privilege - connectivity privileges for Applications
+	optional int32 intentPermission = 2;
+}
+
+// IPPT Messages
+// Message structure to APP requesting Access Token
+message AppAccessTokenQuery{
+	// This will be sent by the individual application as part of the request
+	optional string featureID = 1;
+	// Unique Token Request ID - used for end to end trace ability. Earlier known as tokenRequestID.
+	optional string uniqueID = 2;
+	// This will be sent by the individual application as part of the request
+	optional int32 ECUId = 3;
+	// This indicates whether a PolicyValidation required or not at the cloud before issuing access token.
+	optional PolicyValidationENUM pvRequired = 4;
+	// Any type of configuration (parameters) provide as key/value pair. E.g.) Key = url Value= example.com/radio
+	repeated Configuration config = 5;
+	// Scope of the Access Token
+	repeated string scope = 6;
+
+	enum PolicyValidationENUM{
+		// Indicates that could does not need to validate policy to provide the access token
+		FALSE = 0;
+		// Indicates that cloud needs to validate policy before providing the access token
+		TRUE = 1;
+	}
+}
+
+// Message structure for configuration parameter for token management system to identify the content provider
+message Configuration{
+	// To hold the configuration parameter name/key
+	optional string key = 1;
+	// To hold the configuration parameter value
+	optional string value = 2;
+}
+
+message AppAccessTokenQueryResponse{
+	// Unique Token Request ID - used for end to end trace ability
+	optional string uniqueID = 1;
+	// The access token - string representing an authorization issued
+	optional string accessToken = 2;
+	// This defines the Expiry Time in seconds for the token,
+	optional int32 accessTokenexpiryTime = 3;
+	// This defines the type of token  e.g: Bearer, Mac. This is Oauth2 Standard parameter
+	optional string tokenType = 4;
+	// This token is used to acquire additional access tokens when the current access token expires,
+	// Refresh tokens are long-lived
+	optional string refreshToken = 5;
+	// Expiry Time in seconds
+	optional int32 refreshTokenexpiryTime = 6;
+	// When validation fails at cloud and error code is set.
+	optional AccessTokenErrorDetail errorDetail = 7;
+	// Defines what the access token can do and what resources it can access.
+	repeated string scope = 8;
+	// For future usage - It is the download URL that is provided by the content provider from where content can be accessed
+	optional string redirectURL = 9;
+
+
+}
+
+message AccessTokenErrorDetail{
+	// Error codes populated when access token request failed
+	optional AccessTokenErrorCodeENUM errorCode = 1;
+	// Description of the error
+	optional string errorDescription = 2;
+
+	enum AccessTokenErrorCodeENUM{
+		// This error code is set when the Subscription got expired
+		SUBSCRIPTION_EXPIRED = 0;
+		// This error code is set when Feature Not enrolled
+		NOT_ENROLLED = 1;
+		// This error code is set when Invalid CCS // typo
+		INVALID_CCS =2;
+		// This error code is set when Subscription got expired and Not enrolled
+		EXPIRED_SUBSCRIPTION_AND_NOT_ENROLLED = 3;
+		// This error code is set when Subscription expiration and Invalid CCS
+		EXPIRED_SUBSCRIPTION_AND_INVALID_CCS = 4;
+		// This error code is set when Not enrolled and Invalid CCS
+		NOT_ENROLLED_AND_INVALID_CCS = 5;
+		// This error code is set when Subscription expiration , Not enrolled  and Invalid CCS
+		EXPIRED_SUBSCRIPTION_NOT_ENROLLED_AND_INVALID_CCS = 6;
+		// This error code is set when cloud system down – Unable to check subscription, enrollment and CCS
+		POLICY_VALIDATION_SYSTEM_DOWN = 7;
+		// This error code is set when Content Provider system down
+		PROVIDER_SYSTEM_DOWN =8;
+		// This error code is set when IPPT cloud system down
+		IPPT_CLOUD_SYSTEM_DOWN =9;
+		// This error code is set when Refusal from content provider for a Token
+		PROVIDER_TOKEN_REFUSAL = 10;
+		// This error code is set when Mandatory Token fields are missing
+		PAYLOAD_ERROR = 11;
+		// This error code is set when URL in the Configuration is not located
+		INVALID_URL = 12;
+		// This error code is set when all other Errors occurs
+		OTHER_ERRORS = 13;
+	}
+}
+
+// Message structure to send Token Revocation Request from cloud
+message RevokeTokenCommand {
+	// Feature ID - Each application has a global feature ID used by WIR to identify applications
+	optional string featureID = 1;
+}
+
+// Message structure to report TokenRevocationCommand delivery status back to cloud
+message RevokeTokenCommandResponse{
+	// Common message structure for all command responses. ECG shall always set this.
+    optional com.ford.ftcp.appcommon.CommandStatusEnum CommandStatus = 1;
+    // Message structure for error details. ECU shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+}
+
+// Message structure to report Revoke Token status Success/Failure
+message RevokeTokenStatusAlert{
+	// Enumeration for off Peak activity status. ECG shall always set this.
+    optional RevokeTokenStatusENUM revokeTokenStatus = 1;
+	// Populate this when TokenRevocationStatusENUM is a failed, A brief description for the failure .
+	optional string errorDescription = 2;
+
+    // Enumeration for off-peak activity status
+	enum RevokeTokenStatusENUM{
+		// ECU sets this status if Token Revocation Failed
+		FAILED = 0;
+		// ECU sets this status if Token Revocation Succeeded
+		SUCCESS = 1;
+	}
+}
+
+//Message structure of App data usage alert
+message AppDataUsageAlert{
+	// Application data usage statistics
+	repeated AppDataUsageStatisticsData appDataUsageStat = 1;
+
+}
+
+// Message structure for application data usage statistics
+message AppDataUsageStatisticsData{
+	// App name - Each application has a unique application used by WIR to identify applications
+	optional string appName = 1;
+	// Data Usage by connection type
+	repeated DataUsageByConnectionType dataUsage = 2;
+
+}
+
+//Message structure for Data usage by connection type
+message DataUsageByConnectionType{
+	// Connection type ID
+	optional string connectionType = 1;
+	// Received Data Usage
+	optional float downloadDataUsage = 2;
+	// Sent Data Usage
+	optional float uploadDataUsage = 3;
+	// Data UOM
+	optional com.ford.ftcp.appcommon.DataUsageUOMENUM dataUsageUOM = 4;
+}

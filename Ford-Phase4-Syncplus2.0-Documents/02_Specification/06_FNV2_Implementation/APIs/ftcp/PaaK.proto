@@ -1,0 +1,78 @@
+syntax = "proto2";
+//	Ford Telematics Communication Protocol
+//  Feature/Enabler/Common: Phone As a Key (PaaK), Backup Password Support
+//	Version Number: 6.0.9
+//	Date Revised: 07/08/2019
+// 	Last Updated By: Rumeli Das[RDAS9]
+// 	Reviewed By:Murali Chitturi, Mageshwaran Mohan [MMOHAN17],Vijai Thoppae [VTHOPPAE]
+// 	Ford Confidential
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 01/22/2019 for version 6.0.5
+	// Added alert to support feature Backup Password Support( AKA LBI)
+		//BackupPasswordStatusAlert
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 10/26/2018 for version 6.0.4
+	// Added messages to support PaaK
+//************************************************************************************************************************************************************************
+
+package com.ford.ftcp.apps;
+import "ErrorAndStatus.proto";
+import "FeatureCommon.proto";
+//Phone as a Key command
+
+//Cloud shall send this to revoke keys from BLEM.
+message RemoveCAKCommand{
+	// Data to be sent to BLEM to remove CAKs. This data is encrypted and/or signed and ECG would not be able to decrypt this
+	optional bytes removeRequestData = 1;
+}
+
+//Phone as a Key command responses
+//Message structure for RemoveCAKCommandResponse
+message RemoveCAKCommandResponse{
+	// Common message structure for PaaK messages
+	optional com.ford.ftcp.appcommon.CommonForPaaKFromVehicle commonForPaaKFromVehicle = 1;
+	// Enumeration for CommandStatus. ECG shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 2;
+	// Message structure for error details. ECG shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+}
+
+//Message structure for CAKStatusAlert
+// This alert can be both correlated and non correlated. In case of key revoke command it would be correlated
+message CAKStatusAlert{
+	// Common message structure for PaaK messages
+	optional com.ford.ftcp.appcommon.CommonForPaaKFromVehicle commonForPaaKFromVehicle = 1;
+	// Response from the module which stores CAK and this is signed by the module
+	optional bytes cakResponse = 2;
+	// Describes whether an add or revoke was successful or not
+	optional CAKStatusENUM cakStatus = 3;
+	// Describes the cause for the key revoke
+	optional CAKRevokeReasonENUM cakRevokeReason = 4;
+
+	// Enumeration to identify the CAK Status
+	enum CAKStatusENUM
+	{
+		SUCCESS = 0;
+		FAILED = 1;
+		KEY_NOT_FOUND = 2;
+	}
+
+	// Enumeration to identify the reason for CAK revoke
+	enum CAKRevokeReasonENUM
+	{
+		MASTER_RESET = 0;
+		PAAK_RESET = 1;
+		BRAND_RESET = 2;
+		OTHERS = 3;
+	}
+
+}
+
+//Message structure for BackupPasswordStatusAlert
+message BackupPasswordStatusAlert{
+	// Common message structure for PaaK/BSP messages
+	optional com.ford.ftcp.appcommon.CommonForPaaKFromVehicle commonForPaaKFromVehicle = 1;
+	// Response from BLEM for Backup Password events
+	optional bytes backupPwdStatusResponse = 2;
+}
+

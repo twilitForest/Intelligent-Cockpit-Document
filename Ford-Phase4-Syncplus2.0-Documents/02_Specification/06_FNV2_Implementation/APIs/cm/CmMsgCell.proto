@@ -1,0 +1,589 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2017.  Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// deliberate unauthorized publication.  Ford Motor Company also
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+//
+
+syntax = "proto2";
+option optimize_for = CODE_SIZE;
+package CmMsgCell;
+
+// For CM internal use only
+// The protobuf captures enums and messages related to:
+// Cellular Interface State Events.
+// These messages are exchanged between ECG CM and TCU CM.
+// This enables TCU CM messaging with TCU DCM.
+// Command details:
+//  1. ACTIVATE:               Cellular Interface Activation (any APN requested): enables APN/cellular data.
+//    a. REQUEST:              Request from ECG CM to TCU CM relayed to TCU DCM.
+//    b. RESPONSE:             Response from TCU CM to ECG CM originating from TCU DCM.
+//    c. INDICATION:           Unsolicited indication from TCU CM to ECG CM originating from TCU DCM.
+//  2. DEACTIVATE:             Cellular Interface Deactivation: disables APN/cellular data.
+//    a. REQUEST:              Request from ECG CM to TCU CM relayed to TCU DCM.
+//    b. RESPONSE:             Response from TCU CM to ECG CM originating from TCU DCM.
+//    c. INDICATION:           Unsolicited indication from TCU CM to ECG CM originating from TCU DCM.
+//  3. STATS:                  Cellular Interface Traffic Statistics.
+//    a. REQUEST:              Request from ECG CM to TCU CM relayed to TCU DCM.
+//    b. RESPONSE:             Response from TCU CM to ECG CM originating from TCU DCM.
+//    c. INDICATION:           Unsolicited indication from TCU CM to ECG CM originating from TCU DCM.
+//  4. RESET INDICATION:       ECG CM indicates to TCU CM that the cellular interaface state machine has been reset.
+//  5. SESSIONINFO INDICATION: TCU CM sends a follow up indication to ECG CM that a new cellular interface
+//                             session has been initiated by TCU DCM.
+//  6. LINK_PROP INDICATION:   Unsolicited indication from TCU CM to ECG CM originating from TCU DCM
+//                             whenever there is a cellular interface link property update.
+//  7. DATA STATUS INDICATION: Unsolicited indication from TCU CM to ECG CM originating from TCU DCM/Netmgrd
+//                             whenever DCM/Netmgrd is capable or incapable of bringing up data
+
+/**
+ * @fnv_proto
+ * Enum of available commands for
+ * cellular interface state
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum CellSubCmdType
+{
+    // Cellular Interface Activation (any APN requested):
+    // enables APN/cellular data.
+    ACTIVATE_REQ = 0;
+    ACTIVATE_RSP = 1;
+    ACTIVATE_IND = 5;
+
+    // Cellular Interface Deactivation:
+    // disables APN/cellular data.
+    DEACTIVATE_REQ = 2;
+    DEACTIVATE_RSP = 3;
+    DEACTIVATE_IND = 6;
+
+    // Cellular Interface Traffic Statistics.
+    STATS_REQ = 9;
+    STATS_RSP = 10;
+    STATS_IND = 11;
+
+    // ECG CM Cellular State Machine Reset.
+    RESET_IND = 4;
+
+    // Cellular Interface Link Property Update.
+    LINK_PROP_IND = 7;
+
+    // Cellular Interface Session Info Indication.
+    SESSIONINFO_IND = 8;
+
+    // Cellular or Netmgrd data path capability
+    DATASTATUS_IND = 12;
+}
+
+/**
+ * @fnv_proto
+ * Enum of return codes for commands for
+ * Cellular Interface
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum CellRet
+{
+    // Error/Failure
+    CELL_ERROR = 0;
+
+    // Success
+    CELL_SUCCESS = 1;
+}
+
+/**
+ * @fnv_proto
+ * Enum of available APNs for cellular data
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum CellApnType
+{
+    // Metered User Internet APN
+    INTERNET = 0;
+
+    // Non-metered Ford APN
+    FORD = 1;
+
+    // Metered Mobile Hot Spot APN
+    TETHERING = 2;
+
+    // FOTA APN
+    FOTA = 3;
+
+    // HTTP APN
+    HTTP = 4;
+}
+
+/**
+ * @fnv_proto
+ * Enum of available command types
+ * for cellular data traffic statistics
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum StatsCmdType
+{
+    // Enable reporting of statistics
+    DISABLE = 0;
+
+    // Disable reporting of statistics
+    ENABLE = 1;
+
+    // Query statistics
+    QUERY = 2;
+}
+
+/**
+ * @fnv_proto
+ * Enum of DCM/Netmgrd data capability
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum StatusType
+{
+    // Data path not available
+    Unavailable = 0;
+
+    // Data path avaialable
+    Available = 1;
+}
+
+/**
+ * @fnv_proto
+ * Enum specifying the domain
+ * to which data path availibility
+ * is applicable
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+enum IndicationType
+{
+    // Indicates netmgrd/networking
+    Networking = 0;
+
+    // Indicates cellular data
+    CellularData = 1;
+    
+    // Indicates cellular flow control
+    CellularFlowCtrl = 2;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by TCU CM to send
+ * cellular link properties update to ECG CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message LinkPropertyType
+{
+    // Interface Id used internally by CM
+    optional int32 IfaceId = 1;
+
+    // Interface name as enumerated in the OS
+    optional string IfaceName = 2;
+
+    // Interface IP address V4
+    optional string IpV4Address = 3;
+
+    // Primary DNS IP address V4
+    optional string IpV4DnsPrimary = 4;
+
+    // Secondary DNS IP address V4
+    optional string IpV4DnsSecondary = 5;
+
+    // Gateway IP address V4
+    optional string IpV4Gateway = 6;
+
+    // Interface IP address V6
+    optional string IpV6Address = 7;
+
+    // Primary DNS IP address V6
+    optional string IpV6DnsPrimary = 8;
+
+    // Secondary DNS IP address V6
+    optional string IpV6DnsSecondary = 9;
+
+    // Gateway IP address V6
+    optional string IpV6Gateway = 10;
+
+    // Interface MTU V4
+    optional int32 mtuIpV4 = 11;
+
+    // Interface MTU V6
+    optional int32 mtuIpV6 = 12;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by TCU CM to report
+ * cellular data traffic statistics to
+ * ECG CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message StatsType
+{
+    // Transmitted IPv4 packets
+    optional uint32 PKTS_TX_V4 = 1;
+
+    // Received IPv4 packets
+    optional uint32 PKTS_RX_V4 = 2;
+
+    // Trasmitted IPv4 bytes
+    optional uint64 BYTES_TX_V4 = 3;
+
+    // Received IPv4 bytes
+    optional uint64 BYTES_RX_V4 = 4;
+
+    // Dropped transmit IPv4 packets
+    optional uint32 PKTS_DROPPED_TX = 5;
+
+    // Dropped receive IPv4 packets
+    optional uint32 PKTS_DROPPED_RX = 6;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECG CM to request
+ * cellular data activation from TCU CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message CellActReq
+{
+    // Interface Id used internally by CM
+    optional uint32 connId = 1;
+
+    // Cellular APN type requested
+    optional CellApnType apn = 2;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by TCU CM to respond to
+ * cellular data activation request from ECG CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message CellActRsp
+{
+    // Interface Id used internally by CM
+    optional int32 connId = 1;
+
+    // Return code for command
+    optional CellRet ret = 2;
+
+    // Activation cause code
+    optional string cause = 3;
+
+    // Cellular link properties
+    optional LinkPropertyType linkProperties = 4;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by TCU CM to indicate
+ * cellular data activation to ECG CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message CellActInd
+{
+    // Interface Id used internally by CM
+    optional uint32 connId = 1;
+
+    // Cellular link properties
+    optional LinkPropertyType linkProperties = 2;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECG CM to request
+ * cellular data deactivation from TCU CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message CellDeactReq
+{
+    // Interface Id used internally by CM
+    optional uint32 connId = 1;
+
+    // Cellular APN type requested
+    optional CellApnType apn = 2;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by TCU CM to respond to
+ * cellular data deactivation request from ECG CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message CellDeactRsp
+{
+    // Interface Id used internally by CM
+    optional int32 connId = 1;
+
+    // Return code for command
+    optional CellRet ret = 2;
+
+    // Deactivate cause code
+    optional string cause = 3;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by TCU CM to indicate
+ * cellular data deactivation to ECG CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message CellDeactInd
+{
+    // Interface Id used internally by CM
+    optional uint32 connId = 1;
+
+    // Return code for command
+    optional CellRet ret = 2;
+
+    // Deactivate cause code
+    optional string cause = 3;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by ECG CM to request
+ * cellular data traffic statistics from TCU CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message CellStatsReq
+{
+    // Interface Id used internally by CM
+    optional uint32 connId = 1;
+
+    // Interface name as enumerated in the OS
+    optional string ifaceName = 2;
+
+    // Cellular Stats Command Type
+    optional StatsCmdType cmdType = 3;
+
+    // Reporting window in seconds
+    optional uint32 reportingWindow = 4;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by TCU CM to respond to
+ * cellular data traffic statistics request from ECG CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message CellStatsRsp
+{
+    // Interface Id used internally by CM
+    optional uint32 connId = 1;
+
+    // Return code for command
+    optional CellRet ret = 2;
+
+    // Interface name as enumerated in the OS
+    optional string ifaceName = 3;
+
+    // Cellular Stats Command Type
+    optional StatsCmdType cmdType = 4;
+
+    // Cellular Stats
+    optional StatsType statsV4 = 5;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by TCU CM to indicate
+ * cellular data traffic statistics to ECG CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message CellStatsInd
+{
+    // Interface Id used internally by CM
+    optional uint32 connId = 1;
+
+    // Return code for command
+    optional CellRet ret = 2;
+
+    // Interface name as enumerated in the OS
+    optional string ifaceName = 3;
+
+    // Cellular Stats Command Type
+    optional StatsCmdType cmdType = 4;
+
+    // Cellular Stats
+    optional StatsType statsV4 = 5;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by TCU CM to indicate
+ * cellular link properties update to ECG CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message CellLinkPropertyInd
+{
+    // Interface Id used internally by CM
+    optional int32 connId = 1;
+
+    // Cellular link properties
+    optional LinkPropertyType linkProperties = 2;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by TCU CM to indicate
+ * new cellular data session to ECG CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message CellSessionInd
+{
+    // Unique Id used internally by CM
+    optional string uuid = 1;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf used by TCU CM to indicate
+ * data capability of DCM/Netmgrd to ECG CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message DataStatusInd
+{
+    // Domain, networking or cellular data
+    optional IndicationType indType = 1;
+
+    // Indication of data capability
+    optional StatusType status = 2;
+}
+
+/**
+ * @fnv_proto
+ * The protobuf captures cellular interface
+ * related messaging between ECG CM and TCU CM
+ * @fnv_topic N/A
+ * @fnv_scope FNV2 (Global API)
+ * @fnv_command N/A
+ * @fnv_api_source INTERNAL
+ * @fnv_message_version 1.0
+ */
+message CellMsg
+{
+    // Cellular Interface command
+    optional CellSubCmdType cellCmdId = 1;
+
+    // Cellular Interface activation request
+    optional CellActReq cellActReq = 2;
+
+    // Cellular Interface activation response
+    optional CellActRsp cellActRsp = 3;
+
+    // Cellular Interface activation indication
+    optional CellActInd cellActInd = 4;
+
+    // Cellular Interface deactivation request
+    optional CellDeactReq cellDeactReq = 5;
+
+    // Cellular Interface deactivation response
+    optional CellDeactRsp cellDeactRsp = 6;
+
+    // Cellular Interface deactivation indication
+    optional CellDeactInd cellDeactInd = 7;
+
+    // Cellular Interface traffic statistics request
+    optional CellStatsReq cellStatsReq = 8;
+
+    // Cellular Interface traffic statistics response
+    optional CellStatsRsp cellStatsRsp = 9;
+
+    // Cellular Interface traffic statistics indication
+    optional CellStatsInd cellStatsInd = 10;
+
+    // Cellular Interface link properties update indication
+    optional CellLinkPropertyInd cellLinkPropertyInd = 11;
+
+    // Cellular Interface new session info indication
+    optional CellSessionInd cellSessionInd = 12;
+
+    // Cellular data capability Indication
+    optional DataStatusInd dataStatusInd = 13;
+}

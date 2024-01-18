@@ -1,0 +1,84 @@
+syntax = "proto2";
+//	Ford Telematics Communication Protocol
+//  Feature/Enabler/Common: Trailer Light Check
+//	Version Number: 6.0.9
+//	Date Revised: 10/03/2019
+// 	Last Updated By: Mageshwaran Mohan [MMOHAN17]
+// 	Reviewed By: Murali Chitturi[MCHITTUR], Rumeli Das[RDAS9], Thoppae, Vijai [VTHOPPAE]
+// 	Ford Confidential
+//
+//************************************************************************************************************************************************************************
+// CHANGE LOG on 10/21/2018 for version 6.0.7
+// Trailer Light Check
+	// Added Enumerations
+		// TrailerLightCheckStatusENUM
+	// Added Commands
+		// StartTrailerLightCheckCommand
+		// StopTrailerLightCheckCommand
+	// Added Commands Response
+		// StartTrailerLightCheckCommandResponse
+		// StopTrailerLightCheckCommandResponse
+	// Added Alert
+	 	// SyncTrailerLightCheckStatusAlert
+
+//************************************************************************************************************************************************************************
+
+
+package com.ford.ftcp.apps;
+import "ErrorAndStatus.proto";
+
+
+// Message structure for the Start Trailer Light Check command
+message StartTrailerLightCheckCommand{
+}
+
+// Message structure for the Stop Trailer Light Check command
+message StopTrailerLightCheckCommand{
+}
+
+// Message structure for response to StartTrailerLightCheckCommand
+message StartTrailerLightCheckCommandResponse{
+	// Enumeration for Command Status. ECG shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum cmdStatus = 1;
+	// Message structure for error details. ECG shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail cmdErrorDetail = 2;
+	// Message structure to report failure reason to start the trailer check (Initiated from HMI/Mobile App)
+	optional PreConditionFailedErrorCodeENUM failureReasonCode = 3;
+
+	enum PreConditionFailedErrorCodeENUM{
+		// Default Error Code
+		IGNITION_NOT_ON = 0;
+		TAILLIGHTS_ON = 1;
+		BATTERY_BELOW_THRESHOLD = 2;
+		INTERACTION_PRESENT = 3;
+		NOT_STATIONARY = 4;
+
+	}
+}
+
+// Message structure for response to StopTrailerLightCheckCommand
+message StopTrailerLightCheckCommandResponse{
+	// Enumeration for CommandStatus. ECG shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum cmdStatus = 1;
+	// Message structure for error details. ECG shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail cmdErrorDetail = 2;
+}
+
+// Message structure to indicate Trailer Check Status
+message SyncTrailerLightCheckStatusAlert{
+	// Message structure to report to start status
+	optional TrailerLightCheckStatusENUM status = 1;
+
+}
+
+// Enumeration for trailer light check start status
+enum TrailerLightCheckStatusENUM{
+	// Trailer light check is in progress
+	CHECK_IN_PROGRESS = 0;
+	// Trailer light check is stopped by user in HMI/Mobile APP before completion
+	CHECK_STOPPED = 1;
+	// Trailer light check is complete
+	CHECK_COMPELETED = 2;
+}
+
+

@@ -1,0 +1,250 @@
+syntax = "proto2";
+//	Ford Telematics Communication Protocol
+//  Feature/Enabler/Common: Wi-Fi Hot Spot (WHS)
+//	Version Number: 6.0.9
+//	Date Revised: 07/08/2019
+// 	Last Updated By: Vijai Thoppae [VTHOPPAE]
+// 	Reviewed By:Murali Chitturi,Rumeli Das, Mageshwaran Mohan [MMOHAN17]
+// 	Ford Confidential
+//
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 02/04/2019 for version 6.0.5
+//************************************************************************************************************************************************************************
+	// CR#588
+		// Renamed Logical signal to GSDB Signal name in "WiFiSettings" data bundle
+			// HotspotEnablement_St --> WifiHtsptEnbl_D_Stat
+		// Updated WiFiEnablementStatusENUM
+			// Reordered Enums
+			// Change Enum tags to start at 0
+		// Added error codes and status to WiFiSettingsSyncAlert
+		// Removed data bundle ErrorCodeEnum, errorDescription in messages
+			// WiFiConfigureCredsCommandResponse
+			// GetWiFiSettingsCommandResponse
+		// Added data bundle ErrorDetail to messages
+			// WiFiConfigureCredsCommandResponse
+			// GetWiFiSettingsCommandResponse
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 10/24/2018 for version 6.0.4
+	// CR#588
+	// Added Commands
+		// WiFiConfigureCredsCommand
+		// GetWiFiSettingsCommand
+	// Added Command Response
+		// WiFiConfigureCredsCommandResponse
+		// GetWiFiSettingsCommandResponse
+	// Added Alerts
+		// WiFiSettingsSyncAlert
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 09/07/2018 for version 6.0.2
+	// Packaging of proto files have been introduced and referenced
+	// Added syntax = "proto2" to the header
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 06/20/2018 for version 6.0.1
+	// Renamed the following
+		// WifiDataPlanNotificationCommand -> WiFiDataPlanNotificationCommand
+		// WifiDataPlanNotificationCommandResponse - > WiFiDataPlanNotificationCommandResponse
+		// WifiDataPlanUsageQuery -> WiFiDataPlanUsageQuery
+		// WifiDataPlanUsageQueryResponse -> WiFiDataPlanUsageQueryResponse
+	// Reordered tags in all the message structures and Alerts
+//************************************************************************************************************************************************************************
+// Changes/Version based on B4 FTCP version and FNV2 FTCP Proposal
+// Covers WHS Messaging Requirements
+//************************************************************************************************************************************************************************
+package com.ford.ftcp.apps;
+import "Common.proto";
+import "ErrorAndStatus.proto";
+
+// Cloud shall send this command when the data plan and/or data usage updates are received from Carrier
+message WiFiDataPlanNotificationCommand
+{
+	//Last updated date of Data plan and/or Data usage from carrier
+	optional com.ford.ftcp.appcommon.UTCDateTime lastUpdatedDate=1;
+	//Wifi Data plan usage data plan status
+	optional DataPlan wifiDataPlan=2;
+	//set the data plan usage
+	optional DataPlanUsage dataPlanUsage=3;
+	// set user carrier account information
+	optional CarrierAccountInfo carrierAccountInfo = 4;
+}
+
+// ECU(ECG/TCU) shall send this response upon execution of WiFiDataPlanNotificationCommand
+message WiFiDataPlanNotificationCommandResponse
+{
+	// Enumeration for CommandStatus. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for error details. ECU(ECG/TCU) shall only set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+}
+
+// Message structure for Wi-Fi Data Plan Usage Query
+message WiFiDataPlanUsageQuery
+{
+	// ECU(ECG/TCU) shall set YES to refresh data from Carrier, set NO if to get last refreshed values from SDN/Cloud
+	optional CarrierDataRefreshENUM refreshFromCarrier=1;
+	//YES-To get the latest Data usage from Carrier
+	//NO-To get the data from SDN/Cloud
+	enum CarrierDataRefreshENUM
+	{
+		NO=0;
+		YES=1;
+	}
+}
+
+// Message structure for Wi-Fi Data Plan Query Response
+message WiFiDataPlanUsageQueryResponse
+{
+	//Cloud shall set the current data plan status
+	optional DataPlan wifiDataPlanInfo=1;
+	//Cloud shall set the data plan usage information
+	optional DataPlanUsage dataPlanUsageStatus=2;
+	//Last updated date from carrier
+	optional com.ford.ftcp.appcommon.UTCDateTime lastUpdatedDate=3;
+	//Cloud shall always set this to return Query response status
+	optional com.ford.ftcp.appcommon.SDNQueryStatusENUM SDNQueryStatus = 4;
+	// Message structure for error details. SDN shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.SDNErrorDetail SDNerrorDetail = 5;
+	// Message structure for user carrier account
+	optional CarrierAccountInfo carrierAccountInfo = 6;
+}
+
+
+//Wi-Fi Data plan message structure
+message DataPlan
+{
+	//Type of data plan
+	optional DataPlanTypeENUM  subscriptionType=1;
+	//Data plan current status
+	optional DataPlanStatusENUM dataPlanStatus =2;
+	//Data plan expire date in UTC format
+	optional com.ford.ftcp.appcommon.UTCDateTime expiryDate = 3;
+	//Data plan renewal cycle date in UTC format
+	optional com.ford.ftcp.appcommon.UTCDateTime renewalCycleDate = 4;
+
+	//Data plan type
+	enum DataPlanTypeENUM
+	{
+		TRIAL=0;
+		PAID_SESSION=1;
+		PAID_SHARED=2;
+		//Scope Pending
+		PAID_SESSION_UNLIMITED=3;
+		PAID_SHARED_UNLIMITED=4;
+	}
+	//Data plan status
+	enum DataPlanStatusENUM
+	{
+		PENDING=0;
+		ACTIVE=1;
+		EXPIRED=2;
+		INACTIVE=3;
+	}
+}
+
+//Wi-Fi Data plan usage message structure
+message DataPlanUsage
+{
+	//populate zero(0.00) for UNLIMITED data
+	//Data plan upper limit - size
+	optional float dataPlanLimit=1;
+	//Total amount of Data used - size
+	optional float dataPlanUsed = 2;
+	// Data used - percentage
+	optional int32 dataPlanUsedPercent = 3;
+	//Cloud shall set this if the data plan usage go beyond the plan limit
+	optional OverageIndicatorENUM overageIndicator=4;
+	//Total amount of Data usage/used, unit of measure (ex. MB, GB )
+	optional DataUOMENUM datausageUOM = 5;
+	//Total amount/limit of Data, unit of measure (ex. MB, GB )
+	optional DataUOMENUM totalDataUOM = 6;
+
+	//YES - Data Limit Overage met
+	//NO- Data Limit Overage not met
+	enum OverageIndicatorENUM
+	{
+		NO=0;
+		YES=1;
+	}
+
+	// Data Plan Usage - Unit of Measure
+	enum DataUOMENUM
+	{
+		KB=0;
+		MB=1;
+		GB=2;
+	}
+}
+
+// Message structure for User Account with Carrier
+message CarrierAccountInfo{
+	//  User ID of the user's account with the carrier
+	optional string userId = 1;
+}
+
+message WiFiSettings
+{
+	// This signal contains the current state of the WHS chipset status
+	optional int32 WifiHtsptEnbl_D_Stat = 1;
+	// SSID sent using SyncP Encryption
+	optional bytes wifiSSID = 2;
+	// Password sent using SyncP Encryption
+	optional bytes wifiPassword = 3;
+}
+
+// Message structure to send WHS Credentials information. Correlated & Non-Correlated Alert (DID value applies only for Non-Correlated - Enable / Disable)
+message WiFiSettingsSyncAlert
+{
+	// Message bundle that carries WHS Chipset status, SSID, Password
+	optional WiFiSettings wifiSettings = 1;
+	// enumeration for WHS Wifi Settings Sync Status (Success/Failed)
+	optional WiFiSettingsSyncStatusENUM wifiSettingsSyncStatus =2;
+	// Message structure leverages common error codes, error description, set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail wifiSettingsSyncErrorDetail = 3;
+
+	enum WiFiSettingsSyncStatusENUM{
+		FAILED = 0;
+		SUCCESS = 1;
+	}
+}
+
+// Message structure to configure Wifi Credentials information such as Enablement State, SSID & Password
+message WiFiConfigureCredsCommand
+{
+	// Configure WHS Chipset status in the vehicle
+	optional WiFiEnablementStatusENUM enablementStatus = 1;
+	// SSID sent using SyncP Encryption
+	optional bytes wifiSSID = 2;
+	// Password sent using SyncP Encryption
+	optional bytes wifiPassword = 3;
+
+	// Message structure that contains various WHS Chipset status values
+	enum WiFiEnablementStatusENUM{
+		ENABLEMENT_OFF = 0;
+		ENABLEMENT_ON = 1;
+		ENABLEMENT_ON_DISABLED = 2;
+	}
+}
+
+// Message structure for WHS Configure Credentials Response
+message WiFiConfigureCredsCommandResponse
+{
+	// Enumeration for CommandStatus. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+    // Message structure leverages common error codes, error description, set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+}
+
+// Message structure to get WHS Settings Command
+message GetWiFiSettingsCommand
+{
+}
+
+// Message structure for WHS Settings Command Response
+message GetWiFiSettingsCommandResponse
+{
+	// Enumeration for CommandStatus. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message bundle that carries WHS chipset status, SSID, Password
+	optional WiFiSettings wifiSettings = 2;
+    // Message structure leverages common error codes, error description, set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 3;
+}

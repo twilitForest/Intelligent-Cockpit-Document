@@ -1,0 +1,176 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2018.  Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// deliberate unauthorized publication.  Ford Motor Company also
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+
+syntax = "proto3";
+
+package fnv.AudioVolume;
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to change the volume with an absolute value 
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE
+ * @fnv_command "VOLUME_INDEX"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message VolumeIndexMessage {
+    string client_id = 1;    
+    uint32 volumeindex = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to change the volume with +/- step 
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE
+ * @fnv_command "VOLUME_STEP"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message VolumeStepMessage {  
+    string client_id = 1;  
+    uint32 step = 2;
+    uint32 stepdirection = 3;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to change the group volume with absolute value
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE
+ * @fnv_command "VOLUME_GROUP_INDEX"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message GroupVolumeIndexMessage {
+    string client_id = 1; 
+    uint32 volume_group = 2;  
+    uint32 volume_index = 3;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to change the group volume with +/- step
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE
+ * @fnv_command "VOLUME_GROUP_STEP"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message GroupVolumeStepMessage { 
+    string client_id = 1;
+    uint32 volume_group = 2;  
+    uint32 step = 3;
+    uint32 step_direction = 4; 
+}    
+    
+/**
+ * @fnv_proto
+ * Protobuf to be used to change the attenuation level 
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE
+ * @fnv_command "ATTENUATION_LEVEL"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message AttenuationLevelMessage {
+    string client_id = 1;
+    uint32 attenuationlevel = 2;  
+}     
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to define a MyKey volume limit 
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE
+ * @fnv_command "MYKEY_VOLUME_LIMIT"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message MyKeyVolumeLimitActiveMessage {
+    string client_id = 1;
+    uint32 mykeyvolumelimit = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request beltminder mute state
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE
+ * @fnv_command "BELTMINDER_AUDIO_MUTE_STATE"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message BeltMinderAudioMuteStateMessage {
+    string client_id = 1;
+    uint32 beltmindermutestate = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request a factory reset
+ * @fnv_topic SERVICES/REQUEST/SYNCAPPS/AUDIOSERVICE
+ * @fnv_command "FACTORY_RESET_VOLUME"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message FactoryResetVolumeMessage {
+    string client_id = 1;
+}
+
+
+/* All publishing messages are listed below */
+/**
+ * @fnv_proto
+ * Protobuf to be used to request a factory reset for Audio Settings
+ * @fnv_topic SERVICES/DATA/SYNCAPPS/AUDIOSERVICE/AUDIOVOLUMESTATUS
+ * @fnv_command "VOLUME_LEVEL_UPDATE_STATUS"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message VolumeLevelUpdateStatusMessage {
+    uint32 volume_level = 1;
+    uint32 volume_group = 2;
+    bool volume_level_updated = 3;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request a factory reset for Audio Settings
+ * @fnv_topic SERVICES/DATA/SYNCAPPS/AUDIOSERVICE/AUDIOVOLUMESTATUS
+ * @fnv_command "MYKEY_VOLUME_LIMITING_STATUS"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message MykeyVolumeLimitingStatusMessage {
+    uint32 volume_limiting_state = 1;
+    bool volume_level_updated = 2;
+}
+
+/**
+ * @fnv_proto
+ * Protobuf to be used to request a factory reset for Audio Settings
+ * @fnv_topic SERVICES/DATA/SYNCAPPS/AUDIOSERVICE/AUDIOVOLUMESTATUS
+ * @fnv_command "AUDIO_VOLUME_BELTMINDER_AUDIO_MUTE_STATUS"
+ * @fnv_scope FNV2
+ * @fnv_api_source  INTERNAL
+ * @fnv_message_version 1.0
+ */
+message BeltMinderAudioMuteStatusMessage {
+    uint32 state = 1;    
+}

@@ -1,0 +1,412 @@
+syntax = "proto2";
+//	Ford Telematics Communication Protocol
+//  Feature/Enabler/Common: Fleet Telematics (Driver Behavior)
+//	Version Number: 6.0.9
+//	Date Revised: 07/08/2019
+// 	Last Updated By: Mageshwaran Mohan [MMOHAN17] 
+// 	Reviewed By: Murali Chitturi[MCHITTUR], Rumeli Das[RDAS9], Thoppae, Vijai [VTHOPPAE]
+// 	Ford Confidential
+//
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 10/21/2018 for version 6.0.4
+// UBI Feature (CR#447)
+	// Removed data bundles from PeriodicDriverBehaviourDataAlert
+		// VehicleStatus
+		// VehiclePositionData
+		// DriverSafetyData
+	// Added data bundle to PeriodicDriverBehaviourDataAlert
+		// DrivingBehaviourData
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 09/07/2018 for version 6.0.2
+	// Packaging of proto files have been introduced and referenced
+	// Added syntax = "proto2" to the header
+	// Removed ECallAlert
+	// Removed ESCModeStatusChangeAlert
+//************************************************************************************************************************************************************************
+// Changes/Version based on B4 FTCP version and FNV2 FTCP Proposal
+// Covers part of Fleet Telematics Driver Behavior Data Requirements
+//************************************************************************************************************************************************************************
+// Change Log for version 6.0.1
+// FLEET and UBI Changes
+	// Re-ordered TAG numbers
+//************************************************************************************************************************************************************************
+
+// Fleet Telematics and UBI Messages
+package com.ford.ftcp.apps;
+
+import "FeatureCommon.proto";
+
+
+
+message VehicleStoppedAfterMovingAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+}
+
+message VehicleMovingAfterStoppedAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+}
+
+// Message Structure for Excessive Idle violation
+// When the vehicle remains idling for duration longer than the configurable excessive idle limit
+message  ExcessiveIdleAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+	// Enumeration/Identifier for excessive idling begin/end
+	optional  com.ford.ftcp.appcommon.EventStateEnum eventState = 3;
+}
+
+// Message Structure for Excessive RPM violation
+// When the vehicle’s engine RPM exceeds the configurable excessive RPM limit for a duration exceeding
+// the configurable duration limit
+message  ExcessiveRPMAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+	// Enumeration/Identifier for excessive rpm begin/end
+	optional  com.ford.ftcp.appcommon.EventStateEnum eventState = 3;
+}
+
+// Message Structure for Excessive Speed violation
+// When the vehicle’s speed exceeds the customer configurable limit for vehicle speed
+// for a duration exceeding the configurable time duration limit
+message  ExcessiveSpeedAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+	// Enumeration/Identifier for excessive speed begin/end
+	optional  com.ford.ftcp.appcommon.EventStateEnum eventState = 3;
+}
+
+// Message Structure for Hard Acceleration violation
+// When the vehicle’s acceleration speed exceeds the customer configurable limit for harsh acceleration
+// for a duration exceeding the configurable duration limit
+message  HardAccelerationAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+	// Enumeration/Identifier for hard acceleration begin/end
+	optional  com.ford.ftcp.appcommon.EventStateEnum eventState = 3;
+}
+
+// Message structure for Hard Braking violation
+// When the vehicle’s deceleration speed exceeds the customer configurable limit for harsh acceleration
+// for a duration exceeding the configurable duration limit
+message  HardBrakingAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+	// Enumeration/Identifier for hard braking begin/end
+	optional  com.ford.ftcp.appcommon.EventStateEnum eventState = 3;
+}
+
+//Message structure for DriverBuckledWhileMovingAlert
+// When the vehicle speed exceeds a configurable limit, a configurable time duration expires,
+// and the driver remains or becomes buckled
+message  DriverBuckledWhileMovingAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+// Message structure for DriverUnbuckledWhileMovingAlert
+// When the vehicle speed exceeds a configurable limit, a configurable time duration expires,
+// and the driver remains or becomes unbuckled/unbelted for a time period longer than the configurable time limit
+message  DriverUnbuckledWhileMovingAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+// Message structure for FrontPassengerBuckledWhileMovingAlert
+// When the vehicle speed exceeds a configurable limit, a configurable time duration expires,
+// and the front passenger remains or becomes buckled
+message  FrontPassengerBuckledWhileMovingAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+// Message structure for FrontPassengerUnbuckledWhileMovingAlert
+// When the vehicle speed exceeds a configurable limit, a configurable time duration expires,
+// and the passenger remains or becomes unbuckled/unbelted for a time period longer than the configurable time limit
+message  FrontPassengerUnbuckledWhileMovingAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+// Message structure for Lane Departure Alert
+// When Lane Departure event occurrence exceeds the defined/configurable counter limit
+message  LaneDepartureAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+// Message structure for Lane Keeping Aid Alert
+// When Lane Keeping Aid event occurrence exceeds the defined/configurable counter limit
+message  LaneKeepingAidAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+// -- UBI changes starts -- //
+// Message structure for ImpactEventDetectedAlert earlier known as - Air Bag Deployment Alert
+// Identifies crash event severity threshold.
+message ImpactEventDetectedAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+
+}
+
+message SEICUsageOnAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+message SEICUsageOffAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+message ReverseGearUsageActiveAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+message ReverseGearUsageDeactivatedAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+// Message Structure for ABS Event Alert
+message  ABSEventAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+	// Enumeration/Identifier for ABS Event begin/end
+	optional  com.ford.ftcp.appcommon.EventStateEnum eventState = 3;
+}
+
+// Message Structure for Advance Trac Event
+message  AdvanceTracEventAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+	// Enumeration/Identifier for Advance Trac Event begin/end
+	optional  com.ford.ftcp.appcommon.EventStateEnum eventState = 3;
+}
+
+// Message Structure for BLIS Cross Disabled Event
+message  BLISCrossDisabledAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+
+// Message Structure for BLIS Side Disabled Event
+message  BLISSideDisabledAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+// Message Structure for Collision Mitigation Braking Event
+message  CollisionMitigationBrakingEventAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+// Message Structure for DAS (Driver Alert System) Disabled Event
+message  DASDisabledAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+// Message Structure for Driver Alert System Warning
+message  DASWarningAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+// Message Structure for Forward Collision Warning
+message  ForwardCollisionWarningAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+// Message Structure for Forward Collision Warning Driver Disabled
+message  ForwardCollisionWarningDriverDisabledAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+// Message Structure for Forward Collision Warning
+message  HandsOffWheelAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+// Message Structure for Lane Keeping Aid and Departure Warning
+message  LaneKeepingAidOrDepartureWarningDisabledAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+// Message Structure for Traction Control Event - Inactive to Active
+message  TractionControlEventAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+	// Enumeration/Identifier for Traction Control Event begin/end
+	optional  com.ford.ftcp.appcommon.EventStateEnum eventState = 3;
+}
+
+// Message Structure for Trailer Sway Event
+message  TrailerSwayEventAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+// Message Structure for Low Speed Collision Mitigation Event by Braking Driver
+message  LowSpeedCollisionMitigationOnAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+// Message Structure for Low Speed Collision Mitigation Event by Braking Driver
+message  LowSpeedCollisionMitigationOffAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+// Message Structure for E-Locker Usage Alert
+message  ELockerUsageAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+// Message Structure for Engine Idle Shut Down Event Alert
+message  EngineIdleShutDownAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+// Message Structure for Park Brake Usage (0 to 1 transition) Alert
+message  ParkBrakeUsageAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+// Message Structure for BLIS with Trailer Tow (0 to 1 transition) Alert
+message  BLISTrailerTowAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+// Message Structure for Load Shed Event Alert
+message  LoadShedEventAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+// Message Structure for Stop-Start Disabled (transition from any other state to StopStart_Deselected) Alert
+message  StopStartModeDisabledAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+// Message Structure for StopStartEventReportingAlert - this may be referred as StopStartEventAlert in SPSS
+message  StopStartEventReportingAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+}
+
+// Message Structure for Low Speed Collision Mitigation Braking Event Alert
+message  LowSpeedCollisionDriverAwarenessAlert{
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 1;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 2;
+}
+
+// Message structure for Periodic UBI Data Alert
+// This alert is sent at configurable time intervals
+message PeriodicDriverBehaviourDataAlert{
+	 //  message structure for on periodic driving behaviour.
+	optional com.ford.ftcp.appcommon.DrivingBehaviourData drivingBehaviourData = 1;
+}
+
+// Message structure for event based UBI Data collector Alert
+// This alert has configurable time period to collect data
+message EventBasedDriverBehaviourAlert{
+	//  message structure for on event triggered driving behavior.
+	repeated com.ford.ftcp.appcommon.DrivingBehaviourData drivingBehaviourData = 1;
+}
+
+
+
+

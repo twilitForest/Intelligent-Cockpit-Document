@@ -1,0 +1,140 @@
+syntax = "proto2";
+//	Ford Telematics Communication Protocol
+//  Feature/Enabler/Common: Cloud Enhanced Distance to Empty
+//	Version Number: 6.0.9
+//	Date Revised: 09/04/2019
+// 	Last Updated By: Rumeli Das[RDAS9]
+// 	Reviewed By:Murali Chitturi, Mageshwaran Mohan [MMOHAN17],Vijai Thoppae [VTHOPPAE], Jahnavi Athaluri[JATHALU1]
+// 	Ford Confidential
+//************************************************************************************************************************************************************************
+// Changes/Version based on B4 FTCP version and FNV2 FTCP Proposal
+// Covers Cloud distance to empty Requirements
+// Added alerts
+	// DTEVehicleEfficiencyDataAlert
+	// DTEVehicleValuesAlert
+	// DTETripDataAlert
+// Added data bundles
+	// VehicleEfficiencyData
+	// RoadClassEfficiencyData
+	// PowerData
+	// EnergyData
+	// DTEVehicleValues
+	// DTETripData
+//************************************************************************************************************************************************************************
+package com.ford.ftcp.apps;
+import "FeatureCommon.proto";
+
+
+// Message structure for vehicle efficiency data from HPCM
+message VehicleEfficiencyData{
+	// Road class efficiency for a trip
+	repeated RoadClassEfficiencyData roadClassEffData = 1;
+	// Power data samples for a trip
+	repeated PowerData powerDataSamples = 2;
+	// Energy data samples for a trip
+	repeated EnergyData energyDataSamples = 3;
+}
+
+// Message structure for Road class efficiency data
+message RoadClassEfficiencyData{
+	// road class efficiency data index/array ID
+	optional int32 DteVehEffId_No_Actl = 1;
+	// road class efficiency data (unit: watt*hour/km)
+	optional sint32 DteVeh_Eff_Actl = 2;
+}
+
+// Message structure for Power consumption data
+message PowerData{
+	// Power data sample index/array ID
+	optional int32 DteVehPwId_No_Actl = 1;
+	// Power in watts
+	optional int32 DteVeh_Pw_Actl = 2;
+}
+
+// Message structure for energy consumption data from HPCM
+message EnergyData{
+	// Vehicle energy index/array ID
+	optional int32 DteVehEId_No_Actl = 1;
+	// Vehicle energy duration in seconds
+	optional int32 DteVehE_T_Actl = 2;
+	// Energy in watts
+	optional int32 DteVeh_E_Actl = 3;
+}
+
+// Message structure for Vehicle Values related to distance to empty feature
+message DTEVehicleValues{
+	// Percentage of the Battery charge from CAN bus -
+	optional float BattTracSoc_Pc_Dsply = 1;
+	// Energy available in the High Voltage Traction Battery
+	optional int32 BattTrac2_E_Avail = 2;
+	// Percent of trip electric energy that was used for driving the wheels (BEV/PHEV).
+	optional float TripSumDrvE_Pc_Dsply = 3;
+	// Percent of trip electric energy that was used for climate control
+	optional float TripClimE_Pc_Dsply = 4;
+	// Percent of trip electric energy that was used as a result of external factors
+	optional float TripExtFctrE_Pc_Dsply = 5;
+	// Percent of trip electric energy that was used for low voltage accessories
+	optional float TripBattULoE_Pc_Dsply = 6;
+	// Energy consumed by vehicle in KiloWatt Hours
+	optional float TripSum_E_Dsply = 7;
+	// Vehicle speed source from brake module
+	optional float Veh_V_ActlBrk = 8;
+	// Cabin Ambient Temp
+	optional float CabnAmb_Te_Actl= 9;
+	// outside Air Ambient Temperature
+	optional float AirAmb_Te_Actl= 10;
+	// Actual temperature of powersplit transaxle oil.
+	optional sint32 HtrnOil_Te_Actl = 11;
+	// Odometer value from CAN bus
+	optional int32 OdometerMasterValue = 12;
+	// Ignition status from CAN bus
+	optional int32 Ignition_Status = 13;
+	// Indicates if the power pack is a motive (wheel torque producing) or non-motive (non-wheel torque producing) mode.
+	optional int32 PwPckTq_D_Stat = 14;
+	// Distance To Empty (DTE) for electric battery
+	optional float VehElRnge_L2_Dsply = 15;
+	// Average Watt hours per km based on vehicle history for display
+	optional sint32 VehElEffAvg_No_Dsply = 16;
+	// outside Air Ambient Temperature filtered
+	optional float AirAmb_Te_ActlFilt= 17;
+	// GPS information of the vehicle
+	optional com.ford.ftcp.appcommon.GPSInfo gpsInfo = 18;
+
+}
+
+// Message structure for key cycle data
+message DTETripData{
+	// Time segment block ID
+	optional int32	timeSegmentBlockID = 1;
+	// Distance traveled
+	optional int32	distanceTraveled = 2;
+	// Duration of the trip
+	optional int32	duration = 3;
+	// Energy consumed for that time segment
+	optional sint32 driveEnergyConsumed = 4;
+	// Cabin temperature
+	optional float	CabnAmb_Te_Actl = 5;
+	// Ambient temperature
+	optional float 	AirAmb_Te_Actl = 6;
+	// outside Air Ambient Temperature filtered
+	optional float AirAmb_Te_ActlFilt= 7;
+
+}
+
+// Message structure for DTEVehicleEfficiencyDataAlert
+message DTEVehicleEfficiencyDataAlert{
+	// Vehicle Efficiency data
+	optional VehicleEfficiencyData efficiencyData = 1;
+}
+
+// Message structure for DTEVehicleValuesAlert
+message DTEVehicleValuesAlert{
+	// Vehicle values needed for DTE feature
+	optional DTEVehicleValues vehicleValues = 1;
+}
+
+//Message structure for DTETripDataAlert
+message DTETripDataAlert{
+	// Trip data collected by HPCM
+	repeated DTETripData tripData = 1;
+}

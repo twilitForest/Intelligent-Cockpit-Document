@@ -1,0 +1,214 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2017.  Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+
+syntax = "proto2";
+option optimize_for = CODE_SIZE;
+package ippt.geninterface;
+import "Ippt_info.proto";
+
+// IIPT proto file
+// Version 1.0.0
+// This protobuf defines IP Pass Through messages. Those messages are used for the communication between IPPT server and client
+
+
+// ECU type
+enum EcuId {
+    SYNC = 0;
+    TCU  = 1;
+    ECG  = 2;
+}
+
+/**
+ * @fnv_message_proto: Register or UnRegister IPPT client to IPPT server
+ * @fnv_topic "SERVICES/REQUEST/FNV/IPPT/SERVER"
+ * @fnv_command register or unregister
+ * @fnv_description:
+ */
+message ClientRegisterRequest
+{
+    optional string applicationId = 1;
+    optional string endpoint = 2;
+    // API version, static field
+    optional __ApiVersion __api_version = 10;
+}
+
+/**
+ * @fnv_message_proto: Result of Register or UnRegister
+ * @fnv_topic
+ * @fnv_command
+ * @fnv_description:
+ */
+message ClientRegisterResult
+{
+    optional Result result = 1;
+    enum Result
+    {
+        SUCCESS = 0;
+        FAIL    = 1;
+    }
+    // API version, static field
+    optional __ApiVersion __api_version = 10;
+}
+
+/**
+ * @fnv_message_proto: Request a token
+ * @fnv_topic "SERVICES/REQUEST/FNV/IPPT/SERVER"
+ * @fnv_command request
+ * @fnv_response: TokenResponse, TokenResponseError
+ * @fnv_description:
+ */
+message TokenRequest
+{
+    optional string applicationId = 1;
+    optional string endpoint = 2;
+    optional EcuId ecuId = 3;
+    optional bool  pvRequired = 4;
+    repeated Configuration config = 5;
+    repeated string scope = 6;
+    message Configuration
+    {
+        optional string key = 1;
+        optional string value = 2;
+    }
+    // API version, static field
+    optional __ApiVersion __api_version = 10;
+}
+
+/**
+ * @fnv_message_proto: Status for a token request
+ * @fnv_topic "SERVICES/REQUEST/FNV/IPPTCLIENT/" + application-id
+ * @fnv_command request-status
+ * @fnv_response: TokenRequestStatus
+ * @fnv_request: TokenRequestStatus
+ * @fnv_description:
+ */
+message TokenRequestStatus
+{
+    optional string requestId = 1;
+    optional TokenRequestStatusEnum reqStatus = 2;
+
+    enum TokenRequestStatusEnum 
+    {
+        UNKNOWN                         = 0;
+        REQUEST_ID_ALLOCATED            = 1;  
+        IN_PROGRESS                     = 2;  
+        ERROR_CLIENT_NOT_REGISTERED     = 3;  
+        ERROR_REQUEST_PARAM_VALIDATION  = 4;  
+        ERROR_REQUEST_DELIVERY_ERROR    = 5;  
+        ERROR_REQUEST_TIMEOUT           = 6;  
+        ERROR_REQUEST_FAILED            = 7;  
+    }
+    // API version, static field
+    optional __ApiVersion __api_version = 10;
+}
+
+/**
+ * @fnv_message_proto: Response for a token request
+ * @fnv_topic "SERVICES/REQUEST/FNV/IPPTCLIENT/" + application-id
+ * @fnv_command request-response
+ * @fnv_request: TokenRequest
+ * @fnv_description:
+ */
+message TokenResponse
+{
+    optional string requestId = 1;
+    optional string accessToken = 2;
+    optional int32 accessTokenexpiryTime = 3;
+    optional string tokenType = 4;
+    optional string refreshToken = 5;
+    optional int32 refreshTokenexpiryTime = 6;
+    repeated string scope = 7;
+    optional string redirectURL = 8;
+    // API version, static field
+    optional __ApiVersion __api_version = 10;
+}
+
+/**
+ * @fnv_message_proto: Response with error for a token request
+ * @fnv_topic "SERVICES/REQUEST/FNV/IPPTCLIENT/" + application-id
+ * @fnv_command request-response-error
+ * @fnv_request: TokenRequest
+ * @fnv_description:
+ */
+message TokenResponseError
+{
+    optional string requestId = 1;
+    optional string errorDescription = 2;
+    optional AccessTokenErrorCodeENUM errorDetail = 3;
+
+    enum AccessTokenErrorCodeENUM
+    {
+        SUBSCRIPTION_EXPIRED = 1; // This error code is set when the Subscription got expired
+        NOT_ENROLLED = 2; // This error code is set when Feature Not enrolled
+        INVALID_CCS = 3; // This error code is set when Invalid CCS
+        EXPIRED_SUBSCRIPTION_AND_NOT_ENROLLED = 4; // This error code is set when Subscription got expired and Not enrolled
+        EXPIRED_SUBSCRIPTION_AND_INVALID_CCS = 5; // This error code is set when Subscription expiration and Invalid CCS
+        NOT_ENROLLED_AND_INVALID_CCS = 6; // This error code is set when Not enrolled and Invalid CCS
+        EXPIRED_SUBSCRIPTION_NOT_ENROLLED_AND_INVALID_CCS = 7; // This error code is set when Subscription expiration , Not enrolled  and Invalid CCS
+        POLICY_VALIDATION_SYSTEM_DOWN = 8; // This error code is set when cloud system down, Unable to check subscription, enrollment and CCS
+        PROVIDER_SYSTEM_DOWN = 9; // This error code is set when Content Provider system down
+        IPPT_CLOUD_SYSTEM_DOWN = 10; // This error code is set when IPPT cloud system down
+        PROVIDER_TOKEN_REFUSAL = 11; // This error code is set when Refusal from content provider for a Token
+        PAYLOAD_ERROR = 12; // This error code is set when Mandatory Token fields are missing
+        INVALID_URL = 13; // This error code is set when URL in the Configuration is not located
+        OTHER_ERRORS = 14; // This error code is set when all other Errors occurs
+    }
+    // API version, static field
+    optional __ApiVersion __api_version = 10;
+}
+
+/**
+ * @fnv_message_proto: Revoke token
+ * @fnv_topic "SERVICES/REQUEST/FNV/IPPTCLIENT/" + application-id
+ * @fnv_command revocation
+ * @fnv_response: TokenRevocationResponse
+ * @fnv_description:
+ */
+message TokenRevocation
+{
+    optional string revocationId = 1;
+    // API version, static field
+    optional __ApiVersion __api_version = 10;
+}
+
+/**
+ * @fnv_message_proto: Send response for token revocation
+ * @fnv_topic "SERVICES/REQUEST/FNV/IPPT/SERVER"
+ * @fnv_command revocation-response
+ * @fnv_request: TokenRevocation
+ * @fnv_description:
+ */
+message TokenRevocationResponse
+{
+    optional string applicationId = 1;
+    optional string revocationId = 2;
+    // API version, static field
+    optional __ApiVersion __api_version = 10;
+}
+
+/**
+ * @fnv_message_proto: Send alert for token revocation
+ * @fnv_topic "SERVICES/REQUEST/FNV/IPPT/SERVER"
+ * @fnv_command revocation-alert
+ * @fnv_description:
+ */
+message TokenRevocationAlert
+{
+    optional string applicationId = 1;
+    optional string revocationId = 2;
+    optional bool revocationSucceeded = 3;
+    optional string errorDescription  = 4;
+    // API version, static field
+    optional __ApiVersion __api_version = 10;
+}
+

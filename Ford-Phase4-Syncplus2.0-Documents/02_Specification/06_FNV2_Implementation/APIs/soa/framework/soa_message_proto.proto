@@ -1,0 +1,60 @@
+//
+// CONFIDENTIAL - FORD MOTOR COMPANY
+//
+// This is an unpublished work, which is a trade secret, created in
+// 2017.  Ford Motor Company owns all rights to this work and intends
+// to maintain it in confidence to preserve its trade secret status.
+// Ford Motor Company reserves the right to protect this work as an
+// unpublished copyrighted work in the event of an inadvertent or
+// deliberate unauthorized publication.  Ford Motor Company also
+// reserves its rights under the copyright laws to protect this work
+// as a published work.  Those having access to this work may not copy
+// it, use it, or disclose the information contained in it without
+// the written authorization of Ford Motor Company.
+//
+
+syntax = "proto2";
+option optimize_for = CODE_SIZE;
+
+package fnv.soa.framework;
+
+/**
+* @fnv_proto
+* Contains SOA message header fields
+* @fnv_topic all topics
+* @fnv_scope ECG_INTERNAL
+* @fnv_api_source INTERNAL
+* @fnv_message_version 1.0
+*/
+message SoaMessageProto
+{
+	// Service endpoint. This is a part on request/response context.
+    optional string serviceID = 1;
+	// Command ID.
+    optional string commandID = 2;
+	// Service version
+    optional string serviceVersion = 3;
+    // Transaction ID.  This is a part on request/response context.
+    optional string transactionID = 4;
+    // Data multicast endpoint.
+    optional string dataEndpoint = 5;
+    // Consumer Endpoint.
+    optional string consumerEndpoint = 6;
+    // The payload
+    optional bytes payload = 7;
+    enum TransactionError {
+    	NO_ERROR = 0;
+    	GENERAL_ERROR = 1;
+    	VERSION_MISMATCH = 2;
+    	COMMAND_NOT_SUPPORTED = 3;
+    	PROVIDER_CLOSED = 4;
+    	PROVIDER_DISCONNECTED = 5;
+    }
+    optional TransactionError transactionError = 8 [default = NO_ERROR];
+    optional string transactionErrorDetailes = 9;
+    optional string sender_ecu_id = 10;
+    optional string sender_uid = 11;
+    
+    // optional field not useable by user level of SoaMessage
+    optional bytes context = 101;
+}

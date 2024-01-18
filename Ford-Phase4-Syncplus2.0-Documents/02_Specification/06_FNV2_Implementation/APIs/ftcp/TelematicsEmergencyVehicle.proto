@@ -1,0 +1,44 @@
+syntax = "proto2";
+//	Ford Telematics Communication Protocol
+//  Feature/Enabler/Common: Emergency Vehicle Application
+//	Version Number: 6.0.9
+//	Date Revised: 07/08/2019
+// 	Last Updated By: Thoppae, Vijai [VTHOPPAE]
+// 	Reviewed By: Murali Chitturi[MCHITTUR], Rumeli Das[RDAS9], Mageshwaran Mohan [MMOHAN17]
+// 	Ford Confidential
+//
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 09/07/2018 for version 6.0.2
+	// Packaging of proto files have been introduced and referenced
+	// Added syntax = "proto2" to the header
+//************************************************************************************************************************************************************************
+// Changes/Version based on B4 FTCP version and FNV2 FTCP Proposal
+// Covers part of Fleet Telematics Requirements
+//************************************************************************************************************************************************************************
+// Change Log for version 6.0.1
+// TelematicsEmergencyVehicle
+	// Re-ordered TAG numbers
+//************************************************************************************************************************************************************************
+
+// Fleet Telematics Emergency Vehicle Messages
+package com.ford.ftcp.apps;
+
+import "FeatureCommon.proto";
+
+message PolicePursuitModeAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 2;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 3;
+}
+
+message EventDataRecorderAlert{
+	// Message structure for vehicle status. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehicleStatus vstat = 1;
+	// Message structure for vehicle position data. ECU(ECG/TCU) shall always set this.
+	optional com.ford.ftcp.appcommon.VehiclePositionData vehiclePositionData = 2;
+	// Driver safety data - Derived
+	optional com.ford.ftcp.appcommon.DriverSafetyData driverSafetyData = 3;
+}

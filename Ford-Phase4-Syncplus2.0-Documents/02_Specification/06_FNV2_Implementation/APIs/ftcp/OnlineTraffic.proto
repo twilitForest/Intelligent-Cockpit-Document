@@ -1,0 +1,188 @@
+syntax = "proto2";
+//	Ford Telematics Communication Protocol
+//  Feature/Enabler/Common: Online Traffic (OLT) and Local Hazard Information (LHI)
+//	Version Number: 6.0.9
+//	Date Revised: 07/08/2019
+// 	Last Updated By:  Rumeli Das[RDAS9]
+// 	Reviewed By: Murali Chitturi[MCHITTUR],Mageshwaran Mohan[MMOHAN17],Vijai Thoppae[VTHOPPAE]
+// 	Ford Confidential
+//
+//************************************************************************************************************************************************************************
+//CHANGE LOG on 03/27/2019 for version 6.0.6
+// CR# 815 ECG JIRA# 23338
+	// Added TSP_CONN_FAILURE --> OnlineTrafficSessionRequestReasonENUM
+	// Added OLT_LHI_FCD_CONFIG_FAILURE --> OnlineTrafficSessionRequestReasonENUM
+	// Added YES_WITH_NAV --> LHIEnabledENUM
+	// Added YES_WITHOUT_NAV --> LHIEnabledENUM
+	// Added following elements in OnlineTrafficSessionResponse
+		// sessionID to uniquely identify session
+		// hazardServiceURL to upload hazard data
+		// Enumeration fcdUrlType to identify which FCD upload url is being used
+	// Deprecated driveID in OnlineTrafficSessionResponse
+//************************************************************************************************************************************************************************
+// Changes/Version based on FB5 OnlineTraffic requirement and FNV2 FTCP Proposal
+//************************************************************************************************************************************************************************
+package com.ford.ftcp.apps;
+import "ErrorAndStatus.proto";
+
+// Message structure for Online Traffic  to initiate SESSION queries
+message OnlineTrafficSessionQuery{
+    // Vehicle shall populate this structure to establish a session
+	optional OnlineTrafficSession onlineTrafficSession = 1;
+}
+
+// Message structure for Session Query Response to receive "Session" related configuration
+message OnlineTrafficSessionQueryResponse{
+    // Cloud shall populate this structure for "SESSION" Query Response
+	optional OnlineTrafficSessionResponse onlineTrafficSessionResponse = 1;
+	//Cloud shall always set this to return Query response status
+	optional com.ford.ftcp.appcommon.SDNQueryStatusENUM SDNQueryStatus = 2;
+	// Message structure for error details. Cloud shall ONLY set this upon any error condition
+	optional com.ford.ftcp.appcommon.SDNErrorDetail SDNerrorDetail = 3;
+}
+
+// LHI Command and command response
+// Message structure for OLTDataTriggerCommand
+message OLTDataTriggerCommand {
+  	// OLT Drive Id
+    optional int32 driveID = 1;
+    // Enumeration to indicate ECG to get data or reconnect session
+    optional OnlineTrafficCommandTypeENUM commandType = 2;
+
+    // Command Type enumeration
+    enum OnlineTrafficCommandTypeENUM{
+    	FETCH_DATA = 0;
+    	REINIT_SESSION = 1;
+    }
+}
+
+
+// Message structure for OLTDataTriggerCommandResponse
+message OLTDataTriggerCommandResponse{
+	// Enumeration for CommandStatus. TCU shall always set this.
+	optional com.ford.ftcp.appcommon.CommandStatusEnum status = 1;
+	// Message structure for command error details. TCU shall only set this upon any error condition
+	optional com.ford.ftcp.appcommon.ErrorDetail errorDetail = 2;
+}
+
+// END LHI Command and command response
+
+//******************************************************************************************
+// MESSAGE STRUCTURES FOR ONLINE TRAFFIC FEATURE
+//******************************************************************************************
+
+// Message structure for SESSION type Query to establish session with
+// Online Traffic Provider and to get the configuration parameters for both Online Traffic and Floating Car Data and local hazard information
+
+message OnlineTrafficSession{
+    // List of "Country-Map versions mapping"
+    optional OnlineTrafficLocationTable locationTable = 1;
+	// Navigation software version identifier
+	optional string navVersion = 2;
+	// Reason code to identify the reason for initiating the session
+	optional OnlineTrafficSessionRequestReasonENUM sessionRequestReasonENUM = 3;
+	//Restrictions for session request
+	optional LHIEnabledENUM LHIEnabled = 4 ;
+	//digest for the metadata for country-map, LHI, FCD etc.
+	optional bytes fingerprintSHA256 = 5;
+
+	// Reason codes for TCU to set while initiating the session query
+	// Refer ECG SPSS and/or SDN Specifications for complete details on the usage,
+	// conditions and mapping of these values
+	enum OnlineTrafficSessionRequestReasonENUM
+	{
+		UNKNOWN_ERROR = 0;
+		OK = 1;
+		UNPACK_FAILED = 2;
+		DECODE_FAILED = 3;
+		OUT_OF_SYNC = 4;
+		FEATURE_REENABLED = 5;
+		TRAFFIC_RESPONSE_RECONNECT = 6;
+		TIMEOUT = 7;
+		PARAMETER_UPDATE = 8;
+		TSP_CONN_FAILURE = 9;
+		OLT_LHI_FCD_CONFIG_FAILURE = 10;
+
+	}
+
+	// Restriction possible for session creation
+	enum LHIEnabledENUM{
+		NO = 0;
+		// As per CR#815 YES should be deprecated from 6.0.6 version
+		YES = 1;
+		YES_WITH_NAV = 2;
+		YES_WITHOUT_NAV = 3;
+	}
+}
+
+
+
+// Message structure for Session Query Response
+message OnlineTrafficSessionResponse
+{
+	//URL to be used via connection manager and IPPT for TPEGoverHTTP client
+	optional string tpegServiceURL = 1;
+	//URL to be used via connection manager and IPPT for uploading floating car data
+	optional string fcdServiceURL = 2;
+	//unique key for session
+	optional string sessionKey = 3;
+	//digest for the configuration
+	optional bytes fingerprintSHA256 = 4;
+	// Drive ID
+	optional string driveID = 5[deprecated = true];
+	//Configuration for OLT and FCD and LHI
+	optional bytes oltFcdLHIConfig = 6;
+	// Cloud shall populate this with Session response
+    optional OnlineTrafficSessionResponseStatus onlineTrafficSessionResponseStatus = 7;
+    // Unique ID for the session
+    optional string sessionID = 8;
+    // URL to be used via connection manager and IPPT for uploading hazard data
+    optional string hazardServiceURL = 9;
+    // Cloud shall populate this to indicate if FCD url should be used or tpeg url
+    optional FCDURLTypeENUM fcdUrlType = 10;
+
+    enum FCDURLTypeENUM{
+    	FCD_URL = 0;
+    	TPEG_GET_MSG_URL = 1;
+    }
+
+
+}
+
+//Message structure for session response status
+message OnlineTrafficSessionResponseStatus{
+	//Response status
+	optional OnlineTrafficSessionQueryResponseStatusENUM sessionResponseCode = 1;
+	//SDN shall set this only when the response is not successful
+	optional string errorDescription = 2;
+	enum OnlineTrafficSessionQueryResponseStatusENUM
+	{
+	    // Failed to establish the session
+	    FAILED = 0;
+	    // Session established successfully
+	    SUCCESS = 1;
+	    // Do not retry Session Query within current ignition cycle
+	    FAILED_NORETRY = 2;
+	}
+}
+
+
+// OLT Supported "countries to mapversion" list
+message OnlineTrafficLocationTable
+{
+	// OLT Supported "countries to mapversion" list
+	repeated OnlineTrafficLocationEntry locationEntry = 1;
+	// Location Table Entries
+	message OnlineTrafficLocationEntry
+	{
+		// Refer CCS TCU SPSS for details and format for following attributes
+		optional uint32 countryCode = 1;
+		optional uint32 LTN = 2;
+		optional uint32 majorversion = 3;
+		optional uint32 minorVersion = 4;
+	}
+}
+
+//******************************************************************************************
+// END OF MESSAGE STRUCTURES FOR ONLINE TRAFFIC FEATURE
+//******************************************************************************************
