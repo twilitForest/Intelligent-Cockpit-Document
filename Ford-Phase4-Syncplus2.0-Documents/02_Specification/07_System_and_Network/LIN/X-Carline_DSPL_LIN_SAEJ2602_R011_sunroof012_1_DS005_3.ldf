@@ -1,0 +1,1308 @@
+/* LIN description file */
+/* B2yy/C34x/B232/B299MCA DSPL/ICP LIN connection (R1-R3 were for B2yy only)*/
+/* hand-coded version -- this is the master!*/
+/* FoE/EESE/EI/FI-MUX/Martin Ostermann (R1-R5)*/
+/* FoE/EESE/EI/FI-MUX/Horst Wickinghoff (from R6 onwards)*/
+/* FoE/EESE/EI/FI-MUX/Matthias Ley/ Christian Grossmann  (draft SAEJ2602-implementation)*/
+/* FoE/EESE/EI/FI-MUX/Matthias Ley/ Christian Grossmann  (changes in Dimm Level Signals)*/
+/* FoE/EESE/EI/FI-MUX/Matthias Ley/ Christian Grossmann  (changes in Dimm Zone bitfield encoding remarks)*/
+/* FoE/EESE/EI/FI-MUX/Matthias Ley/ Christian Grossmann  (changes in Button ID encoding remarks)*/
+/* FoE/EESE/EI/FI-MUX/Matthias Ley/ Christian Grossmann  (added Signals and Frame for ICP Serial number transfer)*/
+/* R1 2006-08-04 */
+/* R2 2006-10-20 */
+/* R3 2006-07-25 */
+/* R4 2008-04-01 */
+/* R5 2009-06-25 */
+/* R6 2011-08-25 */
+/* R7 2013-03-15 */
+/* R001 2014-10-24 */
+/* R003 2014-12-10 */
+/* FoE/EESE/EI/FI-MUX/Matthias Ley/ Christian Grossmann  rorderdered ICPStatusID,ICPStatusValue,ICPLINStatus, to better conform to SAE J2602 spec*/
+/* R003 2015-01-08 */
+/* FoE/EESE/EI/FI-MUX/Matthias Ley changed init values for ICPBtnID_[A-D] signals to 255, which correlates to 'idle' */
+/* R005 2015-02-10 */
+/* FoE/EESE/EI/FI-MUX/Matthias Ley/ Christian Grossmann  redesign of APINFO bits /  replacement for ICPStatusID and ICPStatusValue to better conform to SAE J2602 spec*/
+/* R005_Draft 2015-03-23 */
+/* R007 Release with added schedules for Master Request Frame and Slave Response Frame in acc. with Supplier Proposal*/
+/* R007 Release on 20150910 */
+/* R008-Draft with encoding type ICPSrNrDigit_EnCodingType error corrected ( value range now 0-15 ilo 0-16) */
+/* R008 with encoding type ICPBtnID_EncodingType added value 110 ICPBtnID_Camera */
+/* R008 Release on 20160506 */
+/* R009 Revised Value in documentation of DSPLIlluZone_EncodingType:  Value $20 was 'reserved' changed to 'Chrome'*/
+/* R009 Revised File Name for Cross Carline usage was '201xB479_DSPL_LIN_SAEJ2602_R009' */
+/* R009 Released 20170801 */
+/* R010 added button ID for calm screen and driver assist for CD542 */
+/* R010 Released 20190923 */
+
+LIN_description_file;
+LIN_protocol_version = "J2602_1_1.0";
+LIN_language_version = "J2602_3_1.0";
+LIN_speed = 10.417 kbps;
+
+Nodes {
+  Master: DSPL, 3 ms, 0.5 ms, 40 bits, 20 %;
+  Slaves: ICP, sunroof, FGA ;
+}
+
+Signals {
+  ICP_APINFO_0: 1, 0, ICP, DSPL ;
+  ICP_APINFO_1: 1, 0, ICP, DSPL ;
+  ICP_APINFO_2: 1, 0, ICP, DSPL ;
+  ICP_APINFO_3: 1, 0, ICP, DSPL ;
+  ICP_APINFO_4: 1, 0, ICP, DSPL ;
+  ICPBtnCoding_A: 4, 0, ICP, DSPL ;
+  ICPBtnCoding_B: 4, 0, ICP, DSPL ;
+  ICPBtnCoding_C: 4, 0, ICP, DSPL ;
+  ICPBtnCoding_D: 4, 0, ICP, DSPL ;
+  ICPLINStatus: 3, 0, ICP, DSPL ;
+  ICPRotaryCmd: 4, 7, ICP, DSPL ;
+  ICPVolumeCmd: 8, 30, ICP, DSPL ;
+  ICPVolumeCmd2: 4, 7, ICP, DSPL ;
+  ICPBtnID_A: 8, 255, ICP, DSPL ;
+  ICPBtnID_B: 8, 255, ICP, DSPL ;
+  ICPBtnID_C: 8, 255, ICP, DSPL ;
+  ICPBtnID_D: 8, 255, ICP, DSPL ;
+  ICPPartNumIndex: 8, 0, ICP, DSPL ;
+  ICPPartNumData0: 8, 0, ICP, DSPL ;
+  ICPPartNumData1: 8, 0, ICP, DSPL ;
+  ICPPartNumData2: 8, 0, ICP, DSPL ;
+  ICPPartNumData3: 8, 0, ICP, DSPL ;
+  ICPPartNumData4: 8, 0, ICP, DSPL ;
+  ICPPartNumData5: 8, 0, ICP, DSPL ;
+  ICPSrNrDigit00: 4, 0, ICP, DSPL ;
+  ICPSrNrDigit01: 4, 0, ICP, DSPL ;
+  ICPSrNrDigit02: 4, 0, ICP, DSPL ;
+  ICPSrNrDigit03: 4, 0, ICP, DSPL ;
+  ICPSrNrDigit04: 4, 0, ICP, DSPL ;
+  ICPSrNrDigit05: 4, 0, ICP, DSPL ;
+  ICPSrNrDigit06: 4, 0, ICP, DSPL ;
+  ICPSrNrDigit07: 4, 0, ICP, DSPL ;
+  ICPSrNrDigit08: 4, 0, ICP, DSPL ;
+  ICPSrNrDigit09: 4, 0, ICP, DSPL ;
+  ICPSrNrDigit10: 4, 0, ICP, DSPL ;
+  ICPSrNrDigit11: 4, 0, ICP, DSPL ;
+  ICPSrNrDigit12: 4, 0, ICP, DSPL ;
+  ICPSrNrDigit13: 4, 0, ICP, DSPL ;
+  DSPLIlluZone: 8, 0, DSPL, ICP ;
+  DSPLDimmLvl1: 8, 0, DSPL, ICP ;
+  DSPLDimmLvl2: 8, 0, DSPL, ICP ;
+  DSPLConfigIndex: 8, 0, DSPL, ICP ;
+  DSPLConfigData0: 8, 0, DSPL, ICP ;
+  DSPLConfigData1: 8, 0, DSPL, ICP ;
+  DSPLConfigData2: 8, 0, DSPL, ICP ;
+  DSPLConfigData3: 8, 0, DSPL, ICP ;
+  DSPLConfigData4: 8, 0, DSPL, ICP ;
+  DSPLConfigData5: 8, 0, DSPL, ICP ;
+  DSPLConfigData6: 8, 0, DSPL, ICP ;
+  APIMSunroofControl: 4, 0, DSPL, sunroof ;
+  APIMSunshadeControl: 4, 0, DSPL, sunroof ;
+  SunroofDSPLStatusAntiPinch: 1, 0, sunroof, DSPL ;
+  SunroofDSPLStatusPosition: 4, 0, sunroof, DSPL ;
+  SunroofDSPLStatusMovement: 3, 7, sunroof, DSPL ;
+  SunroofDSPLStatusAntiPinchSS: 1, 0, sunroof, DSPL ;
+  SunroofDSPLStatusPositionSS: 4, 0, sunroof, DSPL ;
+  SunroofDSPLStatusMovementSS: 3, 0, sunroof, DSPL ;
+  SunroofDSPLStatusNetwork: 1, 0, sunroof, DSPL ;
+  SunroofDSPLStatusRelay: 1, 0, sunroof, DSPL ;
+  SunroofDSPLStatusHallSensor: 1, 0, sunroof, DSPL ;
+  SunroofDSPLStatusOvertemp: 1, 0, sunroof, DSPL ;
+  SunroofDSPLStatusNormalization: 1, 1, sunroof, DSPL ;
+  SunroofDSPLStatusInitialization: 1, 0, sunroof, DSPL ;
+  SunroofDSPLStatusLearn: 1, 1, sunroof, DSPL ;
+  SunroofDSPLStatusOvervoltage: 1, 0, sunroof ;
+  SunroofDSPLStatusUndervoltage: 1, 0, sunroof ;
+  SunroofDSPLStatusRelaySS: 1, 0, sunroof, DSPL ;
+  SunroofDSPLStatusHallSensorSS: 1, 0, sunroof, DSPL ;
+  SunroofDSPLStatusOvertempSS: 1, 0, sunroof, DSPL ;
+  SunroofDSPLStatusOvervoltageSS: 1, 0, sunroof ;
+  SunroofDSPLStatusUndervoltageSS: 1, 0, sunroof ;
+  SunroofDSPLStatusModeSS: 1, 0, sunroof, DSPL ;
+  SunroofDSPLStatusNormalizationSS: 1, 1, sunroof, DSPL ;
+  SunroofDSPLStatusLearnSS: 1, 1, sunroof, DSPL ;
+  SunroofDSPLStatusInitializationSS: 1, 0, sunroof, DSPL ;
+  SROvervoltage: 1, 0, sunroof, DSPL ;
+  SRUndervoltage: 1, 0, sunroof, DSPL ;
+  SSOvervoltage: 1, 0, sunroof, DSPL ;
+  SSUndervoltage: 1, 0, sunroof, DSPL ;
+  SR_APINFO_4: 1, 0, sunroof, DSPL ;
+  SRLINStatus: 3, 0, sunroof, DSPL ;
+  AC_1_FGA_OperationReq: 2, 0, DSPL, FGA ;
+  AC_1_GenderSts: 2, 0, DSPL, FGA ;
+  AC_1_FGAChanTypSelect: 3, 0, DSPL, FGA ;
+  AC_1_InCarTemperature: 8, 0, DSPL, FGA ;
+  AC_1_FGAIntensityReq: 3, 0, DSPL, FGA ;
+  AC_1_Time_Year: 5, 0, DSPL, FGA ;
+  AC_1_Time_Day: 9, 0, DSPL, FGA ;
+  AC_1_ScentType_afctdst_Factor: 8, 0, DSPL, FGA ;
+  FGA_1_FGACurrentWorkCh: 2, 0, FGA, DSPL ;
+  FGA_1_FGACurrentdensity: 3, 0, FGA, DSPL ;
+  FGA_1_LINStatus_Err: 3, 0, FGA ;
+  FGA_1_FG_Chan1Typ: 8, 0, FGA, DSPL ;
+  FGA_1_FG_Chan2Typ: 8, 0, FGA, DSPL ;
+  FGA_1_FG_Chan3Typ: 8, 0, FGA, DSPL ;
+  FGA_1_FG_LifeRemainingChan1: 7, 0, FGA, DSPL ;
+  FGA_1_FGID1Overdue: 1, 0, FGA ;
+  FGA_1_FG_LifeRemainingChan2: 7, 0, FGA, DSPL ;
+  FGA_1_FGID2Overdue: 1, 0, FGA ;
+  FGA_1_FG_LifeRemainingChan3: 7, 0, FGA, DSPL ;
+  FGA_1_FGID3Overdue: 1, 0, FGA ;
+  FGA_1_FGAStatusSts: 2, 0, FGA ;
+  FGA_1_FRAGTempSts: 2, 0, FGA ;
+  FGA_1_FRAGPowerSupplySts: 2, 0, FGA ;
+  FGA_1_FRAGFanSts: 1, 0, FGA ;
+  FGA_1_FRAGUnKnownErr: 1, 0, FGA ;
+  AC_2_CalibrationParaType: 8, 0, DSPL, FGA ;
+  AC_2_Calibrationvalue: 16, 0, DSPL, FGA ;
+  FGA_2_Supplier: 1, 0, FGA, DSPL ;
+  FGA_2_HW_Major: 2, 0, FGA, DSPL ;
+  FGA_2_HW_Minor: 4, 0, FGA, DSPL ;
+  FGA_2_SW_Major: 2, 0, FGA, DSPL ;
+  FGA_2_SW_Minor: 4, 0, FGA, DSPL ;
+  FGA_3_ProductioLineNum: 4, 0, FGA, DSPL ;
+  FGA_3_ProductionDateYY: 5, 0, FGA, DSPL ;
+  FGA_3_ProductionDateDD: 9, 0, FGA, DSPL ;
+  FGA_3_ProductionNUM: 16, 0, FGA, DSPL ;
+  DSPL_ACInd: 1, 0, DSPL, ICP ;
+  DSPL_RecInd: 1, 0, DSPL, ICP ;
+  DSPL_MaxDefInd: 1, 0, DSPL, ICP ;
+  DSPL_MaxAcInd: 1, 0, DSPL, ICP ;
+  DSPL_BlowerInd: 1, 0, DSPL, ICP ;
+  DSPLIgnition_Status: 4, 0, DSPL, ICP ;
+  AC_1_CalValue: 8, 0, DSPL, FGA ;
+  FGA_3_FGID1Overdue: 5, 0, FGA, DSPL ;
+  FGA_3_FGID2Overdue: 5, 0, FGA, DSPL ;
+  FGA_3_FGID3Overdue: 5, 0, FGA, DSPL ;
+  FGA_3_FGAStatusSts: 2, 0, FGA, DSPL ;
+  FGA_3_FRAGTempSts: 2, 0, FGA, DSPL ;
+  FGA_3_FRAGPowerSupplySts: 2, 0, FGA, DSPL ;
+  FGA_3_FRAGFanSts: 1, 0, FGA, DSPL ;
+  FGA_3_FRAGUnKnownErr: 1, 0, FGA, DSPL ;
+  FGA_3_CalValue: 8, 0, FGA, DSPL ;
+  FGA_1_CalValue: 8, 0, FGA, DSPL ;
+  FGA_2_CalValue: 8, 0, FGA, DSPL ;
+  AC_2_CalValue: 8, 0, DSPL, FGA ;
+}
+
+Diagnostic_signals {
+  MasterReqB0: 8, 0 ;
+  MasterReqB1: 8, 0 ;
+  MasterReqB2: 8, 0 ;
+  MasterReqB3: 8, 0 ;
+  MasterReqB4: 8, 0 ;
+  MasterReqB5: 8, 0 ;
+  MasterReqB6: 8, 0 ;
+  MasterReqB7: 8, 0 ;
+  SlaveRespB0: 8, 0 ;
+  SlaveRespB1: 8, 0 ;
+  SlaveRespB2: 8, 0 ;
+  SlaveRespB3: 8, 0 ;
+  SlaveRespB4: 8, 0 ;
+  SlaveRespB5: 8, 0 ;
+  SlaveRespB6: 8, 0 ;
+  SlaveRespB7: 8, 0 ;
+}
+
+
+
+Frames {
+  ICPBtnState: 0, ICP, 8 {
+    ICP_APINFO_0, 0 ;
+    ICP_APINFO_1, 1 ;
+    ICP_APINFO_2, 2 ;
+    ICP_APINFO_3, 3 ;
+    ICP_APINFO_4, 4 ;
+    ICPLINStatus, 5 ;
+    ICPBtnID_A, 8 ;
+    ICPBtnID_B, 16 ;
+    ICPBtnID_C, 24 ;
+    ICPBtnID_D, 32 ;
+    ICPBtnCoding_A, 40 ;
+    ICPBtnCoding_B, 44 ;
+    ICPBtnCoding_C, 48 ;
+    ICPBtnCoding_D, 52 ;
+    ICPVolumeCmd, 56 ;
+  }
+  DSPLSendSignals: 1, DSPL, 5 {
+    DSPLIlluZone, 0 ;
+    DSPLDimmLvl1, 8 ;
+    DSPLDimmLvl2, 16 ;
+    DSPL_ACInd, 24 ;
+    DSPL_RecInd, 25 ;
+    DSPL_MaxDefInd, 26 ;
+    DSPL_MaxAcInd, 27 ;
+    DSPL_BlowerInd, 28 ;
+    DSPLIgnition_Status, 32 ;
+  }
+  ICPBtnStateRotary: 2, ICP, 8 {
+    ICP_APINFO_0, 0 ;
+    ICP_APINFO_1, 1 ;
+    ICP_APINFO_2, 2 ;
+    ICP_APINFO_3, 3 ;
+    ICP_APINFO_4, 4 ;
+    ICPLINStatus, 5 ;
+    ICPBtnID_A, 8 ;
+    ICPBtnID_B, 16 ;
+    ICPBtnID_C, 24 ;
+    ICPBtnID_D, 32 ;
+    ICPBtnCoding_A, 40 ;
+    ICPBtnCoding_B, 44 ;
+    ICPBtnCoding_C, 48 ;
+    ICPBtnCoding_D, 52 ;
+    ICPVolumeCmd2, 56 ;
+    ICPRotaryCmd, 60 ;
+  }
+  DSPLConfigCalibrate: 3, DSPL, 8 {
+    DSPLConfigIndex, 0 ;
+    DSPLConfigData0, 8 ;
+    DSPLConfigData1, 16 ;
+    DSPLConfigData2, 24 ;
+    DSPLConfigData3, 32 ;
+    DSPLConfigData4, 40 ;
+    DSPLConfigData5, 48 ;
+    DSPLConfigData6, 56 ;
+  }
+  ICPPartNum: 4, ICP, 8 {
+    ICP_APINFO_0, 0 ;
+    ICP_APINFO_1, 1 ;
+    ICP_APINFO_2, 2 ;
+    ICP_APINFO_3, 3 ;
+    ICP_APINFO_4, 4 ;
+    ICPLINStatus, 5 ;
+    ICPPartNumIndex, 8 ;
+    ICPPartNumData0, 16 ;
+    ICPPartNumData1, 24 ;
+    ICPPartNumData2, 32 ;
+    ICPPartNumData3, 40 ;
+    ICPPartNumData4, 48 ;
+    ICPPartNumData5, 56 ;
+  }
+  ICPSerialNum: 5, ICP, 8 {
+    ICP_APINFO_0, 0 ;
+    ICP_APINFO_1, 1 ;
+    ICP_APINFO_2, 2 ;
+    ICP_APINFO_3, 3 ;
+    ICP_APINFO_4, 4 ;
+    ICPLINStatus, 5 ;
+    ICPSrNrDigit00, 8 ;
+    ICPSrNrDigit01, 12 ;
+    ICPSrNrDigit02, 16 ;
+    ICPSrNrDigit03, 20 ;
+    ICPSrNrDigit04, 24 ;
+    ICPSrNrDigit05, 28 ;
+    ICPSrNrDigit06, 32 ;
+    ICPSrNrDigit07, 36 ;
+    ICPSrNrDigit08, 40 ;
+    ICPSrNrDigit09, 44 ;
+    ICPSrNrDigit10, 48 ;
+    ICPSrNrDigit11, 52 ;
+    ICPSrNrDigit12, 56 ;
+    ICPSrNrDigit13, 60 ;
+  }
+  DSPLSunroof: 40, DSPL, 2 {
+    APIMSunroofControl, 0 ;
+    APIMSunshadeControl, 4 ;
+  }
+  SunroofDSPLStatus: 41, sunroof, 5 {
+    SunroofDSPLStatusAntiPinch, 8 ;
+    SunroofDSPLStatusPosition, 9 ;
+    SunroofDSPLStatusMovement, 13 ;
+    SunroofDSPLStatusAntiPinchSS, 16 ;
+    SunroofDSPLStatusPositionSS, 17 ;
+    SunroofDSPLStatusMovementSS, 21 ;
+    SunroofDSPLStatusNetwork, 24 ;
+    SunroofDSPLStatusRelay, 25 ;
+    SunroofDSPLStatusHallSensor, 26 ;
+    SunroofDSPLStatusOvertemp, 27 ;
+    SunroofDSPLStatusNormalization, 28 ;
+    SunroofDSPLStatusInitialization, 29 ;
+    SunroofDSPLStatusLearn, 30 ;
+    SunroofDSPLStatusRelaySS, 31 ;
+    SunroofDSPLStatusHallSensorSS, 32 ;
+    SunroofDSPLStatusOvertempSS, 33 ;
+    SunroofDSPLStatusModeSS, 34 ;
+    SunroofDSPLStatusNormalizationSS, 35 ;
+    SunroofDSPLStatusLearnSS, 36 ;
+    SunroofDSPLStatusInitializationSS, 37 ;
+    SROvervoltage, 0 ;
+    SRUndervoltage, 1 ;
+    SSOvervoltage, 2 ;
+    SSUndervoltage, 3 ;
+    SR_APINFO_4, 4 ;
+    SRLINStatus, 5 ;
+  }
+  DSPLDigtitalScent_Rq: 10, DSPL, 6 {
+    AC_1_FGA_OperationReq, 0 ;
+    AC_1_GenderSts, 2 ;
+    AC_1_FGAChanTypSelect, 4 ;
+    AC_1_InCarTemperature, 7 ;
+    AC_1_FGAIntensityReq, 15 ;
+    AC_1_Time_Year, 18 ;
+    AC_1_Time_Day, 23 ;
+    AC_1_ScentType_afctdst_Factor, 32 ;
+    AC_1_CalValue, 40 ;
+  }
+  DS_FGA_Status: 11, FGA, 8 {
+    FGA_1_FGACurrentWorkCh, 48 ;
+    FGA_1_FGACurrentdensity, 45 ;
+    FGA_1_FG_Chan1Typ, 0 ;
+    FGA_1_FG_Chan2Typ, 8 ;
+    FGA_1_FG_Chan3Typ, 16 ;
+    FGA_1_FG_LifeRemainingChan1, 24 ;
+    FGA_1_FG_LifeRemainingChan2, 31 ;
+    FGA_1_FG_LifeRemainingChan3, 38 ;
+    FGA_1_CalValue, 56 ;
+  }
+  DSPLCalibrationDS_Set: 12, DSPL, 4 {
+    AC_2_CalibrationParaType, 0 ;
+    AC_2_Calibrationvalue, 8 ;
+    AC_2_CalValue, 24 ;
+  }
+  DigitalScentStatus: 13, FGA, 7 {
+    FGA_2_Supplier, 0 ;
+    FGA_2_HW_Major, 1 ;
+    FGA_2_HW_Minor, 4 ;
+    FGA_2_SW_Major, 8 ;
+    FGA_2_SW_Minor, 10 ;
+    FGA_3_ProductioLineNum, 14 ;
+    FGA_3_ProductionDateYY, 18 ;
+    FGA_3_ProductionDateDD, 23 ;
+    FGA_3_ProductionNUM, 32 ;
+    FGA_2_CalValue, 48 ;
+  }
+  DS_FGA_Status2: 14, FGA, 4 {
+    FGA_3_FGID1Overdue, 0 ;
+    FGA_3_FGID2Overdue, 5 ;
+    FGA_3_FGID3Overdue, 10 ;
+    FGA_3_FGAStatusSts, 15 ;
+    FGA_3_FRAGTempSts, 17 ;
+    FGA_3_FRAGPowerSupplySts, 19 ;
+    FGA_3_FRAGFanSts, 21 ;
+    FGA_3_FRAGUnKnownErr, 22 ;
+    FGA_3_CalValue, 24 ;
+  }
+}
+
+
+
+Diagnostic_frames {
+  MasterReq: 0x3c {
+    MasterReqB0, 0 ;
+    MasterReqB1, 8 ;
+    MasterReqB2, 16 ;
+    MasterReqB3, 24 ;
+    MasterReqB4, 32 ;
+    MasterReqB5, 40 ;
+    MasterReqB6, 48 ;
+    MasterReqB7, 56 ;
+  }
+  SlaveResp: 0x3d {
+    SlaveRespB0, 0 ;
+    SlaveRespB1, 8 ;
+    SlaveRespB2, 16 ;
+    SlaveRespB3, 24 ;
+    SlaveRespB4, 32 ;
+    SlaveRespB5, 40 ;
+    SlaveRespB6, 48 ;
+    SlaveRespB7, 56 ;
+  }
+}
+
+Node_attributes {
+  ICP{
+    LIN_protocol = "J2602_1_1.0" ;
+    configured_NAD = 0x60 ;
+    product_id = 0x1000, 0x1000, 100 ;
+    response_error = ICPLINStatus ;
+    P2_min = 0 ms ;
+    ST_min = 0 ms ;
+    configurable_frames {
+      ICPBtnState = 0x0 ;
+      ICPBtnStateRotary = 0x0 ;
+      ICPPartNum = 0x0 ;
+      ICPSerialNum = 0x0 ;
+      DSPLSendSignals = 0x0 ;
+      DSPLConfigCalibrate = 0x0 ;
+    }
+    response_tolerance = 20 % ;
+    wakeup_time = 100 ms;
+    poweron_time = 100 ms;
+  }
+  sunroof{
+    LIN_protocol = "J2602_1_1.0" ;
+    configured_NAD = 0x64 ;
+    product_id = 0x2E, 0x400, 100 ;
+    P2_min = 0 ms ;
+    ST_min = 0 ms ;
+    configurable_frames {
+      DSPLSunroof = 0x0 ;
+      SunroofDSPLStatus = 0x0 ;
+    }
+    response_tolerance = 40 % ;
+    wakeup_time = 100 ms;
+    poweron_time = 100 ms;
+  }
+  FGA{
+    LIN_protocol = "J2602_1_1.0" ;
+    configured_NAD = 0xFF ;
+    product_id = 0x0, 0x0, 255 ;
+    P2_min = 0 ms ;
+    ST_min = 0 ms ;
+    configurable_frames {
+      DSPLDigtitalScent_Rq = 0x0 ;
+      DS_FGA_Status = 0x0 ;
+      DSPLCalibrationDS_Set = 0x0 ;
+      DigitalScentStatus = 0x0 ;
+      DS_FGA_Status2 = 0x0 ;
+    }
+    response_tolerance = 40 % ;
+    wakeup_time = 100 ms;
+    poweron_time = 100 ms;
+  }
+}
+
+Schedule_tables {
+ LIN11 {
+    ICPBtnState delay 15 ms ;
+    DSPLSendSignals delay 15 ms ;
+  }
+ LIN12 {
+    ICPBtnStateRotary delay 15 ms ;
+    DSPLSendSignals delay 15 ms ;
+  }
+ LIN13 {
+    ICPBtnStateRotary delay 15 ms ;
+  }
+ LINConfig1 {
+    DSPLConfigCalibrate delay 15 ms ;
+    ICPPartNum delay 15 ms ;
+    ICPSerialNum delay 15 ms ;
+  }
+ MRF_schedule {
+    MasterReq delay 15 ms ;
+  }
+ SRF_schedule {
+    SlaveResp delay 18 ms ;
+  }
+ LIN14 {
+    DSPLSunroof delay 9 ms ;
+  }
+ LIN15 {
+    SunroofDSPLStatus delay 18 ms ;
+  }
+ LIN16 {
+    DSPLDigtitalScent_Rq delay 15 ms ;
+  }
+ LIN17_Event {
+    DSPLCalibrationDS_Set delay 12 ms ;
+  }
+ LIN18_Event {
+    DigitalScentStatus delay 18 ms ;
+  }
+ LIN19 {
+    DS_FGA_Status delay 18 ms ;
+    DS_FGA_Status2 delay 12 ms ;
+  }
+}
+
+
+Signal_encoding_types {
+  AC_1_CalValue_Encoding {
+    physical_value, 0, 255, 1, 0 ;
+  }
+  AC_1_FGAChanTypSelect_Encoding {
+    physical_value, 0, 7, 1, 0 ;
+    logical_value, 0, "Off" ;
+    logical_value, 1, "Channel 1" ;
+    logical_value, 2, "Channel 2" ;
+    logical_value, 3, "Channel 3" ;
+    logical_value, 4, "Reserved" ;
+    logical_value, 5, "Reserved" ;
+    logical_value, 6, "Reserved" ;
+    logical_value, 7, "Reserved" ;
+  }
+  AC_1_FGAIntensityReq_Encoding {
+    physical_value, 0, 7, 1, 0 ;
+    logical_value, 0, "Unknown" ;
+    logical_value, 1, "Off" ;
+    logical_value, 2, "Reserved" ;
+    logical_value, 3, "Low Intensity" ;
+    logical_value, 4, "Reserved" ;
+    logical_value, 5, "Medium Intensity" ;
+    logical_value, 6, "Reserved" ;
+    logical_value, 7, "High Intensity" ;
+  }
+  AC_1_FGA_OperationReq_Encoding {
+    physical_value, 0, 3, 1, 0 ;
+    logical_value, 0, "None / None Yet" ;
+    logical_value, 1, "Start / Continue Scent" ;
+    logical_value, 2, "Stop Scent" ;
+    logical_value, 3, "Master Error" ;
+  }
+  AC_1_GenderSts_Encoding {
+    physical_value, 0, 3, 1, 0 ;
+    logical_value, 0, "Unknown" ;
+    logical_value, 1, "Female" ;
+    logical_value, 2, "Male" ;
+    logical_value, 3, "Other" ;
+  }
+  AC_1_InCarTemperature_Encoding {
+    physical_value, 0, 255, 0.5, -57 ;
+    logical_value, 254, "Inital Value" ;
+    logical_value, 255, "Error" ;
+  }
+  AC_1_ScentType_afctdst_Factor_Encoding {
+    physical_value, 0, 255, 1, 0, "%" ;
+    logical_value, 0, "Unknown ID" ;
+    logical_value, 255, "Invalid value" ;
+  }
+  AC_1_Time_Day_Encoding {
+    physical_value, 0, 511, 1, 0, "day" ;
+  }
+  AC_1_Time_Year_Encoding {
+    physical_value, 0, 31, 1, 2020, "year" ;
+  }
+  AC_2_CalValue_Encoding {
+    physical_value, 0, 255, 1, 0 ;
+  }
+  AC_2_CalibrationParaType_Encoding {
+    physical_value, 0, 255, 1, 0 ;
+  }
+  AC_2_Calibrationvalue_Encoding {
+    physical_value, 0, 65535, 1, 0 ;
+  }
+  APIMSunroofControl_Encoding {
+    physical_value, 0, 15, 1, 0 ;
+    logical_value, 0, "no action" ;
+    logical_value, 1, "10%" ;
+    logical_value, 2, "20%" ;
+    logical_value, 3, "30%" ;
+    logical_value, 4, "40%" ;
+    logical_value, 5, "50%" ;
+    logical_value, 6, "60%" ;
+    logical_value, 7, "70%" ;
+    logical_value, 8, "80%" ;
+    logical_value, 9, "90%" ;
+    logical_value, 10, "fully open" ;
+    logical_value, 11, "fully close" ;
+    logical_value, 12, "tilt up" ;
+    logical_value, 13, "comfort" ;
+    logical_value, 14, "+10%" ;
+    logical_value, 15, "-10%" ;
+  }
+  APIMSunshadeControl_Encoding {
+    physical_value, 0, 15, 1, 0 ;
+    logical_value, 0, "no action" ;
+    logical_value, 1, "10%" ;
+    logical_value, 2, "20%" ;
+    logical_value, 3, "30%" ;
+    logical_value, 4, "40%" ;
+    logical_value, 5, "50%" ;
+    logical_value, 6, "60%" ;
+    logical_value, 7, "70%" ;
+    logical_value, 8, "80%" ;
+    logical_value, 9, "90%" ;
+    logical_value, 10, "fully open" ;
+    logical_value, 11, "fully close" ;
+    logical_value, 12, "mid" ;
+    logical_value, 13, "+10%" ;
+    logical_value, 14, "-10%" ;
+    logical_value, 15, "reserved" ;
+  }
+  DSPLDimmLvl_EncodingType {
+    physical_value, 0, 255, 1, 0 ;
+    logical_value, 0, "Off" ;
+    logical_value, 255, "Max" ;
+  }
+  DSPLIgnition_Status_Encoding {
+    physical_value, 0, 15, 1, 0 ;
+    logical_value, 0, "Unknown" ;
+    logical_value, 1, "Off" ;
+    logical_value, 2, "Accessory" ;
+    logical_value, 4, "Run" ;
+    logical_value, 8, "Start" ;
+    logical_value, 15, "Invalid" ;
+  }
+  DSPLIlluZone_EncodingType {
+    physical_value, 0, 255, 1, 0, "bitfield" ;
+  }
+  DSPL_ACInd_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "Off" ;
+    logical_value, 1, "On" ;
+  }
+  DSPL_BlowerInd_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "Off" ;
+    logical_value, 1, "On" ;
+  }
+  DSPL_MaxAcInd_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "Off" ;
+    logical_value, 1, "On" ;
+  }
+  DSPL_MaxDefInd_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "Off" ;
+    logical_value, 1, "On" ;
+  }
+  DSPL_RecInd_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "Off" ;
+    logical_value, 1, "On" ;
+  }
+  FGA_1_CalValue_Encoding {
+    physical_value, 0, 255, 1, 0 ;
+  }
+  FGA_1_FGACurrentWorkCh_Encoding {
+    physical_value, 0, 3, 1, 0 ;
+    logical_value, 0, "Off" ;
+    logical_value, 1, "Channel 1 Working" ;
+    logical_value, 2, "Channel 2 Working" ;
+    logical_value, 3, "Channel 3 Working" ;
+  }
+  FGA_1_FGACurrentdensity_Encoding {
+    physical_value, 0, 7, 1, 0 ;
+    logical_value, 0, "Unknown" ;
+    logical_value, 1, "Off" ;
+    logical_value, 2, "Reserved" ;
+    logical_value, 3, "Low Intensity" ;
+    logical_value, 4, "Reserved" ;
+    logical_value, 5, "Medium Intensity" ;
+    logical_value, 6, "Reserved" ;
+    logical_value, 7, "High Intensity" ;
+  }
+  FGA_1_FGAStatusSts_Encoding {
+    logical_value, 0, "Awake Not Scenting" ;
+    logical_value, 1, "Awake Scenting" ;
+    logical_value, 2, "Module Error" ;
+    logical_value, 3, "Reserved" ;
+  }
+  FGA_1_FGID1Overdue_Encoding {
+    logical_value, 0, "No Warning" ;
+    logical_value, 1, "Warning" ;
+  }
+  FGA_1_FG_Chan1Typ_Encoding {
+    physical_value, 0, 255, 1, 0 ;
+    logical_value, 0, "Unknown" ;
+    logical_value, 254, "Not Authentic/Invalid Cartridge" ;
+    logical_value, 255, "Not  installed" ;
+  }
+  FGA_1_FG_LifeRemainingChan1_Encoding {
+    physical_value, 0, 127, 1, 0, "%" ;
+  }
+  FGA_1_FRAGFanSts_Encoding {
+    logical_value, 0, "FAN Normal" ;
+    logical_value, 1, "Outlet Block" ;
+  }
+  FGA_1_FRAGPowerSupplySts_Encoding {
+    logical_value, 0, "Normal Power Supply" ;
+    logical_value, 1, "Over Power Supply" ;
+    logical_value, 2, "Under Power Supply" ;
+    logical_value, 3, "None" ;
+  }
+  FGA_1_FRAGTempSts_Encoding {
+    logical_value, 0, "Normal Temp" ;
+    logical_value, 1, "Over Temp" ;
+    logical_value, 2, "Under Temp" ;
+    logical_value, 3, "None" ;
+  }
+  FGA_1_FRAGUnKnownErr_Encoding {
+    logical_value, 0, "No Error" ;
+    logical_value, 1, "Unkonwn Error" ;
+  }
+  FGA_1_LINStatus_Err_Encoding {
+    physical_value, 0, 7, 1, 0 ;
+    logical_value, 0, "no error" ;
+    logical_value, 1, "Reset" ;
+    logical_value, 2, "Reserved" ;
+    logical_value, 3, "Reserved" ;
+    logical_value, 4, "Data Error" ;
+    logical_value, 5, "Checksum" ;
+    logical_value, 6, "Byte Field Framing Error" ;
+    logical_value, 7, "ID Parity Error" ;
+  }
+  FGA_2_CalValue_Encoding {
+    physical_value, 0, 255, 1, 0 ;
+  }
+  FGA_2_HW_Major_Encoding {
+    physical_value, 0, 3, 1, 0 ;
+  }
+  FGA_2_HW_Minor_Encoding {
+    physical_value, 0, 15, 1, 0 ;
+  }
+  FGA_2_SW_Major_Encoding {
+    physical_value, 0, 3, 1, 0 ;
+  }
+  FGA_2_SW_Minor_Encoding {
+    physical_value, 0, 15, 1, 0 ;
+  }
+  FGA_2_Supplier_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "MAXMAC Supplier" ;
+    logical_value, 1, "Unknown" ;
+  }
+  FGA_3_CalValue_Encoding {
+    physical_value, 0, 255, 1, 0 ;
+  }
+  FGA_3_FGAStatusSts_Encoding {
+    physical_value, 0, 3, 1, 0 ;
+    logical_value, 0, "Awake Not Scenting" ;
+    logical_value, 1, "Awake Scenting" ;
+    logical_value, 2, "Module Error" ;
+    logical_value, 3, "Reserved" ;
+  }
+  FGA_3_FGID1Overdue_Encoding {
+    physical_value, 0, 31, 1, 0 ;
+    logical_value, 0, "Expired" ;
+    logical_value, 1, "1 days till Expired" ;
+    logical_value, 2, "2 days till Expired" ;
+    logical_value, 3, "3 days till Expired" ;
+    logical_value, 4, "4 days till Expired" ;
+    logical_value, 5, "5 days till Expired" ;
+    logical_value, 6, "6 days till Expired" ;
+    logical_value, 7, "7 days till Expired" ;
+    logical_value, 8, "8 days till Expired" ;
+    logical_value, 9, "9 days till Expired" ;
+    logical_value, 10, "10 days till Expired" ;
+    logical_value, 11, "11 days till Expired" ;
+    logical_value, 12, "12 days till Expired" ;
+    logical_value, 13, "13 days till Expired" ;
+    logical_value, 14, "14 days till Expired" ;
+    logical_value, 15, "15 days till Expired" ;
+    logical_value, 16, "16 days till Expired" ;
+    logical_value, 17, "17 days till Expired" ;
+    logical_value, 18, "18 days till Expired" ;
+    logical_value, 19, "19 days till Expired" ;
+    logical_value, 20, "20 days till Expired" ;
+    logical_value, 21, "21 days till Expired" ;
+    logical_value, 22, "22 days till Expired" ;
+    logical_value, 23, "23 days till Expired" ;
+    logical_value, 24, "24 days till Expired" ;
+    logical_value, 25, "25 days till Expired" ;
+    logical_value, 26, "26 days till Expired" ;
+    logical_value, 27, "27 days till Expired" ;
+    logical_value, 28, "28 days till Expired" ;
+    logical_value, 29, "29 days till Expired" ;
+    logical_value, 30, "30 days till Expired" ;
+    logical_value, 31, "Not Expired" ;
+  }
+  FGA_3_FGID2Overdue_Encoding {
+    physical_value, 0, 31, 1, 0 ;
+    logical_value, 0, "Expired" ;
+    logical_value, 1, "1 days till Expired" ;
+    logical_value, 2, "2 days till Expired" ;
+    logical_value, 3, "3 days till Expired" ;
+    logical_value, 4, "4 days till Expired" ;
+    logical_value, 5, "5 days till Expired" ;
+    logical_value, 6, "6 days till Expired" ;
+    logical_value, 7, "7 days till Expired" ;
+    logical_value, 8, "8 days till Expired" ;
+    logical_value, 9, "9 days till Expired" ;
+    logical_value, 10, "10 days till Expired" ;
+    logical_value, 11, "11 days till Expired" ;
+    logical_value, 12, "12 days till Expired" ;
+    logical_value, 13, "13 days till Expired" ;
+    logical_value, 14, "14 days till Expired" ;
+    logical_value, 15, "15 days till Expired" ;
+    logical_value, 16, "16 days till Expired" ;
+    logical_value, 17, "17 days till Expired" ;
+    logical_value, 18, "18 days till Expired" ;
+    logical_value, 19, "19 days till Expired" ;
+    logical_value, 20, "20 days till Expired" ;
+    logical_value, 21, "21 days till Expired" ;
+    logical_value, 22, "22 days till Expired" ;
+    logical_value, 23, "23 days till Expired" ;
+    logical_value, 24, "24 days till Expired" ;
+    logical_value, 25, "25 days till Expired" ;
+    logical_value, 26, "26 days till Expired" ;
+    logical_value, 27, "27 days till Expired" ;
+    logical_value, 28, "28 days till Expired" ;
+    logical_value, 29, "29 days till Expired" ;
+    logical_value, 30, "30 days till Expired" ;
+    logical_value, 31, "Not Expired" ;
+  }
+  FGA_3_FGID3Overdue_Encoding {
+    physical_value, 0, 31, 1, 0 ;
+    logical_value, 0, "Expired" ;
+    logical_value, 1, "1 days till Expired" ;
+    logical_value, 2, "2 days till Expired" ;
+    logical_value, 3, "3 days till Expired" ;
+    logical_value, 4, "4 days till Expired" ;
+    logical_value, 5, "5 days till Expired" ;
+    logical_value, 6, "6 days till Expired" ;
+    logical_value, 7, "7 days till Expired" ;
+    logical_value, 8, "8 days till Expired" ;
+    logical_value, 9, "9 days till Expired" ;
+    logical_value, 10, "10 days till Expired" ;
+    logical_value, 11, "11 days till Expired" ;
+    logical_value, 12, "12 days till Expired" ;
+    logical_value, 13, "13 days till Expired" ;
+    logical_value, 14, "14 days till Expired" ;
+    logical_value, 15, "15 days till Expired" ;
+    logical_value, 16, "16 days till Expired" ;
+    logical_value, 17, "17 days till Expired" ;
+    logical_value, 18, "18 days till Expired" ;
+    logical_value, 19, "19 days till Expired" ;
+    logical_value, 20, "20 days till Expired" ;
+    logical_value, 21, "21 days till Expired" ;
+    logical_value, 22, "22 days till Expired" ;
+    logical_value, 23, "23 days till Expired" ;
+    logical_value, 24, "24 days till Expired" ;
+    logical_value, 25, "25 days till Expired" ;
+    logical_value, 26, "26 days till Expired" ;
+    logical_value, 27, "27 days till Expired" ;
+    logical_value, 28, "28 days till Expired" ;
+    logical_value, 29, "29 days till Expired" ;
+    logical_value, 30, "30 days till Expired" ;
+    logical_value, 31, "Not Expired" ;
+  }
+  FGA_3_FRAGFanSts_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "FAN Normal" ;
+    logical_value, 1, "Outlet block" ;
+  }
+  FGA_3_FRAGPowerSupplySts_Encoding {
+    physical_value, 0, 3, 1, 0 ;
+    logical_value, 0, "Normal Power Supply" ;
+    logical_value, 1, "Over Power Supply" ;
+    logical_value, 2, "Under Power Supply" ;
+    logical_value, 3, "none" ;
+  }
+  FGA_3_FRAGTempSts_Encoding {
+    physical_value, 0, 3, 1, 0 ;
+    logical_value, 0, "Normal Temp" ;
+    logical_value, 1, "Over Temp" ;
+    logical_value, 2, "Under Temp" ;
+    logical_value, 3, "None" ;
+  }
+  FGA_3_FRAGUnKnownErr_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "No Error" ;
+    logical_value, 1, "Unknown Error" ;
+  }
+  FGA_3_ProductioLineNum_Encoding {
+    physical_value, 0, 15, 1, 0 ;
+  }
+  FGA_3_ProductionDateDD_Encoding {
+    physical_value, 0, 511, 1, 0 ;
+  }
+  FGA_3_ProductionDateYY_Encoding {
+    physical_value, 0, 31, 1, 2020 ;
+  }
+  FGA_3_ProductionNUM_Encoding {
+    physical_value, 0, 65535, 1, 0 ;
+  }
+  ICPBtnCoding_EncodingType {
+    logical_value, 0, "Inactive" ;
+    logical_value, 1, "Active" ;
+    logical_value, 2, "ShortEvent" ;
+    logical_value, 3, "ShortElapsed" ;
+    logical_value, 4, "LongEvent" ;
+    logical_value, 5, "Stuck" ;
+    logical_value, 15, "Idle" ;
+  }
+  ICPBtnID_EncodingType {
+    logical_value, 0, "ICPBtnID_0" ;
+    logical_value, 1, "ICPBtnID_1" ;
+    logical_value, 2, "ICPBtnID_2" ;
+    logical_value, 3, "ICPBtnID_3" ;
+    logical_value, 4, "ICPBtnID_4" ;
+    logical_value, 5, "ICPBtnID_5" ;
+    logical_value, 6, "ICPBtnID_6" ;
+    logical_value, 7, "ICPBtnID_7" ;
+    logical_value, 8, "ICPBtnID_8" ;
+    logical_value, 9, "ICPBtnID_9" ;
+    logical_value, 10, "ICPBtnID_Star" ;
+    logical_value, 11, "ICPBtnID_Cross" ;
+    logical_value, 19, "ICPBtnID_Sirius" ;
+    logical_value, 20, "ICPBtnID_Radio" ;
+    logical_value, 21, "ICPBtnID_CD" ;
+    logical_value, 22, "ICPBtnID_AUX" ;
+    logical_value, 23, "ICPBtnID_Menu" ;
+    logical_value, 24, "ICPBtnID_Sound" ;
+    logical_value, 25, "ICPBtnID_Phone" ;
+    logical_value, 26, "ICPBtnID_NAV" ;
+    logical_value, 27, "ICPBtnID_Map" ;
+    logical_value, 28, "ICPBtnID_Traffic" ;
+    logical_value, 29, "ICPBtnID_Clock" ;
+    logical_value, 31, "ICPBtnID_OnOff" ;
+    logical_value, 40, "ICPBtnID_OK" ;
+    logical_value, 41, "ICPBtnID_ArrowLeft" ;
+    logical_value, 42, "ICPBtnID_ArrowRight" ;
+    logical_value, 43, "ICPBtnID_ArrowUp" ;
+    logical_value, 44, "ICPBtnID_ArrowDown" ;
+    logical_value, 50, "ICPBtnID_SeekLeft" ;
+    logical_value, 51, "ICPBtnID_SeekRight" ;
+    logical_value, 52, "ICPBtnID_Eject" ;
+    logical_value, 53, "ICPBtnID_Load" ;
+    logical_value, 54, "ICPBtnID_TA" ;
+    logical_value, 55, "ICPBtnID_Info" ;
+    logical_value, 56, "ICPBtnID_Home" ;
+    logical_value, 57, "ICPBtnID_Dsp" ;
+    logical_value, 58, "ICPBtnID_Mute" ;
+    logical_value, 59, "ICPBtnID_DayNight" ;
+    logical_value, 60, "ICPBtnID_SKey1" ;
+    logical_value, 61, "ICPBtnID_SKey2" ;
+    logical_value, 62, "ICPBtnID_SKey3" ;
+    logical_value, 63, "ICPBtnID_SKey4" ;
+    logical_value, 74, "ICPBtnID_Tune_Up" ;
+    logical_value, 75, "ICPBtnID_Tune_Down" ;
+    logical_value, 79, "ICPBtnID_Media" ;
+    logical_value, 80, "ICPBtnID_Disp" ;
+    logical_value, 101, "ICPBtnID_Tune" ;
+    logical_value, 102, "ICPBtnID_PlayPause" ;
+    logical_value, 103, "ICPBtnID_StarSound" ;
+    logical_value, 104, "ICPBtnID_Back" ;
+    logical_value, 105, "ICPBtnID_Audio" ;
+    logical_value, 106, "ICPBtnID_Settings" ;
+    logical_value, 107, "ICPBtnID_Apps" ;
+    logical_value, 110, "ICPBtnID_Camera" ;
+    logical_value, 111, "ICPBtnID_CalmScreen" ;
+    logical_value, 112, "ICPBtnID_DriverAssist" ;
+    logical_value, 249, "ICPBtnID_Blower" ;
+    logical_value, 250, "ICPBtnID_AC" ;
+    logical_value, 251, "ICPBtnID_Rec" ;
+    logical_value, 252, "ICPBtnID_MaxDef" ;
+    logical_value, 253, "ICPBtnID_MaxAC" ;
+    logical_value, 255, "ICPBtnID_Idle" ;
+  }
+  ICPLINStatus_EncodingType {
+    logical_value, 0, "No detected fault" ;
+    logical_value, 1, "Reset" ;
+    logical_value, 2, "Reserved" ;
+    logical_value, 3, "Reserved" ;
+    logical_value, 4, "Data Error" ;
+    logical_value, 5, "Checksum Error " ;
+    logical_value, 6, "Byte Field Framing Error" ;
+    logical_value, 7, "ID Parity Error" ;
+  }
+  ICPRotaryCmd_EncodingType {
+    physical_value, 0, 14, 1, -7, "Increment" ;
+    logical_value, 7, "Inactive" ;
+  }
+  ICPSrNrDigit_EnCodingType {
+    physical_value, 0, 15, 1, 0, "One Dgit 0 - 9 to be used" ;
+  }
+  ICPVolumeCmd2_EncodingType {
+    physical_value, 0, 14, 1, -7, "Increment" ;
+    logical_value, 7, "Inactive" ;
+  }
+  ICPVolumeCmd_EncodingType {
+    physical_value, 0, 60, 1, -30, "Increment" ;
+    logical_value, 30, "Inactive" ;
+  }
+  ICP_APINFO_0_EncodingType {
+    logical_value, 0, "No Vol_Knob Error" ;
+    logical_value, 1, "Vol_Knob Error Present" ;
+  }
+  ICP_APINFO_1_EncodingType {
+    logical_value, 0, "No Rotary Error" ;
+    logical_value, 1, "Rotary Error Present" ;
+  }
+  ICP_APINFO_2_EncodingType {
+    logical_value, 0, "No Error" ;
+    logical_value, 1, "UnderVoltage Event" ;
+  }
+  ICP_APINFO_3_EncodingType {
+    logical_value, 0, "No Error" ;
+    logical_value, 1, "OverVoltage Event" ;
+  }
+  ICP_APINFO_4_EncodingType {
+    logical_value, 0, "No Configuration Need" ;
+    logical_value, 1, "Configuration Required" ;
+  }
+  SRLINStatus_Encoding {
+    physical_value, 0, 7, 1, 0 ;
+    logical_value, 0, "no fault" ;
+    logical_value, 1, "reset" ;
+    logical_value, 2, "reserved" ;
+    logical_value, 3, "reserved" ;
+    logical_value, 4, "data error" ;
+    logical_value, 5, "checksum error" ;
+    logical_value, 6, "byte field framing error" ;
+    logical_value, 7, "reserved" ;
+  }
+  SR_APINFO_0_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "no error" ;
+    logical_value, 1, "sunroof over voltage" ;
+  }
+  SR_APINFO_1_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "no error" ;
+    logical_value, 1, "sunroof under voltage" ;
+  }
+  SR_APINFO_2_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "no error" ;
+    logical_value, 1, "sunshade over voltage" ;
+  }
+  SR_APINFO_3_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "no error" ;
+    logical_value, 1, "sunshade under voltage" ;
+  }
+  SR_APINFO_4_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "reserved" ;
+    logical_value, 1, "reserved" ;
+  }
+  SunroofDSPLStatusAntiPinchSS_Encoding {
+    physical_value, 0, 0, 1, 0 ;
+    logical_value, 0, "normal" ;
+    logical_value, 1, "active" ;
+  }
+  SunroofDSPLStatusAntiPinch_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "normal" ;
+    logical_value, 1, "active" ;
+  }
+  SunroofDSPLStatusHallSensorSS_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "no error" ;
+    logical_value, 1, "error" ;
+  }
+  SunroofDSPLStatusHallSensor_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "no error" ;
+    logical_value, 1, "error" ;
+  }
+  SunroofDSPLStatusInitializationSS_Encoding {
+    physical_value, 0, 0, 1, 0 ;
+    logical_value, 0, "not in the Initializating" ;
+    logical_value, 1, "in the Initializating" ;
+  }
+  SunroofDSPLStatusInitialization_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "not in the initializating" ;
+    logical_value, 1, "in the initializating" ;
+  }
+  SunroofDSPLStatusLearnSS_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "not teach run" ;
+    logical_value, 1, "teach run successful" ;
+  }
+  SunroofDSPLStatusLearn_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "no teach run" ;
+    logical_value, 1, "teach run successful" ;
+  }
+  SunroofDSPLStatusModeSS_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "nomal(delay ACC = H)" ;
+    logical_value, 1, "standby(delay ACC = L)" ;
+  }
+  SunroofDSPLStatusMovementSS_Encoding {
+    physical_value, 0, 7, 1, 0 ;
+    logical_value, 0, "stopped" ;
+    logical_value, 1, "Reserved" ;
+    logical_value, 2, "Reserved" ;
+    logical_value, 3, "opening slide" ;
+    logical_value, 4, "closing slide" ;
+    logical_value, 5, "reversing" ;
+    logical_value, 6, "moving uninitialized" ;
+    logical_value, 7, "reserved" ;
+  }
+  SunroofDSPLStatusMovement_Encoding {
+    physical_value, 0, 7, 1, 0 ;
+    logical_value, 0, "stopped" ;
+    logical_value, 1, "opening tilt" ;
+    logical_value, 2, "closing tilt" ;
+    logical_value, 3, "opening slide" ;
+    logical_value, 4, "closing slide" ;
+    logical_value, 5, "reversing(AP/stall)" ;
+    logical_value, 6, "moving uninitialized" ;
+    logical_value, 7, "reserved" ;
+  }
+  SunroofDSPLStatusNetworkl_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "no error" ;
+    logical_value, 1, "error" ;
+  }
+  SunroofDSPLStatusNormalizationSS_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "not normalized" ;
+    logical_value, 1, "normalized" ;
+  }
+  SunroofDSPLStatusNormalization_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "not normalized" ;
+    logical_value, 1, "normalized" ;
+  }
+  SunroofDSPLStatusOvertempSS_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "no error" ;
+    logical_value, 1, "error" ;
+  }
+  SunroofDSPLStatusOvertemp_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "no error" ;
+    logical_value, 1, "error" ;
+  }
+  SunroofDSPLStatusOvervoltageSS_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "no error" ;
+    logical_value, 1, "error" ;
+  }
+  SunroofDSPLStatusOvervoltage_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "no error" ;
+    logical_value, 1, "error" ;
+  }
+  SunroofDSPLStatusPositionSS_Encoding {
+    physical_value, 0, 15, 1, 0 ;
+    logical_value, 0, "init" ;
+    logical_value, 1, "10%" ;
+    logical_value, 2, "20%" ;
+    logical_value, 3, "30%" ;
+    logical_value, 4, "40%" ;
+    logical_value, 5, "50%" ;
+    logical_value, 6, "60%" ;
+    logical_value, 7, "70%" ;
+    logical_value, 8, "80%" ;
+    logical_value, 9, "90%" ;
+    logical_value, 10, "fully open" ;
+    logical_value, 11, "fully close" ;
+    logical_value, 12, "reserved" ;
+    logical_value, 13, "reserved" ;
+    logical_value, 14, "uninitiallized" ;
+    logical_value, 15, "mid" ;
+  }
+  SunroofDSPLStatusPosition_Encoding {
+    physical_value, 0, 15, 1, 0 ;
+    logical_value, 0, "init" ;
+    logical_value, 1, "10%" ;
+    logical_value, 2, "20%" ;
+    logical_value, 3, "30%" ;
+    logical_value, 4, "40%" ;
+    logical_value, 5, "50%" ;
+    logical_value, 6, "60%" ;
+    logical_value, 7, "70%" ;
+    logical_value, 8, "80%" ;
+    logical_value, 9, "90%" ;
+    logical_value, 10, "fully open" ;
+    logical_value, 11, "fully close" ;
+    logical_value, 12, "tilt up" ;
+    logical_value, 13, "vent area" ;
+    logical_value, 14, "uninitialized" ;
+    logical_value, 15, "comfort" ;
+  }
+  SunroofDSPLStatusRelaySS_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "no error" ;
+    logical_value, 1, "error" ;
+  }
+  SunroofDSPLStatusRelay_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "no error" ;
+    logical_value, 1, "error" ;
+  }
+  SunroofDSPLStatusUndervoltageSS_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "no error" ;
+    logical_value, 1, "error" ;
+  }
+  SunroofDSPLStatusUndervoltage_Encoding {
+    physical_value, 0, 1, 1, 0 ;
+    logical_value, 0, "no error" ;
+    logical_value, 1, "error" ;
+  }
+}
+
+Signal_representation {
+  AC_1_CalValue_Encoding: AC_1_CalValue ;
+  AC_1_FGAChanTypSelect_Encoding: AC_1_FGAChanTypSelect ;
+  AC_1_FGAIntensityReq_Encoding: AC_1_FGAIntensityReq ;
+  AC_1_FGA_OperationReq_Encoding: AC_1_FGA_OperationReq ;
+  AC_1_GenderSts_Encoding: AC_1_GenderSts ;
+  AC_1_InCarTemperature_Encoding: AC_1_InCarTemperature ;
+  AC_1_ScentType_afctdst_Factor_Encoding: AC_1_ScentType_afctdst_Factor ;
+  AC_1_Time_Day_Encoding: AC_1_Time_Day ;
+  AC_1_Time_Year_Encoding: AC_1_Time_Year ;
+  AC_2_CalValue_Encoding: AC_2_CalValue ;
+  AC_2_CalibrationParaType_Encoding: AC_2_CalibrationParaType ;
+  AC_2_Calibrationvalue_Encoding: AC_2_Calibrationvalue ;
+  APIMSunroofControl_Encoding: APIMSunroofControl ;
+  APIMSunshadeControl_Encoding: APIMSunshadeControl ;
+  DSPLDimmLvl_EncodingType: DSPLDimmLvl1, DSPLDimmLvl2 ;
+  DSPLIgnition_Status_Encoding: DSPLIgnition_Status ;
+  DSPLIlluZone_EncodingType: DSPLIlluZone ;
+  DSPL_ACInd_Encoding: DSPL_ACInd ;
+  DSPL_BlowerInd_Encoding: DSPL_BlowerInd ;
+  DSPL_MaxAcInd_Encoding: DSPL_MaxAcInd ;
+  DSPL_MaxDefInd_Encoding: DSPL_MaxDefInd ;
+  DSPL_RecInd_Encoding: DSPL_RecInd ;
+  FGA_1_CalValue_Encoding: FGA_1_CalValue ;
+  FGA_1_FGACurrentWorkCh_Encoding: FGA_1_FGACurrentWorkCh ;
+  FGA_1_FGACurrentdensity_Encoding: FGA_1_FGACurrentdensity ;
+  FGA_1_FGAStatusSts_Encoding: FGA_1_FGAStatusSts ;
+  FGA_1_FGID1Overdue_Encoding: FGA_1_FGID1Overdue, FGA_1_FGID2Overdue, FGA_1_FGID3Overdue ;
+  FGA_1_FG_Chan1Typ_Encoding: FGA_1_FG_Chan1Typ, FGA_1_FG_Chan2Typ, FGA_1_FG_Chan3Typ ;
+  FGA_1_FG_LifeRemainingChan1_Encoding: FGA_1_FG_LifeRemainingChan1, FGA_1_FG_LifeRemainingChan2, FGA_1_FG_LifeRemainingChan3 ;
+  FGA_1_FRAGFanSts_Encoding: FGA_1_FRAGFanSts ;
+  FGA_1_FRAGPowerSupplySts_Encoding: FGA_1_FRAGPowerSupplySts ;
+  FGA_1_FRAGTempSts_Encoding: FGA_1_FRAGTempSts ;
+  FGA_1_FRAGUnKnownErr_Encoding: FGA_1_FRAGUnKnownErr ;
+  FGA_1_LINStatus_Err_Encoding: FGA_1_LINStatus_Err ;
+  FGA_2_CalValue_Encoding: FGA_2_CalValue ;
+  FGA_2_HW_Major_Encoding: FGA_2_HW_Major ;
+  FGA_2_HW_Minor_Encoding: FGA_2_HW_Minor ;
+  FGA_2_SW_Major_Encoding: FGA_2_SW_Major ;
+  FGA_2_SW_Minor_Encoding: FGA_2_SW_Minor ;
+  FGA_2_Supplier_Encoding: FGA_2_Supplier ;
+  FGA_3_CalValue_Encoding: FGA_3_CalValue ;
+  FGA_3_FGAStatusSts_Encoding: FGA_3_FGAStatusSts ;
+  FGA_3_FGID1Overdue_Encoding: FGA_3_FGID1Overdue ;
+  FGA_3_FGID2Overdue_Encoding: FGA_3_FGID2Overdue ;
+  FGA_3_FGID3Overdue_Encoding: FGA_3_FGID3Overdue ;
+  FGA_3_FRAGFanSts_Encoding: FGA_3_FRAGFanSts ;
+  FGA_3_FRAGPowerSupplySts_Encoding: FGA_3_FRAGPowerSupplySts ;
+  FGA_3_FRAGTempSts_Encoding: FGA_3_FRAGTempSts ;
+  FGA_3_FRAGUnKnownErr_Encoding: FGA_3_FRAGUnKnownErr ;
+  FGA_3_ProductioLineNum_Encoding: FGA_3_ProductioLineNum ;
+  FGA_3_ProductionDateDD_Encoding: FGA_3_ProductionDateDD ;
+  FGA_3_ProductionDateYY_Encoding: FGA_3_ProductionDateYY ;
+  FGA_3_ProductionNUM_Encoding: FGA_3_ProductionNUM ;
+  ICPBtnCoding_EncodingType: ICPBtnCoding_A, ICPBtnCoding_B, ICPBtnCoding_C, ICPBtnCoding_D ;
+  ICPBtnID_EncodingType: ICPBtnID_A, ICPBtnID_B, ICPBtnID_C, ICPBtnID_D ;
+  ICPLINStatus_EncodingType: ICPLINStatus ;
+  ICPRotaryCmd_EncodingType: ICPRotaryCmd ;
+  ICPSrNrDigit_EnCodingType: ICPSrNrDigit00, ICPSrNrDigit01, ICPSrNrDigit02, ICPSrNrDigit03, ICPSrNrDigit04, ICPSrNrDigit05, ICPSrNrDigit06, ICPSrNrDigit07, ICPSrNrDigit08, ICPSrNrDigit09, ICPSrNrDigit10, ICPSrNrDigit11, ICPSrNrDigit12, ICPSrNrDigit13 ;
+  ICPVolumeCmd2_EncodingType: ICPVolumeCmd2 ;
+  ICPVolumeCmd_EncodingType: ICPVolumeCmd ;
+  ICP_APINFO_0_EncodingType: ICP_APINFO_0 ;
+  ICP_APINFO_1_EncodingType: ICP_APINFO_1 ;
+  ICP_APINFO_2_EncodingType: ICP_APINFO_2 ;
+  ICP_APINFO_3_EncodingType: ICP_APINFO_3 ;
+  ICP_APINFO_4_EncodingType: ICP_APINFO_4 ;
+  SRLINStatus_Encoding: SRLINStatus ;
+  SR_APINFO_0_Encoding: SROvervoltage ;
+  SR_APINFO_1_Encoding: SRUndervoltage ;
+  SR_APINFO_2_Encoding: SSOvervoltage ;
+  SR_APINFO_3_Encoding: SSUndervoltage ;
+  SR_APINFO_4_Encoding: SR_APINFO_4 ;
+  SunroofDSPLStatusAntiPinchSS_Encoding: SunroofDSPLStatusAntiPinchSS ;
+  SunroofDSPLStatusAntiPinch_Encoding: SunroofDSPLStatusAntiPinch ;
+  SunroofDSPLStatusHallSensorSS_Encoding: SunroofDSPLStatusHallSensorSS ;
+  SunroofDSPLStatusHallSensor_Encoding: SunroofDSPLStatusHallSensor ;
+  SunroofDSPLStatusInitializationSS_Encoding: SunroofDSPLStatusInitializationSS ;
+  SunroofDSPLStatusInitialization_Encoding: SunroofDSPLStatusInitialization ;
+  SunroofDSPLStatusLearnSS_Encoding: SunroofDSPLStatusLearnSS ;
+  SunroofDSPLStatusLearn_Encoding: SunroofDSPLStatusLearn ;
+  SunroofDSPLStatusModeSS_Encoding: SunroofDSPLStatusModeSS ;
+  SunroofDSPLStatusMovementSS_Encoding: SunroofDSPLStatusMovementSS ;
+  SunroofDSPLStatusMovement_Encoding: SunroofDSPLStatusMovement ;
+  SunroofDSPLStatusNetworkl_Encoding: SunroofDSPLStatusNetwork ;
+  SunroofDSPLStatusNormalizationSS_Encoding: SunroofDSPLStatusNormalizationSS ;
+  SunroofDSPLStatusNormalization_Encoding: SunroofDSPLStatusNormalization ;
+  SunroofDSPLStatusOvertempSS_Encoding: SunroofDSPLStatusOvertempSS ;
+  SunroofDSPLStatusOvertemp_Encoding: SunroofDSPLStatusOvertemp ;
+  SunroofDSPLStatusOvervoltageSS_Encoding: SunroofDSPLStatusOvervoltageSS ;
+  SunroofDSPLStatusOvervoltage_Encoding: SunroofDSPLStatusOvervoltage ;
+  SunroofDSPLStatusPositionSS_Encoding: SunroofDSPLStatusPositionSS ;
+  SunroofDSPLStatusPosition_Encoding: SunroofDSPLStatusPosition ;
+  SunroofDSPLStatusRelaySS_Encoding: SunroofDSPLStatusRelaySS ;
+  SunroofDSPLStatusRelay_Encoding: SunroofDSPLStatusRelay ;
+  SunroofDSPLStatusUndervoltageSS_Encoding: SunroofDSPLStatusUndervoltageSS ;
+  SunroofDSPLStatusUndervoltage_Encoding: SunroofDSPLStatusUndervoltage ;
+}

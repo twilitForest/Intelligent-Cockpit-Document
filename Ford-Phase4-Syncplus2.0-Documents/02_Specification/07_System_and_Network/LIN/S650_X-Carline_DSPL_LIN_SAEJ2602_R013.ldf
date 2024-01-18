@@ -1,0 +1,723 @@
+/* LIN description file */
+/* B2yy/C34x/B232/B299MCA DSPL/ICP LIN connection (R1-R3 were for B2yy only)*/
+/* hand-coded version -- this is the master!*/
+/* FoE/EESE/EI/FI-MUX/Martin Ostermann (R1-R5)*/
+/* FoE/EESE/EI/FI-MUX/Horst Wickinghoff (from R6 onwards)*/
+/* FoE/EESE/EI/FI-MUX/Matthias Ley/ Christian Grossmann  (draft SAEJ2602-implementation)*/
+/* FoE/EESE/EI/FI-MUX/Matthias Ley/ Christian Grossmann  (changes in Dimm Level Signals)*/
+/* FoE/EESE/EI/FI-MUX/Matthias Ley/ Christian Grossmann  (changes in Dimm Zone bitfield encoding remarks)*/
+/* FoE/EESE/EI/FI-MUX/Matthias Ley/ Christian Grossmann  (changes in Button ID encoding remarks)*/
+/* FoE/EESE/EI/FI-MUX/Matthias Ley/ Christian Grossmann  (added Signals and Frame for ICP Serial number transfer)*/
+/* R1 2006-08-04 */
+/* R2 2006-10-20 */
+/* R3 2006-07-25 */
+/* R4 2008-04-01 */
+/* R5 2009-06-25 */
+/* R6 2011-08-25 */
+/* R7 2013-03-15 */
+/* R001 2014-10-24 */
+/* R003 2014-12-10 */
+/* FoE/EESE/EI/FI-MUX/Matthias Ley/ Christian Grossmann  rorderdered ICPStatusID,ICPStatusValue,ICPLINStatus, to better conform to SAE J2602 spec*/
+/* R003 2015-01-08 */
+/* FoE/EESE/EI/FI-MUX/Matthias Ley changed init values for ICPBtnID_[A-D] signals to 255, which correlates to 'idle' */
+/* R005 2015-02-10 */
+/* FoE/EESE/EI/FI-MUX/Matthias Ley/ Christian Grossmann  redesign of APINFO bits /  replacement for ICPStatusID and ICPStatusValue to better conform to SAE J2602 spec*/
+/* R005_Draft 2015-03-23 */
+/* R007 Release with added schedules for Master Request Frame and Slave Response Frame in acc. with Supplier Proposal*/
+/* R007 Release on 20150910 */
+/* R008-Draft with encoding type ICPSrNrDigit_EnCodingType error corrected ( value range now 0-15 ilo 0-16) */
+/* R008 with encoding type ICPBtnID_EncodingType added value 110 ICPBtnID_Camera */
+/* R008 Release on 20160506 */
+/* R009 Revised Value in documentation of DSPLIlluZone_EncodingType:  Value $20 was 'reserved' changed to 'Chrome'*/
+/* R009 Revised File Name for Cross Carline usage was '201xB479_DSPL_LIN_SAEJ2602_R009' */
+/* R009 Released 20170801 */
+/* R010 added button ID for calm screen and driver assist for CD542 */
+/* R010 Released 20190923 */
+/* R011 Added frame 'ICPBtnStateTwoRC' for new mini ICPs */
+/* R011 Added frame 'DSPLIlluBlocks' for supporting switching on/off indicators and buttons individually */
+/* R011 Added frame 'DSPLPWMs' and related signals for supporting new illumintaion strategy (smooth dimming) */
+/* R011 Added signal 'ICPIlluSmoothDimmSupp' to tell master whether smooth dimming strategy is supported */ 
+/* R011 Revised value in documentation of ICPLINStatus_EncodingType: Value $2 was 'Reserved' changed to 'Smooth dimming supported' */
+/* R011 Added frame 'DSPLIlluIndicationAllocation' for transferring which indicator is on which indicator position */
+/* R011 Added frame 'DSPLIlluButtonAllocation' for transferring which DSPLIlluButtonAllocation is on which button position */
+/* R011 Added button ID for AutoStopStart, TracContr, HillDecCtrl, ParkHotKey, ParkAid, MAXDefr, DrvModes, ZoneLght (Zone Lighting Hot Key), HeadRestDump, SnowPlowMode, PonyHotKey, OBGIHotKey, PsgrSldgDoor, PsgrSldgDoorChldLck, FAPA, TruckHotkey, ExhaustBrake, Nircos */
+/* R011 Added support for ASIL */
+/* R011 redefined APINFO_0 to APINFO_3 for new interface to support new ICP hardwired buttons and indicators */
+/* R011 Added button ID for LockUnlock, ParkLamp, LowBeam, AutoHeadLampOn, FrontFogOn, HeadLampOff, DimUp, DimDown, TempUp, TempDown, BlowerUp, BlowerDown */
+/* R011 Added support for 8 buttons and 7 indicators on special request */
+/* R011 set initial_value for signal "DSPLIlluPWMIndicatorTarget" and "DSPLIlluPWMIndicatorTargetPTS" to 1023 to avoid possible startup problems with hardwired indicators */
+/* R011 Released 20200207 */
+/* R012 changed initial value for 'DSPLIlluDimmingCurveType' from '0' (=linear) to '1' (=exponential) */
+/* R012 added button ID for EvMode, ClimateHotKey and HeatedBackLite for CX483MCA and V710 */
+/* R012 added comment regarding 'Screen Off' to 'ICPBtnID_Disp' for CX483MCA */
+/* R013 added button ID for Favorites Button for S650 and Auto Hold for CDx707 */
+/* R013 Released 20210706 */
+
+LIN_description_file;
+LIN_protocol_version = "J2602_1_1.0";
+LIN_language_version = "J2602_3_1.0";
+LIN_speed = 10.417 kbps;
+
+Nodes {
+  Master: DSPL, 3 ms, 0.5 ms, 40 bits, 20 %;
+  Slaves: ICP ;
+}
+
+Signals {
+  ICP_APINFO_0: 1, 0, ICP, DSPL ; /* ICP_Vol_Knob Error */
+  ICP_APINFO_1: 1, 0, ICP, DSPL ; /* ICP_Rotary Error */
+  ICP_APINFO_2: 1, 0, ICP, DSPL ; /* ICP Undervoltage */
+  ICP_APINFO_3: 1, 0, ICP, DSPL ; /* ICP Overvoltage */
+  ICP_APINFO_4: 1, 0, ICP, DSPL ; /* Config indication */
+  ICP_APINFO_0_NG: 1, 0, ICP, DSPL ; /* volume knob and rotary, if available */
+  ICP_APINFO_1_NG: 1, 0, ICP, DSPL ; /* Hardwired output error (of e.g. hardwired buttons) */
+  ICP_APINFO_2_NG: 1, 0, ICP, DSPL ; /* LED error of indicators */
+  ICP_APINFO_3_NG: 1, 0, ICP, DSPL ; /* covers:short to ground, short to battery, open circuit */
+  ICPBtnCoding_A: 4, 0, ICP, DSPL ;
+  ICPBtnCoding_B: 4, 0, ICP, DSPL ;
+  ICPBtnCoding_C: 4, 0, ICP, DSPL ;
+  ICPBtnCoding_D: 4, 0, ICP, DSPL ;
+  ICPLINStatus: 3, 0, ICP, DSPL ;      /* DLPL_LIN_17_001 */
+  ICPRotaryCmd: 4, 7, ICP, DSPL ;
+  ICPVolumeCmd: 8, 30, ICP, DSPL ;
+  ICPVolumeCmd2: 4, 7, ICP, DSPL ;
+  ICPBtnID_A: 8, 255, ICP, DSPL ;
+  ICPBtnID_B: 8, 255, ICP, DSPL ;
+  ICPBtnID_C: 8, 255, ICP, DSPL ;
+  ICPBtnID_D: 8, 255, ICP, DSPL ;
+  ICPPartNumIndex: 8, 0, ICP, DSPL ;  /* DLPL_LIN_17_002 */
+  ICPPartNumData0: 8, 0, ICP, DSPL ;  /* DLPL_LIN_17_003 */
+  ICPPartNumData1: 8, 0, ICP, DSPL ;  /* DLPL_LIN_17_003 */
+  ICPPartNumData2: 8, 0, ICP, DSPL ;  /* DLPL_LIN_17_003 */
+  ICPPartNumData3: 8, 0, ICP, DSPL ;  /* DLPL_LIN_17_003 */
+  ICPPartNumData4: 8, 0, ICP, DSPL ;  /* DLPL_LIN_17_003 */
+  ICPPartNumData5: 8, 0, ICP, DSPL ;  /* DLPL_LIN_17_003 */
+  ICPSrNrDigit00: 4, 0, ICP, DSPL ;
+  ICPSrNrDigit01: 4, 0, ICP, DSPL ;
+  ICPSrNrDigit02: 4, 0, ICP, DSPL ;
+  ICPSrNrDigit03: 4, 0, ICP, DSPL ;
+  ICPSrNrDigit04: 4, 0, ICP, DSPL ;
+  ICPSrNrDigit05: 4, 0, ICP, DSPL ;
+  ICPSrNrDigit06: 4, 0, ICP, DSPL ;
+  ICPSrNrDigit07: 4, 0, ICP, DSPL ;
+  ICPSrNrDigit08: 4, 0, ICP, DSPL ;
+  ICPSrNrDigit09: 4, 0, ICP, DSPL ;
+  ICPSrNrDigit10: 4, 0, ICP, DSPL ;
+  ICPSrNrDigit11: 4, 0, ICP, DSPL ;
+  ICPSrNrDigit12: 4, 0, ICP, DSPL ;
+  ICPSrNrDigit13: 4, 0, ICP, DSPL ;
+  DSPLIlluZone: 8, 0, DSPL, ICP ;
+  DSPLDimmLvl1: 8, 0, DSPL, ICP ;
+  DSPLDimmLvl2: 8, 0, DSPL, ICP ;
+  DSPLConfigIndex: 8, 0, DSPL, ICP ;   /* DLPL_LIN_17_004 */
+  DSPLConfigData0: 8, 0, DSPL, ICP ;   /* DLPL_LIN_17_005 */
+  DSPLConfigData1: 8, 0, DSPL, ICP ;   /* DLPL_LIN_17_005 */
+  DSPLConfigData2: 8, 0, DSPL, ICP ;   /* DLPL_LIN_17_005 */
+  DSPLConfigData3: 8, 0, DSPL, ICP ;   /* DLPL_LIN_17_005 */
+  DSPLConfigData4: 8, 0, DSPL, ICP ;   /* DLPL_LIN_17_005 */
+  DSPLConfigData5: 8, 0, DSPL, ICP ;   /* DLPL_LIN_17_005 */
+  DSPLConfigData6: 8, 0, DSPL, ICP ;   /* DLPL_LIN_17_005 */
+
+  DSPLIlluPWMIndicatorTarget: 10, 1023, DSPL, ICP ;
+  DSPLIlluPWMBacklightTarget: 10, 0, DSPL, ICP ;
+  DSPLIlluPWMIndicatorTargetPTS: 10, 1023, DSPL, ICP ;
+  DSPLIlluPWMBacklightTargetPTS: 10, 0, DSPL, ICP ;
+  DSPLIlluPWMTimerUp: 4, 0, DSPL, ICP ;
+  DSPLIlluPWMTimerDown: 4, 0, DSPL, ICP ;
+  DSPLIlluDimmingCurveType: 1, 1, DSPL, ICP;
+  DSPLIlluIndPTS: 2, 0, DSPL, ICP ;
+  DSPLIlluInd1: 2, 0, DSPL, ICP ;
+  DSPLIlluInd2: 2, 0, DSPL, ICP ;
+  DSPLIlluInd3: 2, 0, DSPL, ICP ;
+  DSPLIlluInd4: 2, 0, DSPL, ICP ;
+  DSPLIlluInd5: 2, 0, DSPL, ICP ;
+  DSPLIlluInd6: 2, 0, DSPL, ICP ;
+  DSPLIlluInd7: 2, 0, DSPL, ICP ;
+  DSPLIlluBtnPTS: 1, 0, DSPL, ICP ;
+  DSPLIlluBtn1: 1, 0, DSPL, ICP ;
+  DSPLIlluBtn2: 1, 0, DSPL, ICP ;
+  DSPLIlluBtn3: 1, 0, DSPL, ICP ;
+  DSPLIlluBtn4: 1, 0, DSPL, ICP ;
+  DSPLIlluBtn5: 1, 0, DSPL, ICP ;
+  DSPLIlluBtn6: 1, 0, DSPL, ICP ;
+  DSPLIlluBtn7: 1, 0, DSPL, ICP ;
+  DSPLIlluBtn8: 1, 0, DSPL, ICP ;
+  DSPLIlluVolKnob: 1, 0, DSPL, ICP ;
+  DSPLIlluBtnChrome: 1, 0, DSPL, ICP ;
+  IlluIndAlloc1: 8, 0, ICP, DSPL ;
+  IlluIndAlloc2: 8, 0, ICP, DSPL ;
+  IlluIndAlloc3: 8, 0, ICP, DSPL ;
+  IlluIndAlloc4: 8, 0, ICP, DSPL ;
+  IlluIndAlloc5: 8, 0, ICP, DSPL ;
+  IlluIndAlloc6: 8, 0, ICP, DSPL ;
+  IlluIndAlloc7: 8, 0, ICP, DSPL ;
+  IlluBtnAlloc1: 8, 0, ICP, DSPL ;
+  IlluBtnAlloc2: 8, 0, ICP, DSPL ;
+  IlluBtnAlloc3: 8, 0, ICP, DSPL ;
+  IlluBtnAlloc4: 8, 0, ICP, DSPL ;
+  IlluBtnAlloc5: 8, 0, ICP, DSPL ;
+  IlluBtnAlloc6: 8, 0, ICP, DSPL ;
+  IlluBtnAlloc7: 8, 0, ICP, DSPL ;
+  IlluBtnAlloc8: 8, 0, ICP, DSPL ;
+  ICP_RC:   4, 0, ICP, DSPL ;
+  ICP_CRC8: 8, 0, ICP, DSPL ;
+  DSPL_RC:   4, 0, DSPL, ICP ;
+  DSPL_CRC8: 8, 0, DSPL, ICP ;
+  ICPIlluSmoothDimmSupp: 1, 0, ICP, DSPL ;
+  
+  Reserved3BitIPC: 3, 0, ICP, DSPL ;
+  Reserved1BitDSPL: 1, 0, DSPL, ICP ;
+  Reserved7BitDSPL: 7, 0, DSPL, ICP ;
+}
+
+Diagnostic_signals {
+  MasterReqB0: 8, 0 ;
+  MasterReqB1: 8, 0 ;
+  MasterReqB2: 8, 0 ;
+  MasterReqB3: 8, 0 ;
+  MasterReqB4: 8, 0 ;
+  MasterReqB5: 8, 0 ;
+  MasterReqB6: 8, 0 ;
+  MasterReqB7: 8, 0 ;
+  SlaveRespB0: 8, 0 ;
+  SlaveRespB1: 8, 0 ;
+  SlaveRespB2: 8, 0 ;
+  SlaveRespB3: 8, 0 ;
+  SlaveRespB4: 8, 0 ;
+  SlaveRespB5: 8, 0 ;
+  SlaveRespB6: 8, 0 ;
+  SlaveRespB7: 8, 0 ;
+}
+
+
+
+Frames {
+  ICPBtnState: 0, ICP, 8 {
+    ICP_APINFO_0, 0 ;
+    ICP_APINFO_1, 1 ;
+    ICP_APINFO_2, 2 ;
+    ICP_APINFO_3, 3 ;
+    ICP_APINFO_4, 4 ;
+    ICPLINStatus, 5 ;
+    ICPBtnID_A, 8 ;
+    ICPBtnID_B, 16 ;
+    ICPBtnID_C, 24 ;
+    ICPBtnID_D, 32 ;
+    ICPBtnCoding_A, 40 ;
+    ICPBtnCoding_B, 44 ;
+    ICPBtnCoding_C, 48 ;
+    ICPBtnCoding_D, 52 ;
+    ICPVolumeCmd, 56 ;
+  }
+  DSPLSendSignals: 1, DSPL, 3 {
+    DSPLIlluZone, 0 ;
+    DSPLDimmLvl1, 8 ;
+    DSPLDimmLvl2, 16 ;
+  }
+  ICPBtnStateRotary: 2, ICP, 8 {
+    ICP_APINFO_0, 0 ;
+    ICP_APINFO_1, 1 ;
+    ICP_APINFO_2, 2 ;
+    ICP_APINFO_3, 3 ;
+    ICP_APINFO_4, 4 ;
+    ICPLINStatus, 5 ;
+    ICPBtnID_A, 8 ;
+    ICPBtnID_B, 16 ;
+    ICPBtnID_C, 24 ;
+    ICPBtnID_D, 32 ;
+    ICPBtnCoding_A, 40 ;
+    ICPBtnCoding_B, 44 ;
+    ICPBtnCoding_C, 48 ;
+    ICPBtnCoding_D, 52 ;
+    ICPVolumeCmd2, 56 ;
+    ICPRotaryCmd, 60 ;
+  }
+  DSPLConfigCalibrate: 3, DSPL, 8 {
+    DSPLConfigIndex, 0 ;
+    DSPLConfigData0, 8 ;
+    DSPLConfigData1, 16 ;
+    DSPLConfigData2, 24 ;
+    DSPLConfigData3, 32 ;
+    DSPLConfigData4, 40 ;
+    DSPLConfigData5, 48 ;
+    DSPLConfigData6, 56 ;
+  }
+  ICPPartNum: 4, ICP, 8 {
+    ICP_APINFO_0, 0 ;
+    ICP_APINFO_1, 1 ;
+    ICP_APINFO_2, 2 ;
+    ICP_APINFO_3, 3 ;
+    ICP_APINFO_4, 4 ;
+    ICPLINStatus, 5 ;
+    ICPPartNumIndex, 8 ;
+    ICPPartNumData0, 16 ;
+    ICPPartNumData1, 24 ;
+    ICPPartNumData2, 32 ;
+    ICPPartNumData3, 40 ;
+    ICPPartNumData4, 48 ;
+    ICPPartNumData5, 56 ;
+  }
+  ICPSerialNum: 5, ICP, 8 {
+    ICP_APINFO_0, 0 ;
+    ICP_APINFO_1, 1 ;
+    ICP_APINFO_2, 2 ;
+    ICP_APINFO_3, 3 ;
+    ICP_APINFO_4, 4 ;
+    ICPLINStatus, 5 ;
+    ICPSrNrDigit00, 8 ;
+    ICPSrNrDigit01, 12 ;
+    ICPSrNrDigit02, 16 ;
+    ICPSrNrDigit03, 20 ;
+    ICPSrNrDigit04, 24 ;
+    ICPSrNrDigit05, 28 ;
+    ICPSrNrDigit06, 32 ;
+    ICPSrNrDigit07, 36 ;
+    ICPSrNrDigit08, 40 ;
+    ICPSrNrDigit09, 44 ;
+    ICPSrNrDigit10, 48 ;
+    ICPSrNrDigit11, 52 ;
+    ICPSrNrDigit12, 56 ;
+    ICPSrNrDigit13, 60 ;
+  }
+  
+  ICPBtnStateTwoRC: 6, ICP, 7 { /* two buttons with a rolling counter and CRC8 */
+    ICP_APINFO_0_NG, 0 ;
+    ICP_APINFO_1_NG, 1 ;
+    ICP_APINFO_2_NG, 2 ;
+    ICP_APINFO_3_NG, 3 ;
+    ICP_APINFO_4, 4 ;
+    ICPLINStatus, 5 ;
+    ICPBtnID_A, 8 ;
+    ICPBtnID_B, 16 ;
+    ICPBtnCoding_A, 24 ;
+    ICPBtnCoding_B, 28 ;
+    ICPVolumeCmd2, 32 ;
+    ICPRotaryCmd, 36;
+    ICPIlluSmoothDimmSupp, 40;
+    Reserved3BitIPC, 41;
+    ICP_RC, 44;
+    ICP_CRC8, 48;
+  }
+ 
+  DSPLIlluBlocks: 7, DSPL, 5 {
+    DSPLIlluIndPTS, 0;
+    DSPLIlluInd1, 2;
+    DSPLIlluInd2, 4;
+    DSPLIlluInd3, 6;
+    DSPLIlluInd4, 8;
+    DSPLIlluInd5, 10;
+    DSPLIlluInd6, 12;
+    DSPLIlluInd7, 14;
+    DSPLIlluBtnPTS, 16;
+    DSPLIlluBtn1, 17;
+    DSPLIlluBtn2, 18;
+    DSPLIlluBtn3, 19;
+    DSPLIlluBtn4, 20;
+    DSPLIlluBtn5, 21;
+    DSPLIlluBtn6, 22;
+    DSPLIlluBtn7, 23;
+    DSPLIlluBtn8, 24;
+    DSPLIlluVolKnob, 25;
+    DSPLIlluBtnChrome, 26;
+    Reserved1BitDSPL, 27;
+    DSPL_RC, 28;
+    DSPL_CRC8, 32;
+}
+
+  DSPLPWMs: 8, DSPL, 7 {
+    DSPLIlluPWMIndicatorTarget, 0 ;
+    DSPLIlluPWMBacklightTarget, 10 ;
+    DSPLIlluPWMIndicatorTargetPTS, 20 ;
+    DSPLIlluPWMBacklightTargetPTS, 30 ;
+    DSPLIlluPWMTimerUp, 40 ;
+    DSPLIlluPWMTimerDown, 44;
+    DSPLIlluDimmingCurveType, 48;
+    Reserved7BitDSPL, 49;
+  }
+
+  DSPLIlluIndicationAllocation: 9, ICP, 7 {
+    IlluIndAlloc1, 00;
+    IlluIndAlloc2, 08;
+    IlluIndAlloc3, 16;
+    IlluIndAlloc4, 24;
+    IlluIndAlloc5, 32;
+    IlluIndAlloc6, 40;
+    IlluIndAlloc7, 48;
+  }
+
+  DSPLIlluButtonAllocation: 10, ICP, 8 {
+    IlluBtnAlloc1, 00;
+    IlluBtnAlloc2, 08;
+    IlluBtnAlloc3, 16;
+    IlluBtnAlloc4, 24;
+    IlluBtnAlloc5, 32;
+    IlluBtnAlloc6, 40;
+    IlluBtnAlloc7, 48;
+    IlluBtnAlloc8, 56;
+  }
+
+  ICPPartNumNG: 11, ICP, 8 {
+    ICP_APINFO_0_NG, 0 ;
+    ICP_APINFO_1_NG, 1 ;
+    ICP_APINFO_2_NG, 2 ;
+    ICP_APINFO_3_NG, 3 ;
+    ICP_APINFO_4, 4 ;
+    ICPLINStatus, 5 ;
+    ICPPartNumIndex, 8 ;
+    ICPPartNumData0, 16 ;
+    ICPPartNumData1, 24 ;
+    ICPPartNumData2, 32 ;
+    ICPPartNumData3, 40 ;
+    ICPPartNumData4, 48 ;
+    ICPPartNumData5, 56 ;
+  }
+  ICPSerialNumNG: 12, ICP, 8 {
+    ICP_APINFO_0_NG, 0 ;
+    ICP_APINFO_1_NG, 1 ;
+    ICP_APINFO_2_NG, 2 ;
+    ICP_APINFO_3_NG, 3 ;
+    ICP_APINFO_4, 4 ;
+    ICPLINStatus, 5 ;
+    ICPSrNrDigit00, 8 ;
+    ICPSrNrDigit01, 12 ;
+    ICPSrNrDigit02, 16 ;
+    ICPSrNrDigit03, 20 ;
+    ICPSrNrDigit04, 24 ;
+    ICPSrNrDigit05, 28 ;
+    ICPSrNrDigit06, 32 ;
+    ICPSrNrDigit07, 36 ;
+    ICPSrNrDigit08, 40 ;
+    ICPSrNrDigit09, 44 ;
+    ICPSrNrDigit10, 48 ;
+    ICPSrNrDigit11, 52 ;
+    ICPSrNrDigit12, 56 ;
+    ICPSrNrDigit13, 60 ;
+  }
+
+}
+
+Diagnostic_frames {
+  MasterReq: 0x3c {
+    MasterReqB0, 0 ;
+    MasterReqB1, 8 ;
+    MasterReqB2, 16 ;
+    MasterReqB3, 24 ;
+    MasterReqB4, 32 ;
+    MasterReqB5, 40 ;
+    MasterReqB6, 48 ;
+    MasterReqB7, 56 ;
+  }
+  SlaveResp: 0x3d {
+    SlaveRespB0, 0 ;
+    SlaveRespB1, 8 ;
+    SlaveRespB2, 16 ;
+    SlaveRespB3, 24 ;
+    SlaveRespB4, 32 ;
+    SlaveRespB5, 40 ;
+    SlaveRespB6, 48 ;
+    SlaveRespB7, 56 ;
+  }
+}
+
+Node_attributes {
+  ICP{
+    LIN_protocol = "J2602_1_1.0" ;
+    configured_NAD = 0x60 ;
+    product_id = 0x1000, 0x1000, 100 ;
+    response_error = ICPLINStatus ;
+    P2_min = 0 ms ;
+    ST_min = 0 ms ;
+    response_tolerance = 20 % ;
+  }
+}
+
+Schedule_tables {
+ LIN11 {    /* DLPL_LIN_16_003 */
+    ICPBtnState delay 15 ms ;
+    DSPLSendSignals delay 9 ms ;
+  }
+  
+ LIN12 {    /* DLPL_LIN_16_004 */
+    ICPBtnStateRotary delay 15 ms ;
+    DSPLSendSignals delay 9 ms ;
+  }
+ LIN13 {    /* DLPL_LIN_16_005 */
+    ICPBtnStateRotary delay 15 ms ;
+  }
+  LINConfig1 {   /* DLPL_LIN_16_006 */
+    DSPLConfigCalibrate delay 15 ms ;
+    ICPPartNum delay 15 ms ;
+    ICPSerialNum delay 15 ms ;
+  }
+ MRF_schedule {
+    MasterReq delay 15 ms ;
+  }
+ SRF_schedule
+ {
+    SlaveResp delay 15 ms ;
+  }
+ LINBtnIndIllu {
+    ICPBtnStateTwoRC delay 15 ms ;
+    DSPLIlluBlocks delay 12 ms ;
+    DSPLPWMs delay 15 ms;
+  }
+  LINIlluConfig {
+    DSPLIlluIndicationAllocation delay 15 ms ;
+    DSPLIlluButtonAllocation delay 15 ms ;
+  }
+  LINConfig1NG {
+    DSPLConfigCalibrate delay 15 ms ;
+    ICPPartNumNG delay 15 ms ;
+    ICPSerialNumNG delay 15 ms ;
+  }
+}
+
+
+Signal_encoding_types {
+  ICP_APINFO_0_EncodingType {
+    logical_value, 0, "No Vol_Knob Error" ;
+    logical_value, 1, "Vol_Knob Error Present" ;
+  }
+  ICP_APINFO_1_EncodingType {
+    logical_value, 0, "No Rotary Error" ;
+    logical_value, 1, "Rotary Error Present" ;
+  }
+  ICP_APINFO_2_EncodingType {
+    logical_value, 0, "No Error" ;
+    logical_value, 1, "UnderVoltage Event" ;
+  }
+  ICP_APINFO_3_EncodingType {
+    logical_value, 0, "No Error" ;
+    logical_value, 1, "OverVoltage Event" ;
+  }
+  ICP_APINFO_4_EncodingType {
+    logical_value, 0, "No Configuration Need" ;
+    logical_value, 1, "Configuration Required" ;
+  }
+  ICP_APINFO_0_NG_EncodingType {                   //covers both, volume knob and rotary, if available
+    logical_value, 0, "No Knob Error" ;
+    logical_value, 1, "Knob Error Present" ;
+  }
+  ICP_APINFO_1_NG_EncodingType {
+    logical_value, 0, "No HW_Output Error" ;
+    logical_value, 1, "HW_Output Error Present" ;  //Hardwired output error (of e.g. hardwired buttons)
+  }
+  ICP_APINFO_2_NG_EncodingType {
+    logical_value, 0, "No Indicator Error" ;
+    logical_value, 1, "Indicator Error Present" ;  //e.g. LED error of indicators
+  }
+  ICP_APINFO_3_NG_EncodingType {
+    logical_value, 0, "No Circuit Error" ;
+    logical_value, 1, "Circuit Error Detected" ;    //covers:short to ground, short to battery, open circuit
+  }
+  ICPBtnCoding_EncodingType {
+    logical_value, 0, "Inactive" ;
+    logical_value, 1, "Active" ;
+    logical_value, 2, "ShortEvent" ;
+    logical_value, 3, "ShortElapsed" ;
+    logical_value, 4, "LongEvent" ;
+    logical_value, 5, "Stuck" ;
+    logical_value, 15, "Idle" ;
+  }
+  ICPBtnID_EncodingType {
+    logical_value, 0, "ICPBtnID_0" ;
+    logical_value, 1, "ICPBtnID_1" ;
+    logical_value, 2, "ICPBtnID_2" ;
+    logical_value, 3, "ICPBtnID_3" ;
+    logical_value, 4, "ICPBtnID_4" ;
+    logical_value, 5, "ICPBtnID_5" ;
+    logical_value, 6, "ICPBtnID_6" ;
+    logical_value, 7, "ICPBtnID_7" ;
+    logical_value, 8, "ICPBtnID_8" ;
+    logical_value, 9, "ICPBtnID_9" ;
+    logical_value, 10, "ICPBtnID_Star" ;
+    logical_value, 11, "ICPBtnID_Cross" ;
+    logical_value, 19, "ICPBtnID_Sirius" ;
+    logical_value, 20, "ICPBtnID_Radio" ;
+    logical_value, 21, "ICPBtnID_CD" ;
+    logical_value, 22, "ICPBtnID_AUX" ;
+    logical_value, 23, "ICPBtnID_Menu" ;
+    logical_value, 24, "ICPBtnID_Sound" ;
+    logical_value, 25, "ICPBtnID_Phone" ;
+    logical_value, 26, "ICPBtnID_NAV" ;
+    logical_value, 27, "ICPBtnID_Map" ;
+    logical_value, 28, "ICPBtnID_Traffic" ;
+    logical_value, 29, "ICPBtnID_Clock" ;
+    logical_value, 31, "ICPBtnID_OnOff" ;
+    logical_value, 40, "ICPBtnID_OK" ;
+    logical_value, 41, "ICPBtnID_ArrowLeft" ;
+    logical_value, 42, "ICPBtnID_ArrowRight" ;
+    logical_value, 43, "ICPBtnID_ArrowUp" ;
+    logical_value, 44, "ICPBtnID_ArrowDown" ;
+    logical_value, 50, "ICPBtnID_SeekLeft" ;
+    logical_value, 51, "ICPBtnID_SeekRight" ;
+    logical_value, 52, "ICPBtnID_Eject" ;
+    logical_value, 53, "ICPBtnID_Load" ;
+    logical_value, 54, "ICPBtnID_TA" ;
+    logical_value, 55, "ICPBtnID_Info" ;
+    logical_value, 56, "ICPBtnID_Home" ;
+    logical_value, 57, "ICPBtnID_Dsp" ;
+    logical_value, 58, "ICPBtnID_Mute" ;
+    logical_value, 59, "ICPBtnID_DayNight" ;
+    logical_value, 60, "ICPBtnID_SKey1" ;
+    logical_value, 61, "ICPBtnID_SKey2" ;
+    logical_value, 62, "ICPBtnID_SKey3" ;
+    logical_value, 63, "ICPBtnID_SKey4" ;
+    logical_value, 74, "ICPBtnID_Tune_Up" ;
+    logical_value, 75, "ICPBtnID_Tune_Down" ;
+    logical_value, 79, "ICPBtnID_Media" ;
+    logical_value, 80, "ICPBtnID_Disp" ;                 /* Screen Off */
+    logical_value, 101, "ICPBtnID_Tune" ;
+    logical_value, 102, "ICPBtnID_PlayPause" ;
+    logical_value, 103, "ICPBtnID_StarSound" ;
+    logical_value, 104, "ICPBtnID_Back" ;
+    logical_value, 105, "ICPBtnID_Audio" ;
+    logical_value, 106, "ICPBtnID_Settings" ;
+    logical_value, 107, "ICPBtnID_Apps" ;
+    logical_value, 110, "ICPBtnID_Camera" ;
+    logical_value, 111, "ICPBtnID_CalmScreen" ;
+    logical_value, 112, "ICPBtnID_DriverAssist" ;        /* DAT hotkey*/
+    logical_value, 113, "ICPBtnID_AutoStopStart" ;
+    logical_value, 114, "ICPBtnID_TracContr" ;
+    logical_value, 115, "ICPBtnID_HillDecCtrl" ;
+    logical_value, 116, "ICPBtnID_ParkHotKey" ;
+    logical_value, 117, "ICPBtnID_ParkAid" ;
+    logical_value, 118, "ICPBtnID_MAXDefr" ;
+    logical_value, 119, "ICPBtnID_DrvModes" ;
+    logical_value, 120, "ICPBtnID_ZoneLght" ;
+    logical_value, 121, "ICPBtnID_HeadRestDump" ;
+    logical_value, 122, "ICPBtnID_SnowPlowMode" ;
+    logical_value, 123, "ICPBtnID_PonyHotKey" ;
+    logical_value, 124, "ICPBtnID_OBGIHotKey" ;          /*ProPower OnBoard, Power to the box*/
+    logical_value, 125, "ICPBtnID_PsgrSldgDoor" ;        /*Passenger sliding door*/
+    logical_value, 126, "ICPBtnID_PsgrSldgDoorChldLck" ; /*Passenger sliding door with child lock*/
+    logical_value, 127, "ICPBtnID_FAPA" ;
+    logical_value, 128, "ICPBtnID_TruckHotkey" ;
+    logical_value, 129, "ICPBtnID_ExhaustBrake" ;
+    logical_value, 130, "ICPBtnID_Nircos" ;
+    logical_value, 131, "ICPBtnID_LockUnlock" ;
+    logical_value, 132, "ICPBtnID_ParkLamp" ;
+    logical_value, 133, "ICPBtnID_LowBeam" ;
+    logical_value, 134, "ICPBtnID_AutoHeadLampOn" ;
+    logical_value, 135, "ICPBtnID_FrontFogOn" ;
+    logical_value, 136, "ICPBtnID_HeadLampOff" ;
+    logical_value, 137, "ICPBtnID_DimUp" ;
+    logical_value, 138, "ICPBtnID_DimDown" ;
+    logical_value, 139, "ICPBtnID_TempUp" ;
+    logical_value, 140, "ICPBtnID_TempDown" ;
+    logical_value, 141, "ICPBtnID_BlowerUp" ;
+    logical_value, 142, "ICPBtnID_BlowerDown" ;
+    logical_value, 143, "ICPBtnID_EvMode" ;
+    logical_value, 144, "ICPBtnID_ClimateHotKey" ;
+    logical_value, 145, "ICPBtnID_HeatedBackLite" ;
+    logical_value, 146, "ICPBtnID_AutoHold" ;
+    logical_value, 147, "ICPBtnID_Favorites" ;
+    logical_value, 255, "ICPBtnID_Idle" ;
+  }
+  ICPRotaryCmd_EncodingType {
+    physical_value, 0, 14, 1, -7, "Increment" ;
+    logical_value, 7, "Inactive" ;
+  }
+  ICPVolumeCmd_EncodingType {
+    physical_value, 0, 60, 1, -30, "Increment" ;
+    logical_value, 30, "Inactive" ;
+  }
+  ICPVolumeCmd2_EncodingType {
+    physical_value, 0, 14, 1, -7, "Increment" ;
+    logical_value, 7, "Inactive" ;
+  }
+  ICPSrNrDigit_EnCodingType {
+    physical_value, 0, 15, 1, 0, "One Dgit 0 - 9 to be used" ;
+  }
+  DSPLDimmLvl_EncodingType {
+    physical_value, 0, 255, 1, 0 ;
+    logical_value, 0, "Off" ;
+    logical_value, 255, "Max" ;
+  }
+  DSPLIlluZone_EncodingType {
+    physical_value, 0, 255, 1, 0, "bitfield" ;
+    /*  $0: Off
+        $1: VolumeKnob
+        $2: HazardWarning_DoorLock
+        $4: CD_Slot
+        $8: Zone2
+        $10: Zone1
+        $20: Chrome
+        $40: Reserved
+        $80: Invalid
+    */
+  }  
+  ICPLINStatus_EncodingType  {
+    logical_value, 0, "No detected fault" ;
+    logical_value, 1, "Reset" ;
+    logical_value, 2, "Reserved" ;
+    logical_value, 3, "Reserved" ;
+    logical_value, 4, "Data Error" ;
+    logical_value, 5, "Checksum Error " ;
+    logical_value, 6, "Byte Field Framing Error" ;
+    logical_value, 7, "ID Parity Error" ;
+  }
+  DSPLIlluPWM_Encoding {
+    physical_value, 0, 1023, 1, 0 ;
+    logical_value, 0, "Off" ;
+    logical_value, 1023, "Max" ;
+  }
+  DSPLIlluPWMTimer_Encoding {
+    physical_value, 0, 15, 100, 0, "shift-factor" ;
+  }
+  DSPLIlluOnOffSwitch_Encoding {
+    logical_value, 0, "Off" ;
+    logical_value, 1, "On" ;
+  }
+  DSPLIlluOnOffBlinkSwitch_Encoding {
+    logical_value, 0, "Off" ;
+    logical_value, 1, "On" ;
+    logical_value, 2, "Blink" ;
+    logical_value, 3, "Reserved" ;
+  }
+  DSPLIlluDimmingCurveType_Encoding {
+    logical_value, 0, "linear" ;
+    logical_value, 1, "exponential" ;
+  }
+  RC_Encoding {
+    physical_value, 0, 15, 1, 0, "rolling counter value" ;
+  }
+  CRC8_Encoding {
+    physical_value, 0, 255, 1, 0, "CRC8" ;
+  }
+  
+  ICPIlluSmoothDimmSupported_Encoding {
+    logical_value, 0, "No" ;
+    logical_value, 1, "Yes" ;
+  }
+}
+
+Signal_representation {
+  DSPLDimmLvl_EncodingType: DSPLDimmLvl1, DSPLDimmLvl2 ;
+  DSPLIlluZone_EncodingType: DSPLIlluZone ;
+  ICPBtnCoding_EncodingType: ICPBtnCoding_A, ICPBtnCoding_B, ICPBtnCoding_C, ICPBtnCoding_D ;
+  ICPBtnID_EncodingType: ICPBtnID_A, ICPBtnID_B, ICPBtnID_C, ICPBtnID_D , IlluIndAlloc1, IlluIndAlloc2, IlluIndAlloc3, IlluIndAlloc4, IlluIndAlloc5, IlluIndAlloc6, IlluIndAlloc7, IlluBtnAlloc1, IlluBtnAlloc2, IlluBtnAlloc3, IlluBtnAlloc4, IlluBtnAlloc5, IlluBtnAlloc6, IlluBtnAlloc7, IlluBtnAlloc8 ;
+  ICPLINStatus_EncodingType: ICPLINStatus ;
+  ICPRotaryCmd_EncodingType: ICPRotaryCmd ;
+  ICPSrNrDigit_EnCodingType: ICPSrNrDigit00, ICPSrNrDigit01, ICPSrNrDigit02, ICPSrNrDigit03, ICPSrNrDigit04, ICPSrNrDigit05, ICPSrNrDigit06, ICPSrNrDigit07, ICPSrNrDigit08, ICPSrNrDigit09, ICPSrNrDigit10, ICPSrNrDigit11, ICPSrNrDigit12, ICPSrNrDigit13 ;
+  ICPVolumeCmd2_EncodingType: ICPVolumeCmd2 ;
+  ICPVolumeCmd_EncodingType: ICPVolumeCmd ;
+  ICP_APINFO_0_EncodingType: ICP_APINFO_0 ;
+  ICP_APINFO_1_EncodingType: ICP_APINFO_1 ;
+  ICP_APINFO_2_EncodingType: ICP_APINFO_2 ;
+  ICP_APINFO_3_EncodingType: ICP_APINFO_3 ;
+  ICP_APINFO_4_EncodingType: ICP_APINFO_4 ;
+  ICP_APINFO_0_NG_EncodingType: ICP_APINFO_0_NG ;
+  ICP_APINFO_1_NG_EncodingType: ICP_APINFO_1_NG ;
+  ICP_APINFO_2_NG_EncodingType: ICP_APINFO_2_NG ;
+  ICP_APINFO_3_NG_EncodingType: ICP_APINFO_3_NG ;
+  
+  DSPLIlluPWMTimer_Encoding: DSPLIlluPWMTimerUp, DSPLIlluPWMTimerDown ;
+  DSPLIlluPWM_Encoding: DSPLIlluPWMIndicatorTarget, DSPLIlluPWMBacklightTarget, DSPLIlluPWMIndicatorTargetPTS, DSPLIlluPWMBacklightTargetPTS ;
+  DSPLIlluOnOffBlinkSwitch_Encoding: DSPLIlluIndPTS, DSPLIlluInd1, DSPLIlluInd2, DSPLIlluInd3, DSPLIlluInd4, DSPLIlluInd5, DSPLIlluInd6, DSPLIlluInd7;
+  ICPIlluSmoothDimmSupported_Encoding: ICPIlluSmoothDimmSupp;
+  DSPLIlluOnOffSwitch_Encoding:   DSPLIlluBtnPTS, DSPLIlluBtn1, DSPLIlluBtn2, DSPLIlluBtn3, DSPLIlluBtn4, DSPLIlluBtn5, DSPLIlluBtn6, DSPLIlluBtn7, DSPLIlluBtn8, DSPLIlluVolKnob, DSPLIlluBtnChrome;
+  DSPLIlluDimmingCurveType_Encoding: DSPLIlluDimmingCurveType;
+  RC_Encoding: ICP_RC, DSPL_RC;
+  CRC8_Encoding: ICP_CRC8, DSPL_CRC8;
+}
