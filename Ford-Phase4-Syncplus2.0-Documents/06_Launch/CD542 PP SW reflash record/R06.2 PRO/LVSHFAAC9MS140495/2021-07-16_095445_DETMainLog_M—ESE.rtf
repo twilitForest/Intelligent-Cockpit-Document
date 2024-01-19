@@ -1,0 +1,1117 @@
+{\rtf1\ansi\ansicpg936\deff0\deflang1033\deflangfe2052{\fonttbl{\f0\fnil Arial;}{\f1\fmodern\fprq6\fcharset134 \'cb\'ce\'cc\'e5;}{\f2\fnil\fcharset0 Arial;}}
+{\colortbl ;\red255\green0\blue0;\red0\green0\blue0;\red0\green0\blue255;\red0\green128\blue0;\red218\green165\blue32;}
+\viewkind4\uc1\pard\cf1\lang2052\ul\f0\fs17 DCS contained a reference to unlocatable KEY file:   D:\\desai\\mdx?key\\key\\IVI.key\par
+DCS contained a reference to unlocatable VBS file:   D:\\????\\??????\\BQ R06.2 Re-Flash Vehicle Vin Code 20210715\\LVSHFAAC8MS141573\\PP28_S141573.ecd\par
+DCS contained a reference to unlocatable ECD file:   D:\\????\\??????\\BQ R06.2 Re-Flash Vehicle Vin Code 20210715\\LVSHFAAC8MS141573\\PP28_S141573.ecd\par
+\cf2\ulnone Date: 2021-07-16     Time: 9:54:45  (v8.9.0)\par
+ \par
+ >>>>> Active Classical CAN Connection set to Quick Connection - 7D0  - 500k    [VN1610 Channel 2]\par
+\cf3 Request for ReadDataByIdentifier (Service 0x22)  --  [ECU ID: 0x7D0 (APIM)] - Single DID\par
+     DataIdentifier:  0xF16C\par
+\cf4 Positive Response to ReadDataByIdentifier (Service 0x22)  --  [ECU ID: 0x7D8 (APIM)]\par
+     DataIdentifier:  0xF16C     Data Size: 24 byte(s)\par
+     Data (Hex): 4D 42 36 54 2D 31 34 48 33 37 36 2D 41 41 00 00 00 00 00 00 00 00 00 00 \par
+          [0xF16C] ECU Cal-Config #3 Part Number: MB6T-14H376-AA\par
+\cf3 Request for ReadDataByIdentifier (Service 0x22)  --  [ECU ID: 0x7D0 (APIM)] - Single DID\par
+     DataIdentifier:  0xF113\par
+\cf4 Positive Response to ReadDataByIdentifier (Service 0x22)  --  [ECU ID: 0x7D8 (APIM)]\par
+     DataIdentifier:  0xF113     Data Size: 24 byte(s)\par
+     Data (Hex): 4D 42 36 54 2D 31 38 44 36 36 38 2D 50 43 00 00 00 00 00 00 00 00 00 00 \par
+          [0xF113] ECU Delivery Assembly Number: MB6T-18D668-PC\par
+\cf2\ul\b\par
+Validating VBF Sequence...\par
+\ulnone Sequence Name\b0 :  1\par
+\b VBS Filename\b0 :  \par
+\b Use Specific Security Key File\b0 :  No\par
+     Number of Security Levels Loaded:  3\par
+\b Inhale Associated ECD File\b0 :  No\par
+\b Number of Files in VBF Sequence\b0 :  2\par
+\ul\b\par
+File #1:  D:\\software\\CD542\\20210705_0406_B1F27_R06.2.PRO\\20210705_0406_B1F27_R06.2.PRO\\MCU\\ESE\\Flashdrv.sig.vbf\ulnone\b0\par
+     VBF Version: 3.1,     ECU Address: 0x7D0,     SW Part Type: SBL,     SW Part Number: "MB6T-14H367-AB",     Call Info: 0xFEBD0000,     DataFormatIdentifier To Use: 0x00\par
+     Number of Erase Blocks: 0\par
+     Number of Data Blocks: 2\par
+          Data Block #1  ---  Start Address: 0xFEBD0000, Length: 0x24B8, Checksum: 0x7A49\par
+          Data Block #2  ---  Start Address: 0xFEBD2600, Length: 0x12C, Checksum: 0x309D\par
+     File Checksum: 0xB72AF18\par
+\cf5           Warning:  Filename Does Not Equal SW Partnumber\par
+\cf2\ul\b\par
+File #2:  D:\\software\\CD542\\20210705_0406_B1F27_R06.2.PRO\\20210705_0406_B1F27_R06.2.PRO\\MCU\\ESE\\MB6T-14H376-AB.vbf\ulnone\b0\par
+     VBF Version: 3.1,     ECU Address: 0x7D0,     SW Part Type: DATA,     SW Part Number: "MB6T-14H376-AB",     Call Info: Not Present,     DataFormatIdentifier To Use: 0x00\par
+     Number of Erase Blocks: 1\par
+          Erase Block #1  ---  Start Address: 0x10000000, Length: 0x80000\par
+     Number of Data Blocks: 2\par
+          Data Block #1  ---  Start Address: 0x10000000, Length: 0x20, Checksum: 0xF347\par
+          Data Block #2  ---  Start Address: 0x10000400, Length: 0xA440, Checksum: 0x3A1B\par
+     File Checksum: 0x309B300C\par
+\par
+One or more potential issues found with VBF Sequence files.  Refer to log for more specifics.\par
+     --- One or more warnings found in at least one VBF file!\par
+\ul\b\par
+\par
+Downloading VBF sequence ... (1)\par
+\ulnone\b0 Note: Not utilizing Fast Download Method.\par
+Note: STmin override not enabled.\par
+Functionally transitioning ECUs to programmingSession - Quick Connection - 7D0 ... \cf4 Ok (Tx Ok, Response Suppressed)\par
+\cf2\ul\par
+Starting file 1 of 2:  D:\\software\\CD542\\20210705_0406_B1F27_R06.2.PRO\\20210705_0406_B1F27_R06.2.PRO\\MCU\\ESE\\Flashdrv.sig.vbf\par
+\ulnone Attempting to communicate to ECU 0x7D0 on Quick Connection - 7D0 ... ECU Found\par
+Physically transitioning ECU to programmingSession on Quick Connection - 7D0 ... \cf4 Ok\par
+\cf2 Determining level of SWDL Specification Supported ... \cf4 Ok\par
+\cf2      Supported SWDL Specification Version = 007\par
+Reading ECU Core Assembly Part Number 0xF111 ... \cf4 Ok\par
+\cf2      DID 0xF111 = MB6T-14H370-PC\par
+Attempting to Unlock Security Access for Level 0x01 ... \cf4 Ok\par
+\cf2 Programming Memory Block 1 of 2  (Address 0xFEBD0000, Length 0x24B8) ... \cf4 Ok\par
+\cf2      Transferring data for current block...\cf4 Ok\par
+\cf2      Finalizing Memory Block 1 of 2 with transferExit request...\cf4 Ok\par
+\cf2 Programming Memory Block 2 of 2  (Address 0xFEBD2600, Length 0x12C) ... \cf4 Ok\par
+\cf2      Transferring data for current block...\cf4 Ok\par
+\cf2      Finalizing Memory Block 2 of 2 with transferExit request...\cf4 Ok\par
+\cf2 Activating SBL...\cf4 Ok\par
+\cf2 Elapsed download time is 3.38 seconds.\par
+\ul\par
+Starting file 2 of 2:  D:\\software\\CD542\\20210705_0406_B1F27_R06.2.PRO\\20210705_0406_B1F27_R06.2.PRO\\MCU\\ESE\\MB6T-14H376-AB.vbf\par
+\ulnone Attempting to Unlock Security Access for Level 0x01 ... \cf4 Ok\par
+\cf2 Erasing Memory Block 1 of 1  (Address 0x10000000, Length 0x80000) ... \cf4 Ok\par
+\cf2 Programming Memory Block 1 of 2  (Address 0x10000000, Length 0x20) ... \cf4 Ok\par
+\cf2      Transferring data for current block...\cf4 Ok\par
+\cf2      Finalizing Memory Block 1 of 2 with transferExit request...\cf4 Ok\par
+\cf2 Programming Memory Block 2 of 2  (Address 0x10000400, Length 0xA440) ... \cf4 Ok\par
+\cf2      Transferring data for current block...\cf4 Ok\par
+\cf2      Finalizing Memory Block 2 of 2 with transferExit request...\cf4 Ok\par
+\cf2 Checking for valid application ... \cf4 Ok\par
+\cf2 Elapsed download time was 10.94 seconds.\par
+Functionally resetting ECUs - Quick Connection - 7D0 ... \cf4 Ok (Tx Ok, Response Suppressed)\par
+\cf2 Functionally clearing DTCs - Quick Connection - 7D0 ... \cf4 Ok (Response Received)\par
+\cf2 Software Download Result:  No critical errors occurred during SWDL!\par
+ >>>>> Active Classical CAN Connection set to Quick Connection - 7D0  - 500k    [VN1610 Channel 2]\par
+Functionally transitioning ECUs to extendedDiagnosticSession - Quick Connection - 7D0 ... \cf4 Transmit Ok\par
+\cf2 Attempting to communicate to ECU 0x7D0 on Quick Connection - 7D0 ... ECU Found\par
+\ul\b\par
+\par
+Inhale ECU Configuration from ECU 0x7D0 (APIM) \par
+\ulnone\b0 Attempting to Unlock Security Access for Level 0x03 ... \cf4 Ok\par
+\cf2 Determining if Routine 0x020A is Supported ...\cf4 No\par
+\cf2 Attempting to read DID 0xDE00 ... \cf4 Ok\par
+\cf3 Request for ReadDataByIdentifier (Service 0x22)  --  [ECU ID: 0x7D0 (APIM)] - Single DID\par
+     DataIdentifier:  0xDE00\par
+\cf4 Positive Response to ReadDataByIdentifier (Service 0x22)  --  [ECU ID: 0x7D8 (APIM)]\par
+     DataIdentifier:  0xDE00     Data Size: 7 byte(s)\par
+     Data (Hex): 01 02 00 00 00 00 22 \par
+          [0xDE00] Config Block DE00:    ---   (Packeted DID)\par
+          Vehicle Nameplate ID: CD542\par
+          Model Year: MY21\par
+          Body Style: Hatchback\par
+          Series(Trim) Byte 1: \par
+          Series(Trim) Byte 2: \par
+          Color code: 00\par
+          welcome farewell animation: base\par
+          HMI variants: Ford\par
+          Display variants: 27.0L\par
+          Connectivity: Ford Modem Only\par
+\cf2 Attempting to read DID 0xDE01 ... \cf4 Ok\par
+\cf3 Request for ReadDataByIdentifier (Service 0x22)  --  [ECU ID: 0x7D0 (APIM)] - Single DID\par
+     DataIdentifier:  0xDE01\par
+\cf4 Positive Response to ReadDataByIdentifier (Service 0x22)  --  [ECU ID: 0x7D8 (APIM)]\par
+     DataIdentifier:  0xDE01     Data Size: 4 byte(s)\par
+     Data (Hex): 11 00 30 00 \par
+          [0xDE01] Config Block DE01:    ---   (Packeted DID)\par
+          SWC: Can\par
+          EFP: LIN\par
+          Rear EFP: Disabled\par
+          WACM: Not Present\par
+          Ambient Light: Multi-color variant 2\par
+          MC Seat: Disabled\par
+          360 lighting: Disabled\par
+          MCM: N/A\par
+\cf2 Attempting to read DID 0xDE02 ... \cf4 Ok\par
+\cf3 Request for ReadDataByIdentifier (Service 0x22)  --  [ECU ID: 0x7D0 (APIM)] - Single DID\par
+     DataIdentifier:  0xDE02\par
+\cf4 Positive Response to ReadDataByIdentifier (Service 0x22)  --  [ECU ID: 0x7D8 (APIM)]\par
+     DataIdentifier:  0xDE02     Data Size: 3 byte(s)\par
+     Data (Hex): 21 00 10 \par
+          [0xDE02] Config Block DE02:    ---   (Packeted DID)\par
+          PDC HMI: 8CH\par
+          Camera: Rear Analog (CVBS)\par
+          Camera Views: Disabled\par
+          APA: Disabled\par
+          CTA: CTA\par
+          MT/AT: AT\par
+\cf2 Attempting to read DID 0xDE03 ... \cf4 Ok\par
+\cf3 Request for ReadDataByIdentifier (Service 0x22)  --  [ECU ID: 0x7D0 (APIM)] - Single DID\par
+     DataIdentifier:  0xDE03\par
+\cf4 Positive Response to ReadDataByIdentifier (Service 0x22)  --  [ECU ID: 0x7D8 (APIM)]\par
+     DataIdentifier:  0xDE03     Data Size: 4 byte(s)\par
+     Data (Hex): 20 20 00 01 \par
+          [0xDE03] Config Block DE03:    ---   (Packeted DID)\par
+          Climate domain: Dual Zone\par
+          Rear Hvac: Disabled\par
+          heat cool seat: Heat/cool\par
+          heated SW: Disabled\par
+          Fresh air Cabin: Disabled\par
+          suppress climate fan speed during VR: Disabled\par
+          heated windshield: Disabled\par
+          Climate auto levels: 3 Levels\par
+\cf2 Attempting to read DID 0xDE04 ... \cf4 Ok\par
+\cf3 Request for ReadDataByIdentifier (Service 0x22)  --  [ECU ID: 0x7D0 (APIM)] - Single DID\par
+     DataIdentifier:  0xDE04\par
+\cf4 Positive Response to ReadDataByIdentifier (Service 0x22)  --  [ECU ID: 0x7D8 (APIM)]\par
+     DataIdentifier:  0xDE04     Data Size: 7 byte(s)\par
+     Data (Hex): 21 00 00 20 02 10 40 \par
+          [0xDE04] Config Block DE04:    ---   (Packeted DID)\par
+          List browser: Navi+Phone+Audio\par
+          Navi Features: With Gyro\par
+          1 Pedal drive: Disabled\par
+          Fuel type: Gas\par
+          Powerflow Type: None\par
+          Enhanced Memory: 3 person soft key\par
+          Battery Pack Size: 3P\par
+          AR Navigation: Disabled\par
+          TPMS: w/o temperature, with digits\par
+          ADAS: TSR Only\par
+          EV Range Ring: Disabled\par
+          Keypad/PAAK: PAAK Lite\par
+          Charge Port Type: Disabled\par
+\cf2 Attempting to read DID 0xDE05 ... \cf4 Ok\par
+\cf3 Request for ReadDataByIdentifier (Service 0x22)  --  [ECU ID: 0x7D0 (APIM)] - Single DID\par
+     DataIdentifier:  0xDE05\par
+\cf4 Positive Response to ReadDataByIdentifier (Service 0x22)  --  [ECU ID: 0x7D8 (APIM)]\par
+     DataIdentifier:  0xDE05     Data Size: 19 byte(s)\par
+     Data (Hex): 01 12 10 06 00 22 03 00 00 00 00 00 00 00 00 18 00 00 11 \par
+          [0xDE05] Config Block DE05:    ---   (Packeted DID)\par
+          BT tuning: CD542 5Dr 10 Speaker\par
+          Extended play: 30min\par
+          Smart DSP: A2B B&O\par
+          Sound Mode: Stereo/Surround: Stereo/Surround\par
+          DSO chime: Disabled\par
+          DSP feature: Quantum Logic Surrounding: Disabled\par
+          Chime Tuning for DSP: -6dB\par
+          DSP feature: Revel/THX: Disabled\par
+          ANC/ESE: Disabled\par
+          Front Satellite Speakers: Fixed Line Leve\par
+          Rear Satellite Speakers: Fixed Line Level\par
+          Speaker Connection Types: A2B 10 speakers type1[CD542(PA)CX727(LA)]\par
+          Chime Strategy: CGEA1.3 (FNA)\par
+          Turn Signal Chimes: Disabled\par
+          ANC Left Front Mixing: No Mixing\par
+          ANC Right Front Mixing: No Mixing\par
+          ANC Rear Mixing: No Mixing\par
+          Enable Occupancy Mode Change in Phone: Enables Occupancy Mode Change In Phone\par
+          Antenna Test Acceptance Value: 0 dBuV\par
+          AM Station for Antenna Test: 522 Khz\par
+          Gain Adjustment in Phone Mode: No Gain Adjustment\par
+          Graphic EQ: Slot 0\par
+          Phone Level in Speed Sensitive Volume: SSV level is fixed to Off\par
+          FM Seek/Stop Sensitivity: 24 db\par
+          ESE profile select: 00\par
+          DSP VR Audio Delay time: 00\par
+          A2B slave slots combination: 11\par
+\cf2 Attempting to read DID 0xDE06 ... \cf4 Ok\par
+\cf3 Request for ReadDataByIdentifier (Service 0x22)  --  [ECU ID: 0x7D0 (APIM)] - Single DID\par
+     DataIdentifier:  0xDE06\par
+\cf4 Positive Response to ReadDataByIdentifier (Service 0x22)  --  [ECU ID: 0x7D8 (APIM)]\par
+     DataIdentifier:  0xDE06     Data Size: 18 byte(s)\par
+     Data (Hex): 01 28 01 00 00 00 02 00 21 00 00 00 00 00 00 00 00 00 \par
+          [0xDE06] Config Block DE06:    ---   (Packeted DID)\par
+          V2I features: Enabled\par
+          AM Seek/Stop Sensitivity: 40 db\par
+          Power to the Box: Disabled\par
+          Selectable Drive Modes: Enabled\par
+          Seats Hot Key: Disabled\par
+          Facial Recognition: Disabled\par
+          ICP Subtype: Legacy ICP\par
+          Massage Pattern: Pattern Set 1\par
+          Stop Mode: Disabled\par
+          Sunroof control: 2 piece moonroof type1\par
+          Rear Lamp Animation: Not Selectable\par
+          SDM Max Response Timer: 500ms\par
+          SDM Max Feedback Errors: 3\par
+          HDRVC Overlay sets: Disabled\par
+\cf2 Attempting to read DID 0xDE07 ... \cf4 Ok\par
+\cf3 Request for ReadDataByIdentifier (Service 0x22)  --  [ECU ID: 0x7D0 (APIM)] - Single DID\par
+     DataIdentifier:  0xDE07\par
+\cf4 Positive Response to ReadDataByIdentifier (Service 0x22)  --  [ECU ID: 0x7D8 (APIM)]\par
+     DataIdentifier:  0xDE07     Data Size: 16 byte(s)\par
+     Data (Hex): 00 00 14 40 C1 E8 80 00 00 10 07 06 10 1F 87 E4 \par
+          [0xDE07] Config Block DE07:    ---   (Packeted DID)\par
+          IOD - Pitch/Roll (Off Road): Disabled\par
+          IOD - Eco Behavior: Disabled\par
+          IOD - Trip 1/2: Disabled\par
+          IOD - Fuel Economy: Disabled\par
+          IOD - Zone Lighting: Disabled\par
+          IOD - Bed Camera: Disabled\par
+          Rear Power Seat: Disabled\par
+          IOD - On Board Generator: Disabled\par
+          IOD - Phone: Disabled\par
+          IOD - Audio: Disabled\par
+          IOD - TPMS: Disabled\par
+          IOD \f1\endash  Navigation: Disabled\par
+          Eco-Idle: Disabled\par
+          Advanced HUD: NA\par
+          IOD-Off-Road #2: NA\par
+          Trail Turn Assist: Disabled\par
+          Eco Coach - Show In Go Mode Setting: Disabled\par
+          Eco Coach - Eco Advices Setting: Disabled\par
+          Eco Coach - Coasting Support Setting: Disabled\par
+          Rocket Setup: Enabled\par
+          Key Type: Push Button Start\par
+          Display Mode: Night Only\par
+          Number of PADIs: 1 PADI\par
+          Manual Mode: Disabled\par
+          Onboard Scales: Not Present\par
+          TCU Reset: Enabled\par
+          Tone Touch HMI: Disabled\par
+          1 Telephony Button: Disabled\par
+          Rear Seat Occupant: Disabled\par
+          CRM-DSMC: Not Present\par
+          LVDS in cluster: Disabled\par
+          Driver Assist Hot Key: Enabled\par
+          Parking Hot Key: Enabled\par
+          Camera Hot Key: Disabled\par
+          Video On Demand: Disabled\par
+          Feature Domain Button: Disabled\par
+          eheat: Disabled\par
+          Digital Scent: Disabled\par
+          Prognostic: Enabled\par
+          Front Park Aid Adjustable Chimes: Enabled\par
+          Rear Park Aid Adjustable Chimes: Enabled\par
+          Multi Camera Strategy: Soft Button Camera Toggle\par
+          Window control: Disabled\par
+          Mixed Mode Presets Conformance: Enabled\par
+          Park Brake: Auto\par
+          Charge Port Light Type: Disabled\par
+          DSM: Enabled\par
+          Wireless Microphone Dongle: Disabled\par
+          Highway assist: Disable\par
+          CHMSL Camera: Disable\par
+          AUX Camera: Disable\par
+          Boundary Alert: Enable\par
+          Front Camera (Off Road): Not Available\par
+          Front Rock Crawl (360 Camera Required): Not Present\par
+          Rear Rock Crawl (360 Camera Required): Not Present\par
+          Camera Soft Button: Disable\par
+          EcoCoach in Eco Mode: Disable\par
+          Engine Oil Temp Gauge \endash  Cluster menu: Disable\par
+          Power Gauge \endash  Cluster menu: Disable\par
+          Tachometer Gauge \endash  Cluster menu: Disable\par
+          Oil Life: Disable\par
+          Calm Screen \endash  Cluster IoD config: Enable\par
+          Trip 1 \endash  Cluster IoD config: Enable\par
+          Trip 2 \endash  Cluster IoD config: Enable\par
+          This Trip \endash  Cluster IoD config: Disable\par
+          Fuel Economy \endash  Cluster IoD config: Disable\par
+          Electric Efficiency \endash  Cluster IoD config: Disable\par
+          Eco Behaviors \endash  Cluster IoD config: Disable\par
+          EV Coach \endash  Cluster IoD config: Disable\par
+          Auto Start Stop \endash  Cluster IoD config: Enable\par
+          Seatbelt Status \endash  Cluster IoD config: Enable\par
+          TPMS \endash  Cluster IoD config: Disable\par
+          Eco Coach \endash  Cluster IoD config: Disable\par
+          Now Playing (Audio / Phone) \endash  Cluster IoD config: Disable\par
+          Nav / Compass \endash  Cluster IoD config: Disable\par
+          Average Speed \endash  Cluster IoD config: Enable\par
+          Battery Charge \endash  Cluster IoD config: Disable\par
+          Maps / Augmented Reality \endash  Cluster IoD config: Disable\par
+          Classic View \endash  Cluster IoD config: Disable\par
+          Reset All values for Trip 1: Disable\par
+          Reset Trip 1 Odometer: Disable\par
+          Reset Trip 1 Average Speed: Disable\par
+          Reset Trip 1 Average Fuel: Disable\par
+          Set to Default \endash  configure Cluster Trip 1 view: Enable\par
+          Trip 1 Odometer \endash  configure Cluster Trip 1 view: Enable\par
+          Trip 1 Timer \endash  configure Cluster Trip 1 view: Enable\par
+          Average Speed \endash  configure Cluster Trip 1 view: Enable\par
+          Average Fuel \endash  configure Cluster Trip 1 view: Enable\par
+          Instantaneous Fuel \endash  configure Cluster Trip 1 view: Enable\par
+          Reset All values for Trip 2: Disable\par
+          Reset Trip 2 Odometer: Disable\par
+          Reset Trip 2 Average Speed: Disable\par
+          Reset Trip 2 Average Fuel: Disable\par
+          Set to Default \endash  configure Cluster Trip 2 view: Enable\par
+          Trip 2 Odometer \endash  configure Cluster Trip 2 view: Enable\par
+          Trip 2 Timer \endash  configure Cluster Trip 2 view: Enable\par
+          Average Speed \endash  configure Cluster Trip 2 view: Enable\par
+          Average Fuel \endash  configure Cluster Trip 2 view: Enable\par
+          Instantaneous Fuel \endash  configure Cluster Trip 2 view: Enable\par
+          Classic View \endash  Cluster Speedo view \endash  Cluster Menu: Disable\par
+          Classic Gauge - Cluster View: Disable\par
+          Turn by Turn - Cluster Menu: Enable\par
+          Cluster 3D map setting: Disable\par
+\cf2\f0 Attempting to read DID 0xDE08 ... \cf4 Ok\par
+\cf3 Request for ReadDataByIdentifier (Service 0x22)  --  [ECU ID: 0x7D0 (APIM)] - Single DID\par
+     DataIdentifier:  0xDE08\par
+\cf4 Positive Response to ReadDataByIdentifier (Service 0x22)  --  [ECU ID: 0x7D8 (APIM)]\par
+     DataIdentifier:  0xDE08     Data Size: 23 byte(s)\par
+     Data (Hex): 6D 23 CC C8 FB 04 CC 4F 80 0D 20 40 00 00 01 92 C0 40 5C E0 20 35 00 \par
+          [0xDE08] Config Block DE08:    ---   (Packeted DID)\par
+          AEIS Without Override: Disabled\par
+          AEIS with Override: Enabled\par
+          ACC Menu: Enabled\par
+          Adaptive Head Lamps Control Function: Disabled\par
+          Adjustable Speed Limiter Device: Enabled\par
+          AdvanceTrac Control Function: Enabled\par
+          Autolamp Delay: Enabled\par
+          Autolock Control Function: Disabled\par
+          Adaptive Head Lamps Traffic: Disabled\par
+          Auto Relock: Enabled\par
+          Autounlock Control Function: Disabled\par
+          City Safety: Disabled\par
+          Approach Detection Control Function: Disabled\par
+          Courtesy Wipe After Wash: Enabled\par
+          Driver Alert System: Enabled\par
+          Easy Entry/Exit: Enabled\par
+          Forward Collision Warning: FCW + FDA\par
+          Fuel Operated Heater (FOH): N/A\par
+          Global Window Open: Enabled\par
+          Global Window Close: Enabled\par
+          Daytime Running Lamps Control Function: Disabled\par
+          Temporary Mobility Kit: Disabled\par
+          Mirrors Autofold: Enabled\par
+          Mirrors Reverse Tilt: Enabled\par
+          Do Not Disturb: Disabled\par
+          Fuel Operated Park Heater: Disabled\par
+          One/Two Stage Unlocking: Enabled\par
+          Perimeter Alarm w/ Reduced Guard Control Function: Disabled\par
+          Power Liftgate Control Function: Disabled\par
+          Rear Reverse Gear Wipe (RRGW): Disabled\par
+          Remote Start \f1\endash  Climate Settings: Enabled\par
+          Remote Start \endash  Driver Seat: Enabled\par
+          Remote Start - Feature: Enabled\par
+          Remote Start \endash  Passenger Seat: Enabled\par
+          Remote Start \endash  Rear Defrost: Enabled\par
+          Remote Start \endash  Steering Wheel: Disabled\par
+          Side Detect: Enabled\par
+          Intelligent Speed Assistance: Enabled\par
+          Trailer Sway: Disabled\par
+          Front Collision Warning \endash  On Menu: Disabled\par
+          Intelligent Access Menu: Disabled\par
+          Silent Mode Control Function: Disabled\par
+          TPMS Reset: Disabled\par
+          Auto Hold: Enabled\par
+          Park Hold: Disabled\par
+          Driver Warning Data Collection Type Configuration: read cluster DIDs 600E&F\par
+          Forward Collision Warning \endash  Braking On/Off: Enabled\par
+          Locking Feedback Audible: Disabled\par
+          Locking Feedback Visual: Disabled\par
+          Evasive Steering Assist: Enabled\par
+          Lane Assist Haptic Intensity: Enabled\par
+          Intelligent Adaptive Cruise Control: Disabled\par
+          Adaptive Headlamps Feature: Disabled\par
+          Lane Change Assist: Enabled\par
+          Lane Keeping Sensitivity: Disabled\par
+          Advanced Trac Hard Button Control: Disabled\par
+          Traction Control/IVD/RSC: RSC\par
+          Adaptive Cruise: Enabled\par
+          TSR NCAP Adaptations: Enabled\par
+          TSR Overspeed Chime: Enabled\par
+          Tow Haul: Disabled\par
+          Trailer Blind Spot: Disabled\par
+          Wrong Way Alert: Disabled\par
+          Hill Descent Control: Disabled\par
+          Snow Plow: Disabled\par
+          Select Mode: Disabled\par
+          Running Board Control Function: Disabled\par
+          Park Lock Control Allw: Less_Park_Lock_Control\par
+          Auto Start-Stop: Disabled\par
+          Perimeter Alarm Guard Reminder: Disabled\par
+          Traffic Sign Recognition: Enabled\par
+          TPMS By Location: Enabled\par
+          TPMS Placard Pressure Display: Disabled\par
+          Centerstack Settings: Enabled\par
+          Predictive Lights: Disabled\par
+          LaneAssist NCAP Aid: Menu 1 (Reduced, Enhanced)\par
+          LaneAssist NCAP Alert: Disabled (Alert menu not displayed)\par
+          Key Free: Intelligent Access\par
+          Grade Assist: Disabled\par
+          One/Two Stage Unlocking \endash  Passenger/Commercial: Passenger (One/Two State HMI)\par
+          Auto High Beam Menu: Auto High Beams\par
+          Air Suspension SUMA Control Function: Disabled\par
+          Air Suspension Auto Height SUMA: Disabled\par
+          Blindspot Trailer Tow (BTT) Lite: Disabled\par
+          Passenger Airbag Settings: Disabled\par
+          mHEV Start Stop Threshold Control Function: Disabled\par
+          Air Suspension Cargo Loading SUMA: Disabled\par
+          MyColor: Disabled\par
+          MyColor HMI Type: Disabled\par
+          MyColor Green Type: Green\par
+          Power Liftgate Handsfree Menu: Disabled\par
+          Power Liftgate/Decklid HMI: Liftgate\par
+          Auto Regen Control: Disabled\par
+          Adaptive Steering Manual Menu: Disabled\par
+          Adaptive Steering Menu: Disabled\par
+          Adaptive Steering System Menu: Disabled\par
+          Adaptive System Comfort Menu: Disabled\par
+          Adaptive Drive Menu: Disabled\par
+          Drive Control Menu: Disabled\par
+          Trailer Brake Controller: Disabled\par
+          Tunable Exhausts: Disabled\par
+          Engine Rev Match: Disabled\par
+          Lap Timer: Disabled\par
+          Brake Performance: Disabled\par
+          Acceleration Timer: Disabled\par
+          Driver Select Suspension: Disabled\par
+          Custom Mode: Disabled\par
+          Front Park Aid Long Term Disable: Disabled\par
+          Rear Park Aid Long Term Disable: Disabled\par
+          Park Aid Acessory Mode: Present\par
+          Vehicle Settings: On\par
+          Hill Start Assist: Off\par
+          ESP Setting: Off\par
+          ESP Hard Button Timer: FNA\par
+          Message Center HMI: Off\par
+          Electronic Stability Control: Not Available\par
+          Rain Sensor: Available\par
+          MyKey Settings: Not Available\par
+          Powerfold Mirrors: On\par
+          Lane Change Indicator: On\par
+          Deflation Detection System: Off\par
+          Park Lock Control: Off\par
+          Information Chimes: Off\par
+          Warning Chimes: Off\par
+          Active City Stop: Off\par
+          Alarm on Exit: Off\par
+          Moodlight Mode: Off\par
+          TPMS: On\par
+          ECO Mode: Not Present\par
+          PRB Kickswitch: Not Present\par
+          Power Tailgate: Not Present\par
+          SLIF: Disabled\par
+          Blindspot Trailer Tow (BTT) Full: Disabled\par
+          PRB Auto Timer: Off\par
+          PRB Max Permissible Speed: 5 KPH\par
+          Park Aid Control Rear: Enabled\par
+          Liftgate Softswitch: Manual Liftgate/Decklid\par
+          Frunk Softswitch: Disabled\par
+          Speed Limit Assist Menu: Enabled\par
+          Cruise Control Variant 2: Enabled\par
+          Lane Centering: Enabled\par
+          Smart Offering: Disabled\par
+          Tire Monitor/Pressure Reset Setting: Disabled\par
+          Considerate Prompts Border Crossing Reminder Setting: Disabled\par
+          Eco Coach - Show In Go Mode Setting: Disabled\par
+          Eco Coach - Eco Advices Setting: Disabled\par
+          Eco Coach - Coasting Support Setting: Disabled\par
+          Ambient Light Auto/Manual Setting: Disabled\par
+          Drive Control Version: Version 2 (SDM)\par
+          Brake Coach Setting: Disabled\par
+          Neutral Tow Setting: Disabled\par
+          Nav Repeater in Cluster Setting: Disabled\par
+          Maps in Cluster Setting: Disabled\par
+          Drive History Reset Setting: Disabled\par
+          Low Battery Alert Setting: Disabled\par
+          Propulsion Sound Setting: Disabled\par
+          Speedometer Unit Setting: Enabled\par
+          LCWA: Enabled\par
+          Liftgate Max Permissible Speed: 5 KPH\par
+          Walk Away Lock: Disabled\par
+          Walk Away Lock Feedback: Disabled\par
+          Double Lock Reminder: Disabled\par
+          Steering Gear Ration: Disabled\par
+          Quiet Time Exhaust Mode: Disabled\par
+          Clear Exit Assist: Disabled\par
+\cf2\f0 Attempting to read DID 0xDE09 ... \cf4 Ok\par
+\cf3 Request for ReadDataByIdentifier (Service 0x22)  --  [ECU ID: 0x7D0 (APIM)] - Single DID\par
+     DataIdentifier:  0xDE09\par
+\cf4 Positive Response to ReadDataByIdentifier (Service 0x22)  --  [ECU ID: 0x7D8 (APIM)]\par
+     DataIdentifier:  0xDE09     Data Size: 32 byte(s)\par
+     Data (Hex): 00 01 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 \par
+          [0xDE09] Config Block DE09:    ---   (Packeted DID)\par
+          SelDrvMde1: NA\par
+          SelDrvMde2: Slot1\par
+          SelDrvMde3: NA\par
+          SelDrvMde4: Slot2\par
+          SelDrvMde5: NA\par
+          SelDrvMde6: NA\par
+          SelDrvMde7: NA\par
+          SelDrvMde8: NA\par
+          SelDrvMde9: NA\par
+          SelDrvMde10: NA\par
+          SelDrvMde11: NA\par
+          SelDrvMde12: NA\par
+          SelDrvMde13: NA\par
+          SelDrvMde14: NA\par
+          SelDrvMde15: NA\par
+          SelDrvMde16: NA\par
+          SelDrvMde17: NA\par
+          SelDrvMde18: NA\par
+          SelDrvMde19: NA\par
+          SelDrvMde20: NA\par
+          SelDrvMde21: NA\par
+          SelDrvMde22: NA\par
+          SelDrvMde23: NA\par
+          SelDrvMde24: NA\par
+          SelDrvMde25: NA\par
+          SelDrvMde26: NA\par
+          SelDrvMde27: NA\par
+          SelDrvMde28: NA\par
+          SelDrvMde29: NA\par
+          SelDrvMde30: NA\par
+          SelDrvMde31: NA\par
+          SelDrvMde32: NA\par
+\cf2 Attempting to read DID 0xDE0A ... \cf4 Not Ok (Assuming Buffer DID)\par
+\par
+\cf2 Succesfully inhaled 10 ECU Configuration DIDs from 0x7D0!\par
+Functionally resetting ECUs - Quick Connection - 7D0 ... \cf4 Ok (Tx Ok, Response Suppressed)\par
+\cf2\ul\b\par
+Total Number of Inhaled DIDs = 10\par
+\par
+\par
+Transferring ECU Configuration Sequence ... (Inhaled from 0x7D0 (APIM)  on Date: 2021-07-16,  Time: 10:07:35)\par
+\ulnone\b0      File: D:\\\f1\'b9\'a4\'d7\'f7\'bc\'c7\'c2\'bc\\\'cb\'a2\'d0\'b4\'ca\'fd\'be\'dd\'bc\'c7\'c2\'bc\\BQ R06.2 Re-Flash Vehicle Vin Code 20210716\\LVSHFAAC9MS140495\\S140495_PP07.ecd\par
+\b\f0 Searching for Loaded Security Levels\par
+Use Specific Security Key File\b0 :  No\par
+     Number of Security Levels Loaded:  3\par
+Functionally transitioning ECUs to extendedDiagnosticSession - Quick Connection - 7D0 ... \cf4 Transmit Ok\par
+\cf2 Attempting to communicate to ECU 0x7D0 on Quick Connection - 7D0 ... ECU Found\par
+\ul\par
+Starting DID 1 of 10:  0xDE00 (Name: Inhaled DID 0xDE00)\par
+\ulnone Attempting to communicate to ECU 0x7D0 on Quick Connection - 7D0 ... ECU Found\par
+Attempting to Unlock Security Access for Level 0x03 ... \cf4 Ok\par
+\cf2 Writing DID 0xDE00 to ECU 0x7D0 ... \cf4 Ok\par
+\cf3 Request for WriteDataByIdentifier (Service 0x2E)  --  [ECU ID: 0x7D0 (APIM)]\par
+     DataIdentifier:  0xDE00     Data Size: 7 byte(s)\par
+     Data (Hex): 01 02 00 00 00 00 22 \par
+          [0xDE00] Config Block DE00:    ---   (Packeted DID)\par
+          Vehicle Nameplate ID: CD542\par
+          Model Year: MY21\par
+          Body Style: Hatchback\par
+          Series(Trim) Byte 1: \par
+          Series(Trim) Byte 2: \par
+          Color code: 00\par
+          welcome farewell animation: base\par
+          HMI variants: Ford\par
+          Display variants: 27.0L\par
+          Connectivity: Ford Modem Only\par
+\cf4 Positive Response to WriteDataByIdentifier (Service 0x2E)  --  [ECU ID: 0x7D8 (APIM)]\par
+     DataIdentifier:  0xDE00\par
+\cf2\ul\par
+Starting DID 2 of 10:  0xDE01 (Name: Inhaled DID 0xDE01)\par
+\ulnone Writing DID 0xDE01 to ECU 0x7D0 ... \cf4 Ok\par
+\cf3 Request for WriteDataByIdentifier (Service 0x2E)  --  [ECU ID: 0x7D0 (APIM)]\par
+     DataIdentifier:  0xDE01     Data Size: 4 byte(s)\par
+     Data (Hex): 11 00 30 00 \par
+          [0xDE01] Config Block DE01:    ---   (Packeted DID)\par
+          SWC: Can\par
+          EFP: LIN\par
+          Rear EFP: Disabled\par
+          WACM: Not Present\par
+          Ambient Light: Multi-color variant 2\par
+          MC Seat: Disabled\par
+          360 lighting: Disabled\par
+          MCM: N/A\par
+\cf4 Positive Response to WriteDataByIdentifier (Service 0x2E)  --  [ECU ID: 0x7D8 (APIM)]\par
+     DataIdentifier:  0xDE01\par
+\cf2\ul\par
+Starting DID 3 of 10:  0xDE02 (Name: Inhaled DID 0xDE02)\par
+\ulnone Writing DID 0xDE02 to ECU 0x7D0 ... \cf4 Ok\par
+\cf3 Request for WriteDataByIdentifier (Service 0x2E)  --  [ECU ID: 0x7D0 (APIM)]\par
+     DataIdentifier:  0xDE02     Data Size: 3 byte(s)\par
+     Data (Hex): 21 00 10 \par
+          [0xDE02] Config Block DE02:    ---   (Packeted DID)\par
+          PDC HMI: 8CH\par
+          Camera: Rear Analog (CVBS)\par
+          Camera Views: Disabled\par
+          APA: Disabled\par
+          CTA: CTA\par
+          MT/AT: AT\par
+\cf4 Positive Response to WriteDataByIdentifier (Service 0x2E)  --  [ECU ID: 0x7D8 (APIM)]\par
+     DataIdentifier:  0xDE02\par
+\cf2\ul\par
+Starting DID 4 of 10:  0xDE03 (Name: Inhaled DID 0xDE03)\par
+\ulnone Writing DID 0xDE03 to ECU 0x7D0 ... \cf4 Ok\par
+\cf3 Request for WriteDataByIdentifier (Service 0x2E)  --  [ECU ID: 0x7D0 (APIM)]\par
+     DataIdentifier:  0xDE03     Data Size: 4 byte(s)\par
+     Data (Hex): 20 20 00 01 \par
+          [0xDE03] Config Block DE03:    ---   (Packeted DID)\par
+          Climate domain: Dual Zone\par
+          Rear Hvac: Disabled\par
+          heat cool seat: Heat/cool\par
+          heated SW: Disabled\par
+          Fresh air Cabin: Disabled\par
+          suppress climate fan speed during VR: Disabled\par
+          heated windshield: Disabled\par
+          Climate auto levels: 3 Levels\par
+\cf4 Positive Response to WriteDataByIdentifier (Service 0x2E)  --  [ECU ID: 0x7D8 (APIM)]\par
+     DataIdentifier:  0xDE03\par
+\cf2\ul\par
+Starting DID 5 of 10:  0xDE04 (Name: Inhaled DID 0xDE04)\par
+\ulnone Writing DID 0xDE04 to ECU 0x7D0 ... \cf4 Ok\par
+\cf3 Request for WriteDataByIdentifier (Service 0x2E)  --  [ECU ID: 0x7D0 (APIM)]\par
+     DataIdentifier:  0xDE04     Data Size: 7 byte(s)\par
+     Data (Hex): 21 00 00 20 02 10 40 \par
+          [0xDE04] Config Block DE04:    ---   (Packeted DID)\par
+          List browser: Navi+Phone+Audio\par
+          Navi Features: With Gyro\par
+          1 Pedal drive: Disabled\par
+          Fuel type: Gas\par
+          Powerflow Type: None\par
+          Enhanced Memory: 3 person soft key\par
+          Battery Pack Size: 3P\par
+          AR Navigation: Disabled\par
+          TPMS: w/o temperature, with digits\par
+          ADAS: TSR Only\par
+          EV Range Ring: Disabled\par
+          Keypad/PAAK: PAAK Lite\par
+          Charge Port Type: Disabled\par
+\cf4 Positive Response to WriteDataByIdentifier (Service 0x2E)  --  [ECU ID: 0x7D8 (APIM)]\par
+     DataIdentifier:  0xDE04\par
+\cf2\ul\par
+Starting DID 6 of 10:  0xDE05 (Name: Inhaled DID 0xDE05)\par
+\ulnone Writing DID 0xDE05 to ECU 0x7D0 ... \cf4 Ok\par
+\cf3 Request for WriteDataByIdentifier (Service 0x2E)  --  [ECU ID: 0x7D0 (APIM)]\par
+     DataIdentifier:  0xDE05     Data Size: 19 byte(s)\par
+     Data (Hex): 01 12 10 06 00 22 03 00 00 00 00 00 00 00 00 18 00 00 11 \par
+          [0xDE05] Config Block DE05:    ---   (Packeted DID)\par
+          BT tuning: CD542 5Dr 10 Speaker\par
+          Extended play: 30min\par
+          Smart DSP: A2B B&O\par
+          Sound Mode: Stereo/Surround: Stereo/Surround\par
+          DSO chime: Disabled\par
+          DSP feature: Quantum Logic Surrounding: Disabled\par
+          Chime Tuning for DSP: -6dB\par
+          DSP feature: Revel/THX: Disabled\par
+          ANC/ESE: Disabled\par
+          Front Satellite Speakers: Fixed Line Leve\par
+          Rear Satellite Speakers: Fixed Line Level\par
+          Speaker Connection Types: A2B 10 speakers type1[CD542(PA)CX727(LA)]\par
+          Chime Strategy: CGEA1.3 (FNA)\par
+          Turn Signal Chimes: Disabled\par
+          ANC Left Front Mixing: No Mixing\par
+          ANC Right Front Mixing: No Mixing\par
+          ANC Rear Mixing: No Mixing\par
+          Enable Occupancy Mode Change in Phone: Enables Occupancy Mode Change In Phone\par
+          Antenna Test Acceptance Value: 0 dBuV\par
+          AM Station for Antenna Test: 522 Khz\par
+          Gain Adjustment in Phone Mode: No Gain Adjustment\par
+          Graphic EQ: Slot 0\par
+          Phone Level in Speed Sensitive Volume: SSV level is fixed to Off\par
+          FM Seek/Stop Sensitivity: 24 db\par
+          ESE profile select: 00\par
+          DSP VR Audio Delay time: 00\par
+          A2B slave slots combination: 11\par
+\cf4 Positive Response to WriteDataByIdentifier (Service 0x2E)  --  [ECU ID: 0x7D8 (APIM)]\par
+     DataIdentifier:  0xDE05\par
+\cf2\ul\par
+Starting DID 7 of 10:  0xDE06 (Name: Inhaled DID 0xDE06)\par
+\ulnone Writing DID 0xDE06 to ECU 0x7D0 ... \cf4 Ok\par
+\cf3 Request for WriteDataByIdentifier (Service 0x2E)  --  [ECU ID: 0x7D0 (APIM)]\par
+     DataIdentifier:  0xDE06     Data Size: 18 byte(s)\par
+     Data (Hex): 01 28 01 00 00 00 02 00 21 00 00 00 00 00 00 00 00 00 \par
+          [0xDE06] Config Block DE06:    ---   (Packeted DID)\par
+          V2I features: Enabled\par
+          AM Seek/Stop Sensitivity: 40 db\par
+          Power to the Box: Disabled\par
+          Selectable Drive Modes: Enabled\par
+          Seats Hot Key: Disabled\par
+          Facial Recognition: Disabled\par
+          ICP Subtype: Legacy ICP\par
+          Massage Pattern: Pattern Set 1\par
+          Stop Mode: Disabled\par
+          Sunroof control: 2 piece moonroof type1\par
+          Rear Lamp Animation: Not Selectable\par
+          SDM Max Response Timer: 500ms\par
+          SDM Max Feedback Errors: 3\par
+          HDRVC Overlay sets: Disabled\par
+\cf4 Positive Response to WriteDataByIdentifier (Service 0x2E)  --  [ECU ID: 0x7D8 (APIM)]\par
+     DataIdentifier:  0xDE06\par
+\cf2\ul\par
+Starting DID 8 of 10:  0xDE07 (Name: Inhaled DID 0xDE07)\par
+\ulnone Writing DID 0xDE07 to ECU 0x7D0 ... \cf4 Ok\par
+\cf3 Request for WriteDataByIdentifier (Service 0x2E)  --  [ECU ID: 0x7D0 (APIM)]\par
+     DataIdentifier:  0xDE07     Data Size: 16 byte(s)\par
+     Data (Hex): 00 00 14 40 C1 E8 80 00 00 10 07 06 10 1F 87 E4 \par
+          [0xDE07] Config Block DE07:    ---   (Packeted DID)\par
+          IOD - Pitch/Roll (Off Road): Disabled\par
+          IOD - Eco Behavior: Disabled\par
+          IOD - Trip 1/2: Disabled\par
+          IOD - Fuel Economy: Disabled\par
+          IOD - Zone Lighting: Disabled\par
+          IOD - Bed Camera: Disabled\par
+          Rear Power Seat: Disabled\par
+          IOD - On Board Generator: Disabled\par
+          IOD - Phone: Disabled\par
+          IOD - Audio: Disabled\par
+          IOD - TPMS: Disabled\par
+          IOD \f1\endash  Navigation: Disabled\par
+          Eco-Idle: Disabled\par
+          Advanced HUD: NA\par
+          IOD-Off-Road #2: NA\par
+          Trail Turn Assist: Disabled\par
+          Eco Coach - Show In Go Mode Setting: Disabled\par
+          Eco Coach - Eco Advices Setting: Disabled\par
+          Eco Coach - Coasting Support Setting: Disabled\par
+          Rocket Setup: Enabled\par
+          Key Type: Push Button Start\par
+          Display Mode: Night Only\par
+          Number of PADIs: 1 PADI\par
+          Manual Mode: Disabled\par
+          Onboard Scales: Not Present\par
+          TCU Reset: Enabled\par
+          Tone Touch HMI: Disabled\par
+          1 Telephony Button: Disabled\par
+          Rear Seat Occupant: Disabled\par
+          CRM-DSMC: Not Present\par
+          LVDS in cluster: Disabled\par
+          Driver Assist Hot Key: Enabled\par
+          Parking Hot Key: Enabled\par
+          Camera Hot Key: Disabled\par
+          Video On Demand: Disabled\par
+          Feature Domain Button: Disabled\par
+          eheat: Disabled\par
+          Digital Scent: Disabled\par
+          Prognostic: Enabled\par
+          Front Park Aid Adjustable Chimes: Enabled\par
+          Rear Park Aid Adjustable Chimes: Enabled\par
+          Multi Camera Strategy: Soft Button Camera Toggle\par
+          Window control: Disabled\par
+          Mixed Mode Presets Conformance: Enabled\par
+          Park Brake: Auto\par
+          Charge Port Light Type: Disabled\par
+          DSM: Enabled\par
+          Wireless Microphone Dongle: Disabled\par
+          Highway assist: Disable\par
+          CHMSL Camera: Disable\par
+          AUX Camera: Disable\par
+          Boundary Alert: Enable\par
+          Front Camera (Off Road): Not Available\par
+          Front Rock Crawl (360 Camera Required): Not Present\par
+          Rear Rock Crawl (360 Camera Required): Not Present\par
+          Camera Soft Button: Disable\par
+          EcoCoach in Eco Mode: Disable\par
+          Engine Oil Temp Gauge \endash  Cluster menu: Disable\par
+          Power Gauge \endash  Cluster menu: Disable\par
+          Tachometer Gauge \endash  Cluster menu: Disable\par
+          Oil Life: Disable\par
+          Calm Screen \endash  Cluster IoD config: Enable\par
+          Trip 1 \endash  Cluster IoD config: Enable\par
+          Trip 2 \endash  Cluster IoD config: Enable\par
+          This Trip \endash  Cluster IoD config: Disable\par
+          Fuel Economy \endash  Cluster IoD config: Disable\par
+          Electric Efficiency \endash  Cluster IoD config: Disable\par
+          Eco Behaviors \endash  Cluster IoD config: Disable\par
+          EV Coach \endash  Cluster IoD config: Disable\par
+          Auto Start Stop \endash  Cluster IoD config: Enable\par
+          Seatbelt Status \endash  Cluster IoD config: Enable\par
+          TPMS \endash  Cluster IoD config: Disable\par
+          Eco Coach \endash  Cluster IoD config: Disable\par
+          Now Playing (Audio / Phone) \endash  Cluster IoD config: Disable\par
+          Nav / Compass \endash  Cluster IoD config: Disable\par
+          Average Speed \endash  Cluster IoD config: Enable\par
+          Battery Charge \endash  Cluster IoD config: Disable\par
+          Maps / Augmented Reality \endash  Cluster IoD config: Disable\par
+          Classic View \endash  Cluster IoD config: Disable\par
+          Reset All values for Trip 1: Disable\par
+          Reset Trip 1 Odometer: Disable\par
+          Reset Trip 1 Average Speed: Disable\par
+          Reset Trip 1 Average Fuel: Disable\par
+          Set to Default \endash  configure Cluster Trip 1 view: Enable\par
+          Trip 1 Odometer \endash  configure Cluster Trip 1 view: Enable\par
+          Trip 1 Timer \endash  configure Cluster Trip 1 view: Enable\par
+          Average Speed \endash  configure Cluster Trip 1 view: Enable\par
+          Average Fuel \endash  configure Cluster Trip 1 view: Enable\par
+          Instantaneous Fuel \endash  configure Cluster Trip 1 view: Enable\par
+          Reset All values for Trip 2: Disable\par
+          Reset Trip 2 Odometer: Disable\par
+          Reset Trip 2 Average Speed: Disable\par
+          Reset Trip 2 Average Fuel: Disable\par
+          Set to Default \endash  configure Cluster Trip 2 view: Enable\par
+          Trip 2 Odometer \endash  configure Cluster Trip 2 view: Enable\par
+          Trip 2 Timer \endash  configure Cluster Trip 2 view: Enable\par
+          Average Speed \endash  configure Cluster Trip 2 view: Enable\par
+          Average Fuel \endash  configure Cluster Trip 2 view: Enable\par
+          Instantaneous Fuel \endash  configure Cluster Trip 2 view: Enable\par
+          Classic View \endash  Cluster Speedo view \endash  Cluster Menu: Disable\par
+          Classic Gauge - Cluster View: Disable\par
+          Turn by Turn - Cluster Menu: Enable\par
+          Cluster 3D map setting: Disable\par
+\cf4\f0 Positive Response to WriteDataByIdentifier (Service 0x2E)  --  [ECU ID: 0x7D8 (APIM)]\par
+     DataIdentifier:  0xDE07\par
+\cf2\ul\par
+Starting DID 9 of 10:  0xDE08 (Name: Inhaled DID 0xDE08)\par
+\ulnone Writing DID 0xDE08 to ECU 0x7D0 ... \cf4 Ok\par
+\cf3 Request for WriteDataByIdentifier (Service 0x2E)  --  [ECU ID: 0x7D0 (APIM)]\par
+     DataIdentifier:  0xDE08     Data Size: 23 byte(s)\par
+     Data (Hex): 6D 23 CC C8 FB 04 CC 4F 80 0D 20 40 00 00 01 92 C0 40 5C E0 20 35 00 \par
+          [0xDE08] Config Block DE08:    ---   (Packeted DID)\par
+          AEIS Without Override: Disabled\par
+          AEIS with Override: Enabled\par
+          ACC Menu: Enabled\par
+          Adaptive Head Lamps Control Function: Disabled\par
+          Adjustable Speed Limiter Device: Enabled\par
+          AdvanceTrac Control Function: Enabled\par
+          Autolamp Delay: Enabled\par
+          Autolock Control Function: Disabled\par
+          Adaptive Head Lamps Traffic: Disabled\par
+          Auto Relock: Enabled\par
+          Autounlock Control Function: Disabled\par
+          City Safety: Disabled\par
+          Approach Detection Control Function: Disabled\par
+          Courtesy Wipe After Wash: Enabled\par
+          Driver Alert System: Enabled\par
+          Easy Entry/Exit: Enabled\par
+          Forward Collision Warning: FCW + FDA\par
+          Fuel Operated Heater (FOH): N/A\par
+          Global Window Open: Enabled\par
+          Global Window Close: Enabled\par
+          Daytime Running Lamps Control Function: Disabled\par
+          Temporary Mobility Kit: Disabled\par
+          Mirrors Autofold: Enabled\par
+          Mirrors Reverse Tilt: Enabled\par
+          Do Not Disturb: Disabled\par
+          Fuel Operated Park Heater: Disabled\par
+          One/Two Stage Unlocking: Enabled\par
+          Perimeter Alarm w/ Reduced Guard Control Function: Disabled\par
+          Power Liftgate Control Function: Disabled\par
+          Rear Reverse Gear Wipe (RRGW): Disabled\par
+          Remote Start \f1\endash  Climate Settings: Enabled\par
+          Remote Start \endash  Driver Seat: Enabled\par
+          Remote Start - Feature: Enabled\par
+          Remote Start \endash  Passenger Seat: Enabled\par
+          Remote Start \endash  Rear Defrost: Enabled\par
+          Remote Start \endash  Steering Wheel: Disabled\par
+          Side Detect: Enabled\par
+          Intelligent Speed Assistance: Enabled\par
+          Trailer Sway: Disabled\par
+          Front Collision Warning \endash  On Menu: Disabled\par
+          Intelligent Access Menu: Disabled\par
+          Silent Mode Control Function: Disabled\par
+          TPMS Reset: Disabled\par
+          Auto Hold: Enabled\par
+          Park Hold: Disabled\par
+          Driver Warning Data Collection Type Configuration: read cluster DIDs 600E&F\par
+          Forward Collision Warning \endash  Braking On/Off: Enabled\par
+          Locking Feedback Audible: Disabled\par
+          Locking Feedback Visual: Disabled\par
+          Evasive Steering Assist: Enabled\par
+          Lane Assist Haptic Intensity: Enabled\par
+          Intelligent Adaptive Cruise Control: Disabled\par
+          Adaptive Headlamps Feature: Disabled\par
+          Lane Change Assist: Enabled\par
+          Lane Keeping Sensitivity: Disabled\par
+          Advanced Trac Hard Button Control: Disabled\par
+          Traction Control/IVD/RSC: RSC\par
+          Adaptive Cruise: Enabled\par
+          TSR NCAP Adaptations: Enabled\par
+          TSR Overspeed Chime: Enabled\par
+          Tow Haul: Disabled\par
+          Trailer Blind Spot: Disabled\par
+          Wrong Way Alert: Disabled\par
+          Hill Descent Control: Disabled\par
+          Snow Plow: Disabled\par
+          Select Mode: Disabled\par
+          Running Board Control Function: Disabled\par
+          Park Lock Control Allw: Less_Park_Lock_Control\par
+          Auto Start-Stop: Disabled\par
+          Perimeter Alarm Guard Reminder: Disabled\par
+          Traffic Sign Recognition: Enabled\par
+          TPMS By Location: Enabled\par
+          TPMS Placard Pressure Display: Disabled\par
+          Centerstack Settings: Enabled\par
+          Predictive Lights: Disabled\par
+          LaneAssist NCAP Aid: Menu 1 (Reduced, Enhanced)\par
+          LaneAssist NCAP Alert: Disabled (Alert menu not displayed)\par
+          Key Free: Intelligent Access\par
+          Grade Assist: Disabled\par
+          One/Two Stage Unlocking \endash  Passenger/Commercial: Passenger (One/Two State HMI)\par
+          Auto High Beam Menu: Auto High Beams\par
+          Air Suspension SUMA Control Function: Disabled\par
+          Air Suspension Auto Height SUMA: Disabled\par
+\cf0\f2           Blindspot Trailer Tow (BTT) Lite: Disabled\par
+          Passenger Airbag Settings: Disabled\par
+          mHEV Start Stop Threshold Control Function: Disabled\par
+          Air Suspension Cargo Loading SUMA: Disabled\par
+          MyColor: Disabled\par
+          MyColor HMI Type: Disabled\par
+          MyColor Green Type: Green\par
+          Power Liftgate Handsfree Menu: Disabled\par
+          Power Liftgate/Decklid HMI: Liftgate\par
+          Auto Regen Control: Disabled\par
+          Adaptive Steering Manual Menu: Disabled\par
+          Adaptive Steering Menu: Disabled\par
+          Adaptive Steering System Menu: Disabled\par
+          Adaptive System Comfort Menu: Disabled\par
+          Adaptive Drive Menu: Disabled\par
+          Drive Control Menu: Disabled\par
+          Trailer Brake Controller: Disabled\par
+          Tunable Exhausts: Disabled\par
+          Engine Rev Match: Disabled\par
+          Lap Timer: Disabled\par
+          Brake Performance: Disabled\par
+          Acceleration Timer: Disabled\par
+          Driver Select Suspension: Disabled\par
+          Custom Mode: Disabled\par
+          Front Park Aid Long Term Disable: Disabled\par
+          Rear Park Aid Long Term Disable: Disabled\par
+          Park Aid Acessory Mode: Present\par
+          Vehicle Settings: On\par
+          Hill Start Assist: Off\par
+          ESP Setting: Off\par
+          ESP Hard Button Timer: FNA\par
+          Message Center HMI: Off\par
+          Electronic Stability Control: Not Available\par
+          Rain Sensor: Available\par
+          MyKey Settings: Not Available\par
+          Powerfold Mirrors: On\par
+          Lane Change Indicator: On\par
+          Deflation Detection System: Off\par
+          Park Lock Control: Off\par
+          Information Chimes: Off\par
+          Warning Chimes: Off\par
+          Active City Stop: Off\par
+          Alarm on Exit: Off\par
+          Moodlight Mode: Off\par
+          TPMS: On\par
+          ECO Mode: Not Present\par
+          PRB Kickswitch: Not Present\par
+          Power Tailgate: Not Present\par
+          SLIF: Disabled\par
+          Blindspot Trailer Tow (BTT) Full: Disabled\par
+          PRB Auto Timer: Off\par
+          PRB Max Permissible Speed: 5 KPH\par
+          Park Aid Control Rear: Enabled\par
+          Liftgate Softswitch: Manual Liftgate/Decklid\par
+          Frunk Softswitch: Disabled\par
+          Speed Limit Assist Menu: Enabled\par
+          Cruise Control Variant 2: Enabled\par
+          Lane Centering: Enabled\par
+          Smart Offering: Disabled\par
+          Tire Monitor/Pressure Reset Setting: Disabled\par
+          Considerate Prompts Border Crossing Reminder Setting: Disabled\par
+          Eco Coach - Show In Go Mode Setting: Disabled\par
+          Eco Coach - Eco Advices Setting: Disabled\par
+          Eco Coach - Coasting Support Setting: Disabled\par
+          Ambient Light Auto/Manual Setting: Disabled\par
+          Drive Control Version: Version 2 (SDM)\par
+          Brake Coach Setting: Disabled\par
+          Neutral Tow Setting: Disabled\par
+          Nav Repeater in Cluster Setting: Disabled\par
+          Maps in Cluster Setting: Disabled\par
+          Drive History Reset Setting: Disabled\par
+          Low Battery Alert Setting: Disabled\par
+          Propulsion Sound Setting: Disabled\par
+          Speedometer Unit Setting: Enabled\par
+          LCWA: Enabled\par
+          Liftgate Max Permissible Speed: 5 KPH\par
+          Walk Away Lock: Disabled\par
+          Walk Away Lock Feedback: Disabled\par
+          Double Lock Reminder: Disabled\par
+          Steering Gear Ration: Disabled\par
+          Quiet Time Exhaust Mode: Disabled\par
+          Clear Exit Assist: Disabled\par
+\cf4\f0 Positive Response to WriteDataByIdentifier (Service 0x2E)  --  [ECU ID: 0x7D8 (APIM)]\par
+     DataIdentifier:  0xDE08\par
+\cf2\ul\par
+Starting DID 10 of 10:  0xDE09 (Name: Inhaled DID 0xDE09)\par
+\ulnone Writing DID 0xDE09 to ECU 0x7D0 ... \cf4 Ok\par
+\cf3 Request for WriteDataByIdentifier (Service 0x2E)  --  [ECU ID: 0x7D0 (APIM)]\par
+     DataIdentifier:  0xDE09     Data Size: 32 byte(s)\par
+     Data (Hex): 00 01 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 \par
+          [0xDE09] Config Block DE09:    ---   (Packeted DID)\par
+          SelDrvMde1: NA\par
+          SelDrvMde2: Slot1\par
+          SelDrvMde3: NA\par
+          SelDrvMde4: Slot2\par
+          SelDrvMde5: NA\par
+          SelDrvMde6: NA\par
+          SelDrvMde7: NA\par
+          SelDrvMde8: NA\par
+          SelDrvMde9: NA\par
+          SelDrvMde10: NA\par
+          SelDrvMde11: NA\par
+          SelDrvMde12: NA\par
+          SelDrvMde13: NA\par
+          SelDrvMde14: NA\par
+          SelDrvMde15: NA\par
+          SelDrvMde16: NA\par
+          SelDrvMde17: NA\par
+          SelDrvMde18: NA\par
+          SelDrvMde19: NA\par
+          SelDrvMde20: NA\par
+          SelDrvMde21: NA\par
+          SelDrvMde22: NA\par
+          SelDrvMde23: NA\par
+          SelDrvMde24: NA\par
+          SelDrvMde25: NA\par
+          SelDrvMde26: NA\par
+          SelDrvMde27: NA\par
+          SelDrvMde28: NA\par
+          SelDrvMde29: NA\par
+          SelDrvMde30: NA\par
+          SelDrvMde31: NA\par
+          SelDrvMde32: NA\par
+\cf4 Positive Response to WriteDataByIdentifier (Service 0x2E)  --  [ECU ID: 0x7D8 (APIM)]\par
+     DataIdentifier:  0xDE09\par
+\cf2 Functionally resetting ECUs - Quick Connection - 7D0 ... \cf4 Ok (Tx Ok, Response Suppressed)\par
+\cf2\ul\b\par
+Total Number of Exhaled DIDs = 10\par
+\par
+Validating VBF Sequence...\par
+\ulnone Sequence Name\b0 :  1\par
+\b VBS Filename\b0 :  \par
+\b Use Specific Security Key File\b0 :  No\par
+     Number of Security Levels Loaded:  3\par
+\b Inhale Associated ECD File\b0 :  No\par
+\b Number of Files in VBF Sequence\b0 :  2\par
+\ul\b\par
+File #1:  D:\\software\\CD542\\20210705_0406_B1F27_R06.2.PRO\\20210705_0406_B1F27_R06.2.PRO\\MCU\\ESE\\Flashdrv.sig.vbf\ulnone\b0\par
+     VBF Version: 3.1,     ECU Address: 0x7D0,     SW Part Type: SBL,     SW Part Number: "MB6T-14H367-AB",     Call Info: 0xFEBD0000,     DataFormatIdentifier To Use: 0x00\par
+     Number of Erase Blocks: 0\par
+     Number of Data Blocks: 2\par
+          Data Block #1  ---  Start Address: 0xFEBD0000, Length: 0x24B8, Checksum: 0x7A49\par
+          Data Block #2  ---  Start Address: 0xFEBD2600, Length: 0x12C, Checksum: 0x309D\par
+     File Checksum: 0xB72AF18\par
+\cf5           Warning:  Filename Does Not Equal SW Partnumber\par
+\cf2\ul\b\par
+File #2:  D:\\software\\CD542\\20210705_0406_B1F27_R06.2.PRO\\20210705_0406_B1F27_R06.2.PRO\\MCU\\ESE\\MB6T-14H376-AB.vbf\ulnone\b0\par
+     VBF Version: 3.1,     ECU Address: 0x7D0,     SW Part Type: DATA,     SW Part Number: "MB6T-14H376-AB",     Call Info: Not Present,     DataFormatIdentifier To Use: 0x00\par
+     Number of Erase Blocks: 1\par
+          Erase Block #1  ---  Start Address: 0x10000000, Length: 0x80000\par
+     Number of Data Blocks: 2\par
+          Data Block #1  ---  Start Address: 0x10000000, Length: 0x20, Checksum: 0xF347\par
+          Data Block #2  ---  Start Address: 0x10000400, Length: 0xA440, Checksum: 0x3A1B\par
+     File Checksum: 0x309B300C\par
+\par
+One or more potential issues found with VBF Sequence files.  Refer to log for more specifics.\par
+     --- One or more warnings found in at least one VBF file!\par
+\ul\b\par
+\par
+Downloading VBF sequence ... (1)\par
+\ulnone\b0 Note: Not utilizing Fast Download Method.\par
+Note: STmin override not enabled.\par
+Functionally transitioning ECUs to programmingSession - Quick Connection - 7D0 ... \cf4 Ok (Tx Ok, Response Suppressed)\par
+\cf2\ul\par
+Starting file 1 of 2:  D:\\software\\CD542\\20210705_0406_B1F27_R06.2.PRO\\20210705_0406_B1F27_R06.2.PRO\\MCU\\ESE\\Flashdrv.sig.vbf\par
+\ulnone Attempting to communicate to ECU 0x7D0 on Quick Connection - 7D0 ... ECU Found\par
+Physically transitioning ECU to programmingSession on Quick Connection - 7D0 ... \cf4 Ok\par
+\cf2 Determining level of SWDL Specification Supported ... \cf4 Ok\par
+\cf2      Supported SWDL Specification Version = 007\par
+Reading ECU Core Assembly Part Number 0xF111 ... \cf4 Ok\par
+\cf2      DID 0xF111 = MB6T-14H370-MC\par
+Attempting to Unlock Security Access for Level 0x01 ... \cf4 Ok\par
+\cf2 Programming Memory Block 1 of 2  (Address 0xFEBD0000, Length 0x24B8) ... \cf4 Ok\par
+\cf2      Transferring data for current block...\cf4 Ok\par
+\cf2      Finalizing Memory Block 1 of 2 with transferExit request...\cf4 Ok\par
+\cf2 Programming Memory Block 2 of 2  (Address 0xFEBD2600, Length 0x12C) ... \cf4 Ok\par
+\cf2      Transferring data for current block...\cf4 Ok\par
+\cf2      Finalizing Memory Block 2 of 2 with transferExit request...\cf4 Ok\par
+\cf2 Activating SBL...\cf4 Ok\par
+\cf2 Elapsed download time is 3.42 seconds.\par
+\ul\par
+Starting file 2 of 2:  D:\\software\\CD542\\20210705_0406_B1F27_R06.2.PRO\\20210705_0406_B1F27_R06.2.PRO\\MCU\\ESE\\MB6T-14H376-AB.vbf\par
+\ulnone Attempting to Unlock Security Access for Level 0x01 ... \cf4 Ok\par
+\cf2 Erasing Memory Block 1 of 1  (Address 0x10000000, Length 0x80000) ... \cf4 Ok\par
+\cf2 Programming Memory Block 1 of 2  (Address 0x10000000, Length 0x20) ... \cf4 Ok\par
+\cf2      Transferring data for current block...\cf4 Ok\par
+\cf2      Finalizing Memory Block 1 of 2 with transferExit request...\cf4 Ok\par
+\cf2 Programming Memory Block 2 of 2  (Address 0x10000400, Length 0xA440) ... \cf4 Ok\par
+\cf2      Transferring data for current block...\cf4 Ok\par
+\cf2      Finalizing Memory Block 2 of 2 with transferExit request...\cf4 Ok\par
+\cf2 Checking for valid application ... \cf4 Ok\par
+\cf2 Elapsed download time was 11.16 seconds.\par
+Functionally resetting ECUs - Quick Connection - 7D0 ... \cf4 Ok (Tx Ok, Response Suppressed)\par
+\cf2 Functionally clearing DTCs - Quick Connection - 7D0 ... \cf4 Ok (Response Received)\par
+\cf2 Software Download Result:  No critical errors occurred during SWDL!\par
+\cf0\f2\par
+}
+ 
